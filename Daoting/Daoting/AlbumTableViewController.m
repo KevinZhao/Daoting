@@ -7,6 +7,10 @@
 //
 
 #import "AlbumTableViewController.h"
+#import "CoinIAPHelper.h"
+#import "Album.h"
+#import "AlbumCellTableViewCell.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface AlbumTableViewController ()
 
@@ -27,80 +31,109 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    [self copyFromResourcetoDocumentDirectory:@"AlbumList.plist"];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self initializeAlbums];
+    
+    //enable IAP
+    [[CoinIAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+        if (success) {
+            _products = products;
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Internal Business Logic
+
+- (void)initializeAlbums
+{
+    _albums = [[NSMutableArray alloc]init];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
+    
+    NSString *plistPath = [bundleDocumentDirectoryPath stringByAppendingString:@"/AlbumList.plist"];
+    NSDictionary *dictionary = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+    
+    for (int i = 1; i<= dictionary.count; i++)
+    {
+        NSDictionary *AlbumDic = [dictionary objectForKey:[NSString stringWithFormat:@"%d", i]];
+
+        Album *album = [[Album alloc]init];
+        album.title = [AlbumDic objectForKey:@"Title"];
+        album.description = [AlbumDic objectForKey:@"Description"];
+        
+        NSString *url = [AlbumDic objectForKey:@"ImageURL"];
+        album.imageUrl = [[NSURL alloc]initWithString:url];
+        
+        [_albums addObject:album];
+    }
+}
+
+- (void)copyFromResourcetoDocumentDirectory:(NSString *)fileName
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
+    
+    NSString *writableDBPath= [bundleDocumentDirectoryPath stringByAppendingPathComponent:fileName];
+    BOOL success = [fileManager fileExistsAtPath:writableDBPath];
+    if (!success)
+    {
+        //Copy file from Resource to Document Directory
+        NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:fileName];
+        [fileManager copyItemAtPath:defaultDBPath toPath:writableDBPath error:nil];
+    }
 }
 
 #pragma mark - Table view data source
 
-/*- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 5;
-}*/
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return 5;
+    return _albums.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AlbumCell" forIndexPath:indexPath];
+    Album *album = [_albums objectAtIndex:indexPath.row];
+    AlbumCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AlbumCell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    cell.lbl_albumTitle.text = album.title;
+    cell.lbl_albumDescription.text = album.description;
+    
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:album.imageUrl];
+    
+    UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
+    
+    __weak AlbumCellTableViewCell *weakCell = cell;
+    [cell.imageView setImageWithURLRequest:request
+                          placeholderImage:placeholderImage
+                                   success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                       
+                                       [weakCell.img_albumImage setImage:image];
+                                       [weakCell setNeedsLayout];
+                                       
+                                   } failure:nil];
+    
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    SKProduct *product = _products[0];
+    
+    NSLog(@"Buying %@...", product.productIdentifier);
+    [[CoinIAPHelper sharedInstance] buyProduct:product];
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 /*
 #pragma mark - Navigation
@@ -112,5 +145,6 @@
     // Pass the selected object to the new view controller.
 }
 */
+
 
 @end

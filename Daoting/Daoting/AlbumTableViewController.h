@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface AlbumTableViewController : UITableViewController
+{
+    NSArray             *_products;
+    NSMutableArray      *_albums;
+}
 
 @end

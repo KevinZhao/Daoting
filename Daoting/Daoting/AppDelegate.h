@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoinIAPHelper.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

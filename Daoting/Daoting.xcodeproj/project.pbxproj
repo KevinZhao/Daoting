@@ -103,6 +103,12 @@
 		0A98D66D1920F1F500E46EB9 /* arrowSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A98D6691920F1F500E46EB9 /* arrowSelected@2x.png */; };
 		0A98D6701920F25900E46EB9 /* AlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A98D66F1920F25900E46EB9 /* AlbumTableViewController.m */; };
 		0AE46B0E1921035E00FA30F3 /* SongTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE46B0D1921035E00FA30F3 /* SongTableViewController.m */; };
+		0AFB65A519245A7E000F2AE6 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB65A419245A7E000F2AE6 /* IAPHelper.m */; };
+		0AFB65A719245BD4000F2AE6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AFB65A619245BD4000F2AE6 /* StoreKit.framework */; };
+		0AFB65AA19246656000F2AE6 /* CoinIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB65A919246656000F2AE6 /* CoinIAPHelper.m */; };
+		0AFB65AC1924EC44000F2AE6 /* AlbumList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AFB65AB1924EC44000F2AE6 /* AlbumList.plist */; };
+		0AFB65AF1924F215000F2AE6 /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB65AE1924F215000F2AE6 /* Album.m */; };
+		0AFB65B21925107F000F2AE6 /* AlbumCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB65B11925107F000F2AE6 /* AlbumCellTableViewCell.m */; };
 		5933AD5918D03EC1001D707B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933AD5818D03EC1001D707B /* Foundation.framework */; };
 		5933AD5B18D03EC1001D707B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933AD5A18D03EC1001D707B /* CoreGraphics.framework */; };
 		5933AD5D18D03EC1001D707B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933AD5C18D03EC1001D707B /* UIKit.framework */; };
@@ -221,6 +227,16 @@
 		0A98D66F1920F25900E46EB9 /* AlbumTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumTableViewController.m; sourceTree = "<group>"; };
 		0AE46B0C1921035E00FA30F3 /* SongTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongTableViewController.h; sourceTree = "<group>"; };
 		0AE46B0D1921035E00FA30F3 /* SongTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongTableViewController.m; sourceTree = "<group>"; };
+		0AFB65A319245A7E000F2AE6 /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
+		0AFB65A419245A7E000F2AE6 /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
+		0AFB65A619245BD4000F2AE6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		0AFB65A819246656000F2AE6 /* CoinIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoinIAPHelper.h; sourceTree = "<group>"; };
+		0AFB65A919246656000F2AE6 /* CoinIAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoinIAPHelper.m; sourceTree = "<group>"; };
+		0AFB65AB1924EC44000F2AE6 /* AlbumList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AlbumList.plist; sourceTree = "<group>"; };
+		0AFB65AD1924F215000F2AE6 /* Album.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Album.h; sourceTree = "<group>"; };
+		0AFB65AE1924F215000F2AE6 /* Album.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Album.m; sourceTree = "<group>"; };
+		0AFB65B01925107F000F2AE6 /* AlbumCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumCellTableViewCell.h; sourceTree = "<group>"; };
+		0AFB65B11925107F000F2AE6 /* AlbumCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumCellTableViewCell.m; sourceTree = "<group>"; };
 		5933AD5518D03EC1001D707B /* Daoting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daoting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5933AD5818D03EC1001D707B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5933AD5A18D03EC1001D707B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -241,6 +257,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AFB65A719245BD4000F2AE6 /* StoreKit.framework in Frameworks */,
 				0A98D6481920ADF600E46EB9 /* MediaPlayer.framework in Frameworks */,
 				0A98D6461920ADDD00E46EB9 /* MessageUI.framework in Frameworks */,
 				0A98D6441920ADD600E46EB9 /* AddressBook.framework in Frameworks */,
@@ -538,6 +555,7 @@
 		5933AD5718D03EC1001D707B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0AFB65A619245BD4000F2AE6 /* StoreKit.framework */,
 				0A98D6471920ADF600E46EB9 /* MediaPlayer.framework */,
 				0A98D6451920ADDD00E46EB9 /* MessageUI.framework */,
 				0A98D6431920ADD600E46EB9 /* AddressBook.framework */,
@@ -572,6 +590,14 @@
 				0A98D66F1920F25900E46EB9 /* AlbumTableViewController.m */,
 				0AE46B0C1921035E00FA30F3 /* SongTableViewController.h */,
 				0AE46B0D1921035E00FA30F3 /* SongTableViewController.m */,
+				0AFB65A319245A7E000F2AE6 /* IAPHelper.h */,
+				0AFB65A419245A7E000F2AE6 /* IAPHelper.m */,
+				0AFB65A819246656000F2AE6 /* CoinIAPHelper.h */,
+				0AFB65A919246656000F2AE6 /* CoinIAPHelper.m */,
+				0AFB65AD1924F215000F2AE6 /* Album.h */,
+				0AFB65AE1924F215000F2AE6 /* Album.m */,
+				0AFB65B01925107F000F2AE6 /* AlbumCellTableViewCell.h */,
+				0AFB65B11925107F000F2AE6 /* AlbumCellTableViewCell.m */,
 				5933AD5F18D03EC1001D707B /* Supporting Files */,
 			);
 			path = Daoting;
@@ -586,6 +612,7 @@
 				5933AD6118D03EC1001D707B /* InfoPlist.strings */,
 				5933AD6418D03EC1001D707B /* main.m */,
 				5933AD6618D03EC1001D707B /* Daoting-Prefix.pch */,
+				0AFB65AB1924EC44000F2AE6 /* AlbumList.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -660,6 +687,7 @@
 			files = (
 				0A98D6631920EAB700E46EB9 /* progressBar.png in Resources */,
 				0A98D66C1920F1F500E46EB9 /* arrowSelected.png in Resources */,
+				0AFB65AC1924EC44000F2AE6 /* AlbumList.plist in Resources */,
 				0A98D65E1920EAB700E46EB9 /* DownloadsStopControl@2x.png in Resources */,
 				0A98D65A1920EAB700E46EB9 /* downloadButton@2x.png in Resources */,
 				0A98D65F1920EAB700E46EB9 /* nowPlayingGlyph.png in Resources */,
@@ -736,9 +764,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A98D6701920F25900E46EB9 /* AlbumTableViewController.m in Sources */,
+				0AFB65AA19246656000F2AE6 /* CoinIAPHelper.m in Sources */,
 				5933AD6918D03EC1001D707B /* AppDelegate.m in Sources */,
 				0AE46B0E1921035E00FA30F3 /* SongTableViewController.m in Sources */,
+				0AFB65A519245A7E000F2AE6 /* IAPHelper.m in Sources */,
+				0AFB65AF1924F215000F2AE6 /* Album.m in Sources */,
 				5933AD6518D03EC1001D707B /* main.m in Sources */,
+				0AFB65B21925107F000F2AE6 /* AlbumCellTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
