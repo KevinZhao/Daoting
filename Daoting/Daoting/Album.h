@@ -10,8 +10,10 @@
 
 @interface Album : NSObject
 
+@property (nonatomic, strong) NSString  *shortName;
 @property (nonatomic, strong) NSString  *title;
 @property (nonatomic, strong) NSString  *description;
 @property (nonatomic, strong) NSURL     *imageUrl;
+@property (nonatomic, strong) NSURL     *plistUrl;
 
 @end

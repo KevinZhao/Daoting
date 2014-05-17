@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AlbumCellTableViewCell : UITableViewCell
+@interface AlbumTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) IBOutlet UILabel      *lbl_albumTitle;
 @property (nonatomic, strong) IBOutlet UILabel      *lbl_albumDescription;

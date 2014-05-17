@@ -9,8 +9,9 @@
 #import "AlbumTableViewController.h"
 #import "CoinIAPHelper.h"
 #import "Album.h"
-#import "AlbumCellTableViewCell.h"
+#import "AlbumTableViewCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "SongTableViewController.h"
 
 @interface AlbumTableViewController ()
 
@@ -67,9 +68,8 @@
         Album *album = [[Album alloc]init];
         album.title = [AlbumDic objectForKey:@"Title"];
         album.description = [AlbumDic objectForKey:@"Description"];
-        
-        NSString *url = [AlbumDic objectForKey:@"ImageURL"];
-        album.imageUrl = [[NSURL alloc]initWithString:url];
+        album.imageUrl = [[NSURL alloc]initWithString:[AlbumDic objectForKey:@"ImageURL"]];
+        album.plistUrl = [[NSURL alloc]initWithString:[AlbumDic objectForKey:@"SongList"]];
         
         [_albums addObject:album];
     }
@@ -101,25 +101,24 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Album *album = [_albums objectAtIndex:indexPath.row];
-    AlbumCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AlbumCell" forIndexPath:indexPath];
+    AlbumTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AlbumCell" forIndexPath:indexPath];
     
     cell.lbl_albumTitle.text = album.title;
     cell.lbl_albumDescription.text = album.description;
     
-    
     NSURLRequest *request = [NSURLRequest requestWithURL:album.imageUrl];
-    
     UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
     
-    __weak AlbumCellTableViewCell *weakCell = cell;
-    [cell.imageView setImageWithURLRequest:request
-                          placeholderImage:placeholderImage
-                                   success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+    __weak AlbumTableViewCell *weakCell = cell;
+    
+    [cell.img_albumImage setImageWithURLRequest:request
+                               placeholderImage:placeholderImage
+                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image)
+    {
+        [weakCell.img_albumImage setImage:image];
+        [weakCell setNeedsLayout];
                                        
-                                       [weakCell.img_albumImage setImage:image];
-                                       [weakCell setNeedsLayout];
-                                       
-                                   } failure:nil];
+    } failure:nil];
     
     
     return cell;
@@ -127,24 +126,28 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SKProduct *product = _products[0];
+    //SKProduct *product = _products[0];
     
-    NSLog(@"Buying %@...", product.productIdentifier);
-    [[CoinIAPHelper sharedInstance] buyProduct:product];
+    //NSLog(@"Buying %@...", product.productIdentifier);
+    //[[CoinIAPHelper sharedInstance] buyProduct:product];
+    
+    //Album *album = [_albums objectAtIndex:indexPath.row];
+    
 }
 
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+    if ([segue.identifier isEqualToString:@"showSongList"]) {
+        
+        NSIndexPath *indexpath = [self.tableView indexPathForSelectedRow];
 
+        SongTableViewController *destinationViewController = [segue destinationViewController];
+        
+        destinationViewController.hidesBottomBarWhenPushed = YES;
+        [destinationViewController setDetailItem: [_albums objectAtIndex:indexpath.row]];
+        
+
+    }
+}
 
 @end

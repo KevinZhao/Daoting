@@ -9,7 +9,11 @@
 		<key>ImageURL</key>
 		<string>http://bcs.duapp.com/daoting/Yongzheng1.png</string>
 		<key>Description</key>
-		<string>http://bcs.duapp.com/daoting/Yongzheng1.png</string>
+		<string></string>
+		<key>SongList</key>
+		<string>http://bcs.duapp.com/zhengdong/PlayList.plist</string>
+		<key>ShortName</key>
+		<string>Yongzheng1</string>
 	</dict>
 	<key>2</key>
 	<dict>
@@ -19,6 +23,10 @@
 		<string>http://bcs.duapp.com/daoting/Yongzheng2.png</string>
 		<key>Description</key>
 		<string></string>
+		<key>SongList</key>
+		<string>http://bcs.duapp.com/zhengdong/PlayList.plist</string>
+		<key>ShortName</key>
+		<string>Yongzheng2</string>
 	</dict>
 	<key>3</key>
 	<dict>
@@ -28,6 +36,10 @@
 		<string>http://bcs.duapp.com/daoting/Yongzheng3.png</string>
 		<key>Description</key>
 		<string></string>
+		<key>SongList</key>
+		<string>http://bcs.duapp.com/zhengdong/PlayList.plist</string>
+		<key>ShortName</key>
+		<string>Yongzheng3</string>
 	</dict>
 	<key>4</key>
 	<dict>
@@ -37,6 +49,10 @@
 		<string>http://bcs.duapp.com/daoting/Zhengdong.png</string>
 		<key>Description</key>
 		<string></string>
+		<key>SongList</key>
+		<string>http://bcs.duapp.com/zhengdong/PlayList.plist</string>
+		<key>ShortName</key>
+		<string>Zhengdong1</string>
 	</dict>
 	<key>5</key>
 	<dict>
@@ -46,6 +62,10 @@
 		<string>http://bcs.duapp.com/daoting/Mingchao.png</string>
 		<key>Description</key>
 		<string></string>
+		<key>SongList</key>
+		<string>http://bcs.duapp.com/zhengdong/PlayList.plist</string>
+		<key>ShortName</key>
+		<string>Mingchao</string>
 	</dict>
 	<key>6</key>
 	<dict>
@@ -55,6 +75,10 @@
 		<string>http://bcs.duapp.com/daoting/Shuangbianji.png</string>
 		<key>Description</key>
 		<string></string>
+		<key>SongList</key>
+		<string>http://bcs.duapp.com/zhengdong/PlayList.plist</string>
+		<key>ShortName</key>
+		<string>Shuangbianji</string>
 	</dict>
 	<key>7</key>
 	<dict>
@@ -64,6 +88,10 @@
 		<string>http://bcs.duapp.com/daoting/Suitang.png</string>
 		<key>Description</key>
 		<string></string>
+		<key>SongList</key>
+		<string>http://bcs.duapp.com/zhengdong/PlayList.plist</string>
+		<key>ShortName</key>
+		<string>Suitang</string>
 	</dict>
 	<key>8</key>
 	<dict>
@@ -73,6 +101,10 @@
 		<string>http://bcs.duapp.com/daoting/Liaozhai.png</string>
 		<key>Description</key>
 		<string></string>
+		<key>SongList</key>
+		<string>http://bcs.duapp.com/zhengdong/PlayList.plist</string>
+		<key>ShortName</key>
+		<string>Liaozhai</string>
 	</dict>
 	<key>9</key>
 	<dict>
@@ -82,6 +114,10 @@
 		<string>http://bcs.duapp.com/daoting/Xiayi.png</string>
 		<key>Description</key>
 		<string></string>
+		<key>SongList</key>
+		<string>http://bcs.duapp.com/zhengdong/PlayList.plist</string>
+		<key>ShortName</key>
+		<string>Xiayi</string>
 	</dict>
 	<key>10</key>
 	<dict>
@@ -91,6 +127,10 @@
 		<string></string>
 		<key>Description</key>
 		<string></string>
+		<key>SongList</key>
+		<string>http://bcs.duapp.com/zhengdong/PlayList.plist</string>
+		<key>ShortName</key>
+		<string>Sandao</string>
 	</dict>
 	<key>11</key>
 	<dict>
@@ -100,6 +140,10 @@
 		<string>http://bcs.duapp.com/daoting/Haizeiwang.png</string>
 		<key>Description</key>
 		<string></string>
+		<key>SongList</key>
+		<string>http://bcs.duapp.com/zhengdong/PlayList.plist</string>
+		<key>ShortName</key>
+		<string>Haizeiwang</string>
 	</dict>
 	<key>12</key>
 	<dict>
@@ -109,6 +153,10 @@
 		<string></string>
 		<key>Description</key>
 		<string></string>
+		<key>SongList</key>
+		<string>http://bcs.duapp.com/zhengdong/PlayList.plist</string>
+		<key>ShortName</key>
+		<string>Jinbiao</string>
 	</dict>
 	<key>13</key>
 	<dict>
@@ -118,6 +166,10 @@
 		<string>http://bcs.duapp.com/daoting/Zhangguangtai.png</string>
 		<key>Description</key>
 		<string></string>
+		<key>SongList</key>
+		<string>http://bcs.duapp.com/zhengdong/PlayList.plist</string>
+		<key>ShortName</key>
+		<string>Zhangguangtai</string>
 	</dict>
 </dict>
 </plist>

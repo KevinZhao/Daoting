@@ -1,14 +1,14 @@
 //
-//  AlbumCellTableViewCell.m
+//  SongTableViewCell.m
 //  Daoting
 //
-//  Created by Kevin on 14-5-15.
+//  Created by Kevin on 14-5-16.
 //  Copyright (c) 2014年 赵 克鸣. All rights reserved.
 //
 
-#import "AlbumCellTableViewCell.h"
+#import "SongTableViewCell.h"
 
-@implementation AlbumCellTableViewCell
+@implementation SongTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

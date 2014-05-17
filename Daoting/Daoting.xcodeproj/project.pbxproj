@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A37F8C519262CD100826C8C /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F8C419262CD100826C8C /* Song.m */; };
+		0A37F8CB19262D2600826C8C /* SongTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F8CA19262D2600826C8C /* SongTableViewCell.m */; };
+		0A37F8CE192634CD00826C8C /* PlayList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A37F8CD192634CD00826C8C /* PlayList.plist */; };
+		0A37F8D1192640BA00826C8C /* PlayerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F8D0192640BA00826C8C /* PlayerTableViewCell.m */; };
 		0A3CD3641920F8BE00247436 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A3CD3621920F8BE00247436 /* Main_iPhone.storyboard */; };
 		0A98D5EF1920ACBC00E46EB9 /* CopyConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A98D59D1920ACBC00E46EB9 /* CopyConnection.framework */; };
 		0A98D5F01920ACBC00E46EB9 /* DouBanConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A98D59E1920ACBC00E46EB9 /* DouBanConnection.framework */; };
@@ -108,7 +112,7 @@
 		0AFB65AA19246656000F2AE6 /* CoinIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB65A919246656000F2AE6 /* CoinIAPHelper.m */; };
 		0AFB65AC1924EC44000F2AE6 /* AlbumList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AFB65AB1924EC44000F2AE6 /* AlbumList.plist */; };
 		0AFB65AF1924F215000F2AE6 /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB65AE1924F215000F2AE6 /* Album.m */; };
-		0AFB65B21925107F000F2AE6 /* AlbumCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB65B11925107F000F2AE6 /* AlbumCellTableViewCell.m */; };
+		0AFB65B21925107F000F2AE6 /* AlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB65B11925107F000F2AE6 /* AlbumTableViewCell.m */; };
 		5933AD5918D03EC1001D707B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933AD5818D03EC1001D707B /* Foundation.framework */; };
 		5933AD5B18D03EC1001D707B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933AD5A18D03EC1001D707B /* CoreGraphics.framework */; };
 		5933AD5D18D03EC1001D707B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933AD5C18D03EC1001D707B /* UIKit.framework */; };
@@ -122,6 +126,13 @@
 
 /* Begin PBXFileReference section */
 		0481672862474C608EB8AB38 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		0A37F8C319262CD100826C8C /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
+		0A37F8C419262CD100826C8C /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
+		0A37F8C919262D2600826C8C /* SongTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongTableViewCell.h; sourceTree = "<group>"; };
+		0A37F8CA19262D2600826C8C /* SongTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongTableViewCell.m; sourceTree = "<group>"; };
+		0A37F8CD192634CD00826C8C /* PlayList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PlayList.plist; sourceTree = "<group>"; };
+		0A37F8CF192640BA00826C8C /* PlayerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerTableViewCell.h; sourceTree = "<group>"; };
+		0A37F8D0192640BA00826C8C /* PlayerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerTableViewCell.m; sourceTree = "<group>"; };
 		0A3CD3631920F8BE00247436 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		0A98D59D1920ACBC00E46EB9 /* CopyConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CopyConnection.framework; sourceTree = "<group>"; };
 		0A98D59E1920ACBC00E46EB9 /* DouBanConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DouBanConnection.framework; sourceTree = "<group>"; };
@@ -235,8 +246,8 @@
 		0AFB65AB1924EC44000F2AE6 /* AlbumList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AlbumList.plist; sourceTree = "<group>"; };
 		0AFB65AD1924F215000F2AE6 /* Album.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Album.h; sourceTree = "<group>"; };
 		0AFB65AE1924F215000F2AE6 /* Album.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Album.m; sourceTree = "<group>"; };
-		0AFB65B01925107F000F2AE6 /* AlbumCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumCellTableViewCell.h; sourceTree = "<group>"; };
-		0AFB65B11925107F000F2AE6 /* AlbumCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumCellTableViewCell.m; sourceTree = "<group>"; };
+		0AFB65B01925107F000F2AE6 /* AlbumTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumTableViewCell.h; sourceTree = "<group>"; };
+		0AFB65B11925107F000F2AE6 /* AlbumTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumTableViewCell.m; sourceTree = "<group>"; };
 		5933AD5518D03EC1001D707B /* Daoting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daoting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5933AD5818D03EC1001D707B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5933AD5A18D03EC1001D707B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -331,6 +342,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A37F8CC19262FA000826C8C /* DataStructure */ = {
+			isa = PBXGroup;
+			children = (
+				0AFB65AD1924F215000F2AE6 /* Album.h */,
+				0AFB65AE1924F215000F2AE6 /* Album.m */,
+				0AFB65B01925107F000F2AE6 /* AlbumTableViewCell.h */,
+				0AFB65B11925107F000F2AE6 /* AlbumTableViewCell.m */,
+				0A37F8C319262CD100826C8C /* Song.h */,
+				0A37F8C419262CD100826C8C /* Song.m */,
+				0A37F8C919262D2600826C8C /* SongTableViewCell.h */,
+				0A37F8CA19262D2600826C8C /* SongTableViewCell.m */,
+				0A37F8CF192640BA00826C8C /* PlayerTableViewCell.h */,
+				0A37F8D0192640BA00826C8C /* PlayerTableViewCell.m */,
+			);
+			name = DataStructure;
+			sourceTree = "<group>";
+		};
 		0A98D59B1920ACBC00E46EB9 /* ShareSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -581,6 +609,7 @@
 		5933AD5E18D03EC1001D707B /* Daoting */ = {
 			isa = PBXGroup;
 			children = (
+				0A37F8CC19262FA000826C8C /* DataStructure */,
 				0A98D59B1920ACBC00E46EB9 /* ShareSDK */,
 				5933AD6718D03EC1001D707B /* AppDelegate.h */,
 				5933AD6818D03EC1001D707B /* AppDelegate.m */,
@@ -594,10 +623,6 @@
 				0AFB65A419245A7E000F2AE6 /* IAPHelper.m */,
 				0AFB65A819246656000F2AE6 /* CoinIAPHelper.h */,
 				0AFB65A919246656000F2AE6 /* CoinIAPHelper.m */,
-				0AFB65AD1924F215000F2AE6 /* Album.h */,
-				0AFB65AE1924F215000F2AE6 /* Album.m */,
-				0AFB65B01925107F000F2AE6 /* AlbumCellTableViewCell.h */,
-				0AFB65B11925107F000F2AE6 /* AlbumCellTableViewCell.m */,
 				5933AD5F18D03EC1001D707B /* Supporting Files */,
 			);
 			path = Daoting;
@@ -606,6 +631,7 @@
 		5933AD5F18D03EC1001D707B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0A37F8CD192634CD00826C8C /* PlayList.plist */,
 				5933AD7618D03EC1001D707B /* Images.xcassets */,
 				0A98D64B1920EAB700E46EB9 /* Artworks */,
 				5933AD6018D03EC1001D707B /* Daoting-Info.plist */,
@@ -699,6 +725,7 @@
 				5933AD6F18D03EC1001D707B /* Main_iPad.storyboard in Resources */,
 				0A98D6601920EAB700E46EB9 /* nowPlayingGlyph@2x.png in Resources */,
 				0A3CD3641920F8BE00247436 /* Main_iPhone.storyboard in Resources */,
+				0A37F8CE192634CD00826C8C /* PlayList.plist in Resources */,
 				0A98D6191920ACBC00E46EB9 /* RennSDK.bundle in Resources */,
 				0A98D65C1920EAB700E46EB9 /* downloadProgressButtonPause@2x.png in Resources */,
 				5933AD7718D03EC1001D707B /* Images.xcassets in Resources */,
@@ -767,10 +794,13 @@
 				0AFB65AA19246656000F2AE6 /* CoinIAPHelper.m in Sources */,
 				5933AD6918D03EC1001D707B /* AppDelegate.m in Sources */,
 				0AE46B0E1921035E00FA30F3 /* SongTableViewController.m in Sources */,
+				0A37F8D1192640BA00826C8C /* PlayerTableViewCell.m in Sources */,
 				0AFB65A519245A7E000F2AE6 /* IAPHelper.m in Sources */,
 				0AFB65AF1924F215000F2AE6 /* Album.m in Sources */,
+				0A37F8C519262CD100826C8C /* Song.m in Sources */,
 				5933AD6518D03EC1001D707B /* main.m in Sources */,
-				0AFB65B21925107F000F2AE6 /* AlbumCellTableViewCell.m in Sources */,
+				0A37F8CB19262D2600826C8C /* SongTableViewCell.m in Sources */,
+				0AFB65B21925107F000F2AE6 /* AlbumTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

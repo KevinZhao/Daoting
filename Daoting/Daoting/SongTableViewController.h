@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Album.h"
+#import "Song.h"
+#import "SongTableViewCell.h"
+#import "PlayerTableViewCell.h"
 
-@interface SongTableViewController : UITableViewController
-
+@interface SongTableViewController : UIViewController
+{
+    NSMutableArray      *_songs;
+    UITableView         *_tableview;
+}
+    - (void)setDetailItem:(Album *)Album;
 @end
