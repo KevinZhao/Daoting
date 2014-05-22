@@ -10,10 +10,10 @@
 
 @interface Song : NSObject
 
-@property (nonatomic, strong) NSString *songNumber;
-@property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *duration;
-@property (nonatomic, strong) NSString *Url;
-@property (nonatomic, strong) NSString *fileName;
+@property (nonatomic, strong) NSString  *songNumber;
+@property (nonatomic, strong) NSString  *title;
+@property (nonatomic, strong) NSString  *duration;
+@property (nonatomic, strong) NSURL     *Url;
+@property (nonatomic, strong) NSString  *fileName;
 
 @end

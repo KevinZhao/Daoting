@@ -16,13 +16,13 @@
 {
     NSMutableArray      *_songs;
     UITableView         *_tableview;
+    Album               *_album;
 }
 
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, strong) IBOutlet UIPageControl *pageControl;
 
 
-    //-(IBAction)clickPageControl:(id)sender;
+- (void)setDetailItem:(Album *)album;
 
-    - (void)setDetailItem:(Album *)Album;
 @end

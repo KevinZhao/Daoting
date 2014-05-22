@@ -565,6 +565,17 @@
 			path = Artworks;
 			sourceTree = "<group>";
 		};
+		0ABB4281192DEA7F007D8BAC /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				0AFB65A319245A7E000F2AE6 /* IAPHelper.h */,
+				0AFB65A419245A7E000F2AE6 /* IAPHelper.m */,
+				0AFB65A819246656000F2AE6 /* CoinIAPHelper.h */,
+				0AFB65A919246656000F2AE6 /* CoinIAPHelper.m */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
 		5933AD4C18D03EC1001D707B = {
 			isa = PBXGroup;
 			children = (
@@ -612,6 +623,7 @@
 		5933AD5E18D03EC1001D707B /* Daoting */ = {
 			isa = PBXGroup;
 			children = (
+				0ABB4281192DEA7F007D8BAC /* Helper */,
 				0A37F8CC19262FA000826C8C /* DataStructure */,
 				0A98D59B1920ACBC00E46EB9 /* ShareSDK */,
 				5933AD6718D03EC1001D707B /* AppDelegate.h */,
@@ -622,10 +634,6 @@
 				0A98D66F1920F25900E46EB9 /* AlbumTableViewController.m */,
 				0AE46B0C1921035E00FA30F3 /* SongTableViewController.h */,
 				0AE46B0D1921035E00FA30F3 /* SongTableViewController.m */,
-				0AFB65A319245A7E000F2AE6 /* IAPHelper.h */,
-				0AFB65A419245A7E000F2AE6 /* IAPHelper.m */,
-				0AFB65A819246656000F2AE6 /* CoinIAPHelper.h */,
-				0AFB65A919246656000F2AE6 /* CoinIAPHelper.m */,
 				5933AD5F18D03EC1001D707B /* Supporting Files */,
 			);
 			path = Daoting;

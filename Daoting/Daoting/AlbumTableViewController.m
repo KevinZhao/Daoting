@@ -70,6 +70,7 @@
         album.description = [AlbumDic objectForKey:@"Description"];
         album.imageUrl = [[NSURL alloc]initWithString:[AlbumDic objectForKey:@"ImageURL"]];
         album.plistUrl = [[NSURL alloc]initWithString:[AlbumDic objectForKey:@"SongList"]];
+        album.shortName = [AlbumDic objectForKey:@"ShortName"];
         
         [_albums addObject:album];
     }
