@@ -12,10 +12,17 @@
 #import "SongTableViewCell.h"
 #import "PlayerTableViewCell.h"
 
-@interface SongTableViewController : UIViewController
+@interface SongTableViewController : UIViewController <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     NSMutableArray      *_songs;
     UITableView         *_tableview;
 }
+
+@property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, strong) IBOutlet UIPageControl *pageControl;
+
+
+    //-(IBAction)clickPageControl:(id)sender;
+
     - (void)setDetailItem:(Album *)Album;
 @end

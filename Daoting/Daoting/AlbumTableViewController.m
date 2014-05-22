@@ -145,8 +145,6 @@
         
         destinationViewController.hidesBottomBarWhenPushed = YES;
         [destinationViewController setDetailItem: [_albums objectAtIndex:indexpath.row]];
-        
-
     }
 }
 

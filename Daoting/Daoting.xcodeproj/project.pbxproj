@@ -12,6 +12,7 @@
 		0A37F8CE192634CD00826C8C /* PlayList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A37F8CD192634CD00826C8C /* PlayList.plist */; };
 		0A37F8D1192640BA00826C8C /* PlayerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F8D0192640BA00826C8C /* PlayerTableViewCell.m */; };
 		0A3CD3641920F8BE00247436 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A3CD3621920F8BE00247436 /* Main_iPhone.storyboard */; };
+		0A6AA9DF192B88AB00462543 /* SongTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A6AA9DE192B88AB00462543 /* SongTableViewCell.xib */; };
 		0A98D5EF1920ACBC00E46EB9 /* CopyConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A98D59D1920ACBC00E46EB9 /* CopyConnection.framework */; };
 		0A98D5F01920ACBC00E46EB9 /* DouBanConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A98D59E1920ACBC00E46EB9 /* DouBanConnection.framework */; };
 		0A98D5F11920ACBC00E46EB9 /* DropboxConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A98D59F1920ACBC00E46EB9 /* DropboxConnection.framework */; };
@@ -134,6 +135,7 @@
 		0A37F8CF192640BA00826C8C /* PlayerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerTableViewCell.h; sourceTree = "<group>"; };
 		0A37F8D0192640BA00826C8C /* PlayerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerTableViewCell.m; sourceTree = "<group>"; };
 		0A3CD3631920F8BE00247436 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		0A6AA9DE192B88AB00462543 /* SongTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongTableViewCell.xib; sourceTree = "<group>"; };
 		0A98D59D1920ACBC00E46EB9 /* CopyConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CopyConnection.framework; sourceTree = "<group>"; };
 		0A98D59E1920ACBC00E46EB9 /* DouBanConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DouBanConnection.framework; sourceTree = "<group>"; };
 		0A98D59F1920ACBC00E46EB9 /* DropboxConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxConnection.framework; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 				0A37F8C419262CD100826C8C /* Song.m */,
 				0A37F8C919262D2600826C8C /* SongTableViewCell.h */,
 				0A37F8CA19262D2600826C8C /* SongTableViewCell.m */,
+				0A6AA9DE192B88AB00462543 /* SongTableViewCell.xib */,
 				0A37F8CF192640BA00826C8C /* PlayerTableViewCell.h */,
 				0A37F8D0192640BA00826C8C /* PlayerTableViewCell.m */,
 			);
@@ -742,6 +745,7 @@
 				0A98D66D1920F1F500E46EB9 /* arrowSelected@2x.png in Resources */,
 				0A98D5F81920ACBC00E46EB9 /* InstapaperResource.bundle in Resources */,
 				0A98D66A1920F1F500E46EB9 /* arrow.png in Resources */,
+				0A6AA9DF192B88AB00462543 /* SongTableViewCell.xib in Resources */,
 				0A98D60F1920ACBC00E46EB9 /* ShareSDKLocalizable.strings in Resources */,
 				0A98D6621920EAB700E46EB9 /* NowPlayingPauseControl~iphone.png in Resources */,
 				0A98D6101920ACBC00E46EB9 /* Resource.bundle in Resources */,

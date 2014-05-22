@@ -10,16 +10,41 @@
 
 @interface SongTableViewController ()
 
+
 @end
 
 @implementation SongTableViewController
+@synthesize pageControl, scrollView;
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    pageControl.currentPage = 1;
+    pageControl.numberOfPages = 2;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    scrollView.contentSize = CGSizeMake(640, 406);
     
     
+    scrollView.delegate = self;
+    
+    _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 406) style:UITableViewStylePlain];
+    _tableview.backgroundColor = [UIColor blackColor];
+    _tableview.delegate = self;
+    _tableview.dataSource = self;
+
+    [scrollView addSubview:_tableview];
+    
+    UIImageView *test = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"wangyuebo.jpg"]];
+    
+    test.frame = CGRectMake(320, 0, 320, 406);
+    [scrollView addSubview:test];
 }
 
 - (void)didReceiveMemoryWarning
@@ -27,6 +52,16 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+/*-(IBAction)clickPageControl:(id)sender
+{
+    int page = pageControl.currentPage;
+    CGRect frame = scrollView.frame;
+    frame.origin.x = frame.size.width=page;
+    frame.origin.y = 0;
+    [scrollView scrollRectToVisible:frame animated:YES];
+}*/
+
 
 #pragma mark - Internal business logic
 
@@ -62,39 +97,35 @@
 
 #pragma mark - Table view data source
 
-/*- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return 50;//_songs.count;
-    }
-    else{
-        return 1;
-    }
-    
-}*/
+    return 5;
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell;
+    SongTableViewCell *cell;
     
-    //if (indexPath.section == 0) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"SongCell" forIndexPath:indexPath];
-        
-        //return cell;
-    /*}
-    else if(indexPath.section == 1)
-    {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"PlayerCell" forIndexPath:indexPath];
-        
-        //return cell;
-    }*/
+    [tableView registerNib:[UINib nibWithNibName:@"SongTableViewCell" bundle:nil]forCellReuseIdentifier:@"SongTableViewCell"];
+    
+    cell = [tableView dequeueReusableCellWithIdentifier:@"SongTableViewCell"];
+    
+    cell.lbl_songTitle.text = @"test";
+    
     return cell;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 2;
-}
+#pragma mark - UIScrollViewDelegate
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+
+    // First, determine which page is currently visible
+    CGFloat pageWidth = self.scrollView.frame.size.width;
+    NSInteger page = (NSInteger)floor((self.scrollView.contentOffset.x * 2.0f + pageWidth) / (pageWidth * 2.0f));
+    
+    // Update the page control
+    pageControl.currentPage = page;
+}
 
 @end
