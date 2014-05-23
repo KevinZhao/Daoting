@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0A37F8C519262CD100826C8C /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F8C419262CD100826C8C /* Song.m */; };
 		0A37F8CB19262D2600826C8C /* SongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F8CA19262D2600826C8C /* SongCell.m */; };
-		0A37F8CE192634CD00826C8C /* PlayList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A37F8CD192634CD00826C8C /* PlayList.plist */; };
 		0A3CD3641920F8BE00247436 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A3CD3621920F8BE00247436 /* Main_iPhone.storyboard */; };
 		0A6AA9DF192B88AB00462543 /* SongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A6AA9DE192B88AB00462543 /* SongCell.xib */; };
 		0A98D5EF1920ACBC00E46EB9 /* CopyConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A98D59D1920ACBC00E46EB9 /* CopyConnection.framework */; };
@@ -108,6 +107,11 @@
 		0A98D6701920F25900E46EB9 /* AlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A98D66F1920F25900E46EB9 /* AlbumTableViewController.m */; };
 		0ABB4283192E321C007D8BAC /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB4282192E321C007D8BAC /* Icon-72@2x.png */; };
 		0AE46B0E1921035E00FA30F3 /* SongTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE46B0D1921035E00FA30F3 /* SongTableViewController.m */; };
+		0AE86488192EDECA00EF5A96 /* Zhengdong1_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE86487192EDECA00EF5A96 /* Zhengdong1_SongList.plist */; };
+		0AE8648D192EEC6E00EF5A96 /* Liaozhai_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE86489192EEC6E00EF5A96 /* Liaozhai_SongList.plist */; };
+		0AE8648E192EEC6E00EF5A96 /* Suitang_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE8648A192EEC6E00EF5A96 /* Suitang_SongList.plist */; };
+		0AE8648F192EEC6E00EF5A96 /* Xiayi_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE8648B192EEC6E00EF5A96 /* Xiayi_SongList.plist */; };
+		0AE86490192EEC6E00EF5A96 /* Zhangguangtai_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE8648C192EEC6E00EF5A96 /* Zhangguangtai_SongList.plist */; };
 		0AFB65A519245A7E000F2AE6 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB65A419245A7E000F2AE6 /* IAPHelper.m */; };
 		0AFB65A719245BD4000F2AE6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AFB65A619245BD4000F2AE6 /* StoreKit.framework */; };
 		0AFB65AA19246656000F2AE6 /* CoinIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB65A919246656000F2AE6 /* CoinIAPHelper.m */; };
@@ -131,7 +135,6 @@
 		0A37F8C419262CD100826C8C /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
 		0A37F8C919262D2600826C8C /* SongCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongCell.h; sourceTree = "<group>"; };
 		0A37F8CA19262D2600826C8C /* SongCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongCell.m; sourceTree = "<group>"; };
-		0A37F8CD192634CD00826C8C /* PlayList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PlayList.plist; sourceTree = "<group>"; };
 		0A3CD3631920F8BE00247436 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		0A6AA9DE192B88AB00462543 /* SongCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongCell.xib; sourceTree = "<group>"; };
 		0A98D59D1920ACBC00E46EB9 /* CopyConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CopyConnection.framework; sourceTree = "<group>"; };
@@ -239,6 +242,11 @@
 		0ABB4282192E321C007D8BAC /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		0AE46B0C1921035E00FA30F3 /* SongTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongTableViewController.h; sourceTree = "<group>"; };
 		0AE46B0D1921035E00FA30F3 /* SongTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongTableViewController.m; sourceTree = "<group>"; };
+		0AE86487192EDECA00EF5A96 /* Zhengdong1_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Zhengdong1_SongList.plist; path = SongPlists/Zhengdong1_SongList.plist; sourceTree = "<group>"; };
+		0AE86489192EEC6E00EF5A96 /* Liaozhai_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Liaozhai_SongList.plist; path = SongPlists/Liaozhai_SongList.plist; sourceTree = "<group>"; };
+		0AE8648A192EEC6E00EF5A96 /* Suitang_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Suitang_SongList.plist; path = SongPlists/Suitang_SongList.plist; sourceTree = "<group>"; };
+		0AE8648B192EEC6E00EF5A96 /* Xiayi_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Xiayi_SongList.plist; path = SongPlists/Xiayi_SongList.plist; sourceTree = "<group>"; };
+		0AE8648C192EEC6E00EF5A96 /* Zhangguangtai_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Zhangguangtai_SongList.plist; path = SongPlists/Zhangguangtai_SongList.plist; sourceTree = "<group>"; };
 		0AFB65A319245A7E000F2AE6 /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
 		0AFB65A419245A7E000F2AE6 /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
 		0AFB65A619245BD4000F2AE6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -574,6 +582,18 @@
 			name = Helper;
 			sourceTree = "<group>";
 		};
+		0AE86482192ED8B100EF5A96 /* SongPlists */ = {
+			isa = PBXGroup;
+			children = (
+				0AE86489192EEC6E00EF5A96 /* Liaozhai_SongList.plist */,
+				0AE8648A192EEC6E00EF5A96 /* Suitang_SongList.plist */,
+				0AE8648B192EEC6E00EF5A96 /* Xiayi_SongList.plist */,
+				0AE8648C192EEC6E00EF5A96 /* Zhangguangtai_SongList.plist */,
+				0AE86487192EDECA00EF5A96 /* Zhengdong1_SongList.plist */,
+			);
+			name = SongPlists;
+			sourceTree = "<group>";
+		};
 		5933AD4C18D03EC1001D707B = {
 			isa = PBXGroup;
 			children = (
@@ -640,7 +660,7 @@
 		5933AD5F18D03EC1001D707B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0A37F8CD192634CD00826C8C /* PlayList.plist */,
+				0AE86482192ED8B100EF5A96 /* SongPlists */,
 				5933AD7618D03EC1001D707B /* Images.xcassets */,
 				0A98D64B1920EAB700E46EB9 /* Artworks */,
 				5933AD6018D03EC1001D707B /* Daoting-Info.plist */,
@@ -728,13 +748,14 @@
 				0A98D65F1920EAB700E46EB9 /* nowPlayingGlyph.png in Resources */,
 				0A98D62A1920ACBC00E46EB9 /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
 				0A98D6181920ACBC00E46EB9 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
+				0AE86488192EDECA00EF5A96 /* Zhengdong1_SongList.plist in Resources */,
 				0A98D6251920ACBC00E46EB9 /* ShareSDKiPadSimpleShareViewUI.bundle in Resources */,
 				0A98D6591920EAB700E46EB9 /* downloadButton.png in Resources */,
 				0A98D6611920EAB700E46EB9 /* NowPlayingPauseControl@2x~iphone.png in Resources */,
 				5933AD6F18D03EC1001D707B /* Main_iPad.storyboard in Resources */,
 				0A98D6601920EAB700E46EB9 /* nowPlayingGlyph@2x.png in Resources */,
+				0AE8648D192EEC6E00EF5A96 /* Liaozhai_SongList.plist in Resources */,
 				0A3CD3641920F8BE00247436 /* Main_iPhone.storyboard in Resources */,
-				0A37F8CE192634CD00826C8C /* PlayList.plist in Resources */,
 				0A98D6191920ACBC00E46EB9 /* RennSDK.bundle in Resources */,
 				0A98D65C1920EAB700E46EB9 /* downloadProgressButtonPause@2x.png in Resources */,
 				5933AD7718D03EC1001D707B /* Images.xcassets in Resources */,
@@ -748,6 +769,8 @@
 				0A98D6231920ACBC00E46EB9 /* ShareSDKiPadDefaultShareViewUI.bundle in Resources */,
 				0A98D6651920EAB700E46EB9 /* wangyuebo.jpg in Resources */,
 				0A98D61C1920ACBC00E46EB9 /* WeiboSDK.bundle in Resources */,
+				0AE8648E192EEC6E00EF5A96 /* Suitang_SongList.plist in Resources */,
+				0AE8648F192EEC6E00EF5A96 /* Xiayi_SongList.plist in Resources */,
 				0A98D66D1920F1F500E46EB9 /* arrowSelected@2x.png in Resources */,
 				0A98D5F81920ACBC00E46EB9 /* InstapaperResource.bundle in Resources */,
 				0A98D66A1920F1F500E46EB9 /* arrow.png in Resources */,
@@ -757,6 +780,7 @@
 				0A98D6621920EAB700E46EB9 /* NowPlayingPauseControl~iphone.png in Resources */,
 				0A98D6101920ACBC00E46EB9 /* Resource.bundle in Resources */,
 				5933AD6318D03EC1001D707B /* InfoPlist.strings in Resources */,
+				0AE86490192EEC6E00EF5A96 /* Zhangguangtai_SongList.plist in Resources */,
 				0A98D6211920ACBC00E46EB9 /* ShareSDKFlatShareViewUI.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

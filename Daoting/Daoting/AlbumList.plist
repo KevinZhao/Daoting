@@ -11,7 +11,7 @@
 		<key>Description</key>
 		<string></string>
 		<key>SongList</key>
-		<string>http://bcs.duapp.com/zhengdong/PlayList.plist</string>
+		<string>http://bcs.duapp.com/daoting/PlistFolder/Yongzheng1_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Yongzheng1</string>
 	</dict>
@@ -24,7 +24,7 @@
 		<key>Description</key>
 		<string></string>
 		<key>SongList</key>
-		<string>http://bcs.duapp.com/zhengdong/PlayList.plist</string>
+		<string>http://bcs.duapp.com/daoting/PlistFolder/Yongzheng2_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Yongzheng2</string>
 	</dict>
@@ -39,7 +39,7 @@
 		<key>SongList</key>
 		<string>http://bcs.duapp.com/zhengdong/PlayList.plist</string>
 		<key>ShortName</key>
-		<string>Yongzheng3</string>
+		<string>http://bcs.duapp.com/daoting/PlistFolder/Yongzheng3_SongList.plist</string>
 	</dict>
 	<key>4</key>
 	<dict>
@@ -50,7 +50,7 @@
 		<key>Description</key>
 		<string></string>
 		<key>SongList</key>
-		<string>http://bcs.duapp.com/zhengdong/PlayList.plist</string>
+		<string>http://bcs.duapp.com/daoting/PlistFolder/Zhengdong1_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Zhengdong1</string>
 	</dict>
@@ -63,7 +63,7 @@
 		<key>Description</key>
 		<string></string>
 		<key>SongList</key>
-		<string>http://bcs.duapp.com/zhengdong/PlayList.plist</string>
+		<string>http://bcs.duapp.com/daoting/PlistFolder/Mingchao_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Mingchao</string>
 	</dict>
@@ -76,7 +76,7 @@
 		<key>Description</key>
 		<string></string>
 		<key>SongList</key>
-		<string>http://bcs.duapp.com/zhengdong/PlayList.plist</string>
+		<string>http://bcs.duapp.com/daoting/PlistFolder/Shuangbianji_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Shuangbianji</string>
 	</dict>
@@ -89,7 +89,7 @@
 		<key>Description</key>
 		<string></string>
 		<key>SongList</key>
-		<string>http://bcs.duapp.com/zhengdong/PlayList.plist</string>
+		<string>http://bcs.duapp.com/daoting/PlistFolder/Suitang_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Suitang</string>
 	</dict>
@@ -102,7 +102,7 @@
 		<key>Description</key>
 		<string></string>
 		<key>SongList</key>
-		<string>http://bcs.duapp.com/zhengdong/PlayList.plist</string>
+		<string>http://bcs.duapp.com/daoting/PlistFolder/Liaozhai_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Liaozhai</string>
 	</dict>
@@ -115,7 +115,7 @@
 		<key>Description</key>
 		<string></string>
 		<key>SongList</key>
-		<string>http://bcs.duapp.com/zhengdong/PlayList.plist</string>
+		<string>http://bcs.duapp.com/daoting/PlistFolder/Xiayi_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Xiayi</string>
 	</dict>
@@ -128,7 +128,7 @@
 		<key>Description</key>
 		<string></string>
 		<key>SongList</key>
-		<string>http://bcs.duapp.com/zhengdong/PlayList.plist</string>
+		<string>http://bcs.duapp.com/daoting/PlistFolder/Sandao_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Sandao</string>
 	</dict>
@@ -141,7 +141,7 @@
 		<key>Description</key>
 		<string></string>
 		<key>SongList</key>
-		<string>http://bcs.duapp.com/zhengdong/PlayList.plist</string>
+		<string>http://bcs.duapp.com/daoting/PlistFolder/Haizeiwang_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Haizeiwang</string>
 	</dict>
@@ -154,7 +154,7 @@
 		<key>Description</key>
 		<string></string>
 		<key>SongList</key>
-		<string>http://bcs.duapp.com/zhengdong/PlayList.plist</string>
+		<string>http://bcs.duapp.com/daoting/PlistFolder/Jinbiao_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Jinbiao</string>
 	</dict>
@@ -167,7 +167,7 @@
 		<key>Description</key>
 		<string></string>
 		<key>SongList</key>
-		<string>http://bcs.duapp.com/zhengdong/PlayList.plist</string>
+		<string>http://bcs.duapp.com/daoting/PlistFolder/Zhangguantai_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Zhangguangtai</string>
 	</dict>

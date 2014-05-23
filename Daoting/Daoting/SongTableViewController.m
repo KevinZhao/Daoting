@@ -22,12 +22,10 @@
 {
     [super viewDidLoad];
     
-    pageControl.currentPage = 0;
-    pageControl.numberOfPages = 2;
+
+    [self loadSongs];
     
-    //[self updateSongs];
-    
-    [self initializeSongs];
+    [self updateSongs];
 }
 
 
@@ -36,7 +34,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     scrollView.contentSize = CGSizeMake(640, 406);
     
-    //Configure Table View
+    //Configure tableview
     _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 406) style:UITableViewStylePlain];
     _tableview.delegate = self;
     _tableview.dataSource = self;
@@ -47,6 +45,11 @@
     UIImageView *test = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"wangyuebo.jpg"]];
     test.frame = CGRectMake(320, 0, 320, 406);
     [scrollView addSubview:test];
+    
+    //Configure scrollview
+    pageControl.currentPage = 0;
+    pageControl.numberOfPages = 2;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -78,7 +81,7 @@
         song.songNumber = [NSString stringWithFormat:@"%d", i];
         song.title      = [SongDic objectForKey:@"Title"];
         song.duration   = [SongDic objectForKey:@"Duration"];
-        //song.Url        = [[NSURL alloc] initWithString:[SongDic objectForKey:@"Url"]];
+        song.Url        = [[NSURL alloc] initWithString:[SongDic objectForKey:@"Url"]];
         
         [_songs addObject:song];
     }
@@ -154,6 +157,39 @@
          [alert show];
      }
      ];
+}
+
+- (void)loadSongs
+{
+    //1. Check if there is a playlist in document directory
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
+    NSString *plistPathinDocumentDirectory = [bundleDocumentDirectoryPath stringByAppendingString:@"/"];
+    plistPathinDocumentDirectory = [plistPathinDocumentDirectory stringByAppendingString:_album.shortName];
+    plistPathinDocumentDirectory = [plistPathinDocumentDirectory stringByAppendingString:@"_SongList.plist"];
+    
+    //if yes, load from document directory, if no copy from resource directory to document directory
+    if ([fileManager fileExistsAtPath:plistPathinDocumentDirectory])
+    {
+        [self initializeSongs];
+    }
+    else
+    {
+        NSString *plistPathinResourceDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/"];
+        plistPathinResourceDirectory = [plistPathinResourceDirectory stringByAppendingString:_album.shortName];
+        plistPathinResourceDirectory = [plistPathinResourceDirectory stringByAppendingString:@"_SongList.plist"];
+        
+        if ([fileManager fileExistsAtPath:plistPathinResourceDirectory]) {
+            [fileManager copyItemAtPath:plistPathinResourceDirectory toPath:plistPathinDocumentDirectory error:nil];
+            
+            [self initializeSongs];
+        }
+        
+
+    }
+    
+    [_tableview reloadData];
 }
 
 
