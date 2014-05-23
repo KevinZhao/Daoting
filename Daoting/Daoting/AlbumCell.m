@@ -1,14 +1,14 @@
 //
-//  PlayerTableViewCell.m
+//  AlbumCell.m
 //  Daoting
 //
-//  Created by Kevin on 14-5-16.
+//  Created by Kevin on 14-5-15.
 //  Copyright (c) 2014年 赵 克鸣. All rights reserved.
 //
 
-#import "PlayerTableViewCell.h"
+#import "AlbumCell.h"
 
-@implementation PlayerTableViewCell
+@implementation AlbumCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

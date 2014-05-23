@@ -1,5 +1,5 @@
 //
-//  SongTableViewCell.h
+//  SongCell.h
 //  Daoting
 //
 //  Created by Kevin on 14-5-16.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SongTableViewCell : UITableViewCell
+@interface SongCell : UITableViewCell
 
 @property (nonatomic, strong) IBOutlet UILabel      *lbl_songNumber;
 @property (nonatomic, strong) IBOutlet UILabel      *lbl_songTitle;

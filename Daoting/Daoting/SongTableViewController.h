@@ -9,14 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "Album.h"
 #import "Song.h"
-#import "SongTableViewCell.h"
-#import "PlayerTableViewCell.h"
+#import "SongCell.h"
+#import "AFNetworking.h"
 
 @interface SongTableViewController : UIViewController <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     NSMutableArray      *_songs;
     UITableView         *_tableview;
     Album               *_album;
+    AFHTTPRequestOperationManager *_operationManager;
 }
 
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;

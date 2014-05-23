@@ -1,5 +1,5 @@
 //
-//  AlbumCellTableViewCell.h
+//  AlbumCell.h
 //  Daoting
 //
 //  Created by Kevin on 14-5-15.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AlbumTableViewCell : UITableViewCell
+@interface AlbumCell : UITableViewCell
 
 @property (nonatomic, strong) IBOutlet UILabel      *lbl_albumTitle;
 @property (nonatomic, strong) IBOutlet UILabel      *lbl_albumDescription;

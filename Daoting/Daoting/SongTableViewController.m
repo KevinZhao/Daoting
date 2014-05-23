@@ -14,6 +14,8 @@
 @implementation SongTableViewController
 @synthesize pageControl, scrollView;
 
+//#define int kNumberOfPages = 2;
+
 #pragma mark - UIView delegate
 
 - (void)viewDidLoad
@@ -23,28 +25,11 @@
     pageControl.currentPage = 0;
     pageControl.numberOfPages = 2;
     
-    /*operationManager = [AFHTTPRequestOperationManager manager];
-    [operationManager.operationQueue setMaxConcurrentOperationCount:2];
-    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-    
-    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    bundleDocumentDirectoryPath = [paths objectAtIndex:0];
-    
-    NSString *writableDBPath= [bundleDocumentDirectoryPath stringByAppendingPathComponent:@"PlayList.plist"];
-    BOOL success = [fileManager fileExistsAtPath:writableDBPath];
-    if (!success)
-    {
-        //Copy PlayList.plist from resource path
-        NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"PlayList.plist"];
-        [fileManager copyItemAtPath:defaultDBPath toPath:writableDBPath error:nil];
-    }*/
-    
+    //[self updateSongs];
     
     [self initializeSongs];
 }
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -84,7 +69,6 @@
     plistPath = [plistPath stringByAppendingString:@"_SongList.plist"];
     
     NSDictionary *dictionary = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
-    
     for (int i = 1; i<= dictionary.count; i++)
     {
         NSDictionary *SongDic = [dictionary objectForKey:[NSString stringWithFormat:@"%d", i]];
@@ -94,11 +78,84 @@
         song.songNumber = [NSString stringWithFormat:@"%d", i];
         song.title      = [SongDic objectForKey:@"Title"];
         song.duration   = [SongDic objectForKey:@"Duration"];
-        song.Url        = [[NSURL alloc] initWithString:[SongDic objectForKey:@"Url"]];
+        //song.Url        = [[NSURL alloc] initWithString:[SongDic objectForKey:@"Url"]];
         
         [_songs addObject:song];
     }
 }
+
+- (void)updateSongs
+{
+    //1. Check if plist is in document directory
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
+    NSString *plistPath = [bundleDocumentDirectoryPath stringByAppendingString:@"/"];
+    plistPath = [plistPath stringByAppendingString:_album.shortName];
+    plistPath = [plistPath stringByAppendingString:@"_SongList.plist"];
+    
+    //2. Download plist from cloud storage
+    NSURLRequest *request = [NSURLRequest requestWithURL:_album.plistUrl];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
+    
+    NSString *path = NSTemporaryDirectory();
+    NSString *fileName = @"PlayList.plist";
+    NSString *filePath = [path stringByAppendingString:fileName];
+    
+    [fileManager removeItemAtPath:filePath error:nil];
+    operation.outputStream = [NSOutputStream outputStreamToFileAtPath:filePath append:NO];
+    [operation start];
+    
+    //Download complete block
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         //Compare
+         NSMutableDictionary *newPlist_dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
+         NSMutableDictionary *oldPlist_dictionary = [[NSMutableDictionary alloc] init];
+         
+         if ([fileManager fileExistsAtPath:plistPath])
+         {
+             oldPlist_dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+         }
+         
+         if (newPlist_dictionary.count > oldPlist_dictionary.count)
+         {
+             int oldCount = (int)oldPlist_dictionary.count;
+             int j = (int)(newPlist_dictionary.count - oldPlist_dictionary.count);
+             
+             //Copy items in new Plist to old Plist
+             for (int i = 1; i<= j; i++)
+             {
+                 NSDictionary *newSong = [newPlist_dictionary objectForKey:[NSString stringWithFormat:@"%d",oldCount + i]];
+                 
+                 [oldPlist_dictionary setValue:newSong forKey:[NSString stringWithFormat:@"%d", (oldCount + i)]];
+             }
+             [oldPlist_dictionary writeToFile:plistPath atomically:NO];
+             
+             //re-initialize songs and update table view
+             [self initializeSongs];
+             
+             [_tableview reloadData];
+             
+             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"更新成功" message:[NSString stringWithFormat:@"成功更新%d个新回目，请点击下载按钮", j] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+             [alert show];
+         }
+         else
+         {
+             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"更新成功" message:@"目前没有可用更新" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+             [alert show];
+         }
+         
+     }
+     //Download Failed
+    failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"网络异常" message:@"当前网络无法连接，无法检查更新" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+         [alert show];
+     }
+     ];
+}
+
 
 - (void)setDetailItem:(Album *)album
 {
@@ -115,15 +172,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Song *song = [_songs objectAtIndex:indexPath.row];
+    
     //Load from xib for prototype cell
-    [tableView registerNib:[UINib nibWithNibName:@"SongTableViewCell" bundle:nil]forCellReuseIdentifier:@"SongTableViewCell"];
+    [tableView registerNib:[UINib nibWithNibName:@"SongCell" bundle:nil]forCellReuseIdentifier:@"SongCell"];
+    SongCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SongCell"];
     
-    
-    SongTableViewCell *cell;
-    
-    cell = [tableView dequeueReusableCellWithIdentifier:@"SongTableViewCell"];
-    
-    cell.lbl_songTitle.text = @"test";
+    cell.lbl_songTitle.text = song.title;
+    cell.lbl_playbackDuration.text = song.duration;
     
     return cell;
 }

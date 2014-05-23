@@ -9,7 +9,7 @@
 #import "AlbumTableViewController.h"
 #import "CoinIAPHelper.h"
 #import "Album.h"
-#import "AlbumTableViewCell.h"
+#import "AlbumCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "SongTableViewController.h"
 
@@ -102,7 +102,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Album *album = [_albums objectAtIndex:indexPath.row];
-    AlbumTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AlbumCell" forIndexPath:indexPath];
+    AlbumCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AlbumCell" forIndexPath:indexPath];
     
     cell.lbl_albumTitle.text = album.title;
     cell.lbl_albumDescription.text = album.description;
@@ -110,7 +110,7 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:album.imageUrl];
     UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
     
-    __weak AlbumTableViewCell *weakCell = cell;
+    __weak AlbumCell *weakCell = cell;
     
     [cell.img_albumImage setImageWithURLRequest:request
                                placeholderImage:placeholderImage
@@ -123,17 +123,6 @@
     
     
     return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    //SKProduct *product = _products[0];
-    
-    //NSLog(@"Buying %@...", product.productIdentifier);
-    //[[CoinIAPHelper sharedInstance] buyProduct:product];
-    
-    //Album *album = [_albums objectAtIndex:indexPath.row];
-    
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
