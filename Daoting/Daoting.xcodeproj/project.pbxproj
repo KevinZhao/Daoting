@@ -119,6 +119,7 @@
 		0AE8649B192EF48700EF5A96 /* Yongzheng1_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE86495192EF48700EF5A96 /* Yongzheng1_SongList.plist */; };
 		0AE8649C192EF48700EF5A96 /* Yongzheng3_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE86496192EF48700EF5A96 /* Yongzheng3_SongList.plist */; };
 		0AE8649E192EF4DF00EF5A96 /* Yongzheng2_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE8649D192EF4DF00EF5A96 /* Yongzheng2_SongList.plist */; };
+		0AE864A4192FA0D800EF5A96 /* StreamKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE864A3192FA0D800EF5A96 /* StreamKitHelper.m */; };
 		0AFB65A519245A7E000F2AE6 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB65A419245A7E000F2AE6 /* IAPHelper.m */; };
 		0AFB65A719245BD4000F2AE6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AFB65A619245BD4000F2AE6 /* StoreKit.framework */; };
 		0AFB65AA19246656000F2AE6 /* CoinIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB65A919246656000F2AE6 /* CoinIAPHelper.m */; };
@@ -261,6 +262,8 @@
 		0AE86495192EF48700EF5A96 /* Yongzheng1_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Yongzheng1_SongList.plist; path = SongPlists/Yongzheng1_SongList.plist; sourceTree = "<group>"; };
 		0AE86496192EF48700EF5A96 /* Yongzheng3_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Yongzheng3_SongList.plist; path = SongPlists/Yongzheng3_SongList.plist; sourceTree = "<group>"; };
 		0AE8649D192EF4DF00EF5A96 /* Yongzheng2_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Yongzheng2_SongList.plist; path = SongPlists/Yongzheng2_SongList.plist; sourceTree = "<group>"; };
+		0AE864A2192FA0D800EF5A96 /* StreamKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamKitHelper.h; sourceTree = "<group>"; };
+		0AE864A3192FA0D800EF5A96 /* StreamKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamKitHelper.m; sourceTree = "<group>"; };
 		0AFB65A319245A7E000F2AE6 /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
 		0AFB65A419245A7E000F2AE6 /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
 		0AFB65A619245BD4000F2AE6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -592,6 +595,8 @@
 				0AFB65A419245A7E000F2AE6 /* IAPHelper.m */,
 				0AFB65A819246656000F2AE6 /* CoinIAPHelper.h */,
 				0AFB65A919246656000F2AE6 /* CoinIAPHelper.m */,
+				0AE864A2192FA0D800EF5A96 /* StreamKitHelper.h */,
+				0AE864A3192FA0D800EF5A96 /* StreamKitHelper.m */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -863,6 +868,7 @@
 				5933AD6518D03EC1001D707B /* main.m in Sources */,
 				0A37F8CB19262D2600826C8C /* SongCell.m in Sources */,
 				0AFB65B21925107F000F2AE6 /* AlbumCell.m in Sources */,
+				0AE864A4192FA0D800EF5A96 /* StreamKitHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

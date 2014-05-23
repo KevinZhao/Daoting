@@ -7,6 +7,13 @@
 //
 
 #import "AppDelegate.h"
+#import <AVFoundation/AVFoundation.h>
+
+@interface AppDelegate()
+{
+    STKAudioPlayer* _audioPlayer;
+}
+@end
 
 @implementation AppDelegate
 
@@ -14,6 +21,19 @@
 {
     // Override point for customization after application launch.
     [CoinIAPHelper sharedInstance];
+    
+    NSError* error;
+    
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
+	[[AVAudioSession sharedInstance] setActive:YES error:&error];
+    Float32 bufferLength = 0.1;
+    //[[AVAudioSession sharedInstance] setProperty:bufferLength forKey:kAudioSessionProperty_PreferredHardwareIOBufferDuration];
+    
+    AudioSessionSetProperty(kAudioSessionProperty_PreferredHardwareIOBufferDuration, sizeof(bufferLength), &bufferLength);
+    
+    _audioPlayer = [StreamKitHelper sharedInstance];
+    
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     
     return YES;
 }

@@ -15,7 +15,11 @@
     static CoinIAPHelper * sharedInstance;
     dispatch_once(&once, ^{
         NSSet * productIdentifiers = [NSSet setWithObjects:
-                                      @"500Coins",
+                                      @"DSoft.com.Daoting.1000coins",
+                                      @"DSoft.com.Daoting.10000coins",
+                                      @"DSoft.com.Daoting.2500coins",
+                                      @"DSoft.com.Daoting.25000coins",
+                                      @"DSoft.com.Daoting.500coins",
                                       nil];
         sharedInstance = [[self alloc] initWithProductIdentifiers:productIdentifiers];
     });

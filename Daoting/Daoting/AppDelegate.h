@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "CoinIAPHelper.h"
+#import "STKAudioPlayer.h"
+#import "StreamKitHelper.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

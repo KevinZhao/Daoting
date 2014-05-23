@@ -11,8 +11,10 @@
 #import "Song.h"
 #import "SongCell.h"
 #import "AFNetworking.h"
+#import "STKAudioPlayer.h"
 
-@interface SongTableViewController : UIViewController <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface SongTableViewController : UIViewController
+    <UIScrollViewDelegate, UITableViewDataSource, STKAudioPlayerDelegate, UITableViewDelegate>
 {
     NSMutableArray      *_songs;
     UITableView         *_tableview;
@@ -22,6 +24,9 @@
 
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, strong) IBOutlet UIPageControl *pageControl;
+
+@property (readwrite, retain) STKAudioPlayer* audioPlayer;
+
 
 
 - (void)setDetailItem:(Album *)album;
