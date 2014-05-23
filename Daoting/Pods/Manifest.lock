@@ -18,11 +18,14 @@ PODS:
   - AFNetworking/UIKit (2.2.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - StreamingKit (0.1.22)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - StreamingKit (~> 0.1)
 
 SPEC CHECKSUMS:
-  AFNetworking: e8cfd8f3fe3bfe19124a0cc63f4d45752d892a56
+  AFNetworking: 5f2538aa2d150b71d4e6cca3a420d796e1e1c374
+  StreamingKit: 9894c3c16383989d37172ca9b024591e6d51f0c5
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.32.1

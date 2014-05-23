@@ -37,9 +37,9 @@
 		<key>Description</key>
 		<string></string>
 		<key>SongList</key>
-		<string>http://bcs.duapp.com/zhengdong/PlayList.plist</string>
-		<key>ShortName</key>
 		<string>http://bcs.duapp.com/daoting/PlistFolder/Yongzheng3_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Yongzheng3</string>
 	</dict>
 	<key>4</key>
 	<dict>
@@ -124,7 +124,7 @@
 		<key>Title</key>
 		<string>[已完结] 新三盗九龙杯</string>
 		<key>ImageURL</key>
-		<string></string>
+		<string>http://bcs.duapp.com/daoting/Sandao.png</string>
 		<key>Description</key>
 		<string></string>
 		<key>SongList</key>

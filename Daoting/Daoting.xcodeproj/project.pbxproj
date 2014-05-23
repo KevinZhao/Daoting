@@ -112,6 +112,13 @@
 		0AE8648E192EEC6E00EF5A96 /* Suitang_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE8648A192EEC6E00EF5A96 /* Suitang_SongList.plist */; };
 		0AE8648F192EEC6E00EF5A96 /* Xiayi_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE8648B192EEC6E00EF5A96 /* Xiayi_SongList.plist */; };
 		0AE86490192EEC6E00EF5A96 /* Zhangguangtai_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE8648C192EEC6E00EF5A96 /* Zhangguangtai_SongList.plist */; };
+		0AE86497192EF48700EF5A96 /* Haizeiwang_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE86491192EF48700EF5A96 /* Haizeiwang_SongList.plist */; };
+		0AE86498192EF48700EF5A96 /* Mingchao_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE86492192EF48700EF5A96 /* Mingchao_SongList.plist */; };
+		0AE86499192EF48700EF5A96 /* Sandao_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE86493192EF48700EF5A96 /* Sandao_SongList.plist */; };
+		0AE8649A192EF48700EF5A96 /* Shuangbianji_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE86494192EF48700EF5A96 /* Shuangbianji_SongList.plist */; };
+		0AE8649B192EF48700EF5A96 /* Yongzheng1_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE86495192EF48700EF5A96 /* Yongzheng1_SongList.plist */; };
+		0AE8649C192EF48700EF5A96 /* Yongzheng3_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE86496192EF48700EF5A96 /* Yongzheng3_SongList.plist */; };
+		0AE8649E192EF4DF00EF5A96 /* Yongzheng2_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE8649D192EF4DF00EF5A96 /* Yongzheng2_SongList.plist */; };
 		0AFB65A519245A7E000F2AE6 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB65A419245A7E000F2AE6 /* IAPHelper.m */; };
 		0AFB65A719245BD4000F2AE6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AFB65A619245BD4000F2AE6 /* StoreKit.framework */; };
 		0AFB65AA19246656000F2AE6 /* CoinIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB65A919246656000F2AE6 /* CoinIAPHelper.m */; };
@@ -247,6 +254,13 @@
 		0AE8648A192EEC6E00EF5A96 /* Suitang_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Suitang_SongList.plist; path = SongPlists/Suitang_SongList.plist; sourceTree = "<group>"; };
 		0AE8648B192EEC6E00EF5A96 /* Xiayi_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Xiayi_SongList.plist; path = SongPlists/Xiayi_SongList.plist; sourceTree = "<group>"; };
 		0AE8648C192EEC6E00EF5A96 /* Zhangguangtai_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Zhangguangtai_SongList.plist; path = SongPlists/Zhangguangtai_SongList.plist; sourceTree = "<group>"; };
+		0AE86491192EF48700EF5A96 /* Haizeiwang_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Haizeiwang_SongList.plist; path = SongPlists/Haizeiwang_SongList.plist; sourceTree = "<group>"; };
+		0AE86492192EF48700EF5A96 /* Mingchao_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Mingchao_SongList.plist; path = SongPlists/Mingchao_SongList.plist; sourceTree = "<group>"; };
+		0AE86493192EF48700EF5A96 /* Sandao_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Sandao_SongList.plist; path = SongPlists/Sandao_SongList.plist; sourceTree = "<group>"; };
+		0AE86494192EF48700EF5A96 /* Shuangbianji_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Shuangbianji_SongList.plist; path = SongPlists/Shuangbianji_SongList.plist; sourceTree = "<group>"; };
+		0AE86495192EF48700EF5A96 /* Yongzheng1_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Yongzheng1_SongList.plist; path = SongPlists/Yongzheng1_SongList.plist; sourceTree = "<group>"; };
+		0AE86496192EF48700EF5A96 /* Yongzheng3_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Yongzheng3_SongList.plist; path = SongPlists/Yongzheng3_SongList.plist; sourceTree = "<group>"; };
+		0AE8649D192EF4DF00EF5A96 /* Yongzheng2_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Yongzheng2_SongList.plist; path = SongPlists/Yongzheng2_SongList.plist; sourceTree = "<group>"; };
 		0AFB65A319245A7E000F2AE6 /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
 		0AFB65A419245A7E000F2AE6 /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
 		0AFB65A619245BD4000F2AE6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -585,6 +599,14 @@
 		0AE86482192ED8B100EF5A96 /* SongPlists */ = {
 			isa = PBXGroup;
 			children = (
+				0AFB65AB1924EC44000F2AE6 /* AlbumList.plist */,
+				0AE8649D192EF4DF00EF5A96 /* Yongzheng2_SongList.plist */,
+				0AE86491192EF48700EF5A96 /* Haizeiwang_SongList.plist */,
+				0AE86492192EF48700EF5A96 /* Mingchao_SongList.plist */,
+				0AE86493192EF48700EF5A96 /* Sandao_SongList.plist */,
+				0AE86494192EF48700EF5A96 /* Shuangbianji_SongList.plist */,
+				0AE86495192EF48700EF5A96 /* Yongzheng1_SongList.plist */,
+				0AE86496192EF48700EF5A96 /* Yongzheng3_SongList.plist */,
 				0AE86489192EEC6E00EF5A96 /* Liaozhai_SongList.plist */,
 				0AE8648A192EEC6E00EF5A96 /* Suitang_SongList.plist */,
 				0AE8648B192EEC6E00EF5A96 /* Xiayi_SongList.plist */,
@@ -667,7 +689,6 @@
 				5933AD6118D03EC1001D707B /* InfoPlist.strings */,
 				5933AD6418D03EC1001D707B /* main.m */,
 				5933AD6618D03EC1001D707B /* Daoting-Prefix.pch */,
-				0AFB65AB1924EC44000F2AE6 /* AlbumList.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -742,6 +763,7 @@
 			files = (
 				0A98D6631920EAB700E46EB9 /* progressBar.png in Resources */,
 				0A98D66C1920F1F500E46EB9 /* arrowSelected.png in Resources */,
+				0AE8649A192EF48700EF5A96 /* Shuangbianji_SongList.plist in Resources */,
 				0AFB65AC1924EC44000F2AE6 /* AlbumList.plist in Resources */,
 				0A98D65E1920EAB700E46EB9 /* DownloadsStopControl@2x.png in Resources */,
 				0A98D65A1920EAB700E46EB9 /* downloadButton@2x.png in Resources */,
@@ -756,7 +778,9 @@
 				0A98D6601920EAB700E46EB9 /* nowPlayingGlyph@2x.png in Resources */,
 				0AE8648D192EEC6E00EF5A96 /* Liaozhai_SongList.plist in Resources */,
 				0A3CD3641920F8BE00247436 /* Main_iPhone.storyboard in Resources */,
+				0AE8649C192EF48700EF5A96 /* Yongzheng3_SongList.plist in Resources */,
 				0A98D6191920ACBC00E46EB9 /* RennSDK.bundle in Resources */,
+				0AE86498192EF48700EF5A96 /* Mingchao_SongList.plist in Resources */,
 				0A98D65C1920EAB700E46EB9 /* downloadProgressButtonPause@2x.png in Resources */,
 				5933AD7718D03EC1001D707B /* Images.xcassets in Resources */,
 				0A98D6161920ACBC00E46EB9 /* PinterestSDKResources.bundle in Resources */,
@@ -764,6 +788,7 @@
 				0A98D6281920ACBC00E46EB9 /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
 				0A98D6131920ACBC00E46EB9 /* GooglePlus.bundle in Resources */,
 				0A98D65D1920EAB700E46EB9 /* DownloadsStopControl.png in Resources */,
+				0AE86497192EF48700EF5A96 /* Haizeiwang_SongList.plist in Resources */,
 				0A98D6641920EAB700E46EB9 /* progressBar@2x.png in Resources */,
 				0A98D66B1920F1F500E46EB9 /* arrow@2x.png in Resources */,
 				0A98D6231920ACBC00E46EB9 /* ShareSDKiPadDefaultShareViewUI.bundle in Resources */,
@@ -771,6 +796,7 @@
 				0A98D61C1920ACBC00E46EB9 /* WeiboSDK.bundle in Resources */,
 				0AE8648E192EEC6E00EF5A96 /* Suitang_SongList.plist in Resources */,
 				0AE8648F192EEC6E00EF5A96 /* Xiayi_SongList.plist in Resources */,
+				0AE8649B192EF48700EF5A96 /* Yongzheng1_SongList.plist in Resources */,
 				0A98D66D1920F1F500E46EB9 /* arrowSelected@2x.png in Resources */,
 				0A98D5F81920ACBC00E46EB9 /* InstapaperResource.bundle in Resources */,
 				0A98D66A1920F1F500E46EB9 /* arrow.png in Resources */,
@@ -782,6 +808,8 @@
 				5933AD6318D03EC1001D707B /* InfoPlist.strings in Resources */,
 				0AE86490192EEC6E00EF5A96 /* Zhangguangtai_SongList.plist in Resources */,
 				0A98D6211920ACBC00E46EB9 /* ShareSDKFlatShareViewUI.bundle in Resources */,
+				0AE86499192EF48700EF5A96 /* Sandao_SongList.plist in Resources */,
+				0AE8649E192EF4DF00EF5A96 /* Yongzheng2_SongList.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
