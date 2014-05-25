@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/SongTableViewController.m"
-            timestampString = "422552121.321099"
+            timestampString = "422725691.565895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
-            landmarkName = "-setDetailItem:"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
+            landmarkName = "-setupTimer"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/SongTableViewController.m"
-            timestampString = "422552121.321099"
+            timestampString = "422725691.565895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "-initializeSongs"
             landmarkType = "5">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/SongTableViewController.m"
-            timestampString = "422552121.321099"
+            timestampString = "422725691.565895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "-viewWillAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/SongTableViewController.m"
-            timestampString = "422552121.321099"
+            timestampString = "422725691.565895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "-initializeSongs"
             landmarkType = "5">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/SongTableViewController.m"
-            timestampString = "422552121.321099"
+            timestampString = "422726157.166216"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "321"
+            endingLineNumber = "321"
             landmarkName = "-tableView:numberOfRowsInSection:"
             landmarkType = "5">
          </BreakpointContent>
@@ -250,13 +250,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/SongTableViewController.m"
-            timestampString = "422552121.321099"
+            timestampString = "422726157.166216"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
-            landmarkName = "@implementation SongTableViewController"
-            landmarkType = "3">
+            startingLineNumber = "321"
+            endingLineNumber = "321"
+            landmarkName = "-tableView:numberOfRowsInSection:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/SongTableViewController.m"
-            timestampString = "422552121.321099"
+            timestampString = "422725691.565895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "-updateSongs"
             landmarkType = "5">
          </BreakpointContent>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/SongTableViewController.m"
-            timestampString = "422552121.321099"
+            timestampString = "422725691.565895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "-updateSongs"
             landmarkType = "5">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/SongTableViewController.m"
-            timestampString = "422552121.321099"
+            timestampString = "422725691.565895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "-loadSongs"
             landmarkType = "5">
          </BreakpointContent>
@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/SongTableViewController.m"
-            timestampString = "422552121.321099"
+            timestampString = "422725691.565895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "-loadSongs"
             landmarkType = "5">
          </BreakpointContent>
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/SongTableViewController.m"
-            timestampString = "422552121.321099"
+            timestampString = "422725691.565895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "-initializeSongs"
             landmarkType = "5">
          </BreakpointContent>
@@ -368,6 +368,70 @@
             startingLineNumber = "56"
             endingLineNumber = "56"
             landmarkName = "-loadAlbums"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Daoting/SongTableViewController.m"
+            timestampString = "422726157.166216"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "350"
+            endingLineNumber = "350"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Daoting/SongTableViewController.m"
+            timestampString = "422725691.565895"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
+            landmarkName = "-tick"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Daoting/SongTableViewController.m"
+            timestampString = "422725691.565895"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
+            landmarkName = "-tick"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Daoting/SongTableViewController.m"
+            timestampString = "422726157.166216"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "358"
+            endingLineNumber = "358"
+            landmarkName = "-scrollViewDidScroll:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

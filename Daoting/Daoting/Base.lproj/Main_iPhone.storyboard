@@ -124,45 +124,55 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <outlet property="delegate" destination="PHH-HN-8Ln" id="alN-XF-E7u"/>
+                                    <outlet property="delegate" destination="PHH-HN-8Ln" id="DNI-22-7fi"/>
                                 </connections>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="vbG-ki-fIt">
-                                <rect key="frame" x="109" y="440" width="102" height="37"/>
+                                <rect key="frame" x="0.0" y="440" width="320" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="pageIndicatorTintColor" red="0.32253275057594732" green="0.77528899585569522" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="currentPageIndicatorTintColor" red="0.22676656440000001" green="0.4059089213" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="onpageChanged:" destination="FIa-3P-xRc" eventType="valueChanged" id="5lb-fy-km2"/>
+                                </connections>
                             </pageControl>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Ic-7o-4HF">
                                 <rect key="frame" x="0.0" y="468" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="V0y-OQ-CHv">
-                                <rect key="frame" x="0.0" y="468" width="320" height="2"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </progressView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6MF-qb-FBg">
                                 <rect key="frame" x="128" y="498" width="64" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="playing_btn_play_n">
+                                <state key="normal" backgroundImage="playing_btn_play_n">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="onbtn_playAndPausePressed:" destination="FIa-3P-xRc" eventType="touchUpInside" id="5vO-rM-u7p"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rCq-N8-6Vs">
                                 <rect key="frame" x="232" y="506" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="playing_btn_next_n">
+                                <state key="normal" backgroundImage="playing_btn_next_n">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="onbtn_nextPressed:" destination="FIa-3P-xRc" eventType="touchUpInside" id="x04-DS-RJA"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7L-3C-tSe">
                                 <rect key="frame" x="38" y="505" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="playing_btn_pre_n">
+                                <state key="normal" backgroundImage="playing_btn_pre_n">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="onbtn_previousPressed:" destination="FIa-3P-xRc" eventType="touchUpInside" id="6Nf-3t-Msf"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0:00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBq-eh-AgW">
-                                <rect key="frame" x="282" y="466" width="42" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0:00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBq-eh-AgW">
+                                <rect key="frame" x="275" y="466" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -175,13 +185,26 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="41D-YD-EXP">
+                                <rect key="frame" x="0.0" y="454" width="320" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="onsliderValueChanged:" destination="FIa-3P-xRc" eventType="valueChanged" id="FGn-WE-LAV"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Rl1-Zv-Lki"/>
                     <connections>
+                        <outlet property="btn_next" destination="rCq-N8-6Vs" id="hhk-OC-wnX"/>
+                        <outlet property="btn_playAndPause" destination="6MF-qb-FBg" id="gK9-Sm-rLi"/>
+                        <outlet property="btn_previous" destination="M7L-3C-tSe" id="48D-uw-G2L"/>
+                        <outlet property="lbl_progressCurrentValue" destination="7wE-r9-kNW" id="Dd9-Ve-0pr"/>
+                        <outlet property="lbl_progressMaxValue" destination="tBq-eh-AgW" id="qN8-sl-Nye"/>
                         <outlet property="pageControl" destination="vbG-ki-fIt" id="YHh-r0-al2"/>
-                        <outlet property="scrollView" destination="Izc-Iv-gMT" id="nGK-VN-NMM"/>
+                        <outlet property="scrollView" destination="Izc-Iv-gMT" id="cAn-rC-Dhk"/>
+                        <outlet property="slider" destination="41D-YD-EXP" id="vha-IA-fxW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sxi-HF-hBb" userLabel="First Responder" sceneMemberID="firstResponder"/>

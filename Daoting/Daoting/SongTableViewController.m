@@ -20,13 +20,15 @@
 
 - (void)viewDidLoad
 {
-    
-    
     [super viewDidLoad];
     
     [self loadSongs];
     
     [self updateSongs];
+    
+    _audioPlayer = [StreamKitHelper sharedInstance];
+    
+    [self setupTimer];
 }
 
 
@@ -34,11 +36,13 @@
 {
     self.automaticallyAdjustsScrollViewInsets = NO;
     scrollView.contentSize = CGSizeMake(640, 406);
+    scrollView.delegate = self;
     
     //Configure tableview
     _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 406) style:UITableViewStylePlain];
     _tableview.delegate = self;
     _tableview.dataSource = self;
+    _tableview.rowHeight = 60;
 
     [scrollView addSubview:_tableview];
     
@@ -47,9 +51,10 @@
     test.frame = CGRectMake(320, 0, 320, 406);
     [scrollView addSubview:test];
     
-    //Configure scrollview
+    //Configure pagecontrol
     pageControl.currentPage = 0;
     pageControl.numberOfPages = 2;
+
     
 }
 
@@ -146,16 +151,16 @@
          }
          else
          {
-             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"更新成功" message:@"目前没有可用更新" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-             [alert show];
+             /*UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"更新成功" message:@"目前没有可用更新" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+             [alert show];*/
          }
          
      }
      //Download Failed
     failure:^(AFHTTPRequestOperation *operation, NSError *error)
      {
-         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"网络异常" message:@"当前网络无法连接，无法检查更新" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-         [alert show];
+         /*UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"网络异常" message:@"当前网络无法连接，无法检查更新" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+         [alert show];*/
      }
      ];
 }
@@ -186,8 +191,6 @@
             
             [self initializeSongs];
         }
-        
-
     }
     
     [_tableview reloadData];
@@ -198,13 +201,124 @@
     _album = album;
 }
 
+-(void)setupTimer
+{
+	_timer = [NSTimer timerWithTimeInterval:0.001 target:self selector:@selector(tick) userInfo:nil repeats:YES];
+	
+	[[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+}
+
+-(void)tick
+{
+	if (!_audioPlayer)
+	{
+		//slider.value = 0;
+        //label.text = @"";
+        //statusLabel.text = @"";
+		
+		return;
+	}
+	
+    if (_audioPlayer.duration != 0)
+    {
+        _lbl_progressCurrentValue.text = [NSString stringWithFormat:@"%@", [self formatTimeFromSeconds:_audioPlayer.progress]];
+        _lbl_progressMaxValue.text = [NSString stringWithFormat:@"%@", [self formatTimeFromSeconds:_audioPlayer.duration]];
+        
+        _slider.minimumValue = 0;
+        _slider.maximumValue = _audioPlayer.duration;
+        _slider.value = _audioPlayer.progress;
+        
+        _slider.enabled = YES;
+    }
+    else
+    {
+        _slider.enabled = NO;
+        
+        _slider.value = 0;
+        _slider.minimumValue = 0;
+        _slider.maximumValue = 0;
+        
+        
+        _lbl_progressMaxValue.text = @"";
+        _lbl_progressCurrentValue.text = @"";
+    }
+    
+    switch (_audioPlayer.state) {
+        case STKAudioPlayerStatePlaying:
+            [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_pause_n.png"] forState:UIControlStateNormal];
+            [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_pause_h.png"] forState:UIControlStateHighlighted];
+            break;
+        case STKAudioPlayerStatePaused:
+            [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_play_n.png"] forState:UIControlStateNormal];
+            [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_play_h.png"] forState:UIControlStateHighlighted];
+            break;
+        default:
+            break;
+    }
+    //statusLabel.text = audioPlayer.state == STKAudioPlayerStateBuffering ? @"buffering" : @"";
+	
+	//CGFloat newWidth = 320 * (([audioPlayer averagePowerInDecibelsForChannel:1] + 60) / 60);
+	
+	//meter.frame = CGRectMake(0, 460, newWidth, 20);
+}
+
+-(NSString*)formatTimeFromSeconds:(int)totalSeconds
+{
+    int seconds = totalSeconds % 60;
+    int minutes = (totalSeconds / 60) % 60;
+    int hours = totalSeconds / 3600;
+    
+    return [NSString stringWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds];
+}
+
+-(void)updateUI
+{
+    [self tick];
+}
+
+#pragma mark - UI operation
+
+- (IBAction)onbtn_playAndPausePressed:(id)sender
+{
+    if (_audioPlayer.state == STKAudioPlayerStatePlaying) {
+        [_audioPlayer pause];
+    }
+    else
+    {
+        //[_audioPlayer play:]
+    }
+
+    
+}
+- (IBAction)onbtn_nextPressed:(id)sender
+{
+    
+}
+- (IBAction)onbtn_previousPressed:(id)sender
+{
+    
+}
+
+- (IBAction)onsliderValueChanged:(id)sender
+{
+    if (_audioPlayer) {
+        [_audioPlayer seekToTime:_slider.value];
+    }
+}
+
+- (IBAction)onpageChanged:(id)sender
+{
+    CGPoint offset = CGPointMake(pageControl.currentPage * scrollView.frame.size.width, 0);
+    [scrollView setContentOffset:offset animated:YES];
+}
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return _songs.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -214,10 +328,26 @@
     [tableView registerNib:[UINib nibWithNibName:@"SongCell" bundle:nil]forCellReuseIdentifier:@"SongCell"];
     SongCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SongCell"];
     
+    //Update UI according to song status
     cell.lbl_songTitle.text = song.title;
     cell.lbl_playbackDuration.text = song.duration;
+    cell.lbl_songNumber.text = song.songNumber;
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Song *selectedSong = [_songs objectAtIndex:indexPath.row];
+    
+    //1.check the song had been purchased or not
+    
+    //2.check if the song had been downlaoded
+    
+    //3.play the song
+    STKDataSource* dataSource = [STKAudioPlayer dataSourceFromURL:selectedSong.Url];
+    
+    [_audioPlayer setDataSource:dataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:selectedSong.Url andCount:0]];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -232,7 +362,7 @@
     pageControl.currentPage = page;
 }
 
-#pragma mark -STKAudioPlayerDelegate
+#pragma mark - STKAudioPlayerDelegate
 /// Raised when an item has started playing
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer didStartPlayingQueueItemId:(NSObject*)queueItemId
 {}
@@ -244,7 +374,10 @@
 
 /// Raised when the state of the player has changed
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer stateChanged:(STKAudioPlayerState)state previousState:(STKAudioPlayerState)previousState
-{}
+{
+    
+
+}
 
 /// Raised when an item has finished playing
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer didFinishPlayingQueueItemId:(NSObject*)queueItemId withReason:(STKAudioPlayerStopReason)stopReason andProgress:(double)progress andDuration:(double)duration

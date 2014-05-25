@@ -106,6 +106,7 @@
 		0A98D66D1920F1F500E46EB9 /* arrowSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A98D6691920F1F500E46EB9 /* arrowSelected@2x.png */; };
 		0A98D6701920F25900E46EB9 /* AlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A98D66F1920F25900E46EB9 /* AlbumTableViewController.m */; };
 		0ABB4283192E321C007D8BAC /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB4282192E321C007D8BAC /* Icon-72@2x.png */; };
+		0AD5F6801932029F00EB0BAC /* SampleQueueId.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD5F67F1932029F00EB0BAC /* SampleQueueId.m */; };
 		0AE46B0E1921035E00FA30F3 /* SongTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE46B0D1921035E00FA30F3 /* SongTableViewController.m */; };
 		0AE86488192EDECA00EF5A96 /* Zhengdong1_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE86487192EDECA00EF5A96 /* Zhengdong1_SongList.plist */; };
 		0AE8648D192EEC6E00EF5A96 /* Liaozhai_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE86489192EEC6E00EF5A96 /* Liaozhai_SongList.plist */; };
@@ -248,6 +249,8 @@
 		0A98D66E1920F25900E46EB9 /* AlbumTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumTableViewController.h; sourceTree = "<group>"; };
 		0A98D66F1920F25900E46EB9 /* AlbumTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumTableViewController.m; sourceTree = "<group>"; };
 		0ABB4282192E321C007D8BAC /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
+		0AD5F67E1932029F00EB0BAC /* SampleQueueId.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleQueueId.h; sourceTree = "<group>"; };
+		0AD5F67F1932029F00EB0BAC /* SampleQueueId.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleQueueId.m; sourceTree = "<group>"; };
 		0AE46B0C1921035E00FA30F3 /* SongTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongTableViewController.h; sourceTree = "<group>"; };
 		0AE46B0D1921035E00FA30F3 /* SongTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongTableViewController.m; sourceTree = "<group>"; };
 		0AE86487192EDECA00EF5A96 /* Zhengdong1_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Zhengdong1_SongList.plist; path = SongPlists/Zhengdong1_SongList.plist; sourceTree = "<group>"; };
@@ -591,6 +594,8 @@
 		0ABB4281192DEA7F007D8BAC /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				0AD5F67E1932029F00EB0BAC /* SampleQueueId.h */,
+				0AD5F67F1932029F00EB0BAC /* SampleQueueId.m */,
 				0AFB65A319245A7E000F2AE6 /* IAPHelper.h */,
 				0AFB65A419245A7E000F2AE6 /* IAPHelper.m */,
 				0AFB65A819246656000F2AE6 /* CoinIAPHelper.h */,
@@ -868,6 +873,7 @@
 				5933AD6518D03EC1001D707B /* main.m in Sources */,
 				0A37F8CB19262D2600826C8C /* SongCell.m in Sources */,
 				0AFB65B21925107F000F2AE6 /* AlbumCell.m in Sources */,
+				0AD5F6801932029F00EB0BAC /* SampleQueueId.m in Sources */,
 				0AE864A4192FA0D800EF5A96 /* StreamKitHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
