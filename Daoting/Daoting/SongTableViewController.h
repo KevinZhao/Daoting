@@ -14,6 +14,7 @@
 #import "STKAudioPlayer.h"
 #import "StreamKitHelper.h"
 #import "SampleQueueId.h"
+#import "AppData.h"
 
 @interface SongTableViewController : UIViewController
     <UIScrollViewDelegate, UITableViewDataSource, STKAudioPlayerDelegate, UITableViewDelegate>
@@ -34,12 +35,14 @@
 @property (nonatomic, retain) IBOutlet UIButton *btn_previous;
 @property (nonatomic, retain) IBOutlet UIButton *btn_next;
 @property (nonatomic, retain) IBOutlet UISlider *slider;
+@property (nonatomic, retain) IBOutlet UIButton *btn_download;
 
 - (IBAction)onbtn_playAndPausePressed:(id)sender;
 - (IBAction)onbtn_nextPressed:(id)sender;
 - (IBAction)onbtn_previousPressed:(id)sender;
 - (IBAction)onsliderValueChanged:(id)sender;
 - (IBAction)onpageChanged:(id)sender;
+
 
 - (void)setDetailItem:(Album *)album;
 

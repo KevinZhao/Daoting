@@ -10,9 +10,15 @@
 #import "CoinIAPHelper.h"
 #import "STKAudioPlayer.h"
 #import "StreamKitHelper.h"
+#import "AppData.h"
+#import "AFNetWorkingOperationManagerHelper.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+{
+
+}
 
 @property (strong, nonatomic) UIWindow *window;
+@property (assign, nonatomic) long *coins;
 
 @end

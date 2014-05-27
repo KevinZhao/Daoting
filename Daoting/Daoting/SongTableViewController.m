@@ -11,10 +11,9 @@
 @interface SongTableViewController ()
 @end
 
+
 @implementation SongTableViewController
 @synthesize pageControl, scrollView;
-
-//#define int kNumberOfPages = 2;
 
 #pragma mark - UIView delegate
 
@@ -70,12 +69,11 @@
 {
     _songs = [[NSMutableArray alloc]init];
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
-
-    NSString *plistPath = [bundleDocumentDirectoryPath stringByAppendingString:@"/"];
-    plistPath = [plistPath stringByAppendingString:_album.shortName];
-    plistPath = [plistPath stringByAppendingString:@"_SongList.plist"];
+    NSString *DocumentDirectoryPath =
+        [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    
+    NSString *plistPath =
+        [DocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_SongList.plist", _album.shortName]];
     
     NSDictionary *dictionary = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
     for (int i = 1; i<= dictionary.count; i++)
@@ -88,6 +86,7 @@
         song.title      = [SongDic objectForKey:@"Title"];
         song.duration   = [SongDic objectForKey:@"Duration"];
         song.Url        = [[NSURL alloc] initWithString:[SongDic objectForKey:@"Url"]];
+        song.filePath   = [[NSURL alloc] initWithString:[SongDic objectForKey:@"FilePath"]];
         
         [_songs addObject:song];
     }
@@ -146,8 +145,8 @@
              
              [_tableview reloadData];
              
-             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"更新成功" message:[NSString stringWithFormat:@"成功更新%d个新回目，请点击下载按钮", j] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-             [alert show];
+             /*UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"更新成功" message:[NSString stringWithFormat:@"成功更新%d个新回目，请点击下载按钮", j] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+             [alert show];*/
          }
          else
          {
@@ -276,7 +275,21 @@
     [self tick];
 }
 
-#pragma mark - UI operation
+-(void)playSong:(Song *)song
+{
+    if (song.filePath) {
+        
+        STKDataSource* dataSource = [STKAudioPlayer dataSourceFromURL:song.filePath];
+        [_audioPlayer setDataSource:dataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:song.Url andCount:0]];
+    }
+    else
+    {
+        STKDataSource* dataSource = [STKAudioPlayer dataSourceFromURL:song.Url];
+        [_audioPlayer setDataSource:dataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:song.Url andCount:0]];
+    }
+}
+
+#pragma mark - UI operation event
 
 - (IBAction)onbtn_playAndPausePressed:(id)sender
 {
@@ -292,8 +305,32 @@
 }
 - (IBAction)onbtn_nextPressed:(id)sender
 {
-    
+
 }
+
+-(void)test
+{
+    //test: processing plist in document and download it back
+    NSString *bundleDocumentDirectoryPath =
+    [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    
+    NSString *plistPath =
+    [bundleDocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_SongList.plist", _album.shortName]];
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+    
+    for (int i = 1; i<= dictionary.count; i++)
+    {
+        NSMutableDictionary *songArray = [dictionary objectForKey:[NSString stringWithFormat:@"%d",i]];
+        [songArray setObject:@"" forKey:@"FilePath"];
+    }
+    
+    plistPath = [plistPath stringByAppendingString:@"_new"];
+    
+    [dictionary writeToFile:plistPath atomically:YES];
+    
+    NSLog(@"completed");
+}
+
 - (IBAction)onbtn_previousPressed:(id)sender
 {
     
@@ -333,6 +370,9 @@
     cell.lbl_playbackDuration.text = song.duration;
     cell.lbl_songNumber.text = song.songNumber;
     
+    cell.song = song;
+    cell.album = _album;
+    
     return cell;
 }
 
@@ -340,14 +380,21 @@
 {
     Song *selectedSong = [_songs objectAtIndex:indexPath.row];
     
+    //check the selected song is playing
+    
+    //0.Check network reachbility
+    
     //1.check the song had been purchased or not
+    double coins = [AppData sharedAppData].coins;
     
     //2.check if the song had been downlaoded
+    if (selectedSong.filePath != nil) {
+        
+    }
     
     //3.play the song
-    STKDataSource* dataSource = [STKAudioPlayer dataSourceFromURL:selectedSong.Url];
-    
-    [_audioPlayer setDataSource:dataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:selectedSong.Url andCount:0]];
+    [self playSong:selectedSong];
+
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -365,25 +412,32 @@
 #pragma mark - STKAudioPlayerDelegate
 /// Raised when an item has started playing
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer didStartPlayingQueueItemId:(NSObject*)queueItemId
-{}
+{
+    
+}
 
 /// Raised when an item has finished buffering (may or may not be the currently playing item)
 /// This event may be raised multiple times for the same item if seek is invoked on the player
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer didFinishBufferingSourceWithQueueItemId:(NSObject*)queueItemId
-{}
+{
+    
+}
 
 /// Raised when the state of the player has changed
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer stateChanged:(STKAudioPlayerState)state previousState:(STKAudioPlayerState)previousState
 {
     
-
 }
 
 /// Raised when an item has finished playing
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer didFinishPlayingQueueItemId:(NSObject*)queueItemId withReason:(STKAudioPlayerStopReason)stopReason andProgress:(double)progress andDuration:(double)duration
-{}
+{
+    
+}
 /// Raised when an unexpected and possibly unrecoverable error has occured (usually best to recreate the STKAudioPlauyer)
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer unexpectedError:(STKAudioPlayerErrorCode)errorCode
-{}
+{
+    
+}
 
 @end

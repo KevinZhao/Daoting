@@ -14,6 +14,6 @@
 @property (nonatomic, strong) NSString  *title;
 @property (nonatomic, strong) NSString  *duration;
 @property (nonatomic, strong) NSURL     *Url;
-@property (nonatomic, strong) NSString  *fileName;
+@property (nonatomic, strong) NSURL     *filePath;
 
 @end

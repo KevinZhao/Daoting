@@ -11,7 +11,7 @@
 
 @interface AppDelegate()
 {
-    STKAudioPlayer* _audioPlayer;
+
 }
 @end
 
@@ -19,21 +19,31 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    [CoinIAPHelper sharedInstance];
-    
     NSError* error;
-    
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
-	[[AVAudioSession sharedInstance] setActive:YES error:&error];
-    Float32 bufferLength = 0.1;
-    //[[AVAudioSession sharedInstance] setProperty:bufferLength forKey:kAudioSessionProperty_PreferredHardwareIOBufferDuration];
-    
-    AudioSessionSetProperty(kAudioSessionProperty_PreferredHardwareIOBufferDuration, sizeof(bufferLength), &bufferLength);
-    
-    _audioPlayer = [StreamKitHelper sharedInstance];
+    //Configure Audio Session
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    [audioSession setCategory:AVAudioSessionCategoryPlayback error:&error];
+	[audioSession setActive:YES error:&error];
+    [audioSession setPreferredIOBufferDuration:0.1 error:&error];
     
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    
+    //Configure AFNetworking
+    [[AFNetWorkingOperationManagerHelper sharedInstance].operationQueue setMaxConcurrentOperationCount:2];
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    
+    //Initialize the coins for first time running the app
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (![fileManager fileExistsAtPath:[AppData filePath]])
+    {
+        AppData *_appData = [AppData sharedAppData];
+        
+        _appData.coins = 500;
+        [_appData save];
+    }
+
+    //Configure CoinHelper for IAP
+    [CoinIAPHelper sharedInstance];
     
     return YES;
 }
