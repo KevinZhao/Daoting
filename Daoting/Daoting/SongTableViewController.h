@@ -25,6 +25,8 @@
     AFHTTPRequestOperationManager       *_operationManager;
     STKAudioPlayer                      *_audioPlayer;
     NSTimer                             *_timer;
+    //test
+    Song                                *_currentSong;
 }
 
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;

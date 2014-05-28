@@ -19,15 +19,13 @@
 
 @property (nonatomic, strong) IBOutlet UILabel      *lbl_songNumber;
 @property (nonatomic, strong) IBOutlet UILabel      *lbl_songTitle;
-@property (nonatomic, strong) IBOutlet UILabel      *lbl_playbackDuration;
+@property (nonatomic, strong) IBOutlet UILabel      *lbl_songDuration;
 @property (nonatomic, strong) IBOutlet UILabel      *lbl_songStatus;
 @property (nonatomic, strong) IBOutlet UIButton     *btn_downloadOrPause;
 @property (nonatomic, strong) IBOutlet UIImageView  *img_playingStatus;
 
 @property (nonatomic, retain) Song                  *song;
 @property (nonatomic, retain) Album                 *album;
-//@property (nonatomic, retain) NSURL                 *downloadUrl;
-//@property (nonatomic, retain) NSString              *albumShortName;
 
 //@property (nonatomic, strong) IBOutlet DACircularProgressView *cirProgView_downloadProgress;
 

@@ -43,7 +43,7 @@
 - (void)downloadFile:(NSURL* )url
 {
     //1. Set download path to temporary directory with album shortname and songnumber combination
-    NSString *fileName = [NSString stringWithFormat:@"%@_%@", self.album.shortName, self.song.songNumber];
+    NSString *fileName = [NSString stringWithFormat:@"%@_%@.mp3", self.album.shortName, self.song.songNumber];
     NSString *filePath = [NSTemporaryDirectory() stringByAppendingString:fileName];
 
     //2. Create Request and operation
@@ -57,21 +57,29 @@
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
      {
          NSLog(@"download completed");
+         BOOL success;
+         NSError *error;
 
          NSString *fileName = [NSString stringWithFormat:@"%@_%@.mp3", self.album.shortName, self.song.songNumber];
          NSString *filePath = [NSTemporaryDirectory() stringByAppendingString:fileName];
          
-         NSString *desfileName = [NSString stringWithFormat:@"%@_%@.mp3", self.album.shortName, self.song.songNumber];
+         NSString *desfileName = [NSString stringWithFormat:@"/%@_%@.mp3", self.album.shortName, self.song.songNumber];
          NSString *desfilePath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingString:desfileName];
          
          NSFileManager *fileManager = [NSFileManager defaultManager];
-         [fileManager copyItemAtPath:filePath toPath:desfilePath error:nil];
-         [fileManager removeItemAtPath:filePath error:nil];
+         success = [fileManager copyItemAtPath:filePath toPath:desfilePath error:&error];
+         if (!success) {
+             NSLog(@"failed copy %@ to %@ error = %@", fileName, desfilePath, error);
+         }
+         
+         success = [fileManager removeItemAtPath:filePath error:nil];
+         
+         if (!success) {
+             NSLog(@"failed to remove file at %@", filePath);
+         }
          
          //Todo: Update UI
-         
          song.filePath = [[NSURL alloc]initWithString:desfilePath];
-         song.duration = 0;
          
          //Write back to PlayList.plist
          NSString *bundleDocumentDirectoryPath =
@@ -82,9 +90,7 @@
          NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
          NSMutableDictionary *songArray = [dictionary objectForKey:self.song.songNumber];
          
-         [songArray setObject:self.song.duration forKey:@"Duration"];
          [songArray setObject:self.song.filePath forKey:@"FilePath"];
-         
          [dictionary writeToFile:plistPath atomically:NO];
      }
      //Failed

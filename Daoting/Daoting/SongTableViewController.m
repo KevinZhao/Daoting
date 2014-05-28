@@ -26,6 +26,7 @@
     [self updateSongs];
     
     _audioPlayer = [StreamKitHelper sharedInstance];
+    _audioPlayer.delegate = self;
     
     [self setupTimer];
 }
@@ -211,10 +212,8 @@
 {
 	if (!_audioPlayer)
 	{
-		//slider.value = 0;
-        //label.text = @"";
-        //statusLabel.text = @"";
-		
+		_slider.value = 0;
+        
 		return;
 	}
 	
@@ -223,23 +222,22 @@
         _lbl_progressCurrentValue.text = [NSString stringWithFormat:@"%@", [self formatTimeFromSeconds:_audioPlayer.progress]];
         _lbl_progressMaxValue.text = [NSString stringWithFormat:@"%@", [self formatTimeFromSeconds:_audioPlayer.duration]];
         
+        _slider.enabled = YES;
         _slider.minimumValue = 0;
         _slider.maximumValue = _audioPlayer.duration;
         _slider.value = _audioPlayer.progress;
         
-        _slider.enabled = YES;
+        [AppData sharedAppData].currentPlayingProgress = _audioPlayer.progress;
     }
     else
     {
-        _slider.enabled = NO;
+        _lbl_progressMaxValue.text = @"";
+        _lbl_progressCurrentValue.text = @"";
         
+        _slider.enabled = NO;
         _slider.value = 0;
         _slider.minimumValue = 0;
         _slider.maximumValue = 0;
-        
-        
-        _lbl_progressMaxValue.text = @"";
-        _lbl_progressCurrentValue.text = @"";
     }
     
     switch (_audioPlayer.state) {
@@ -253,12 +251,17 @@
             break;
         default:
             break;
+        /*
+         STKAudioPlayerStateReady,
+         STKAudioPlayerStateRunning = 1,
+         STKAudioPlayerStatePlaying = (1 << 1) | STKAudioPlayerStateRunning,
+         STKAudioPlayerStateBuffering = (1 << 2) | STKAudioPlayerStateRunning,
+         STKAudioPlayerStatePaused = (1 << 3) | STKAudioPlayerStateRunning,
+         STKAudioPlayerStateStopped = (1 << 4),
+         STKAudioPlayerStateError = (1 << 5),
+         STKAudioPlayerStateDisposed = (1 << 6)
+         */
     }
-    //statusLabel.text = audioPlayer.state == STKAudioPlayerStateBuffering ? @"buffering" : @"";
-	
-	//CGFloat newWidth = 320 * (([audioPlayer averagePowerInDecibelsForChannel:1] + 60) / 60);
-	
-	//meter.frame = CGRectMake(0, 460, newWidth, 20);
 }
 
 -(NSString*)formatTimeFromSeconds:(int)totalSeconds
@@ -277,17 +280,90 @@
 
 -(void)playSong:(Song *)song
 {
-    if (song.filePath) {
+    if (![[song.filePath absoluteString] isEqualToString:@""]) {
         
+        //play file from local reposistory
         STKDataSource* dataSource = [STKAudioPlayer dataSourceFromURL:song.filePath];
         [_audioPlayer setDataSource:dataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:song.Url andCount:0]];
     }
     else
     {
+        //play from cloud storage
         STKDataSource* dataSource = [STKAudioPlayer dataSourceFromURL:song.Url];
         [_audioPlayer setDataSource:dataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:song.Url andCount:0]];
+        
+        //Todo: need to remove, just for testing
+        _currentSong = song;
     }
+    
+    [AppData sharedAppData].currentPlayingSong = song;
 }
+
+- (void) configureNowPlayingInfo:(float)elapsedPlaybackTime
+{
+    /*Song *song= [self.songs objectAtIndex:currentPlayingIndexPath.row];
+    
+    //Set Information for Nowplaying Info Center
+    if (NSClassFromString(@"MPNowPlayingInfoCenter")) {
+        NSMutableDictionary * dict = [[NSMutableDictionary alloc] init];
+        [dict setObject:song.title forKey:MPMediaItemPropertyAlbumTitle];
+        [dict setObject:@"王玥波" forKey:MPMediaItemPropertyArtist];
+        [dict setObject:[NSNumber numberWithInteger:player.duration] forKey:MPMediaItemPropertyPlaybackDuration];
+        [dict setObject:[NSNumber numberWithInteger:elapsedPlaybackTime] forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
+        [dict setObject:[NSNumber numberWithInteger:1.0] forKey:MPNowPlayingInfoPropertyPlaybackRate];
+        [dict setObject:[NSNumber numberWithInteger:2] forKey:MPMediaItemPropertyAlbumTrackCount];
+        
+        UIImage *img = [UIImage imageNamed: @"wangyuebo.jpg"];
+        MPMediaItemArtwork * mArt = [[MPMediaItemArtwork alloc] initWithImage:img];
+        [dict setObject:mArt forKey:MPMediaItemPropertyArtwork];
+        [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:dict];
+        
+    }*/
+}
+
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event
+{
+    /*if (event.type == UIEventTypeRemoteControl) {
+        switch (event.subtype) {
+            case UIEventSubtypeRemoteControlTogglePlayPause:
+            {
+                if (player.isPlaying) {
+                    [self pauseSong:currentPlayingIndexPath];
+                }
+                else{
+                    [self playOrResumeSong:storedPlayingIndexPath  At:storedPlayingProgress];
+                }
+                break;
+            }
+            case UIEventSubtypeRemoteControlPause:
+            {
+                [self pauseSong:currentPlayingIndexPath];
+                break;
+            }
+                
+            case UIEventSubtypeRemoteControlPlay:
+            {
+                [self playOrResumeSong:storedPlayingIndexPath At:0];
+                break;
+            }
+            case UIEventSubtypeRemoteControlPreviousTrack:
+            {
+                NSIndexPath *previousIndexPath = [NSIndexPath indexPathForRow:(currentPlayingIndexPath.row-1) inSection:0];
+                [self playOrResumeSong:previousIndexPath At:0];
+                break;
+            }
+            case UIEventSubtypeRemoteControlNextTrack:
+            {
+                NSIndexPath *nextIndexPath = [NSIndexPath indexPathForRow:(currentPlayingIndexPath.row+1) inSection:0];
+                [self playOrResumeSong:nextIndexPath At:0];
+                break;
+            }
+            default:
+                break;
+        }
+    }*/
+}
+
 
 #pragma mark - UI operation event
 
@@ -305,6 +381,21 @@
 }
 - (IBAction)onbtn_nextPressed:(id)sender
 {
+    Song *song = _currentSong;
+    
+    NSString *bundleDocumentDirectoryPath =
+    [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    
+    NSString *plistPath =
+    [bundleDocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_SongList.plist", _album.shortName]];
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+    
+    NSMutableDictionary *songArray = [dictionary objectForKey:[NSString stringWithFormat:@"%@", song.songNumber]];
+    [songArray setObject:[self formatTimeFromSeconds:_audioPlayer.duration] forKey:@"Duration"];
+    
+    if ([dictionary writeToFile:plistPath atomically:NO]) {
+        NSLog(@"success with duration of %@", [self formatTimeFromSeconds:_audioPlayer.duration] );
+    }
 
 }
 
@@ -367,8 +458,9 @@
     
     //Update UI according to song status
     cell.lbl_songTitle.text = song.title;
-    cell.lbl_playbackDuration.text = song.duration;
+    cell.lbl_songDuration.text = song.duration;
     cell.lbl_songNumber.text = song.songNumber;
+    cell.lbl_songDuration.text = song.duration;
     
     cell.song = song;
     cell.album = _album;
@@ -413,7 +505,7 @@
 /// Raised when an item has started playing
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer didStartPlayingQueueItemId:(NSObject*)queueItemId
 {
-    
+    NSLog(@"started");
 }
 
 /// Raised when an item has finished buffering (may or may not be the currently playing item)
@@ -432,7 +524,16 @@
 /// Raised when an item has finished playing
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer didFinishPlayingQueueItemId:(NSObject*)queueItemId withReason:(STKAudioPlayerStopReason)stopReason andProgress:(double)progress andDuration:(double)duration
 {
+    if (stopReason == STKAudioPlayerStopReasonEof) {
+        //play next song
+        NSInteger i = [[AppData sharedAppData].currentPlayingSong.songNumber integerValue];
+        
+        Song *song = [_songs objectAtIndex:(i+1)];
+        
+        [self playSong:song];
+    }
     
+
 }
 /// Raised when an unexpected and possibly unrecoverable error has occured (usually best to recreate the STKAudioPlauyer)
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer unexpectedError:(STKAudioPlayerErrorCode)errorCode
