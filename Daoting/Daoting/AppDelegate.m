@@ -45,6 +45,11 @@
     //Configure CoinHelper for IAP
     [CoinIAPHelper sharedInstance];
     
+    _audioPlayer = [STKAudioPlayerHelper sharedAudioPlayer];
+    _audioPlayer.delegate = [STKAudioPlayerHelper sharedInstance];
+    
+    //self.coins = 500;
+    
     return YES;
 }
 							
@@ -73,6 +78,73 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - STKAudioPlayerDelegate
+
+/// Raised when an item has started playing
+-(void) audioPlayer:(STKAudioPlayer*)audioPlayer didStartPlayingQueueItemId:(NSObject*)queueItemId
+{
+    //NSLog(@"started");
+    
+}
+
+/// Raised when an item has finished buffering (may or may not be the currently playing item)
+/// This event may be raised multiple times for the same item if seek is invoked on the player
+-(void) audioPlayer:(STKAudioPlayer*)audioPlayer didFinishBufferingSourceWithQueueItemId:(NSObject*)queueItemId
+{
+    
+}
+
+/// Raised when the state of the player has changed
+-(void) audioPlayer:(STKAudioPlayer*)audioPlayer stateChanged:(STKAudioPlayerState)state previousState:(STKAudioPlayerState)previousState
+{
+    // this is test code
+    /* if (state == STKAudioPlayerStatePlaying) {
+     Song *song = _currentSong;
+     
+     NSString *bundleDocumentDirectoryPath =
+     [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+     
+     NSString *plistPath =
+     [bundleDocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_SongList.plist", _album.shortName]];
+     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+     
+     NSMutableDictionary *songArray = [dictionary objectForKey:[NSString stringWithFormat:@"%@", song.songNumber]];
+     [songArray setObject:[self formatTimeFromSeconds:_audioPlayer.duration] forKey:@"Duration"];
+     
+     if ([dictionary writeToFile:plistPath atomically:NO]) {
+     NSLog(@"song %d, success with duration of %@", [song.songNumber integerValue], [self formatTimeFromSeconds:_audioPlayer.duration] );
+     }
+     
+     if ([song.songNumber integerValue] < _songs.count) {
+     
+     [_audioPlayer stop];
+     }
+     
+     }*/
+}
+
+/// Raised when an item has finished playing
+-(void) audioPlayer:(STKAudioPlayer*)audioPlayer didFinishPlayingQueueItemId:(NSObject*)queueItemId withReason:(STKAudioPlayerStopReason)stopReason andProgress:(double)progress andDuration:(double)duration
+{
+    if (stopReason == STKAudioPlayerStopReasonEof) {
+        //play next song
+       // NSInteger i = [[AppData sharedAppData].currentPlayingSong.songNumber integerValue];
+        
+        //if ( i < (_songs.count)) {
+        //    Song *song = [_songs objectAtIndex:(i)];
+            
+        //    NSLog(@"play next song %@",song.songNumber);
+        //    [self playSong:song];
+        //}
+    }
+    
+}
+/// Raised when an unexpected and possibly unrecoverable error has occured (usually best to recreate the STKAudioPlauyer)
+-(void) audioPlayer:(STKAudioPlayer*)audioPlayer unexpectedError:(STKAudioPlayerErrorCode)errorCode
+{
+    
 }
 
 @end

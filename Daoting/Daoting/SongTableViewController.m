@@ -19,14 +19,13 @@
 
 - (void)viewDidLoad
 {
+    _audioPlayer = [STKAudioPlayerHelper sharedAudioPlayer];
+    
     [super viewDidLoad];
     
     [self loadSongs];
     
     [self updateSongs];
-    
-    _audioPlayer = [StreamKitHelper sharedInstance];
-    _audioPlayer.delegate = self;
     
     [self setupTimer];
 }
@@ -54,8 +53,6 @@
     //Configure pagecontrol
     pageControl.currentPage = 0;
     pageControl.numberOfPages = 2;
-
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -88,9 +85,13 @@
         song.duration   = [SongDic objectForKey:@"Duration"];
         song.Url        = [[NSURL alloc] initWithString:[SongDic objectForKey:@"Url"]];
         song.filePath   = [[NSURL alloc] initWithString:[SongDic objectForKey:@"FilePath"]];
+        song.price      = [SongDic objectForKey:@"Price"];
         
         [_songs addObject:song];
     }
+    
+    //Writeback to songsDictionary
+    [[AppData sharedAppData].playingQueue setObject:_songs forKey:_album.shortName];
 }
 
 - (void)updateSongs
@@ -113,7 +114,7 @@
     
     [fileManager removeItemAtPath:filePath error:nil];
     operation.outputStream = [NSOutputStream outputStreamToFileAtPath:filePath append:NO];
-    [operation start];
+    [[AFNetWorkingOperationManagerHelper sharedInstance].operationQueue addOperation:operation];
     
     //Download complete block
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
@@ -203,7 +204,7 @@
 
 -(void)setupTimer
 {
-	_timer = [NSTimer timerWithTimeInterval:0.001 target:self selector:@selector(tick) userInfo:nil repeats:YES];
+	_timer = [NSTimer timerWithTimeInterval:0.01 target:self selector:@selector(tick) userInfo:nil repeats:YES];
 	
 	[[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
 }
@@ -227,7 +228,7 @@
         _slider.maximumValue = _audioPlayer.duration;
         _slider.value = _audioPlayer.progress;
         
-        [AppData sharedAppData].currentPlayingProgress = _audioPlayer.progress;
+        [AppData sharedAppData].currentProgress = _audioPlayer.progress;
     }
     else
     {
@@ -278,7 +279,7 @@
     [self tick];
 }
 
--(void)playSong:(Song *)song
+/*-(void)playSong:(Song *)song
 {
     if (![[song.filePath absoluteString] isEqualToString:@""]) {
         
@@ -291,13 +292,12 @@
         //play from cloud storage
         STKDataSource* dataSource = [STKAudioPlayer dataSourceFromURL:song.Url];
         [_audioPlayer setDataSource:dataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:song.Url andCount:0]];
-        
-        //Todo: need to remove, just for testing
-        _currentSong = song;
     }
     
+    [AppData sharedAppData].currentPlayingAlbum = _album;
     [AppData sharedAppData].currentPlayingSong = song;
-}
+    [AppData sharedAppData].currentPlayingProgress = 0;
+}*/
 
 - (void) configureNowPlayingInfo:(float)elapsedPlaybackTime
 {
@@ -381,23 +381,10 @@
 }
 - (IBAction)onbtn_nextPressed:(id)sender
 {
-    Song *song = _currentSong;
-    
-    NSString *bundleDocumentDirectoryPath =
-    [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    
-    NSString *plistPath =
-    [bundleDocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_SongList.plist", _album.shortName]];
-    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-    
-    NSMutableDictionary *songArray = [dictionary objectForKey:[NSString stringWithFormat:@"%@", song.songNumber]];
-    [songArray setObject:[self formatTimeFromSeconds:_audioPlayer.duration] forKey:@"Duration"];
-    
-    if ([dictionary writeToFile:plistPath atomically:NO]) {
-        NSLog(@"success with duration of %@", [self formatTimeFromSeconds:_audioPlayer.duration] );
-    }
-
+    //[self test];
 }
+
+
 
 -(void)test
 {
@@ -412,7 +399,7 @@
     for (int i = 1; i<= dictionary.count; i++)
     {
         NSMutableDictionary *songArray = [dictionary objectForKey:[NSString stringWithFormat:@"%d",i]];
-        [songArray setObject:@"" forKey:@"FilePath"];
+        [songArray setObject:@"" forKey:@"Price"];
     }
     
     plistPath = [plistPath stringByAppendingString:@"_new"];
@@ -472,21 +459,61 @@
 {
     Song *selectedSong = [_songs objectAtIndex:indexPath.row];
     
-    //check the selected song is playing
-    
-    //0.Check network reachbility
-    
-    //1.check the song had been purchased or not
-    double coins = [AppData sharedAppData].coins;
-    
-    //2.check if the song had been downlaoded
-    if (selectedSong.filePath != nil) {
-        
+    //1. check the selected song is current playing song
+    if (selectedSong == [AppData sharedAppData].currentSong) {
+        //1.1 check current song is playing or paused
+        if (_audioPlayer.state == STKAudioPlayerStatePlaying) {
+            
+            //pause the song
+            [_audioPlayer pause];
+        }
+        else{
+         
+            //resume the song
+            [[STKAudioPlayerHelper sharedInstance] playSong:selectedSong InAlbum:_album AtProgress:[AppData sharedAppData].currentProgress];
+        }
     }
-    
-    //3.play the song
-    [self playSong:selectedSong];
+    //2. the selected song is a new song
+    else{
 
+        BOOL purchased;
+        
+        NSString *key = [NSString stringWithFormat:@"%@_%@", _album.shortName, selectedSong.songNumber];
+        
+        //2.1 check the song had been purchased or not
+        purchased = [[[AppData sharedAppData].purchasedQueue objectForKey:key] isEqualToString:@"YES"];
+
+        //if the song had been purchased
+        if (purchased) {
+            
+            //play from local reposistory for the song
+            [[STKAudioPlayerHelper sharedInstance] playSong:selectedSong InAlbum:_album AtProgress:0];
+            
+        }
+        //2.2 the song had not been purchased yet
+        else{
+            
+            double coins = [AppData sharedAppData].coins;
+            
+            //2.2.1 if coin is enough, buy it.
+            if (coins >= [selectedSong.price intValue]) {
+                
+                [AppData sharedAppData].coins -= [selectedSong.price intValue];
+                
+                [[STKAudioPlayerHelper sharedInstance] playSong:selectedSong InAlbum:_album AtProgress:0];
+                
+                //Add to purchased queue
+                [[AppData sharedAppData].purchasedQueue setObject:@"Yes" forKey:[NSString stringWithFormat:@"%@_%@", _album.shortName, selectedSong.songNumber]];
+                
+                [[AppData sharedAppData] save];
+            }
+            else
+            //2.2.2 cois is not enough
+            {
+                //todo notify user and show store view
+            }
+        }
+    }
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -499,46 +526,6 @@
     
     // Update the page control
     pageControl.currentPage = page;
-}
-
-#pragma mark - STKAudioPlayerDelegate
-/// Raised when an item has started playing
--(void) audioPlayer:(STKAudioPlayer*)audioPlayer didStartPlayingQueueItemId:(NSObject*)queueItemId
-{
-    NSLog(@"started");
-}
-
-/// Raised when an item has finished buffering (may or may not be the currently playing item)
-/// This event may be raised multiple times for the same item if seek is invoked on the player
--(void) audioPlayer:(STKAudioPlayer*)audioPlayer didFinishBufferingSourceWithQueueItemId:(NSObject*)queueItemId
-{
-    
-}
-
-/// Raised when the state of the player has changed
--(void) audioPlayer:(STKAudioPlayer*)audioPlayer stateChanged:(STKAudioPlayerState)state previousState:(STKAudioPlayerState)previousState
-{
-    
-}
-
-/// Raised when an item has finished playing
--(void) audioPlayer:(STKAudioPlayer*)audioPlayer didFinishPlayingQueueItemId:(NSObject*)queueItemId withReason:(STKAudioPlayerStopReason)stopReason andProgress:(double)progress andDuration:(double)duration
-{
-    if (stopReason == STKAudioPlayerStopReasonEof) {
-        //play next song
-        NSInteger i = [[AppData sharedAppData].currentPlayingSong.songNumber integerValue];
-        
-        Song *song = [_songs objectAtIndex:(i+1)];
-        
-        [self playSong:song];
-    }
-    
-
-}
-/// Raised when an unexpected and possibly unrecoverable error has occured (usually best to recreate the STKAudioPlauyer)
--(void) audioPlayer:(STKAudioPlayer*)audioPlayer unexpectedError:(STKAudioPlayerErrorCode)errorCode
-{
-    
 }
 
 @end

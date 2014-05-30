@@ -36,6 +36,8 @@
     
     [self updateAlbums];
     
+    self.songsDictionary = [[NSMutableDictionary alloc]init];
+    
     //enable IAP
     [[CoinIAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
         if (success) {

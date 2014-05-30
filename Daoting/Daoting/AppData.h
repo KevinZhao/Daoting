@@ -9,19 +9,25 @@
 #import <Foundation/Foundation.h>
 #import "KeychainWrapper.h"
 #import "Song.h"
+#import "Album.h"
 
 @interface AppData : NSObject <NSCoding>
 {
     
 }
 
-@property (assign, nonatomic) double coins;
-@property (retain, nonatomic) NSMutableArray *purchasedSongs;
-@property (retain, nonatomic) Song *currentPlayingSong;
-@property (assign, nonatomic) double currentPlayingProgress;
+@property (assign, nonatomic) double                 coins;
+@property (retain, nonatomic) NSMutableArray        *purchasedSongs;
+@property (retain, nonatomic) Album                 *currentAlbum;
+@property (retain, nonatomic) Song                  *currentSong;
+@property (assign, nonatomic) double                 currentProgress;
+
+@property (retain, nonatomic) NSMutableDictionary   *playingQueue;
+@property (retain, nonatomic) NSMutableDictionary   *purchasedQueue;
 
 +(instancetype)sharedAppData;
 +(NSString*)filePath;
+
 
 -(void)save;
 

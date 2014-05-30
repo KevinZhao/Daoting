@@ -12,7 +12,11 @@ static NSString* const SSDataforCoinsKey = @"coins";
 
 static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
 
+
 @implementation AppData
+
+
+@synthesize playingQueue, purchasedQueue;
 
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
@@ -25,16 +29,18 @@ static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
     self = [self init];
     if (self) {
         _coins = [decoder decodeDoubleForKey:SSDataforCoinsKey];
+        playingQueue = [[NSMutableDictionary alloc]init];
+        purchasedQueue = [[NSMutableDictionary alloc]init];
     }
     return self;
 }
 
 
 + (instancetype)sharedAppData {
-    static id sharedInstance = nil;
-    
+    static AppData *sharedInstance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
+        
         sharedInstance = [self loadInstance];
     });
     
@@ -67,6 +73,7 @@ static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
             return appData;
         }
         //4
+
     }
     
     return [[AppData alloc] init];

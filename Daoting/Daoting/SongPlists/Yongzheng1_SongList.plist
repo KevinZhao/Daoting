@@ -5,9 +5,11 @@
 	<key>1</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>00:57:28</string>
 		<key>FilePath</key>
 		<string></string>
+		<key>Price</key>
+		<string>60</string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
 		<key>Url</key>
@@ -16,9 +18,11 @@
 	<key>10</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>00:57:42</string>
 		<key>FilePath</key>
 		<string></string>
+		<key>Price</key>
+		<string>60</string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
 		<key>Url</key>
@@ -27,9 +31,11 @@
 	<key>11</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>00:57:47</string>
 		<key>FilePath</key>
 		<string></string>
+		<key>Price</key>
+		<string>60</string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
 		<key>Url</key>
@@ -38,8 +44,10 @@
 	<key>12</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>00:56:11</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -49,8 +57,10 @@
 	<key>13</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>00:57:06</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -60,8 +70,10 @@
 	<key>14</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>00:46:47</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -71,8 +83,10 @@
 	<key>15</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>00:51:25</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -82,8 +96,10 @@
 	<key>16</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>00:53:01</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -93,8 +109,10 @@
 	<key>17</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:07:21</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -104,8 +122,10 @@
 	<key>18</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:06:42</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -115,8 +135,10 @@
 	<key>19</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:07:48</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -126,8 +148,10 @@
 	<key>2</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>00:57:04</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -137,8 +161,10 @@
 	<key>20</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:02:39</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -148,8 +174,10 @@
 	<key>21</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:02:40</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -159,8 +187,10 @@
 	<key>22</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:12:11</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -170,8 +200,10 @@
 	<key>23</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:11:54</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -181,8 +213,10 @@
 	<key>24</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:02:58</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -192,8 +226,10 @@
 	<key>25</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:04:46</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -203,8 +239,10 @@
 	<key>26</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:05:42</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -214,8 +252,10 @@
 	<key>27</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:04:26</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -225,8 +265,10 @@
 	<key>28</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:04:23</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -236,8 +278,10 @@
 	<key>29</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:03:20</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -247,8 +291,10 @@
 	<key>3</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:12:15</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -258,8 +304,10 @@
 	<key>30</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:05:16</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -269,8 +317,10 @@
 	<key>31</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:05:23</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -280,8 +330,10 @@
 	<key>32</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:04:19</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -291,8 +343,10 @@
 	<key>33</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:02:25</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -302,8 +356,10 @@
 	<key>34</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:25:46</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -313,8 +369,10 @@
 	<key>35</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:05:13</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -324,8 +382,10 @@
 	<key>36</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:05:19</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -335,8 +395,10 @@
 	<key>37</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:03:01</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -346,8 +408,10 @@
 	<key>38</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:05:32</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -357,8 +421,10 @@
 	<key>39</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:03:58</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -368,8 +434,10 @@
 	<key>4</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:09:24</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -379,8 +447,10 @@
 	<key>40</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:03:58</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -390,8 +460,10 @@
 	<key>41</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:02:20</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -401,8 +473,10 @@
 	<key>42</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>00:42:16</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -412,8 +486,10 @@
 	<key>43</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>01:06:34</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -423,8 +499,10 @@
 	<key>44</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>00:55:47</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -434,8 +512,10 @@
 	<key>5</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>00:57:20</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -445,8 +525,10 @@
 	<key>6</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>00:57:49</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -456,8 +538,10 @@
 	<key>7</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>00:38:50</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -467,8 +551,10 @@
 	<key>8</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>00:57:22</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>
@@ -478,8 +564,10 @@
 	<key>9</key>
 	<dict>
 		<key>Duration</key>
-		<string></string>
+		<string>00:58:05</string>
 		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
 		<string></string>
 		<key>Title</key>
 		<string>雍正剑侠图</string>

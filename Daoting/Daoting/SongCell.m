@@ -133,10 +133,11 @@
      }];
     //Progress updating
     
-    [operation setDownloadProgressBlock:^(NSUInteger bytesRead, NSInteger totalBytesRead, NSInteger totalBytesExpectedToRead) {
+    [operation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
         
-        NSLog(@"downloading");
     }];
+    
+    
     
 }
 

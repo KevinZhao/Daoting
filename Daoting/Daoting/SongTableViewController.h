@@ -12,12 +12,12 @@
 #import "SongCell.h"
 #import "AFNetworking.h"
 #import "STKAudioPlayer.h"
-#import "StreamKitHelper.h"
 #import "SampleQueueId.h"
 #import "AppData.h"
+#import "AppDelegate.h"
 
 @interface SongTableViewController : UIViewController
-    <UIScrollViewDelegate, UITableViewDataSource, STKAudioPlayerDelegate, UITableViewDelegate>
+    <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     NSMutableArray                      *_songs;
     UITableView                         *_tableview;
@@ -25,8 +25,8 @@
     AFHTTPRequestOperationManager       *_operationManager;
     STKAudioPlayer                      *_audioPlayer;
     NSTimer                             *_timer;
-    //test
-    Song                                *_currentSong;
+    
+    AppData                             *_appData;
 }
 
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;

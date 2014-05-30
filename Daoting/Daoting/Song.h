@@ -15,5 +15,6 @@
 @property (nonatomic, strong) NSString  *duration;
 @property (nonatomic, strong) NSURL     *Url;
 @property (nonatomic, strong) NSURL     *filePath;
+@property (nonatomic, strong) NSString  *price;
 
 @end

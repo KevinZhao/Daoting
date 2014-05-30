@@ -9,16 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "CoinIAPHelper.h"
 #import "STKAudioPlayer.h"
-#import "StreamKitHelper.h"
 #import "AppData.h"
 #import "AFNetWorkingOperationManagerHelper.h"
+#import "STKAudioPlayerHelper.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, STKAudioPlayerDelegate>
 {
-
+    STKAudioPlayer                      *_audioPlayer;
 }
 
-@property (strong, nonatomic) UIWindow *window;
-@property (assign, nonatomic) long *coins;
+@property (strong, nonatomic) UIWindow  *window;
+@property (assign, nonatomic) long      *coins;
 
 @end

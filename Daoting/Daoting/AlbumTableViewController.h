@@ -14,4 +14,6 @@
     NSMutableArray      *_albums;
 }
 
+@property (nonatomic, retain) NSMutableDictionary *songsDictionary;
+
 @end
