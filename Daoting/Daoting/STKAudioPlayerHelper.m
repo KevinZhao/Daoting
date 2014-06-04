@@ -39,7 +39,7 @@
     //Check the file is in local reposistory
     if (![[song.filePath absoluteString] isEqualToString:@""] ) {
                 
-        //4.play from local reposistory for the song
+        //play from local reposistory for the song
         STKDataSource* fileDataSource = [STKAudioPlayer dataSourceFromURL:song.filePath];
         [[STKAudioPlayerHelper sharedAudioPlayer] setDataSource:fileDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:song.Url andCount:0]];
     }
@@ -79,6 +79,8 @@
     [AppData sharedAppData].currentSong = song;
     [AppData sharedAppData].currentProgress = progress;
     
+    [[AppData sharedAppData] save];
+    
 }
 
 /// Raised when an item has started playing
@@ -100,25 +102,29 @@
 {
     // this is test code
     /* if (state == STKAudioPlayerStatePlaying) {
-     Song *song = _currentSong;
+         
+     Song *song = [AppData sharedAppData].currentSong;
      
      NSString *bundleDocumentDirectoryPath =
      [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
      
      NSString *plistPath =
-     [bundleDocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_SongList.plist", _album.shortName]];
+     [bundleDocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_SongList.plist",
+                                                           [AppData sharedAppData].currentAlbum.shortName]];
      NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
      
      NSMutableDictionary *songArray = [dictionary objectForKey:[NSString stringWithFormat:@"%@", song.songNumber]];
-     [songArray setObject:[self formatTimeFromSeconds:_audioPlayer.duration] forKey:@"Duration"];
+     [songArray setObject:[NSString stringWithFormat:@"%d", 20] forKey:@"Price"];
      
      if ([dictionary writeToFile:plistPath atomically:NO]) {
-     NSLog(@"song %d, success with duration of %@", [song.songNumber integerValue], [self formatTimeFromSeconds:_audioPlayer.duration] );
+         NSLog(@"song %d, success with duration of %@", [song.songNumber integerValue], @"25");
      }
+
+    NSMutableArray *songs = [[AppData sharedAppData].playingQueue objectForKey:[AppData sharedAppData].currentAlbum.shortName];
+         
+     if ([song.songNumber integerValue] < songs.count) {
      
-     if ([song.songNumber integerValue] < _songs.count) {
-     
-     [_audioPlayer stop];
+         [[STKAudioPlayerHelper sharedAudioPlayer] stop];
      }
      
      }*/

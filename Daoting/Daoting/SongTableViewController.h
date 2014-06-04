@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
+
 #import "Album.h"
 #import "Song.h"
 #import "SongCell.h"
@@ -15,6 +17,8 @@
 #import "SampleQueueId.h"
 #import "AppData.h"
 #import "AppDelegate.h"
+#import "STKAudioPlayerHelper.h"
+
 
 @interface SongTableViewController : UIViewController
     <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>

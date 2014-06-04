@@ -22,10 +22,11 @@
 @property (retain, nonatomic) Song                  *currentSong;
 @property (assign, nonatomic) double                 currentProgress;
 
-@property (retain, nonatomic) NSMutableDictionary   *playingQueue;
-@property (retain, nonatomic) NSMutableDictionary   *purchasedQueue;
+@property (strong, nonatomic) NSMutableDictionary   *playingQueue;
+@property (strong, nonatomic) NSMutableDictionary   *purchasedQueue;
 
 +(instancetype)sharedAppData;
+//-(instancetype)loadInstance;
 +(NSString*)filePath;
 
 

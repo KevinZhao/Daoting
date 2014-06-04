@@ -135,6 +135,9 @@
     
     [operation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
         
+        float percentage = totalBytesRead/totalBytesExpectedToRead;
+        NSLog(@"%f", percentage);
+        
     }];
     
     

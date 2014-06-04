@@ -15,5 +15,6 @@
 @property (nonatomic, strong) NSString  *description;
 @property (nonatomic, strong) NSURL     *imageUrl;
 @property (nonatomic, strong) NSURL     *plistUrl;
+@property (nonatomic, strong) NSString  *artistName;
 
 @end

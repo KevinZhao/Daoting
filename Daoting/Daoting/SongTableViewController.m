@@ -128,6 +128,7 @@
              oldPlist_dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
          }
          
+         //there is new song in the plist
          if (newPlist_dictionary.count > oldPlist_dictionary.count)
          {
              int oldCount = (int)oldPlist_dictionary.count;
@@ -146,24 +147,18 @@
              [self initializeSongs];
              
              [_tableview reloadData];
-             
-             /*UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"更新成功" message:[NSString stringWithFormat:@"成功更新%d个新回目，请点击下载按钮", j] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-             [alert show];*/
          }
+         //there is no new song in the plist
          else
          {
-             /*UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"更新成功" message:@"目前没有可用更新" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-             [alert show];*/
          }
          
      }
      //Download Failed
     failure:^(AFHTTPRequestOperation *operation, NSError *error)
      {
-         /*UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"网络异常" message:@"当前网络无法连接，无法检查更新" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-         [alert show];*/
-     }
-     ];
+         //todo: try to redownload from cloud for 3 times
+     }];
 }
 
 - (void)loadSongs
@@ -196,6 +191,44 @@
     
     [_tableview reloadData];
 }
+
+-(void)playSong:(Song*)song
+{
+    NSString *key = [NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber];
+    
+    //2.1 check the song had been purchased or not
+    BOOL purchased = [[[AppData sharedAppData].purchasedQueue objectForKey:key] isEqualToString:@"Yes"];
+    
+    //if the song had been purchased
+    if (purchased) {
+        
+        //play from local reposistory for the song
+        [[STKAudioPlayerHelper sharedInstance] playSong:song InAlbum:_album AtProgress:0];
+        
+    }
+    //2.2 the song had not been purchased yet
+    else{
+        
+        //2.2.1 if coin is enough, buy it.
+        if ([AppData sharedAppData].coins >= [song.price intValue]) {
+            
+            [AppData sharedAppData].coins = [AppData sharedAppData].coins - [song.price intValue];
+            
+            [[STKAudioPlayerHelper sharedInstance] playSong:song InAlbum:_album AtProgress:0];
+            
+            //Add to purchased queue
+            [[AppData sharedAppData].purchasedQueue setObject:@"Yes" forKey:[NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber]];
+            
+            [[AppData sharedAppData] save];
+        }
+        else
+            //2.2.2 cois is not enough
+        {
+            //todo notify user and show store view
+        }
+    }
+}
+
 
 - (void)setDetailItem:(Album *)album
 {
@@ -252,16 +285,6 @@
             break;
         default:
             break;
-        /*
-         STKAudioPlayerStateReady,
-         STKAudioPlayerStateRunning = 1,
-         STKAudioPlayerStatePlaying = (1 << 1) | STKAudioPlayerStateRunning,
-         STKAudioPlayerStateBuffering = (1 << 2) | STKAudioPlayerStateRunning,
-         STKAudioPlayerStatePaused = (1 << 3) | STKAudioPlayerStateRunning,
-         STKAudioPlayerStateStopped = (1 << 4),
-         STKAudioPlayerStateError = (1 << 5),
-         STKAudioPlayerStateDisposed = (1 << 6)
-         */
     }
 }
 
@@ -279,37 +302,20 @@
     [self tick];
 }
 
-/*-(void)playSong:(Song *)song
-{
-    if (![[song.filePath absoluteString] isEqualToString:@""]) {
-        
-        //play file from local reposistory
-        STKDataSource* dataSource = [STKAudioPlayer dataSourceFromURL:song.filePath];
-        [_audioPlayer setDataSource:dataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:song.Url andCount:0]];
-    }
-    else
-    {
-        //play from cloud storage
-        STKDataSource* dataSource = [STKAudioPlayer dataSourceFromURL:song.Url];
-        [_audioPlayer setDataSource:dataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:song.Url andCount:0]];
-    }
-    
-    [AppData sharedAppData].currentPlayingAlbum = _album;
-    [AppData sharedAppData].currentPlayingSong = song;
-    [AppData sharedAppData].currentPlayingProgress = 0;
-}*/
 
-- (void) configureNowPlayingInfo:(float)elapsedPlaybackTime
+- (void) configureNowPlayingInfo
 {
-    /*Song *song= [self.songs objectAtIndex:currentPlayingIndexPath.row];
+    Album *album = [AppData sharedAppData].currentAlbum;
+    Song *song= [AppData sharedAppData].currentSong;
+    STKAudioPlayer *player = [STKAudioPlayerHelper sharedAudioPlayer];
     
     //Set Information for Nowplaying Info Center
     if (NSClassFromString(@"MPNowPlayingInfoCenter")) {
         NSMutableDictionary * dict = [[NSMutableDictionary alloc] init];
         [dict setObject:song.title forKey:MPMediaItemPropertyAlbumTitle];
-        [dict setObject:@"王玥波" forKey:MPMediaItemPropertyArtist];
+        [dict setObject:album.artistName forKey:MPMediaItemPropertyArtist];
         [dict setObject:[NSNumber numberWithInteger:player.duration] forKey:MPMediaItemPropertyPlaybackDuration];
-        [dict setObject:[NSNumber numberWithInteger:elapsedPlaybackTime] forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
+        [dict setObject:[NSNumber numberWithInteger:player.progress] forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
         [dict setObject:[NSNumber numberWithInteger:1.0] forKey:MPNowPlayingInfoPropertyPlaybackRate];
         [dict setObject:[NSNumber numberWithInteger:2] forKey:MPMediaItemPropertyAlbumTrackCount];
         
@@ -318,50 +324,56 @@
         [dict setObject:mArt forKey:MPMediaItemPropertyArtwork];
         [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:dict];
         
-    }*/
+    }
 }
 
 - (void)remoteControlReceivedWithEvent:(UIEvent *)event
 {
-    /*if (event.type == UIEventTypeRemoteControl) {
+    STKAudioPlayer *player = [STKAudioPlayerHelper sharedAudioPlayer];
+    
+    if (event.type == UIEventTypeRemoteControl) {
         switch (event.subtype) {
             case UIEventSubtypeRemoteControlTogglePlayPause:
             {
-                if (player.isPlaying) {
-                    [self pauseSong:currentPlayingIndexPath];
-                }
-                else{
-                    [self playOrResumeSong:storedPlayingIndexPath  At:storedPlayingProgress];
+                if (player.state == STKAudioPlayerStatePlaying) {
+                    
+                    [player pause];
+                    
+                }else{
+                    
+                    [player resume];
                 }
                 break;
             }
             case UIEventSubtypeRemoteControlPause:
             {
-                [self pauseSong:currentPlayingIndexPath];
+                [player pause];
+                
                 break;
             }
                 
             case UIEventSubtypeRemoteControlPlay:
             {
-                [self playOrResumeSong:storedPlayingIndexPath At:0];
+                [player resume];
+                //[self playOrResumeSong:storedPlayingIndexPath At:0];
                 break;
             }
             case UIEventSubtypeRemoteControlPreviousTrack:
             {
-                NSIndexPath *previousIndexPath = [NSIndexPath indexPathForRow:(currentPlayingIndexPath.row-1) inSection:0];
-                [self playOrResumeSong:previousIndexPath At:0];
+                //NSIndexPath *previousIndexPath = [NSIndexPath indexPathForRow:(currentPlayingIndexPath.row-1) inSection:0];
+                //[self playOrResumeSong:previousIndexPath At:0];
                 break;
             }
             case UIEventSubtypeRemoteControlNextTrack:
             {
-                NSIndexPath *nextIndexPath = [NSIndexPath indexPathForRow:(currentPlayingIndexPath.row+1) inSection:0];
-                [self playOrResumeSong:nextIndexPath At:0];
+                //NSIndexPath *nextIndexPath = [NSIndexPath indexPathForRow:(currentPlayingIndexPath.row+1) inSection:0];
+                //[self playOrResumeSong:nextIndexPath At:0];
                 break;
             }
             default:
                 break;
         }
-    }*/
+    }
 }
 
 
@@ -383,8 +395,6 @@
 {
     //[self test];
 }
-
-
 
 -(void)test
 {
@@ -452,6 +462,15 @@
     cell.song = song;
     cell.album = _album;
     
+    if (![song.filePath isEqual: @""]) {
+        
+        //display cloud icon
+    }else{
+        
+        //display storage icon
+        
+    }
+    
     return cell;
 }
 
@@ -475,44 +494,8 @@
     }
     //2. the selected song is a new song
     else{
-
-        BOOL purchased;
         
-        NSString *key = [NSString stringWithFormat:@"%@_%@", _album.shortName, selectedSong.songNumber];
-        
-        //2.1 check the song had been purchased or not
-        purchased = [[[AppData sharedAppData].purchasedQueue objectForKey:key] isEqualToString:@"YES"];
-
-        //if the song had been purchased
-        if (purchased) {
-            
-            //play from local reposistory for the song
-            [[STKAudioPlayerHelper sharedInstance] playSong:selectedSong InAlbum:_album AtProgress:0];
-            
-        }
-        //2.2 the song had not been purchased yet
-        else{
-            
-            double coins = [AppData sharedAppData].coins;
-            
-            //2.2.1 if coin is enough, buy it.
-            if (coins >= [selectedSong.price intValue]) {
-                
-                [AppData sharedAppData].coins -= [selectedSong.price intValue];
-                
-                [[STKAudioPlayerHelper sharedInstance] playSong:selectedSong InAlbum:_album AtProgress:0];
-                
-                //Add to purchased queue
-                [[AppData sharedAppData].purchasedQueue setObject:@"Yes" forKey:[NSString stringWithFormat:@"%@_%@", _album.shortName, selectedSong.songNumber]];
-                
-                [[AppData sharedAppData] save];
-            }
-            else
-            //2.2.2 cois is not enough
-            {
-                //todo notify user and show store view
-            }
-        }
+        [self playSong:selectedSong];
     }
 }
 

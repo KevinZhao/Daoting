@@ -9,6 +9,9 @@
 #import "AppData.h"
 
 static NSString* const SSDataforCoinsKey = @"coins";
+static NSString* const SSDataforPlayingQueue = @"playingQueue";
+static NSString* const SSDataforPurchasedQueue = @"purchasedQueue";
+
 
 static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
 
@@ -21,7 +24,8 @@ static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
     [encoder encodeDouble:self.coins forKey: SSDataforCoinsKey];
-    
+    [encoder encodeObject:playingQueue forKey:SSDataforPlayingQueue];
+    [encoder encodeObject:purchasedQueue forKey:SSDataforPurchasedQueue];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)decoder
@@ -29,8 +33,20 @@ static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
     self = [self init];
     if (self) {
         _coins = [decoder decodeDoubleForKey:SSDataforCoinsKey];
-        playingQueue = [[NSMutableDictionary alloc]init];
-        purchasedQueue = [[NSMutableDictionary alloc]init];
+        
+        if ([decoder decodeObjectForKey:SSDataforPlayingQueue]) {
+            self.playingQueue = [[decoder decodeObjectForKey:SSDataforPlayingQueue] mutableCopy];
+        }
+        else
+        {
+            self.playingQueue = [[NSMutableDictionary alloc]init];
+        }
+        
+        self.purchasedQueue = [[decoder decodeObjectForKey:SSDataforPurchasedQueue] mutableCopy];
+        
+        if (self.purchasedQueue == nil) {
+            self.purchasedQueue = [[NSMutableDictionary alloc]init];
+        }
     }
     return self;
 }
@@ -57,7 +73,7 @@ static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
     return filePath;
 }
 
-+(instancetype)loadInstance
++ (instancetype)loadInstance
 {
     NSData* decodedData = [NSData dataWithContentsOfFile: [AppData filePath]];
     if (decodedData) {
@@ -66,14 +82,13 @@ static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
         
         //2
         NSString* checksumInKeychain = [KeychainWrapper keychainStringFromMatchingIdentifier: SSDataChecksumKey];
-        
+
         //3
         if ([checksumOfSavedFile isEqualToString: checksumInKeychain]) {
             AppData* appData = [NSKeyedUnarchiver unarchiveObjectWithData:decodedData];
+            
             return appData;
         }
-        //4
-
     }
     
     return [[AppData alloc] init];
@@ -81,6 +96,7 @@ static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
 
 -(void)save
 {
+    //iCloud related
     NSData* encodedData = [NSKeyedArchiver archivedDataWithRootObject: self];
     [encodedData writeToFile:[AppData filePath] atomically:YES];
     

@@ -14,6 +14,8 @@
 		<string>http://bcs.duapp.com/daoting/PlistFolder/Yongzheng1_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Yongzheng1</string>
+		<key>Artist</key>
+		<string>王玥波</string>
 	</dict>
 	<key>2</key>
 	<dict>
@@ -27,6 +29,8 @@
 		<string>http://bcs.duapp.com/daoting/PlistFolder/Yongzheng2_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Yongzheng2</string>
+		<key>Artist</key>
+		<string>王玥波</string>
 	</dict>
 	<key>3</key>
 	<dict>
@@ -40,6 +44,8 @@
 		<string>http://bcs.duapp.com/daoting/PlistFolder/Yongzheng3_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Yongzheng3</string>
+		<key>Artist</key>
+		<string>王玥波</string>
 	</dict>
 	<key>4</key>
 	<dict>
@@ -53,6 +59,8 @@
 		<string>http://bcs.duapp.com/daoting/PlistFolder/Zhengdong1_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Zhengdong1</string>
+		<key>Artist</key>
+		<string>王玥波</string>
 	</dict>
 	<key>5</key>
 	<dict>
@@ -66,6 +74,8 @@
 		<string>http://bcs.duapp.com/daoting/PlistFolder/Mingchao_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Mingchao</string>
+		<key>Artist</key>
+		<string>王玥波</string>
 	</dict>
 	<key>6</key>
 	<dict>
@@ -79,6 +89,8 @@
 		<string>http://bcs.duapp.com/daoting/PlistFolder/Shuangbianji_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Shuangbianji</string>
+		<key>Artist</key>
+		<string>王玥波</string>
 	</dict>
 	<key>7</key>
 	<dict>
@@ -92,6 +104,8 @@
 		<string>http://bcs.duapp.com/daoting/PlistFolder/Suitang_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Suitang</string>
+		<key>Artist</key>
+		<string>王玥波</string>
 	</dict>
 	<key>8</key>
 	<dict>
@@ -105,6 +119,8 @@
 		<string>http://bcs.duapp.com/daoting/PlistFolder/Liaozhai_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Liaozhai</string>
+		<key>Artist</key>
+		<string>王玥波</string>
 	</dict>
 	<key>9</key>
 	<dict>
@@ -118,6 +134,8 @@
 		<string>http://bcs.duapp.com/daoting/PlistFolder/Xiayi_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Xiayi</string>
+		<key>Artist</key>
+		<string>王玥波</string>
 	</dict>
 	<key>10</key>
 	<dict>
@@ -131,6 +149,8 @@
 		<string>http://bcs.duapp.com/daoting/PlistFolder/Sandao_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Sandao</string>
+		<key>Artist</key>
+		<string>王玥波</string>
 	</dict>
 	<key>11</key>
 	<dict>
@@ -144,6 +164,8 @@
 		<string>http://bcs.duapp.com/daoting/PlistFolder/Haizeiwang_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Haizeiwang</string>
+		<key>Artist</key>
+		<string>王玥波</string>
 	</dict>
 	<key>12</key>
 	<dict>
@@ -157,6 +179,8 @@
 		<string>http://bcs.duapp.com/daoting/PlistFolder/Jinbiao_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Jinbiao</string>
+		<key>Artist</key>
+		<string>王玥波</string>
 	</dict>
 	<key>13</key>
 	<dict>
@@ -170,6 +194,8 @@
 		<string>http://bcs.duapp.com/daoting/PlistFolder/Zhangguantai_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Zhangguangtai</string>
+		<key>Artist</key>
+		<string>王玥波</string>
 	</dict>
 </dict>
 </plist>
