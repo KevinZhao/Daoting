@@ -10,7 +10,15 @@
 #import "AFNetWorking.h"
 
 @interface AFNetWorkingOperationManagerHelper : NSObject
+{
+    
+}
+
+@property (nonatomic, retain) NSMutableDictionary   *downloadQueue;
 
 + (AFHTTPRequestOperationManager *)sharedInstance;
++ (AFNetWorkingOperationManagerHelper *)sharedManagerHelper;
+
+
 
 @end

@@ -53,10 +53,14 @@
     operation.outputStream = [NSOutputStream outputStreamToFileAtPath:filePath append:NO];
     [[AFNetWorkingOperationManagerHelper sharedInstance].operationQueue addOperation:operation];
     
+    NSMutableDictionary *downloadQueue = [AFNetWorkingOperationManagerHelper sharedManagerHelper].downloadQueue;
+    
+    [downloadQueue setObject:operation forKey:[NSString stringWithFormat:@"%@_%@", self.album.shortName, self.song.songNumber]];
+    
     //Download complete block
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
      {
-         NSLog(@"download completed");
+
          BOOL success;
          NSError *error;
 
@@ -90,8 +94,12 @@
          NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
          NSMutableDictionary *songArray = [dictionary objectForKey:self.song.songNumber];
          
-         [songArray setObject:self.song.filePath forKey:@"FilePath"];
-         [dictionary writeToFile:plistPath atomically:NO];
+         [songArray setObject:[self.song.filePath absoluteString] forKey:@"FilePath"];
+         success = [dictionary writeToFile:plistPath atomically:NO];
+         
+         if (success) {
+            NSLog(@"download completed");
+         }
      }
      //Failed
     failure:
@@ -110,8 +118,7 @@
              
              cell.cirProgView_downloadProgress.hidden = YES;
              cell.bt_downloadOrPause.hidden = NO;
-             
-             
+          
              [cell.bt_downloadOrPause setBackgroundImage:[UIImage imageNamed:@"downloadButton.png"] forState:UIControlStateNormal];
              [cell.bt_downloadOrPause removeTarget:self action:@selector(onPauseDownloadButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
              [cell.bt_downloadOrPause addTarget:self action:@selector(onDownloadButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -133,12 +140,12 @@
      }];
     //Progress updating
     
-    [operation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
+    /*[operation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
         
-        float percentage = totalBytesRead/totalBytesExpectedToRead;
-        NSLog(@"%f", percentage);
+        NSString *percentage = [NSString stringWithFormat:@"%lld/%lld", totalBytesRead, totalBytesExpectedToRead];
+        NSLog(@"%@", percentage);
         
-    }];
+    }];*/
     
     
     

@@ -26,7 +26,6 @@
 @property (strong, nonatomic) NSMutableDictionary   *purchasedQueue;
 
 +(instancetype)sharedAppData;
-//-(instancetype)loadInstance;
 +(NSString*)filePath;
 
 

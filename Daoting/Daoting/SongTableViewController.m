@@ -286,6 +286,47 @@
         default:
             break;
     }
+    
+    //update table view cell
+    
+    NSArray *visibleRows = [_tableview indexPathsForVisibleRows];
+    
+    for (int i = 0; i< visibleRows.count; i++) {
+        NSIndexPath *indexPath = [visibleRows objectAtIndex:i];
+        SongCell *cell = (SongCell*)[_tableview cellForRowAtIndexPath: indexPath];
+        
+        //check if the cell is in download queue
+        NSString *key = [NSString stringWithFormat:@"%@_%d", _album.shortName, (indexPath.row +1)];
+        
+        if ([[AFNetWorkingOperationManagerHelper sharedManagerHelper].downloadQueue objectForKey:key]) {
+            
+            AFHTTPRequestOperation* operation = [[AFNetWorkingOperationManagerHelper sharedManagerHelper].downloadQueue objectForKey:key];
+            
+            [operation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
+             
+                //todo, add ui for progressing
+                cell.lbl_songDuration.text = [NSString stringWithFormat:@"%lld / %lld", totalBytesRead, totalBytesExpectedToRead];
+             
+             }];
+        }
+        
+        //check if the cell is downloaded
+        Song *song = [_songs objectAtIndex:indexPath.row];
+        
+        NSString *filepath = [song.filePath absoluteString];
+        
+        if ([filepath isEqual: @""]) {
+         
+            cell.btn_downloadOrPause.enabled = true;
+            cell.btn_downloadOrPause.hidden = NO;
+            
+         }else{
+            
+             //todo, display storage icon
+             cell.btn_downloadOrPause.enabled = false;
+             cell.btn_downloadOrPause.hidden = YES;
+         }
+    }
 }
 
 -(NSString*)formatTimeFromSeconds:(int)totalSeconds
@@ -462,14 +503,7 @@
     cell.song = song;
     cell.album = _album;
     
-    if (![song.filePath isEqual: @""]) {
-        
-        //display cloud icon
-    }else{
-        
-        //display storage icon
-        
-    }
+
     
     return cell;
 }

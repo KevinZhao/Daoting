@@ -21,4 +21,27 @@
     return sharedInstance;
 }
 
++ (AFNetWorkingOperationManagerHelper *)sharedManagerHelper
+{
+    static dispatch_once_t once;
+    static AFNetWorkingOperationManagerHelper * sharedManagerHelper;
+    dispatch_once(&once, ^{
+        
+        sharedManagerHelper = [[AFNetWorkingOperationManagerHelper alloc]init];
+        
+    });
+    return sharedManagerHelper;
+    
+}
+
+- (instancetype) init
+{
+    self = [super init];
+    if (self) {
+        _downloadQueue = [[NSMutableDictionary alloc]init];
+        
+    }
+    return self;
+}
+
 @end
