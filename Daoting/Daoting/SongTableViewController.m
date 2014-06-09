@@ -328,7 +328,9 @@
     }
     
     //2. Check if the file had been downloaded for the cell
-    if (![[song.filePath absoluteString] isEqualToString:@""]) {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:[song.filePath absoluteString]])
+    {
         songCell.btn_downloadOrPause.hidden = YES;
     }
 }
