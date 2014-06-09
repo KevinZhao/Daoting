@@ -237,13 +237,17 @@
 
 -(void)setupTimer
 {
-	_timer = [NSTimer timerWithTimeInterval:0.01 target:self selector:@selector(tick) userInfo:nil repeats:YES];
+	_timer = [NSTimer timerWithTimeInterval:0.05 target:self selector:@selector(tick) userInfo:nil repeats:YES];
 	
 	[[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
 }
 
 -(void)tick
 {
+//    if (self.isMovingToParentViewController) {
+//        [_timer invalidate];
+//    }
+    
     //There is a song playing
     if (_audioPlayer.duration != 0)
     {
@@ -293,7 +297,7 @@
 
 - (void)updateCellAt:(NSIndexPath *)indexPath
 {
-    NSLog(@" indexPath.row = %d", indexPath.row);
+    NSLog(@" song indexPath.row = %d", indexPath.row);
     
     SongCell* songCell = (SongCell*)[_tableview cellForRowAtIndexPath:indexPath];
     Song *song = [_songs objectAtIndex:indexPath.row];
@@ -305,8 +309,11 @@
     
         DownloadingStatus *status = [[AFNetWorkingOperationManagerHelper sharedManagerHelper].downloadStatusQueue objectAtIndex:[PositioninQueue intValue]];
         
-        
         switch (status.downloadingStatus) {
+            case fileDownloadStatusWaiting:
+            {
+                
+            }
             case fileDownloadStatusDownloading:
             {
                 songCell.lbl_songDuration.text = [NSString stringWithFormat:@"%lld / %lld", status.totalBytesRead, status.totalBytesExpectedToRead];
@@ -315,7 +322,7 @@
 
             case fileDownloadStatusCompleted:
             {
-                //songCell.btn_downloadOrPause.hidden = YES;
+                songCell.btn_downloadOrPause.hidden = YES;
             }
                 break;
             
@@ -508,6 +515,7 @@
     cell.lbl_songDuration.text = song.duration;
     cell.lbl_songNumber.text = song.songNumber;
     cell.lbl_songDuration.text = song.duration;
+    cell.btn_downloadOrPause.hidden = NO;
     
     cell.song = song;
     cell.album = _album;

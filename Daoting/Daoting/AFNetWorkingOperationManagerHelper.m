@@ -70,6 +70,7 @@
     [_downloadKeyQueue setObject:[NSString stringWithFormat:@"%d", _downloadKeyQueue.count] forKey: key];
     
     DownloadingStatus *status = [[DownloadingStatus alloc]init];
+    status.downloadingStatus = fileDownloadStatusWaiting;
     [_downloadStatusQueue addObject:status];
     
     //todo better not use this
