@@ -293,6 +293,8 @@
 
 - (void)updateCellAt:(NSIndexPath *)indexPath
 {
+    NSLog(@" indexPath.row = %d", indexPath.row);
+    
     SongCell* songCell = (SongCell*)[_tableview cellForRowAtIndexPath:indexPath];
     Song *song = [_songs objectAtIndex:indexPath.row];
     NSString *key = [NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber];
@@ -313,7 +315,7 @@
 
             case fileDownloadStatusCompleted:
             {
-                songCell.btn_downloadOrPause.hidden = YES;
+                //songCell.btn_downloadOrPause.hidden = YES;
             }
                 break;
             
@@ -331,6 +333,7 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if ([fileManager fileExistsAtPath:[song.filePath absoluteString]])
     {
+        //NSLog([song.filePath absoluteString]);
         songCell.btn_downloadOrPause.hidden = YES;
     }
 }
