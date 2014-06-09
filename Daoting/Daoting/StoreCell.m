@@ -1,18 +1,14 @@
 //
-//  SongCell.m
+//  StoreCell.m
 //  Daoting
 //
-//  Created by Kevin on 14-5-16.
+//  Created by Kevin on 14/6/8.
 //  Copyright (c) 2014年 赵 克鸣. All rights reserved.
 //
 
-#import "SongCell.h"
-#import "SongTableViewController.h"
+#import "StoreCell.h"
 
-
-@implementation SongCell
-
-@synthesize song, album;
+@implementation StoreCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -25,17 +21,14 @@
 
 - (void)awakeFromNib
 {
-    
+    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-}
 
-- (IBAction)onbtn_downloadPressed:(id)sender
-{
-    [[AFNetWorkingOperationManagerHelper sharedManagerHelper] downloadSong:song inAlbum:album];
+    // Configure the view for the selected state
 }
 
 @end

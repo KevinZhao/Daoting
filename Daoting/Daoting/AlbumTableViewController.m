@@ -38,12 +38,7 @@
     
     self.songsDictionary = [[NSMutableDictionary alloc]init];
     
-    //enable IAP
-    [[CoinIAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
-        if (success) {
-            _products = products;
-        }
-    }];
+    
 }
 
 - (void)didReceiveMemoryWarning

@@ -29,7 +29,6 @@
     AFHTTPRequestOperationManager       *_operationManager;
     STKAudioPlayer                      *_audioPlayer;
     NSTimer                             *_timer;
-    
     AppData                             *_appData;
 }
 
@@ -41,7 +40,6 @@
 @property (nonatomic, retain) IBOutlet UIButton *btn_previous;
 @property (nonatomic, retain) IBOutlet UIButton *btn_next;
 @property (nonatomic, retain) IBOutlet UISlider *slider;
-@property (nonatomic, retain) IBOutlet UIButton *btn_download;
 
 - (IBAction)onbtn_playAndPausePressed:(id)sender;
 - (IBAction)onbtn_nextPressed:(id)sender;

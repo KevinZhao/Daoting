@@ -8,17 +8,25 @@
 
 #import <Foundation/Foundation.h>
 #import "AFNetWorking.h"
+#import "Song.h"
+#import "Album.h"
+#import "DownloadStatus.h"
+
 
 @interface AFNetWorkingOperationManagerHelper : NSObject
 {
     
 }
 
-@property (nonatomic, retain) NSMutableDictionary   *downloadQueue;
+@property (nonatomic, retain) NSMutableArray         *downloadQueue;
+@property (nonatomic, retain) NSMutableDictionary    *downloadKeyQueue;
+@property (nonatomic, retain) NSMutableArray         *downloadStatusQueue;
+
 
 + (AFHTTPRequestOperationManager *)sharedInstance;
 + (AFNetWorkingOperationManagerHelper *)sharedManagerHelper;
 
 
+- (void)downloadSong:(Song*) song inAlbum:(Album*) album;
 
 @end

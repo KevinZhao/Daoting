@@ -244,13 +244,7 @@
 
 -(void)tick
 {
-	if (!_audioPlayer)
-	{
-		_slider.value = 0;
-        
-		return;
-	}
-	
+    //There is a song playing
     if (_audioPlayer.duration != 0)
     {
         _lbl_progressCurrentValue.text = [NSString stringWithFormat:@"%@", [self formatTimeFromSeconds:_audioPlayer.progress]];
@@ -263,6 +257,7 @@
         
         [AppData sharedAppData].currentProgress = _audioPlayer.progress;
     }
+    //There is no song playing
     else
     {
         _lbl_progressMaxValue.text = @"";
@@ -287,45 +282,54 @@
             break;
     }
     
-    //update table view cell
-    
-    NSArray *visibleRows = [_tableview indexPathsForVisibleRows];
-    
-    for (int i = 0; i< visibleRows.count; i++) {
-        NSIndexPath *indexPath = [visibleRows objectAtIndex:i];
-        SongCell *cell = (SongCell*)[_tableview cellForRowAtIndexPath: indexPath];
+    //Update visible cell
+    NSArray *visibleCell = [_tableview indexPathsForVisibleRows];
+    for (int i = 0; i < visibleCell.count; i++) {
         
-        //check if the cell is in download queue
-        NSString *key = [NSString stringWithFormat:@"%@_%d", _album.shortName, (indexPath.row +1)];
+        [self updateCellAt:[visibleCell objectAtIndex:i]];
+    }
+    
+}
+
+- (void)updateCellAt:(NSIndexPath *)indexPath
+{
+    SongCell* songCell = (SongCell*)[_tableview cellForRowAtIndexPath:indexPath];
+    Song *song = [_songs objectAtIndex:indexPath.row];
+    NSString *key = [NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber];
+    NSString *PositioninQueue =  [[AFNetWorkingOperationManagerHelper sharedManagerHelper].downloadKeyQueue objectForKey:key];
+    
+    //1. Check if the operation in download queue
+    if (PositioninQueue != nil) {
+    
+        DownloadingStatus *status = [[AFNetWorkingOperationManagerHelper sharedManagerHelper].downloadStatusQueue objectAtIndex:[PositioninQueue intValue]];
         
-        if ([[AFNetWorkingOperationManagerHelper sharedManagerHelper].downloadQueue objectForKey:key]) {
+        
+        switch (status.downloadingStatus) {
+            case fileDownloadStatusDownloading:
+            {
+                songCell.lbl_songDuration.text = [NSString stringWithFormat:@"%lld / %lld", status.totalBytesRead, status.totalBytesExpectedToRead];
+            }
+                break;
+
+            case fileDownloadStatusCompleted:
+            {
+                songCell.btn_downloadOrPause.hidden = YES;
+            }
+                break;
             
-            AFHTTPRequestOperation* operation = [[AFNetWorkingOperationManagerHelper sharedManagerHelper].downloadQueue objectForKey:key];
+            case fileDownloadStatusError:
+            {
+                
+            }
             
-            [operation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
-             
-                //todo, add ui for progressing
-                cell.lbl_songDuration.text = [NSString stringWithFormat:@"%lld / %lld", totalBytesRead, totalBytesExpectedToRead];
-             
-             }];
+            default:
+                break;
         }
-        
-        //check if the cell is downloaded
-        Song *song = [_songs objectAtIndex:indexPath.row];
-        
-        NSString *filepath = [song.filePath absoluteString];
-        
-        if ([filepath isEqual: @""]) {
-         
-            cell.btn_downloadOrPause.enabled = true;
-            cell.btn_downloadOrPause.hidden = NO;
-            
-         }else{
-            
-             //todo, display storage icon
-             cell.btn_downloadOrPause.enabled = false;
-             cell.btn_downloadOrPause.hidden = YES;
-         }
+    }
+    
+    //2. Check if the file had been downloaded for the cell
+    if (![[song.filePath absoluteString] isEqualToString:@""]) {
+        songCell.btn_downloadOrPause.hidden = YES;
     }
 }
 
@@ -434,7 +438,7 @@
 }
 - (IBAction)onbtn_nextPressed:(id)sender
 {
-    //[self test];
+
 }
 
 -(void)test
@@ -502,8 +506,6 @@
     
     cell.song = song;
     cell.album = _album;
-    
-
     
     return cell;
 }

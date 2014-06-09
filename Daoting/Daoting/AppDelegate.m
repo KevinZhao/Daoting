@@ -41,14 +41,16 @@
         _appData.coins = 500;
         [_appData save];
     }
-
-    //Configure CoinHelper for IAP
-    [CoinIAPHelper sharedInstance];
+    
+    //enable IAP
+    [[CoinIAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+        if (success) {
+            _products = products;
+        }
+    }];
     
     _audioPlayer = [STKAudioPlayerHelper sharedAudioPlayer];
     _audioPlayer.delegate = [STKAudioPlayerHelper sharedInstance];
-    
-    //self.coins = 500;
     
     return YES;
 }
