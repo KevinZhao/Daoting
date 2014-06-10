@@ -28,5 +28,7 @@
 
 
 - (void)downloadSong:(Song*) song inAlbum:(Album*) album;
+- (AFHTTPRequestOperation*)searchOperationByKey:(NSString*) key;
+- (DownloadingStatus*)searchStatusByKey:(NSString*) key;
 
 @end

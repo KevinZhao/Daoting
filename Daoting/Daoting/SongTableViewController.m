@@ -55,6 +55,11 @@
     pageControl.numberOfPages = 2;
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [_timer invalidate];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -237,7 +242,7 @@
 
 -(void)setupTimer
 {
-	_timer = [NSTimer timerWithTimeInterval:0.01 target:self selector:@selector(tick) userInfo:nil repeats:YES];
+	_timer = [NSTimer timerWithTimeInterval:0.05 target:self selector:@selector(tick) userInfo:nil repeats:YES];
 	
 	[[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
 }
@@ -292,9 +297,7 @@
 }
 
 - (void)updateCellAt:(NSIndexPath *)indexPath
-{
-    NSLog(@" indexPath.row = %d", indexPath.row);
-    
+{    
     SongCell* songCell = (SongCell*)[_tableview cellForRowAtIndexPath:indexPath];
     Song *song = [_songs objectAtIndex:indexPath.row];
     NSString *key = [NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber];
@@ -305,23 +308,41 @@
     
         DownloadingStatus *status = [[AFNetWorkingOperationManagerHelper sharedManagerHelper].downloadStatusQueue objectAtIndex:[PositioninQueue intValue]];
         
-        
         switch (status.downloadingStatus) {
+            case fileDownloadStatusWaiting:
+            {
+                
+            }
             case fileDownloadStatusDownloading:
             {
-                songCell.lbl_songDuration.text = [NSString stringWithFormat:@"%lld / %lld", status.totalBytesRead, status.totalBytesExpectedToRead];
+                songCell.cirProgView_downloadProgress.hidden = NO;
+                songCell.cirProgView_downloadProgress.progressTintColor = [UIColor blueColor];
+                
+                if (status.totalBytesExpectedToRead != 0) {
+                    
+                    songCell.cirProgView_downloadProgress.progress =(float) status.totalBytesRead / (float)status.totalBytesExpectedToRead;
+                }
+
             }
                 break;
 
             case fileDownloadStatusCompleted:
             {
-                //songCell.btn_downloadOrPause.hidden = YES;
+                songCell.btn_downloadOrPause.hidden = YES;
+                songCell.cirProgView_downloadProgress.hidden = YES;
+                
             }
                 break;
             
             case fileDownloadStatusError:
             {
+                songCell.btn_downloadOrPause.hidden = NO;
+                [songCell.btn_downloadOrPause removeTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
+                [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
                 
+                [songCell.btn_downloadOrPause setBackgroundImage:[UIImage imageNamed:@"downloadButton.png"] forState:UIControlStateNormal];
+
+                songCell.cirProgView_downloadProgress.hidden = YES;
             }
             
             default:
@@ -508,6 +529,7 @@
     cell.lbl_songDuration.text = song.duration;
     cell.lbl_songNumber.text = song.songNumber;
     cell.lbl_songDuration.text = song.duration;
+    cell.btn_downloadOrPause.hidden = NO;
     
     cell.song = song;
     cell.album = _album;

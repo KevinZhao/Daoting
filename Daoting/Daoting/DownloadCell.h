@@ -10,6 +10,7 @@
 
 @interface DownloadCell : UITableViewCell
 
-@property (nonatomic, strong) IBOutlet UILabel      *lbl_downloadDescription;
+@property (nonatomic, strong) IBOutlet UILabel          *lbl_downloadDescription;
+@property (nonatomic, strong) IBOutlet UIProgressView   *pv_downloadProgress;
 
 @end

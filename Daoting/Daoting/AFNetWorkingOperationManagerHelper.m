@@ -61,6 +61,8 @@
     
     operation.userInfo = [[NSMutableDictionary alloc]init];
     [operation.userInfo setValue:[NSString stringWithFormat:@"%@_%@", album.shortName, song.songNumber] forKey:@"key"];
+    [operation.userInfo setValue:album forKeyPath:@"album"];
+    [operation.userInfo setValue:song forKeyPath:@"song"];
     
     //2.2 add operation to downloadQueue and downloadKeyQueu for easy search
     [_downloadQueue addObject:operation];
@@ -70,6 +72,7 @@
     [_downloadKeyQueue setObject:[NSString stringWithFormat:@"%d", _downloadKeyQueue.count] forKey: key];
     
     DownloadingStatus *status = [[DownloadingStatus alloc]init];
+    status.downloadingStatus = fileDownloadStatusWaiting;
     [_downloadStatusQueue addObject:status];
     
     //todo better not use this
@@ -143,7 +146,7 @@
          status.downloadingStatus = fileDownloadStatusCompleted;
      }
      //Failed
-                                     failure:
+    failure:
      ^(AFHTTPRequestOperation *operation, NSError *error)
      {
          NSString *key = [operation.userInfo objectForKey:@"key"];
@@ -151,41 +154,23 @@
          
          DownloadingStatus *status = [_downloadStatusQueue objectAtIndex:[number intValue]];
          status.downloadingStatus = fileDownloadStatusError;
-         
-         
-         /*SongCell *cell = (SongCell*)[tableView cellForRowAtIndexPath:indexPath];
-          
-          if (cell) {
-          if (downloadPausedCount > 0) {
-          cell.lbl_songStatus.text = @"下载取消";
-          }
-          else
-          {
-          cell.lbl_songStatus.text = @"下载失败";
-          }
-          
-          cell.cirProgView_downloadProgress.hidden = YES;
-          cell.bt_downloadOrPause.hidden = NO;
-          
-          [cell.bt_downloadOrPause setBackgroundImage:[UIImage imageNamed:@"downloadButton.png"] forState:UIControlStateNormal];
-          [cell.bt_downloadOrPause removeTarget:self action:@selector(onPauseDownloadButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-          [cell.bt_downloadOrPause addTarget:self action:@selector(onDownloadButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-          }
-          
-          
-          song.songStatus = SongStatusWaitforDownload;
-          
-          NSFileManager *fileManager = [NSFileManager defaultManager];
-          
-          NSString *path = NSTemporaryDirectory();
-          NSString *fileName = [NSString stringWithFormat:@"%d.mp3", (indexPath.row + 1)];
-          NSString *filePath = [path stringByAppendingString:fileName];
-          
-          [fileManager removeItemAtPath:filePath error:nil];
-          
-          [downloadQueue removeObjectForKey:[NSString stringWithFormat:@"%d", indexPath.row]];*/
-         
      }];
+}
+
+- (AFHTTPRequestOperation*)searchOperationByKey:(NSString*) key
+{
+    NSString *PositioninQueue =  [_downloadKeyQueue objectForKey:key];
+    AFHTTPRequestOperation *operation = _downloadQueue[[PositioninQueue intValue]];
+    
+    return operation;
+}
+
+- (DownloadingStatus*)searchStatusByKey:(NSString*) key
+{
+    NSString *PositioninQueue =  [_downloadKeyQueue objectForKey:key];
+    DownloadingStatus *status = _downloadStatusQueue[[PositioninQueue intValue]];
+    
+    return status;
 }
 
 @end

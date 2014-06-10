@@ -12,7 +12,7 @@
 #import "Album.h"
 #import "AFNetworking.h"
 #import "AFNetWorkingOperationManagerHelper.h"
-
+#import "DACircularProgressView.h"
 
 
 @interface SongCell : UITableViewCell
@@ -29,8 +29,10 @@
 @property (nonatomic, retain) Song                  *song;
 @property (nonatomic, retain) Album                 *album;
 
-//@property (nonatomic, strong) IBOutlet DACircularProgressView *cirProgView_downloadProgress;
+@property (nonatomic, strong) IBOutlet DACircularProgressView *cirProgView_downloadProgress;
 
 - (IBAction)onbtn_downloadPressed:(id)sender;
+- (IBAction)onbtn_pausePressed:(id)sender;
+
 
 @end

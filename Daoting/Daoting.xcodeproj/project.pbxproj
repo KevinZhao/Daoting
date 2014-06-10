@@ -115,6 +115,7 @@
 		0ABA95A31937229700172862 /* STKAudioPlayerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABA95A21937229700172862 /* STKAudioPlayerHelper.m */; };
 		0ABA95A619382E2000172862 /* AFNetworkReachabilityObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABA95A519382E2000172862 /* AFNetworkReachabilityObserver.m */; };
 		0ABB4283192E321C007D8BAC /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB4282192E321C007D8BAC /* Icon-72@2x.png */; };
+		0AC69C5E1946F452004C6A67 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC69C5D1946F452004C6A67 /* DACircularProgressView.m */; };
 		0AD5F6801932029F00EB0BAC /* SampleQueueId.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD5F67F1932029F00EB0BAC /* SampleQueueId.m */; };
 		0AE46B0E1921035E00FA30F3 /* SongTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE46B0D1921035E00FA30F3 /* SongTableViewController.m */; };
 		0AE86488192EDECA00EF5A96 /* Zhengdong1_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE86487192EDECA00EF5A96 /* Zhengdong1_SongList.plist */; };
@@ -277,6 +278,8 @@
 		0ABA95A419382E2000172862 /* AFNetworkReachabilityObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityObserver.h; sourceTree = "<group>"; };
 		0ABA95A519382E2000172862 /* AFNetworkReachabilityObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityObserver.m; sourceTree = "<group>"; };
 		0ABB4282192E321C007D8BAC /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
+		0AC69C5C1946F452004C6A67 /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
+		0AC69C5D1946F452004C6A67 /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
 		0AD5F67E1932029F00EB0BAC /* SampleQueueId.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleQueueId.h; sourceTree = "<group>"; };
 		0AD5F67F1932029F00EB0BAC /* SampleQueueId.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleQueueId.m; sourceTree = "<group>"; };
 		0AE46B0C1921035E00FA30F3 /* SongTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongTableViewController.h; sourceTree = "<group>"; };
@@ -327,6 +330,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A98D6301920AD7A00E46EB9 /* QuartzCore.framework in Frameworks */,
 				0AFB65A719245BD4000F2AE6 /* StoreKit.framework in Frameworks */,
 				0A98D6481920ADF600E46EB9 /* MediaPlayer.framework in Frameworks */,
 				0A98D6461920ADDD00E46EB9 /* MessageUI.framework in Frameworks */,
@@ -340,7 +344,6 @@
 				0A98D6361920AD9B00E46EB9 /* libz.1.2.5.dylib in Frameworks */,
 				0A98D6341920AD9000E46EB9 /* libicucore.dylib in Frameworks */,
 				0A98D6321920AD8200E46EB9 /* CoreTelephony.framework in Frameworks */,
-				0A98D6301920AD7A00E46EB9 /* QuartzCore.framework in Frameworks */,
 				0A98D62E1920AD7200E46EB9 /* SystemConfiguration.framework in Frameworks */,
 				0A98D5FA1920ACBC00E46EB9 /* LinkedInConnection.framework in Frameworks */,
 				0A98D61A1920ACBC00E46EB9 /* RennSDK.framework in Frameworks */,
@@ -643,6 +646,15 @@
 			name = Helper;
 			sourceTree = "<group>";
 		};
+		0AC69C5B1946F452004C6A67 /* DACircularProgress */ = {
+			isa = PBXGroup;
+			children = (
+				0AC69C5C1946F452004C6A67 /* DACircularProgressView.h */,
+				0AC69C5D1946F452004C6A67 /* DACircularProgressView.m */,
+			);
+			path = DACircularProgress;
+			sourceTree = "<group>";
+		};
 		0AE86482192ED8B100EF5A96 /* SongPlists */ = {
 			isa = PBXGroup;
 			children = (
@@ -711,6 +723,7 @@
 		5933AD5E18D03EC1001D707B /* Daoting */ = {
 			isa = PBXGroup;
 			children = (
+				0AC69C5B1946F452004C6A67 /* DACircularProgress */,
 				0ABB4281192DEA7F007D8BAC /* Helper */,
 				0A37F8CC19262FA000826C8C /* DataStructure */,
 				0A98D59B1920ACBC00E46EB9 /* ShareSDK */,
@@ -934,6 +947,7 @@
 				0A37F8CB19262D2600826C8C /* SongCell.m in Sources */,
 				0A8BA0091940BFCB001307D6 /* DownloadTableViewController.m in Sources */,
 				0AFB65B21925107F000F2AE6 /* AlbumCell.m in Sources */,
+				0AC69C5E1946F452004C6A67 /* DACircularProgressView.m in Sources */,
 				0A6D573E19331B020038D841 /* KeychainWrapper.m in Sources */,
 				0AD5F6801932029F00EB0BAC /* SampleQueueId.m in Sources */,
 				0A8BA00F1940C15E001307D6 /* DownloadCell.m in Sources */,
