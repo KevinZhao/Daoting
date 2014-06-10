@@ -301,13 +301,7 @@
 }
 
 - (void)updateCellAt:(NSIndexPath *)indexPath
-<<<<<<< HEAD
-{    
-=======
 {
-    NSLog(@" song indexPath.row = %d", indexPath.row);
-    
->>>>>>> FETCH_HEAD
     SongCell* songCell = (SongCell*)[_tableview cellForRowAtIndexPath:indexPath];
     Song *song = [_songs objectAtIndex:indexPath.row];
     NSString *key = [NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber];

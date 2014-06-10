@@ -12,5 +12,8 @@
 
 @property (nonatomic, strong) IBOutlet UILabel          *lbl_downloadDescription;
 @property (nonatomic, strong) IBOutlet UIProgressView   *pv_downloadProgress;
+@property (nonatomic, strong) IBOutlet UIButton         *btn_cancel;
+
+- (IBAction)onbtn_downloadPressed:(id)sender;
 
 @end
