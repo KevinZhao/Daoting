@@ -79,10 +79,7 @@
     AFHTTPRequestOperation __weak *operation_ = operation;
     
     [operation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
-        
-        //todo, add ui for progressing
-        [NSString stringWithFormat:@"%lld / %lld", totalBytesRead, totalBytesExpectedToRead];
-        
+    
         NSString *key = [operation_.userInfo objectForKey:@"key"];
         NSString *number = [_downloadKeyQueue objectForKey:key];
         

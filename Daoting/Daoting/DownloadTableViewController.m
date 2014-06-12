@@ -77,22 +77,21 @@
     
     NSString *key = [operation.userInfo objectForKey:@"key"];
     Song *song =[operation.userInfo objectForKey:@"song"];
-    
+    Album *album = [operation.userInfo objectForKey:@"album"];
     
     DownloadingStatus *status = [[AFNetWorkingOperationManagerHelper sharedManagerHelper] searchStatusByKey:key];
     
-        
     switch (status.downloadingStatus) {
         case fileDownloadStatusWaiting:
         {
-            cell.lbl_downloadDescription.text = [NSString stringWithFormat:@"%@ %@", song.title, song.songNumber];
+            cell.lbl_downloadDescription.text = [NSString stringWithFormat:@"%@ %@", album.title, song.songNumber];
             
             cell.pv_downloadProgress.hidden = YES;
         }
             break;
         case fileDownloadStatusDownloading:
         {
-            cell.lbl_downloadDescription.text = [NSString stringWithFormat:@"%@ %@", song.title, song.songNumber];
+            cell.lbl_downloadDescription.text = [NSString stringWithFormat:@"%@ %@", album.title, song.songNumber];
             
             cell.pv_downloadProgress.progress = (float)status.totalBytesRead / (float)status.totalBytesExpectedToRead;
             
@@ -109,7 +108,7 @@
     
         case fileDownloadStatusError:
         {
-        
+            cell.pv_downloadProgress.hidden = YES;
         }
             
         default:
@@ -117,6 +116,8 @@
         }
     
 }
+
+#pragma mark UITableView Delegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

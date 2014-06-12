@@ -31,8 +31,13 @@
     // Configure the view for the selected state
 }
 
-- (IBAction)onbtn_downloadPressed:(id)sender
+- (IBAction)onbtn_cancelPressed:(id)sender
 {
-}
+    NSIndexPath* indexPath = [(UITableView*)self.superview.superview indexPathForCell:self];
+    
+    NSMutableArray *downloadQueue = [AFNetWorkingOperationManagerHelper sharedManagerHelper].downloadQueue;
+    AFHTTPRequestOperation *operation =downloadQueue[indexPath.row];
 
+    [operation cancel];
+}
 @end
