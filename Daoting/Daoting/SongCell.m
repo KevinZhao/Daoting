@@ -35,7 +35,39 @@
 
 - (IBAction)onbtn_downloadPressed:(id)sender
 {
-    //todo: check network status？
+    NSString *key = [NSString stringWithFormat:@"%@_%@", album.shortName, song.songNumber];
+    
+    //2.1 check the song had been purchased or not
+    BOOL purchased = [[[AppData sharedAppData].purchasedQueue objectForKey:key] isEqualToString:@"Yes"];
+    
+    //if the song had been purchased
+    if (purchased) {
+        
+        //todo
+    }
+    else{
+        
+        //2.2.1 if coin is enough, buy it.
+        if ([AppData sharedAppData].coins >= [song.price intValue]) {
+            
+            [AppData sharedAppData].coins = [AppData sharedAppData].coins - [song.price intValue];
+            
+            //todo
+            
+            //Add to purchased queue
+            [[AppData sharedAppData].purchasedQueue setObject:@"Yes" forKey:[NSString stringWithFormat:@"%@_%@", album.shortName, song.songNumber]];
+            
+            [[AppData sharedAppData] save];
+        }
+        else
+            //2.2.2 cois is not enough
+        {
+            //todo notify user and show store view
+        }
+    
+    }
+    
+    
     
     //change download button to pause button
     [_btn_downloadOrPause removeTarget:self action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];

@@ -28,6 +28,8 @@
     [self updateSongs];
     
     [self setupTimer];
+    
+    [self setupNotificationView];
 }
 
 
@@ -67,6 +69,24 @@
 }
 
 #pragma mark - Internal business logic
+
+- (void)setupNotificationView
+{
+    //need to make it beautiful
+    _notificationView = [[UIView alloc]init];
+    _notificationView.frame = CGRectMake(60, 400, 200, 50);
+    _notificationView.backgroundColor = [UIColor grayColor];
+    
+    [self.view addSubview:_notificationView];
+    
+    UILabel *lbl_coins = [[UILabel alloc]init];
+    lbl_coins.frame = CGRectMake(10, 10, 180, 40);
+    lbl_coins.text = [NSString stringWithFormat:@"%f",[AppData sharedAppData].coins];
+    
+    [_notificationView addSubview:lbl_coins];
+    
+    _notificationView.alpha = 0.0;
+}
 
 - (void)initializeSongs
 {
@@ -468,13 +488,36 @@
 }
 - (IBAction)onbtn_nextPressed:(id)sender
 {
+    //[self test];
+    
+    [self testIap];
+}
 
+- (void) testIap
+{
+    CoinIAPHelper *helper = [CoinIAPHelper sharedInstance];
+    AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+
+    NSArray *products = appDelegate.products;
+    
+    [helper buyProduct:products[0]];
 }
 
 -(void)test
 {
+    _notificationView.alpha = 1.0;
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationDelay:1.0];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    
+    _notificationView.alpha = 0.0;
+
+    [UIView commitAnimations];
+    
     //test: processing plist in document and download it back
-    NSString *bundleDocumentDirectoryPath =
+    /*NSString *bundleDocumentDirectoryPath =
     [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     
     NSString *plistPath =
@@ -491,12 +534,12 @@
     
     [dictionary writeToFile:plistPath atomically:YES];
     
-    NSLog(@"completed");
+    NSLog(@"completed");*/
 }
 
 - (IBAction)onbtn_previousPressed:(id)sender
 {
-    
+    [self test];
 }
 
 - (IBAction)onsliderValueChanged:(id)sender

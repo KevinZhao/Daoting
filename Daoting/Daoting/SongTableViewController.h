@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import <QuartzCore/QuartzCore.h>
 
 #import "Album.h"
 #import "Song.h"
@@ -40,6 +41,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *btn_previous;
 @property (nonatomic, retain) IBOutlet UIButton *btn_next;
 @property (nonatomic, retain) IBOutlet UISlider *slider;
+@property (nonatomic, strong) IBOutlet UIView* notificationView;
 
 - (IBAction)onbtn_playAndPausePressed:(id)sender;
 - (IBAction)onbtn_nextPressed:(id)sender;

@@ -96,6 +96,8 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
 
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions
 {
+    NSLog(@" enter updatedTransactions");
+    
     for (SKPaymentTransaction * transaction in transactions) {
         switch (transaction.transactionState)
         {
@@ -139,6 +141,28 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
 }
 
 - (void)provideContentForProductIdentifier:(NSString *)productIdentifier {
+    
+    
+    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.10000coins"]) {
+        [AppData sharedAppData].coins = [AppData sharedAppData].coins + 10000;
+    }
+    
+    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.500coins"]) {
+        [AppData sharedAppData].coins = [AppData sharedAppData].coins + 500;
+    }
+    
+    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.25000coins"]) {
+        [AppData sharedAppData].coins = [AppData sharedAppData].coins + 25000;
+    }
+    
+    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.1000coins"]) {
+        [AppData sharedAppData].coins = [AppData sharedAppData].coins + 1000;
+    }
+    
+    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.25000coins"]) {
+        [AppData sharedAppData].coins = [AppData sharedAppData].coins + 25000;
+    }
+    
     
     [_purchasedProductIdentifiers addObject:productIdentifier];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:productIdentifier];
