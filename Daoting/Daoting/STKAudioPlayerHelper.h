@@ -11,12 +11,19 @@
 #import "AppData.h"
 #import "SampleQueueId.h"
 #import "AFNetWorking.h"
+#import <AVFoundation/AVFoundation.h>
+
 
 @interface STKAudioPlayerHelper : NSObject <STKAudioPlayerDelegate>
+{
+    STKAudioPlayer *_audioPlayer;
+}
 
 + (STKAudioPlayerHelper *)sharedInstance;
-+ (STKAudioPlayer *)sharedAudioPlayer;
+
+@property (nonatomic, retain) STKAudioPlayer *audioPlayer;
 
 -(void)playSong:(Song *)song InAlbum:(Album*)album AtProgress: (double)progress;
+-(void)pauseSong;
 
 @end

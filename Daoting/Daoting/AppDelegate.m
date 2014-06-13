@@ -49,8 +49,10 @@
         }
     }];
     
-    _audioPlayer = [STKAudioPlayerHelper sharedAudioPlayer];
-    _audioPlayer.delegate = [STKAudioPlayerHelper sharedInstance];
+    [STKAudioPlayerHelper sharedInstance];
+    
+    //_audioPlayer = [STKAudioPlayerHelper sharedAudioPlayer];
+    
     
     return YES;
 }
@@ -148,5 +150,7 @@
 {
     
 }
+
+
 
 @end

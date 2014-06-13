@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad
 {
-    _audioPlayer = [STKAudioPlayerHelper sharedAudioPlayer];
+    _audioPlayer = [STKAudioPlayerHelper sharedInstance].audioPlayer;
     
     [super viewDidLoad];
     
@@ -393,7 +393,7 @@
 {
     Album *album = [AppData sharedAppData].currentAlbum;
     Song *song= [AppData sharedAppData].currentSong;
-    STKAudioPlayer *player = [STKAudioPlayerHelper sharedAudioPlayer];
+    STKAudioPlayer *player = [STKAudioPlayerHelper sharedInstance].audioPlayer;
     
     //Set Information for Nowplaying Info Center
     if (NSClassFromString(@"MPNowPlayingInfoCenter")) {
@@ -409,13 +409,12 @@
         MPMediaItemArtwork * mArt = [[MPMediaItemArtwork alloc] initWithImage:img];
         [dict setObject:mArt forKey:MPMediaItemPropertyArtwork];
         [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:dict];
-        
     }
 }
 
 - (void)remoteControlReceivedWithEvent:(UIEvent *)event
 {
-    STKAudioPlayer *player = [STKAudioPlayerHelper sharedAudioPlayer];
+    STKAudioPlayer *player = [STKAudioPlayerHelper sharedInstance].audioPlayer;
     
     if (event.type == UIEventTypeRemoteControl) {
         switch (event.subtype) {
@@ -468,14 +467,14 @@
 - (IBAction)onbtn_playAndPausePressed:(id)sender
 {
     if (_audioPlayer.state == STKAudioPlayerStatePlaying) {
-        [_audioPlayer pause];
+        [[STKAudioPlayerHelper sharedInstance] pauseSong];
     }
     else
     {
-        //[_audioPlayer play:]
+        [[STKAudioPlayerHelper sharedInstance] playSong:[AppData sharedAppData].currentSong
+                                               InAlbum:[AppData sharedAppData].currentAlbum
+                                               AtProgress:[AppData sharedAppData].currentProgress];
     }
-
-    
 }
 - (IBAction)onbtn_nextPressed:(id)sender
 {
@@ -596,10 +595,9 @@
         if (_audioPlayer.state == STKAudioPlayerStatePlaying) {
             
             //pause the song
-            [_audioPlayer pause];
+            [[STKAudioPlayerHelper sharedInstance] pauseSong];
         }
         else{
-         
             //resume the song
             [[STKAudioPlayerHelper sharedInstance] playSong:selectedSong InAlbum:_album AtProgress:[AppData sharedAppData].currentProgress];
         }
@@ -622,5 +620,7 @@
     // Update the page control
     pageControl.currentPage = page;
 }
+
+
 
 @end

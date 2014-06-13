@@ -68,5 +68,54 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.row) {
+        case 0:
+        {
+             CoinIAPHelper *helper = [CoinIAPHelper sharedInstance];
+            
+             [helper buyProduct:_products[0]];
+            
+        }
+            break;
+        case 1:
+        {
+            CoinIAPHelper *helper = [CoinIAPHelper sharedInstance];
+            
+            
+            [helper buyProduct:_products[1]];
+            
+        }
+            break;
+        case 2:
+        {
+            CoinIAPHelper *helper = [CoinIAPHelper sharedInstance];
+            
+            
+            [helper buyProduct:_products[2]];
+            
+        }
+            break;
+        case 3:
+        {
+            CoinIAPHelper *helper = [CoinIAPHelper sharedInstance];
+            
+            [helper buyProduct:_products[3]];
+        }
+            break;
+        case 4:
+        {
+            CoinIAPHelper *helper = [CoinIAPHelper sharedInstance];
+            
+            [helper buyProduct:_products[4]];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
 
 @end

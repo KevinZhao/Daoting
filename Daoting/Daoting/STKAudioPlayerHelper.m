@@ -10,6 +10,8 @@
 
 @implementation STKAudioPlayerHelper
 
+@synthesize audioPlayer;
+
 + (STKAudioPlayerHelper *)sharedInstance {
     static dispatch_once_t once;
     static STKAudioPlayerHelper * sharedInstance;
@@ -21,17 +23,32 @@
     return sharedInstance;
 }
 
-+ (STKAudioPlayer *)sharedAudioPlayer{
-    static dispatch_once_t once;
-    static STKAudioPlayer * sharedAudioPlayer;
-    dispatch_once(&once, ^{
+- (STKAudioPlayerHelper *)init
+{
+    //configure STKAudioPlayer
+    audioPlayer = [[STKAudioPlayer alloc] initWithOptions:(STKAudioPlayerOptions){ .flushQueueOnSeek = YES, .enableVolumeMixer = NO, .equalizerBandFrequencies = {50, 100, 200, 400, 800, 1600, 2600, 16000} }];
+    audioPlayer.meteringEnabled = YES;
+    audioPlayer.volume = 1;
+    
+    audioPlayer.delegate = self;
+    
+    //Regist notification for audio route change
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(audioRouteChangeHandler:)
+                                                 name: AVAudioSessionRouteChangeNotification
+                                               object: [AVAudioSession sharedInstance]];
+    
+    
+    return self;
+}
+
+- (void)audioRouteChangeHandler:(NSNotification*)notification
+{
+    if ([[notification.userInfo valueForKey:AVAudioSessionRouteChangeReasonKey]integerValue]
+        == AVAudioSessionRouteChangeReasonOldDeviceUnavailable) {
         
-        sharedAudioPlayer = [[STKAudioPlayer alloc] initWithOptions:(STKAudioPlayerOptions){ .flushQueueOnSeek = YES, .enableVolumeMixer = NO, .equalizerBandFrequencies = {50, 100, 200, 400, 800, 1600, 2600, 16000} }];
-        sharedAudioPlayer.meteringEnabled = YES;
-        sharedAudioPlayer.volume = 1;
-        
-    });
-    return sharedAudioPlayer;
+        [self pauseSong];
+    }
 }
 
 -(void)playSong:(Song *)song InAlbum:(Album*)album AtProgress: (double)progress
@@ -43,7 +60,7 @@
         
         //play from local reposistory for the song
         STKDataSource* fileDataSource = [STKAudioPlayer dataSourceFromURL:songURL];
-        [[STKAudioPlayerHelper sharedAudioPlayer] setDataSource:fileDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:songURL  andCount:0]];
+        [audioPlayer setDataSource:fileDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:songURL  andCount:0]];
     }
     else
     {
@@ -68,7 +85,7 @@
                     {
                         //play from URL in wifi mode
                         STKDataSource* URLDataSource = [STKAudioPlayer dataSourceFromURL:song.Url];
-                        [[STKAudioPlayerHelper sharedAudioPlayer] setDataSource:URLDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:song.Url andCount:0]];
+                        [audioPlayer setDataSource:URLDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:song.Url andCount:0]];
                     }
                         break;
                         
@@ -85,11 +102,18 @@
     
 }
 
+-(void)pauseSong
+{
+    [AppData sharedAppData].currentProgress = audioPlayer.progress;
+    
+    [[AppData sharedAppData] save];
+    [audioPlayer pause];
+}
+
 /// Raised when an item has started playing
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer didStartPlayingQueueItemId:(NSObject*)queueItemId
 {
-    NSLog(@"started");
-    
+    NSLog(@"started playing");
 }
 
 /// Raised when an item has finished buffering (may or may not be the currently playing item)
@@ -136,16 +160,14 @@
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer didFinishPlayingQueueItemId:(NSObject*)queueItemId withReason:(STKAudioPlayerStopReason)stopReason andProgress:(double)progress andDuration:(double)duration
 {
     if (stopReason == STKAudioPlayerStopReasonEof) {
-        //play next song
-    
-        NSMutableArray *songs = [[AppData sharedAppData].playingQueue objectForKey:[AppData sharedAppData].currentAlbum.shortName];
         
+        //play next song
+        NSMutableArray *songs = [[AppData sharedAppData].playingQueue objectForKey:[AppData sharedAppData].currentAlbum.shortName];
         NSInteger previousSongNumber = [[AppData sharedAppData].currentSong.songNumber integerValue];
         
         if ( previousSongNumber < songs.count) {
             
             Song *song = [songs objectAtIndex:(previousSongNumber)];
-
             [self playSong:song InAlbum:[AppData sharedAppData].currentAlbum AtProgress:0];
         }
     }
