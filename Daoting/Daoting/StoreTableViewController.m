@@ -26,6 +26,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+
+    _products = appDelegate.products;
+    
+    NSSortDescriptor *sorter = [[NSSortDescriptor alloc] initWithKey:@"price" ascending:YES];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:&sorter count:1];
+    NSArray *sortedArray = [_products sortedArrayUsingDescriptors:sortDescriptors];
+    
+    _products = sortedArray;
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,9 +51,7 @@
 {
     // Return the number of rows in the section.
     
-    AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    
-    return appDelegate.products.count;
+    return _products.count;
 }
 
 
@@ -51,9 +59,7 @@
 {
     StoreCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StoreCell" forIndexPath:indexPath];
     
-    AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    
-    SKProduct *product = appDelegate.products[indexPath.row];
+    SKProduct *product = _products[indexPath.row];
     
     cell.lbl_STKProductTitle.text = product.localizedDescription;
     cell.lbl_STKProductPrice.text = [NSString stringWithFormat:@"%@", product.price];

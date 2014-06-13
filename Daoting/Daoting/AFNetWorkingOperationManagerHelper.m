@@ -117,7 +117,6 @@
              NSLog(@"failed to remove file at %@", filePath);
          }
          
-         //Todo: Update UI
          song.filePath = [[NSURL alloc]initWithString:desfilePath];
          
          //Write back to PlayList.plist

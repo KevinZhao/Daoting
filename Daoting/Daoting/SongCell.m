@@ -37,14 +37,15 @@
 {
     NSString *key = [NSString stringWithFormat:@"%@_%@", album.shortName, song.songNumber];
     
-    //2.1 check the song had been purchased or not
+    //1 check the song had been purchased or not
     BOOL purchased = [[[AppData sharedAppData].purchasedQueue objectForKey:key] isEqualToString:@"Yes"];
     
-    //if the song had been purchased
+    //2.1 if the song had been purchased
     if (purchased) {
         
-        //todo
+        [self startDownload];
     }
+    //2.2 if the song had not been purchased
     else{
         
         //2.2.1 if coin is enough, buy it.
@@ -52,23 +53,27 @@
             
             [AppData sharedAppData].coins = [AppData sharedAppData].coins - [song.price intValue];
             
-            //todo
+            [self startDownload];
             
-            //Add to purchased queue
             [[AppData sharedAppData].purchasedQueue setObject:@"Yes" forKey:[NSString stringWithFormat:@"%@_%@", album.shortName, song.songNumber]];
             
             [[AppData sharedAppData] save];
+            
+            //todo: if ios version = 7
+            //NSString *notification = [NSString stringWithFormat:@"金币  -%@", song.price];
+            //[(SongTableViewController*)self.  showNotification:notification];
         }
+        //2.2.2 cois is not enough
         else
-            //2.2.2 cois is not enough
         {
             //todo notify user and show store view
         }
     
     }
-    
-    
-    
+}
+
+- (void)startDownload
+{
     //change download button to pause button
     [_btn_downloadOrPause removeTarget:self action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
     [_btn_downloadOrPause addTarget:self action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -77,6 +82,7 @@
     
     //Start download
     [[AFNetWorkingOperationManagerHelper sharedManagerHelper] downloadSong:song inAlbum:album];
+    
 }
 
 - (IBAction)onbtn_pausePressed:(id)sender

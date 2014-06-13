@@ -19,5 +19,6 @@
 }
 
 @property (nonatomic, strong) IBOutlet UITableView *tableview;
+@property (nonatomic, strong) NSArray *products;
 
 @end

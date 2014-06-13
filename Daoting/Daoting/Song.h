@@ -16,5 +16,6 @@
 @property (nonatomic, strong) NSURL     *Url;
 @property (nonatomic, strong) NSURL     *filePath;
 @property (nonatomic, strong) NSString  *price;
+@property (nonatomic, assign) double    progress;
 
 @end

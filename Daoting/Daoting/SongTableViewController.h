@@ -51,5 +51,7 @@
 
 
 - (void)setDetailItem:(Album *)album;
+- (void)showNotification:(NSString *)notification;
+
 
 @end

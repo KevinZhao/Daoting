@@ -78,13 +78,7 @@
     _notificationView.backgroundColor = [UIColor grayColor];
     
     [self.view addSubview:_notificationView];
-    
-    UILabel *lbl_coins = [[UILabel alloc]init];
-    lbl_coins.frame = CGRectMake(10, 10, 180, 40);
-    lbl_coins.text = [NSString stringWithFormat:@"%f",[AppData sharedAppData].coins];
-    
-    [_notificationView addSubview:lbl_coins];
-    
+
     _notificationView.alpha = 0.0;
 }
 
@@ -114,9 +108,6 @@
         
         [_songs addObject:song];
     }
-    
-    //Writeback to songsDictionary
-    [[AppData sharedAppData].playingQueue setObject:_songs forKey:_album.shortName];
 }
 
 - (void)updateSongs
@@ -176,13 +167,14 @@
          //there is no new song in the plist
          else
          {
+             //do nothing
          }
          
      }
      //Download Failed
     failure:^(AFHTTPRequestOperation *operation, NSError *error)
      {
-         //todo: try to redownload from cloud for 3 times
+         //todo for next version: try to redownload from cloud for 3 times
      }];
 }
 
@@ -245,6 +237,9 @@
             [[AppData sharedAppData].purchasedQueue setObject:@"Yes" forKey:[NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber]];
             
             [[AppData sharedAppData] save];
+            
+            NSString *notification = [NSString stringWithFormat:@"金币  -%@", song.price];
+            [self showNotification:notification];
         }
         else
             //2.2.2 cois is not enough
@@ -269,10 +264,6 @@
 
 -(void)tick
 {
-//    if (self.isMovingToParentViewController) {
-//        [_timer invalidate];
-//    }
-    
     //There is a song playing
     if (_audioPlayer.duration != 0)
     {
@@ -495,18 +486,26 @@
 
 - (void) testIap
 {
+    /*
     CoinIAPHelper *helper = [CoinIAPHelper sharedInstance];
     AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
 
     NSArray *products = appDelegate.products;
     
     [helper buyProduct:products[0]];
+     */
 }
 
--(void)test
+-(void)showNotification:(NSString *)notification;
 {
+    //configure notification view
+    UILabel *lbl_description = [[UILabel alloc]init];
+    lbl_description.frame = CGRectMake(10, 10, 180, 40);
+    lbl_description.text = notification;
+    [_notificationView addSubview:lbl_description];
     _notificationView.alpha = 1.0;
     
+    //show notification view
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:1.0];
     [UIView setAnimationDelay:1.0];
@@ -515,26 +514,29 @@
     _notificationView.alpha = 0.0;
 
     [UIView commitAnimations];
-    
+}
+
+- (void)test
+{
     //test: processing plist in document and download it back
     /*NSString *bundleDocumentDirectoryPath =
-    [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    
-    NSString *plistPath =
-    [bundleDocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_SongList.plist", _album.shortName]];
-    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-    
-    for (int i = 1; i<= dictionary.count; i++)
-    {
-        NSMutableDictionary *songArray = [dictionary objectForKey:[NSString stringWithFormat:@"%d",i]];
-        [songArray setObject:@"" forKey:@"Price"];
-    }
-    
-    plistPath = [plistPath stringByAppendingString:@"_new"];
-    
-    [dictionary writeToFile:plistPath atomically:YES];
-    
-    NSLog(@"completed");*/
+     [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+     
+     NSString *plistPath =
+     [bundleDocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_SongList.plist", _album.shortName]];
+     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+     
+     for (int i = 1; i<= dictionary.count; i++)
+     {
+     NSMutableDictionary *songArray = [dictionary objectForKey:[NSString stringWithFormat:@"%d",i]];
+     [songArray setObject:@"" forKey:@"Price"];
+     }
+     
+     plistPath = [plistPath stringByAppendingString:@"_new"];
+     
+     [dictionary writeToFile:plistPath atomically:YES];
+     
+     NSLog(@"completed");*/
 }
 
 - (IBAction)onbtn_previousPressed:(id)sender

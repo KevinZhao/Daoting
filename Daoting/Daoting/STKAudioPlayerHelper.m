@@ -38,10 +38,12 @@
 {
     //Check the file is in local reposistory
     if (![[song.filePath absoluteString] isEqualToString:@""] ) {
-                
+        
+        NSURL *songURL = [NSURL fileURLWithPath:[song.filePath absoluteString]];
+        
         //play from local reposistory for the song
-        STKDataSource* fileDataSource = [STKAudioPlayer dataSourceFromURL:song.filePath];
-        [[STKAudioPlayerHelper sharedAudioPlayer] setDataSource:fileDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:song.Url andCount:0]];
+        STKDataSource* fileDataSource = [STKAudioPlayer dataSourceFromURL:songURL];
+        [[STKAudioPlayerHelper sharedAudioPlayer] setDataSource:fileDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:songURL  andCount:0]];
     }
     else
     {
