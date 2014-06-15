@@ -19,21 +19,6 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     
     if ((self = [super init])) {
         
-        // Store product identifiers
-        _productIdentifiers = productIdentifiers;
-        
-        // Check for previously purchased products
-        _purchasedProductIdentifiers = [NSMutableSet set];
-        for (NSString * productIdentifier in _productIdentifiers) {
-            BOOL productPurchased = [[NSUserDefaults standardUserDefaults] boolForKey:productIdentifier];
-            if (productPurchased) {
-                [_purchasedProductIdentifiers addObject:productIdentifier];
-                NSLog(@"Previously purchased: %@", productIdentifier);
-            } else {
-                NSLog(@"Not purchased: %@", productIdentifier);
-            }
-        }
-        
         [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
     }
     return self;
@@ -79,9 +64,6 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     
 }
 
-- (BOOL)productPurchased:(NSString *)productIdentifier {
-    return [_purchasedProductIdentifiers containsObject:productIdentifier];
-}
 
 - (void)buyProduct:(SKProduct *)product {
     
@@ -159,8 +141,8 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
         [AppData sharedAppData].coins = [AppData sharedAppData].coins + 1000;
     }
     
-    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.25000coins"]) {
-        [AppData sharedAppData].coins = [AppData sharedAppData].coins + 25000;
+    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.2500coins"]) {
+        [AppData sharedAppData].coins = [AppData sharedAppData].coins + 2500;
     }
     
     

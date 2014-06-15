@@ -51,7 +51,7 @@
 {
     // Return the number of rows in the section.
     
-    return _products.count;
+    return _products.count+1;
 }
 
 
@@ -59,11 +59,20 @@
 {
     StoreCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StoreCell" forIndexPath:indexPath];
     
+    if (indexPath.row == _products.count) {
+        cell.lbl_STKProductTitle.text = [NSString stringWithFormat:@"现有金币 %d枚", [AppData sharedAppData].coins];
+    }
+    else
+    {
+    
+
+    
     SKProduct *product = _products[indexPath.row];
     
     cell.lbl_STKProductTitle.text = product.localizedDescription;
     cell.lbl_STKProductPrice.text = [NSString stringWithFormat:@"%@", product.price];
     cell.lbl_STKProductTitle.text = product.localizedTitle;
+    }
     
     return cell;
 }

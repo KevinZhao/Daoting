@@ -21,6 +21,7 @@
                                       @"DSoft.com.Daoting.25000coins",
                                       @"DSoft.com.Daoting.500coins",
                                       nil];
+        
         sharedInstance = [[self alloc] initWithProductIdentifiers:productIdentifiers];
     });
     return sharedInstance;
