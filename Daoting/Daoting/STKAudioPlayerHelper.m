@@ -38,9 +38,34 @@
                                                  name: AVAudioSessionRouteChangeNotification
                                                object: [AVAudioSession sharedInstance]];
     
+    [self setupTimer];
     
     return self;
 }
+
+-(void)setupTimer
+{
+	_timer = [NSTimer timerWithTimeInterval:0.5 target:self selector:@selector(tick) userInfo:nil repeats:YES];
+	
+	[[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+}
+
+-(void)tick
+{
+    if (audioPlayer.progress) {
+        
+        NSString *key = [NSString stringWithFormat:@"%@_%@",[AppData sharedAppData].currentAlbum.shortName,
+                         [AppData sharedAppData].currentSong.songNumber];
+        NSString *progressString = [self formatTimeFromSeconds:audioPlayer.progress];
+        [[AppData sharedAppData].playingQueue setValue:progressString forKey:key];
+        
+        [[AppData sharedAppData] save];
+        
+        NSLog(@"recording progress %@", progressString);
+        
+    }
+}
+
 
 - (void)audioRouteChangeHandler:(NSNotification*)notification
 {
@@ -51,7 +76,7 @@
     }
 }
 
--(void)playSong:(Song *)song InAlbum:(Album*)album AtProgress: (double)progress
+-(void)playSong:(Song *)song InAlbum:(Album*)album //AtProgress: (int)progress
 {
     //Check the file is in local reposistory
     if (![[song.filePath absoluteString] isEqualToString:@""] ) {
@@ -60,7 +85,13 @@
         
         //play from local reposistory for the song
         STKDataSource* fileDataSource = [STKAudioPlayer dataSourceFromURL:songURL];
-        [audioPlayer setDataSource:fileDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:songURL  andCount:0]];
+        [audioPlayer setDataSource:fileDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:songURL andCount:0]];
+        
+        //get previous progress
+        NSString *key = [NSString stringWithFormat:@"%@_%@", album.shortName, song.songNumber];
+        NSString *progressString = [[AppData sharedAppData].playingQueue objectForKey:key];
+        _progress = [self formatProgressFromString:progressString];
+        
     }
     else
     {
@@ -96,10 +127,38 @@
     
     [AppData sharedAppData].currentAlbum = album;
     [AppData sharedAppData].currentSong = song;
-    [AppData sharedAppData].currentProgress = progress;
+    [AppData sharedAppData].currentProgress = _progress;
     
     [[AppData sharedAppData] save];
     
+}
+
+-(NSString*)formatTimeFromSeconds:(int)totalSeconds
+{
+    int seconds = totalSeconds % 60;
+    int minutes = (totalSeconds / 60) % 60;
+    int hours = totalSeconds / 3600;
+    
+    return [NSString stringWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds];
+}
+
+-(double)formatProgressFromString:(NSString *)progressString
+{
+    double progress = 0;
+    
+    NSRange range = NSMakeRange(0, 2);
+    NSString *hourString = [progressString substringWithRange:range];
+    
+    range = NSMakeRange(3, 2);
+    NSString *miniteString = [progressString substringWithRange:range];
+    
+    range = NSMakeRange(6, 2);
+    NSString *secondString = [progressString substringWithRange:range];
+    
+    
+    progress = [hourString intValue]*3600 + [miniteString intValue]*60 + [secondString intValue];
+    
+    return progress;
 }
 
 -(void)pauseSong
@@ -113,7 +172,8 @@
 /// Raised when an item has started playing
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer didStartPlayingQueueItemId:(NSObject*)queueItemId
 {
-    NSLog(@"started playing");
+    NSLog(@"started playing from progress %@", [self formatTimeFromSeconds:_progress]);
+    [audioPlayer seekToTime:_progress];
 }
 
 /// Raised when an item has finished buffering (may or may not be the currently playing item)
@@ -168,7 +228,7 @@
         if ( previousSongNumber < songs.count) {
             
             Song *song = [songs objectAtIndex:(previousSongNumber)];
-            [self playSong:song InAlbum:[AppData sharedAppData].currentAlbum AtProgress:0];
+            [self playSong:song InAlbum:[AppData sharedAppData].currentAlbum];
         }
     }
     

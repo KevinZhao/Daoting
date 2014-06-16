@@ -19,7 +19,8 @@
 
 - (void)viewDidLoad
 {
-    _audioPlayer = [STKAudioPlayerHelper sharedInstance].audioPlayer;
+    _audioPlayer    = [STKAudioPlayerHelper sharedInstance].audioPlayer;
+    _appData        = [AppData sharedAppData];
     
     [super viewDidLoad];
     
@@ -57,7 +58,7 @@
     pageControl.numberOfPages = 2;
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+- (void)viewDidDisappear:(BOOL)animated
 {
     [_timer invalidate];
 }
@@ -214,29 +215,28 @@
     NSString *key = [NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber];
     
     //2.1 check the song had been purchased or not
-    BOOL purchased = [[[AppData sharedAppData].purchasedQueue objectForKey:key] isEqualToString:@"Yes"];
+    BOOL purchased = [[_appData.purchasedQueue objectForKey:key] isEqualToString:@"Yes"];
     
     //if the song had been purchased
     if (purchased) {
         
         //play from local reposistory for the song
-        [[STKAudioPlayerHelper sharedInstance] playSong:song InAlbum:_album AtProgress:0];
-        
+        [[STKAudioPlayerHelper sharedInstance] playSong:song InAlbum:_album];
     }
     //2.2 the song had not been purchased yet
     else{
         
         //2.2.1 if coin is enough, buy it.
-        if ([AppData sharedAppData].coins >= [song.price intValue]) {
+        if (_appData.coins >= [song.price intValue]) {
             
-            [AppData sharedAppData].coins = [AppData sharedAppData].coins - [song.price intValue];
+            _appData.coins = _appData.coins - [song.price intValue];
             
-            [[STKAudioPlayerHelper sharedInstance] playSong:song InAlbum:_album AtProgress:0];
+            [[STKAudioPlayerHelper sharedInstance] playSong:song InAlbum:_album];
             
             //Add to purchased queue
-            [[AppData sharedAppData].purchasedQueue setObject:@"Yes" forKey:[NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber]];
+            [_appData.purchasedQueue setObject:@"Yes" forKey:[NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber]];
             
-            [[AppData sharedAppData] save];
+            [_appData save];
             
             NSString *notification = [NSString stringWithFormat:@"金币  -%@", song.price];
             [self showNotification:notification];
@@ -257,13 +257,15 @@
 
 -(void)setupTimer
 {
-	_timer = [NSTimer timerWithTimeInterval:0.05 target:self selector:@selector(tick) userInfo:nil repeats:YES];
+	_timer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(tick) userInfo:nil repeats:YES];
 	
 	[[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
 }
 
 -(void)tick
 {
+    NSLog(@"updating ui");
+    
     //There is a song playing
     if (_audioPlayer.duration != 0)
     {
@@ -275,7 +277,7 @@
         _slider.maximumValue = _audioPlayer.duration;
         _slider.value = _audioPlayer.progress;
         
-        [AppData sharedAppData].currentProgress = _audioPlayer.progress;
+        _appData.currentProgress = _audioPlayer.progress;
     }
     //There is no song playing
     else
@@ -383,25 +385,42 @@
     return [NSString stringWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds];
 }
 
+-(double)formatProgressFromString:(NSString *)progressString
+{
+    double progress = 0;
+    
+    NSRange range = NSMakeRange(0, 2);
+    NSString *hourString = [progressString substringWithRange:range];
+    
+    range = NSMakeRange(3, 2);
+    NSString *miniteString = [progressString substringWithRange:range];
+    
+    range = NSMakeRange(6, 2);
+    NSString *secondString = [progressString substringWithRange:range];
+    
+    
+    progress = [hourString intValue]*3600 + [miniteString intValue]*60 + [secondString intValue];
+    
+    return progress;
+}
+
 -(void)updateUI
 {
     [self tick];
 }
 
-
 - (void) configureNowPlayingInfo
 {
-    Album *album = [AppData sharedAppData].currentAlbum;
-    Song *song= [AppData sharedAppData].currentSong;
-    STKAudioPlayer *player = [STKAudioPlayerHelper sharedInstance].audioPlayer;
+    Album *album = _appData.currentAlbum;
+    Song *song= _appData.currentSong;
     
     //Set Information for Nowplaying Info Center
     if (NSClassFromString(@"MPNowPlayingInfoCenter")) {
         NSMutableDictionary * dict = [[NSMutableDictionary alloc] init];
         [dict setObject:song.title forKey:MPMediaItemPropertyAlbumTitle];
         [dict setObject:album.artistName forKey:MPMediaItemPropertyArtist];
-        [dict setObject:[NSNumber numberWithInteger:player.duration] forKey:MPMediaItemPropertyPlaybackDuration];
-        [dict setObject:[NSNumber numberWithInteger:player.progress] forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
+        [dict setObject:[NSNumber numberWithInteger:_audioPlayer.duration] forKey:MPMediaItemPropertyPlaybackDuration];
+        [dict setObject:[NSNumber numberWithInteger:_audioPlayer.progress] forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
         [dict setObject:[NSNumber numberWithInteger:1.0] forKey:MPNowPlayingInfoPropertyPlaybackRate];
         [dict setObject:[NSNumber numberWithInteger:2] forKey:MPMediaItemPropertyAlbumTrackCount];
         
@@ -471,28 +490,18 @@
     }
     else
     {
-        [[STKAudioPlayerHelper sharedInstance] playSong:[AppData sharedAppData].currentSong
-                                               InAlbum:[AppData sharedAppData].currentAlbum
-                                               AtProgress:[AppData sharedAppData].currentProgress];
+        [[STKAudioPlayerHelper sharedInstance] playSong:_appData.currentSong
+                                               InAlbum:_appData.currentAlbum];
     }
 }
 - (IBAction)onbtn_nextPressed:(id)sender
 {
-    //[self test];
     
-    [self testIap];
 }
 
 - (void) testIap
 {
-    /*
-    CoinIAPHelper *helper = [CoinIAPHelper sharedInstance];
-    AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-
-    NSArray *products = appDelegate.products;
     
-    [helper buyProduct:products[0]];
-     */
 }
 
 -(void)showNotification:(NSString *)notification;
@@ -540,13 +549,15 @@
 
 - (IBAction)onbtn_previousPressed:(id)sender
 {
-    [self test];
+    
 }
 
 - (IBAction)onsliderValueChanged:(id)sender
 {
     if (_audioPlayer) {
         [_audioPlayer seekToTime:_slider.value];
+        
+        NSLog(@"_slider.value = %f",_slider.value);
     }
 }
 
@@ -590,7 +601,7 @@
     Song *selectedSong = [_songs objectAtIndex:indexPath.row];
     
     //1. check the selected song is current playing song
-    if (selectedSong == [AppData sharedAppData].currentSong) {
+    if (selectedSong == _appData.currentSong) {
         //1.1 check current song is playing or paused
         if (_audioPlayer.state == STKAudioPlayerStatePlaying) {
             
@@ -599,7 +610,8 @@
         }
         else{
             //resume the song
-            [[STKAudioPlayerHelper sharedInstance] playSong:selectedSong InAlbum:_album AtProgress:[AppData sharedAppData].currentProgress];
+            [self playSong:selectedSong];
+            //[[STKAudioPlayerHelper sharedInstance] playSong:selectedSong InAlbum:_album AtProgress:_appData.currentProgress];
         }
     }
     //2. the selected song is a new song

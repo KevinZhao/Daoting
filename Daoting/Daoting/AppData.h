@@ -20,7 +20,7 @@
 @property (retain, nonatomic) NSMutableArray        *purchasedSongs;
 @property (retain, nonatomic) Album                 *currentAlbum;
 @property (retain, nonatomic) Song                  *currentSong;
-@property (assign, nonatomic) double                 currentProgress;
+@property (assign, nonatomic) int                 currentProgress;
 
 @property (strong, nonatomic) NSMutableDictionary   *playingQueue;
 @property (strong, nonatomic) NSMutableDictionary   *purchasedQueue;

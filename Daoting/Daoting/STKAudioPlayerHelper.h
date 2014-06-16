@@ -16,14 +16,16 @@
 
 @interface STKAudioPlayerHelper : NSObject <STKAudioPlayerDelegate>
 {
-    STKAudioPlayer *_audioPlayer;
+    STKAudioPlayer  *_audioPlayer;
+    NSTimer         *_timer;
+    double          _progress;
 }
 
 + (STKAudioPlayerHelper *)sharedInstance;
 
 @property (nonatomic, retain) STKAudioPlayer *audioPlayer;
 
--(void)playSong:(Song *)song InAlbum:(Album*)album AtProgress: (double)progress;
+-(void)playSong:(Song *)song InAlbum:(Album*)album; //AtProgress: (int)progress;
 -(void)pauseSong;
 
 @end
