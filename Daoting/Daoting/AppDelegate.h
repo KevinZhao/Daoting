@@ -13,9 +13,8 @@
 #import "AFNetWorkingOperationManagerHelper.h"
 #import "STKAudioPlayerHelper.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, STKAudioPlayerDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 {
-    STKAudioPlayer                      *_audioPlayer;
 }
 
 @property (strong, nonatomic) UIWindow  *window;

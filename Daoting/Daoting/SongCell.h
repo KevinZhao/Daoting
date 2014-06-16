@@ -13,10 +13,12 @@
 #import "AFNetworking.h"
 #import "AFNetWorkingOperationManagerHelper.h"
 #import "DACircularProgressView.h"
+#import "AppData.h"
 
 
 @interface SongCell : UITableViewCell
 {
+    AppData *_appData;
 }
 
 @property (nonatomic, strong) IBOutlet UILabel      *lbl_songNumber;

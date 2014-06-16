@@ -19,6 +19,9 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     
     if ((self = [super init])) {
         
+        // Store product identifiers
+        _productIdentifiers = productIdentifiers;
+        
         [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
     }
     return self;
@@ -145,11 +148,14 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
         [AppData sharedAppData].coins = [AppData sharedAppData].coins + 2500;
     }
     
+    [[AppData sharedAppData] save];
     
     [_purchasedProductIdentifiers addObject:productIdentifier];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:productIdentifier];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:IAPHelperProductPurchasedNotification object:productIdentifier userInfo:nil];
+    
+    
 }
 
 

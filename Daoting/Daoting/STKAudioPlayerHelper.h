@@ -24,8 +24,9 @@
 + (STKAudioPlayerHelper *)sharedInstance;
 
 @property (nonatomic, retain) STKAudioPlayer *audioPlayer;
+@property (nonatomic, retain) NSMutableArray *playbackList;
 
--(void)playSong:(Song *)song InAlbum:(Album*)album; //AtProgress: (int)progress;
+-(void)playSong:(Song *)song InAlbum:(Album*)album; 
 -(void)pauseSong;
 
 @end

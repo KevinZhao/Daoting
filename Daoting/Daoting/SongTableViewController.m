@@ -222,6 +222,7 @@
         
         //play from local reposistory for the song
         [[STKAudioPlayerHelper sharedInstance] playSong:song InAlbum:_album];
+        [STKAudioPlayerHelper sharedInstance].playbackList = _songs;
     }
     //2.2 the song had not been purchased yet
     else{
@@ -232,6 +233,7 @@
             _appData.coins = _appData.coins - [song.price intValue];
             
             [[STKAudioPlayerHelper sharedInstance] playSong:song InAlbum:_album];
+            [STKAudioPlayerHelper sharedInstance].playbackList = _songs;
             
             //Add to purchased queue
             [_appData.purchasedQueue setObject:@"Yes" forKey:[NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber]];
@@ -264,8 +266,6 @@
 
 -(void)tick
 {
-    NSLog(@"updating ui");
-    
     //There is a song playing
     if (_audioPlayer.duration != 0)
     {
@@ -492,6 +492,7 @@
     {
         [[STKAudioPlayerHelper sharedInstance] playSong:_appData.currentSong
                                                InAlbum:_appData.currentAlbum];
+        [STKAudioPlayerHelper sharedInstance].playbackList = _songs;
     }
 }
 - (IBAction)onbtn_nextPressed:(id)sender
@@ -611,7 +612,6 @@
         else{
             //resume the song
             [self playSong:selectedSong];
-            //[[STKAudioPlayerHelper sharedInstance] playSong:selectedSong InAlbum:_album AtProgress:_appData.currentProgress];
         }
     }
     //2. the selected song is a new song

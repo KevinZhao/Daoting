@@ -97,20 +97,19 @@
     {
         AFNetworkReachabilityStatus currentNetWorkStatus = [AFNetworkReachabilityManager sharedManager].networkReachabilityStatus;
                 
-        switch (currentNetWorkStatus) {
+        switch (currentNetWorkStatus)
+        {
                     case AFNetworkReachabilityStatusNotReachable:
-                        //Notify user current net work is not reachable
-                        
                     {
                         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"网络异常" message:@"当前网络无法连接" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
                         
                         [alert show];
                     }
-                        
                         break;
                     case AFNetworkReachabilityStatusReachableViaWWAN:
-                        //Ask user if they want to play from URL
+                    {
                         
+                    }
                         break;
                     case AFNetworkReachabilityStatusReachableViaWiFi:
                     {
@@ -122,7 +121,7 @@
                         
                     default:
                         break;
-                    }
+        }
     }
     
     [AppData sharedAppData].currentAlbum = album;
@@ -172,7 +171,6 @@
 /// Raised when an item has started playing
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer didStartPlayingQueueItemId:(NSObject*)queueItemId
 {
-    NSLog(@"started playing from progress %@", [self formatTimeFromSeconds:_progress]);
     [audioPlayer seekToTime:_progress];
 }
 
@@ -222,12 +220,11 @@
     if (stopReason == STKAudioPlayerStopReasonEof) {
         
         //play next song
-        NSMutableArray *songs = [[AppData sharedAppData].playingQueue objectForKey:[AppData sharedAppData].currentAlbum.shortName];
         NSInteger previousSongNumber = [[AppData sharedAppData].currentSong.songNumber integerValue];
         
-        if ( previousSongNumber < songs.count) {
+        if ( previousSongNumber < _playbackList.count) {
             
-            Song *song = [songs objectAtIndex:(previousSongNumber)];
+            Song *song = [_playbackList objectAtIndex:(previousSongNumber)];
             [self playSong:song InAlbum:[AppData sharedAppData].currentAlbum];
         }
     }
