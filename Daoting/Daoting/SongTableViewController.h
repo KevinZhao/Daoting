@@ -22,15 +22,16 @@
 
 
 @interface SongTableViewController : UIViewController
-    <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
+    <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate, STKAudioPlayerHelperDelegate>
 {
     NSMutableArray                      *_songs;
     UITableView                         *_tableview;
     Album                               *_album;
-    AFHTTPRequestOperationManager       *_operationManager;
     STKAudioPlayer                      *_audioPlayer;
     NSTimer                             *_timer;
     AppData                             *_appData;
+    
+    STKAudioPlayerHelper                *_playerHelper;
 }
 
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;

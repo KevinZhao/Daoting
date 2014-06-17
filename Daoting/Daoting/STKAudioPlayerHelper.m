@@ -60,9 +60,6 @@
         [[AppData sharedAppData].playingQueue setValue:progressString forKey:key];
         
         [[AppData sharedAppData] save];
-        
-        NSLog(@"recording progress %@", progressString);
-        
     }
 }
 
@@ -76,7 +73,7 @@
     }
 }
 
--(void)playSong:(Song *)song InAlbum:(Album*)album //AtProgress: (int)progress
+-(void)playSong:(Song *)song InAlbum:(Album*)album
 {
     //Check the file is in local reposistory
     if (![[song.filePath absoluteString] isEqualToString:@""] ) {
@@ -132,6 +129,14 @@
     
 }
 
+-(void)pauseSong
+{
+    [AppData sharedAppData].currentProgress = audioPlayer.progress;
+    
+    [[AppData sharedAppData] save];
+    [audioPlayer pause];
+}
+
 -(NSString*)formatTimeFromSeconds:(int)totalSeconds
 {
     int seconds = totalSeconds % 60;
@@ -160,18 +165,14 @@
     return progress;
 }
 
--(void)pauseSong
-{
-    [AppData sharedAppData].currentProgress = audioPlayer.progress;
-    
-    [[AppData sharedAppData] save];
-    [audioPlayer pause];
-}
+
 
 /// Raised when an item has started playing
--(void) audioPlayer:(STKAudioPlayer*)audioPlayer didStartPlayingQueueItemId:(NSObject*)queueItemId
+-(void) audioPlayer:(STKAudioPlayer*)aPlayer didStartPlayingQueueItemId:(NSObject*)queueItemId
 {
-    [audioPlayer seekToTime:_progress];
+    if ((_progress + 5) < aPlayer.duration) {
+        [aPlayer seekToTime:_progress];
+    }
 }
 
 /// Raised when an item has finished buffering (may or may not be the currently playing item)
@@ -184,49 +185,14 @@
 /// Raised when the state of the player has changed
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer stateChanged:(STKAudioPlayerState)state previousState:(STKAudioPlayerState)previousState
 {
-    // this is test code
-    /* if (state == STKAudioPlayerStatePlaying) {
-         
-     Song *song = [AppData sharedAppData].currentSong;
-     
-     NSString *bundleDocumentDirectoryPath =
-     [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-     
-     NSString *plistPath =
-     [bundleDocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_SongList.plist",
-                                                           [AppData sharedAppData].currentAlbum.shortName]];
-     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-     
-     NSMutableDictionary *songArray = [dictionary objectForKey:[NSString stringWithFormat:@"%@", song.songNumber]];
-     [songArray setObject:[NSString stringWithFormat:@"%d", 20] forKey:@"Price"];
-     
-     if ([dictionary writeToFile:plistPath atomically:NO]) {
-         NSLog(@"song %d, success with duration of %@", [song.songNumber integerValue], @"25");
-     }
-
-    NSMutableArray *songs = [[AppData sharedAppData].playingQueue objectForKey:[AppData sharedAppData].currentAlbum.shortName];
-         
-     if ([song.songNumber integerValue] < songs.count) {
-     
-         [[STKAudioPlayerHelper sharedAudioPlayer] stop];
-     }
-     
-     }*/
+    
 }
 
 /// Raised when an item has finished playing
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer didFinishPlayingQueueItemId:(NSObject*)queueItemId withReason:(STKAudioPlayerStopReason)stopReason andProgress:(double)progress andDuration:(double)duration
 {
     if (stopReason == STKAudioPlayerStopReasonEof) {
-        
-        //play next song
-        NSInteger previousSongNumber = [[AppData sharedAppData].currentSong.songNumber integerValue];
-        
-        if ( previousSongNumber < _playbackList.count) {
-            
-            Song *song = [_playbackList objectAtIndex:(previousSongNumber)];
-            [self playSong:song InAlbum:[AppData sharedAppData].currentAlbum];
-        }
+        [self.delegate didFinishedPlayingSong];
     }
     
 }

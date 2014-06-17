@@ -19,8 +19,10 @@
 
 - (void)viewDidLoad
 {
-    _audioPlayer    = [STKAudioPlayerHelper sharedInstance].audioPlayer;
+    _playerHelper   = [STKAudioPlayerHelper sharedInstance];
+    _audioPlayer    = _playerHelper.audioPlayer;
     _appData        = [AppData sharedAppData];
+    _playerHelper.delegate = self;
     
     [super viewDidLoad];
     
@@ -210,6 +212,32 @@
     [_tableview reloadData];
 }
 
+-(void)playNextSong
+{
+    //play next song
+    NSInteger currentSongNumber = [[AppData sharedAppData].currentSong.songNumber integerValue];
+    
+    if ( currentSongNumber < _playerHelper.playbackList.count) {
+        
+        Song *song = [_playerHelper.playbackList objectAtIndex:(currentSongNumber)];
+        
+        [self playSong:song];
+        
+    }
+}
+
+-(void)playPreviousSong
+{
+    NSInteger currentSongNumber = [[AppData sharedAppData].currentSong.songNumber integerValue];
+    
+    if ( currentSongNumber - 1 > 0) {
+        
+        Song *song = [_playerHelper.playbackList objectAtIndex:(currentSongNumber - 2)];
+        
+        [self playSong:song];
+    }
+}
+
 -(void)playSong:(Song*)song
 {
     NSString *key = [NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber];
@@ -220,9 +248,11 @@
     //if the song had been purchased
     if (purchased) {
         
-        //play from local reposistory for the song
-        [[STKAudioPlayerHelper sharedInstance] playSong:song InAlbum:_album];
-        [STKAudioPlayerHelper sharedInstance].playbackList = _songs;
+        //play the song
+        [_playerHelper playSong:song InAlbum:_album];
+        
+        _playerHelper.playbackList = _songs;
+        [self configureNowPlayingInfo];
     }
     //2.2 the song had not been purchased yet
     else{
@@ -232,8 +262,9 @@
             
             _appData.coins = _appData.coins - [song.price intValue];
             
-            [[STKAudioPlayerHelper sharedInstance] playSong:song InAlbum:_album];
-            [STKAudioPlayerHelper sharedInstance].playbackList = _songs;
+            [_playerHelper playSong:song InAlbum:_album];
+            _playerHelper.playbackList = _songs;
+            [self configureNowPlayingInfo];
             
             //Add to purchased queue
             [_appData.purchasedQueue setObject:@"Yes" forKey:[NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber]];
@@ -385,25 +416,6 @@
     return [NSString stringWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds];
 }
 
--(double)formatProgressFromString:(NSString *)progressString
-{
-    double progress = 0;
-    
-    NSRange range = NSMakeRange(0, 2);
-    NSString *hourString = [progressString substringWithRange:range];
-    
-    range = NSMakeRange(3, 2);
-    NSString *miniteString = [progressString substringWithRange:range];
-    
-    range = NSMakeRange(6, 2);
-    NSString *secondString = [progressString substringWithRange:range];
-    
-    
-    progress = [hourString intValue]*3600 + [miniteString intValue]*60 + [secondString intValue];
-    
-    return progress;
-}
-
 -(void)updateUI
 {
     [self tick];
@@ -424,6 +436,7 @@
         [dict setObject:[NSNumber numberWithInteger:1.0] forKey:MPNowPlayingInfoPropertyPlaybackRate];
         [dict setObject:[NSNumber numberWithInteger:2] forKey:MPMediaItemPropertyAlbumTrackCount];
         
+        //todo need to remove hard code
         UIImage *img = [UIImage imageNamed: @"wangyuebo.jpg"];
         MPMediaItemArtwork * mArt = [[MPMediaItemArtwork alloc] initWithImage:img];
         [dict setObject:mArt forKey:MPMediaItemPropertyArtwork];
@@ -433,7 +446,7 @@
 
 - (void)remoteControlReceivedWithEvent:(UIEvent *)event
 {
-    STKAudioPlayer *player = [STKAudioPlayerHelper sharedInstance].audioPlayer;
+    STKAudioPlayer *player = _playerHelper.audioPlayer;
     
     if (event.type == UIEventTypeRemoteControl) {
         switch (event.subtype) {
@@ -441,37 +454,38 @@
             {
                 if (player.state == STKAudioPlayerStatePlaying) {
                     
-                    [player pause];
+                    //Pause
+                    [_playerHelper pauseSong];
                     
                 }else{
                     
-                    [player resume];
+                    //Resume
+                    [self playSong:_appData.currentSong];
                 }
                 break;
             }
             case UIEventSubtypeRemoteControlPause:
             {
-                [player pause];
+                [_playerHelper pauseSong];
                 
                 break;
             }
                 
             case UIEventSubtypeRemoteControlPlay:
             {
-                [player resume];
-                //[self playOrResumeSong:storedPlayingIndexPath At:0];
+                [_playerHelper playSong:_appData.currentSong
+                                                        InAlbum:_appData.currentAlbum];
+                _playerHelper.playbackList = _songs;
                 break;
             }
             case UIEventSubtypeRemoteControlPreviousTrack:
             {
-                //NSIndexPath *previousIndexPath = [NSIndexPath indexPathForRow:(currentPlayingIndexPath.row-1) inSection:0];
-                //[self playOrResumeSong:previousIndexPath At:0];
+                [self playPreviousSong];
                 break;
             }
             case UIEventSubtypeRemoteControlNextTrack:
             {
-                //NSIndexPath *nextIndexPath = [NSIndexPath indexPathForRow:(currentPlayingIndexPath.row+1) inSection:0];
-                //[self playOrResumeSong:nextIndexPath At:0];
+                [self playNextSong];
                 break;
             }
             default:
@@ -481,28 +495,29 @@
 }
 
 
+
 #pragma mark - UI operation event
 
 - (IBAction)onbtn_playAndPausePressed:(id)sender
 {
     if (_audioPlayer.state == STKAudioPlayerStatePlaying) {
-        [[STKAudioPlayerHelper sharedInstance] pauseSong];
+        [_playerHelper pauseSong];
     }
     else
     {
-        [[STKAudioPlayerHelper sharedInstance] playSong:_appData.currentSong
+        [_playerHelper playSong:_appData.currentSong
                                                InAlbum:_appData.currentAlbum];
-        [STKAudioPlayerHelper sharedInstance].playbackList = _songs;
+        _playerHelper.playbackList = _songs;
     }
 }
 - (IBAction)onbtn_nextPressed:(id)sender
 {
-    
+    [self playNextSong];
 }
 
-- (void) testIap
+- (IBAction)onbtn_previousPressed:(id)sender
 {
-    
+    [self playPreviousSong];
 }
 
 -(void)showNotification:(NSString *)notification;
@@ -525,40 +540,11 @@
     [UIView commitAnimations];
 }
 
-- (void)test
-{
-    //test: processing plist in document and download it back
-    /*NSString *bundleDocumentDirectoryPath =
-     [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-     
-     NSString *plistPath =
-     [bundleDocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_SongList.plist", _album.shortName]];
-     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-     
-     for (int i = 1; i<= dictionary.count; i++)
-     {
-     NSMutableDictionary *songArray = [dictionary objectForKey:[NSString stringWithFormat:@"%d",i]];
-     [songArray setObject:@"" forKey:@"Price"];
-     }
-     
-     plistPath = [plistPath stringByAppendingString:@"_new"];
-     
-     [dictionary writeToFile:plistPath atomically:YES];
-     
-     NSLog(@"completed");*/
-}
-
-- (IBAction)onbtn_previousPressed:(id)sender
-{
-    
-}
 
 - (IBAction)onsliderValueChanged:(id)sender
 {
     if (_audioPlayer) {
         [_audioPlayer seekToTime:_slider.value];
-        
-        NSLog(@"_slider.value = %f",_slider.value);
     }
 }
 
@@ -607,7 +593,7 @@
         if (_audioPlayer.state == STKAudioPlayerStatePlaying) {
             
             //pause the song
-            [[STKAudioPlayerHelper sharedInstance] pauseSong];
+            [_playerHelper pauseSong];
         }
         else{
             //resume the song
@@ -619,6 +605,8 @@
         
         [self playSong:selectedSong];
     }
+    
+    NSLog(@"%d", self.modalTransitionStyle);
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -633,6 +621,11 @@
     pageControl.currentPage = page;
 }
 
+#pragma mark - STKAudioPlayerHelperDelegate
 
+-(void) didFinishedPlayingSong
+{
+    [self playNextSong];
+}
 
 @end
