@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A1FA99819581321002F48EA /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA99719581321002F48EA /* test.png */; };
 		0A2C37D819457EA90097C9CC /* DownloadStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2C37D719457EA90097C9CC /* DownloadStatus.m */; };
 		0A37F8C519262CD100826C8C /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F8C419262CD100826C8C /* Song.m */; };
 		0A37F8CB19262D2600826C8C /* SongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F8CA19262D2600826C8C /* SongCell.m */; };
@@ -151,6 +152,7 @@
 
 /* Begin PBXFileReference section */
 		0481672862474C608EB8AB38 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		0A1FA99719581321002F48EA /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		0A2C37D619457EA90097C9CC /* DownloadStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadStatus.h; sourceTree = "<group>"; };
 		0A2C37D719457EA90097C9CC /* DownloadStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadStatus.m; sourceTree = "<group>"; };
 		0A37F8C319262CD100826C8C /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
@@ -601,6 +603,7 @@
 		0A98D64B1920EAB700E46EB9 /* Artworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A1FA99719581321002F48EA /* test.png */,
 				0ABB4282192E321C007D8BAC /* Icon-72@2x.png */,
 				0A98D6661920F1F500E46EB9 /* arrow.png */,
 				0A98D6671920F1F500E46EB9 /* arrow@2x.png */,
@@ -851,6 +854,7 @@
 				0A98D6591920EAB700E46EB9 /* downloadButton.png in Resources */,
 				0A98D6611920EAB700E46EB9 /* NowPlayingPauseControl@2x~iphone.png in Resources */,
 				5933AD6F18D03EC1001D707B /* Main_iPad.storyboard in Resources */,
+				0A1FA99819581321002F48EA /* test.png in Resources */,
 				0A98D6601920EAB700E46EB9 /* nowPlayingGlyph@2x.png in Resources */,
 				0AE8648D192EEC6E00EF5A96 /* Liaozhai_SongList.plist in Resources */,
 				0A3CD3641920F8BE00247436 /* Main_iPhone.storyboard in Resources */,
