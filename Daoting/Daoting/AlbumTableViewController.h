@@ -10,7 +10,6 @@
 
 @interface AlbumTableViewController : UITableViewController
 {
-    //NSArray             *_products;
     NSMutableArray      *_albums;
 }
 

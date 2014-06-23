@@ -59,9 +59,10 @@
             
             [_appData save];
             
-            //todo: if ios version = 7
-            //NSString *notification = [NSString stringWithFormat:@"金币  -%@", song.price];
-            //[(SongTableViewController*)self.  showNotification:notification];
+            //show notification to user
+            NSString *notification = [NSString stringWithFormat:@"金币  -%@", song.price];
+            SongTableViewController* parentViewController = (SongTableViewController *)[self GetiewController];
+            [parentViewController showNotification:notification];
         }
         //2.2.2 cois is not enough
         else
@@ -94,4 +95,15 @@
     AFHTTPRequestOperation *operation = [[AFNetWorkingOperationManagerHelper sharedManagerHelper] searchOperationByKey:key];
     [operation cancel];
 }
+
+- (UIViewController *)GetiewController
+{
+    Class vcc = [UIViewController class];
+    UIResponder *responder = self;
+    while ((responder = [responder nextResponder]))
+        if ([responder isKindOfClass: vcc])
+            return (UIViewController *)responder;
+    return nil;
+}
+
 @end

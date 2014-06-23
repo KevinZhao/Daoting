@@ -47,6 +47,9 @@
     _tableview.delegate = self;
     _tableview.dataSource = self;
     _tableview.rowHeight = 60;
+    
+    //Load from xib for prototype cell
+    [_tableview registerNib:[UINib nibWithNibName:@"SongCell" bundle:nil]forCellReuseIdentifier:@"SongCell"];
 
     [scrollView addSubview:_tableview];
     
@@ -357,12 +360,17 @@
         DownloadingStatus *status = [[AFNetWorkingOperationManagerHelper sharedManagerHelper].downloadStatusQueue objectAtIndex:[PositioninQueue intValue]];
         
         switch (status.downloadingStatus) {
+                
+            //Waiting for download
             case fileDownloadStatusWaiting:
             {
                 
             }
+                break;
+            //Downloading
             case fileDownloadStatusDownloading:
             {
+                //1.
                 songCell.cirProgView_downloadProgress.hidden = NO;
                 songCell.cirProgView_downloadProgress.progressTintColor = [UIColor blueColor];
                 
@@ -370,24 +378,29 @@
                     
                     songCell.cirProgView_downloadProgress.progress =(float) status.totalBytesRead / (float)status.totalBytesExpectedToRead;
                 }
+                
+                //2.
+                songCell.btn_downloadOrPause.hidden = NO;
+                [songCell.btn_downloadOrPause removeTarget:songCell action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
+                [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
+                
+                [songCell.btn_downloadOrPause setBackgroundImage:[UIImage imageNamed:@"downloadProgressButtonPause.png"] forState:UIControlStateNormal];
 
             }
                 break;
-
+            //Download Completed
             case fileDownloadStatusCompleted:
             {
                 songCell.btn_downloadOrPause.hidden = YES;
                 songCell.cirProgView_downloadProgress.hidden = YES;
-                
             }
                 break;
-            
+            //Download Failed
             case fileDownloadStatusError:
             {
                 songCell.btn_downloadOrPause.hidden = NO;
                 [songCell.btn_downloadOrPause removeTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
                 [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
-                
                 [songCell.btn_downloadOrPause setBackgroundImage:[UIImage imageNamed:@"downloadButton.png"] forState:UIControlStateNormal];
 
                 songCell.cirProgView_downloadProgress.hidden = YES;
@@ -397,13 +410,24 @@
                 break;
         }
     }
+    else{
     
-    //2. Check if the file had been downloaded for the cell
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if ([fileManager fileExistsAtPath:[song.filePath absoluteString]])
-    {
-        //NSLog([song.filePath absoluteString]);
-        songCell.btn_downloadOrPause.hidden = YES;
+        //2. Check if the file had been downloaded for the cell
+        //Download completed
+        if ([[NSFileManager defaultManager] fileExistsAtPath:[song.filePath absoluteString]]){
+            songCell.btn_downloadOrPause.hidden = YES;
+            songCell.cirProgView_downloadProgress.hidden = YES;
+
+        }
+        //Not Downloaded yet
+        else{
+            songCell.cirProgView_downloadProgress.hidden = YES;
+            
+            songCell.btn_downloadOrPause.hidden = NO;
+            [songCell.btn_downloadOrPause removeTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
+            [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
+            [songCell.btn_downloadOrPause setBackgroundImage:[UIImage imageNamed:@"downloadButton.png"] forState:UIControlStateNormal];
+        }
     }
 }
 
@@ -505,8 +529,7 @@
     }
     else
     {
-        [_playerHelper playSong:_appData.currentSong
-                                               InAlbum:_appData.currentAlbum];
+        [_playerHelper playSong:_appData.currentSong InAlbum:_appData.currentAlbum];
         _playerHelper.playbackList = _songs;
     }
 }
@@ -522,6 +545,8 @@
 
 -(void)showNotification:(NSString *)notification;
 {
+    //todo show beatiful notification view
+    
     //configure notification view
     UILabel *lbl_description = [[UILabel alloc]init];
     lbl_description.frame = CGRectMake(10, 10, 180, 40);
@@ -565,17 +590,17 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Song *song = [_songs objectAtIndex:indexPath.row];
+    SongCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SongCell" forIndexPath:indexPath];
     
-    //Load from xib for prototype cell
-    [tableView registerNib:[UINib nibWithNibName:@"SongCell" bundle:nil]forCellReuseIdentifier:@"SongCell"];
-    SongCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SongCell"];
+    //Clear content
+    cell.cirProgView_downloadProgress.hidden = YES;
+    cell.btn_downloadOrPause.hidden = YES;
     
     //Update UI according to song status
     cell.lbl_songTitle.text = song.title;
     cell.lbl_songDuration.text = song.duration;
     cell.lbl_songNumber.text = song.songNumber;
     cell.lbl_songDuration.text = song.duration;
-    cell.btn_downloadOrPause.hidden = NO;
     
     cell.song = song;
     cell.album = _album;
