@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import <AVFoundation/AVFoundation.h>
 
+const NSString *appUrlinAppStore = @"http://itunes.apple.com/app/id878654949";
+
 @interface AppDelegate()
 {
 
@@ -51,6 +53,16 @@
     
     [STKAudioPlayerHelper sharedInstance];
     
+    //configure shareSDK
+    [ShareSDK registerApp:@"16bbd8d2753a"];
+    
+    //[ShareSDK connectSinaWeiboWithAppKey:@"3201194191"
+    //                           appSecret:@"0334252914651e8f76bad63337b3b78f"
+    //                         redirectUri:@"http://appgo.cn"];
+    
+    //[ShareSDK connectWeChatWithAppId:@"wx354ee3c34a7a8eda" wechatCls:[WXApi class]];
+    [ShareSDK connectWeChatTimelineWithAppId:@"wx354ee3c34a7a8eda" wechatCls:[WXApi class]];
+    
     return YES;
 }
 							
@@ -79,6 +91,16 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return [ShareSDK handleOpenURL:url wxDelegate:self];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    return [ShareSDK handleOpenURL:url sourceApplication:sourceApplication annotation:annotation wxDelegate:self];
 }
 
 @end

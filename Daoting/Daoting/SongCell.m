@@ -61,13 +61,17 @@
             
             //show notification to user
             NSString *notification = [NSString stringWithFormat:@"金币  -%@", song.price];
-            SongTableViewController* parentViewController = (SongTableViewController *)[self GetiewController];
+            SongTableViewController* parentViewController = (SongTableViewController *)[self GetViewController];
             [parentViewController showNotification:notification];
         }
         //2.2.2 cois is not enough
         else
         {
             //todo notify user and show store view
+            
+            SongTableViewController *parentViewController = (SongTableViewController *)[self GetViewController];
+            
+            [parentViewController getTabbarViewController].selectedIndex = 2;
         }
     
     }
@@ -96,7 +100,7 @@
     [operation cancel];
 }
 
-- (UIViewController *)GetiewController
+- (UIViewController *)GetViewController
 {
     Class vcc = [UIViewController class];
     UIResponder *responder = self;

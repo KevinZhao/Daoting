@@ -257,7 +257,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Rl1-Zv-Lki"/>
+                    <navigationItem key="navigationItem" id="Rl1-Zv-Lki">
+                        <barButtonItem key="rightBarButtonItem" image="qr_toolbar_more.png" id="IL5-bh-io6">
+                            <connections>
+                                <action selector="onbarbtn_actionPressed:" destination="FIa-3P-xRc" id="cmD-9P-hee"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="btn_next" destination="rCq-N8-6Vs" id="hhk-OC-wnX"/>
                         <outlet property="btn_playAndPause" destination="6MF-qb-FBg" id="gK9-Sm-rLi"/>
@@ -292,7 +298,7 @@
         <!--Store Table View Controller - 获取金币-->
         <scene sceneID="L8L-Sd-TD4">
             <objects>
-                <viewController id="Rsj-Xu-mWo" customClass="StoreTableViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StoreViewController" id="Rsj-Xu-mWo" customClass="StoreTableViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="V2B-t0-jfV"/>
                         <viewControllerLayoutGuide type="bottom" id="M78-aY-nDp"/>
@@ -426,6 +432,7 @@
         <image name="playing_btn_next_n" width="50" height="50"/>
         <image name="playing_btn_play_n" width="64" height="64"/>
         <image name="playing_btn_pre_n" width="50" height="50"/>
+        <image name="qr_toolbar_more.png" width="39" height="39"/>
         <image name="second" width="30" height="30"/>
         <image name="test.png" width="128" height="128"/>
     </resources>

@@ -9,13 +9,12 @@
 #import <UIKit/UIKit.h>
 
 #import "AppDelegate.h"
-#import "StoreCell.h"
 #import "StoreKit/StoreKit.h"
 
 
-@interface StoreTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface StoreTableViewController : UIViewController
 {
-    UITableView         *_tableView;
+    
 }
 
 @property (nonatomic, strong) IBOutlet UITableView *tableview;

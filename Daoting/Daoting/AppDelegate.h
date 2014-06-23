@@ -12,6 +12,8 @@
 #import "AppData.h"
 #import "AFNetWorkingOperationManagerHelper.h"
 #import "STKAudioPlayerHelper.h"
+#import <ShareSDK/ShareSDK.h>
+#import "WXApi.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {

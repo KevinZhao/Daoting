@@ -281,6 +281,8 @@
             //2.2.2 cois is not enough
         {
             //todo notify user and show store view
+            UITabBarController *tabBarController = [self getTabbarViewController];
+            tabBarController.selectedIndex = 2;
         }
     }
 }
@@ -518,6 +520,29 @@
     }
 }
 
+- (void)shareAlbum
+{
+    id<ISSContent> publishContent = [ShareSDK content:@"我正在听王玥波的评书《聊斋》，收集整理的好全，严重推荐! http://t.cn/8s3J6LA"
+                                       defaultContent:@""
+                                                image:[ShareSDK imageWithUrl:[_album.imageUrl absoluteString]]
+                                                title:@"我正在听王玥波的评书《聊斋》，收集整理的好全，严重推荐！http://t.cn/8s3J6LA"
+                                                  url:@"http://t.cn/8s3J6LA"
+                                          description:@""
+                                            mediaType:SSPublishContentMediaTypeNews];
+    
+    [ShareSDK showShareActionSheet:nil
+                         shareList:nil
+                           content:publishContent
+                     statusBarTips:YES
+                       authOptions:nil
+                      shareOptions:nil
+                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end)
+        {
+         //Intended left blank
+        }
+     ];
+}
+
 
 
 #pragma mark - UI operation event
@@ -536,6 +561,16 @@
 - (IBAction)onbtn_nextPressed:(id)sender
 {
     [self playNextSong];
+}
+
+- (UITabBarController *)getTabbarViewController
+{
+    Class vcc = [UITabBarController class];
+    UIResponder *responder = self;
+    while ((responder = [responder nextResponder]))
+        if ([responder isKindOfClass: vcc])
+            return (UITabBarController *)responder;
+    return nil;
 }
 
 - (IBAction)onbtn_previousPressed:(id)sender
@@ -577,6 +612,43 @@
 {
     CGPoint offset = CGPointMake(pageControl.currentPage * scrollView.frame.size.width, 0);
     [scrollView setContentOffset:offset animated:YES];
+}
+
+- (IBAction)onbarbtn_actionPressed:(id)sender
+{
+    
+    NSString *cancelString = @"取消";
+    NSString *shareString = @"分享";
+    NSString *downloadAllString = @"全部下载";
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil                                                                                  delegate:self
+                                                    cancelButtonTitle:cancelString
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:shareString, downloadAllString, nil];
+    [actionSheet showInView:self.view];
+
+}
+
+#pragma mark - UIActionSheet delegate methods
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        //share
+        case 0:
+        {
+            [self shareAlbum];
+        }
+            break;
+        //download all
+        case 1:
+        {
+            
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 

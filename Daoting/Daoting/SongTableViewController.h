@@ -19,10 +19,14 @@
 #import "AppData.h"
 #import "AppDelegate.h"
 #import "STKAudioPlayerHelper.h"
+#import <ShareSDK/ShareSDK.h>
+#import "StoreTableViewController.h"
 
 
 @interface SongTableViewController : UIViewController
-    <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate, STKAudioPlayerHelperDelegate>
+    <UIScrollViewDelegate, UITableViewDataSource,
+    UITableViewDelegate, STKAudioPlayerHelperDelegate,
+    UIActionSheetDelegate>
 {
     NSMutableArray                      *_songs;
     UITableView                         *_tableview;
@@ -43,6 +47,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *btn_next;
 @property (nonatomic, retain) IBOutlet UISlider *slider;
 @property (nonatomic, strong) IBOutlet UIView* notificationView;
+@property (nonatomic, strong) IBOutlet UIActionSheet *actionSheet;
 
 - (IBAction)onbtn_playAndPausePressed:(id)sender;
 - (IBAction)onbtn_nextPressed:(id)sender;
@@ -53,6 +58,9 @@
 
 - (void)setDetailItem:(Album *)album;
 - (void)showNotification:(NSString *)notification;
+
+//this is ugly, need to revisit next version
+- (UITabBarController *)getTabbarViewController;
 
 
 @end

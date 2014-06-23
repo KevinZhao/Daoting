@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0A1FA99819581321002F48EA /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA99719581321002F48EA /* test.png */; };
+		0A1FA99B1958556C002F48EA /* qr_toolbar_more_hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA9991958556C002F48EA /* qr_toolbar_more_hl@2x.png */; };
+		0A1FA99C1958556C002F48EA /* qr_toolbar_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA99A1958556C002F48EA /* qr_toolbar_more@2x.png */; };
+		0A1FA99F19585612002F48EA /* qr_toolbar_more_hl.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA99D19585612002F48EA /* qr_toolbar_more_hl.png */; };
+		0A1FA9A019585612002F48EA /* qr_toolbar_more.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA99E19585612002F48EA /* qr_toolbar_more.png */; };
 		0A2C37D819457EA90097C9CC /* DownloadStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2C37D719457EA90097C9CC /* DownloadStatus.m */; };
 		0A37F8C519262CD100826C8C /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F8C419262CD100826C8C /* Song.m */; };
 		0A37F8CB19262D2600826C8C /* SongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F8CA19262D2600826C8C /* SongCell.m */; };
@@ -138,7 +142,6 @@
 		0AFB65AF1924F215000F2AE6 /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB65AE1924F215000F2AE6 /* Album.m */; };
 		0AFB65B21925107F000F2AE6 /* AlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB65B11925107F000F2AE6 /* AlbumCell.m */; };
 		0AFFF5831944A2EE008E9119 /* StoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFFF5821944A2EE008E9119 /* StoreTableViewController.m */; };
-		0AFFF5891944A57E008E9119 /* StoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFFF5881944A57E008E9119 /* StoreCell.m */; };
 		5933AD5918D03EC1001D707B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933AD5818D03EC1001D707B /* Foundation.framework */; };
 		5933AD5B18D03EC1001D707B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933AD5A18D03EC1001D707B /* CoreGraphics.framework */; };
 		5933AD5D18D03EC1001D707B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933AD5C18D03EC1001D707B /* UIKit.framework */; };
@@ -153,6 +156,10 @@
 /* Begin PBXFileReference section */
 		0481672862474C608EB8AB38 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		0A1FA99719581321002F48EA /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
+		0A1FA9991958556C002F48EA /* qr_toolbar_more_hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr_toolbar_more_hl@2x.png"; sourceTree = "<group>"; };
+		0A1FA99A1958556C002F48EA /* qr_toolbar_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr_toolbar_more@2x.png"; sourceTree = "<group>"; };
+		0A1FA99D19585612002F48EA /* qr_toolbar_more_hl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qr_toolbar_more_hl.png; sourceTree = "<group>"; };
+		0A1FA99E19585612002F48EA /* qr_toolbar_more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qr_toolbar_more.png; sourceTree = "<group>"; };
 		0A2C37D619457EA90097C9CC /* DownloadStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadStatus.h; sourceTree = "<group>"; };
 		0A2C37D719457EA90097C9CC /* DownloadStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadStatus.m; sourceTree = "<group>"; };
 		0A37F8C319262CD100826C8C /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
@@ -310,8 +317,6 @@
 		0AFB65B11925107F000F2AE6 /* AlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumCell.m; sourceTree = "<group>"; };
 		0AFFF5811944A2EE008E9119 /* StoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreTableViewController.h; sourceTree = "<group>"; };
 		0AFFF5821944A2EE008E9119 /* StoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreTableViewController.m; sourceTree = "<group>"; };
-		0AFFF5871944A57E008E9119 /* StoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreCell.h; sourceTree = "<group>"; };
-		0AFFF5881944A57E008E9119 /* StoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreCell.m; sourceTree = "<group>"; };
 		5933AD5518D03EC1001D707B /* Daoting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daoting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5933AD5818D03EC1001D707B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5933AD5A18D03EC1001D707B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -332,7 +337,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A98D6321920AD8200E46EB9 /* CoreTelephony.framework in Frameworks */,
 				0A98D6301920AD7A00E46EB9 /* QuartzCore.framework in Frameworks */,
+				0A98D62E1920AD7200E46EB9 /* SystemConfiguration.framework in Frameworks */,
 				0AFB65A719245BD4000F2AE6 /* StoreKit.framework in Frameworks */,
 				0A98D6481920ADF600E46EB9 /* MediaPlayer.framework in Frameworks */,
 				0A98D6461920ADDD00E46EB9 /* MessageUI.framework in Frameworks */,
@@ -345,8 +352,6 @@
 				0A98D6381920ADA300E46EB9 /* Security.framework in Frameworks */,
 				0A98D6361920AD9B00E46EB9 /* libz.1.2.5.dylib in Frameworks */,
 				0A98D6341920AD9000E46EB9 /* libicucore.dylib in Frameworks */,
-				0A98D6321920AD8200E46EB9 /* CoreTelephony.framework in Frameworks */,
-				0A98D62E1920AD7200E46EB9 /* SystemConfiguration.framework in Frameworks */,
 				0A98D5FA1920ACBC00E46EB9 /* LinkedInConnection.framework in Frameworks */,
 				0A98D61A1920ACBC00E46EB9 /* RennSDK.framework in Frameworks */,
 				0A98D6151920ACBC00E46EB9 /* Pinterest.framework in Frameworks */,
@@ -603,6 +608,10 @@
 		0A98D64B1920EAB700E46EB9 /* Artworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A1FA99D19585612002F48EA /* qr_toolbar_more_hl.png */,
+				0A1FA99E19585612002F48EA /* qr_toolbar_more.png */,
+				0A1FA9991958556C002F48EA /* qr_toolbar_more_hl@2x.png */,
+				0A1FA99A1958556C002F48EA /* qr_toolbar_more@2x.png */,
 				0A1FA99719581321002F48EA /* test.png */,
 				0ABB4282192E321C007D8BAC /* Icon-72@2x.png */,
 				0A98D6661920F1F500E46EB9 /* arrow.png */,
@@ -736,8 +745,6 @@
 				0A37F8C919262D2600826C8C /* SongCell.h */,
 				0A37F8CA19262D2600826C8C /* SongCell.m */,
 				0A6AA9DE192B88AB00462543 /* SongCell.xib */,
-				0AFFF5871944A57E008E9119 /* StoreCell.h */,
-				0AFFF5881944A57E008E9119 /* StoreCell.m */,
 				5933AD6718D03EC1001D707B /* AppDelegate.h */,
 				5933AD6818D03EC1001D707B /* AppDelegate.m */,
 				0A3CD3621920F8BE00247436 /* Main_iPhone.storyboard */,
@@ -844,6 +851,8 @@
 				0A98D66C1920F1F500E46EB9 /* arrowSelected.png in Resources */,
 				0AE8649A192EF48700EF5A96 /* Shuangbianji_SongList.plist in Resources */,
 				0AFB65AC1924EC44000F2AE6 /* AlbumList.plist in Resources */,
+				0A1FA99B1958556C002F48EA /* qr_toolbar_more_hl@2x.png in Resources */,
+				0A1FA99C1958556C002F48EA /* qr_toolbar_more@2x.png in Resources */,
 				0A98D65E1920EAB700E46EB9 /* DownloadsStopControl@2x.png in Resources */,
 				0A98D65A1920EAB700E46EB9 /* downloadButton@2x.png in Resources */,
 				0A98D65F1920EAB700E46EB9 /* nowPlayingGlyph.png in Resources */,
@@ -851,6 +860,7 @@
 				0A98D6181920ACBC00E46EB9 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				0AE86488192EDECA00EF5A96 /* Zhengdong1_SongList.plist in Resources */,
 				0A98D6251920ACBC00E46EB9 /* ShareSDKiPadSimpleShareViewUI.bundle in Resources */,
+				0A1FA9A019585612002F48EA /* qr_toolbar_more.png in Resources */,
 				0A98D6591920EAB700E46EB9 /* downloadButton.png in Resources */,
 				0A98D6611920EAB700E46EB9 /* NowPlayingPauseControl@2x~iphone.png in Resources */,
 				5933AD6F18D03EC1001D707B /* Main_iPad.storyboard in Resources */,
@@ -861,6 +871,7 @@
 				0AE8649C192EF48700EF5A96 /* Yongzheng3_SongList.plist in Resources */,
 				0A98D6191920ACBC00E46EB9 /* RennSDK.bundle in Resources */,
 				0AE86498192EF48700EF5A96 /* Mingchao_SongList.plist in Resources */,
+				0A1FA99F19585612002F48EA /* qr_toolbar_more_hl.png in Resources */,
 				0A98D65C1920EAB700E46EB9 /* downloadProgressButtonPause@2x.png in Resources */,
 				5933AD7718D03EC1001D707B /* Images.xcassets in Resources */,
 				0A98D6161920ACBC00E46EB9 /* PinterestSDKResources.bundle in Resources */,
@@ -942,7 +953,6 @@
 				0ABA95A619382E2000172862 /* AFNetworkReachabilityObserver.m in Sources */,
 				0A6D573B19331A750038D841 /* AppData.m in Sources */,
 				0AFB65A519245A7E000F2AE6 /* IAPHelper.m in Sources */,
-				0AFFF5891944A57E008E9119 /* StoreCell.m in Sources */,
 				0AFFF5831944A2EE008E9119 /* StoreTableViewController.m in Sources */,
 				0AFB65AF1924F215000F2AE6 /* Album.m in Sources */,
 				0A37F8C519262CD100826C8C /* Song.m in Sources */,
