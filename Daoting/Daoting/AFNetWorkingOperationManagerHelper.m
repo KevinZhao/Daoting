@@ -48,8 +48,16 @@
 
 - (void)downloadSong:(Song*) song inAlbum:(Album*) album
 {
+    
+    //0. check if the song is already in download queue
+    NSString *key = [NSString stringWithFormat:@"%@_%@", album.shortName, song.songNumber];
+    
+    if ([_downloadKeyQueue objectForKey:key] != nil) {
+        return;
+    };
+    
     //1. Set download path to temporary directory with album shortname and songnumber combination
-    NSString *fileName = [NSString stringWithFormat:@"%@_%@.mp3", album.shortName, song.songNumber];
+    NSString *fileName = [NSString stringWithFormat:@"%@.mp3", key];
     NSString *filePath = [NSTemporaryDirectory() stringByAppendingString:fileName];
     
     //2. Create Request and operation
@@ -66,8 +74,6 @@
     
     //2.2 add operation to downloadQueue and downloadKeyQueu for easy search
     [_downloadQueue addObject:operation];
-    
-    NSString *key = [NSString stringWithFormat:@"%@_%@", album.shortName, song.songNumber];
     
     [_downloadKeyQueue setObject:[NSString stringWithFormat:@"%d", _downloadKeyQueue.count] forKey: key];
     

@@ -61,6 +61,13 @@
     //Configure pagecontrol
     pageControl.currentPage = 0;
     pageControl.numberOfPages = 2;
+    
+    NSString* songNumberstring = (NSString*)[_appData.playingPositionQueue objectForKey:_album.title];
+    NSInteger songNumber = [songNumberstring integerValue];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(songNumber-1) inSection:0];
+    
+    [_tableview selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -255,7 +262,11 @@
         [_playerHelper playSong:song InAlbum:_album];
         
         _playerHelper.playbackList = _songs;
+        [_appData.playingPositionQueue setObject:song.songNumber forKey:_album.title];
+        
         [self configureNowPlayingInfo];
+        
+        
     }
     //2.2 the song had not been purchased yet
     else{
@@ -266,7 +277,10 @@
             _appData.coins = _appData.coins - [song.price intValue];
             
             [_playerHelper playSong:song InAlbum:_album];
+            
+            [_appData.playingPositionQueue setObject:song.songNumber forKey:_album.title];
             _playerHelper.playbackList = _songs;
+            
             [self configureNowPlayingInfo];
             
             //Add to purchased queue
@@ -366,7 +380,11 @@
             //Waiting for download
             case fileDownloadStatusWaiting:
             {
+                songCell.btn_downloadOrPause.hidden = NO;
+                [songCell.btn_downloadOrPause removeTarget:songCell action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
+                [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
                 
+                [songCell.btn_downloadOrPause setBackgroundImage:[UIImage imageNamed:@"downloadProgressButtonPause.png"] forState:UIControlStateNormal];
             }
                 break;
             //Downloading
@@ -430,6 +448,14 @@
             [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
             [songCell.btn_downloadOrPause setBackgroundImage:[UIImage imageNamed:@"downloadButton.png"] forState:UIControlStateNormal];
         }
+    }
+    
+    if (songCell.isSelected) {
+
+    }
+    else
+    {
+        
     }
 }
 
@@ -499,9 +525,7 @@
                 
             case UIEventSubtypeRemoteControlPlay:
             {
-                [_playerHelper playSong:_appData.currentSong
-                                                        InAlbum:_appData.currentAlbum];
-                _playerHelper.playbackList = _songs;
+                [self playSong:_appData.currentSong];
                 break;
             }
             case UIEventSubtypeRemoteControlPreviousTrack:
@@ -543,7 +567,72 @@
      ];
 }
 
+- (UITabBarController *)getTabbarViewController
+{
+    Class vcc = [UITabBarController class];
+    UIResponder *responder = self;
+    while ((responder = [responder nextResponder]))
+        if ([responder isKindOfClass: vcc])
+            return (UITabBarController *)responder;
+    return nil;
+}
 
+- (void)downloadAll
+{
+    //1.calculate how many coins need for download all items
+    
+    int coinsNeeded = 0;
+    for (int i = 0; i < _songs.count; i++) {
+        
+        Song *song = _songs[i];
+        
+        NSString *key = [NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber];
+        
+        //1.1 check the song had been purchased or not
+        BOOL purchased = [[_appData.purchasedQueue objectForKey:key] isEqualToString:@"Yes"];
+        if (!purchased) {
+            coinsNeeded = coinsNeeded + [song.price intValue];
+        }
+    }
+    
+    NSLog(@"coinsNeeded = %d", coinsNeeded);
+    
+    //2.if coin is enough, add all download item into download queue
+    if (_appData.coins >= coinsNeeded) {
+        for (int i = 0; i < _songs.count; i++) {
+            
+            Song *song = _songs[i];
+            
+            //2.1 check the song had been downloaded or not
+            BOOL downloaded = [[NSFileManager defaultManager] fileExistsAtPath:[song.filePath absoluteString]];
+            if (!downloaded) {
+                [[AFNetWorkingOperationManagerHelper sharedManagerHelper] downloadSong:song inAlbum:_album];
+            }
+            
+            //2.2
+            NSString *key = [NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber];
+            
+            //1.1 check the song had been purchased or not
+            BOOL purchased = [[_appData.purchasedQueue objectForKey:key] isEqualToString:@"Yes"];
+            
+            if (!purchased) {
+                _appData.coins = _appData.coins - [song.price intValue];
+                
+                [_appData.purchasedQueue setObject:@"Yes" forKey:key];
+            }
+        }
+        [_appData save];
+        
+        NSString *notification = [NSString stringWithFormat:@"金币  -%d", coinsNeeded];
+        [self showNotification:notification];
+        
+    }
+    //if cois is not enough, navigate to store view and give notification
+    else{
+        UITabBarController *tabBarController = [self getTabbarViewController];
+        tabBarController.selectedIndex = 2;
+    }
+}
 
 #pragma mark - UI operation event
 
@@ -554,8 +643,7 @@
     }
     else
     {
-        [_playerHelper playSong:_appData.currentSong InAlbum:_appData.currentAlbum];
-        _playerHelper.playbackList = _songs;
+        [self playSong:_appData.currentSong];
     }
 }
 - (IBAction)onbtn_nextPressed:(id)sender
@@ -563,15 +651,7 @@
     [self playNextSong];
 }
 
-- (UITabBarController *)getTabbarViewController
-{
-    Class vcc = [UITabBarController class];
-    UIResponder *responder = self;
-    while ((responder = [responder nextResponder]))
-        if ([responder isKindOfClass: vcc])
-            return (UITabBarController *)responder;
-    return nil;
-}
+
 
 - (IBAction)onbtn_previousPressed:(id)sender
 {
@@ -643,7 +723,7 @@
         //download all
         case 1:
         {
-            
+            [self downloadAll];
         }
             break;
         default:
@@ -673,6 +753,12 @@
     cell.lbl_songDuration.text = song.duration;
     cell.lbl_songNumber.text = song.songNumber;
     cell.lbl_songDuration.text = song.duration;
+    
+    //todo: customize the selected table view cell
+    UIView *view = [[UIView alloc] initWithFrame:cell.frame];
+    view.backgroundColor = [UIColor grayColor];
+    
+    cell.selectedBackgroundView = view;
     
     cell.song = song;
     cell.album = _album;

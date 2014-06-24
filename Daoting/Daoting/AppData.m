@@ -11,6 +11,7 @@
 static NSString* const SSDataforCoinsKey = @"coins";
 static NSString* const SSDataforPlayingQueue = @"playingQueue";
 static NSString* const SSDataforPurchasedQueue = @"purchasedQueue";
+static NSString* const SSDataforPlayingPositionQueue = @"playingPositionQueue";
 
 
 static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
@@ -19,13 +20,14 @@ static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
 @implementation AppData
 
 
-@synthesize playingQueue, purchasedQueue;
+@synthesize playingQueue, purchasedQueue, playingPositionQueue;
 
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
     [encoder encodeDouble:self.coins forKey: SSDataforCoinsKey];
     [encoder encodeObject:playingQueue forKey:SSDataforPlayingQueue];
     [encoder encodeObject:purchasedQueue forKey:SSDataforPurchasedQueue];
+    [encoder encodeObject:playingPositionQueue forKey:SSDataforPlayingPositionQueue];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)decoder
@@ -33,19 +35,20 @@ static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
     self = [self init];
     if (self) {
         _coins = [decoder decodeDoubleForKey:SSDataforCoinsKey];
-        
-        if ([decoder decodeObjectForKey:SSDataforPlayingQueue]) {
-            self.playingQueue = [[decoder decodeObjectForKey:SSDataforPlayingQueue] mutableCopy];
-        }
-        else
-        {
-            self.playingQueue = [[NSMutableDictionary alloc]init];
+
+        playingQueue = [[decoder decodeObjectForKey:SSDataforPlayingQueue] mutableCopy];
+        if (playingQueue == nil) {
+            playingQueue = [[NSMutableDictionary alloc]init];
         }
         
-        self.purchasedQueue = [[decoder decodeObjectForKey:SSDataforPurchasedQueue] mutableCopy];
+        purchasedQueue = [[decoder decodeObjectForKey:SSDataforPurchasedQueue] mutableCopy];
+        if (purchasedQueue == nil) {
+            purchasedQueue = [[NSMutableDictionary alloc]init];
+        }
         
-        if (self.purchasedQueue == nil) {
-            self.purchasedQueue = [[NSMutableDictionary alloc]init];
+        playingPositionQueue = [[decoder decodeObjectForKey:SSDataforPlayingPositionQueue] mutableCopy];
+        if (playingPositionQueue == nil) {
+            playingPositionQueue = [[NSMutableDictionary alloc]init];
         }
     }
     return self;

@@ -36,6 +36,7 @@
     NSArray *sortedArray = [_products sortedArrayUsingDescriptors:sortDescriptors];
     
     _products = sortedArray;
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,16 +45,19 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (IBAction)buy:(id)sender
 {
-    // Return the number of rows in the section.
+    CoinIAPHelper *helper = [CoinIAPHelper sharedInstance];
     
-    return _products.count+1;
+    [helper buyProduct:_products[4]];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.lbl_coins.text = [NSString stringWithFormat:@"%d", [AppData sharedAppData].coins];
+}
+
+#pragma mark - delete
 
 /*- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

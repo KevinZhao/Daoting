@@ -23,6 +23,7 @@
 @property (assign, nonatomic) int                   currentProgress;
 
 @property (strong, nonatomic) NSMutableDictionary   *playingQueue;
+@property (strong, nonatomic) NSMutableDictionary   *playingPositionQueue;
 @property (strong, nonatomic) NSMutableDictionary   *purchasedQueue;
 
 +(instancetype)sharedAppData;

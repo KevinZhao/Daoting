@@ -17,7 +17,8 @@
     
 }
 
-@property (nonatomic, strong) IBOutlet UITableView *tableview;
 @property (nonatomic, strong) NSArray *products;
+
+@property (nonatomic, strong) IBOutlet UILabel *lbl_coins;
 
 @end

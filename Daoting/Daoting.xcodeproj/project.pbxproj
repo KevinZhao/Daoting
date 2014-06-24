@@ -20,6 +20,7 @@
 		0A6D573B19331A750038D841 /* AppData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6D573A19331A750038D841 /* AppData.m */; };
 		0A6D573E19331B020038D841 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6D573D19331B020038D841 /* KeychainWrapper.m */; };
 		0A6D5742193453BC0038D841 /* AFNetWorkingOperationManagerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6D5741193453BC0038D841 /* AFNetWorkingOperationManagerHelper.m */; };
+		0A7A8CD819590B4C003FAA92 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A7A8CD719590B4C003FAA92 /* CFNetwork.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		0A8BA0091940BFCB001307D6 /* DownloadTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8BA0081940BFCB001307D6 /* DownloadTableViewController.m */; };
 		0A8BA00F1940C15E001307D6 /* DownloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8BA00E1940C15E001307D6 /* DownloadCell.m */; };
 		0A98D5EF1920ACBC00E46EB9 /* CopyConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A98D59D1920ACBC00E46EB9 /* CopyConnection.framework */; };
@@ -175,6 +176,7 @@
 		0A6D573D19331B020038D841 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
 		0A6D5740193453BC0038D841 /* AFNetWorkingOperationManagerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetWorkingOperationManagerHelper.h; sourceTree = "<group>"; };
 		0A6D5741193453BC0038D841 /* AFNetWorkingOperationManagerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetWorkingOperationManagerHelper.m; sourceTree = "<group>"; };
+		0A7A8CD719590B4C003FAA92 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0A8BA0071940BFCB001307D6 /* DownloadTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadTableViewController.h; sourceTree = "<group>"; };
 		0A8BA0081940BFCB001307D6 /* DownloadTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadTableViewController.m; sourceTree = "<group>"; };
 		0A8BA00D1940C15E001307D6 /* DownloadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadCell.h; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A7A8CD819590B4C003FAA92 /* CFNetwork.framework in Frameworks */,
 				0A98D6321920AD8200E46EB9 /* CoreTelephony.framework in Frameworks */,
 				0A98D6301920AD7A00E46EB9 /* QuartzCore.framework in Frameworks */,
 				0A98D62E1920AD7200E46EB9 /* SystemConfiguration.framework in Frameworks */,
@@ -709,6 +712,7 @@
 		5933AD5718D03EC1001D707B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A7A8CD719590B4C003FAA92 /* CFNetwork.framework */,
 				0AFB65A619245BD4000F2AE6 /* StoreKit.framework */,
 				0A98D6471920ADF600E46EB9 /* MediaPlayer.framework */,
 				0A98D6451920ADDD00E46EB9 /* MessageUI.framework */,
