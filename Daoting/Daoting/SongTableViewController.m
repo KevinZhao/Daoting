@@ -232,7 +232,6 @@
         Song *song = [_playerHelper.playbackList objectAtIndex:(currentSongNumber)];
         
         [self playSong:song];
-        
     }
 }
 
@@ -546,25 +545,29 @@
 
 - (void)shareAlbum
 {
-    id<ISSContent> publishContent = [ShareSDK content:@"我正在听王玥波的评书《聊斋》，收集整理的好全，严重推荐! http://t.cn/8s3J6LA"
+    id<ISSContent> publishContent = [ShareSDK content:@"我正在听王玥波的评书《聊斋》，收集整理的好全，严重推荐! http://t.cn/RvTAdqk"
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithUrl:[_album.imageUrl absoluteString]]
-                                                title:@"我正在听王玥波的评书《聊斋》，收集整理的好全，严重推荐！http://t.cn/8s3J6LA"
-                                                  url:@"http://t.cn/8s3J6LA"
+                                                title:@"我正在听王玥波的评书《聊斋》，收集整理的好全，严重推荐！http://t.cn/RvTAdqk"
+                                                  url:@"http://t.cn/RvTAdqk"
                                           description:@""
                                             mediaType:SSPublishContentMediaTypeNews];
     
-    [ShareSDK showShareActionSheet:nil
-                         shareList:nil
-                           content:publishContent
-                     statusBarTips:YES
-                       authOptions:nil
-                      shareOptions:nil
-                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end)
+    
+    [ShareSDK showShareViewWithType:ShareTypeWeixiTimeline container:nil content:publishContent statusBarTips:NO authOptions:nil shareOptions:nil result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+        
+        if (state == SSResponseStateSuccess)
         {
-         //Intended left blank
+            //share
+            _appData.coins = _appData.coins + 50;
+            NSString *notification = @"+ 50";
+            [self showNotification:notification];
         }
-     ];
+        else if (state == SSResponseStateFail)
+        {
+            NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+        }
+    }];
 }
 
 - (UITabBarController *)getTabbarViewController
@@ -650,8 +653,6 @@
 {
     [self playNextSong];
 }
-
-
 
 - (IBAction)onbtn_previousPressed:(id)sender
 {

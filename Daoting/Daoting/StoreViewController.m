@@ -6,13 +6,10 @@
 //  Copyright (c) 2014年 赵 克鸣. All rights reserved.
 //
 
-#import "StoreTableViewController.h"
+#import "StoreViewController.h"
 
-@interface StoreTableViewController ()
 
-@end
-
-@implementation StoreTableViewController
+@implementation StoreViewController
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -62,6 +59,27 @@
     self.lbl_coins.text = [NSString stringWithFormat:@"%d", [AppData sharedAppData].coins];
 }
 
+-(void)showNotification:(NSString *)notification;
+{
+    //todo show beatiful notification view
+    
+    //configure notification view
+    UILabel *lbl_description = [[UILabel alloc]init];
+    lbl_description.frame = CGRectMake(10, 10, 180, 40);
+    lbl_description.text = notification;
+    [_notificationView addSubview:lbl_description];
+    _notificationView.alpha = 1.0;
+    
+    //show notification view
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationDelay:1.0];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    
+    _notificationView.alpha = 0.0;
+    
+    [UIView commitAnimations];
+}
 
 
 

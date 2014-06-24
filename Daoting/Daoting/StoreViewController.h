@@ -13,7 +13,7 @@
 #import "UILabelStrikeThrough.h"
 
 
-@interface StoreTableViewController : UIViewController
+@interface StoreViewController : UIViewController
 {
     
 }
@@ -24,5 +24,10 @@
 
 @property (nonatomic, strong) IBOutlet UILabelStrikeThrough *lbl_100yuan;
 @property (nonatomic, strong) IBOutlet UILabelStrikeThrough *lbl_250yuan;
+
+
+@property (nonatomic, strong) IBOutlet UIView* notificationView;
+
+-(void)showNotification:(NSString *)notification;
 
 @end

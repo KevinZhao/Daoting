@@ -20,7 +20,7 @@
 #import "AppDelegate.h"
 #import "STKAudioPlayerHelper.h"
 #import <ShareSDK/ShareSDK.h>
-#import "StoreTableViewController.h"
+#import "StoreViewController.h"
 
 
 @interface SongTableViewController : UIViewController

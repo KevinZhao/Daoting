@@ -143,7 +143,7 @@
 		0AFB65AC1924EC44000F2AE6 /* AlbumList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AFB65AB1924EC44000F2AE6 /* AlbumList.plist */; };
 		0AFB65AF1924F215000F2AE6 /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB65AE1924F215000F2AE6 /* Album.m */; };
 		0AFB65B21925107F000F2AE6 /* AlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB65B11925107F000F2AE6 /* AlbumCell.m */; };
-		0AFFF5831944A2EE008E9119 /* StoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFFF5821944A2EE008E9119 /* StoreTableViewController.m */; };
+		0AFFF5831944A2EE008E9119 /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFFF5821944A2EE008E9119 /* StoreViewController.m */; };
 		5933AD5918D03EC1001D707B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933AD5818D03EC1001D707B /* Foundation.framework */; };
 		5933AD5B18D03EC1001D707B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933AD5A18D03EC1001D707B /* CoreGraphics.framework */; };
 		5933AD5D18D03EC1001D707B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933AD5C18D03EC1001D707B /* UIKit.framework */; };
@@ -320,8 +320,8 @@
 		0AFB65AE1924F215000F2AE6 /* Album.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Album.m; sourceTree = "<group>"; };
 		0AFB65B01925107F000F2AE6 /* AlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumCell.h; sourceTree = "<group>"; };
 		0AFB65B11925107F000F2AE6 /* AlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumCell.m; sourceTree = "<group>"; };
-		0AFFF5811944A2EE008E9119 /* StoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreTableViewController.h; sourceTree = "<group>"; };
-		0AFFF5821944A2EE008E9119 /* StoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreTableViewController.m; sourceTree = "<group>"; };
+		0AFFF5811944A2EE008E9119 /* StoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreViewController.h; sourceTree = "<group>"; };
+		0AFFF5821944A2EE008E9119 /* StoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreViewController.m; sourceTree = "<group>"; };
 		5933AD5518D03EC1001D707B /* Daoting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daoting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5933AD5818D03EC1001D707B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5933AD5A18D03EC1001D707B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -764,8 +764,8 @@
 				0AE46B0D1921035E00FA30F3 /* SongTableViewController.m */,
 				0A8BA0071940BFCB001307D6 /* DownloadTableViewController.h */,
 				0A8BA0081940BFCB001307D6 /* DownloadTableViewController.m */,
-				0AFFF5811944A2EE008E9119 /* StoreTableViewController.h */,
-				0AFFF5821944A2EE008E9119 /* StoreTableViewController.m */,
+				0AFFF5811944A2EE008E9119 /* StoreViewController.h */,
+				0AFFF5821944A2EE008E9119 /* StoreViewController.m */,
 				5933AD5F18D03EC1001D707B /* Supporting Files */,
 			);
 			path = Daoting;
@@ -962,7 +962,7 @@
 				0ABA95A619382E2000172862 /* AFNetworkReachabilityObserver.m in Sources */,
 				0A6D573B19331A750038D841 /* AppData.m in Sources */,
 				0AFB65A519245A7E000F2AE6 /* IAPHelper.m in Sources */,
-				0AFFF5831944A2EE008E9119 /* StoreTableViewController.m in Sources */,
+				0AFFF5831944A2EE008E9119 /* StoreViewController.m in Sources */,
 				0AFB65AF1924F215000F2AE6 /* Album.m in Sources */,
 				0AD7E23E195928AD00F511B7 /* UILabelStrikeThrough.m in Sources */,
 				0A37F8C519262CD100826C8C /* Song.m in Sources */,

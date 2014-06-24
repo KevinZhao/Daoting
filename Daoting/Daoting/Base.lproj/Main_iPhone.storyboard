@@ -299,10 +299,10 @@
             </objects>
             <point key="canvasLocation" x="251" y="1436"/>
         </scene>
-        <!--Store Table View Controller - 获取金币-->
+        <!--Store View Controller - 获取金币-->
         <scene sceneID="L8L-Sd-TD4">
             <objects>
-                <viewController storyboardIdentifier="StoreViewController" id="Rsj-Xu-mWo" customClass="StoreTableViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StoreViewController" id="Rsj-Xu-mWo" customClass="StoreViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="V2B-t0-jfV"/>
                         <viewControllerLayoutGuide type="bottom" id="M78-aY-nDp"/>
