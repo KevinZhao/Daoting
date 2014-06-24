@@ -10,6 +10,7 @@
 
 #import "AppDelegate.h"
 #import "StoreKit/StoreKit.h"
+#import "UILabelStrikeThrough.h"
 
 
 @interface StoreTableViewController : UIViewController
@@ -20,5 +21,8 @@
 @property (nonatomic, strong) NSArray *products;
 
 @property (nonatomic, strong) IBOutlet UILabel *lbl_coins;
+
+@property (nonatomic, strong) IBOutlet UILabelStrikeThrough *lbl_100yuan;
+@property (nonatomic, strong) IBOutlet UILabelStrikeThrough *lbl_250yuan;
 
 @end

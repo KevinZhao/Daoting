@@ -117,6 +117,25 @@
     
 }
 
+- (IBAction)cancelAll:(id)sender
+{
+    NSMutableArray *downloadQueue = [AFNetWorkingOperationManagerHelper sharedManagerHelper].downloadQueue;
+    
+    for (AFHTTPRequestOperation *operation in downloadQueue) {
+        [operation cancel];
+    }
+    
+    //update UI
+    
+    for (int i = 0; i < [AFNetWorkingOperationManagerHelper sharedManagerHelper].downloadQueue.count; i++) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        
+        DownloadCell *cell = (DownloadCell*)[_tableview cellForRowAtIndexPath:indexPath];
+        
+        cell.btn_cancel.titleLabel.text = @"已取消";
+    }
+}
+
 #pragma mark UITableView Delegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

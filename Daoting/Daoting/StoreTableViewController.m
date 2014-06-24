@@ -36,6 +36,9 @@
     NSArray *sortedArray = [_products sortedArrayUsingDescriptors:sortDescriptors];
     
     _products = sortedArray;
+    
+    _lbl_100yuan.isWithStrikeThrough = true;
+    _lbl_250yuan.isWithStrikeThrough = true;
 
 }
 
@@ -45,11 +48,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)buy:(id)sender
+- (IBAction)buy:(UIButton *)sender
 {
+    NSInteger tag = (NSInteger)sender.tag;
+    
     CoinIAPHelper *helper = [CoinIAPHelper sharedInstance];
     
-    [helper buyProduct:_products[4]];
+    [helper buyProduct:_products[tag]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -57,78 +62,7 @@
     self.lbl_coins.text = [NSString stringWithFormat:@"%d", [AppData sharedAppData].coins];
 }
 
-#pragma mark - delete
 
-/*- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    StoreCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StoreCell" forIndexPath:indexPath];
-    
-    if (indexPath.row == _products.count) {
-        cell.lbl_STKProductTitle.text = [NSString stringWithFormat:@"现有金币 %d枚", [AppData sharedAppData].coins];
-    }
-    else
-    {
-    
-
-    
-    SKProduct *product = _products[indexPath.row];
-    
-    cell.lbl_STKProductTitle.text = product.localizedDescription;
-    cell.lbl_STKProductPrice.text = [NSString stringWithFormat:@"%@", product.price];
-    cell.lbl_STKProductTitle.text = product.localizedTitle;
-    }
-    
-    return cell;
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    switch (indexPath.row) {
-        case 0:
-        {
-             CoinIAPHelper *helper = [CoinIAPHelper sharedInstance];
-            
-             [helper buyProduct:_products[0]];
-            
-        }
-            break;
-        case 1:
-        {
-            CoinIAPHelper *helper = [CoinIAPHelper sharedInstance];
-            
-            
-            [helper buyProduct:_products[1]];
-            
-        }
-            break;
-        case 2:
-        {
-            CoinIAPHelper *helper = [CoinIAPHelper sharedInstance];
-            
-            
-            [helper buyProduct:_products[2]];
-            
-        }
-            break;
-        case 3:
-        {
-            CoinIAPHelper *helper = [CoinIAPHelper sharedInstance];
-            
-            [helper buyProduct:_products[3]];
-        }
-            break;
-        case 4:
-        {
-            CoinIAPHelper *helper = [CoinIAPHelper sharedInstance];
-            
-            [helper buyProduct:_products[4]];
-        }
-            break;
-            
-        default:
-            break;
-    }
-}*/
 
 
 @end

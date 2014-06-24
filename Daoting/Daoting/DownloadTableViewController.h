@@ -17,7 +17,10 @@
     NSTimer                             *_timer;
 }
 
-@property (nonatomic, strong) IBOutlet UITableView *tableview;
+@property (nonatomic, strong) IBOutlet UITableView      *tableview;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem  *barbtn_cancelAll;
+
+- (IBAction) cancelAll:(id)sender;
 
 
 @end

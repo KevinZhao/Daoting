@@ -39,5 +39,9 @@
     AFHTTPRequestOperation *operation =downloadQueue[indexPath.row];
 
     [operation cancel];
+    
+    self.btn_cancel.titleLabel.text = @"已取消";
 }
+
+
 @end
