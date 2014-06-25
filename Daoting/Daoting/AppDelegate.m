@@ -63,6 +63,9 @@ const NSString *appUrlinAppStore = @"http://itunes.apple.com/app/id878654949";
     //[ShareSDK connectWeChatWithAppId:@"wx354ee3c34a7a8eda" wechatCls:[WXApi class]];
     [ShareSDK connectWeChatTimelineWithAppId:@"wx354ee3c34a7a8eda" wechatCls:[WXApi class]];
     
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSystemTimeChanged:) name:UIApplicationSignificantTimeChangeNotification object:nil];
+    
     return YES;
 }
 							
@@ -102,5 +105,11 @@ const NSString *appUrlinAppStore = @"http://itunes.apple.com/app/id878654949";
 {
     return [ShareSDK handleOpenURL:url sourceApplication:sourceApplication annotation:annotation wxDelegate:self];
 }
+
+- (void) handleSystemTimeChanged:(NSNotification *) notification
+{
+    //todo, Cheating avoidance, will implement next version
+}
+
 
 @end

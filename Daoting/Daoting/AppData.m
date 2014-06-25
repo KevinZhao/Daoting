@@ -12,6 +12,7 @@ static NSString* const SSDataforCoinsKey = @"coins";
 static NSString* const SSDataforPlayingQueue = @"playingQueue";
 static NSString* const SSDataforPurchasedQueue = @"purchasedQueue";
 static NSString* const SSDataforPlayingPositionQueue = @"playingPositionQueue";
+static NSString* const SSDataforDailyCheckinQueue = @"dailyCheckinQueue";
 
 
 static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
@@ -20,7 +21,7 @@ static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
 @implementation AppData
 
 
-@synthesize playingQueue, purchasedQueue, playingPositionQueue;
+@synthesize playingQueue, purchasedQueue, playingPositionQueue, dailyCheckinQueue;
 
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
@@ -28,6 +29,7 @@ static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
     [encoder encodeObject:playingQueue forKey:SSDataforPlayingQueue];
     [encoder encodeObject:purchasedQueue forKey:SSDataforPurchasedQueue];
     [encoder encodeObject:playingPositionQueue forKey:SSDataforPlayingPositionQueue];
+    [encoder encodeObject:dailyCheckinQueue forKey:SSDataforDailyCheckinQueue];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)decoder
@@ -49,6 +51,11 @@ static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
         playingPositionQueue = [[decoder decodeObjectForKey:SSDataforPlayingPositionQueue] mutableCopy];
         if (playingPositionQueue == nil) {
             playingPositionQueue = [[NSMutableDictionary alloc]init];
+        }
+        
+        dailyCheckinQueue = [[decoder decodeObjectForKey:SSDataforDailyCheckinQueue] mutableCopy];
+        if (dailyCheckinQueue == nil) {
+            dailyCheckinQueue = [[NSMutableDictionary alloc]init];
         }
     }
     return self;
@@ -122,7 +129,11 @@ static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
     
     if (self.coins > cloudCoins ) {
         [iCloudStore setDouble:self.coins forKey:SSDataforCoinsKey];
-        [iCloudStore synchronize];
+        BOOL success = [iCloudStore synchronize];
+        
+        if (success) {
+            NSLog(@"update icloud succeed");
+        }
     }
 }
 

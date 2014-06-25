@@ -25,6 +25,7 @@
 @property (strong, nonatomic) NSMutableDictionary   *playingQueue;
 @property (strong, nonatomic) NSMutableDictionary   *playingPositionQueue;
 @property (strong, nonatomic) NSMutableDictionary   *purchasedQueue;
+@property (strong, nonatomic) NSMutableDictionary   *dailyCheckinQueue;
 
 +(instancetype)sharedAppData;
 +(NSString*)filePath;

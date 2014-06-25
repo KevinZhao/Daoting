@@ -16,6 +16,7 @@
 		0A37F8C519262CD100826C8C /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F8C419262CD100826C8C /* Song.m */; };
 		0A37F8CB19262D2600826C8C /* SongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F8CA19262D2600826C8C /* SongCell.m */; };
 		0A3CD3641920F8BE00247436 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A3CD3621920F8BE00247436 /* Main_iPhone.storyboard */; };
+		0A5F4C9D195AB0D3003924C7 /* AppIcon76x76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A5F4C9C195AB0D3003924C7 /* AppIcon76x76@2x.png */; };
 		0A6AA9DF192B88AB00462543 /* SongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A6AA9DE192B88AB00462543 /* SongCell.xib */; };
 		0A6D573B19331A750038D841 /* AppData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6D573A19331A750038D841 /* AppData.m */; };
 		0A6D573E19331B020038D841 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6D573D19331B020038D841 /* KeychainWrapper.m */; };
@@ -169,6 +170,7 @@
 		0A37F8C919262D2600826C8C /* SongCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongCell.h; sourceTree = "<group>"; };
 		0A37F8CA19262D2600826C8C /* SongCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongCell.m; sourceTree = "<group>"; };
 		0A3CD3631920F8BE00247436 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		0A5F4C9C195AB0D3003924C7 /* AppIcon76x76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon76x76@2x.png"; sourceTree = "<group>"; };
 		0A6AA9DE192B88AB00462543 /* SongCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongCell.xib; sourceTree = "<group>"; };
 		0A6D57351932FD070038D841 /* Daoting.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Daoting.entitlements; sourceTree = "<group>"; };
 		0A6D573919331A750038D841 /* AppData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppData.h; sourceTree = "<group>"; };
@@ -614,6 +616,7 @@
 		0A98D64B1920EAB700E46EB9 /* Artworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A5F4C9C195AB0D3003924C7 /* AppIcon76x76@2x.png */,
 				0A1FA99D19585612002F48EA /* qr_toolbar_more_hl.png */,
 				0A1FA99E19585612002F48EA /* qr_toolbar_more.png */,
 				0A1FA9991958556C002F48EA /* qr_toolbar_more_hl@2x.png */,
@@ -868,6 +871,7 @@
 				0A98D62A1920ACBC00E46EB9 /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
 				0A98D6181920ACBC00E46EB9 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				0AE86488192EDECA00EF5A96 /* Zhengdong1_SongList.plist in Resources */,
+				0A5F4C9D195AB0D3003924C7 /* AppIcon76x76@2x.png in Resources */,
 				0A98D6251920ACBC00E46EB9 /* ShareSDKiPadSimpleShareViewUI.bundle in Resources */,
 				0A1FA9A019585612002F48EA /* qr_toolbar_more.png in Resources */,
 				0A98D6591920EAB700E46EB9 /* downloadButton.png in Resources */,
@@ -1097,8 +1101,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Daoting/Daoting.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Keming Zhao (Q7DPRSQ22V)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Keming Zhao (Q7DPRSQ22V)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Daoting/ShareSDK/Connection",
@@ -1122,7 +1126,7 @@
 					"$(PROJECT_DIR)/Daoting/ShareSDK/Extend/YiXinSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5CD5E62B-9D00-4D62-8363-4D0969753BAD";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1135,8 +1139,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Daoting/Daoting.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Keming Zhao (Q7DPRSQ22V)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Keming Zhao (Q7DPRSQ22V)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Daoting/ShareSDK/Connection",
@@ -1160,7 +1164,7 @@
 					"$(PROJECT_DIR)/Daoting/ShareSDK/Extend/YiXinSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5CD5E62B-9D00-4D62-8363-4D0969753BAD";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

@@ -11,50 +11,22 @@
 
 @implementation StoreViewController
 
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    _products = appDelegate.products;
-    
-    NSSortDescriptor *sorter = [[NSSortDescriptor alloc] initWithKey:@"price" ascending:YES];
-    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:&sorter count:1];
-    NSArray *sortedArray = [_products sortedArrayUsingDescriptors:sortDescriptors];
-    
-    _products = sortedArray;
     
     _appData = [AppData sharedAppData];
     
     _lbl_100yuan.isWithStrikeThrough = true;
     _lbl_250yuan.isWithStrikeThrough = true;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePurchase:) name:IAPHelperProductPurchasedNotification object:nil];
-
+    //Register observer for IAP helper notification
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePurchaseCompleted:) name:IAPHelperProductPurchasedNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)buy:(UIButton *)sender
-{
-    NSInteger tag = (NSInteger)sender.tag;
-    
-    CoinIAPHelper *helper = [CoinIAPHelper sharedInstance];
-    
-    [helper buyProduct:_products[tag]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -62,6 +34,8 @@
     self.lbl_coins.text = [NSString stringWithFormat:@"%d", _appData.coins];
     [self setupNotificationView];
 }
+
+#pragma mark
 
 - (void)setupNotificationView
 {
@@ -77,8 +51,6 @@
 
 -(void)showNotification:(NSString *)notification;
 {
-    //todo show beatiful notification view
-    
     //configure notification view
     UILabel *lbl_description = [[UILabel alloc]init];
     lbl_description.frame = CGRectMake(10, 10, 180, 40);
@@ -97,7 +69,9 @@
     [UIView commitAnimations];
 }
 
-- (void) handlePurchase: (NSNotification *)notification;
+#pragma mark IAP Notification Handler
+
+- (void) handlePurchaseCompleted: (NSNotification *)notification;
 {
     NSString *productIdentifier = notification.object;
     
@@ -130,5 +104,101 @@
     
 }
 
+#pragma mark UI operation
+
+- (IBAction)buy:(UIButton *)sender
+{
+    AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    //Check if IAP items had been loaded
+    if (appDelegate.products != nil) {
+        
+        _products = appDelegate.products;
+        
+        //sort by price
+        NSSortDescriptor *sorter = [[NSSortDescriptor alloc] initWithKey:@"price" ascending:YES];
+        NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:&sorter count:1];
+        NSArray *sortedArray = [_products sortedArrayUsingDescriptors:sortDescriptors];
+        
+        _products = sortedArray;
+        
+        //purchase based on user selection
+        NSInteger tag = (NSInteger)sender.tag;
+        CoinIAPHelper *helper = [CoinIAPHelper sharedInstance];
+        [helper buyProduct:_products[tag]];
+    }else{
+        
+        //indicate the iTunes Store can not been connected
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"无法连接iTunes Store，请重试" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        
+        [alert show];
+    }
+}
+
+- (IBAction)dailyCheckin:(UIButton *)sender
+{
+    NSString* date;
+    NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"YYYY-MM-dd"];
+    date = [formatter stringFromDate:[NSDate date]];
+    
+    if ([_appData.dailyCheckinQueue objectForKey:date] == nil)
+    {
+        //check in
+        NSString *yes = @"yes";
+        
+        [_appData.dailyCheckinQueue setObject:yes forKey:date];
+        
+        _appData.coins += 30;
+        
+        self.lbl_coins.text = [NSString stringWithFormat:@"%d", _appData.coins];
+        
+        [_appData save];
+        
+        NSString *notification = @"您获得了 30金币";
+        
+        [self showNotification:notification];
+    }
+    else
+    {
+        NSString *notification = @"您今日已经签到了，请明日再试";
+        [self showNotification:notification];
+    }
+}
+
+- (IBAction)share:(id)sender
+{
+    NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"AppIcon76x76@2x" ofType:@"png"];
+    
+    id<ISSContent> publishContent = [ShareSDK content:@"我正在听王玥波的评书《聊斋》，收集整理的好全，严重推荐! http://t.cn/RvTAdqk"
+                                       defaultContent:@""
+                                                image:[ShareSDK imageWithPath:imgPath]
+                                                title:@"我正在听王玥波的评书《聊斋》，收集整理的好全，严重推荐！http://t.cn/RvTAdqk"
+                                                  url:@"http://t.cn/RvTAdqk"
+                                          description:@""
+                                            mediaType:SSPublishContentMediaTypeNews];
+    
+    
+    [ShareSDK showShareViewWithType:ShareTypeWeixiTimeline
+                          container:nil
+                            content:publishContent
+                      statusBarTips:NO authOptions:nil
+                       shareOptions:nil
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+        
+        if (state == SSResponseStateSuccess)
+        {
+            //share
+            _appData.coins = _appData.coins + 50;
+            NSString *notification = @"您获得了 50金币";
+            
+            [self showNotification:notification];
+        }
+        else if (state == SSResponseStateFail)
+        {
+            NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+        }
+    }];
+}
 
 @end
