@@ -45,12 +45,12 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     _productsRequest = nil;
     
     NSArray * skProducts = response.products;
-    /*for (SKProduct * skProduct in skProducts) {
+    for (SKProduct * skProduct in skProducts) {
         NSLog(@"Found product: %@ %@ %0.2f",
               skProduct.productIdentifier,
               skProduct.localizedTitle,
               skProduct.price.floatValue);
-    }*/
+    }
     
     _completionHandler(YES, skProducts);
     _completionHandler = nil;
@@ -126,29 +126,6 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
 }
 
 - (void)provideContentForProductIdentifier:(NSString *)productIdentifier {
-    
-    
-    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.10000coins"]) {
-        [AppData sharedAppData].coins = [AppData sharedAppData].coins + 10000;
-    }
-    
-    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.500coins"]) {
-        [AppData sharedAppData].coins = [AppData sharedAppData].coins + 500;
-    }
-    
-    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.25000coins"]) {
-        [AppData sharedAppData].coins = [AppData sharedAppData].coins + 25000;
-    }
-    
-    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.1000coins"]) {
-        [AppData sharedAppData].coins = [AppData sharedAppData].coins + 1000;
-    }
-    
-    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.2500coins"]) {
-        [AppData sharedAppData].coins = [AppData sharedAppData].coins + 2500;
-    }
-    
-    [[AppData sharedAppData] save];
     
     [_purchasedProductIdentifiers addObject:productIdentifier];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:productIdentifier];

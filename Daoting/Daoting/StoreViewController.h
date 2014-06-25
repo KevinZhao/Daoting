@@ -8,14 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-#import "AppDelegate.h"
+#import "AppData.h"
 #import "StoreKit/StoreKit.h"
 #import "UILabelStrikeThrough.h"
+#import "CoinIAPHelper.h"
+#import "AppDelegate.h"
 
 
 @interface StoreViewController : UIViewController
 {
-    
+    AppData *_appData;
 }
 
 @property (nonatomic, strong) NSArray *products;

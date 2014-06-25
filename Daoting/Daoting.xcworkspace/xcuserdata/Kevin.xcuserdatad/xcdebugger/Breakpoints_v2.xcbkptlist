@@ -1193,12 +1193,28 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Daoting/StoreViewController.m"
-            timestampString = "425225176.062886"
+            filePath = "Daoting/SongTableViewController.m"
+            timestampString = "425285038.860044"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "549"
+            endingLineNumber = "549"
+            landmarkName = "-shareAlbum"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Daoting/StoreViewController.m"
+            timestampString = "425310611.888905"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -1209,13 +1225,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Daoting/SongTableViewController.m"
-            timestampString = "425285038.860044"
+            filePath = "Daoting/StoreViewController.m"
+            timestampString = "425312447.477071"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "549"
-            endingLineNumber = "549"
-            landmarkName = "-shareAlbum"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "-showNotification:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

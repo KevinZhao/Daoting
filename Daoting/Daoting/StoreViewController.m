@@ -25,7 +25,6 @@
     [super viewDidLoad];
     
     AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-
     _products = appDelegate.products;
     
     NSSortDescriptor *sorter = [[NSSortDescriptor alloc] initWithKey:@"price" ascending:YES];
@@ -34,8 +33,12 @@
     
     _products = sortedArray;
     
+    _appData = [AppData sharedAppData];
+    
     _lbl_100yuan.isWithStrikeThrough = true;
     _lbl_250yuan.isWithStrikeThrough = true;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePurchase:) name:IAPHelperProductPurchasedNotification object:nil];
 
 }
 
@@ -56,7 +59,20 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.lbl_coins.text = [NSString stringWithFormat:@"%d", [AppData sharedAppData].coins];
+    self.lbl_coins.text = [NSString stringWithFormat:@"%d", _appData.coins];
+    [self setupNotificationView];
+}
+
+- (void)setupNotificationView
+{
+    //need to make it beautiful
+    _notificationView = [[UIView alloc]init];
+    _notificationView.frame = CGRectMake(60, 400, 200, 50);
+    _notificationView.backgroundColor = [UIColor grayColor];
+    
+    [self.view addSubview:_notificationView];
+    
+    _notificationView.alpha = 0.0;
 }
 
 -(void)showNotification:(NSString *)notification;
@@ -81,6 +97,38 @@
     [UIView commitAnimations];
 }
 
+- (void) handlePurchase: (NSNotification *)notification;
+{
+    NSString *productIdentifier = notification.object;
+    
+    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.10000coins"]) {
+        _appData.coins = _appData.coins + 10000;
+    }
+    
+    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.500coins"]) {
+        _appData.coins = _appData.coins + 500;
+    }
+    
+    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.25000coins"]) {
+        _appData.coins = _appData.coins + 25000;
+    }
+    
+    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.1000coins"]) {
+        _appData.coins = _appData.coins + 1000;
+    }
+    
+    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.2500coins"]) {
+        _appData.coins = _appData.coins + 2500;
+    }
+    
+    [_appData save];
+    
+    _lbl_coins.text = [NSString stringWithFormat:@"%d", _appData.coins];
+    
+    NSString *reminder = @"成功购买金币";
+    [self showNotification:reminder];
+    
+}
 
 
 @end
