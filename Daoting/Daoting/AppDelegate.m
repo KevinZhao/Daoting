@@ -31,7 +31,7 @@ const NSString *appUrlinAppStore = @"http://itunes.apple.com/app/id878654949";
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     
     //Configure AFNetworking
-    [[AFNetWorkingOperationManagerHelper sharedInstance].operationQueue setMaxConcurrentOperationCount:2];
+    [[AFDownloadHelper sharedInstance].operationQueue setMaxConcurrentOperationCount:2];
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     
     //Initialize the coins for first time running the app

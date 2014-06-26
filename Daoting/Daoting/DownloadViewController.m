@@ -72,14 +72,14 @@
 {
     DownloadCell *cell = (DownloadCell*)[_tableview cellForRowAtIndexPath:indexPath];
     
-    NSMutableArray *downloadQueue = [AFNetWorkingOperationManagerHelper sharedManagerHelper].downloadQueue;
+    NSMutableArray *downloadQueue = [AFDownloadHelper sharedAFDownloadHelper].downloadQueue;
     AFHTTPRequestOperation *operation =downloadQueue[indexPath.row];
     
     NSString *key = [operation.userInfo objectForKey:@"key"];
     Song *song =[operation.userInfo objectForKey:@"song"];
     Album *album = [operation.userInfo objectForKey:@"album"];
     
-    DownloadingStatus *status = [[AFNetWorkingOperationManagerHelper sharedManagerHelper] searchStatusByKey:key];
+    DownloadingStatus *status = [[AFDownloadHelper sharedAFDownloadHelper] searchStatusByKey:key];
 
     cell.lbl_downloadDescription.text = [NSString stringWithFormat:@"%@ %@", album.title, song.songNumber];
     
@@ -122,7 +122,7 @@
 
 - (IBAction)cancelAll:(id)sender
 {
-    NSMutableArray *downloadQueue = [AFNetWorkingOperationManagerHelper sharedManagerHelper].downloadQueue;
+    NSMutableArray *downloadQueue = [AFDownloadHelper sharedAFDownloadHelper].downloadQueue;
     
     for (AFHTTPRequestOperation *operation in downloadQueue) {
         [operation cancel];
@@ -133,7 +133,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [AFNetWorkingOperationManagerHelper sharedManagerHelper].downloadQueue.count;
+    return [AFDownloadHelper sharedAFDownloadHelper].downloadQueue.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

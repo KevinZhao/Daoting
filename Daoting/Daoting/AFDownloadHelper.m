@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 赵 克鸣. All rights reserved.
 //
 
-#import "AFNetWorkingOperationManagerHelper.h"
+#import "AFDownloadHelper.h"
 
-@implementation AFNetWorkingOperationManagerHelper
+@implementation AFDownloadHelper
 
 + (AFHTTPRequestOperationManager *)sharedInstance {
     static dispatch_once_t once;
@@ -21,16 +21,16 @@
     return sharedInstance;
 }
 
-+ (AFNetWorkingOperationManagerHelper *)sharedManagerHelper
++ (AFDownloadHelper *)sharedAFDownloadHelper
 {
     static dispatch_once_t once;
-    static AFNetWorkingOperationManagerHelper * sharedManagerHelper;
+    static AFDownloadHelper * sharedAFDownloadHelper;
     dispatch_once(&once, ^{
         
-        sharedManagerHelper = [[AFNetWorkingOperationManagerHelper alloc]init];
+        sharedAFDownloadHelper = [[AFDownloadHelper alloc]init];
         
     });
-    return sharedManagerHelper;
+    return sharedAFDownloadHelper;
     
 }
 
@@ -65,7 +65,7 @@
     
     //2.1 Configure operation
     operation.outputStream = [NSOutputStream outputStreamToFileAtPath:filePath append:NO];
-    [[AFNetWorkingOperationManagerHelper sharedInstance].operationQueue addOperation:operation];
+    [[AFDownloadHelper sharedInstance].operationQueue addOperation:operation];
     
     operation.userInfo = [[NSMutableDictionary alloc]init];
     [operation.userInfo setValue:[NSString stringWithFormat:@"%@_%@", album.shortName, song.songNumber] forKey:@"key"];

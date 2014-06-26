@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AFNetWorkingOperationManagerHelper.h"
+#import "AFDownloadHelper.h"
 #import "DownloadCell.h"
 #import "AFNetworking.h"
 

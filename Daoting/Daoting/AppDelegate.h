@@ -10,7 +10,7 @@
 #import "CoinIAPHelper.h"
 #import "STKAudioPlayer.h"
 #import "AppData.h"
-#import "AFNetWorkingOperationManagerHelper.h"
+#import "AFDownloadHelper.h"
 #import "STKAudioPlayerHelper.h"
 #import <ShareSDK/ShareSDK.h>
 #import "WXApi.h"

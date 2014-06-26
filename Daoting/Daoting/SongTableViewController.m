@@ -150,7 +150,7 @@
     
     [fileManager removeItemAtPath:filePath error:nil];
     operation.outputStream = [NSOutputStream outputStreamToFileAtPath:filePath append:NO];
-    [[AFNetWorkingOperationManagerHelper sharedInstance].operationQueue addOperation:operation];
+    [[AFDownloadHelper sharedInstance].operationQueue addOperation:operation];
     
     //Download complete block
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
@@ -374,12 +374,12 @@
     SongCell* songCell = (SongCell*)[_tableview cellForRowAtIndexPath:indexPath];
     Song *song = [_songs objectAtIndex:indexPath.row];
     NSString *key = [NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber];
-    NSString *PositioninQueue =  [[AFNetWorkingOperationManagerHelper sharedManagerHelper].downloadKeyQueue objectForKey:key];
+    NSString *PositioninQueue =  [[AFDownloadHelper sharedAFDownloadHelper].downloadKeyQueue objectForKey:key];
     
     //1. Check if the operation in download queue
     if (PositioninQueue != nil) {
     
-        DownloadingStatus *status = [[AFNetWorkingOperationManagerHelper sharedManagerHelper].downloadStatusQueue objectAtIndex:[PositioninQueue intValue]];
+        DownloadingStatus *status = [[AFDownloadHelper sharedAFDownloadHelper].downloadStatusQueue objectAtIndex:[PositioninQueue intValue]];
         
         switch (status.downloadingStatus) {
                 
@@ -616,7 +616,7 @@
             //2.1 check the song had been downloaded or not
             BOOL downloaded = [[NSFileManager defaultManager] fileExistsAtPath:[song.filePath absoluteString]];
             if (!downloaded) {
-                [[AFNetWorkingOperationManagerHelper sharedManagerHelper] downloadSong:song inAlbum:_album];
+                [[AFDownloadHelper sharedAFDownloadHelper] downloadSong:song inAlbum:_album];
             }
             
             //2.2
@@ -651,7 +651,7 @@
         
         NSString *key = [NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber];
         
-        AFHTTPRequestOperation *operation = [[AFNetWorkingOperationManagerHelper sharedManagerHelper] searchOperationByKey:key];
+        AFHTTPRequestOperation *operation = [[AFDownloadHelper sharedAFDownloadHelper] searchOperationByKey:key];
         
         if (![operation isEqual:nil]) {
             [operation cancel];

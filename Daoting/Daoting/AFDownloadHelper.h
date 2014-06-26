@@ -14,7 +14,7 @@
 
 
 
-@interface AFNetWorkingOperationManagerHelper : NSObject
+@interface AFDownloadHelper : NSObject
 {
     
 }
@@ -25,7 +25,7 @@
 
 
 + (AFHTTPRequestOperationManager *)sharedInstance;
-+ (AFNetWorkingOperationManagerHelper *)sharedManagerHelper;
++ (AFDownloadHelper *)sharedAFDownloadHelper;
 
 
 - (void)downloadSong:(Song*) song inAlbum:(Album*) album;

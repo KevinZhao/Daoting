@@ -11,7 +11,7 @@
 #import "Song.h"
 #import "Album.h"
 #import "AFNetworking.h"
-#import "AFNetWorkingOperationManagerHelper.h"
+#import "AFDownloadHelper.h"
 #import "DACircularProgressView.h"
 #import "AppData.h"
 

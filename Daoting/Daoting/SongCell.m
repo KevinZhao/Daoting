@@ -85,7 +85,7 @@
     [_btn_downloadOrPause setBackgroundImage:[UIImage imageNamed:@"downloadProgressButtonPause.png"] forState:UIControlStateNormal];
     
     //Start download
-    [[AFNetWorkingOperationManagerHelper sharedManagerHelper] downloadSong:song inAlbum:album];
+    [[AFDownloadHelper sharedAFDownloadHelper] downloadSong:song inAlbum:album];
     
 }
 
@@ -96,7 +96,7 @@
     [_btn_downloadOrPause setBackgroundImage:[UIImage imageNamed:@"downloadButton.png"] forState:UIControlStateNormal];
     
     NSString *key = [NSString stringWithFormat:@"%@_%@", album.shortName, song.songNumber];
-    AFHTTPRequestOperation *operation = [[AFNetWorkingOperationManagerHelper sharedManagerHelper] searchOperationByKey:key];
+    AFHTTPRequestOperation *operation = [[AFDownloadHelper sharedAFDownloadHelper] searchOperationByKey:key];
     [operation cancel];
 }
 

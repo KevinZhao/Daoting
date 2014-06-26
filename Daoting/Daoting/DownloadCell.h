@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AFNetWorkingOperationManagerHelper.h"
+#import "AFDownloadHelper.h"
 
 @interface DownloadCell : UITableViewCell
 
