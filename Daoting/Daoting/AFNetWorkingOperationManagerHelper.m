@@ -162,17 +162,30 @@
 - (AFHTTPRequestOperation*)searchOperationByKey:(NSString*) key
 {
     NSString *PositioninQueue =  [_downloadKeyQueue objectForKey:key];
-    AFHTTPRequestOperation *operation = _downloadQueue[[PositioninQueue intValue]];
     
-    return operation;
+    if ([PositioninQueue isEqual:nil]) {
+        return nil;
+    }
+    else{
+        AFHTTPRequestOperation *operation = _downloadQueue[[PositioninQueue intValue]];
+        return operation;
+    }
 }
 
 - (DownloadingStatus*)searchStatusByKey:(NSString*) key
 {
     NSString *PositioninQueue =  [_downloadKeyQueue objectForKey:key];
-    DownloadingStatus *status = _downloadStatusQueue[[PositioninQueue intValue]];
     
-    return status;
+    if ([PositioninQueue isEqual:nil]) {
+        return nil;
+    }
+    else{
+        DownloadingStatus *status = _downloadStatusQueue[[PositioninQueue intValue]];
+        return status;
+    }
+
+    
+
 }
 
 @end

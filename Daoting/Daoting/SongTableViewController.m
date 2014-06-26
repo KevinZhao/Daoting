@@ -33,6 +33,12 @@
     [self setupTimer];
     
     [self setupNotificationView];
+    
+    _actionSheetStrings = [[NSMutableDictionary alloc] init];
+    [_actionSheetStrings setObject:@"取消" forKey:@"cancel"];
+    [_actionSheetStrings setObject:@"分享" forKey:@"share"];
+    [_actionSheetStrings setObject:@"全部下载" forKey:@"downloadOrCancelAll"];
+
 }
 
 
@@ -68,6 +74,7 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(songNumber-1) inSection:0];
     
     [_tableview selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -637,6 +644,21 @@
     }
 }
 
+- (void)cancelDownloadAll
+{
+    for (int i = 0; i < _songs.count; i++) {
+        Song *song = _songs[i];
+        
+        NSString *key = [NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber];
+        
+        AFHTTPRequestOperation *operation = [[AFNetWorkingOperationManagerHelper sharedManagerHelper] searchOperationByKey:key];
+        
+        if (![operation isEqual:nil]) {
+            [operation cancel];
+        }
+    }
+}
+
 #pragma mark - UI operation event
 
 - (IBAction)onbtn_playAndPausePressed:(id)sender
@@ -698,14 +720,10 @@
 - (IBAction)onbarbtn_actionPressed:(id)sender
 {
     
-    NSString *cancelString = @"取消";
-    NSString *shareString = @"分享";
-    NSString *downloadAllString = @"全部下载";
-    
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil                                                                                  delegate:self
-                                                    cancelButtonTitle:cancelString
+                                                    cancelButtonTitle:[_actionSheetStrings objectForKey:@"cancel"]
                                                destructiveButtonTitle:nil
-                                                    otherButtonTitles:shareString, downloadAllString, nil];
+                                                    otherButtonTitles:[_actionSheetStrings objectForKey:@"share"],[_actionSheetStrings objectForKey:@"downloadOrCancelAll"], nil];
     [actionSheet showInView:self.view];
 
 }
@@ -724,8 +742,21 @@
         //download all
         case 1:
         {
-            [self downloadAll];
-        }
+            if ([[_actionSheetStrings objectForKey:@"downloadOrCancelAll"] isEqual: @"全部下载"]) {
+    
+                [self downloadAll];
+                [_actionSheetStrings setValue:@"停止下载" forKey:@"downloadOrCancelAll"];
+                
+                break;
+                 
+            }
+            if ([[_actionSheetStrings objectForKey:@"downloadOrCancelAll"] isEqual: @"停止下载"])
+                
+                [self cancelDownloadAll];
+                [_actionSheetStrings setValue:@"全部下载" forKey:@"downloadOrCancelAll"];
+            
+                break;
+            }
             break;
         default:
             break;

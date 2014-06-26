@@ -6,13 +6,13 @@
 //  Copyright (c) 2014年 赵 克鸣. All rights reserved.
 //
 
-#import "DownloadTableViewController.h"
+#import "DownloadViewController.h"
 
-@interface DownloadTableViewController ()
+@interface DownloadViewController ()
 
 @end
 
-@implementation DownloadTableViewController
+@implementation DownloadViewController
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -80,19 +80,17 @@
     Album *album = [operation.userInfo objectForKey:@"album"];
     
     DownloadingStatus *status = [[AFNetWorkingOperationManagerHelper sharedManagerHelper] searchStatusByKey:key];
+
+    cell.lbl_downloadDescription.text = [NSString stringWithFormat:@"%@ %@", album.title, song.songNumber];
     
     switch (status.downloadingStatus) {
         case fileDownloadStatusWaiting:
         {
-            cell.lbl_downloadDescription.text = [NSString stringWithFormat:@"%@ %@", album.title, song.songNumber];
-            
             cell.pv_downloadProgress.hidden = YES;
         }
             break;
         case fileDownloadStatusDownloading:
         {
-            cell.lbl_downloadDescription.text = [NSString stringWithFormat:@"%@ %@", album.title, song.songNumber];
-            
             cell.pv_downloadProgress.progress = (float)status.totalBytesRead / (float)status.totalBytesExpectedToRead;
             
             cell.pv_downloadProgress.hidden = NO;
@@ -101,6 +99,9 @@
 
         case fileDownloadStatusCompleted:
         {
+            
+            cell.btn_cancel.titleLabel.text = @"已完成";
+            
             cell.pv_downloadProgress.hidden = YES;
     
         }
@@ -109,6 +110,8 @@
         case fileDownloadStatusError:
         {
             cell.pv_downloadProgress.hidden = YES;
+            
+            cell.btn_cancel.titleLabel.text = @"已取消";
         }
             
         default:
@@ -123,16 +126,6 @@
     
     for (AFHTTPRequestOperation *operation in downloadQueue) {
         [operation cancel];
-    }
-    
-    //update UI
-    
-    for (int i = 0; i < [AFNetWorkingOperationManagerHelper sharedManagerHelper].downloadQueue.count; i++) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
-        
-        DownloadCell *cell = (DownloadCell*)[_tableview cellForRowAtIndexPath:indexPath];
-        
-        cell.btn_cancel.titleLabel.text = @"已取消";
     }
 }
 

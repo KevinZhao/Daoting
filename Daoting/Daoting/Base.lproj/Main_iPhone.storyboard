@@ -76,10 +76,10 @@
             </objects>
             <point key="canvasLocation" x="756" y="37"/>
         </scene>
-        <!--Download Table View Controller - 下载队列-->
+        <!--Download View Controller - 下载队列-->
         <scene sceneID="LIb-27-UA3">
             <objects>
-                <viewController title="下载队列" id="WVA-BP-VGo" customClass="DownloadTableViewController" sceneMemberID="viewController">
+                <viewController title="下载队列" id="WVA-BP-VGo" customClass="DownloadViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nam-on-UDj"/>
                         <viewControllerLayoutGuide type="bottom" id="YU5-Sj-iio"/>
@@ -109,7 +109,7 @@
                                                     <rect key="frame" x="20" y="44" width="272" height="2"/>
                                                 </progressView>
                                                 <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JbN-T8-deT">
-                                                    <rect key="frame" x="252" y="11" width="50" height="30"/>
+                                                    <rect key="frame" x="227" y="11" width="100" height="30"/>
                                                     <state key="normal" title="取消">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>

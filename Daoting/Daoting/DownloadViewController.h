@@ -11,7 +11,7 @@
 #import "DownloadCell.h"
 #import "AFNetworking.h"
 
-@interface DownloadTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface DownloadViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
     UITableView                         *_tableview;
     NSTimer                             *_timer;
