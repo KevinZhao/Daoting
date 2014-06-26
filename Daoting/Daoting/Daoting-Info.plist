@@ -9,12 +9,12 @@
 			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wx354ee3c34a7a8eda</string>
+				<string>wx134b0f70f3612fe8</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>zh_CN</string>
 	<key>CFBundleDisplayName</key>
 	<string>道听途说</string>
 	<key>CFBundleExecutable</key>

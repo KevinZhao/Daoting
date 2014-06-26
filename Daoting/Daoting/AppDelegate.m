@@ -61,7 +61,7 @@ const NSString *appUrlinAppStore = @"http://itunes.apple.com/app/id878654949";
     //                         redirectUri:@"http://appgo.cn"];
     
     //[ShareSDK connectWeChatWithAppId:@"wx354ee3c34a7a8eda" wechatCls:[WXApi class]];
-    [ShareSDK connectWeChatTimelineWithAppId:@"wx354ee3c34a7a8eda" wechatCls:[WXApi class]];
+    [ShareSDK connectWeChatTimelineWithAppId:@"wx134b0f70f3612fe8" wechatCls:[WXApi class]];
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSystemTimeChanged:) name:UIApplicationSignificantTimeChangeNotification object:nil];
