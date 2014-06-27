@@ -451,7 +451,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icon-72.png" width="72" height="72"/>
+        <image name="Icon-72.png" width="76" height="76"/>
         <image name="first" width="30" height="30"/>
         <image name="playing_btn_next_n" width="50" height="50"/>
         <image name="playing_btn_play_n" width="64" height="64"/>

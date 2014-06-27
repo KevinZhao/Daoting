@@ -92,14 +92,8 @@
 
 - (void)setupNotificationView
 {
-    //need to make it beautiful
-    _notificationView = [[UIView alloc]init];
-    _notificationView.frame = CGRectMake(60, 400, 200, 50);
-    _notificationView.backgroundColor = [UIColor grayColor];
-    
-    [self.view addSubview:_notificationView];
 
-    _notificationView.alpha = 0.0;
+    
 }
 
 - (void)initializeSongs
@@ -683,23 +677,23 @@
 
 -(void)showNotification:(NSString *)notification;
 {
-    //todo show beatiful notification view
+    //Configure notification view
+    NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"NotificationView_iphone" owner:self options:nil];
     
-    //configure notification view
-    UILabel *lbl_description = [[UILabel alloc]init];
-    lbl_description.frame = CGRectMake(10, 10, 180, 40);
-    lbl_description.text = notification;
-    [_notificationView addSubview:lbl_description];
-    _notificationView.alpha = 1.0;
+    _notificationView = [nibViews objectAtIndex:0];
+    _notificationView.center = self.view.center;
+    [self.view addSubview:_notificationView];
+
+    _notificationView.lbl_coins.text = [NSString stringWithFormat:@"%d", _appData.coins];
+    _notificationView.lbl_notification.text = notification;
     
     //show notification view
     [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationDuration:5.0];
     [UIView setAnimationDelay:1.0];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
     
     _notificationView.alpha = 0.0;
-
     [UIView commitAnimations];
 }
 

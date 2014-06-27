@@ -21,6 +21,7 @@
 #import "STKAudioPlayerHelper.h"
 #import <ShareSDK/ShareSDK.h>
 #import "StoreViewController.h"
+#import "NotificationView.h"
 
 
 @interface SongTableViewController : UIViewController
@@ -47,7 +48,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *btn_previous;
 @property (nonatomic, retain) IBOutlet UIButton *btn_next;
 @property (nonatomic, retain) IBOutlet UISlider *slider;
-@property (nonatomic, strong) IBOutlet UIView* notificationView;
+@property (nonatomic, strong) IBOutlet NotificationView* notificationView;
 @property (nonatomic, strong) IBOutlet UIActionSheet *actionSheet;
 
 - (IBAction)onbtn_playAndPausePressed:(id)sender;

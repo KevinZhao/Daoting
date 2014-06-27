@@ -21,6 +21,8 @@
 		0A6D573B19331A750038D841 /* AppData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6D573A19331A750038D841 /* AppData.m */; };
 		0A6D573E19331B020038D841 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6D573D19331B020038D841 /* KeychainWrapper.m */; };
 		0A6D5742193453BC0038D841 /* AFDownloadHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6D5741193453BC0038D841 /* AFDownloadHelper.m */; };
+		0A708967195BF97100B91B16 /* NotificationView_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A708966195BF97100B91B16 /* NotificationView_iphone.xib */; };
+		0A70896A195C088600B91B16 /* NotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A708969195C088600B91B16 /* NotificationView.m */; };
 		0A7A8CD819590B4C003FAA92 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A7A8CD719590B4C003FAA92 /* CFNetwork.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		0A8BA0091940BFCB001307D6 /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8BA0081940BFCB001307D6 /* DownloadViewController.m */; };
 		0A8BA00F1940C15E001307D6 /* DownloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8BA00E1940C15E001307D6 /* DownloadCell.m */; };
@@ -179,6 +181,9 @@
 		0A6D573D19331B020038D841 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
 		0A6D5740193453BC0038D841 /* AFDownloadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDownloadHelper.h; sourceTree = "<group>"; };
 		0A6D5741193453BC0038D841 /* AFDownloadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDownloadHelper.m; sourceTree = "<group>"; };
+		0A708966195BF97100B91B16 /* NotificationView_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationView_iphone.xib; sourceTree = "<group>"; };
+		0A708968195C088600B91B16 /* NotificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationView.h; sourceTree = "<group>"; };
+		0A708969195C088600B91B16 /* NotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationView.m; sourceTree = "<group>"; };
 		0A7A8CD719590B4C003FAA92 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0A8BA0071940BFCB001307D6 /* DownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadViewController.h; sourceTree = "<group>"; };
 		0A8BA0081940BFCB001307D6 /* DownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadViewController.m; sourceTree = "<group>"; };
@@ -761,6 +766,9 @@
 				5933AD6818D03EC1001D707B /* AppDelegate.m */,
 				0A3CD3621920F8BE00247436 /* Main_iPhone.storyboard */,
 				5933AD6D18D03EC1001D707B /* Main_iPad.storyboard */,
+				0A708966195BF97100B91B16 /* NotificationView_iphone.xib */,
+				0A708968195C088600B91B16 /* NotificationView.h */,
+				0A708969195C088600B91B16 /* NotificationView.m */,
 				0A98D66E1920F25900E46EB9 /* AlbumTableViewController.h */,
 				0A98D66F1920F25900E46EB9 /* AlbumTableViewController.m */,
 				0AE46B0C1921035E00FA30F3 /* SongTableViewController.h */,
@@ -859,6 +867,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A708967195BF97100B91B16 /* NotificationView_iphone.xib in Resources */,
 				0A98D6631920EAB700E46EB9 /* progressBar.png in Resources */,
 				0A98D66C1920F1F500E46EB9 /* arrowSelected.png in Resources */,
 				0AE8649A192EF48700EF5A96 /* Shuangbianji_SongList.plist in Resources */,
@@ -971,6 +980,7 @@
 				0AD7E23E195928AD00F511B7 /* UILabelStrikeThrough.m in Sources */,
 				0A37F8C519262CD100826C8C /* Song.m in Sources */,
 				5933AD6518D03EC1001D707B /* main.m in Sources */,
+				0A70896A195C088600B91B16 /* NotificationView.m in Sources */,
 				0A6D5742193453BC0038D841 /* AFDownloadHelper.m in Sources */,
 				0A37F8CB19262D2600826C8C /* SongCell.m in Sources */,
 				0A8BA0091940BFCB001307D6 /* DownloadViewController.m in Sources */,
