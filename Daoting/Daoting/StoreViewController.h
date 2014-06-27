@@ -14,6 +14,7 @@
 #import "CoinIAPHelper.h"
 #import "AppDelegate.h"
 #import <ShareSDK/ShareSDK.h>
+#import "NotificationView.h"
 
 @interface StoreViewController : UIViewController
 {
@@ -28,7 +29,7 @@
 @property (nonatomic, strong) IBOutlet UILabelStrikeThrough *lbl_250yuan;
 
 
-@property (nonatomic, strong) IBOutlet UIView* notificationView;
+@property (nonatomic, strong) IBOutlet NotificationView* notificationView;
 
 -(void)showNotification:(NSString *)notification;
 

@@ -11,8 +11,9 @@
 static NSString* const SSDataforCoinsKey = @"coins";
 static NSString* const SSDataforPlayingQueue = @"playingQueue";
 static NSString* const SSDataforPurchasedQueue = @"purchasedQueue";
-static NSString* const SSDataforPlayingPositionQueue = @"playingPositionQueue";
+static NSString* const SSDataforPlayingProgressQueue = @"playingProgressQueue";
 static NSString* const SSDataforDailyCheckinQueue = @"dailyCheckinQueue";
+static NSString* const SSDataforIsAutoPurchase = @"isAutoPurchase";
 
 
 static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
@@ -21,15 +22,16 @@ static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
 @implementation AppData
 
 
-@synthesize playingQueue, purchasedQueue, playingPositionQueue, dailyCheckinQueue;
+@synthesize playingQueue, purchasedQueue, playingProgressQueue, dailyCheckinQueue;
 
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
     [encoder encodeDouble:self.coins forKey: SSDataforCoinsKey];
     [encoder encodeObject:playingQueue forKey:SSDataforPlayingQueue];
     [encoder encodeObject:purchasedQueue forKey:SSDataforPurchasedQueue];
-    [encoder encodeObject:playingPositionQueue forKey:SSDataforPlayingPositionQueue];
+    [encoder encodeObject:playingProgressQueue forKey:SSDataforPlayingProgressQueue];
     [encoder encodeObject:dailyCheckinQueue forKey:SSDataforDailyCheckinQueue];
+    [encoder encodeBool:_isAutoPurchase forKey:SSDataforIsAutoPurchase];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)decoder
@@ -40,7 +42,6 @@ static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
 
         playingQueue = [[decoder decodeObjectForKey:SSDataforPlayingQueue] mutableCopy];
         if (playingQueue == nil) {
-            playingQueue = [[NSMutableDictionary alloc]init];
         }
         
         purchasedQueue = [[decoder decodeObjectForKey:SSDataforPurchasedQueue] mutableCopy];
@@ -48,15 +49,18 @@ static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
             purchasedQueue = [[NSMutableDictionary alloc]init];
         }
         
-        playingPositionQueue = [[decoder decodeObjectForKey:SSDataforPlayingPositionQueue] mutableCopy];
-        if (playingPositionQueue == nil) {
-            playingPositionQueue = [[NSMutableDictionary alloc]init];
+        playingProgressQueue = [[decoder decodeObjectForKey:SSDataforPlayingProgressQueue] mutableCopy];
+        if (playingProgressQueue == nil) {
+            playingProgressQueue = [[NSMutableDictionary alloc]init];
         }
         
         dailyCheckinQueue = [[decoder decodeObjectForKey:SSDataforDailyCheckinQueue] mutableCopy];
         if (dailyCheckinQueue == nil) {
             dailyCheckinQueue = [[NSMutableDictionary alloc]init];
         }
+        
+        _isAutoPurchase = [decoder decodeBoolForKey:SSDataforIsAutoPurchase];
+
     }
     return self;
 }
@@ -150,6 +154,8 @@ static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
                                                          name:NSUbiquitousKeyValueStoreDidChangeExternallyNotification
                                                        object:nil];
         }
+        
+        _isAutoPurchase = true;
     }
     return self;
 }

@@ -68,7 +68,7 @@
     pageControl.currentPage = 0;
     pageControl.numberOfPages = 2;
     
-    NSString* songNumberstring = (NSString*)[_appData.playingPositionQueue objectForKey:_album.title];
+    NSString* songNumberstring = (NSString*)[_appData.playingProgressQueue objectForKey:_album.title];
     NSInteger songNumber = [songNumberstring integerValue];
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(songNumber-1) inSection:0];
@@ -259,13 +259,7 @@
     if (purchased) {
         
         //play the song
-        [_playerHelper playSong:song InAlbum:_album];
-        
-        _playerHelper.playbackList = _songs;
-        [_appData.playingPositionQueue setObject:song.songNumber forKey:_album.title];
-        
-        [self configureNowPlayingInfo];
-        
+        [self playSongbyHelper:song];
         
     }
     //2.2 the song had not been purchased yet
@@ -276,12 +270,7 @@
             
             _appData.coins = _appData.coins - [song.price intValue];
             
-            [_playerHelper playSong:song InAlbum:_album];
-            
-            [_appData.playingPositionQueue setObject:song.songNumber forKey:_album.title];
-            _playerHelper.playbackList = _songs;
-            
-            [self configureNowPlayingInfo];
+            [self playSongbyHelper:song];
             
             //Add to purchased queue
             [_appData.purchasedQueue setObject:@"Yes" forKey:[NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber]];
@@ -299,6 +288,16 @@
             tabBarController.selectedIndex = 2;
         }
     }
+}
+
+- (void) playSongbyHelper:(Song*)song
+{
+    [_playerHelper playSong:song InAlbum:_album];
+    
+    _playerHelper.playbackList = _songs;
+    [_appData.playingProgressQueue setObject:song.songNumber forKey:_album.title];
+    
+    [self configureNowPlayingInfo];
 }
 
 
@@ -687,9 +686,17 @@
     _notificationView.lbl_coins.text = [NSString stringWithFormat:@"%d", _appData.coins];
     _notificationView.lbl_notification.text = notification;
     
+    [_notificationView.layer setMasksToBounds:YES];
+    [_notificationView.layer setCornerRadius:10.0];
+    [_notificationView.layer setBorderWidth:5.0];
+    
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 0, 0, 1, 0.2 });
+    [_notificationView.layer setBorderColor:colorref];
+    
     //show notification view
     [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:5.0];
+    [UIView setAnimationDuration:1.5];
     [UIView setAnimationDelay:1.0];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
     

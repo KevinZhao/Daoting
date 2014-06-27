@@ -40,7 +40,7 @@
 - (void)setupNotificationView
 {
     //need to make it beautiful
-    _notificationView = [[UIView alloc]init];
+    _notificationView = [[NotificationView alloc]init];
     _notificationView.frame = CGRectMake(60, 400, 200, 50);
     _notificationView.backgroundColor = [UIColor grayColor];
     
@@ -51,21 +51,31 @@
 
 -(void)showNotification:(NSString *)notification;
 {
-    //configure notification view
-    UILabel *lbl_description = [[UILabel alloc]init];
-    lbl_description.frame = CGRectMake(10, 10, 180, 40);
-    lbl_description.text = notification;
-    [_notificationView addSubview:lbl_description];
-    _notificationView.alpha = 1.0;
+    //Configure notification view
+    NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"NotificationView_iphone" owner:self options:nil];
+    
+    _notificationView = [nibViews objectAtIndex:0];
+    _notificationView.center = self.view.center;
+    [self.view addSubview:_notificationView];
+    
+    _notificationView.lbl_coins.text = [NSString stringWithFormat:@"%d", _appData.coins];
+    _notificationView.lbl_notification.text = notification;
+    
+    [_notificationView.layer setMasksToBounds:YES];
+    [_notificationView.layer setCornerRadius:10.0];
+    [_notificationView.layer setBorderWidth:5.0];
+    
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 0, 0, 1, 0.2 });
+    [_notificationView.layer setBorderColor:colorref];//边框颜色
     
     //show notification view
     [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationDuration:1.5];
     [UIView setAnimationDelay:1.0];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
     
     _notificationView.alpha = 0.0;
-    
     [UIView commitAnimations];
 }
 
@@ -74,32 +84,36 @@
 - (void) handlePurchaseCompleted: (NSNotification *)notification;
 {
     NSString *productIdentifier = notification.object;
+    int purchasedCoins = 0;
     
     if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.10000coins"]) {
-        _appData.coins = _appData.coins + 10000;
+        purchasedCoins = 10000;
     }
     
     if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.500coins"]) {
-        _appData.coins = _appData.coins + 500;
+        purchasedCoins = 500;
     }
     
     if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.25000coins"]) {
-        _appData.coins = _appData.coins + 25000;
+        purchasedCoins = 25000;
     }
     
     if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.1000coins"]) {
-        _appData.coins = _appData.coins + 1000;
+        purchasedCoins = 1000;
     }
     
     if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.2500coins"]) {
-        _appData.coins = _appData.coins + 2500;
+        purchasedCoins = 2500;
     }
+    
+    _appData.coins = _appData.coins + purchasedCoins;
     
     [_appData save];
     
     _lbl_coins.text = [NSString stringWithFormat:@"%d", _appData.coins];
     
-    NSString *reminder = @"成功购买金币";
+    NSString *reminder = [NSString stringWithFormat:@"成功购买金币 %d 枚", purchasedCoins];
+    
     [self showNotification:reminder];
     
 }
