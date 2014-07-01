@@ -55,8 +55,18 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    int rowcount = 0;
+    
     // Return the number of rows in the section.
-    return 2;
+    if (section == 0) {
+        return 2;
+    }
+    
+    if (section == 1) {
+        return 3;
+    }
+
+    return rowcount;
 }
 
 
@@ -72,7 +82,6 @@
         
         switchCell.sw_option.on = _appData.isAutoPurchase;
         [switchCell.sw_option addTarget:self action:@selector(onSwitchValueChanged:) forControlEvents:UIControlEventValueChanged];
-        
     }
     
     if ((indexPath.section == 0) && (indexPath.row == 1)) {
@@ -82,10 +91,30 @@
         disclosureCell.lbl_Title.text = @"已购买歌曲";
     }
     
-    if (indexPath.section == 1)
+    if ((indexPath.section == 1) && (indexPath.row == 0))
     {
-    cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCellDisclosure" forIndexPath:indexPath];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCellDisclosure" forIndexPath:indexPath];
+        
+        SettingCellDisclosure *disclosureCell = (SettingCellDisclosure *)cell;
+        disclosureCell.lbl_Title.text = @"清空缓存";
     }
+    
+    if ((indexPath.section == 1) && (indexPath.row == 1))
+    {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCellDisclosure" forIndexPath:indexPath];
+        
+        SettingCellDisclosure *disclosureCell = (SettingCellDisclosure *)cell;
+        disclosureCell.lbl_Title.text = @"清空缓存";
+    }
+    
+    if ((indexPath.section == 1) && (indexPath.row == 2))
+    {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCellDisclosure" forIndexPath:indexPath];
+        
+        SettingCellDisclosure *disclosureCell = (SettingCellDisclosure *)cell;
+        disclosureCell.lbl_Title.text = @"测试";
+    }
+    
     return cell;
 }
 

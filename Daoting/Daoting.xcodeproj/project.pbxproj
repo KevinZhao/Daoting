@@ -13,6 +13,7 @@
 		0A1FA99F19585612002F48EA /* qr_toolbar_more_hl.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA99D19585612002F48EA /* qr_toolbar_more_hl.png */; };
 		0A1FA9A019585612002F48EA /* qr_toolbar_more.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA99E19585612002F48EA /* qr_toolbar_more.png */; };
 		0A2C37D819457EA90097C9CC /* DownloadStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2C37D719457EA90097C9CC /* DownloadStatus.m */; };
+		0A363AF1195DC0FF00F82DD3 /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A363AF0195DC0FF00F82DD3 /* coin.png */; };
 		0A37F8C519262CD100826C8C /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F8C419262CD100826C8C /* Song.m */; };
 		0A37F8CB19262D2600826C8C /* SongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F8CA19262D2600826C8C /* SongCell.m */; };
 		0A3CD3641920F8BE00247436 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A3CD3621920F8BE00247436 /* Main_iPhone.storyboard */; };
@@ -171,6 +172,7 @@
 		0A1FA99E19585612002F48EA /* qr_toolbar_more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qr_toolbar_more.png; sourceTree = "<group>"; };
 		0A2C37D619457EA90097C9CC /* DownloadStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadStatus.h; sourceTree = "<group>"; };
 		0A2C37D719457EA90097C9CC /* DownloadStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadStatus.m; sourceTree = "<group>"; };
+		0A363AF0195DC0FF00F82DD3 /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin.png; sourceTree = "<group>"; };
 		0A37F8C319262CD100826C8C /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
 		0A37F8C419262CD100826C8C /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
 		0A37F8C919262D2600826C8C /* SongCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongCell.h; sourceTree = "<group>"; };
@@ -730,6 +732,7 @@
 		5933AD4C18D03EC1001D707B = {
 			isa = PBXGroup;
 			children = (
+				0A363AF0195DC0FF00F82DD3 /* coin.png */,
 				5933AD5E18D03EC1001D707B /* Daoting */,
 				5933AD5718D03EC1001D707B /* Frameworks */,
 				5933AD5618D03EC1001D707B /* Products */,
@@ -920,6 +923,7 @@
 				0A98D6191920ACBC00E46EB9 /* RennSDK.bundle in Resources */,
 				0AE86498192EF48700EF5A96 /* Mingchao_SongList.plist in Resources */,
 				0A1FA99F19585612002F48EA /* qr_toolbar_more_hl.png in Resources */,
+				0A363AF1195DC0FF00F82DD3 /* coin.png in Resources */,
 				0A98D65C1920EAB700E46EB9 /* downloadProgressButtonPause@2x.png in Resources */,
 				5933AD7718D03EC1001D707B /* Images.xcassets in Resources */,
 				0A98D6161920ACBC00E46EB9 /* PinterestSDKResources.bundle in Resources */,
