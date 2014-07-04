@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "SettingCellDisclosure.h"
 #import "SettingCellSwitch.h"
+#import "ClearCacheViewController.h"
+#import "PurchasedSongViewController.h"
 #import "AppData.h"
 
 @interface SettingViewController : UITableViewController

@@ -106,7 +106,9 @@
          NSString *filePath = [NSTemporaryDirectory() stringByAppendingString:fileName];
          
          NSString *desfileName = [NSString stringWithFormat:@"/%@_%@.mp3", album.shortName, song.songNumber];
-         NSString *desfilePath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingString:desfileName];
+         NSString *albumFolder = [NSString stringWithFormat:@"/Daoting/%@", album.shortName];
+         [self checkDirectory:[[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingString:albumFolder]];
+         NSString *desfilePath = [[[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingString:albumFolder]stringByAppendingString:desfileName];
          
          NSFileManager *fileManager = [NSFileManager defaultManager];
          success = [fileManager copyItemAtPath:filePath toPath:desfilePath error:&error];
@@ -114,7 +116,6 @@
              
              NSLog(@"failed copy %@ to %@ error = %@", fileName, desfilePath, error);
              return;
-
          }
          
          success = [fileManager removeItemAtPath:filePath error:nil];
@@ -157,6 +158,18 @@
          DownloadingStatus *status = [_downloadStatusQueue objectAtIndex:[number intValue]];
          status.downloadingStatus = fileDownloadStatusError;
      }];
+}
+
+-(void) checkDirectory:(NSString*) directoryPath
+{
+    BOOL isDir = NO;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    BOOL existed = [fileManager fileExistsAtPath:directoryPath isDirectory:&isDir];
+    
+    if ( !(isDir == YES && existed == YES) )
+    {
+        [fileManager createDirectoryAtPath:directoryPath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
 }
 
 - (AFHTTPRequestOperation*)searchOperationByKey:(NSString*) key

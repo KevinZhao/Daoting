@@ -26,6 +26,7 @@
 		0A70896A195C088600B91B16 /* NotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A708969195C088600B91B16 /* NotificationView.m */; };
 		0A70896C195D036300B91B16 /* notificationViewBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A70896B195D036300B91B16 /* notificationViewBackground.png */; };
 		0A7A8CD819590B4C003FAA92 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A7A8CD719590B4C003FAA92 /* CFNetwork.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		0A7DF91219668942007DBB03 /* ClearCacheCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DF91119668942007DBB03 /* ClearCacheCell.m */; };
 		0A8BA0091940BFCB001307D6 /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8BA0081940BFCB001307D6 /* DownloadViewController.m */; };
 		0A8BA00F1940C15E001307D6 /* DownloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8BA00E1940C15E001307D6 /* DownloadCell.m */; };
 		0A98D5EF1920ACBC00E46EB9 /* CopyConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A98D59D1920ACBC00E46EB9 /* CopyConnection.framework */; };
@@ -132,6 +133,8 @@
 		0AD8D05D195D1A6D009DC75A /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD8D05C195D1A6D009DC75A /* SettingViewController.m */; };
 		0AD8D060195D2108009DC75A /* SettingCellSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD8D05F195D2108009DC75A /* SettingCellSwitch.m */; };
 		0AD8D063195D2128009DC75A /* SettingCellDisclosure.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD8D062195D2128009DC75A /* SettingCellDisclosure.m */; };
+		0AE459D7196645E500DA9391 /* PurchasedSongViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE459D6196645E500DA9391 /* PurchasedSongViewController.m */; };
+		0AE459DA196646E200DA9391 /* ClearCacheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE459D9196646E200DA9391 /* ClearCacheViewController.m */; };
 		0AE46B0E1921035E00FA30F3 /* SongTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE46B0D1921035E00FA30F3 /* SongTableViewController.m */; };
 		0AE86488192EDECA00EF5A96 /* Zhengdong1_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE86487192EDECA00EF5A96 /* Zhengdong1_SongList.plist */; };
 		0AE8648D192EEC6E00EF5A96 /* Liaozhai_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE86489192EEC6E00EF5A96 /* Liaozhai_SongList.plist */; };
@@ -192,6 +195,8 @@
 		0A708969195C088600B91B16 /* NotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationView.m; sourceTree = "<group>"; };
 		0A70896B195D036300B91B16 /* notificationViewBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationViewBackground.png; sourceTree = "<group>"; };
 		0A7A8CD719590B4C003FAA92 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		0A7DF91019668942007DBB03 /* ClearCacheCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClearCacheCell.h; sourceTree = "<group>"; };
+		0A7DF91119668942007DBB03 /* ClearCacheCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClearCacheCell.m; sourceTree = "<group>"; };
 		0A8BA0071940BFCB001307D6 /* DownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadViewController.h; sourceTree = "<group>"; };
 		0A8BA0081940BFCB001307D6 /* DownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadViewController.m; sourceTree = "<group>"; };
 		0A8BA00D1940C15E001307D6 /* DownloadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadCell.h; sourceTree = "<group>"; };
@@ -316,6 +321,10 @@
 		0AD8D05F195D2108009DC75A /* SettingCellSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCellSwitch.m; sourceTree = "<group>"; };
 		0AD8D061195D2127009DC75A /* SettingCellDisclosure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCellDisclosure.h; sourceTree = "<group>"; };
 		0AD8D062195D2128009DC75A /* SettingCellDisclosure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCellDisclosure.m; sourceTree = "<group>"; };
+		0AE459D5196645E500DA9391 /* PurchasedSongViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchasedSongViewController.h; sourceTree = "<group>"; };
+		0AE459D6196645E500DA9391 /* PurchasedSongViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchasedSongViewController.m; sourceTree = "<group>"; };
+		0AE459D8196646E200DA9391 /* ClearCacheViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClearCacheViewController.h; sourceTree = "<group>"; };
+		0AE459D9196646E200DA9391 /* ClearCacheViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClearCacheViewController.m; sourceTree = "<group>"; };
 		0AE46B0C1921035E00FA30F3 /* SongTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongTableViewController.h; sourceTree = "<group>"; };
 		0AE46B0D1921035E00FA30F3 /* SongTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongTableViewController.m; sourceTree = "<group>"; };
 		0AE86487192EDECA00EF5A96 /* Zhengdong1_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Zhengdong1_SongList.plist; path = SongPlists/Zhengdong1_SongList.plist; sourceTree = "<group>"; };
@@ -787,6 +796,8 @@
 				0A8BA00E1940C15E001307D6 /* DownloadCell.m */,
 				0AD8D05E195D2108009DC75A /* SettingCellSwitch.h */,
 				0AD8D05F195D2108009DC75A /* SettingCellSwitch.m */,
+				0A7DF91019668942007DBB03 /* ClearCacheCell.h */,
+				0A7DF91119668942007DBB03 /* ClearCacheCell.m */,
 				0AD8D061195D2127009DC75A /* SettingCellDisclosure.h */,
 				0AD8D062195D2128009DC75A /* SettingCellDisclosure.m */,
 				0A37F8C919262D2600826C8C /* SongCell.h */,
@@ -805,6 +816,10 @@
 				0AFFF5821944A2EE008E9119 /* StoreViewController.m */,
 				0AD8D05B195D1A6D009DC75A /* SettingViewController.h */,
 				0AD8D05C195D1A6D009DC75A /* SettingViewController.m */,
+				0AE459D5196645E500DA9391 /* PurchasedSongViewController.h */,
+				0AE459D6196645E500DA9391 /* PurchasedSongViewController.m */,
+				0AE459D8196646E200DA9391 /* ClearCacheViewController.h */,
+				0AE459D9196646E200DA9391 /* ClearCacheViewController.m */,
 				5933AD5F18D03EC1001D707B /* Supporting Files */,
 			);
 			path = Daoting;
@@ -1017,13 +1032,16 @@
 				0A6D5742193453BC0038D841 /* AFDownloadHelper.m in Sources */,
 				0A37F8CB19262D2600826C8C /* SongCell.m in Sources */,
 				0A8BA0091940BFCB001307D6 /* DownloadViewController.m in Sources */,
+				0AE459DA196646E200DA9391 /* ClearCacheViewController.m in Sources */,
 				0AFB65B21925107F000F2AE6 /* AlbumCell.m in Sources */,
 				0AC69C5E1946F452004C6A67 /* DACircularProgressView.m in Sources */,
 				0A6D573E19331B020038D841 /* KeychainWrapper.m in Sources */,
 				0AD5F6801932029F00EB0BAC /* SampleQueueId.m in Sources */,
 				0A8BA00F1940C15E001307D6 /* DownloadCell.m in Sources */,
+				0A7DF91219668942007DBB03 /* ClearCacheCell.m in Sources */,
 				0ABA95A31937229700172862 /* STKAudioPlayerHelper.m in Sources */,
 				0AD8D05D195D1A6D009DC75A /* SettingViewController.m in Sources */,
+				0AE459D7196645E500DA9391 /* PurchasedSongViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

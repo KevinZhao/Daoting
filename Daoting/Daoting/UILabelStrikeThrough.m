@@ -19,7 +19,7 @@
         CGContextRef c = UIGraphicsGetCurrentContext();
         
         CGFloat red[4] = {1.0f,0.0f, 0.0f,0.8f}; //红色
-        CGFloat black[4] = {0.0f, 0.0f, 0.0f, 0.5f};//黑色
+        //CGFloat black[4] = {0.0f, 0.0f, 0.0f, 0.5f};//黑色
         
         CGContextSetStrokeColor(c, red);
         CGContextSetLineWidth(c, 1);

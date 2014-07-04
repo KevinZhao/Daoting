@@ -68,7 +68,6 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="lbl_Title" destination="g0j-bq-gQo" id="Fac-sZ-eeB"/>
-                                    <segue destination="bZp-tQ-LDr" kind="push" id="rvj-TU-SCU"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell appearanceType="aqua" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingCellSwitch" id="3kp-uA-eXe" customClass="SettingCellSwitch">
@@ -102,12 +101,72 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="设置" id="V1L-9P-QOh"/>
+                    <connections>
+                        <segue destination="bZp-tQ-LDr" kind="push" identifier="showPurchasedList" id="bO6-TV-KKt"/>
+                        <segue destination="FVd-dM-ubA" kind="push" identifier="showClearCache" id="mis-xF-KCW"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gE7-kj-5Rw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="762" y="2197"/>
         </scene>
-        <!--View Controller-->
+        <!--Clear Cache View Controller - 清空缓存-->
+        <scene sceneID="6Fv-tt-A9Z">
+            <objects>
+                <tableViewController id="FVd-dM-ubA" customClass="ClearCacheViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="B62-JY-Ocl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClearCacheCell" id="kuD-VV-1RW" customClass="ClearCacheCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kuD-VV-1RW" id="Xrq-Gf-JRG">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="专辑名称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pov-zt-zgh">
+                                            <rect key="frame" x="20" y="3" width="200" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFw-Yz-ZKv">
+                                            <rect key="frame" x="254" y="6" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="清除">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                        <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="22.5M" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Fv-jR-9Dm">
+                                            <rect key="frame" x="20" y="22" width="100" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="btn_clear" destination="eFw-Yz-ZKv" id="m78-zf-0yR"/>
+                                    <outlet property="lbl_albumName" destination="Pov-zt-zgh" id="7Gd-hc-JGg"/>
+                                    <outlet property="lbl_size" destination="4Fv-jR-9Dm" id="qFc-Bo-sLR"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="FVd-dM-ubA" id="x31-wU-jgF"/>
+                            <outlet property="delegate" destination="FVd-dM-ubA" id="5pK-OO-cl0"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="清空缓存" id="GPd-fe-rQe"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5bk-EL-H63" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1282" y="2507"/>
+        </scene>
+        <!--View Controller - 已购买曲目-->
         <scene sceneID="XVP-i7-fXn">
             <objects>
                 <viewController id="bZp-tQ-LDr" sceneMemberID="viewController">
@@ -120,11 +179,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="vBv-P9-NgR"/>
+                    <navigationItem key="navigationItem" title="已购买曲目" id="vBv-P9-NgR"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1GK-Ua-gNB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1282" y="2196"/>
+            <point key="canvasLocation" x="1282" y="1836"/>
         </scene>
         <!--Album Table View Controller - 道听途说-->
         <scene sceneID="VxA-VF-6x1">
