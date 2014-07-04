@@ -5,7 +5,7 @@
 	<key>1</key>
 	<dict>
 		<key>Title</key>
-		<string>[已完结] 雍正剑侠图 第一部</string>
+		<string>雍正剑侠图 第一部</string>
 		<key>ImageURL</key>
 		<string>http://bcs.duapp.com/daoting/Yongzheng1.png</string>
 		<key>Description</key>
@@ -16,11 +16,15 @@
 		<string>Yongzheng1</string>
 		<key>Artist</key>
 		<string>王玥波</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string></string>
 	</dict>
 	<key>2</key>
 	<dict>
 		<key>Title</key>
-		<string>[已完结] 雍正剑侠图 第二部</string>
+		<string>雍正剑侠图 第二部</string>
 		<key>ImageURL</key>
 		<string>http://bcs.duapp.com/daoting/Yongzheng2.png</string>
 		<key>Description</key>
@@ -31,11 +35,15 @@
 		<string>Yongzheng2</string>
 		<key>Artist</key>
 		<string>王玥波</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string></string>
 	</dict>
 	<key>3</key>
 	<dict>
 		<key>Title</key>
-		<string>[已完结] 雍正剑侠图 第三部</string>
+		<string>雍正剑侠图 第三部</string>
 		<key>ImageURL</key>
 		<string>http://bcs.duapp.com/daoting/Yongzheng3.png</string>
 		<key>Description</key>
@@ -46,11 +54,15 @@
 		<string>Yongzheng3</string>
 		<key>Artist</key>
 		<string>王玥波</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string></string>
 	</dict>
 	<key>4</key>
 	<dict>
 		<key>Title</key>
-		<string>[更新中] 薛礼征东 第一部</string>
+		<string>薛礼征东 第一部</string>
 		<key>ImageURL</key>
 		<string>http://bcs.duapp.com/daoting/Zhengdong.png</string>
 		<key>Description</key>
@@ -61,11 +73,15 @@
 		<string>Zhengdong1</string>
 		<key>Artist</key>
 		<string>王玥波</string>
+		<key>UpdatingStatus</key>
+		<string>Updating</string>
+		<key>Category</key>
+		<string></string>
 	</dict>
 	<key>5</key>
 	<dict>
 		<key>Title</key>
-		<string>[已完结] 明朝那些事</string>
+		<string>明朝那些事</string>
 		<key>ImageURL</key>
 		<string>http://bcs.duapp.com/daoting/Mingchao.png</string>
 		<key>Description</key>
@@ -76,11 +92,15 @@
 		<string>Mingchao</string>
 		<key>Artist</key>
 		<string>王玥波</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string></string>
 	</dict>
 	<key>6</key>
 	<dict>
 		<key>Title</key>
-		<string>[已完结] 隋唐演义 之 双鞭记</string>
+		<string>隋唐演义 之 双鞭记</string>
 		<key>ImageURL</key>
 		<string>http://bcs.duapp.com/daoting/Shuangbianji.png</string>
 		<key>Description</key>
@@ -91,11 +111,15 @@
 		<string>Shuangbianji</string>
 		<key>Artist</key>
 		<string>王玥波</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string></string>
 	</dict>
 	<key>7</key>
 	<dict>
 		<key>Title</key>
-		<string>[已完结] 隋唐演义</string>
+		<string>隋唐演义</string>
 		<key>ImageURL</key>
 		<string>http://bcs.duapp.com/daoting/Suitang.png</string>
 		<key>Description</key>
@@ -106,11 +130,15 @@
 		<string>Suitang</string>
 		<key>Artist</key>
 		<string>王玥波</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string></string>
 	</dict>
 	<key>8</key>
 	<dict>
 		<key>Title</key>
-		<string>[更新中] 聊斋</string>
+		<string>聊斋</string>
 		<key>ImageURL</key>
 		<string>http://bcs.duapp.com/daoting/Liaozhai.png</string>
 		<key>Description</key>
@@ -121,11 +149,15 @@
 		<string>Liaozhai</string>
 		<key>Artist</key>
 		<string>王玥波</string>
+		<key>UpdatingStatus</key>
+		<string>Updating</string>
+		<key>Category</key>
+		<string></string>
 	</dict>
 	<key>9</key>
 	<dict>
 		<key>Title</key>
-		<string>[已完结] 侠义英雄传</string>
+		<string>侠义英雄传</string>
 		<key>ImageURL</key>
 		<string>http://bcs.duapp.com/daoting/Xiayi.png</string>
 		<key>Description</key>
@@ -136,11 +168,15 @@
 		<string>Xiayi</string>
 		<key>Artist</key>
 		<string>王玥波</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string></string>
 	</dict>
 	<key>10</key>
 	<dict>
 		<key>Title</key>
-		<string>[已完结] 新三盗九龙杯</string>
+		<string>新三盗九龙杯</string>
 		<key>ImageURL</key>
 		<string>http://bcs.duapp.com/daoting/Sandao.png</string>
 		<key>Description</key>
@@ -151,11 +187,15 @@
 		<string>Sandao</string>
 		<key>Artist</key>
 		<string>王玥波</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string></string>
 	</dict>
 	<key>11</key>
 	<dict>
 		<key>Title</key>
-		<string>[新派评书] 海贼王</string>
+		<string>[新派评书]海贼王</string>
 		<key>ImageURL</key>
 		<string>http://bcs.duapp.com/daoting/Haizeiwang.png</string>
 		<key>Description</key>
@@ -166,13 +206,17 @@
 		<string>Haizeiwang</string>
 		<key>Artist</key>
 		<string>王玥波</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string></string>
 	</dict>
 	<key>12</key>
 	<dict>
 		<key>Title</key>
-		<string>[]侠义金镖</string>
+		<string>侠义金镖</string>
 		<key>ImageURL</key>
-		<string></string>
+		<string>http://bcs.duapp.com/daoting/Jinbiao.png</string>
 		<key>Description</key>
 		<string></string>
 		<key>SongList</key>
@@ -181,11 +225,15 @@
 		<string>Jinbiao</string>
 		<key>Artist</key>
 		<string>王玥波</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string></string>
 	</dict>
 	<key>13</key>
 	<dict>
 		<key>Title</key>
-		<string>[已完结] 张广泰回家</string>
+		<string>张广泰回家</string>
 		<key>ImageURL</key>
 		<string>http://bcs.duapp.com/daoting/Zhangguangtai.png</string>
 		<key>Description</key>
@@ -196,6 +244,10 @@
 		<string>Zhangguangtai</string>
 		<key>Artist</key>
 		<string>王玥波</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string></string>
 	</dict>
 </dict>
 </plist>

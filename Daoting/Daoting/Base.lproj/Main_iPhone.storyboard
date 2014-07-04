@@ -68,6 +68,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="lbl_Title" destination="g0j-bq-gQo" id="Fac-sZ-eeB"/>
+                                    <segue destination="bZp-tQ-LDr" kind="push" id="rvj-TU-SCU"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell appearanceType="aqua" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingCellSwitch" id="3kp-uA-eXe" customClass="SettingCellSwitch">
@@ -105,6 +106,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gE7-kj-5Rw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="762" y="2197"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="XVP-i7-fXn">
+            <objects>
+                <viewController id="bZp-tQ-LDr" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gyu-53-bVd"/>
+                        <viewControllerLayoutGuide type="bottom" id="U3Y-bJ-n8K"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1Dz-Ij-97s">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="vBv-P9-NgR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1GK-Ua-gNB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1282" y="2196"/>
         </scene>
         <!--Album Table View Controller - 道听途说-->
         <scene sceneID="VxA-VF-6x1">

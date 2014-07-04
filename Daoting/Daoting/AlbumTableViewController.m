@@ -95,6 +95,8 @@
         album.plistUrl = [[NSURL alloc]initWithString:[AlbumDic objectForKey:@"SongList"]];
         album.shortName = [AlbumDic objectForKey:@"ShortName"];
         album.artistName = [AlbumDic objectForKey:@"Artist"];
+        album.updatingStatus = [AlbumDic objectForKey:@"UpdatingStatus"];
+        album.category = [AlbumDic objectForKey:@"Category"];
         
         [_albums addObject:album];
     }
