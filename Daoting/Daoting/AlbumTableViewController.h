@@ -13,6 +13,6 @@
     NSMutableArray      *_albums;
 }
 
-@property (nonatomic, retain) NSMutableDictionary *songsDictionary;
+@property (nonatomic, retain) NSMutableArray *albums;
 
 @end

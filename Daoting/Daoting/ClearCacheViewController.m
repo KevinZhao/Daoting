@@ -54,11 +54,21 @@
     
     cell = [tableView dequeueReusableCellWithIdentifier:@"ClearCacheCell" forIndexPath:indexPath];
     
-    cell.lbl_albumName.text = _albumArray[indexPath.row];
+    //1. get album title
+    AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    NSMutableArray *albums = appDelegate.albums;
     
-    //get album size
+    for (Album *album in albums) {
+        if ([album.shortName isEqual: _albumArray[indexPath.row]]) {
+            cell.lbl_albumName.text = album.title;
+            break;
+        }
+    }
+
+    //2. get album size
     long size = [self calculateSize:[_storagePath stringByAppendingString:[NSString stringWithFormat:@"/%@", _albumArray[indexPath.row]]]];
-    cell.lbl_size.text = [NSString stringWithFormat:@"%ld", size];
+    
+    cell.lbl_size.text = [self sizeToMb:size];
     
     return cell;
 }
@@ -100,32 +110,28 @@
     return size;
 }
 
+- (NSString*)sizeToMb:(long)size
+{
+    NSString *sizeString;
+    
+    NSInteger Mbsize = size / 1024 / 1024;
+    
+    NSInteger hundredKbsize = fmod(size/1024, 1024)/100;
+    
+    sizeString = [NSString stringWithFormat:@"%d.%d MB",Mbsize,hundredKbsize];
+    
+    return sizeString;
+}
+
 -(IBAction)clearCache:(id)sender
 {
     UITableViewCell *cell = [self GetTableViewCell:sender];
     
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    _selectedIndexPath = [self.tableView indexPathForCell:cell];
     
-    NSString *directory = [_storagePath stringByAppendingString:[NSString stringWithFormat:@"/%@", _albumArray[indexPath.row]]];
+    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"清空缓存" message:@"确定要清空专辑中的全部缓存文件" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
     
-    NSArray* array = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:directory error:nil];
-    for(int i = 0; i<[array count]; i++)
-    {
-        NSString *fullPath = [directory stringByAppendingPathComponent:[array objectAtIndex:i]];
-        
-        BOOL isDir;
-        if ( !([[NSFileManager defaultManager] fileExistsAtPath:fullPath isDirectory:&isDir] && isDir) )
-        {
-            [[NSFileManager defaultManager] removeItemAtPath:fullPath error:nil];
-            
-            //update UI
-            
-        }
-        else
-        {
-            //left blank;
-        }
-    }
+    [alertView show];
 }
 
 - (UITableViewCell *)GetTableViewCell:(id)sender
@@ -138,15 +144,42 @@
     return nil;
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark alertview delegate
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if (buttonIndex == 1) {
+        
+        NSString *directory = [_storagePath stringByAppendingString:[NSString stringWithFormat:@"/%@", _albumArray[_selectedIndexPath.row]]];
+        
+        NSArray* array = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:directory error:nil];
+        for(int i = 0; i<[array count]; i++)
+        {
+            NSString *fullPath = [directory stringByAppendingPathComponent:[array objectAtIndex:i]];
+            
+            BOOL isDir;
+            if ( !([[NSFileManager defaultManager] fileExistsAtPath:fullPath isDirectory:&isDir] && isDir) )
+            {
+                [[NSFileManager defaultManager] removeItemAtPath:fullPath error:nil];
+            }
+            else
+            {
+                //left blank;
+            }
+        }
+        
+        [[NSFileManager defaultManager] removeItemAtPath:directory error:nil];
+
+        //update UI
+        [_albumArray removeObjectAtIndex:_selectedIndexPath.row];
+        
+        [self.tableView beginUpdates];
+        
+        [self.tableView deleteRowsAtIndexPaths:@[_selectedIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        
+        [self.tableView endUpdates];
+    }
+    
 }
-*/
 
 @end

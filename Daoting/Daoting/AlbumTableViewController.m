@@ -35,10 +35,6 @@
     [self loadAlbums];
     
     [self updateAlbums];
-    
-    self.songsDictionary = [[NSMutableDictionary alloc]init];
-    
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,11 +51,12 @@
     NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
     NSString *plistPathinDocumentDirectory = [bundleDocumentDirectoryPath stringByAppendingString:@"/AlbumList.plist"];
     
-    //if yes, load from document directory, if no, copy from resource directory to document directory
+    //if yes, load from document directory,
     if ([fileManager fileExistsAtPath:plistPathinDocumentDirectory])
     {
         [self initializeAlbums];
     }
+    //if no, copy from resource directory to document directory
     else
     {
         NSString *plistPathinResourceDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/AlbumList.plist"];
@@ -70,13 +67,14 @@
             [self initializeAlbums];
         }
     }
-    
     [self.tableView reloadData];
 }
 
 - (void)initializeAlbums
 {
     _albums = [[NSMutableArray alloc]init];
+    AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
@@ -100,6 +98,8 @@
         
         [_albums addObject:album];
     }
+    
+    appDelegate.albums = _albums;
 }
 
 - (void)updateAlbums
@@ -154,11 +154,10 @@
              [self initializeAlbums];
              
              [self.tableView reloadData];
-             
          }
          else
          {
-             
+             //there is no update for albums
          }
          
      }
@@ -184,9 +183,20 @@
     Album *album = [_albums objectAtIndex:indexPath.row];
     AlbumCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AlbumCell" forIndexPath:indexPath];
     
+    //Configure Cell
     cell.lbl_albumTitle.text = album.title;
     cell.lbl_albumDescription.text = album.description;
     
+    if ([album.updatingStatus isEqual:@"Updating"]) {
+    
+        cell.lbl_Status.text = @"更新中";
+    }
+    
+    if ([album.updatingStatus isEqual:@"Completed"]) {
+        cell.lbl_Status.text = @"已完结";
+    }
+    
+    //Updating Cell Image
     NSURLRequest *request = [NSURLRequest requestWithURL:album.imageUrl];
     UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
     
@@ -200,7 +210,6 @@
         [weakCell setNeedsLayout];
                                        
     } failure:nil];
-    
     
     return cell;
 }

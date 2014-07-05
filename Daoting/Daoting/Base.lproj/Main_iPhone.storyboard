@@ -204,23 +204,31 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="专辑名称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YcD-a3-Pgd">
-                                            <rect key="frame" x="82" y="5.5" width="196" height="21"/>
+                                            <rect key="frame" x="82" y="5" width="196" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="简单介绍:比如聊斋、隋唐演义或者其他什么的简单介绍:比如聊斋、隋唐演义或者其他什么的简单介绍:比如聊斋、隋唐演义或者其他什么的" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="210" translatesAutoresizingMaskIntoConstraints="NO" id="6Hw-dL-nZg">
-                                            <rect key="frame" x="79" y="24.5" width="210" height="43"/>
+                                            <rect key="frame" x="79" y="34.5" width="210" height="43"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon-72.png" translatesAutoresizingMaskIntoConstraints="NO" id="HFM-Ul-jhK">
                                             <rect key="frame" x="7" y="8" width="60" height="60"/>
                                         </imageView>
+                                        <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="专辑状态" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8G-Pp-TM8">
+                                            <rect key="frame" x="82" y="20" width="80" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="img_albumImage" destination="HFM-Ul-jhK" id="4tA-ne-094"/>
+                                    <outlet property="lbl_Status" destination="P8G-Pp-TM8" id="fdl-T9-BRK"/>
                                     <outlet property="lbl_albumDescription" destination="6Hw-dL-nZg" id="LoL-rO-fS0"/>
                                     <outlet property="lbl_albumTitle" destination="YcD-a3-Pgd" id="iIu-1O-OJe"/>
                                     <segue destination="FIa-3P-xRc" kind="push" identifier="showSongList" id="geF-Vq-fDf"/>
