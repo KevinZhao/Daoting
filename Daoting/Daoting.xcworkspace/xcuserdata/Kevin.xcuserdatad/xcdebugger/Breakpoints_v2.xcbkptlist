@@ -1208,12 +1208,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/ClearCacheViewController.m"
-            timestampString = "426154360.963214"
+            timestampString = "426240848.938351"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Daoting/ClearCacheViewController.m"
+            timestampString = "426241690.86426"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "-clearCache:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

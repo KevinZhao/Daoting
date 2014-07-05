@@ -13,6 +13,9 @@
 
 {
     NSArray *_albumArray;
+    NSString *_storagePath;
 }
+
+-(IBAction)clearCache:(id)sender;
 
 @end

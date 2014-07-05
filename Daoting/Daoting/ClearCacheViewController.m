@@ -31,6 +31,8 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    _storagePath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingString:@"/Daoting/"];
+    
     _albumArray = [[NSMutableArray alloc]init];
     [self buildAlbumList];
 }
@@ -55,7 +57,8 @@
     cell.lbl_albumName.text = _albumArray[indexPath.row];
     
     //get album size
-    long size = [self calculateSize:];
+    long size = [self calculateSize:[_storagePath stringByAppendingString:[NSString stringWithFormat:@"/%@", _albumArray[indexPath.row]]]];
+    cell.lbl_size.text = [NSString stringWithFormat:@"%ld", size];
     
     return cell;
 }
@@ -67,11 +70,9 @@
 
 - (void)buildAlbumList
 {
-    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingString:@"/Daoting/"];
-    
     NSFileManager * fm = [NSFileManager defaultManager];
     
-    _albumArray = [fm contentsOfDirectoryAtPath:path error:nil];
+    _albumArray = [fm contentsOfDirectoryAtPath:_storagePath error:nil];
 }
 
 -(long)calculateSize:(NSString *)directory
@@ -97,6 +98,44 @@
     }
     
     return size;
+}
+
+-(IBAction)clearCache:(id)sender
+{
+    UITableViewCell *cell = [self GetTableViewCell:sender];
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    
+    NSString *directory = [_storagePath stringByAppendingString:[NSString stringWithFormat:@"/%@", _albumArray[indexPath.row]]];
+    
+    NSArray* array = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:directory error:nil];
+    for(int i = 0; i<[array count]; i++)
+    {
+        NSString *fullPath = [directory stringByAppendingPathComponent:[array objectAtIndex:i]];
+        
+        BOOL isDir;
+        if ( !([[NSFileManager defaultManager] fileExistsAtPath:fullPath isDirectory:&isDir] && isDir) )
+        {
+            [[NSFileManager defaultManager] removeItemAtPath:fullPath error:nil];
+            
+            //update UI
+            
+        }
+        else
+        {
+            //left blank;
+        }
+    }
+}
+
+- (UITableViewCell *)GetTableViewCell:(id)sender
+{
+    Class vcc = [UITableViewCell class];
+    UIResponder *responder = sender;
+    while ((responder = [responder nextResponder]))
+        if ([responder isKindOfClass: vcc])
+            return (UITableViewCell *)responder;
+    return nil;
 }
 
 /*
