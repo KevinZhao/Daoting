@@ -297,6 +297,11 @@
     _playerHelper.playbackList = _songs;
     [_appData.playingProgressQueue setObject:song.songNumber forKey:_album.title];
     
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[song.songNumber intValue] - 1 inSection:0];
+    [_tableview beginUpdates];
+    [_tableview selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    [_tableview endUpdates];
+    
     [self configureNowPlayingInfo];
 }
 
@@ -450,7 +455,7 @@
     }
     
     if (songCell.isSelected) {
-
+        
     }
     else
     {
@@ -788,10 +793,10 @@
     cell.lbl_songDuration.text = song.duration;
     
     //todo: customize the selected table view cell
-    UIView *view = [[UIView alloc] initWithFrame:cell.frame];
-    view.backgroundColor = [UIColor grayColor];
+    UIImageView *imageView_playing = [[UIImageView alloc] initWithFrame:CGRectMake(0, 6, 5, 48)];
+    imageView_playing.image = [UIImage imageNamed:@"playingsong.png"];
     
-    cell.selectedBackgroundView = view;
+    [cell.selectedBackgroundView addSubview:imageView_playing];
     
     cell.song = song;
     cell.album = _album;

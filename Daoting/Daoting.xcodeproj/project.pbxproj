@@ -123,6 +123,7 @@
 		0A98D66C1920F1F500E46EB9 /* arrowSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A98D6681920F1F500E46EB9 /* arrowSelected.png */; };
 		0A98D66D1920F1F500E46EB9 /* arrowSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A98D6691920F1F500E46EB9 /* arrowSelected@2x.png */; };
 		0A98D6701920F25900E46EB9 /* AlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A98D66F1920F25900E46EB9 /* AlbumTableViewController.m */; };
+		0AAF6194196AE4A600C33E52 /* playingsong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AAF6193196AE4A600C33E52 /* playingsong@2x.png */; };
 		0ABA959F193702D000172862 /* Jinbiao_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0ABA959E193702D000172862 /* Jinbiao_SongList.plist */; };
 		0ABA95A31937229700172862 /* STKAudioPlayerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABA95A21937229700172862 /* STKAudioPlayerHelper.m */; };
 		0ABA95A619382E2000172862 /* AFNetworkReachabilityObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABA95A519382E2000172862 /* AFNetworkReachabilityObserver.m */; };
@@ -303,6 +304,7 @@
 		0A98D6691920F1F500E46EB9 /* arrowSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrowSelected@2x.png"; sourceTree = "<group>"; };
 		0A98D66E1920F25900E46EB9 /* AlbumTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumTableViewController.h; sourceTree = "<group>"; };
 		0A98D66F1920F25900E46EB9 /* AlbumTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumTableViewController.m; sourceTree = "<group>"; };
+		0AAF6193196AE4A600C33E52 /* playingsong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playingsong@2x.png"; sourceTree = "<group>"; };
 		0ABA959E193702D000172862 /* Jinbiao_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Jinbiao_SongList.plist; path = SongPlists/Jinbiao_SongList.plist; sourceTree = "<group>"; };
 		0ABA95A11937229700172862 /* STKAudioPlayerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKAudioPlayerHelper.h; sourceTree = "<group>"; };
 		0ABA95A21937229700172862 /* STKAudioPlayerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKAudioPlayerHelper.m; sourceTree = "<group>"; };
@@ -654,6 +656,7 @@
 		0A98D64B1920EAB700E46EB9 /* Artworks */ = {
 			isa = PBXGroup;
 			children = (
+				0AAF6193196AE4A600C33E52 /* playingsong@2x.png */,
 				0A70896B195D036300B91B16 /* notificationViewBackground.png */,
 				0A5F4C9C195AB0D3003924C7 /* AppIcon76x76@2x.png */,
 				0A1FA99D19585612002F48EA /* qr_toolbar_more_hl.png */,
@@ -925,6 +928,7 @@
 				0A98D6181920ACBC00E46EB9 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				0AE86488192EDECA00EF5A96 /* Zhengdong1_SongList.plist in Resources */,
 				0A5F4C9D195AB0D3003924C7 /* AppIcon76x76@2x.png in Resources */,
+				0AAF6194196AE4A600C33E52 /* playingsong@2x.png in Resources */,
 				0A98D6251920ACBC00E46EB9 /* ShareSDKiPadSimpleShareViewUI.bundle in Resources */,
 				0A1FA9A019585612002F48EA /* qr_toolbar_more.png in Resources */,
 				0A98D6591920EAB700E46EB9 /* downloadButton.png in Resources */,

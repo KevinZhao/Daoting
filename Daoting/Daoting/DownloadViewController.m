@@ -116,9 +116,25 @@
 
 - (IBAction)cancelAll:(id)sender
 {
-    for (AFHTTPRequestOperation *operation in [AFDownloadHelper sharedOperationManager].operationQueue.operations) {
-        [operation cancel];
-    }
+    NSLog(@"count = %d", [AFDownloadHelper sharedOperationManager].operationQueue.operations.count);
+
+        @try {
+            for (AFHTTPRequestOperation *operation in [AFDownloadHelper sharedOperationManager].operationQueue.operations) {
+            [operation cancel];
+            }
+        }
+        @catch (NSException *exception) {
+            if ([[exception name] isEqual:NSRangeException])
+            {
+                NSLog(@"NSRangeException");
+            }
+        }
+        @finally {
+            
+        }
+        
+        //[self.tableview reloadData];
+    
 }
 
 #pragma mark UITableView Delegate
@@ -135,9 +151,5 @@
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-}
 
 @end
