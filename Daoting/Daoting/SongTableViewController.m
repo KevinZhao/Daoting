@@ -144,7 +144,7 @@
     
     [fileManager removeItemAtPath:filePath error:nil];
     operation.outputStream = [NSOutputStream outputStreamToFileAtPath:filePath append:NO];
-    [[AFDownloadHelper sharedInstance].operationQueue addOperation:operation];
+    [[AFDownloadHelper sharedOperationManager].operationQueue addOperation:operation];
     
     //Download complete block
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
@@ -367,12 +367,12 @@
     SongCell* songCell = (SongCell*)[_tableview cellForRowAtIndexPath:indexPath];
     Song *song = [_songs objectAtIndex:indexPath.row];
     NSString *key = [NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber];
-    NSString *PositioninQueue =  [[AFDownloadHelper sharedAFDownloadHelper].downloadKeyQueue objectForKey:key];
-    
+    AFHTTPRequestOperation *operation = [[AFDownloadHelper sharedAFDownloadHelper] searchOperationbyKey:key];
+
     //1. Check if the operation in download queue
-    if (PositioninQueue != nil) {
+    if (operation != nil) {
     
-        DownloadingStatus *status = [[AFDownloadHelper sharedAFDownloadHelper].downloadStatusQueue objectAtIndex:[PositioninQueue intValue]];
+        DownloadingStatus *status = [operation.userInfo valueForKey:@"status"];
         
         switch (status.downloadingStatus) {
                 
@@ -644,7 +644,7 @@
         
         NSString *key = [NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber];
         
-        AFHTTPRequestOperation *operation = [[AFDownloadHelper sharedAFDownloadHelper] searchOperationByKey:key];
+        AFHTTPRequestOperation *operation = [[AFDownloadHelper sharedAFDownloadHelper] searchOperationbyKey:key];
         
         if (![operation isEqual:nil]) {
             [operation cancel];

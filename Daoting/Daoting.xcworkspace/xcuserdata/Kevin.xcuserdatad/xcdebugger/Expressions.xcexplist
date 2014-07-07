@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[STKAudioPlayerHelper audioPlayer:didStartPlayingQueueItemId:]:STKAudioPlayerHelper.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[STKAudioPlayerHelper tick]:STKAudioPlayerHelper.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[AFDownloadHelper downloadSong:inAlbum:]:AFDownloadHelper.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "i">
+            </PersistentString>
+            <PersistentString
+               value = "[AFDownloadHelper sharedOperationManager].operationQueue.operations.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[AFURLConnectionOperation cancel]:AFURLConnectionOperation.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self isFinished">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[SongCell onbtn_pausePressed:]:SongCell.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[AFDownloadHelper sharedAFDownloadHelper].downloadQueue">
+            </PersistentString>
+            <PersistentString
+               value = "[AFDownloadHelper sharedAFDownloadHelper].downloadKeyQueue">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[STKAudioPlayerHelper playSong:InAlbum:]:STKAudioPlayerHelper.m">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

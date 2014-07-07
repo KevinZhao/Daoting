@@ -10,7 +10,7 @@
 
 @implementation AFDownloadHelper
 
-+ (AFHTTPRequestOperationManager *)sharedInstance {
++ (AFHTTPRequestOperationManager *)sharedOperationManager {
     static dispatch_once_t once;
     static AFHTTPRequestOperationManager * sharedInstance;
     dispatch_once(&once, ^{
@@ -38,23 +38,21 @@
 {
     self = [super init];
     if (self) {
-        _downloadQueue = [[NSMutableArray alloc]init];
-        _downloadKeyQueue = [[NSMutableDictionary alloc]init];
-        _downloadStatusQueue = [[NSMutableArray alloc]init];
-        
+        //_downloadQueue = [[NSMutableArray alloc]init];
+        //_downloadKeyQueue = [[NSMutableDictionary alloc]init];
+        //_downloadStatusQueue = [[NSMutableArray alloc]init];
     }
     return self;
 }
 
 - (void)downloadSong:(Song*) song inAlbum:(Album*) album
 {
-    
     //0. check if the song is already in download queue
     NSString *key = [NSString stringWithFormat:@"%@_%@", album.shortName, song.songNumber];
     
-    if ([_downloadKeyQueue objectForKey:key] != nil) {
+    if ([self searchOperationbyKey:key] != nil) {
         return;
-    };
+    }
     
     //1. Set download path to temporary directory with album shortname and songnumber combination
     NSString *fileName = [NSString stringWithFormat:@"%@.mp3", key];
@@ -65,31 +63,23 @@
     
     //2.1 Configure operation
     operation.outputStream = [NSOutputStream outputStreamToFileAtPath:filePath append:NO];
-    [[AFDownloadHelper sharedInstance].operationQueue addOperation:operation];
+    [[AFDownloadHelper sharedOperationManager].operationQueue addOperation:operation];
+    
+    DownloadingStatus *status = [[DownloadingStatus alloc]init];
+    status.downloadingStatus = fileDownloadStatusWaiting;
     
     operation.userInfo = [[NSMutableDictionary alloc]init];
     [operation.userInfo setValue:[NSString stringWithFormat:@"%@_%@", album.shortName, song.songNumber] forKey:@"key"];
     [operation.userInfo setValue:album forKeyPath:@"album"];
     [operation.userInfo setValue:song forKeyPath:@"song"];
-    
-    //2.2 add operation to downloadQueue and downloadKeyQueu for easy search
-    [_downloadQueue addObject:operation];
-    
-    [_downloadKeyQueue setObject:[NSString stringWithFormat:@"%d", _downloadKeyQueue.count] forKey: key];
-    
-    DownloadingStatus *status = [[DownloadingStatus alloc]init];
-    status.downloadingStatus = fileDownloadStatusWaiting;
-    [_downloadStatusQueue addObject:status];
+    [operation.userInfo setValue:status forKeyPath:@"status"];
     
     //todo better not use this
     AFHTTPRequestOperation __weak *operation_ = operation;
     
     [operation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
     
-        NSString *key = [operation_.userInfo objectForKey:@"key"];
-        NSString *number = [_downloadKeyQueue objectForKey:key];
-        
-        DownloadingStatus *status = [_downloadStatusQueue objectAtIndex:[number intValue]];
+        DownloadingStatus *status = [operation_.userInfo objectForKey:@"status"];
         status.downloadingStatus = fileDownloadStatusDownloading;
         status.totalBytesRead = totalBytesRead;
         status.totalBytesExpectedToRead = totalBytesExpectedToRead;
@@ -142,21 +132,24 @@
              NSLog(@"download completed");
          }
          
-         NSString *key = [operation.userInfo objectForKey:@"key"];
-         NSString *number = [_downloadKeyQueue objectForKey:key];
-         
-         DownloadingStatus *status = [_downloadStatusQueue objectAtIndex:[number intValue]];
+         DownloadingStatus *status = [operation.userInfo objectForKey:@"status"];
          status.downloadingStatus = fileDownloadStatusCompleted;
      }
      //Failed
     failure:
      ^(AFHTTPRequestOperation *operation, NSError *error)
      {
-         NSString *key = [operation.userInfo objectForKey:@"key"];
+         /*NSString *key = [operation.userInfo objectForKey:@"key"];
          NSString *number = [_downloadKeyQueue objectForKey:key];
          
          DownloadingStatus *status = [_downloadStatusQueue objectAtIndex:[number intValue]];
          status.downloadingStatus = fileDownloadStatusError;
+         
+         NSString *position = [self.downloadKeyQueue valueForKey:key];
+        
+         [self.downloadQueue removeObjectAtIndex:[position intValue]];
+         
+         [self.downloadKeyQueue removeObjectForKey:key];*/
      }];
 }
 
@@ -172,33 +165,19 @@
     }
 }
 
-- (AFHTTPRequestOperation*)searchOperationByKey:(NSString*) key
+-(AFHTTPRequestOperation *)searchOperationbyKey:(NSString *)key
 {
-    NSString *PositioninQueue =  [_downloadKeyQueue objectForKey:key];
+    AFHTTPRequestOperation *operation = nil;
     
-    if ([PositioninQueue isEqual:nil]) {
-        return nil;
+    for (AFHTTPRequestOperation *op in [AFDownloadHelper sharedOperationManager].operationQueue.operations) {
+        
+        if ([key isEqual:[op.userInfo valueForKey:@"key"]]) {
+            
+            operation = op;
+            return op;
+        }
+        
     }
-    else{
-        AFHTTPRequestOperation *operation = _downloadQueue[[PositioninQueue intValue]];
-        return operation;
-    }
+    return operation;
 }
-
-- (DownloadingStatus*)searchStatusByKey:(NSString*) key
-{
-    NSString *PositioninQueue =  [_downloadKeyQueue objectForKey:key];
-    
-    if ([PositioninQueue isEqual:nil]) {
-        return nil;
-    }
-    else{
-        DownloadingStatus *status = _downloadStatusQueue[[PositioninQueue intValue]];
-        return status;
-    }
-
-    
-
-}
-
 @end

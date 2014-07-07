@@ -28,6 +28,7 @@
     STKAudioPlayer                  *_audioPlayer;
     NSTimer                         *_timer;
     double                          _progress;
+    AppData                         *_appData;
 
 }
 

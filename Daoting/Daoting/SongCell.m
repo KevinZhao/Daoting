@@ -77,27 +77,18 @@
     }
 }
 
-- (void)startDownload
-{
-    //change download button to pause button
-    [_btn_downloadOrPause removeTarget:self action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [_btn_downloadOrPause addTarget:self action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
-    [_btn_downloadOrPause setBackgroundImage:[UIImage imageNamed:@"downloadProgressButtonPause.png"] forState:UIControlStateNormal];
-    
-    //Start download
-    [[AFDownloadHelper sharedAFDownloadHelper] downloadSong:song inAlbum:album];
-    
-}
-
 - (IBAction)onbtn_pausePressed:(id)sender
 {
-    [_btn_downloadOrPause removeTarget:self action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
-    [_btn_downloadOrPause addTarget:self action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [_btn_downloadOrPause setBackgroundImage:[UIImage imageNamed:@"downloadButton.png"] forState:UIControlStateNormal];
-    
     NSString *key = [NSString stringWithFormat:@"%@_%@", album.shortName, song.songNumber];
-    AFHTTPRequestOperation *operation = [[AFDownloadHelper sharedAFDownloadHelper] searchOperationByKey:key];
+    AFHTTPRequestOperation *operation = [[AFDownloadHelper sharedAFDownloadHelper] searchOperationbyKey:key];
     [operation cancel];
+}
+
+
+- (void)startDownload
+{
+    //Start download
+    [[AFDownloadHelper sharedAFDownloadHelper] downloadSong:song inAlbum:album];
 }
 
 - (UIViewController *)GetViewController

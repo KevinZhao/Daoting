@@ -35,8 +35,7 @@
 {
     NSIndexPath* indexPath = [(UITableView*)self.superview.superview indexPathForCell:self];
     
-    NSMutableArray *downloadQueue = [AFDownloadHelper sharedAFDownloadHelper].downloadQueue;
-    AFHTTPRequestOperation *operation =downloadQueue[indexPath.row];
+    AFHTTPRequestOperation *operation = [AFDownloadHelper sharedOperationManager].operationQueue.operations[indexPath.row];
 
     [operation cancel];
 }

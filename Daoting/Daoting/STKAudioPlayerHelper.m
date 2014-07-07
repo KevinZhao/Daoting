@@ -39,6 +39,7 @@
                                                object: [AVAudioSession sharedInstance]];
     
     [self setupTimer];
+    _appData = [AppData sharedAppData];
     
     return self;
 }
@@ -54,15 +55,13 @@
 {
     if (audioPlayer.progress) {
         
-        NSString *key = [NSString stringWithFormat:@"%@_%@",[AppData sharedAppData].currentAlbum.shortName,
-                         [AppData sharedAppData].currentSong.songNumber];
+        NSString *key = [NSString stringWithFormat:@"%@_%@", _appData.currentAlbum.shortName, _appData.currentSong.songNumber];
         NSString *progressString = [self formatTimeFromSeconds:audioPlayer.progress];
-        [[AppData sharedAppData].playingQueue setValue:progressString forKey:key];
+        [_appData.playingQueue setValue:progressString forKey:key];
         
-        [[AppData sharedAppData] save];
+        [_appData save];
     }
 }
-
 
 - (void)audioRouteChangeHandler:(NSNotification*)notification
 {
@@ -83,12 +82,6 @@
         //play from local reposistory for the song
         STKDataSource* fileDataSource = [STKAudioPlayer dataSourceFromURL:songURL];
         [audioPlayer setDataSource:fileDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:songURL andCount:0]];
-        
-        //get previous progress
-        NSString *key = [NSString stringWithFormat:@"%@_%@", album.shortName, song.songNumber];
-        NSString *progressString = [[AppData sharedAppData].playingQueue objectForKey:key];
-        _progress = [self formatProgressFromString:progressString];
-        
     }
     else
     {
@@ -101,6 +94,8 @@
                         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"网络异常" message:@"当前网络无法连接" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
                         
                         [alert show];
+                        
+                        return;
                     }
                         break;
                     case AFNetworkReachabilityStatusReachableViaWWAN:
@@ -121,19 +116,24 @@
         }
     }
     
-    [AppData sharedAppData].currentAlbum = album;
-    [AppData sharedAppData].currentSong = song;
-    [AppData sharedAppData].currentProgress = _progress;
+    //get previous progress
+    NSString *key = [NSString stringWithFormat:@"%@_%@", album.shortName, song.songNumber];
+    NSString *progressString = [_appData.playingQueue objectForKey:key];
+    _progress = [self formatProgressFromString:progressString];
     
-    [[AppData sharedAppData] save];
+    _appData.currentAlbum = album;
+    _appData.currentSong = song;
+    _appData.currentProgress = _progress;
+    
+    [_appData save];
     
 }
 
 -(void)pauseSong
 {
-    [AppData sharedAppData].currentProgress = audioPlayer.progress;
+    _appData.currentProgress = audioPlayer.progress;
     
-    [[AppData sharedAppData] save];
+    [_appData save];
     [audioPlayer pause];
 }
 
@@ -170,9 +170,7 @@
 /// Raised when an item has started playing
 -(void) audioPlayer:(STKAudioPlayer*)aPlayer didStartPlayingQueueItemId:(NSObject*)queueItemId
 {
-    if ((_progress + 5) < aPlayer.duration) {
-        [aPlayer seekToTime:_progress];
-    }
+    [audioPlayer seekToTime:_progress];
 }
 
 /// Raised when an item has finished buffering (may or may not be the currently playing item)

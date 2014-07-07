@@ -19,17 +19,14 @@
     
 }
 
-@property (nonatomic, retain) NSMutableArray         *downloadQueue;
-@property (nonatomic, retain) NSMutableDictionary    *downloadKeyQueue;
-@property (nonatomic, retain) NSMutableArray         *downloadStatusQueue;
 
 
-+ (AFHTTPRequestOperationManager *)sharedInstance;
++ (AFHTTPRequestOperationManager *)sharedOperationManager;
 + (AFDownloadHelper *)sharedAFDownloadHelper;
 
 
 - (void)downloadSong:(Song*) song inAlbum:(Album*) album;
-- (AFHTTPRequestOperation*)searchOperationByKey:(NSString*) key;
-- (DownloadingStatus*)searchStatusByKey:(NSString*) key;
+
+-(AFHTTPRequestOperation *)searchOperationbyKey:(NSString *)key;
 
 @end

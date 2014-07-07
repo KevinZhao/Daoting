@@ -42,6 +42,7 @@ static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
 
         playingQueue = [[decoder decodeObjectForKey:SSDataforPlayingQueue] mutableCopy];
         if (playingQueue == nil) {
+            playingQueue = [[NSMutableDictionary alloc]init];
         }
         
         purchasedQueue = [[decoder decodeObjectForKey:SSDataforPurchasedQueue] mutableCopy];
