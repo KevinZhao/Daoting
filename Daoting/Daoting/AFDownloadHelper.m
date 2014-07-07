@@ -26,7 +26,6 @@
     static dispatch_once_t once;
     static AFDownloadHelper * sharedAFDownloadHelper;
     dispatch_once(&once, ^{
-        
         sharedAFDownloadHelper = [[AFDownloadHelper alloc]init];
         
     });
@@ -34,22 +33,11 @@
     
 }
 
-- (instancetype) init
-{
-    self = [super init];
-    if (self) {
-        //_downloadQueue = [[NSMutableArray alloc]init];
-        //_downloadKeyQueue = [[NSMutableDictionary alloc]init];
-        //_downloadStatusQueue = [[NSMutableArray alloc]init];
-    }
-    return self;
-}
 
 - (void)downloadSong:(Song*) song inAlbum:(Album*) album
 {
     //0. check if the song is already in download queue
     NSString *key = [NSString stringWithFormat:@"%@_%@", album.shortName, song.songNumber];
-    
     if ([self searchOperationbyKey:key] != nil) {
         return;
     }
@@ -139,17 +127,8 @@
     failure:
      ^(AFHTTPRequestOperation *operation, NSError *error)
      {
-         /*NSString *key = [operation.userInfo objectForKey:@"key"];
-         NSString *number = [_downloadKeyQueue objectForKey:key];
-         
-         DownloadingStatus *status = [_downloadStatusQueue objectAtIndex:[number intValue]];
+         DownloadingStatus *status = [operation.userInfo valueForKey:@"status"];
          status.downloadingStatus = fileDownloadStatusError;
-         
-         NSString *position = [self.downloadKeyQueue valueForKey:key];
-        
-         [self.downloadQueue removeObjectAtIndex:[position intValue]];
-         
-         [self.downloadKeyQueue removeObjectForKey:key];*/
      }];
 }
 

@@ -30,10 +30,6 @@
 
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-}
-
 
 - (void)viewWillAppear:(BOOL)animated
 {
