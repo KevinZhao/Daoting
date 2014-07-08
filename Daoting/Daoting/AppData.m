@@ -22,13 +22,13 @@ static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
 @implementation AppData
 
 
-@synthesize playingQueue, purchasedQueue, playingProgressQueue, dailyCheckinQueue;
+@synthesize playingQueue, playingProgressQueue, dailyCheckinQueue;
 
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
     [encoder encodeDouble:self.coins forKey: SSDataforCoinsKey];
     [encoder encodeObject:playingQueue forKey:SSDataforPlayingQueue];
-    [encoder encodeObject:purchasedQueue forKey:SSDataforPurchasedQueue];
+    [encoder encodeObject:_purchasedQueue forKey:SSDataforPurchasedQueue];
     [encoder encodeObject:playingProgressQueue forKey:SSDataforPlayingProgressQueue];
     [encoder encodeObject:dailyCheckinQueue forKey:SSDataforDailyCheckinQueue];
     [encoder encodeBool:_isAutoPurchase forKey:SSDataforIsAutoPurchase];
@@ -45,9 +45,9 @@ static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
             playingQueue = [[NSMutableDictionary alloc]init];
         }
         
-        purchasedQueue = [[decoder decodeObjectForKey:SSDataforPurchasedQueue] mutableCopy];
-        if (purchasedQueue == nil) {
-            purchasedQueue = [[NSMutableDictionary alloc]init];
+        _purchasedQueue = [[decoder decodeObjectForKey:SSDataforPurchasedQueue] mutableCopy];
+        if (_purchasedQueue == nil) {
+            _purchasedQueue = [[NSMutableDictionary alloc]init];
         }
         
         playingProgressQueue = [[decoder decodeObjectForKey:SSDataforPlayingProgressQueue] mutableCopy];
@@ -172,5 +172,32 @@ static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
     [[NSNotificationCenter defaultCenter] postNotificationName: SSDataforCoinsKey object:nil];
 }
 
+-(BOOL)songNumber:(NSString *)songNumber ispurchasedwithAlbum:(NSString*)albumShortname
+{
+    BOOL result = NO;
+    
+    NSMutableDictionary *purchasedArray = [_purchasedQueue objectForKey:albumShortname];
+    
+    if (!([purchasedArray objectForKey:songNumber] == nil)) {
+        result = YES;
+    }
+    
+    return result;
+}
+
+-(void)addtoPurchasedQueue:(NSString*)songNumber withAlbumShortname:(NSString *)albumShortname
+{
+    
+    NSMutableDictionary *purchasedArray = [_purchasedQueue objectForKey:albumShortname];
+    
+    if (purchasedArray == nil) {
+        purchasedArray = [[NSMutableDictionary alloc]init];
+    }
+    
+    [purchasedArray setValue:@"YES" forKey:songNumber];
+    
+    [_purchasedQueue setValue:purchasedArray forKey:albumShortname];
+    
+}
 
 @end

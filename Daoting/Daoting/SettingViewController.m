@@ -113,7 +113,7 @@
     
     if ((indexPath.section == 0) && (indexPath.row == 1))
     {
-
+        [self performSegueWithIdentifier:@"showPurchasedSongs" sender:nil];
     }
     
     if ((indexPath.section == 1) && (indexPath.row == 0))
@@ -139,7 +139,7 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+/*// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"showPurchasedList"] ) {
@@ -148,9 +148,9 @@
     }
     
     if ([segue.identifier isEqualToString:@"showClearCache"] ) {
-        ClearCacheViewController *viewController = segue.destinationViewController;
+        //ClearCacheViewController *viewController = segue.destinationViewController;
     }
-}
+}*/
 
 
 @end

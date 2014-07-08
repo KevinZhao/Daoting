@@ -9,6 +9,17 @@
          contextName = "-[STKAudioPlayerHelper tick]:STKAudioPlayerHelper.m">
       </ContextState>
       <ContextState
+         contextName = "-[AFURLConnectionOperation cancel]:AFURLConnectionOperation.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self isFinished">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[STKAudioPlayerHelper playSong:InAlbum:]:STKAudioPlayerHelper.m">
+      </ContextState>
+      <ContextState
          contextName = "-[AFDownloadHelper downloadSong:inAlbum:]:AFDownloadHelper.m">
          <PersistentStrings>
             <PersistentString
@@ -20,26 +31,32 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[AFURLConnectionOperation cancel]:AFURLConnectionOperation.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "self isFinished">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "-[SongCell onbtn_pausePressed:]:SongCell.m">
          <PersistentStrings>
             <PersistentString
-               value = "[AFDownloadHelper sharedAFDownloadHelper].downloadQueue">
+               value = "[AFDownloadHelper sharedAFDownloadHelper].downloadKeyQueue">
             </PersistentString>
             <PersistentString
-               value = "[AFDownloadHelper sharedAFDownloadHelper].downloadKeyQueue">
+               value = "[AFDownloadHelper sharedAFDownloadHelper].downloadQueue">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[STKAudioPlayerHelper playSong:InAlbum:]:STKAudioPlayerHelper.m">
+         contextName = "-[PurchasedSongViewController tableView:numberOfRowsInSection:]:PurchasedSongViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[AppData addtoPurchasedQueue:withAlbumShortname:]:AppData.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[PurchasedSongViewController tableView:cellForRowAtIndexPath:]:PurchasedSongViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "_appData.purchasedQueue.allKeys">
+            </PersistentString>
+            <PersistentString
+               value = "cell.lbl_albumTitle.text">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>

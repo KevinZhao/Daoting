@@ -27,6 +27,7 @@
 
 @property (nonatomic, strong) IBOutlet UILabelStrikeThrough *lbl_100yuan;
 @property (nonatomic, strong) IBOutlet UILabelStrikeThrough *lbl_250yuan;
+@property (nonatomic, strong) IBOutlet UILabelStrikeThrough *lbl_50yuan;
 
 
 @property (nonatomic, strong) IBOutlet NotificationView* notificationView;

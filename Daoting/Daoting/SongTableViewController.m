@@ -250,10 +250,10 @@
 
 -(void)playSong:(Song*)song
 {
-    NSString *key = [NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber];
+    //NSString *key = [NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber];
     
     //2.1 check the song had been purchased or not
-    BOOL purchased = [[_appData.purchasedQueue objectForKey:key] isEqualToString:@"Yes"];
+    BOOL purchased = [_appData songNumber:song.songNumber ispurchasedwithAlbum:_album.shortName];
     
     //if the song had been purchased
     if (purchased) {
@@ -273,7 +273,7 @@
             [self playSongbyHelper:song];
             
             //Add to purchased queue
-            [_appData.purchasedQueue setObject:@"Yes" forKey:[NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber]];
+            [_appData addtoPurchasedQueue:song.songNumber withAlbumShortname:_album.shortName];
             
             [_appData save];
             
@@ -594,10 +594,10 @@
         
         Song *song = _songs[i];
         
-        NSString *key = [NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber];
+        //NSString *key = [NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber];
         
         //1.1 check the song had been purchased or not
-        BOOL purchased = [[_appData.purchasedQueue objectForKey:key] isEqualToString:@"Yes"];
+        BOOL purchased = [_appData songNumber:song.songNumber ispurchasedwithAlbum:_album.shortName];
         if (!purchased) {
             coinsNeeded = coinsNeeded + [song.price intValue];
         }
@@ -617,16 +617,13 @@
                 [[AFDownloadHelper sharedAFDownloadHelper] downloadSong:song inAlbum:_album];
             }
             
-            //2.2
-            NSString *key = [NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber];
-            
-            //1.1 check the song had been purchased or not
-            BOOL purchased = [[_appData.purchasedQueue objectForKey:key] isEqualToString:@"Yes"];
+            //2.2 check the song had been purchased or not
+            BOOL purchased = [_appData songNumber:song.songNumber ispurchasedwithAlbum:_album.shortName];
             
             if (!purchased) {
                 _appData.coins = _appData.coins - [song.price intValue];
                 
-                [_appData.purchasedQueue setObject:@"Yes" forKey:key];
+                [_appData addtoPurchasedQueue:song.songNumber withAlbumShortname:_album.shortName];
             }
         }
         [_appData save];

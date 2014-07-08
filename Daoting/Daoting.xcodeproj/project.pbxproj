@@ -29,6 +29,7 @@
 		0A7DF91219668942007DBB03 /* ClearCacheCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DF91119668942007DBB03 /* ClearCacheCell.m */; };
 		0A8BA0091940BFCB001307D6 /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8BA0081940BFCB001307D6 /* DownloadViewController.m */; };
 		0A8BA00F1940C15E001307D6 /* DownloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8BA00E1940C15E001307D6 /* DownloadCell.m */; };
+		0A9260A2196BD74B00361977 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933AD5818D03EC1001D707B /* Foundation.framework */; };
 		0A98D5EF1920ACBC00E46EB9 /* CopyConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A98D59D1920ACBC00E46EB9 /* CopyConnection.framework */; };
 		0A98D5F01920ACBC00E46EB9 /* DouBanConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A98D59E1920ACBC00E46EB9 /* DouBanConnection.framework */; };
 		0A98D5F11920ACBC00E46EB9 /* DropboxConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A98D59F1920ACBC00E46EB9 /* DropboxConnection.framework */; };
@@ -156,7 +157,6 @@
 		0AFB65AF1924F215000F2AE6 /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB65AE1924F215000F2AE6 /* Album.m */; };
 		0AFB65B21925107F000F2AE6 /* AlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB65B11925107F000F2AE6 /* AlbumCell.m */; };
 		0AFFF5831944A2EE008E9119 /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFFF5821944A2EE008E9119 /* StoreViewController.m */; };
-		5933AD5918D03EC1001D707B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933AD5818D03EC1001D707B /* Foundation.framework */; };
 		5933AD5B18D03EC1001D707B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933AD5A18D03EC1001D707B /* CoreGraphics.framework */; };
 		5933AD5D18D03EC1001D707B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933AD5C18D03EC1001D707B /* UIKit.framework */; };
 		5933AD6318D03EC1001D707B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5933AD6118D03EC1001D707B /* InfoPlist.strings */; };
@@ -373,6 +373,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A9260A2196BD74B00361977 /* Foundation.framework in Frameworks */,
 				0A7A8CD819590B4C003FAA92 /* CFNetwork.framework in Frameworks */,
 				0A98D6321920AD8200E46EB9 /* CoreTelephony.framework in Frameworks */,
 				0A98D6301920AD7A00E46EB9 /* QuartzCore.framework in Frameworks */,
@@ -425,7 +426,6 @@
 				0A98D6061920ACBC00E46EB9 /* T163WeiboConnection.framework in Frameworks */,
 				0A98D6171920ACBC00E46EB9 /* TencentOpenAPI.framework in Frameworks */,
 				0A98D60A1920ACBC00E46EB9 /* VKontakteConnection.framework in Frameworks */,
-				5933AD5918D03EC1001D707B /* Foundation.framework in Frameworks */,
 				0A98D5FF1920ACBC00E46EB9 /* QQConnection.framework in Frameworks */,
 				0A98D5F61920ACBC00E46EB9 /* InstagramConnection.framework in Frameworks */,
 				F34534A6889146C4A984DE98 /* libPods.a in Frameworks */,
@@ -1192,7 +1192,7 @@
 					"$(PROJECT_DIR)/Daoting/ShareSDK/Extend/YiXinSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "BB72D2F0-44E5-4712-BABA-BDE8414C42CF";
+				PROVISIONING_PROFILE = "F278F7A2-839B-4D91-8168-7AF1C6DCA4EF";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1230,7 +1230,7 @@
 					"$(PROJECT_DIR)/Daoting/ShareSDK/Extend/YiXinSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "BB72D2F0-44E5-4712-BABA-BDE8414C42CF";
+				PROVISIONING_PROFILE = "F278F7A2-839B-4D91-8168-7AF1C6DCA4EF";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

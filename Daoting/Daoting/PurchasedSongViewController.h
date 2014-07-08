@@ -7,10 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppData.h"
+
+@interface PurchasedAlbumCell : UITableViewCell
+{
+    
+}
+
+@property (nonatomic, strong) IBOutlet UILabel      *lbl_albumTitle;
+
+@end
+
 
 @interface PurchasedSongViewController : UITableViewController
 {
-    
+    AppData *_appData;
 }
 
 @end

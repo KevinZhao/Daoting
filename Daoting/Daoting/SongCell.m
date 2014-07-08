@@ -35,10 +35,8 @@
 
 - (IBAction)onbtn_downloadPressed:(id)sender
 {
-    NSString *key = [NSString stringWithFormat:@"%@_%@", album.shortName, song.songNumber];
-    
     //1 check the song had been purchased or not
-    BOOL purchased = [[_appData.purchasedQueue objectForKey:key] isEqualToString:@"Yes"];
+    BOOL purchased = [_appData songNumber:song.songNumber ispurchasedwithAlbum:album.shortName];
     
     //2.1 if the song had been purchased
     if (purchased) {
@@ -55,7 +53,7 @@
             
             [self startDownload];
             
-            [_appData.purchasedQueue setObject:@"Yes" forKey:[NSString stringWithFormat:@"%@_%@", album.shortName, song.songNumber]];
+            [_appData addtoPurchasedQueue:song.songNumber withAlbumShortname:album.shortName];
             
             [_appData save];
             

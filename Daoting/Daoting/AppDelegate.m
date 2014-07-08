@@ -66,6 +66,8 @@ const NSString *appUrlinAppStore = @"http://itunes.apple.com/app/id878654949";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSystemTimeChanged:) name:UIApplicationSignificantTimeChangeNotification object:nil];
     
+    [[UIApplication sharedApplication]registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge) | (UIRemoteNotificationTypeSound) | (UIRemoteNotificationTypeAlert)];
+    
     return YES;
 }
 							
@@ -111,5 +113,25 @@ const NSString *appUrlinAppStore = @"http://itunes.apple.com/app/id878654949";
     //todo, Cheating avoidance, will implement next version
 }
 
+- (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    NSLog(@"My token is: %@", deviceToken);
+    
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"Failed to get token, error:%@", error);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    
+}
+
+-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    
+}
 
 @end

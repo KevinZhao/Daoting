@@ -13,7 +13,7 @@
 
 @interface AppData : NSObject <NSCoding>
 {
-    
+    NSMutableDictionary  *_purchasedQueue;
 }
 
 @property (assign, nonatomic) NSInteger             coins;
@@ -33,5 +33,8 @@
 +(NSString*)filePath;
 
 -(void)save;
+-(BOOL)songNumber:(NSString *)songNumber ispurchasedwithAlbum:(NSString*)albumShortname;
+-(void)addtoPurchasedQueue:(NSString*)songNumber withAlbumShortname:(NSString *)albumShortname;
+
 
 @end
