@@ -18,6 +18,8 @@
 		0A37F8CB19262D2600826C8C /* SongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F8CA19262D2600826C8C /* SongCell.m */; };
 		0A3CD3641920F8BE00247436 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A3CD3621920F8BE00247436 /* Main_iPhone.storyboard */; };
 		0A5C7628196D16A400AB1669 /* PurchasedAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5C7627196D16A400AB1669 /* PurchasedAlbumCell.m */; };
+		0A5C762B196D1D3100AB1669 /* PurchasedSongViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5C762A196D1D3100AB1669 /* PurchasedSongViewController.m */; };
+		0A5C762E196D1D9300AB1669 /* PurchasedSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5C762D196D1D9300AB1669 /* PurchasedSongCell.m */; };
 		0A5F4C9D195AB0D3003924C7 /* AppIcon76x76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A5F4C9C195AB0D3003924C7 /* AppIcon76x76@2x.png */; };
 		0A6AA9DF192B88AB00462543 /* SongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A6AA9DE192B88AB00462543 /* SongCell.xib */; };
 		0A6D573B19331A750038D841 /* AppData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6D573A19331A750038D841 /* AppData.m */; };
@@ -185,6 +187,10 @@
 		0A3CD3631920F8BE00247436 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		0A5C7626196D16A400AB1669 /* PurchasedAlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchasedAlbumCell.h; sourceTree = "<group>"; };
 		0A5C7627196D16A400AB1669 /* PurchasedAlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchasedAlbumCell.m; sourceTree = "<group>"; };
+		0A5C7629196D1D3100AB1669 /* PurchasedSongViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchasedSongViewController.h; sourceTree = "<group>"; };
+		0A5C762A196D1D3100AB1669 /* PurchasedSongViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchasedSongViewController.m; sourceTree = "<group>"; };
+		0A5C762C196D1D9300AB1669 /* PurchasedSongCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchasedSongCell.h; sourceTree = "<group>"; };
+		0A5C762D196D1D9300AB1669 /* PurchasedSongCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchasedSongCell.m; sourceTree = "<group>"; };
 		0A5F4C9C195AB0D3003924C7 /* AppIcon76x76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon76x76@2x.png"; sourceTree = "<group>"; };
 		0A6AA9DE192B88AB00462543 /* SongCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongCell.xib; sourceTree = "<group>"; };
 		0A6D57351932FD070038D841 /* Daoting.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Daoting.entitlements; sourceTree = "<group>"; };
@@ -828,6 +834,10 @@
 				0AE459D6196645E500DA9391 /* PurchasedAlbumViewController.m */,
 				0AE459D8196646E200DA9391 /* ClearCacheViewController.h */,
 				0AE459D9196646E200DA9391 /* ClearCacheViewController.m */,
+				0A5C762C196D1D9300AB1669 /* PurchasedSongCell.h */,
+				0A5C762D196D1D9300AB1669 /* PurchasedSongCell.m */,
+				0A5C7629196D1D3100AB1669 /* PurchasedSongViewController.h */,
+				0A5C762A196D1D3100AB1669 /* PurchasedSongViewController.m */,
 				5933AD5F18D03EC1001D707B /* Supporting Files */,
 			);
 			path = Daoting;
@@ -1026,11 +1036,13 @@
 				0AFB65AA19246656000F2AE6 /* CoinIAPHelper.m in Sources */,
 				0A2C37D819457EA90097C9CC /* DownloadStatus.m in Sources */,
 				5933AD6918D03EC1001D707B /* AppDelegate.m in Sources */,
+				0A5C762E196D1D9300AB1669 /* PurchasedSongCell.m in Sources */,
 				0AE46B0E1921035E00FA30F3 /* SongTableViewController.m in Sources */,
 				0ABA95A619382E2000172862 /* AFNetworkReachabilityObserver.m in Sources */,
 				0A6D573B19331A750038D841 /* AppData.m in Sources */,
 				0AD8D060195D2108009DC75A /* SettingCellSwitch.m in Sources */,
 				0AFB65A519245A7E000F2AE6 /* IAPHelper.m in Sources */,
+				0A5C762B196D1D3100AB1669 /* PurchasedSongViewController.m in Sources */,
 				0AFFF5831944A2EE008E9119 /* StoreViewController.m in Sources */,
 				0AFB65AF1924F215000F2AE6 /* Album.m in Sources */,
 				0AD7E23E195928AD00F511B7 /* UILabelStrikeThrough.m in Sources */,
@@ -1198,7 +1210,7 @@
 					"$(PROJECT_DIR)/Daoting/ShareSDK/Extend/YiXinSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "BB72D2F0-44E5-4712-BABA-BDE8414C42CF";
+				PROVISIONING_PROFILE = "F278F7A2-839B-4D91-8168-7AF1C6DCA4EF";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1236,7 +1248,7 @@
 					"$(PROJECT_DIR)/Daoting/ShareSDK/Extend/YiXinSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "BB72D2F0-44E5-4712-BABA-BDE8414C42CF";
+				PROVISIONING_PROFILE = "F278F7A2-839B-4D91-8168-7AF1C6DCA4EF";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

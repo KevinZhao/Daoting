@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "AppData.h"
 #import "PurchasedAlbumCell.h"
+#import "AppDelegate.h"
+#import "UIImageView+AFNetworking.h"
+#import "PurchasedSongViewController.h"
 
 
 @interface PurchasedAlbumViewController : UITableViewController
