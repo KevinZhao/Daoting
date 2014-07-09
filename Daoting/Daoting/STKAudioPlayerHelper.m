@@ -89,30 +89,35 @@
                 
         switch (currentNetWorkStatus)
         {
-                    case AFNetworkReachabilityStatusNotReachable:
-                    {
-                        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"网络异常" message:@"当前网络无法连接" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            //no network
+            case AFNetworkReachabilityStatusNotReachable:
+            {
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"网络异常" message:@"当前网络无法连接" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    
+                [alert show];
                         
-                        [alert show];
+                return;
+            }
+            break;
+                
+            //3G
+            case AFNetworkReachabilityStatusReachableViaWWAN:
+            {
                         
-                        return;
-                    }
-                        break;
-                    case AFNetworkReachabilityStatusReachableViaWWAN:
-                    {
-                        
-                    }
-                        break;
-                    case AFNetworkReachabilityStatusReachableViaWiFi:
-                    {
-                        //play from URL in wifi mode
-                        STKDataSource* URLDataSource = [STKAudioPlayer dataSourceFromURL:song.Url];
-                        [audioPlayer setDataSource:URLDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:song.Url andCount:0]];
-                    }
-                        break;
-                        
-                    default:
-                        break;
+            }
+            break;
+
+            //wifi
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+                {
+                    //play from URL in wifi mode
+                    STKDataSource* URLDataSource = [STKAudioPlayer dataSourceFromURL:song.Url];
+                    [audioPlayer setDataSource:URLDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:song.Url andCount:0]];
+                }
+            break;
+                
+            default:
+                break;
         }
     }
     

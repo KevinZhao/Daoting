@@ -6,13 +6,13 @@
 //  Copyright (c) 2014年 赵 克鸣. All rights reserved.
 //
 
-#import "PurchasedSongViewController.h"
+#import "PurchasedAlbumViewController.h"
 
-@interface PurchasedSongViewController ()
+@interface PurchasedAlbumViewController ()
 
 @end
 
-@implementation PurchasedSongViewController
+@implementation PurchasedAlbumViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -49,25 +49,14 @@
 {
     PurchasedAlbumCell *cell = (PurchasedAlbumCell*)[tableView dequeueReusableCellWithIdentifier:@"PurchasedAlbumCell" forIndexPath:indexPath];
     
-    //NSString* albumTitle = _appData.purchasedQueue.allKeys[indexPath.row];
+    NSString* albumTitle = _appData.purchasedQueue.allKeys[indexPath.row];
     
-    //cell.lbl_albumTitle.text = albumTitle;
-    
-    //NSLog(_appData.purchasedQueue.allKeys[0]);
+    cell.lbl_albumTitle.text = albumTitle;
     
     return cell;
 }
 
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

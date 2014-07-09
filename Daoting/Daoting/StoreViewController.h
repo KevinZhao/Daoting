@@ -25,10 +25,10 @@
 
 @property (nonatomic, strong) IBOutlet UILabel *lbl_coins;
 
-@property (nonatomic, strong) IBOutlet UILabelStrikeThrough *lbl_100yuan;
-@property (nonatomic, strong) IBOutlet UILabelStrikeThrough *lbl_250yuan;
-@property (nonatomic, strong) IBOutlet UILabelStrikeThrough *lbl_50yuan;
-
+@property (nonatomic, strong) IBOutlet UILabelStrikeThrough *lbl_120yuan;
+@property (nonatomic, strong) IBOutlet UILabelStrikeThrough *lbl_300yuan;
+@property (nonatomic, strong) IBOutlet UILabelStrikeThrough *lbl_60yuan;
+@property (nonatomic, strong) IBOutlet UILabelStrikeThrough *lbl_30yuan;
 
 @property (nonatomic, strong) IBOutlet NotificationView* notificationView;
 

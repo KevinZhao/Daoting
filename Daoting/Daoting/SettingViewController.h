@@ -10,7 +10,7 @@
 #import "SettingCellDisclosure.h"
 #import "SettingCellSwitch.h"
 #import "ClearCacheViewController.h"
-#import "PurchasedSongViewController.h"
+#import "PurchasedAlbumViewController.h"
 #import "AppData.h"
 
 @interface SettingViewController : UITableViewController

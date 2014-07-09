@@ -82,7 +82,7 @@
 {
     NSFileManager * fm = [NSFileManager defaultManager];
     
-    _albumArray = [fm contentsOfDirectoryAtPath:_storagePath error:nil];
+    _albumArray = (NSMutableArray *)[fm contentsOfDirectoryAtPath:_storagePath error:nil];
 }
 
 -(long)calculateSize:(NSString *)directory

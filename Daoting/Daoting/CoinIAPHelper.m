@@ -20,6 +20,7 @@
                                       @"DSoft.com.Daoting.2500coins",
                                       @"DSoft.com.Daoting.25000coins",
                                       @"DSoft.com.Daoting.500coins",
+                                      @"DSoft.com.Daoting.5000coins",
                                       nil];
         
         sharedInstance = [[self alloc] initWithProductIdentifiers:productIdentifiers];

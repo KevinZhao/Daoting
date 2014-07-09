@@ -17,8 +17,10 @@
     
     _appData = [AppData sharedAppData];
     
-    _lbl_100yuan.isWithStrikeThrough = true;
-    _lbl_250yuan.isWithStrikeThrough = true;
+    _lbl_120yuan.isWithStrikeThrough = true;
+    _lbl_300yuan.isWithStrikeThrough = true;
+    _lbl_60yuan.isWithStrikeThrough = true;
+    _lbl_30yuan.isWithStrikeThrough = true;
     
     //Register observer for IAP helper notification
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePurchaseCompleted:) name:IAPHelperProductPurchasedNotification object:nil];
@@ -104,6 +106,10 @@
     
     if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.2500coins"]) {
         purchasedCoins = 2500;
+    }
+    
+    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.5000coins"]) {
+        purchasedCoins = 5000;
     }
     
     _appData.coins = _appData.coins + purchasedCoins;
