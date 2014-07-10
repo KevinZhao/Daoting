@@ -53,7 +53,7 @@
             
             [self startDownload];
             
-            [_appData addtoPurchasedQueue:song.songNumber withAlbumShortname:album.shortName];
+            [_appData addtoPurchasedQueue:song withAlbumShortname:album.shortName];
             
             [_appData save];
             

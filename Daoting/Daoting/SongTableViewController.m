@@ -273,7 +273,7 @@
             [self playSongbyHelper:song];
             
             //Add to purchased queue
-            [_appData addtoPurchasedQueue:song.songNumber withAlbumShortname:_album.shortName];
+            [_appData addtoPurchasedQueue:song withAlbumShortname:_album.shortName];
             
             [_appData save];
             
@@ -623,7 +623,7 @@
             if (!purchased) {
                 _appData.coins = _appData.coins - [song.price intValue];
                 
-                [_appData addtoPurchasedQueue:song.songNumber withAlbumShortname:_album.shortName];
+                [_appData addtoPurchasedQueue:song withAlbumShortname:_album.shortName];
             }
         }
         [_appData save];

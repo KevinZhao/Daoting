@@ -185,19 +185,19 @@ static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
     return result;
 }
 
--(void)addtoPurchasedQueue:(NSString*)songNumber withAlbumShortname:(NSString *)albumShortname
+-(void)addtoPurchasedQueue:(Song*)song withAlbumShortname:(NSString *)albumShortname
 {
-    
     NSMutableDictionary *purchasedArray = [_purchasedQueue objectForKey:albumShortname];
     
     if (purchasedArray == nil) {
         purchasedArray = [[NSMutableDictionary alloc]init];
     }
     
-    [purchasedArray setValue:@"YES" forKey:songNumber];
+    [purchasedArray setValue:song forKey:song.songNumber];
     
     [_purchasedQueue setValue:purchasedArray forKey:albumShortname];
     
+    [self save];
 }
 
 @end

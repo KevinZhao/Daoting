@@ -34,7 +34,7 @@
 
 -(void)save;
 -(BOOL)songNumber:(NSString *)songNumber ispurchasedwithAlbum:(NSString*)albumShortname;
--(void)addtoPurchasedQueue:(NSString*)songNumber withAlbumShortname:(NSString *)albumShortname;
+-(void)addtoPurchasedQueue:(Song *)songNumber withAlbumShortname:(NSString *)albumShortname;
 
 
 @end

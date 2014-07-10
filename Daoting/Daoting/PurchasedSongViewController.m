@@ -26,12 +26,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    _purchasedSongDic = [[NSMutableArray alloc]init];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    for (int i = 0; i < _songsArray.count; i++) {
+        Song *song = [_songsArray objectForKey:_songsArray.allKeys[i]];
+        [_purchasedSongDic addObject:song];
+    }
+
+    NSComparator cmptr = ^(Song* obj1, Song* obj2){
+        if ([obj1.songNumber integerValue] > [obj2.songNumber integerValue]) {
+            return (NSComparisonResult)NSOrderedDescending;
+        }
+        
+        if ([obj1.songNumber integerValue] < [obj2.songNumber integerValue]) {
+            return (NSComparisonResult)NSOrderedAscending;
+        }
+        return (NSComparisonResult)NSOrderedSame;
+    };
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    _purchasedSongDic = (NSMutableArray *)[_purchasedSongDic sortedArrayUsingComparator:cmptr];
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,15 +63,23 @@
     return _songsArray.count;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PurchasedSongCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PurchasedSongCell" forIndexPath:indexPath];
     
-    // Configure the cell...
-    cell.lbl_SongTitle.text = [NSString stringWithFormat:@"%@ %@", _albumTitle, _songsArray.allKeys[indexPath.row]];
+    Song *song = _purchasedSongDic[indexPath.row];
+    
+    cell.lbl_SongTitle.text = [NSString stringWithFormat:@"%@ %@", song.title, song.songNumber];
     
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Song *song = _purchasedSongDic[indexPath.row];
+    
+    [[STKAudioPlayerHelper sharedInstance]playSong:song InAlbum:_album];
+}
+
 
 @end

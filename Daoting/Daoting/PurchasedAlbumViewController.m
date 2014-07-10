@@ -52,18 +52,16 @@
     NSString* albumShortName = _appData.purchasedQueue.allKeys[indexPath.row];
     
     // 1. show album title
-    cell.lbl_albumTitle.text = [self searchforAlbumTitlebyShortName:albumShortName];
+    Album *album = [self searchforAlbumbyShortName:albumShortName];
+    cell.lbl_albumTitle.text = album.title;
     
-    // 2. show album icon
-    //Updating Cell Image
-    NSURL *url = [self searchforAblumIconUrlbyShortName:albumShortName];
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    // 2. icon
+    NSURLRequest *request = [NSURLRequest requestWithURL:album.imageUrl];
     UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
     
     __weak PurchasedAlbumCell *weakCell = cell;
     
-    //cell.img_album setimage
+    // 3. cell.img_album setimage
     [cell.img_album setImageWithURLRequest:request
                         placeholderImage:placeholderImage
                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image)
@@ -76,36 +74,20 @@
     return cell;
 }
 
--(NSString *)searchforAlbumTitlebyShortName:(NSString *)shortName
+-(Album *)searchforAlbumbyShortName:(NSString *)shortName
 {
-    NSString *albumTitle = nil;
+    Album *album = nil;
     
     AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
-    for (Album *album in appDelegate.albums) {
+    for (Album *_album in appDelegate.albums) {
      
-        if ([album.shortName isEqualToString: shortName]) {
-            albumTitle = album.title;
+        if ([_album.shortName isEqualToString: shortName]) {
+            album = _album;
             break;
         }
     }
-    return albumTitle;
-}
-
--(NSURL*)searchforAblumIconUrlbyShortName:(NSString *)shortName
-{
-    NSURL* albumIconUrl = nil;
-    
-    AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    
-    for (Album *album in appDelegate.albums) {
-        
-        if ([album.shortName isEqualToString: shortName]) {
-            albumIconUrl = album.imageUrl;
-            break;
-        }
-    }
-    return albumIconUrl;
+    return album;
 }
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -117,10 +99,10 @@
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     
     NSString *key = _appData.purchasedQueue.allKeys[indexPath.row];
-    NSMutableDictionary *PurchasedSongArray = [_appData.purchasedQueue objectForKey:key];
     
-    viewController.songsArray = PurchasedSongArray;
-    viewController.albumTitle = key;
+    viewController.songsArray = [_appData.purchasedQueue objectForKey:key];
+    viewController.album = [self searchforAlbumbyShortName:key];
+    
 }
 
 

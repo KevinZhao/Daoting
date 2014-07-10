@@ -457,6 +457,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A32AC99196E478700A78350 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				0AD8D05B195D1A6D009DC75A /* SettingViewController.h */,
+				0AD8D05C195D1A6D009DC75A /* SettingViewController.m */,
+				0A5C7626196D16A400AB1669 /* PurchasedAlbumCell.h */,
+				0A5C7627196D16A400AB1669 /* PurchasedAlbumCell.m */,
+				0AE459D5196645E500DA9391 /* PurchasedAlbumViewController.h */,
+				0AE459D6196645E500DA9391 /* PurchasedAlbumViewController.m */,
+				0A5C762C196D1D9300AB1669 /* PurchasedSongCell.h */,
+				0A5C762D196D1D9300AB1669 /* PurchasedSongCell.m */,
+				0A5C7629196D1D3100AB1669 /* PurchasedSongViewController.h */,
+				0A5C762A196D1D3100AB1669 /* PurchasedSongViewController.m */,
+				0AE459D8196646E200DA9391 /* ClearCacheViewController.h */,
+				0AE459D9196646E200DA9391 /* ClearCacheViewController.m */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
 		0A37F8CC19262FA000826C8C /* DataStructure */ = {
 			isa = PBXGroup;
 			children = (
@@ -799,13 +818,14 @@
 		5933AD5E18D03EC1001D707B /* Daoting */ = {
 			isa = PBXGroup;
 			children = (
-				0A8910BD195D14A6009521D7 /* xib */,
 				0AC69C5B1946F452004C6A67 /* DACircularProgress */,
+				0A98D59B1920ACBC00E46EB9 /* ShareSDK */,
+				0A8910BD195D14A6009521D7 /* xib */,
 				0ABB4281192DEA7F007D8BAC /* Helper */,
 				0A37F8CC19262FA000826C8C /* DataStructure */,
-				0A98D59B1920ACBC00E46EB9 /* ShareSDK */,
-				0A8BA00D1940C15E001307D6 /* DownloadCell.h */,
+				0A32AC99196E478700A78350 /* Setting */,
 				0A8BA00E1940C15E001307D6 /* DownloadCell.m */,
+				0A8BA00D1940C15E001307D6 /* DownloadCell.h */,
 				0AD8D05E195D2108009DC75A /* SettingCellSwitch.h */,
 				0AD8D05F195D2108009DC75A /* SettingCellSwitch.m */,
 				0A7DF91019668942007DBB03 /* ClearCacheCell.h */,
@@ -826,18 +846,6 @@
 				0A8BA0081940BFCB001307D6 /* DownloadViewController.m */,
 				0AFFF5811944A2EE008E9119 /* StoreViewController.h */,
 				0AFFF5821944A2EE008E9119 /* StoreViewController.m */,
-				0AD8D05B195D1A6D009DC75A /* SettingViewController.h */,
-				0AD8D05C195D1A6D009DC75A /* SettingViewController.m */,
-				0A5C7626196D16A400AB1669 /* PurchasedAlbumCell.h */,
-				0A5C7627196D16A400AB1669 /* PurchasedAlbumCell.m */,
-				0AE459D5196645E500DA9391 /* PurchasedAlbumViewController.h */,
-				0AE459D6196645E500DA9391 /* PurchasedAlbumViewController.m */,
-				0AE459D8196646E200DA9391 /* ClearCacheViewController.h */,
-				0AE459D9196646E200DA9391 /* ClearCacheViewController.m */,
-				0A5C762C196D1D9300AB1669 /* PurchasedSongCell.h */,
-				0A5C762D196D1D9300AB1669 /* PurchasedSongCell.m */,
-				0A5C7629196D1D3100AB1669 /* PurchasedSongViewController.h */,
-				0A5C762A196D1D3100AB1669 /* PurchasedSongViewController.m */,
 				5933AD5F18D03EC1001D707B /* Supporting Files */,
 			);
 			path = Daoting;

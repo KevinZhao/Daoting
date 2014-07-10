@@ -9,10 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "PurchasedSongCell.h"
 #import "Song.h"
+#import "Album.h"
+#import "STKAudioPlayerHelper.h"
 
 @interface PurchasedSongViewController : UITableViewController
 
 @property (nonatomic, retain) NSMutableDictionary   *songsArray;
-@property (nonatomic, retain) NSString              *albumTitle;
+//@property (nonatomic, retain) NSString              *albumShortname;
+@property (nonatomic, retain) NSMutableArray        *purchasedSongDic;
+@property (nonatomic, retain) Album                 *album;
 
 @end
