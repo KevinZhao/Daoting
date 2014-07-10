@@ -32,7 +32,7 @@
     
     [self setupTimer];
     
-    [self setupNotificationView];
+    //[self setupNotificationView];
     
     _actionSheetStrings = [[NSMutableDictionary alloc] init];
     [_actionSheetStrings setObject:@"取消" forKey:@"cancel"];
@@ -75,6 +75,8 @@
     
     [_tableview selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
     
+    [self setupNotificationView];
+    
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -92,8 +94,21 @@
 
 - (void)setupNotificationView
 {
-
+    NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"NotificationView_iphone" owner:self options:nil];
     
+    _notificationView = [nibViews objectAtIndex:0];
+    _notificationView.center = self.view.center;
+    [self.view addSubview:_notificationView];
+    
+    [_notificationView.layer setMasksToBounds:YES];
+    [_notificationView.layer setCornerRadius:10.0];
+    [_notificationView.layer setBorderWidth:5.0];
+    
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 0, 0, 1, 0.2 });
+    [_notificationView.layer setBorderColor:colorref];//边框颜色
+    
+    _notificationView.alpha = 0.0;
 }
 
 - (void)initializeSongs
@@ -678,30 +693,16 @@
 
 -(void)showNotification:(NSString *)notification;
 {
-    //Configure notification view
-    NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"NotificationView_iphone" owner:self options:nil];
+    _notificationView.alpha = 1.0;
     
-    _notificationView = [nibViews objectAtIndex:0];
-    _notificationView.center = self.view.center;
-    [self.view addSubview:_notificationView];
-
     _notificationView.lbl_coins.text = [NSString stringWithFormat:@"%d", _appData.coins];
     _notificationView.lbl_notification.text = notification;
-    
-    [_notificationView.layer setMasksToBounds:YES];
-    [_notificationView.layer setCornerRadius:10.0];
-    [_notificationView.layer setBorderWidth:2.0];
-    
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 0, 0, 1, 0.2 });
-    [_notificationView.layer setBorderColor:colorref];
     
     //show notification view
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:1.5];
     [UIView setAnimationDelay:1.0];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-    
     _notificationView.alpha = 0.0;
     [UIView commitAnimations];
 }

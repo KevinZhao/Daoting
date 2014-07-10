@@ -752,8 +752,8 @@
 		0AE86482192ED8B100EF5A96 /* SongPlists */ = {
 			isa = PBXGroup;
 			children = (
-				0ABA959E193702D000172862 /* Jinbiao_SongList.plist */,
 				0AFB65AB1924EC44000F2AE6 /* AlbumList.plist */,
+				0ABA959E193702D000172862 /* Jinbiao_SongList.plist */,
 				0AE8649D192EF4DF00EF5A96 /* Yongzheng2_SongList.plist */,
 				0AE86491192EF48700EF5A96 /* Haizeiwang_SongList.plist */,
 				0AE86492192EF48700EF5A96 /* Mingchao_SongList.plist */,

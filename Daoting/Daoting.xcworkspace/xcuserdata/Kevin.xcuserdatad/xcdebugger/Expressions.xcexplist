@@ -3,6 +3,22 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "-[SongTableViewController showNotification:]:SongTableViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "_notificationView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[StoreViewController showNotification:]:StoreViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.view">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[STKAudioPlayerHelper audioPlayer:didStartPlayingQueueItemId:]:STKAudioPlayerHelper.m">
       </ContextState>
       <ContextState
@@ -12,15 +28,15 @@
          contextName = "-[STKAudioPlayerHelper tick]:STKAudioPlayerHelper.m">
       </ContextState>
       <ContextState
-         contextName = "-[StoreViewController buy:]:StoreViewController.m">
-      </ContextState>
-      <ContextState
          contextName = "-[PurchasedSongViewController viewWillAppear:]:PurchasedSongViewController.m">
          <PersistentStrings>
             <PersistentString
                value = "_songsArray.allKeys">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[StoreViewController buy:]:StoreViewController.m">
       </ContextState>
       <ContextState
          contextName = "-[AppData addtoPurchasedQueue:withAlbumShortname:]:AppData.m">
@@ -45,6 +61,9 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[PurchasedAlbumViewController tableView:numberOfRowsInSection:]:PurchasedAlbumViewController.m">
+      </ContextState>
+      <ContextState
          contextName = "-[PurchasedSongViewController tableView:cellForRowAtIndexPath:]:PurchasedSongViewController.m">
          <PersistentStrings>
             <PersistentString
@@ -59,15 +78,12 @@
          contextName = "-[SongCell onbtn_pausePressed:]:SongCell.m">
          <PersistentStrings>
             <PersistentString
-               value = "[AFDownloadHelper sharedAFDownloadHelper].downloadQueue">
-            </PersistentString>
-            <PersistentString
                value = "[AFDownloadHelper sharedAFDownloadHelper].downloadKeyQueue">
             </PersistentString>
+            <PersistentString
+               value = "[AFDownloadHelper sharedAFDownloadHelper].downloadQueue">
+            </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "-[PurchasedAlbumViewController tableView:numberOfRowsInSection:]:PurchasedAlbumViewController.m">
       </ContextState>
       <ContextState
          contextName = "-[STKAudioPlayerHelper playSong:InAlbum:]:STKAudioPlayerHelper.m">

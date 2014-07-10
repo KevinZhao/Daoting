@@ -62,7 +62,7 @@
 	<key>4</key>
 	<dict>
 		<key>Title</key>
-		<string>薛礼征东 第一部</string>
+		<string>[全本]薛礼征东 加续集</string>
 		<key>ImageURL</key>
 		<string>http://bcs.duapp.com/daoting/Zhengdong.png</string>
 		<key>Description</key>
@@ -74,7 +74,7 @@
 		<key>Artist</key>
 		<string>王玥波</string>
 		<key>UpdatingStatus</key>
-		<string>Updating</string>
+		<string>Completed</string>
 		<key>Category</key>
 		<string></string>
 	</dict>

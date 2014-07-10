@@ -41,27 +41,11 @@
 
 - (void)setupNotificationView
 {
-    //need to make it beautiful
-    _notificationView = [[NotificationView alloc]init];
-    _notificationView.frame = CGRectMake(60, 400, 200, 50);
-    _notificationView.backgroundColor = [UIColor grayColor];
-    
-    [self.view addSubview:_notificationView];
-    
-    _notificationView.alpha = 0.0;
-}
-
--(void)showNotification:(NSString *)notification;
-{
-    //Configure notification view
     NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"NotificationView_iphone" owner:self options:nil];
     
     _notificationView = [nibViews objectAtIndex:0];
     _notificationView.center = self.view.center;
     [self.view addSubview:_notificationView];
-    
-    _notificationView.lbl_coins.text = [NSString stringWithFormat:@"%d", _appData.coins];
-    _notificationView.lbl_notification.text = notification;
     
     [_notificationView.layer setMasksToBounds:YES];
     [_notificationView.layer setCornerRadius:10.0];
@@ -71,12 +55,21 @@
     CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 0, 0, 1, 0.2 });
     [_notificationView.layer setBorderColor:colorref];//边框颜色
     
+    _notificationView.alpha = 0.0;
+}
+
+-(void)showNotification:(NSString *)notification;
+{
+    _notificationView.alpha = 1.0;
+    
+    _notificationView.lbl_coins.text = [NSString stringWithFormat:@"%d", _appData.coins];
+    _notificationView.lbl_notification.text = notification;
+    
     //show notification view
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:1.5];
     [UIView setAnimationDelay:1.0];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-    
     _notificationView.alpha = 0.0;
     [UIView commitAnimations];
 }
@@ -190,10 +183,10 @@
 {
     NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"AppIcon76x76@2x" ofType:@"png"];
     
-    id<ISSContent> publishContent = [ShareSDK content:@"我正在听王玥波的评书《聊斋》，收集整理的好全，严重推荐! http://t.cn/RvTAdqk"
+    id<ISSContent> publishContent = [ShareSDK content:@"这个app不错，评书、有声书都有，严重推荐! http://t.cn/RvTAdqk"
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imgPath]
-                                                title:@"我正在听王玥波的评书《聊斋》，收集整理的好全，严重推荐！http://t.cn/RvTAdqk"
+                                                title:@"这个app不错，评书、有声书都有，严重推荐！http://t.cn/RvTAdqk"
                                                   url:@"http://t.cn/RvTAdqk"
                                           description:@""
                                             mediaType:SSPublishContentMediaTypeNews];

@@ -153,7 +153,7 @@
         if ([key isEqual:[op.userInfo valueForKey:@"key"]]) {
             
             operation = op;
-            return op;
+            break;
         }
         
     }
