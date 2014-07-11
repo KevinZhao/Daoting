@@ -11,7 +11,6 @@
 @interface SongTableViewController ()
 @end
 
-
 @implementation SongTableViewController
 @synthesize pageControl, scrollView;
 
@@ -32,7 +31,7 @@
     
     [self setupTimer];
     
-    //[self setupNotificationView];
+    [self setupNotificationView];
     
     _actionSheetStrings = [[NSMutableDictionary alloc] init];
     [_actionSheetStrings setObject:@"取消" forKey:@"cancel"];
@@ -74,9 +73,6 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(songNumber-1) inSection:0];
     
     [_tableview selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
-    
-    [self setupNotificationView];
-    
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -241,7 +237,7 @@
 -(void)playNextSong
 {
     //play next song
-    NSInteger currentSongNumber = [[AppData sharedAppData].currentSong.songNumber integerValue];
+    NSInteger currentSongNumber = [_appData.currentSong.songNumber integerValue];
     
     if ( currentSongNumber < _playerHelper.playbackList.count) {
         
@@ -253,7 +249,7 @@
 
 -(void)playPreviousSong
 {
-    NSInteger currentSongNumber = [[AppData sharedAppData].currentSong.songNumber integerValue];
+    NSInteger currentSongNumber = [_appData.currentSong.songNumber integerValue];
     
     if ( currentSongNumber - 1 > 0) {
         

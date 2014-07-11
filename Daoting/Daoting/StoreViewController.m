@@ -183,11 +183,11 @@
 {
     NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"AppIcon76x76@2x" ofType:@"png"];
     
-    id<ISSContent> publishContent = [ShareSDK content:@"这个app不错，评书、有声书都有，严重推荐! http://t.cn/RvTAdqk"
+    id<ISSContent> publishContent = [ShareSDK content:@"这个app不错，评书、有声书都有，严重推荐! http://ec2-54-254-246-89.ap-southeast-1.compute.amazonaws.com/zhengdong.html"
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imgPath]
-                                                title:@"这个app不错，评书、有声书都有，严重推荐！http://t.cn/RvTAdqk"
-                                                  url:@"http://t.cn/RvTAdqk"
+                                                title:@"这个app不错，评书、有声书都有，严重推荐！http://ec2-54-254-246-89.ap-southeast-1.compute.amazonaws.com/zhengdong.html"
+                                                  url:@"http://ec2-54-254-246-89.ap-southeast-1.compute.amazonaws.com/zhengdong.html"
                                           description:@""
                                             mediaType:SSPublishContentMediaTypeNews];
     
