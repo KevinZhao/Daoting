@@ -74,15 +74,23 @@
         SettingCellSwitch *switchCell = (SettingCellSwitch*)cell;
         switchCell.lbl_Title.text = @"自动购买";
         
+        [switchCell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        
         switchCell.sw_option.on = _appData.isAutoPurchase;
-        [switchCell.sw_option addTarget:self action:@selector(onSwitchValueChanged:) forControlEvents:UIControlEventValueChanged];
+        [switchCell.sw_option addTarget:self action:@selector(onSwitchValueChanged1:) forControlEvents:UIControlEventValueChanged];
     }
     
     if ((indexPath.section == 0) && (indexPath.row == 1)) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCellDisclosure" forIndexPath:indexPath];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCellSwitch" forIndexPath:indexPath];
         
-        SettingCellDisclosure *disclosureCell = (SettingCellDisclosure *)cell;
-        disclosureCell.lbl_Title.text = @"已购买曲目";
+        SettingCellSwitch *switchCell = (SettingCellSwitch *)cell;
+        switchCell.lbl_Title.text = @"开机自动播放";
+        
+        [switchCell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        
+        switchCell.sw_option.on = _appData.isAutoPlay;
+        [switchCell.sw_option addTarget:self action:@selector(onSwitchValueChanged2:) forControlEvents:UIControlEventValueChanged];
+
     }
     
     if ((indexPath.section == 1) && (indexPath.row == 0))
@@ -98,7 +106,7 @@
         cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCellDisclosure" forIndexPath:indexPath];
         
         SettingCellDisclosure *disclosureCell = (SettingCellDisclosure *)cell;
-        disclosureCell.lbl_Title.text = @"测试";
+        disclosureCell.lbl_Title.text = @"已购买曲目";
     }
     
     return cell;
@@ -106,16 +114,6 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ((indexPath.section == 0) && (indexPath.row == 0))
-    {
-
-    }
-    
-    if ((indexPath.section == 0) && (indexPath.row == 1))
-    {
-        [self performSegueWithIdentifier:@"showPurchasedSongs" sender:nil];
-    }
-    
     if ((indexPath.section == 1) && (indexPath.row == 0))
     {
         [self performSegueWithIdentifier:@"showClearCache" sender:nil];
@@ -123,16 +121,21 @@
     
     if ((indexPath.section == 1) && (indexPath.row == 1))
     {
-        
+        [self performSegueWithIdentifier:@"showPurchasedSongs" sender:nil];
     }
-
 }
 
 #pragma mark UI Operation
 
-- (void)onSwitchValueChanged:(UISwitch *)sender
+- (void)onSwitchValueChanged1:(UISwitch *)sender
 {
     _appData.isAutoPurchase = sender.isOn;
+    [_appData save];
+}
+
+- (void)onSwitchValueChanged2:(UISwitch *)sender
+{
+    _appData.isAutoPlay = sender.isOn;
     [_appData save];
 }
 

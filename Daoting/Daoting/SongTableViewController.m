@@ -68,7 +68,7 @@
     pageControl.currentPage = 0;
     pageControl.numberOfPages = 2;
     
-    NSString* songNumberstring = (NSString*)[_appData.playingProgressQueue objectForKey:_album.title];
+    NSString* songNumberstring = (NSString*)[_appData.playingPositionQueue objectForKey:_album.title];
     NSInteger songNumber = [songNumberstring integerValue];
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(songNumber-1) inSection:0];
@@ -265,8 +265,6 @@
 
 -(void)playSong:(Song*)song
 {
-    //NSString *key = [NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber];
-    
     //2.1 check the song had been purchased or not
     BOOL purchased = [_appData songNumber:song.songNumber ispurchasedwithAlbum:_album.shortName];
     
@@ -296,7 +294,7 @@
             [self showNotification:notification];
         }
         else
-            //2.2.2 cois is not enough
+        //2.2.2 cois is not enough
         {
             //todo notify user and show store view
             UITabBarController *tabBarController = [self getTabbarViewController];
@@ -310,7 +308,7 @@
     [_playerHelper playSong:song InAlbum:_album];
     
     _playerHelper.playbackList = _songs;
-    [_appData.playingProgressQueue setObject:song.songNumber forKey:_album.title];
+    [_appData.playingPositionQueue setObject:song.songNumber forKey:_album.title];
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[song.songNumber intValue] - 1 inSection:0];
     [_tableview beginUpdates];
@@ -345,8 +343,6 @@
         _slider.minimumValue = 0;
         _slider.maximumValue = _audioPlayer.duration;
         _slider.value = _audioPlayer.progress;
-        
-        _appData.currentProgress = _audioPlayer.progress;
     }
     //There is no song playing
     else
@@ -807,7 +803,7 @@
     Song *selectedSong = [_songs objectAtIndex:indexPath.row];
     
     //1. check the selected song is current playing song
-    if (selectedSong == _appData.currentSong) {
+    if ([[selectedSong.Url absoluteString] isEqualToString:[_appData.currentSong.Url absoluteString]]) {
         //1.1 check current song is playing or paused
         if (_audioPlayer.state == STKAudioPlayerStatePlaying) {
             

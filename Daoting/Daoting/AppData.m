@@ -9,29 +9,37 @@
 #import "AppData.h"
 
 static NSString* const SSDataforCoinsKey = @"coins";
-static NSString* const SSDataforPlayingQueue = @"playingQueue";
-static NSString* const SSDataforPurchasedQueue = @"purchasedQueue";
-static NSString* const SSDataforPlayingProgressQueue = @"playingProgressQueue";
-static NSString* const SSDataforDailyCheckinQueue = @"dailyCheckinQueue";
-static NSString* const SSDataforIsAutoPurchase = @"isAutoPurchase";
 
+static NSString* const SSDataforPlayingBackProgressQueue = @"playingBackProgressQueue";
+static NSString* const SSDataforPurchasedQueue = @"purchasedQueue";
+static NSString* const SSDataforPlayingPositionQueue = @"playingPositionQueue";
+
+static NSString* const SSDataforDailyCheckinQueue = @"dailyCheckinQueue";
+
+static NSString* const SSDataforIsAutoPurchase = @"isAutoPurchase";
+static NSString* const SSDataforIsAutoPlay = @"isAutoPlay";
 
 static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
+
+static NSString* const SSDataCurrentSong = @"SSDataCurrentSong";
+static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
 
 
 @implementation AppData
 
 
-@synthesize playingQueue, playingProgressQueue, dailyCheckinQueue;
-
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
     [encoder encodeDouble:self.coins forKey: SSDataforCoinsKey];
-    [encoder encodeObject:playingQueue forKey:SSDataforPlayingQueue];
+    [encoder encodeObject:_playingBackProgressQueue forKey:SSDataforPlayingBackProgressQueue];
     [encoder encodeObject:_purchasedQueue forKey:SSDataforPurchasedQueue];
-    [encoder encodeObject:playingProgressQueue forKey:SSDataforPlayingProgressQueue];
-    [encoder encodeObject:dailyCheckinQueue forKey:SSDataforDailyCheckinQueue];
+    [encoder encodeObject:_playingPositionQueue forKey:SSDataforPlayingPositionQueue];
+    [encoder encodeObject:_dailyCheckinQueue forKey:SSDataforDailyCheckinQueue];
     [encoder encodeBool:_isAutoPurchase forKey:SSDataforIsAutoPurchase];
+    [encoder encodeBool:_isAutoPlay forKey:SSDataforIsAutoPlay];
+    
+    [encoder encodeObject:_currentAlbum forKey:SSDataCurrentAlbum];
+    [encoder encodeObject:_currentSong forKey:SSDataCurrentSong];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)decoder
@@ -40,9 +48,9 @@ static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
     if (self) {
         _coins = [decoder decodeDoubleForKey:SSDataforCoinsKey];
 
-        playingQueue = [[decoder decodeObjectForKey:SSDataforPlayingQueue] mutableCopy];
-        if (playingQueue == nil) {
-            playingQueue = [[NSMutableDictionary alloc]init];
+        _playingBackProgressQueue = [[decoder decodeObjectForKey:SSDataforPlayingBackProgressQueue] mutableCopy];
+        if (_playingBackProgressQueue == nil) {
+            _playingBackProgressQueue = [[NSMutableDictionary alloc]init];
         }
         
         _purchasedQueue = [[decoder decodeObjectForKey:SSDataforPurchasedQueue] mutableCopy];
@@ -50,17 +58,21 @@ static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
             _purchasedQueue = [[NSMutableDictionary alloc]init];
         }
         
-        playingProgressQueue = [[decoder decodeObjectForKey:SSDataforPlayingProgressQueue] mutableCopy];
-        if (playingProgressQueue == nil) {
-            playingProgressQueue = [[NSMutableDictionary alloc]init];
+        _playingPositionQueue = [[decoder decodeObjectForKey:SSDataforPlayingPositionQueue] mutableCopy];
+        if (_playingPositionQueue == nil) {
+            _playingPositionQueue = [[NSMutableDictionary alloc]init];
         }
         
-        dailyCheckinQueue = [[decoder decodeObjectForKey:SSDataforDailyCheckinQueue] mutableCopy];
-        if (dailyCheckinQueue == nil) {
-            dailyCheckinQueue = [[NSMutableDictionary alloc]init];
+        _dailyCheckinQueue = [[decoder decodeObjectForKey:SSDataforDailyCheckinQueue] mutableCopy];
+        if (_dailyCheckinQueue == nil) {
+            _dailyCheckinQueue = [[NSMutableDictionary alloc]init];
         }
         
         _isAutoPurchase = [decoder decodeBoolForKey:SSDataforIsAutoPurchase];
+        _isAutoPlay = [decoder decodeBoolForKey:SSDataforIsAutoPlay];
+        
+        _currentSong = [decoder decodeObjectForKey:SSDataCurrentSong];
+        _currentAlbum = [decoder decodeObjectForKey:SSDataCurrentAlbum];
 
     }
     return self;
@@ -157,6 +169,7 @@ static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
         }
         
         _isAutoPurchase = true;
+        _isAutoPlay = true;
     }
     return self;
 }

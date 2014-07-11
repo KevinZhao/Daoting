@@ -10,4 +10,29 @@
 
 @implementation Album
 
+- (void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeObject:self.shortName forKey:@"shortName"];
+    [aCoder encodeObject:self.title forKey:@"title"];
+    [aCoder encodeObject:self.description forKey:@"description"];
+    [aCoder encodeObject:self.imageUrl forKey:@"imageUrl"];
+    [aCoder encodeObject:self.plistUrl forKey:@"plistUrl"];
+    [aCoder encodeObject:self.artistName forKey:@"artistName"];
+    [aCoder encodeObject:self.updatingStatus forKey:@"updatingStatus"];
+    [aCoder encodeObject:self.category forKey:@"category"];
+}
+
+
+- (id)initWithCoder:(NSCoder *)aDecoder{
+    _shortName = [aDecoder decodeObjectForKey:@"shortName"];
+    _title =[aDecoder decodeObjectForKey:@"title"];
+    _description =[aDecoder decodeObjectForKey:@"description"];
+    _imageUrl = [aDecoder decodeObjectForKey:@"imageUrl"];
+    _plistUrl = [aDecoder decodeObjectForKey:@"plistUrl"];
+    _artistName= [aDecoder decodeObjectForKey:@"artistName"];
+    _updatingStatus = [aDecoder decodeObjectForKey:@"updatingStatus"];
+    _category = [aDecoder decodeObjectForKey:@"category"];
+    
+    return self;
+}
+
 @end

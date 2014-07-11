@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppData.h"
 
 @interface AlbumTableViewController : UITableViewController
 {
     NSMutableArray      *_albums;
+    AppData             *_appdata;
 }
 
 @property (nonatomic, retain) NSMutableArray *albums;

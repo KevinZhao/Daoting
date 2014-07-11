@@ -11,15 +11,12 @@
             <rect key="frame" x="0.0" y="0.0" width="200" height="90"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView appearanceType="aqua" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="notificationViewBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="lyQ-Ew-d6Z">
-                    <rect key="frame" x="0.0" y="0.0" width="198" height="263"/>
-                </imageView>
-                <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="notification view kevin kevin kevin" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="158" translatesAutoresizingMaskIntoConstraints="NO" id="ib4-yR-fps">
+                <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="notification view message" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="158" translatesAutoresizingMaskIntoConstraints="NO" id="ib4-yR-fps">
                     <rect key="frame" x="20" y="41" width="158" height="50"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView appearanceType="aqua" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon-72.png" translatesAutoresizingMaskIntoConstraints="NO" id="Gwq-WS-ZL5">
+                <imageView appearanceType="aqua" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AppIcon76x76.png" translatesAutoresizingMaskIntoConstraints="NO" id="Gwq-WS-ZL5">
                     <rect key="frame" x="9" y="12" width="32" height="32"/>
                 </imageView>
                 <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="道听途说" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cuh-dh-Ub9">
@@ -41,7 +38,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Icon-72.png" width="76" height="76"/>
-        <image name="notificationViewBackground.png" width="198" height="263"/>
+        <image name="AppIcon76x76.png" width="76" height="76"/>
     </resources>
 </document>

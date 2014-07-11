@@ -58,7 +58,7 @@
         
         NSString *key = [NSString stringWithFormat:@"%@_%@", _appData.currentAlbum.shortName, _appData.currentSong.songNumber];
         NSString *progressString = [self formatTimeFromSeconds:audioPlayer.progress];
-        [_appData.playingQueue setValue:progressString forKey:key];
+        [_appData.playingBackProgressQueue setValue:progressString forKey:key];
         
         [_appData save];
     }
@@ -117,6 +117,14 @@
                 }
             break;
                 
+            //todo: should not do that, it is a tempory solution
+            case AFNetworkReachabilityStatusUnknown:
+                {
+                    //play from URL in wifi mode
+                    STKDataSource* URLDataSource = [STKAudioPlayer dataSourceFromURL:song.Url];
+                    [audioPlayer setDataSource:URLDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:song.Url andCount:0]];
+                }
+            
             default:
                 break;
         }
@@ -124,22 +132,17 @@
     
     //get previous progress
     NSString *key = [NSString stringWithFormat:@"%@_%@", album.shortName, song.songNumber];
-    NSString *progressString = [_appData.playingQueue objectForKey:key];
+    NSString *progressString = [_appData.playingBackProgressQueue objectForKey:key];
     _progress = [self formatProgressFromString:progressString];
     
     _appData.currentAlbum = album;
     _appData.currentSong = song;
-    _appData.currentProgress = _progress;
     
     [_appData save];
-    
 }
 
 -(void)pauseSong
 {
-    _appData.currentProgress = audioPlayer.progress;
-    
-    [_appData save];
     [audioPlayer pause];
 }
 

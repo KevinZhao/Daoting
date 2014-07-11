@@ -19,14 +19,6 @@
 
 @implementation AlbumTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -35,6 +27,12 @@
     [self loadAlbums];
     
     [self updateAlbums];
+    
+    _appdata = [AppData sharedAppData];
+    if (_appdata.isAutoPlay)
+    {
+        [self autoPlay];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,6 +41,14 @@
 }
 
 #pragma mark - Internal Business Logic
+
+- (void)autoPlay
+{
+    if ((_appdata.currentSong != nil) && (_appdata.currentAlbum != nil)) {
+        
+        [[STKAudioPlayerHelper sharedInstance]playSong:_appdata.currentSong InAlbum:_appdata.currentAlbum];
+    }
+}
 
 - (void)loadAlbums
 {

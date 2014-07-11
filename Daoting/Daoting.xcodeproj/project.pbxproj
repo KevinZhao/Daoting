@@ -460,6 +460,12 @@
 		0A32AC99196E478700A78350 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				0A7DF91019668942007DBB03 /* ClearCacheCell.h */,
+				0A7DF91119668942007DBB03 /* ClearCacheCell.m */,
+				0AD8D05E195D2108009DC75A /* SettingCellSwitch.h */,
+				0AD8D05F195D2108009DC75A /* SettingCellSwitch.m */,
+				0AD8D061195D2127009DC75A /* SettingCellDisclosure.h */,
+				0AD8D062195D2128009DC75A /* SettingCellDisclosure.m */,
 				0AD8D05B195D1A6D009DC75A /* SettingViewController.h */,
 				0AD8D05C195D1A6D009DC75A /* SettingViewController.m */,
 				0A5C7626196D16A400AB1669 /* PurchasedAlbumCell.h */,
@@ -826,12 +832,6 @@
 				0A32AC99196E478700A78350 /* Setting */,
 				0A8BA00E1940C15E001307D6 /* DownloadCell.m */,
 				0A8BA00D1940C15E001307D6 /* DownloadCell.h */,
-				0AD8D05E195D2108009DC75A /* SettingCellSwitch.h */,
-				0AD8D05F195D2108009DC75A /* SettingCellSwitch.m */,
-				0A7DF91019668942007DBB03 /* ClearCacheCell.h */,
-				0A7DF91119668942007DBB03 /* ClearCacheCell.m */,
-				0AD8D061195D2127009DC75A /* SettingCellDisclosure.h */,
-				0AD8D062195D2128009DC75A /* SettingCellDisclosure.m */,
 				0A37F8C919262D2600826C8C /* SongCell.h */,
 				0A37F8CA19262D2600826C8C /* SongCell.m */,
 				5933AD6718D03EC1001D707B /* AppDelegate.h */,

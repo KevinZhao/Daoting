@@ -20,14 +20,16 @@
 @property (retain, nonatomic) NSMutableArray        *purchasedSongs;
 @property (retain, nonatomic) Album                 *currentAlbum;
 @property (retain, nonatomic) Song                  *currentSong;
-@property (assign, nonatomic) int                   currentProgress;
 
-@property (strong, nonatomic) NSMutableDictionary   *playingQueue;
-@property (strong, nonatomic) NSMutableDictionary   *playingProgressQueue;
+@property (strong, nonatomic) NSMutableDictionary   *playingBackProgressQueue;
+@property (strong, nonatomic) NSMutableDictionary   *playingPositionQueue;
+
 @property (strong, nonatomic) NSMutableDictionary   *purchasedQueue;
+
 @property (strong, nonatomic) NSMutableDictionary   *dailyCheckinQueue;
 
 @property (nonatomic, assign) BOOL isAutoPurchase;
+@property (nonatomic, assign) BOOL isAutoPlay;
 
 +(instancetype)sharedAppData;
 +(NSString*)filePath;
