@@ -52,7 +52,7 @@
     NSString* albumShortName = _appData.purchasedQueue.allKeys[indexPath.row];
     
     // 1. show album title
-    Album *album = [self searchforAlbumbyShortName:albumShortName];
+    Album *album = [[AlbumManager sharedInstance] searchAlbumByShortName:albumShortName];
     cell.lbl_albumTitle.text = album.title;
     
     // 2. icon
@@ -74,22 +74,6 @@
     return cell;
 }
 
--(Album *)searchforAlbumbyShortName:(NSString *)shortName
-{
-    Album *album = nil;
-    
-    AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    
-    for (Album *_album in appDelegate.albums) {
-     
-        if ([_album.shortName isEqualToString: shortName]) {
-            album = _album;
-            break;
-        }
-    }
-    return album;
-}
-
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -101,10 +85,7 @@
     NSString *key = _appData.purchasedQueue.allKeys[indexPath.row];
     
     viewController.songsArray = [_appData.purchasedQueue objectForKey:key];
-    viewController.album = [self searchforAlbumbyShortName:key];
-    
+    viewController.album = [[AlbumManager sharedInstance] searchAlbumByShortName:key];
 }
-
-
 
 @end

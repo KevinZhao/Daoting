@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ClearCacheCell.h"
 #import "AppDelegate.h"
+#import "AlbumManager.h"
 
 @interface ClearCacheViewController : UITableViewController <UIAlertViewDelegate>
 

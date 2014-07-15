@@ -16,9 +16,9 @@
     dispatch_once(&once, ^{
         NSSet * productIdentifiers = [NSSet setWithObjects:
                                       @"DSoft.com.Daoting.1000coins",
-                                      @"DSoft.com.Daoting.10000coins",
+                                      @"DSoft.com.Daoting.10000coins_new",
                                       @"DSoft.com.Daoting.2500coins",
-                                      @"DSoft.com.Daoting.25000coins",
+                                      @"DSoft.com.Daoting.25000coins_new",
                                       @"DSoft.com.Daoting.500coins",
                                       @"DSoft.com.Daoting.5000coins",
                                       nil];

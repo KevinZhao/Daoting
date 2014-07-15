@@ -37,7 +37,6 @@
     [_actionSheetStrings setObject:@"取消" forKey:@"cancel"];
     [_actionSheetStrings setObject:@"分享" forKey:@"share"];
     [_actionSheetStrings setObject:@"全部下载" forKey:@"downloadOrCancelAll"];
-
 }
 
 
@@ -782,7 +781,7 @@
     cell.lbl_songNumber.text = song.songNumber;
     cell.lbl_songDuration.text = song.duration;
     
-    //todo: customize the selected table view cell
+    //customize the selected table view cell
     UIImageView *imageView_playing = [[UIImageView alloc] initWithFrame:CGRectMake(0, 6, 5, 48)];
     imageView_playing.image = [UIImage imageNamed:@"playingsong.png"];
     

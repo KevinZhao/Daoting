@@ -14,6 +14,7 @@
 #import "STKAudioPlayerHelper.h"
 #import <ShareSDK/ShareSDK.h>
 #import "WXApi.h"
+#import "AlbumManager.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {
@@ -22,6 +23,5 @@
 @property (strong, nonatomic) UIWindow  *window;
 @property (assign, nonatomic) long      *coins;
 @property (nonatomic, retain) NSArray   *products;
-@property (nonatomic, retain) NSMutableArray *albums;
 
 @end

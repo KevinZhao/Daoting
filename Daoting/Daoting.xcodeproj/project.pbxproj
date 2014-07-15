@@ -28,6 +28,7 @@
 		0A708967195BF97100B91B16 /* NotificationView_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A708966195BF97100B91B16 /* NotificationView_iphone.xib */; };
 		0A70896A195C088600B91B16 /* NotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A708969195C088600B91B16 /* NotificationView.m */; };
 		0A70896C195D036300B91B16 /* notificationViewBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A70896B195D036300B91B16 /* notificationViewBackground.png */; };
+		0A71E29F197509E600CE71FB /* AlbumManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A71E29E197509E600CE71FB /* AlbumManager.m */; };
 		0A7A8CD819590B4C003FAA92 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A7A8CD719590B4C003FAA92 /* CFNetwork.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		0A7DF91219668942007DBB03 /* ClearCacheCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DF91119668942007DBB03 /* ClearCacheCell.m */; };
 		0A8BA0091940BFCB001307D6 /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8BA0081940BFCB001307D6 /* DownloadViewController.m */; };
@@ -204,6 +205,8 @@
 		0A708968195C088600B91B16 /* NotificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationView.h; sourceTree = "<group>"; };
 		0A708969195C088600B91B16 /* NotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationView.m; sourceTree = "<group>"; };
 		0A70896B195D036300B91B16 /* notificationViewBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationViewBackground.png; sourceTree = "<group>"; };
+		0A71E29D197509E600CE71FB /* AlbumManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumManager.h; sourceTree = "<group>"; };
+		0A71E29E197509E600CE71FB /* AlbumManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumManager.m; sourceTree = "<group>"; };
 		0A7A8CD719590B4C003FAA92 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0A7DF91019668942007DBB03 /* ClearCacheCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClearCacheCell.h; sourceTree = "<group>"; };
 		0A7DF91119668942007DBB03 /* ClearCacheCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClearCacheCell.m; sourceTree = "<group>"; };
@@ -460,14 +463,14 @@
 		0A32AC99196E478700A78350 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				0AD8D05B195D1A6D009DC75A /* SettingViewController.h */,
+				0AD8D05C195D1A6D009DC75A /* SettingViewController.m */,
 				0A7DF91019668942007DBB03 /* ClearCacheCell.h */,
 				0A7DF91119668942007DBB03 /* ClearCacheCell.m */,
 				0AD8D05E195D2108009DC75A /* SettingCellSwitch.h */,
 				0AD8D05F195D2108009DC75A /* SettingCellSwitch.m */,
 				0AD8D061195D2127009DC75A /* SettingCellDisclosure.h */,
 				0AD8D062195D2128009DC75A /* SettingCellDisclosure.m */,
-				0AD8D05B195D1A6D009DC75A /* SettingViewController.h */,
-				0AD8D05C195D1A6D009DC75A /* SettingViewController.m */,
 				0A5C7626196D16A400AB1669 /* PurchasedAlbumCell.h */,
 				0A5C7627196D16A400AB1669 /* PurchasedAlbumCell.m */,
 				0AE459D5196645E500DA9391 /* PurchasedAlbumViewController.h */,
@@ -742,6 +745,8 @@
 				0A2C37D719457EA90097C9CC /* DownloadStatus.m */,
 				0AD7E23C195928AD00F511B7 /* UILabelStrikeThrough.h */,
 				0AD7E23D195928AD00F511B7 /* UILabelStrikeThrough.m */,
+				0A71E29D197509E600CE71FB /* AlbumManager.h */,
+				0A71E29E197509E600CE71FB /* AlbumManager.m */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -1067,6 +1072,7 @@
 				0AC69C5E1946F452004C6A67 /* DACircularProgressView.m in Sources */,
 				0A6D573E19331B020038D841 /* KeychainWrapper.m in Sources */,
 				0AD5F6801932029F00EB0BAC /* SampleQueueId.m in Sources */,
+				0A71E29F197509E600CE71FB /* AlbumManager.m in Sources */,
 				0A8BA00F1940C15E001307D6 /* DownloadCell.m in Sources */,
 				0A7DF91219668942007DBB03 /* ClearCacheCell.m in Sources */,
 				0ABA95A31937229700172862 /* STKAudioPlayerHelper.m in Sources */,

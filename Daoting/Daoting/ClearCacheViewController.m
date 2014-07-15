@@ -14,19 +14,18 @@
 
 @implementation ClearCacheViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+/*- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }
     return self;
-}
+}*/
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -51,31 +50,19 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ClearCacheCell *cell;
+    Album *album;
     
     cell = [tableView dequeueReusableCellWithIdentifier:@"ClearCacheCell" forIndexPath:indexPath];
     
     //1. get album title
-    AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    NSMutableArray *albums = appDelegate.albums;
-    
-    for (Album *album in albums) {
-        if ([album.shortName isEqual: _albumArray[indexPath.row]]) {
-            cell.lbl_albumName.text = album.title;
-            break;
-        }
-    }
+    album = [[AlbumManager sharedInstance] searchAlbumByShortName:_albumArray[indexPath.row]];
+    cell.lbl_albumName.text = album.title;
 
     //2. get album size
     long size = [self calculateSize:[_storagePath stringByAppendingString:[NSString stringWithFormat:@"/%@", _albumArray[indexPath.row]]]];
-    
     cell.lbl_size.text = [self sizeToMb:size];
     
     return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
 }
 
 - (void)buildAlbumList

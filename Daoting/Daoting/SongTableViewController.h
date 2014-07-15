@@ -24,10 +24,8 @@
 #import "NotificationView.h"
 
 
-@interface SongTableViewController : UIViewController
-    <UIScrollViewDelegate, UITableViewDataSource,
-    UITableViewDelegate, STKAudioPlayerHelperDelegate,
-    UIActionSheetDelegate>
+@interface SongTableViewController : UIViewController<UIScrollViewDelegate, UITableViewDataSource,
+    UITableViewDelegate, STKAudioPlayerHelperDelegate, UIActionSheetDelegate>
 {
     NSMutableArray                      *_songs;
     UITableView                         *_tableview;

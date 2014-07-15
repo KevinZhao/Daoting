@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "UIImageView+AFNetworking.h"
 #import "PurchasedSongViewController.h"
+#import "AlbumManager.h"
 
 
 @interface PurchasedAlbumViewController : UITableViewController

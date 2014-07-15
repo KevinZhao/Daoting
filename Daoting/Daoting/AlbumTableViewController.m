@@ -23,10 +23,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self loadAlbums];
-    
-    [self updateAlbums];
+
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    _albums = [AlbumManager sharedInstance].albums;
     
     _appdata = [AppData sharedAppData];
     if (_appdata.isAutoPlay)
@@ -47,135 +49,21 @@
     if ((_appdata.currentSong != nil) && (_appdata.currentAlbum != nil)) {
         
         [[STKAudioPlayerHelper sharedInstance]playSong:_appdata.currentSong InAlbum:_appdata.currentAlbum];
-    }
-}
-
-- (void)loadAlbums
-{
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
-    NSString *plistPathinDocumentDirectory = [bundleDocumentDirectoryPath stringByAppendingString:@"/AlbumList.plist"];
     
-    //if yes, load from document directory,
-    if ([fileManager fileExistsAtPath:plistPathinDocumentDirectory])
-    {
-        [self initializeAlbums];
-    }
-    //if no, copy from resource directory to document directory
-    else
-    {
-        NSString *plistPathinResourceDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/AlbumList.plist"];
+        Album *album = [[AlbumManager sharedInstance] searchAlbumByShortName:_appdata.currentAlbum.shortName];
         
-        if ([fileManager fileExistsAtPath:plistPathinResourceDirectory]) {
-            [fileManager copyItemAtPath:plistPathinResourceDirectory toPath:plistPathinDocumentDirectory error:nil];
+        for (int i = 0; i < _albums.count; i ++) {
             
-            [self initializeAlbums];
+            Album *subAlbum = _albums[i];
+            
+            if (album.shortName == subAlbum.shortName) {
+                
+                NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
+                [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+            }
         }
     }
-    [self.tableView reloadData];
 }
-
-- (void)initializeAlbums
-{
-    _albums = [[NSMutableArray alloc]init];
-    AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
-    
-    NSString *plistPath = [bundleDocumentDirectoryPath stringByAppendingString:@"/AlbumList.plist"];
-    NSDictionary *dictionary = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
-    
-    for (int i = 1; i<= dictionary.count; i++)
-    {
-        NSDictionary *AlbumDic = [dictionary objectForKey:[NSString stringWithFormat:@"%d", i]];
-
-        Album *album = [[Album alloc]init];
-        album.title = [AlbumDic objectForKey:@"Title"];
-        album.description = [AlbumDic objectForKey:@"Description"];
-        album.imageUrl = [[NSURL alloc]initWithString:[AlbumDic objectForKey:@"ImageURL"]];
-        album.plistUrl = [[NSURL alloc]initWithString:[AlbumDic objectForKey:@"SongList"]];
-        album.shortName = [AlbumDic objectForKey:@"ShortName"];
-        album.artistName = [AlbumDic objectForKey:@"Artist"];
-        album.updatingStatus = [AlbumDic objectForKey:@"UpdatingStatus"];
-        album.category = [AlbumDic objectForKey:@"Category"];
-        
-        [_albums addObject:album];
-    }
-    
-    appDelegate.albums = _albums;
-}
-
-- (void)updateAlbums
-{
-    //1. Check if plist is in document directory
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
-    NSString *plistPath = [bundleDocumentDirectoryPath stringByAppendingString:@"/AlbumList.plist"];
-    
-    //2. Download plist from cloud storage
-    NSURL *albumListUrl = [[NSURL alloc]initWithString:@"http://bcs.duapp.com/daoting/PlistFolder/AlbumList.plist"];
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:albumListUrl];
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
-    
-    NSString *path = NSTemporaryDirectory();
-    NSString *fileName = @"PlayList.plist";
-    NSString *filePath = [path stringByAppendingString:fileName];
-    
-    [fileManager removeItemAtPath:filePath error:nil];
-    operation.outputStream = [NSOutputStream outputStreamToFileAtPath:filePath append:NO];
-    [operation start];
-    
-    //Download complete block
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
-     {
-         //Compare
-         NSMutableDictionary *newPlist_dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
-         NSMutableDictionary *oldPlist_dictionary = [[NSMutableDictionary alloc] init];
-         
-         if ([fileManager fileExistsAtPath:plistPath])
-         {
-             oldPlist_dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-         }
-         
-         if (newPlist_dictionary.count > oldPlist_dictionary.count)
-         {
-             int oldCount = (int)oldPlist_dictionary.count;
-             int j = (int)(newPlist_dictionary.count - oldPlist_dictionary.count);
-             
-             //Copy items in new Plist to old Plist
-             for (int i = 1; i<= j; i++)
-             {
-                 NSDictionary *newSong = [newPlist_dictionary objectForKey:[NSString stringWithFormat:@"%d",oldCount + i]];
-                 
-                 [oldPlist_dictionary setValue:newSong forKey:[NSString stringWithFormat:@"%d", (oldCount + i)]];
-             }
-             [oldPlist_dictionary writeToFile:plistPath atomically:NO];
-             
-             //re-initialize songs and update table view
-             [self initializeAlbums];
-             
-             [self.tableView reloadData];
-         }
-         else
-         {
-             //there is no update for albums
-         }
-         
-     }
-     //Download Failed
-    failure:^(AFHTTPRequestOperation *operation, NSError *error)
-     {
-         //UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"网络异常" message:@"当前网络无法连接，无法检查更新" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-         //[alert show];
-     }
-     ];
-}
-
 
 #pragma mark - Table view data source
 
@@ -217,6 +105,12 @@
                                        
     } failure:nil];
     
+    //selection
+    
+    UIImageView *imageView_playing = [[UIImageView alloc] initWithFrame:CGRectMake(0, 16, 5, 48)];
+    imageView_playing.image = [UIImage imageNamed:@"playingsong.png"];
+    
+    [cell.selectedBackgroundView addSubview:imageView_playing];
     return cell;
 }
 
