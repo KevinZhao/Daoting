@@ -81,7 +81,7 @@
     NSString *productIdentifier = notification.object;
     int purchasedCoins = 0;
     
-    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.10000coins"]) {
+    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.10000coins_new"]) {
         purchasedCoins = 10000;
     }
     
@@ -89,7 +89,7 @@
         purchasedCoins = 500;
     }
     
-    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.25000coins"]) {
+    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.25000coins_new"]) {
         purchasedCoins = 25000;
     }
     

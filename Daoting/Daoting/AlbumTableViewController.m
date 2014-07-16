@@ -106,7 +106,6 @@
     } failure:nil];
     
     //selection
-    
     UIImageView *imageView_playing = [[UIImageView alloc] initWithFrame:CGRectMake(0, 16, 5, 48)];
     imageView_playing.image = [UIImage imageNamed:@"playingsong.png"];
     

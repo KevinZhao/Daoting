@@ -17,6 +17,7 @@
 		0A37F8C519262CD100826C8C /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F8C419262CD100826C8C /* Song.m */; };
 		0A37F8CB19262D2600826C8C /* SongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F8CA19262D2600826C8C /* SongCell.m */; };
 		0A3CD3641920F8BE00247436 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A3CD3621920F8BE00247436 /* Main_iPhone.storyboard */; };
+		0A542B5B19761526005CE661 /* songDownloaded@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A542B5A19761526005CE661 /* songDownloaded@2x.png */; };
 		0A5C7628196D16A400AB1669 /* PurchasedAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5C7627196D16A400AB1669 /* PurchasedAlbumCell.m */; };
 		0A5C762B196D1D3100AB1669 /* PurchasedSongViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5C762A196D1D3100AB1669 /* PurchasedSongViewController.m */; };
 		0A5C762E196D1D9300AB1669 /* PurchasedSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5C762D196D1D9300AB1669 /* PurchasedSongCell.m */; };
@@ -118,8 +119,6 @@
 		0A98D65E1920EAB700E46EB9 /* DownloadsStopControl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A98D6511920EAB700E46EB9 /* DownloadsStopControl@2x.png */; };
 		0A98D65F1920EAB700E46EB9 /* nowPlayingGlyph.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A98D6521920EAB700E46EB9 /* nowPlayingGlyph.png */; };
 		0A98D6601920EAB700E46EB9 /* nowPlayingGlyph@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A98D6531920EAB700E46EB9 /* nowPlayingGlyph@2x.png */; };
-		0A98D6611920EAB700E46EB9 /* NowPlayingPauseControl@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A98D6541920EAB700E46EB9 /* NowPlayingPauseControl@2x~iphone.png */; };
-		0A98D6621920EAB700E46EB9 /* NowPlayingPauseControl~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A98D6551920EAB700E46EB9 /* NowPlayingPauseControl~iphone.png */; };
 		0A98D6631920EAB700E46EB9 /* progressBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A98D6561920EAB700E46EB9 /* progressBar.png */; };
 		0A98D6641920EAB700E46EB9 /* progressBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A98D6571920EAB700E46EB9 /* progressBar@2x.png */; };
 		0A98D6651920EAB700E46EB9 /* wangyuebo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0A98D6581920EAB700E46EB9 /* wangyuebo.jpg */; };
@@ -186,6 +185,7 @@
 		0A37F8C919262D2600826C8C /* SongCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongCell.h; sourceTree = "<group>"; };
 		0A37F8CA19262D2600826C8C /* SongCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongCell.m; sourceTree = "<group>"; };
 		0A3CD3631920F8BE00247436 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		0A542B5A19761526005CE661 /* songDownloaded@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "songDownloaded@2x.png"; sourceTree = "<group>"; };
 		0A5C7626196D16A400AB1669 /* PurchasedAlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchasedAlbumCell.h; sourceTree = "<group>"; };
 		0A5C7627196D16A400AB1669 /* PurchasedAlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchasedAlbumCell.m; sourceTree = "<group>"; };
 		0A5C7629196D1D3100AB1669 /* PurchasedSongViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchasedSongViewController.h; sourceTree = "<group>"; };
@@ -305,8 +305,6 @@
 		0A98D6511920EAB700E46EB9 /* DownloadsStopControl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DownloadsStopControl@2x.png"; sourceTree = "<group>"; };
 		0A98D6521920EAB700E46EB9 /* nowPlayingGlyph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nowPlayingGlyph.png; sourceTree = "<group>"; };
 		0A98D6531920EAB700E46EB9 /* nowPlayingGlyph@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nowPlayingGlyph@2x.png"; sourceTree = "<group>"; };
-		0A98D6541920EAB700E46EB9 /* NowPlayingPauseControl@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NowPlayingPauseControl@2x~iphone.png"; sourceTree = "<group>"; };
-		0A98D6551920EAB700E46EB9 /* NowPlayingPauseControl~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NowPlayingPauseControl~iphone.png"; sourceTree = "<group>"; };
 		0A98D6561920EAB700E46EB9 /* progressBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = progressBar.png; sourceTree = "<group>"; };
 		0A98D6571920EAB700E46EB9 /* progressBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progressBar@2x.png"; sourceTree = "<group>"; };
 		0A98D6581920EAB700E46EB9 /* wangyuebo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wangyuebo.jpg; sourceTree = "<group>"; };
@@ -693,6 +691,7 @@
 		0A98D64B1920EAB700E46EB9 /* Artworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A542B5A19761526005CE661 /* songDownloaded@2x.png */,
 				0A363AF0195DC0FF00F82DD3 /* coin.png */,
 				0AAF6193196AE4A600C33E52 /* playingsong@2x.png */,
 				0A70896B195D036300B91B16 /* notificationViewBackground.png */,
@@ -715,8 +714,6 @@
 				0A98D6511920EAB700E46EB9 /* DownloadsStopControl@2x.png */,
 				0A98D6521920EAB700E46EB9 /* nowPlayingGlyph.png */,
 				0A98D6531920EAB700E46EB9 /* nowPlayingGlyph@2x.png */,
-				0A98D6541920EAB700E46EB9 /* NowPlayingPauseControl@2x~iphone.png */,
-				0A98D6551920EAB700E46EB9 /* NowPlayingPauseControl~iphone.png */,
 				0A98D6561920EAB700E46EB9 /* progressBar.png */,
 				0A98D6571920EAB700E46EB9 /* progressBar@2x.png */,
 				0A98D6581920EAB700E46EB9 /* wangyuebo.jpg */,
@@ -947,6 +944,7 @@
 				0A98D66C1920F1F500E46EB9 /* arrowSelected.png in Resources */,
 				0AE8649A192EF48700EF5A96 /* Shuangbianji_SongList.plist in Resources */,
 				0AFB65AC1924EC44000F2AE6 /* AlbumList.plist in Resources */,
+				0A542B5B19761526005CE661 /* songDownloaded@2x.png in Resources */,
 				0A1FA99B1958556C002F48EA /* qr_toolbar_more_hl@2x.png in Resources */,
 				0A1FA99C1958556C002F48EA /* qr_toolbar_more@2x.png in Resources */,
 				0A98D65E1920EAB700E46EB9 /* DownloadsStopControl@2x.png in Resources */,
@@ -960,7 +958,6 @@
 				0A98D6251920ACBC00E46EB9 /* ShareSDKiPadSimpleShareViewUI.bundle in Resources */,
 				0A1FA9A019585612002F48EA /* qr_toolbar_more.png in Resources */,
 				0A98D6591920EAB700E46EB9 /* downloadButton.png in Resources */,
-				0A98D6611920EAB700E46EB9 /* NowPlayingPauseControl@2x~iphone.png in Resources */,
 				5933AD6F18D03EC1001D707B /* Main_iPad.storyboard in Resources */,
 				0A1FA99819581321002F48EA /* test.png in Resources */,
 				0A98D6601920EAB700E46EB9 /* nowPlayingGlyph@2x.png in Resources */,
@@ -994,7 +991,6 @@
 				0A6AA9DF192B88AB00462543 /* SongCell.xib in Resources */,
 				0ABB4283192E321C007D8BAC /* Icon-72@2x.png in Resources */,
 				0A98D60F1920ACBC00E46EB9 /* ShareSDKLocalizable.strings in Resources */,
-				0A98D6621920EAB700E46EB9 /* NowPlayingPauseControl~iphone.png in Resources */,
 				0A98D6101920ACBC00E46EB9 /* Resource.bundle in Resources */,
 				5933AD6318D03EC1001D707B /* InfoPlist.strings in Resources */,
 				0AE86490192EEC6E00EF5A96 /* Zhangguangtai_SongList.plist in Resources */,

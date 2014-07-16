@@ -421,8 +421,11 @@
             //Download Completed
             case fileDownloadStatusCompleted:
             {
-                songCell.btn_downloadOrPause.hidden = YES;
                 songCell.cirProgView_downloadProgress.hidden = YES;
+                
+                songCell.btn_downloadOrPause.hidden = NO;
+                songCell.btn_downloadOrPause.enabled = false;
+                [songCell.btn_downloadOrPause setBackgroundImage:[UIImage imageNamed:@"songDownloaded.png"] forState:UIControlStateNormal];
             }
                 break;
             //Download Failed
@@ -445,8 +448,12 @@
         //2. Check if the file had been downloaded for the cell
         //Download completed
         if ([[NSFileManager defaultManager] fileExistsAtPath:[song.filePath absoluteString]]){
-            songCell.btn_downloadOrPause.hidden = YES;
+
             songCell.cirProgView_downloadProgress.hidden = YES;
+
+            songCell.btn_downloadOrPause.hidden = NO;
+            songCell.btn_downloadOrPause.enabled = false;
+            [songCell.btn_downloadOrPause setBackgroundImage:[UIImage imageNamed:@"songDownloaded.png"] forState:UIControlStateNormal];
 
         }
         //Not Downloaded yet
@@ -458,14 +465,6 @@
             [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
             [songCell.btn_downloadOrPause setBackgroundImage:[UIImage imageNamed:@"downloadButton.png"] forState:UIControlStateNormal];
         }
-    }
-    
-    if (songCell.isSelected) {
-        
-    }
-    else
-    {
-        
     }
 }
 

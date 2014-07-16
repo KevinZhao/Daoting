@@ -17,7 +17,6 @@
 }
 
 @property (assign, nonatomic) NSInteger             coins;
-@property (retain, nonatomic) NSMutableArray        *purchasedSongs;
 @property (retain, nonatomic) Album                 *currentAlbum;
 @property (retain, nonatomic) Song                  *currentSong;
 
