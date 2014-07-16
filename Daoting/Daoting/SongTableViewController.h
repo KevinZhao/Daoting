@@ -22,10 +22,11 @@
 #import <ShareSDK/ShareSDK.h>
 #import "StoreViewController.h"
 #import "NotificationView.h"
+#import "SongManager.h"
 
 
 @interface SongTableViewController : UIViewController<UIScrollViewDelegate, UITableViewDataSource,
-    UITableViewDelegate, STKAudioPlayerHelperDelegate, UIActionSheetDelegate>
+    UITableViewDelegate, UIActionSheetDelegate, STKAudioPlayerHelperDelegate>
 {
     NSMutableArray                      *_songs;
     UITableView                         *_tableview;

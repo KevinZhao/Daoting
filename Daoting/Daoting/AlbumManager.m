@@ -10,7 +10,7 @@
 
 @implementation AlbumManager
 
-+ (AlbumManager *)sharedInstance {
++ (AlbumManager *)sharedManager {
     static dispatch_once_t once;
     static AlbumManager * sharedInstance;
     dispatch_once(&once, ^{

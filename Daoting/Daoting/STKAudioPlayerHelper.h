@@ -12,13 +12,15 @@
 #import "SampleQueueId.h"
 #import "AFNetWorking.h"
 #import <AVFoundation/AVFoundation.h>
+#import "AlbumManager.h"
+#import "SongManager.h"
 
 @class STKAudioPlayerHelper;
 
 @protocol STKAudioPlayerHelperDelegate <NSObject>
 
 /// Raised when an item has started playing
--(void) didFinishedPlayingSong;
+-(void) onPlayerHelperSongChanged;
 
 @end
 
@@ -29,18 +31,19 @@
     NSTimer                         *_timer;
     double                          _progress;
     AppData                         *_appData;
-
 }
 
 + (STKAudioPlayerHelper *)sharedInstance;
 
 @property (nonatomic, retain) STKAudioPlayer *audioPlayer;
-@property (nonatomic, retain) NSMutableArray *playbackList;
 
 @property (readwrite, unsafe_unretained) id<STKAudioPlayerHelperDelegate> delegate;
 
 -(void)playSong:(Song *)song InAlbum:(Album*)album; 
 -(void)pauseSong;
+
+-(void)playNextSong;
+-(void)playPreviousSong;
 
 
 @end

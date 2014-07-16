@@ -18,7 +18,7 @@
 @property (nonatomic, retain)  NSMutableArray      *albums;
 
 
-+ (AlbumManager *)sharedInstance;
++ (AlbumManager *)sharedManager;
 
 - (Album *)searchAlbumByShortName:(NSString*) shortName;
 

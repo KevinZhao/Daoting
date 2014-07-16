@@ -483,7 +483,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="41D-YD-EXP">
-                                <rect key="frame" x="0.0" y="454" width="320" height="31"/>
+                                <rect key="frame" x="8" y="461" width="304" height="31"/>
                                 <connections>
                                     <action selector="onsliderValueChanged:" destination="FIa-3P-xRc" eventType="valueChanged" id="FGn-WE-LAV"/>
                                 </connections>

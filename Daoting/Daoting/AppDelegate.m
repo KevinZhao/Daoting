@@ -22,7 +22,7 @@ const NSString *appUrlinAppStore = @"http://itunes.apple.com/app/id878654949";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSError* error;
-    [AlbumManager sharedInstance];
+    [AlbumManager sharedManager];
     
     //Configure Audio Session
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];

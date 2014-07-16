@@ -28,7 +28,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    _albums = [AlbumManager sharedInstance].albums;
+    _albums = [AlbumManager sharedManager].albums;
     
     _appdata = [AppData sharedAppData];
     if (_appdata.isAutoPlay)
@@ -50,7 +50,7 @@
         
         [[STKAudioPlayerHelper sharedInstance]playSong:_appdata.currentSong InAlbum:_appdata.currentAlbum];
     
-        Album *album = [[AlbumManager sharedInstance] searchAlbumByShortName:_appdata.currentAlbum.shortName];
+        Album *album = [[AlbumManager sharedManager] searchAlbumByShortName:_appdata.currentAlbum.shortName];
         
         for (int i = 0; i < _albums.count; i ++) {
             

@@ -55,7 +55,7 @@
     cell = [tableView dequeueReusableCellWithIdentifier:@"ClearCacheCell" forIndexPath:indexPath];
     
     //1. get album title
-    album = [[AlbumManager sharedInstance] searchAlbumByShortName:_albumArray[indexPath.row]];
+    album = [[AlbumManager sharedManager] searchAlbumByShortName:_albumArray[indexPath.row]];
     cell.lbl_albumName.text = album.title;
 
     //2. get album size

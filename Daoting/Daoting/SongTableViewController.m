@@ -25,10 +25,8 @@
     
     [super viewDidLoad];
     
-    [self loadSongs];
-    
-    [self updateSongs];
-    
+    _songs = [[SongManager sharedManager] searchSongArrayByAlbumName:_album.shortName];
+
     [self setupTimer];
     
     [self setupNotificationView];
@@ -37,6 +35,9 @@
     [_actionSheetStrings setObject:@"取消" forKey:@"cancel"];
     [_actionSheetStrings setObject:@"分享" forKey:@"share"];
     [_actionSheetStrings setObject:@"全部下载" forKey:@"downloadOrCancelAll"];
+    
+    UIImage *progressBarImage = [UIImage imageNamed:@"progressBar.png"];
+    [_slider setThumbImage:progressBarImage forState:UIControlStateNormal];
 }
 
 
@@ -106,158 +107,6 @@
     _notificationView.alpha = 0.0;
 }
 
-- (void)initializeSongs
-{
-    _songs = [[NSMutableArray alloc]init];
-    
-    NSString *DocumentDirectoryPath =
-        [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    
-    NSString *plistPath =
-        [DocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_SongList.plist", _album.shortName]];
-    
-    NSDictionary *dictionary = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
-    for (int i = 1; i<= dictionary.count; i++)
-    {
-        NSDictionary *SongDic = [dictionary objectForKey:[NSString stringWithFormat:@"%d", i]];
-        
-        Song *song = [[Song alloc]init];
-        
-        song.songNumber = [NSString stringWithFormat:@"%d", i];
-        song.title      = [SongDic objectForKey:@"Title"];
-        song.duration   = [SongDic objectForKey:@"Duration"];
-        song.Url        = [[NSURL alloc] initWithString:[SongDic objectForKey:@"Url"]];
-        song.filePath   = [[NSURL alloc] initWithString:[SongDic objectForKey:@"FilePath"]];
-        song.price      = [SongDic objectForKey:@"Price"];
-        
-        [_songs addObject:song];
-    }
-}
-
-- (void)updateSongs
-{
-    //1. Check if plist is in document directory
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
-    NSString *plistPath = [bundleDocumentDirectoryPath stringByAppendingString:@"/"];
-    plistPath = [plistPath stringByAppendingString:_album.shortName];
-    plistPath = [plistPath stringByAppendingString:@"_SongList.plist"];
-    
-    //2. Download plist from cloud storage
-    NSURLRequest *request = [NSURLRequest requestWithURL:_album.plistUrl];
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
-    
-    NSString *path = NSTemporaryDirectory();
-    NSString *fileName = @"PlayList.plist";
-    NSString *filePath = [path stringByAppendingString:fileName];
-    
-    [fileManager removeItemAtPath:filePath error:nil];
-    operation.outputStream = [NSOutputStream outputStreamToFileAtPath:filePath append:NO];
-    [[AFDownloadHelper sharedOperationManager].operationQueue addOperation:operation];
-    
-    //Download complete block
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
-     {
-         //Compare
-         NSMutableDictionary *newPlist_dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
-         NSMutableDictionary *oldPlist_dictionary = [[NSMutableDictionary alloc] init];
-         
-         if ([fileManager fileExistsAtPath:plistPath])
-         {
-             oldPlist_dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-         }
-         
-         //there is new song in the plist
-         if (newPlist_dictionary.count > oldPlist_dictionary.count)
-         {
-             int oldCount = (int)oldPlist_dictionary.count;
-             int j = (int)(newPlist_dictionary.count - oldPlist_dictionary.count);
-             
-             //Copy items in new Plist to old Plist
-             for (int i = 1; i<= j; i++)
-             {
-                 NSDictionary *newSong = [newPlist_dictionary objectForKey:[NSString stringWithFormat:@"%d",oldCount + i]];
-                 
-                 [oldPlist_dictionary setValue:newSong forKey:[NSString stringWithFormat:@"%d", (oldCount + i)]];
-             }
-             [oldPlist_dictionary writeToFile:plistPath atomically:NO];
-             
-             //re-initialize songs and update table view
-             [self initializeSongs];
-             
-             [_tableview reloadData];
-         }
-         //there is no new song in the plist
-         else
-         {
-             //do nothing
-         }
-         
-     }
-     //Download Failed
-    failure:^(AFHTTPRequestOperation *operation, NSError *error)
-     {
-         //todo for next version: try to redownload from cloud for 3 times
-     }];
-}
-
-- (void)loadSongs
-{
-    //1. Check if there is a playlist in document directory
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
-    NSString *plistPathinDocumentDirectory = [bundleDocumentDirectoryPath stringByAppendingString:@"/"];
-    plistPathinDocumentDirectory = [plistPathinDocumentDirectory stringByAppendingString:_album.shortName];
-    plistPathinDocumentDirectory = [plistPathinDocumentDirectory stringByAppendingString:@"_SongList.plist"];
-    
-    //if yes, load from document directory, if no copy from resource directory to document directory
-    if ([fileManager fileExistsAtPath:plistPathinDocumentDirectory])
-    {
-        [self initializeSongs];
-    }
-    else
-    {
-        NSString *plistPathinResourceDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/"];
-        plistPathinResourceDirectory = [plistPathinResourceDirectory stringByAppendingString:_album.shortName];
-        plistPathinResourceDirectory = [plistPathinResourceDirectory stringByAppendingString:@"_SongList.plist"];
-        
-        if ([fileManager fileExistsAtPath:plistPathinResourceDirectory]) {
-            [fileManager copyItemAtPath:plistPathinResourceDirectory toPath:plistPathinDocumentDirectory error:nil];
-            
-            [self initializeSongs];
-        }
-    }
-    
-    [_tableview reloadData];
-}
-
--(void)playNextSong
-{
-    //play next song
-    NSInteger currentSongNumber = [_appData.currentSong.songNumber integerValue];
-    
-    if ( currentSongNumber < _playerHelper.playbackList.count) {
-        
-        Song *song = [_playerHelper.playbackList objectAtIndex:(currentSongNumber)];
-        
-        [self playSong:song];
-    }
-}
-
--(void)playPreviousSong
-{
-    NSInteger currentSongNumber = [_appData.currentSong.songNumber integerValue];
-    
-    if ( currentSongNumber - 1 > 0) {
-        
-        Song *song = [_playerHelper.playbackList objectAtIndex:(currentSongNumber - 2)];
-        
-        [self playSong:song];
-    }
-}
-
 -(void)playSong:(Song*)song
 {
     //2.1 check the song had been purchased or not
@@ -301,9 +150,6 @@
 - (void) playSongbyHelper:(Song*)song
 {
     [_playerHelper playSong:song InAlbum:_album];
-    
-    _playerHelper.playbackList = _songs;
-    [_appData.playingPositionQueue setObject:song.songNumber forKey:_album.title];
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[song.songNumber intValue] - 1 inSection:0];
     [_tableview beginUpdates];
@@ -444,7 +290,6 @@
         }
     }
     else{
-    
         //2. Check if the file had been downloaded for the cell
         //Download completed
         if ([[NSFileManager defaultManager] fileExistsAtPath:[song.filePath absoluteString]]){
@@ -452,7 +297,7 @@
             songCell.cirProgView_downloadProgress.hidden = YES;
 
             songCell.btn_downloadOrPause.hidden = NO;
-            songCell.btn_downloadOrPause.enabled = false;
+            [songCell.btn_downloadOrPause removeTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
             [songCell.btn_downloadOrPause setBackgroundImage:[UIImage imageNamed:@"songDownloaded.png"] forState:UIControlStateNormal];
 
         }
@@ -539,12 +384,14 @@
             }
             case UIEventSubtypeRemoteControlPreviousTrack:
             {
-                [self playPreviousSong];
+                //[self playPreviousSong];
+                [_playerHelper playPreviousSong];
                 break;
             }
             case UIEventSubtypeRemoteControlNextTrack:
             {
-                [self playNextSong];
+                //[self playNextSong];
+                [_playerHelper playNextSong];
                 break;
             }
             default:
@@ -593,13 +440,10 @@
 - (void)downloadAll
 {
     //1.calculate how many coins need for download all items
-    
     int coinsNeeded = 0;
     for (int i = 0; i < _songs.count; i++) {
         
         Song *song = _songs[i];
-        
-        //NSString *key = [NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber];
         
         //1.1 check the song had been purchased or not
         BOOL purchased = [_appData songNumber:song.songNumber ispurchasedwithAlbum:_album.shortName];
@@ -637,7 +481,7 @@
         [self showNotification:notification];
         
     }
-    //if cois is not enough, navigate to store view and give notification
+    //todo if cois is not enough, navigate to store view and give notification
     else{
         UITabBarController *tabBarController = [self getTabbarViewController];
         tabBarController.selectedIndex = 2;
@@ -673,12 +517,12 @@
 }
 - (IBAction)onbtn_nextPressed:(id)sender
 {
-    [self playNextSong];
+    [_playerHelper playNextSong];
 }
 
 - (IBAction)onbtn_previousPressed:(id)sender
 {
-    [self playPreviousSong];
+    [_playerHelper playPreviousSong];
 }
 
 -(void)showNotification:(NSString *)notification;
@@ -814,8 +658,6 @@
         
         [self playSong:selectedSong];
     }
-    
-    NSLog(@"%d", self.modalTransitionStyle);
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -832,9 +674,16 @@
 
 #pragma mark - STKAudioPlayerHelperDelegate
 
--(void) didFinishedPlayingSong
+-(void) onPlayerHelperSongChanged
 {
-    [self playNextSong];
+    //3. update for selection change
+    if ([_album.shortName isEqualToString: _appData.currentAlbum.shortName]) {
+        
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[_appData.currentSong.songNumber integerValue] -1 inSection:0];
+        
+        [_tableview selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    
+    }
 }
 
 @end

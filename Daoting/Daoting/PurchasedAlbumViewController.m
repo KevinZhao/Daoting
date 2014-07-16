@@ -52,7 +52,7 @@
     NSString* albumShortName = _appData.purchasedQueue.allKeys[indexPath.row];
     
     // 1. show album title
-    Album *album = [[AlbumManager sharedInstance] searchAlbumByShortName:albumShortName];
+    Album *album = [[AlbumManager sharedManager] searchAlbumByShortName:albumShortName];
     cell.lbl_albumTitle.text = album.title;
     
     // 2. icon
@@ -85,7 +85,7 @@
     NSString *key = _appData.purchasedQueue.allKeys[indexPath.row];
     
     viewController.songsArray = [_appData.purchasedQueue objectForKey:key];
-    viewController.album = [[AlbumManager sharedInstance] searchAlbumByShortName:key];
+    viewController.album = [[AlbumManager sharedManager] searchAlbumByShortName:key];
 }
 
 @end

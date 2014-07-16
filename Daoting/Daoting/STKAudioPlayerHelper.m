@@ -137,6 +137,8 @@
     NSString *progressString = [_appData.playingBackProgressQueue objectForKey:key];
     _progress = [self formatProgressFromString:progressString];
     
+    [_appData.playingPositionQueue setObject:song.songNumber forKey:album.title];
+    
     _appData.currentAlbum = album;
     _appData.currentSong = song;
     
@@ -147,6 +149,40 @@
 {
     [audioPlayer pause];
 }
+
+-(void)playNextSong
+{
+    Album *album = [[AlbumManager sharedManager] searchAlbumByShortName:_appData.currentAlbum.shortName];
+    NSMutableArray *songArray = [[SongManager sharedManager] searchSongArrayByAlbumName:album.shortName];
+    
+    NSInteger currentSongNumber = [_appData.currentSong.songNumber intValue];
+    
+    if (currentSongNumber < songArray.count) {
+        Song *song = [songArray objectAtIndex:currentSongNumber];
+        
+        [self playSong:song InAlbum:album];
+    }
+    
+    [self.delegate onPlayerHelperSongChanged];
+}
+
+-(void)playPreviousSong
+{
+    Album *album = [[AlbumManager sharedManager] searchAlbumByShortName:_appData.currentAlbum.shortName];
+    NSMutableArray *songArray = [[SongManager sharedManager] searchSongArrayByAlbumName:album.shortName];
+
+    NSInteger currentSongNumber = [_appData.currentSong.songNumber intValue];
+    
+    if ( currentSongNumber - 1 > 0) {
+        
+        Song *song = [songArray objectAtIndex:(currentSongNumber -2)];
+        
+        [self playSong:song InAlbum:album];
+    }
+    
+    [self.delegate onPlayerHelperSongChanged];
+}
+
 
 -(NSString*)formatTimeFromSeconds:(int)totalSeconds
 {
@@ -201,7 +237,7 @@
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer didFinishPlayingQueueItemId:(NSObject*)queueItemId withReason:(STKAudioPlayerStopReason)stopReason andProgress:(double)progress andDuration:(double)duration
 {
     if (stopReason == STKAudioPlayerStopReasonEof) {
-        [self.delegate didFinishedPlayingSong];
+        [self playNextSong];
     }
     
 }
