@@ -77,6 +77,8 @@
         [switchCell setSelectionStyle:UITableViewCellSelectionStyleNone];
         
         switchCell.sw_option.on = _appData.isAutoPurchase;
+        [switchCell.sw_option setTintColor:[UIColor blueColor]];
+        
         [switchCell.sw_option addTarget:self action:@selector(onSwitchValueChanged1:) forControlEvents:UIControlEventValueChanged];
     }
     

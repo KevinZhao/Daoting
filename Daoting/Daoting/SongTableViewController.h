@@ -34,7 +34,6 @@
     STKAudioPlayer                      *_audioPlayer;
     NSTimer                             *_timer;
     AppData                             *_appData;
-    
     STKAudioPlayerHelper                *_playerHelper;
     NSMutableDictionary                 *_actionSheetStrings;
 }

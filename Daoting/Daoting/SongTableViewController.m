@@ -240,7 +240,7 @@
                 [songCell.btn_downloadOrPause removeTarget:songCell action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
                 [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
                 
-                [songCell.btn_downloadOrPause setBackgroundImage:[UIImage imageNamed:@"downloadProgressButtonPause.png"] forState:UIControlStateNormal];
+                [songCell.btn_downloadOrPause setBackgroundImage:[UIImage imageNamed:@"download_pause.png"] forState:UIControlStateNormal];
             }
                 break;
             //Downloading
@@ -260,7 +260,7 @@
                 [songCell.btn_downloadOrPause removeTarget:songCell action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
                 [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
                 
-                [songCell.btn_downloadOrPause setBackgroundImage:[UIImage imageNamed:@"downloadProgressButtonPause.png"] forState:UIControlStateNormal];
+                [songCell.btn_downloadOrPause setBackgroundImage:[UIImage imageNamed:@"download_pause.png"] forState:UIControlStateNormal];
 
             }
                 break;
