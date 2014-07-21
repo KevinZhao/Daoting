@@ -27,7 +27,9 @@
 @property (nonatomic, strong) IBOutlet UILabel      *lbl_songStatus;
 @property (nonatomic, strong) IBOutlet UIButton     *btn_downloadOrPause;
 @property (nonatomic, strong) IBOutlet UIImageView  *img_playingStatus;
+@property (nonatomic, strong) IBOutlet UIImageView  *img_locked;
 @property (nonatomic, strong) IBOutlet DACircularProgressView *cirProgView_downloadProgress;
+
 
 @property (nonatomic, retain) Song                  *song;
 @property (nonatomic, retain) Album                 *album;

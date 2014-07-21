@@ -101,7 +101,7 @@
     [appearance setTrackTintColor:[[UIColor whiteColor] colorWithAlphaComponent:0.3f]];
     [appearance setProgressTintColor:[UIColor whiteColor]];
     [appearance setBackgroundColor:[UIColor clearColor]];
-    [appearance setThicknessRatio:0.3f];
+    [appearance setThicknessRatio:0.5f];
     [appearance setRoundedCorners:NO];
     
     [appearance setIndeterminateDuration:2.0f];

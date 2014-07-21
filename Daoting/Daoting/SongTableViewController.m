@@ -51,7 +51,7 @@
     _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 406) style:UITableViewStylePlain];
     _tableview.delegate = self;
     _tableview.dataSource = self;
-    _tableview.rowHeight = 60;
+    _tableview.rowHeight = 48;
     
     //Load from xib for prototype cell
     [_tableview registerNib:[UINib nibWithNibName:@"SongCell" bundle:nil]forCellReuseIdentifier:@"SongCell"];
@@ -184,6 +184,8 @@
         _slider.minimumValue = 0;
         _slider.maximumValue = _audioPlayer.duration;
         _slider.value = _audioPlayer.progress;
+        
+
     }
     //There is no song playing
     else
@@ -195,16 +197,20 @@
         _slider.value = 0;
         _slider.minimumValue = 0;
         _slider.maximumValue = 0;
+        
+
     }
     
     switch (_audioPlayer.state) {
         case STKAudioPlayerStatePlaying:
-            [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_pause_n.png"] forState:UIControlStateNormal];
-            [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_pause_h.png"] forState:UIControlStateHighlighted];
+     [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_pause_n.png"] forState:UIControlStateNormal];
+     [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_pause_h.png"] forState:UIControlStateHighlighted];
+
             break;
         case STKAudioPlayerStatePaused:
-            [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_play_n.png"] forState:UIControlStateNormal];
-            [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_play_h.png"] forState:UIControlStateHighlighted];
+     [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_play_n.png"] forState:UIControlStateNormal];
+     [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_play_h.png"] forState:UIControlStateHighlighted];
+
             break;
         default:
             break;
@@ -240,27 +246,28 @@
                 [songCell.btn_downloadOrPause removeTarget:songCell action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
                 [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
                 
-                [songCell.btn_downloadOrPause setBackgroundImage:[UIImage imageNamed:@"download_pause.png"] forState:UIControlStateNormal];
+                [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download_pause.png"] forState:UIControlStateNormal];
+                [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download_pause_pressed.png"] forState:UIControlStateSelected];
             }
                 break;
             //Downloading
             case fileDownloadStatusDownloading:
             {
-                //1.
+                //1. Updating progress
                 songCell.cirProgView_downloadProgress.hidden = NO;
-                songCell.cirProgView_downloadProgress.progressTintColor = [UIColor blueColor];
                 
                 if (status.totalBytesExpectedToRead != 0) {
                     
                     songCell.cirProgView_downloadProgress.progress =(float) status.totalBytesRead / (float)status.totalBytesExpectedToRead;
                 }
                 
-                //2.
+                //2. 
                 songCell.btn_downloadOrPause.hidden = NO;
                 [songCell.btn_downloadOrPause removeTarget:songCell action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
                 [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
                 
-                [songCell.btn_downloadOrPause setBackgroundImage:[UIImage imageNamed:@"download_pause.png"] forState:UIControlStateNormal];
+                [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download_pause.png"] forState:UIControlStateNormal];
+                [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download_pause_pressed.png"] forState:UIControlStateSelected];
 
             }
                 break;
@@ -269,9 +276,9 @@
             {
                 songCell.cirProgView_downloadProgress.hidden = YES;
                 
-                songCell.btn_downloadOrPause.hidden = NO;
+                songCell.btn_downloadOrPause.hidden = YES;
                 songCell.btn_downloadOrPause.enabled = false;
-                [songCell.btn_downloadOrPause setBackgroundImage:[UIImage imageNamed:@"songDownloaded.png"] forState:UIControlStateNormal];
+                songCell.lbl_songDuration.hidden = NO;
             }
                 break;
             //Download Failed
@@ -280,11 +287,11 @@
                 songCell.btn_downloadOrPause.hidden = NO;
                 [songCell.btn_downloadOrPause removeTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
                 [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
-                [songCell.btn_downloadOrPause setBackgroundImage:[UIImage imageNamed:@"downloadButton.png"] forState:UIControlStateNormal];
+                [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download.png"] forState:UIControlStateNormal];
+                [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download_pressed.png"] forState:UIControlStateSelected];
 
                 songCell.cirProgView_downloadProgress.hidden = YES;
             }
-            
             default:
                 break;
         }
@@ -296,9 +303,9 @@
 
             songCell.cirProgView_downloadProgress.hidden = YES;
 
-            songCell.btn_downloadOrPause.hidden = NO;
+            songCell.btn_downloadOrPause.hidden = YES;
             [songCell.btn_downloadOrPause removeTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
-            [songCell.btn_downloadOrPause setBackgroundImage:[UIImage imageNamed:@"songDownloaded.png"] forState:UIControlStateNormal];
+            songCell.lbl_songDuration.hidden = NO;
 
         }
         //Not Downloaded yet
@@ -308,8 +315,15 @@
             songCell.btn_downloadOrPause.hidden = NO;
             [songCell.btn_downloadOrPause removeTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
             [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
-            [songCell.btn_downloadOrPause setBackgroundImage:[UIImage imageNamed:@"downloadButton.png"] forState:UIControlStateNormal];
+            
+            [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download.png"] forState:UIControlStateNormal];
+            [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download_pressed.png"] forState:UIControlStateSelected];
         }
+    }
+    
+    //2. Check if the song had been purchased
+    if ([_appData songNumber:song.songNumber ispurchasedwithAlbum:_album.shortName]) {
+        songCell.img_locked.hidden = YES;
     }
 }
 
@@ -618,11 +632,15 @@
     cell.cirProgView_downloadProgress.hidden = YES;
     cell.btn_downloadOrPause.hidden = YES;
     
+    cell.cirProgView_downloadProgress.thicknessRatio = 0.075;
+    [cell.cirProgView_downloadProgress setTrackTintColor:[UIColor grayColor]];
+    [cell.cirProgView_downloadProgress setProgressTintColor:[UIColor greenColor]];
+    
     //Update UI according to song status
     cell.lbl_songTitle.text = song.title;
+    cell.lbl_songDuration.hidden = YES;
     cell.lbl_songDuration.text = song.duration;
     cell.lbl_songNumber.text = song.songNumber;
-    cell.lbl_songDuration.text = song.duration;
     
     //customize the selected table view cell
     UIImageView *imageView_playing = [[UIImageView alloc] initWithFrame:CGRectMake(0, 6, 5, 48)];
@@ -632,6 +650,14 @@
     
     cell.song = song;
     cell.album = _album;
+    
+    UIImage *img = [UIImage imageNamed:@"schedule_list_droplistbg.png"];
+    
+    UIEdgeInsets insets = UIEdgeInsetsMake(1, 27, 1, 1);
+    
+    img = [img resizableImageWithCapInsets:insets];
+    
+    [cell setBackgroundView:[[UIImageView alloc]initWithImage:img]];
     
     return cell;
 }
