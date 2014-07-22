@@ -70,7 +70,21 @@ const NSString *appUrlinAppStore = @"http://itunes.apple.com/app/id878654949";
     
     [[UIApplication sharedApplication]registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge) | (UIRemoteNotificationTypeSound) | (UIRemoteNotificationTypeAlert)];
     
+     //todo add auto play logic to appdelegate
+     if ([AppData sharedAppData].isAutoPlay)
+     {
+         [self autoPlay];
+     }
+    
     return YES;
+}
+
+- (void)autoPlay
+{
+    if (([AppData sharedAppData].currentSong != nil) && ([AppData sharedAppData].currentAlbum != nil)) {
+        
+        [[STKAudioPlayerHelper sharedInstance]playSong:[AppData sharedAppData].currentSong InAlbum:[AppData sharedAppData].currentAlbum];
+    }
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

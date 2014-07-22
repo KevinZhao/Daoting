@@ -643,7 +643,7 @@
     cell.lbl_songNumber.text = song.songNumber;
     
     //customize the selected table view cell
-    UIImageView *imageView_playing = [[UIImageView alloc] initWithFrame:CGRectMake(0, 6, 5, 48)];
+    UIImageView *imageView_playing = [[UIImageView alloc] initWithFrame:CGRectMake(0, 6, 5, 38)];
     imageView_playing.image = [UIImage imageNamed:@"playingsong.png"];
     
     [cell.selectedBackgroundView addSubview:imageView_playing];
@@ -651,13 +651,20 @@
     cell.song = song;
     cell.album = _album;
     
-    UIImage *img = [UIImage imageNamed:@"schedule_list_droplistbg.png"];
+    //set separator color
+    [tableView setSeparatorColor:[UIColor clearColor]];
     
-    UIEdgeInsets insets = UIEdgeInsetsMake(1, 27, 1, 1);
-    
+    //set tableviewcell background
+    UIImage *img = [UIImage imageNamed:@"songcell_bg.png"];
+    UIEdgeInsets insets = UIEdgeInsetsMake(2, 28, 2, 2);
     img = [img resizableImageWithCapInsets:insets];
-    
+
     [cell setBackgroundView:[[UIImageView alloc]initWithImage:img]];
+    
+    //set tableviewcell background when pressed
+    
+    
+
     
     return cell;
 }

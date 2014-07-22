@@ -30,10 +30,17 @@
 {
     _albums = [AlbumManager sharedManager].albums;
     
-    _appdata = [AppData sharedAppData];
-    if (_appdata.isAutoPlay)
-    {
-        [self autoPlay];
+    Album *album = [[AlbumManager sharedManager] searchAlbumByShortName:[AppData sharedAppData].currentAlbum.shortName];
+    
+    for (int i = 0; i < _albums.count; i ++) {
+        
+        Album *subAlbum = _albums[i];
+        
+        if (album.shortName == subAlbum.shortName) {
+            
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
+            [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+        }
     }
 }
 
@@ -44,26 +51,7 @@
 
 #pragma mark - Internal Business Logic
 
-- (void)autoPlay
-{
-    if ((_appdata.currentSong != nil) && (_appdata.currentAlbum != nil)) {
-        
-        [[STKAudioPlayerHelper sharedInstance]playSong:_appdata.currentSong InAlbum:_appdata.currentAlbum];
-    
-        Album *album = [[AlbumManager sharedManager] searchAlbumByShortName:_appdata.currentAlbum.shortName];
-        
-        for (int i = 0; i < _albums.count; i ++) {
-            
-            Album *subAlbum = _albums[i];
-            
-            if (album.shortName == subAlbum.shortName) {
-                
-                NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
-                [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
-            }
-        }
-    }
-}
+
 
 #pragma mark - Table view data source
 
