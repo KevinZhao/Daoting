@@ -14,32 +14,31 @@
 
 @implementation DownloadViewController
 
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-        [_tableview reloadData];
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
 }
-
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [_tableview reloadData];
-    [self setupTimer];
+    if ([AFDownloadHelper sharedOperationManager].operationQueue.operations.count > 0) {
+        _tableview.hidden = NO;
+        [_tableview reloadData];
+        [self setupTimer];
+    }
+    else
+    {
+        _tableview.hidden = YES;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [_timer invalidate];
+    if (_timer) {
+        [_timer invalidate];
+    }
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,6 +68,8 @@
     DownloadCell *cell = (DownloadCell*)[_tableview cellForRowAtIndexPath:indexPath];
     
     AFHTTPRequestOperation *operation = [AFDownloadHelper sharedOperationManager].operationQueue.operations[indexPath.row];
+    
+    
     
     Song *song =[operation.userInfo objectForKey:@"song"];
     Album *album = [operation.userInfo objectForKey:@"album"];

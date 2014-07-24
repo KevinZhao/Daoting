@@ -104,28 +104,28 @@
             //3G
             case AFNetworkReachabilityStatusReachableViaWWAN:
             {
-                        
+                //todo
             }
             break;
 
             //wifi
             case AFNetworkReachabilityStatusReachableViaWiFi:
-                {
-                    //play from URL in wifi mode
-                    STKDataSource* URLDataSource = [STKAudioPlayer dataSourceFromURL:song.Url];
-                    [audioPlayer setDataSource:URLDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:song.Url andCount:0]];
-                }
+            {
+                //play from URL in wifi mode
+                STKDataSource* URLDataSource = [STKAudioPlayer dataSourceFromURL:song.Url];
+                [audioPlayer setDataSource:URLDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:song.Url andCount:0]];
+            }
             break;
                 
             //todo: should not do that, it is a tempory solution
             case AFNetworkReachabilityStatusUnknown:
-                {
-                    //play from URL in wifi mode
-                    STKDataSource* URLDataSource = [STKAudioPlayer dataSourceFromURL:song.Url];
-                    [audioPlayer setDataSource:URLDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:song.Url andCount:0]];
+            {
+                //play from URL in wifi mode
+                STKDataSource* URLDataSource = [STKAudioPlayer dataSourceFromURL:song.Url];
+                [audioPlayer setDataSource:URLDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:song.Url andCount:0]];
                     
-                    NSLog(@"this is not normal, need to fix in next version");
-                }
+                NSLog(@"this is not normal, need to fix in next version");
+            }
             
             default:
                 break;

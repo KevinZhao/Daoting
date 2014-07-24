@@ -19,8 +19,6 @@
     
 }
 
-
-
 + (AFHTTPRequestOperationManager *)sharedOperationManager;
 + (AFDownloadHelper *)sharedAFDownloadHelper;
 

@@ -319,7 +319,14 @@
     
     //2. Check if the song had been purchased
     if ([_appData songNumber:song.songNumber ispurchasedwithAlbum:_album.shortName]) {
+        
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:1.5];
+        [UIView setAnimationDelay:1.0];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
         songCell.img_locked.hidden = YES;
+        [UIView commitAnimations];
     }
 }
 

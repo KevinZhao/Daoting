@@ -69,8 +69,6 @@
 		0A98D6631920EAB700E46EB9 /* progressBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A98D6561920EAB700E46EB9 /* progressBar.png */; };
 		0A98D6641920EAB700E46EB9 /* progressBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A98D6571920EAB700E46EB9 /* progressBar@2x.png */; };
 		0A98D6651920EAB700E46EB9 /* wangyuebo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0A98D6581920EAB700E46EB9 /* wangyuebo.jpg */; };
-		0A98D66A1920F1F500E46EB9 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A98D6661920F1F500E46EB9 /* arrow.png */; };
-		0A98D66B1920F1F500E46EB9 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A98D6671920F1F500E46EB9 /* arrow@2x.png */; };
 		0A98D66C1920F1F500E46EB9 /* arrowSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A98D6681920F1F500E46EB9 /* arrowSelected.png */; };
 		0A98D66D1920F1F500E46EB9 /* arrowSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A98D6691920F1F500E46EB9 /* arrowSelected@2x.png */; };
 		0A98D6701920F25900E46EB9 /* AlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A98D66F1920F25900E46EB9 /* AlbumTableViewController.m */; };
@@ -116,7 +114,7 @@
 		5933AD7718D03EC1001D707B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5933AD7618D03EC1001D707B /* Images.xcassets */; };
 		D82B8AC9197962EE00F107B5 /* download@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D82B8AC5197962EE00F107B5 /* download@2x.png */; };
 		D89D5FA4197D43C600D6FEE0 /* songcell_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D89D5F9B197D43C600D6FEE0 /* songcell_bg@2x.png */; };
-		D8A6613519781B7B00E9E7D3 /* schedule_mark_lock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8A6613319781B7B00E9E7D3 /* schedule_mark_lock@2x.png */; };
+		D8A6613519781B7B00E9E7D3 /* mark_lock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8A6613319781B7B00E9E7D3 /* mark_lock@2x.png */; };
 		F34534A6889146C4A984DE98 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D92318D3DBB470EB30CF35F /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -251,8 +249,6 @@
 		0A98D6561920EAB700E46EB9 /* progressBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = progressBar.png; sourceTree = "<group>"; };
 		0A98D6571920EAB700E46EB9 /* progressBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progressBar@2x.png"; sourceTree = "<group>"; };
 		0A98D6581920EAB700E46EB9 /* wangyuebo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wangyuebo.jpg; sourceTree = "<group>"; };
-		0A98D6661920F1F500E46EB9 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
-		0A98D6671920F1F500E46EB9 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
 		0A98D6681920F1F500E46EB9 /* arrowSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowSelected.png; sourceTree = "<group>"; };
 		0A98D6691920F1F500E46EB9 /* arrowSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrowSelected@2x.png"; sourceTree = "<group>"; };
 		0A98D66E1920F25900E46EB9 /* AlbumTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumTableViewController.h; sourceTree = "<group>"; };
@@ -321,7 +317,7 @@
 		9D92318D3DBB470EB30CF35F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D82B8AC5197962EE00F107B5 /* download@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "download@2x.png"; sourceTree = "<group>"; };
 		D89D5F9B197D43C600D6FEE0 /* songcell_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "songcell_bg@2x.png"; sourceTree = "<group>"; };
-		D8A6613319781B7B00E9E7D3 /* schedule_mark_lock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schedule_mark_lock@2x.png"; sourceTree = "<group>"; };
+		D8A6613319781B7B00E9E7D3 /* mark_lock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mark_lock@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -603,7 +599,7 @@
 			children = (
 				D89D5F9B197D43C600D6FEE0 /* songcell_bg@2x.png */,
 				D82B8AC5197962EE00F107B5 /* download@2x.png */,
-				D8A6613319781B7B00E9E7D3 /* schedule_mark_lock@2x.png */,
+				D8A6613319781B7B00E9E7D3 /* mark_lock@2x.png */,
 				0A659EE81977AFFD00FC893B /* download_pause@2x.png */,
 				0A363AF0195DC0FF00F82DD3 /* coin.png */,
 				0AAF6193196AE4A600C33E52 /* playingsong@2x.png */,
@@ -614,8 +610,6 @@
 				0A1FA99A1958556C002F48EA /* qr_toolbar_more@2x.png */,
 				0A1FA99719581321002F48EA /* test.png */,
 				0ABB4282192E321C007D8BAC /* Icon-72@2x.png */,
-				0A98D6661920F1F500E46EB9 /* arrow.png */,
-				0A98D6671920F1F500E46EB9 /* arrow@2x.png */,
 				0A98D6681920F1F500E46EB9 /* arrowSelected.png */,
 				0A98D6691920F1F500E46EB9 /* arrowSelected@2x.png */,
 				0A98D6561920EAB700E46EB9 /* progressBar.png */,
@@ -856,7 +850,7 @@
 				0AAF6194196AE4A600C33E52 /* playingsong@2x.png in Resources */,
 				0A1FA9A019585612002F48EA /* qr_toolbar_more.png in Resources */,
 				5933AD6F18D03EC1001D707B /* Main_iPad.storyboard in Resources */,
-				D8A6613519781B7B00E9E7D3 /* schedule_mark_lock@2x.png in Resources */,
+				D8A6613519781B7B00E9E7D3 /* mark_lock@2x.png in Resources */,
 				0A1FA99819581321002F48EA /* test.png in Resources */,
 				0AE8648D192EEC6E00EF5A96 /* Liaozhai_SongList.plist in Resources */,
 				0A3CD3641920F8BE00247436 /* Main_iPhone.storyboard in Resources */,
@@ -871,7 +865,6 @@
 				0ABA959F193702D000172862 /* Jinbiao_SongList.plist in Resources */,
 				0AE86497192EF48700EF5A96 /* Haizeiwang_SongList.plist in Resources */,
 				0A98D6641920EAB700E46EB9 /* progressBar@2x.png in Resources */,
-				0A98D66B1920F1F500E46EB9 /* arrow@2x.png in Resources */,
 				0A98D6231920ACBC00E46EB9 /* ShareSDKiPadDefaultShareViewUI.bundle in Resources */,
 				0A98D6651920EAB700E46EB9 /* wangyuebo.jpg in Resources */,
 				0A98D61C1920ACBC00E46EB9 /* WeiboSDK.bundle in Resources */,
@@ -879,7 +872,6 @@
 				0AE8648F192EEC6E00EF5A96 /* Xiayi_SongList.plist in Resources */,
 				0AE8649B192EF48700EF5A96 /* Yongzheng1_SongList.plist in Resources */,
 				0A98D66D1920F1F500E46EB9 /* arrowSelected@2x.png in Resources */,
-				0A98D66A1920F1F500E46EB9 /* arrow.png in Resources */,
 				0A6AA9DF192B88AB00462543 /* SongCell.xib in Resources */,
 				0ABB4283192E321C007D8BAC /* Icon-72@2x.png in Resources */,
 				0A98D60F1920ACBC00E46EB9 /* ShareSDKLocalizable.strings in Resources */,

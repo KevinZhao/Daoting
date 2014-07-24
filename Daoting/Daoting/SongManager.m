@@ -80,7 +80,9 @@
     
     [fileManager removeItemAtPath:filePath error:nil];
     operation.outputStream = [NSOutputStream outputStreamToFileAtPath:filePath append:NO];
-    [[AFDownloadHelper sharedOperationManager].operationQueue addOperation:operation];
+    //[[AFDownloadHelper sharedOperationManager].operationQueue addOperation:operation];
+    
+    [operation start];
     
     //Download complete block
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
@@ -118,7 +120,9 @@
      //Download Failed
         failure:^(AFHTTPRequestOperation *operation, NSError *error)
      {
-         //todo for next version: try to redownload from cloud for 3 times
+         //try to download again
+         NSLog(@"error%@", error.domain);
+         //[self updateSongs:albumShortName];
      }];
 }
 
