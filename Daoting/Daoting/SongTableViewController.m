@@ -184,8 +184,6 @@
         _slider.minimumValue = 0;
         _slider.maximumValue = _audioPlayer.duration;
         _slider.value = _audioPlayer.progress;
-        
-
     }
     //There is no song playing
     else
@@ -197,8 +195,6 @@
         _slider.value = 0;
         _slider.minimumValue = 0;
         _slider.maximumValue = 0;
-        
-
     }
     
     switch (_audioPlayer.state) {
@@ -267,7 +263,7 @@
                 [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
                 
                 [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download_pause.png"] forState:UIControlStateNormal];
-                [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download_pause_pressed.png"] forState:UIControlStateSelected];
+                //[songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download_pause_pressed.png"] forState:UIControlStateSelected];
 
             }
                 break;
@@ -288,7 +284,7 @@
                 [songCell.btn_downloadOrPause removeTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
                 [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
                 [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download.png"] forState:UIControlStateNormal];
-                [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download_pressed.png"] forState:UIControlStateSelected];
+                //[songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download_pressed.png"] forState:UIControlStateSelected];
 
                 songCell.cirProgView_downloadProgress.hidden = YES;
             }
@@ -398,13 +394,11 @@
             }
             case UIEventSubtypeRemoteControlPreviousTrack:
             {
-                //[self playPreviousSong];
                 [_playerHelper playPreviousSong];
                 break;
             }
             case UIEventSubtypeRemoteControlNextTrack:
             {
-                //[self playNextSong];
                 [_playerHelper playNextSong];
                 break;
             }
@@ -656,15 +650,10 @@
     
     //set tableviewcell background
     UIImage *img = [UIImage imageNamed:@"songcell_bg.png"];
-    UIEdgeInsets insets = UIEdgeInsetsMake(2, 28, 2, 2);
+    UIEdgeInsets insets = UIEdgeInsetsMake(1, 28, 1, 1);
     img = [img resizableImageWithCapInsets:insets];
-
+    
     [cell setBackgroundView:[[UIImageView alloc]initWithImage:img]];
-    
-    //set tableviewcell background when pressed
-    
-    
-
     
     return cell;
 }
