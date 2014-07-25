@@ -15,6 +15,7 @@
 #import <ShareSDK/ShareSDK.h>
 #import "WXApi.h"
 #import "AlbumManager.h"
+#import "AFNetworkActivityIndicatorManager.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {

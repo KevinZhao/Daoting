@@ -35,6 +35,7 @@ const NSString *appUrlinAppStore = @"http://itunes.apple.com/app/id878654949";
     //Configure AFNetworking
     [[AFDownloadHelper sharedOperationManager].operationQueue setMaxConcurrentOperationCount:2];
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
     //Initialize the coins for first time running the app
     NSFileManager *fileManager = [NSFileManager defaultManager];

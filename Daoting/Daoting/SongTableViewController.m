@@ -27,7 +27,7 @@
     
     _songs = [[SongManager sharedManager] searchSongArrayByAlbumName:_album.shortName];
 
-    [self setupTimer];
+
     
     [self setupNotificationView];
     
@@ -73,6 +73,8 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(songNumber-1) inSection:0];
     
     [_tableview selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    
+    [self setupTimer];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -167,9 +169,14 @@
 
 -(void)setupTimer
 {
-	_timer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(tick) userInfo:nil repeats:YES];
-	
-	[[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+    [_timer invalidate];
+    
+    //if (_timer == nil) {
+        
+    _timer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(tick) userInfo:nil repeats:YES];
+        
+    [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+    //}
 }
 
 -(void)tick
@@ -284,7 +291,6 @@
                 [songCell.btn_downloadOrPause removeTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
                 [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
                 [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download.png"] forState:UIControlStateNormal];
-                //[songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download_pressed.png"] forState:UIControlStateSelected];
 
                 songCell.cirProgView_downloadProgress.hidden = YES;
             }
@@ -320,13 +326,11 @@
     //2. Check if the song had been purchased
     if ([_appData songNumber:song.songNumber ispurchasedwithAlbum:_album.shortName]) {
         
-        
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:1.5];
-        [UIView setAnimationDelay:1.0];
-        [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
         songCell.img_locked.hidden = YES;
-        [UIView commitAnimations];
+    }
+    else
+    {
+        songCell.img_locked.hidden = NO;
     }
 }
 

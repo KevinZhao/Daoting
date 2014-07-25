@@ -80,7 +80,6 @@
     
     [fileManager removeItemAtPath:filePath error:nil];
     operation.outputStream = [NSOutputStream outputStreamToFileAtPath:filePath append:NO];
-    //[[AFDownloadHelper sharedOperationManager].operationQueue addOperation:operation];
     
     [operation start];
     

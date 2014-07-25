@@ -65,54 +65,55 @@
 
 -(void)updateCellAt:(NSIndexPath*) indexPath
 {
+    NSLog(@"%d",indexPath.row);
+    
     DownloadCell *cell = (DownloadCell*)[_tableview cellForRowAtIndexPath:indexPath];
     
-    AFHTTPRequestOperation *operation = [AFDownloadHelper sharedOperationManager].operationQueue.operations[indexPath.row];
-    
-    
-    
-    Song *song =[operation.userInfo objectForKey:@"song"];
-    Album *album = [operation.userInfo objectForKey:@"album"];
-    
-    DownloadingStatus *status = (DownloadingStatus *)[operation.userInfo objectForKey:@"status"];
-
-    cell.lbl_downloadDescription.text = [NSString stringWithFormat:@"%@ %@", album.title, song.songNumber];
-    
-    switch (status.downloadingStatus) {
-        case fileDownloadStatusWaiting:
-        {
-            cell.pv_downloadProgress.hidden = YES;
+    if ((indexPath.row + 1) <= [AFDownloadHelper sharedOperationManager].operationQueue.operations.count) {
+        AFHTTPRequestOperation *operation = [AFDownloadHelper sharedOperationManager].operationQueue.operations[indexPath.row];
+        
+        Song *song =[operation.userInfo objectForKey:@"song"];
+        Album *album = [operation.userInfo objectForKey:@"album"];
+        
+        DownloadingStatus *status = (DownloadingStatus *)[operation.userInfo objectForKey:@"status"];
+        
+        cell.lbl_downloadDescription.text = [NSString stringWithFormat:@"%@ %@", album.title, song.songNumber];
+        
+        switch (status.downloadingStatus) {
+            case fileDownloadStatusWaiting:
+            {
+                cell.pv_downloadProgress.hidden = YES;
+            }
+                break;
+            case fileDownloadStatusDownloading:
+            {
+                cell.pv_downloadProgress.progress = (float)status.totalBytesRead / (float)status.totalBytesExpectedToRead;
+                cell.pv_downloadProgress.hidden = NO;
+            }
+                break;
+                
+            case fileDownloadStatusCompleted:
+            {
+                cell.btn_cancel.titleLabel.text = @"已完成";
+                cell.pv_downloadProgress.hidden = YES;
+                
+            }
+                break;
+                
+            case fileDownloadStatusError:
+            {
+                cell.pv_downloadProgress.hidden = YES;
+                cell.btn_cancel.titleLabel.text = @"已取消";
+            }
+                
+            default:
+                break;
         }
-            break;
-        case fileDownloadStatusDownloading:
-        {
-            cell.pv_downloadProgress.progress = (float)status.totalBytesRead / (float)status.totalBytesExpectedToRead;
-            
-            cell.pv_downloadProgress.hidden = NO;
-        }
-            break;
-
-        case fileDownloadStatusCompleted:
-        {
-            
-            cell.btn_cancel.titleLabel.text = @"已完成";
-            
-            cell.pv_downloadProgress.hidden = YES;
-    
-        }
-            break;
-    
-        case fileDownloadStatusError:
-        {
-            cell.pv_downloadProgress.hidden = YES;
-            
-            cell.btn_cancel.titleLabel.text = @"已取消";
-        }
-            
-        default:
-            break;
-        }
-    
+    }
+    else
+    {
+        [_tableview reloadData];
+    }
 }
 
 - (IBAction)cancelAll:(id)sender
