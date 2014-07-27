@@ -171,12 +171,9 @@
 {
     [_timer invalidate];
     
-    //if (_timer == nil) {
-        
     _timer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(tick) userInfo:nil repeats:YES];
         
     [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
-    //}
 }
 
 -(void)tick

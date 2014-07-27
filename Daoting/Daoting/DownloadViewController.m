@@ -22,7 +22,10 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    if ([AFDownloadHelper sharedOperationManager].operationQueue.operations.count > 0) {
+    _downloadQueue = [AFDownloadHelper sharedOperationManager].operationQueue;
+    
+    if (_downloadQueue.operations.count > 0) {
+        
         _tableview.hidden = NO;
         [_tableview reloadData];
         [self setupTimer];
@@ -30,6 +33,11 @@
     else
     {
         _tableview.hidden = YES;
+        UILabel *lbl_noDownloadQueue = [[UILabel alloc]init];
+        lbl_noDownloadQueue.text = @"当前没有下载任务";
+        lbl_noDownloadQueue
+        
+        //[self.view addSubview: lbl_noDownloadQueue];
     }
 }
 
@@ -38,18 +46,16 @@
     if (_timer) {
         [_timer invalidate];
     }
-
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(void)setupTimer
 {
-    _timer = [NSTimer timerWithTimeInterval:0.05 target:self selector:@selector(tick) userInfo:nil repeats:YES];
+    _timer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(tick) userInfo:nil repeats:YES];
     
     [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
 }
@@ -65,11 +71,11 @@
 
 -(void)updateCellAt:(NSIndexPath*) indexPath
 {
-    NSLog(@"%d",indexPath.row);
+    NSLog(@"%d", indexPath.row);
     
     DownloadCell *cell = (DownloadCell*)[_tableview cellForRowAtIndexPath:indexPath];
     
-    if ((indexPath.row + 1) <= [AFDownloadHelper sharedOperationManager].operationQueue.operations.count) {
+    if ((indexPath.row + 1) <= _downloadQueue.operations.count) {
         AFHTTPRequestOperation *operation = [AFDownloadHelper sharedOperationManager].operationQueue.operations[indexPath.row];
         
         Song *song =[operation.userInfo objectForKey:@"song"];
@@ -134,9 +140,6 @@
         @finally {
             
         }
-        
-        //[self.tableview reloadData];
-    
 }
 
 #pragma mark UITableView Delegate

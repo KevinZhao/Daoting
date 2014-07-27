@@ -15,6 +15,7 @@
 {
     UITableView                         *_tableview;
     NSTimer                             *_timer;
+    NSOperationQueue                    *_downloadQueue;
 }
 
 @property (nonatomic, strong) IBOutlet UITableView      *tableview;
