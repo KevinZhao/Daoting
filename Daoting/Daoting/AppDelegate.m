@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import <AVFoundation/AVFoundation.h>
 
-const NSString *appUrlinAppStore = @"http://itunes.apple.com/app/id878654949";
+
 
 @interface AppDelegate()
 {
@@ -57,6 +57,7 @@ const NSString *appUrlinAppStore = @"http://itunes.apple.com/app/id878654949";
     [STKAudioPlayerHelper sharedInstance];
     
     //configure shareSDK
+    _appUrlinAws = @"http://t.cn/RPtnXCE";
     [ShareSDK registerApp:@"16bbd8d2753a"];
     
     //[ShareSDK connectSinaWeiboWithAppKey:@"3201194191"

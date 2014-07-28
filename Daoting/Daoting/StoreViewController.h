@@ -8,17 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-#import "AppData.h"
-#import "StoreKit/StoreKit.h"
-#import "UILabelStrikeThrough.h"
-#import "CoinIAPHelper.h"
 #import "AppDelegate.h"
-#import <ShareSDK/ShareSDK.h>
-#import "NotificationView.h"
 
-@interface StoreViewController : UIViewController
+@interface StoreViewController : UIViewController<IAPHelperDelegate>
 {
-    AppData *_appData;
+    AppData         *_appData;
+    AppDelegate     *_appDelegate;
+    UIActivityIndicatorView *_spinner;
 }
 
 @property (nonatomic, strong) NSArray *products;

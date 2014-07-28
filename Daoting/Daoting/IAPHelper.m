@@ -97,6 +97,9 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
             default:
                 break;
         }
+        
+        
+        [self.delegate onLoadedProducts];
     };
 }
 

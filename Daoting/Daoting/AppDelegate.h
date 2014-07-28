@@ -15,14 +15,24 @@
 #import <ShareSDK/ShareSDK.h>
 #import "WXApi.h"
 #import "AlbumManager.h"
+#import "AppData.h"
+#import "StoreKit/StoreKit.h"
+#import "UILabelStrikeThrough.h"
+#import "CoinIAPHelper.h"
+#import "AppDelegate.h"
+#import <ShareSDK/ShareSDK.h>
+#import "NotificationView.h"
 #import "AFNetworkActivityIndicatorManager.h"
+
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {
+    
 }
 
 @property (strong, nonatomic) UIWindow  *window;
 @property (assign, nonatomic) long      *coins;
 @property (nonatomic, retain) NSArray   *products;
+@property (nonatomic, retain) NSString  *appUrlinAws;
 
 @end

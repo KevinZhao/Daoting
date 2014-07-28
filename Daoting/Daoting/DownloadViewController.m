@@ -33,11 +33,10 @@
     else
     {
         _tableview.hidden = YES;
-        UILabel *lbl_noDownloadQueue = [[UILabel alloc]init];
+        UILabel *lbl_noDownloadQueue = [[UILabel alloc]initWithFrame:CGRectMake(100, 200, 200, 40)];
         lbl_noDownloadQueue.text = @"当前没有下载任务";
-        lbl_noDownloadQueue
         
-        //[self.view addSubview: lbl_noDownloadQueue];
+        [self.view addSubview: lbl_noDownloadQueue];
     }
 }
 

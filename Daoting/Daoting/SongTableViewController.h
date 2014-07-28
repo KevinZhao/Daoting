@@ -36,6 +36,7 @@
     AppData                             *_appData;
     STKAudioPlayerHelper                *_playerHelper;
     NSMutableDictionary                 *_actionSheetStrings;
+    AppDelegate                         *_appDelegate;
 }
 
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;

@@ -35,6 +35,8 @@
 {
     self.lbl_coins.text = [NSString stringWithFormat:@"%d", _appData.coins];
     [self setupNotificationView];
+    
+    _appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
 }
 
 #pragma mark
@@ -138,7 +140,19 @@
         //purchase based on user selection
         NSInteger tag = (NSInteger)sender.tag;
         CoinIAPHelper *helper = [CoinIAPHelper sharedInstance];
+        helper.delegate = self;
         [helper buyProduct:_products[tag]];
+        
+        _spinner = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(0, 0, 320  , 460)];
+        
+        _spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+        _spinner.color = [UIColor blueColor];
+        
+        [_spinner startAnimating];
+        [self.view addSubview:_spinner];
+        
+        
+        
     }else{
         
         //indicate the iTunes Store can not been connected
@@ -162,13 +176,13 @@
         
         [_appData.dailyCheckinQueue setObject:yes forKey:date];
         
-        _appData.coins += 30;
+        _appData.coins += 20;
         
         self.lbl_coins.text = [NSString stringWithFormat:@"%d", _appData.coins];
         
         [_appData save];
         
-        NSString *notification = @"您获得了 30金币";
+        NSString *notification = @"您获得了 20金币";
         
         [self showNotification:notification];
     }
@@ -183,11 +197,11 @@
 {
     NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"AppIcon76x76@2x" ofType:@"png"];
     
-    id<ISSContent> publishContent = [ShareSDK content:@"这个app不错，评书、有声书都有，严重推荐! http://ec2-54-254-246-89.ap-southeast-1.compute.amazonaws.com/zhengdong.html"
+    id<ISSContent> publishContent = [ShareSDK content:[NSString stringWithFormat:@"这个app不错，评书、有声书都有，严重推荐! %@", _appDelegate.appUrlinAws]
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imgPath]
-                                                title:@"这个app不错，评书、有声书都有，严重推荐！http://ec2-54-254-246-89.ap-southeast-1.compute.amazonaws.com/zhengdong.html"
-                                                  url:@"http://ec2-54-254-246-89.ap-southeast-1.compute.amazonaws.com/zhengdong.html"
+                                                title:[NSString stringWithFormat:@"这个app不错，评书、有声书都有，严重推荐! %@", _appDelegate.appUrlinAws]
+                                                  url:_appDelegate.appUrlinAws
                                           description:@""
                                             mediaType:SSPublishContentMediaTypeNews];
     
@@ -202,8 +216,8 @@
         if (state == SSResponseStateSuccess)
         {
             //share
-            _appData.coins = _appData.coins + 50;
-            NSString *notification = @"您获得了 50金币";
+            _appData.coins = _appData.coins + 20;
+            NSString *notification = @"您获得了 20金币";
             
             [self showNotification:notification];
         }
@@ -212,6 +226,11 @@
             NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
         }
     }];
+}
+
+- (void)onLoadedProducts
+{
+    [_spinner stopAnimating];
 }
 
 @end

@@ -43,6 +43,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    _appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     scrollView.contentSize = CGSizeMake(640, 406);
     scrollView.delegate = self;
@@ -417,30 +419,35 @@
 }
 
 - (void)shareAlbum
-{
-    id<ISSContent> publishContent = [ShareSDK content:@"我正在听王玥波的评书《聊斋》，收集整理的好全，严重推荐! http://t.cn/RvTAdqk"
+{    
+    id<ISSContent> publishContent = [ShareSDK content:[NSString stringWithFormat:@"评书、有声书都有,我正在听 %@的《%@》%@", _album.artistName,_album.title, _appDelegate.appUrlinAws]
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithUrl:[_album.imageUrl absoluteString]]
-                                                title:@"我正在听王玥波的评书《聊斋》，收集整理的好全，严重推荐！http://t.cn/RvTAdqk"
-                                                  url:@"http://t.cn/RvTAdqk"
+                                                title:[NSString stringWithFormat:@"评书、有声书都有,我正在听 %@的《%@》%@", _album.artistName,_album.title, _appDelegate.appUrlinAws]
+                                                  url:_appDelegate.appUrlinAws
                                           description:@""
                                             mediaType:SSPublishContentMediaTypeNews];
     
     
-    [ShareSDK showShareViewWithType:ShareTypeWeixiTimeline container:nil content:publishContent statusBarTips:NO authOptions:nil shareOptions:nil result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-        
-        if (state == SSResponseStateSuccess)
-        {
-            //share
-            _appData.coins = _appData.coins + 50;
-            NSString *notification = @"+ 50";
-            [self showNotification:notification];
-        }
-        else if (state == SSResponseStateFail)
-        {
-            NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
-        }
-    }];
+    [ShareSDK showShareViewWithType:ShareTypeWeixiTimeline
+                          container:nil
+                            content:publishContent
+                      statusBarTips:NO authOptions:nil
+                       shareOptions:nil
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 
+                                 if (state == SSResponseStateSuccess)
+                                 {
+                                     //share album will not give credit
+                                     NSString *notification = @"分享成功";
+                                     
+                                     [self showNotification:notification];
+                                 }
+                                 else if (state == SSResponseStateFail)
+                                 {
+                                     NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                 }
+                             }];
 }
 
 - (UITabBarController *)getTabbarViewController

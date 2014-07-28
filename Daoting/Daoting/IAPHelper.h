@@ -14,6 +14,13 @@
 UIKIT_EXTERN NSString *const IAPHelperProductPurchasedNotification;
 typedef void (^RequestProductsCompletionHandler)(BOOL success, NSArray * products);
 
+@protocol IAPHelperDelegate <NSObject>
+
+/// Raised when an item has started playing
+-(void) onLoadedProducts;
+
+@end
+
 @interface IAPHelper : NSObject<SKProductsRequestDelegate, SKPaymentTransactionObserver>
 {
     SKProductsRequest * _productsRequest;
@@ -22,6 +29,8 @@ typedef void (^RequestProductsCompletionHandler)(BOOL success, NSArray * product
     NSSet * _productIdentifiers;
     NSMutableSet * _purchasedProductIdentifiers;
 }
+
+@property (readwrite, unsafe_unretained) id<IAPHelperDelegate> delegate;
 
 - (id)initWithProductIdentifiers:(NSSet *)productIdentifiers;
 - (void)requestProductsWithCompletionHandler:(RequestProductsCompletionHandler)completionHandler;
