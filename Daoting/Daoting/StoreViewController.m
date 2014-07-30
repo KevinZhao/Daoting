@@ -143,18 +143,15 @@
         helper.delegate = self;
         [helper buyProduct:_products[tag]];
         
-        _spinner = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(0, 0, 320  , 460)];
+        _spinner = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(0, 0, 320, 460)];
         
         _spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
-        _spinner.color = [UIColor blueColor];
+        _spinner.color = [UIColor greenColor];
         
         [_spinner startAnimating];
         [self.view addSubview:_spinner];
         
-        
-        
     }else{
-        
         //indicate the iTunes Store can not been connected
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"无法连接iTunes Store，请重试" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         

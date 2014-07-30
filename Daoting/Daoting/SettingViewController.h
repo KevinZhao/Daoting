@@ -12,10 +12,13 @@
 #import "ClearCacheViewController.h"
 #import "PurchasedAlbumViewController.h"
 #import "AppData.h"
+#import "AppDelegate.h"
+
 
 @interface SettingViewController : UITableViewController
 {
-    AppData *_appData;
+    AppData         *_appData;
+    AppDelegate     *_appdelegate;
 }
 
 @end

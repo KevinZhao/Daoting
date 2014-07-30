@@ -9,14 +9,6 @@
 #import "AppDelegate.h"
 #import <AVFoundation/AVFoundation.h>
 
-
-
-@interface AppDelegate()
-{
-
-}
-@end
-
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -64,13 +56,19 @@
     //                           appSecret:@"0334252914651e8f76bad63337b3b78f"
     //                         redirectUri:@"http://appgo.cn"];
     
-    //[ShareSDK connectWeChatWithAppId:@"wx354ee3c34a7a8eda" wechatCls:[WXApi class]];
     [ShareSDK connectWeChatTimelineWithAppId:@"wx134b0f70f3612fe8" wechatCls:[WXApi class]];
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSystemTimeChanged:) name:UIApplicationSignificantTimeChangeNotification object:nil];
     
     [[UIApplication sharedApplication]registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge) | (UIRemoteNotificationTypeSound) | (UIRemoteNotificationTypeAlert)];
+    
+    //Customize system default color
+    self.defaultColor = [UIColor colorWithRed:0.2 green:.995 blue:0.3 alpha:1.0];
+    
+    [[UITabBar appearance] setSelectedImageTintColor:_defaultColor];
+    [[UIBarButtonItem appearance]setTintColor:_defaultColor];
+    [[UINavigationBar appearance]setTintColor:_defaultColor];
     
      //add auto play logic to appdelegate
      if ([AppData sharedAppData].isAutoPlay)

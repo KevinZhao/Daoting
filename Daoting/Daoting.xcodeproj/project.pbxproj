@@ -13,7 +13,6 @@
 		0A1FA99F19585612002F48EA /* qr_toolbar_more_hl.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA99D19585612002F48EA /* qr_toolbar_more_hl.png */; };
 		0A1FA9A019585612002F48EA /* qr_toolbar_more.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA99E19585612002F48EA /* qr_toolbar_more.png */; };
 		0A2C37D819457EA90097C9CC /* DownloadStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2C37D719457EA90097C9CC /* DownloadStatus.m */; };
-		0A363AF1195DC0FF00F82DD3 /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A363AF0195DC0FF00F82DD3 /* coin.png */; };
 		0A37F8C519262CD100826C8C /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F8C419262CD100826C8C /* Song.m */; };
 		0A37F8CB19262D2600826C8C /* SongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A37F8CA19262D2600826C8C /* SongCell.m */; };
 		0A3CD3641920F8BE00247436 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A3CD3621920F8BE00247436 /* Main_iPhone.storyboard */; };
@@ -97,6 +96,14 @@
 		0AE8649B192EF48700EF5A96 /* Yongzheng1_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE86495192EF48700EF5A96 /* Yongzheng1_SongList.plist */; };
 		0AE8649C192EF48700EF5A96 /* Yongzheng3_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE86496192EF48700EF5A96 /* Yongzheng3_SongList.plist */; };
 		0AE8649E192EF4DF00EF5A96 /* Yongzheng2_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE8649D192EF4DF00EF5A96 /* Yongzheng2_SongList.plist */; };
+		0AEFC3711988C48000CECC93 /* btn_checkin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFC36F1988C48000CECC93 /* btn_checkin@2x.png */; };
+		0AEFC3721988C48000CECC93 /* btn_share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFC3701988C48000CECC93 /* btn_share@2x.png */; };
+		0AEFC3751988D5D300CECC93 /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFC3731988D5D300CECC93 /* coin.png */; };
+		0AEFC3761988D5D300CECC93 /* coins.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFC3741988D5D300CECC93 /* coins.png */; };
+		0AEFC37B1988DBD800CECC93 /* colorStyle_allMusic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFC3791988DBD800CECC93 /* colorStyle_allMusic@2x.png */; };
+		0AEFC37C1988DBD800CECC93 /* colorStyle_download@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFC37A1988DBD800CECC93 /* colorStyle_download@2x.png */; };
+		0AEFC3801988DDC800CECC93 /* tabbar_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFC37F1988DDC800CECC93 /* tabbar_setting@2x.png */; };
+		0AEFC3821988E17E00CECC93 /* bag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFC3811988E17E00CECC93 /* bag@2x.png */; };
 		0AFB65A519245A7E000F2AE6 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB65A419245A7E000F2AE6 /* IAPHelper.m */; };
 		0AFB65A719245BD4000F2AE6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AFB65A619245BD4000F2AE6 /* StoreKit.framework */; };
 		0AFB65AA19246656000F2AE6 /* CoinIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB65A919246656000F2AE6 /* CoinIAPHelper.m */; };
@@ -126,7 +133,6 @@
 		0A1FA99E19585612002F48EA /* qr_toolbar_more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qr_toolbar_more.png; sourceTree = "<group>"; };
 		0A2C37D619457EA90097C9CC /* DownloadStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadStatus.h; sourceTree = "<group>"; };
 		0A2C37D719457EA90097C9CC /* DownloadStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadStatus.m; sourceTree = "<group>"; };
-		0A363AF0195DC0FF00F82DD3 /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = coin.png; path = ../../coin.png; sourceTree = "<group>"; };
 		0A37F8C319262CD100826C8C /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
 		0A37F8C419262CD100826C8C /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
 		0A37F8C919262D2600826C8C /* SongCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongCell.h; sourceTree = "<group>"; };
@@ -287,6 +293,14 @@
 		0AE86495192EF48700EF5A96 /* Yongzheng1_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Yongzheng1_SongList.plist; path = SongPlists/Yongzheng1_SongList.plist; sourceTree = "<group>"; };
 		0AE86496192EF48700EF5A96 /* Yongzheng3_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Yongzheng3_SongList.plist; path = SongPlists/Yongzheng3_SongList.plist; sourceTree = "<group>"; };
 		0AE8649D192EF4DF00EF5A96 /* Yongzheng2_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Yongzheng2_SongList.plist; path = SongPlists/Yongzheng2_SongList.plist; sourceTree = "<group>"; };
+		0AEFC36F1988C48000CECC93 /* btn_checkin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_checkin@2x.png"; sourceTree = "<group>"; };
+		0AEFC3701988C48000CECC93 /* btn_share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_share@2x.png"; sourceTree = "<group>"; };
+		0AEFC3731988D5D300CECC93 /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin.png; sourceTree = "<group>"; };
+		0AEFC3741988D5D300CECC93 /* coins.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coins.png; sourceTree = "<group>"; };
+		0AEFC3791988DBD800CECC93 /* colorStyle_allMusic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "colorStyle_allMusic@2x.png"; sourceTree = "<group>"; };
+		0AEFC37A1988DBD800CECC93 /* colorStyle_download@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "colorStyle_download@2x.png"; sourceTree = "<group>"; };
+		0AEFC37F1988DDC800CECC93 /* tabbar_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_setting@2x.png"; sourceTree = "<group>"; };
+		0AEFC3811988E17E00CECC93 /* bag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bag@2x.png"; sourceTree = "<group>"; };
 		0AFB65A319245A7E000F2AE6 /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
 		0AFB65A419245A7E000F2AE6 /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
 		0AFB65A619245BD4000F2AE6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -594,11 +608,18 @@
 		0A98D64B1920EAB700E46EB9 /* Artworks */ = {
 			isa = PBXGroup;
 			children = (
+				0AEFC3811988E17E00CECC93 /* bag@2x.png */,
+				0AEFC37F1988DDC800CECC93 /* tabbar_setting@2x.png */,
+				0AEFC3791988DBD800CECC93 /* colorStyle_allMusic@2x.png */,
+				0AEFC37A1988DBD800CECC93 /* colorStyle_download@2x.png */,
+				0AEFC3731988D5D300CECC93 /* coin.png */,
+				0AEFC3741988D5D300CECC93 /* coins.png */,
+				0AEFC36F1988C48000CECC93 /* btn_checkin@2x.png */,
+				0AEFC3701988C48000CECC93 /* btn_share@2x.png */,
 				D89D5F9B197D43C600D6FEE0 /* songcell_bg@2x.png */,
 				D82B8AC5197962EE00F107B5 /* download@2x.png */,
 				D8A6613319781B7B00E9E7D3 /* mark_lock@2x.png */,
 				0A659EE81977AFFD00FC893B /* download_pause@2x.png */,
-				0A363AF0195DC0FF00F82DD3 /* coin.png */,
 				0AAF6193196AE4A600C33E52 /* playingsong@2x.png */,
 				0A5F4C9C195AB0D3003924C7 /* AppIcon76x76@2x.png */,
 				0A1FA99D19585612002F48EA /* qr_toolbar_more_hl.png */,
@@ -840,6 +861,7 @@
 				0A1FA99B1958556C002F48EA /* qr_toolbar_more_hl@2x.png in Resources */,
 				0A1FA99C1958556C002F48EA /* qr_toolbar_more@2x.png in Resources */,
 				0AE86488192EDECA00EF5A96 /* Zhengdong1_SongList.plist in Resources */,
+				0AEFC37C1988DBD800CECC93 /* colorStyle_download@2x.png in Resources */,
 				D82B8AC9197962EE00F107B5 /* download@2x.png in Resources */,
 				0A5F4C9D195AB0D3003924C7 /* AppIcon76x76@2x.png in Resources */,
 				0AAF6194196AE4A600C33E52 /* playingsong@2x.png in Resources */,
@@ -847,14 +869,17 @@
 				5933AD6F18D03EC1001D707B /* Main_iPad.storyboard in Resources */,
 				D8A6613519781B7B00E9E7D3 /* mark_lock@2x.png in Resources */,
 				0A1FA99819581321002F48EA /* test.png in Resources */,
+				0AEFC37B1988DBD800CECC93 /* colorStyle_allMusic@2x.png in Resources */,
 				0AE8648D192EEC6E00EF5A96 /* Liaozhai_SongList.plist in Resources */,
 				0A3CD3641920F8BE00247436 /* Main_iPhone.storyboard in Resources */,
 				0AE8649C192EF48700EF5A96 /* Yongzheng3_SongList.plist in Resources */,
 				0AE86498192EF48700EF5A96 /* Mingchao_SongList.plist in Resources */,
+				0AEFC3721988C48000CECC93 /* btn_share@2x.png in Resources */,
 				0A1FA99F19585612002F48EA /* qr_toolbar_more_hl.png in Resources */,
-				0A363AF1195DC0FF00F82DD3 /* coin.png in Resources */,
 				0A659EF51977AFFD00FC893B /* download_pause@2x.png in Resources */,
+				0AEFC3821988E17E00CECC93 /* bag@2x.png in Resources */,
 				5933AD7718D03EC1001D707B /* Images.xcassets in Resources */,
+				0AEFC3761988D5D300CECC93 /* coins.png in Resources */,
 				D89D5FA4197D43C600D6FEE0 /* songcell_bg@2x.png in Resources */,
 				0A98D6281920ACBC00E46EB9 /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
 				0ABA959F193702D000172862 /* Jinbiao_SongList.plist in Resources */,
@@ -865,10 +890,13 @@
 				0A98D61C1920ACBC00E46EB9 /* WeiboSDK.bundle in Resources */,
 				0AE8648E192EEC6E00EF5A96 /* Suitang_SongList.plist in Resources */,
 				0AE8648F192EEC6E00EF5A96 /* Xiayi_SongList.plist in Resources */,
+				0AEFC3801988DDC800CECC93 /* tabbar_setting@2x.png in Resources */,
 				0AE8649B192EF48700EF5A96 /* Yongzheng1_SongList.plist in Resources */,
 				0A98D66D1920F1F500E46EB9 /* arrowSelected@2x.png in Resources */,
 				0A6AA9DF192B88AB00462543 /* SongCell.xib in Resources */,
 				0ABB4283192E321C007D8BAC /* Icon-72@2x.png in Resources */,
+				0AEFC3711988C48000CECC93 /* btn_checkin@2x.png in Resources */,
+				0AEFC3751988D5D300CECC93 /* coin.png in Resources */,
 				0A98D60F1920ACBC00E46EB9 /* ShareSDKLocalizable.strings in Resources */,
 				0A98D6101920ACBC00E46EB9 /* Resource.bundle in Resources */,
 				5933AD6318D03EC1001D707B /* InfoPlist.strings in Resources */,

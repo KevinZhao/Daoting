@@ -31,6 +31,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     _appData = [AppData sharedAppData];
+    _appdelegate = [[UIApplication sharedApplication] delegate];
 }
 
 - (void)didReceiveMemoryWarning
@@ -77,7 +78,7 @@
         [switchCell setSelectionStyle:UITableViewCellSelectionStyleNone];
         
         switchCell.sw_option.on = _appData.isAutoPurchase;
-        [switchCell.sw_option setTintColor:[UIColor blueColor]];
+        [switchCell.sw_option setTintColor:_appdelegate.defaultColor];
         
         [switchCell.sw_option addTarget:self action:@selector(onSwitchValueChanged1:) forControlEvents:UIControlEventValueChanged];
     }
@@ -91,6 +92,7 @@
         [switchCell setSelectionStyle:UITableViewCellSelectionStyleNone];
         
         switchCell.sw_option.on = _appData.isAutoPlay;
+        [switchCell.sw_option setTintColor:_appdelegate.defaultColor];
         [switchCell.sw_option addTarget:self action:@selector(onSwitchValueChanged2:) forControlEvents:UIControlEventValueChanged];
 
     }
