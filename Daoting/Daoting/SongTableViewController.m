@@ -22,12 +22,12 @@
     _audioPlayer    = _playerHelper.audioPlayer;
     _appData        = [AppData sharedAppData];
     _playerHelper.delegate = self;
+    _appDelegate    = [[UIApplication sharedApplication]delegate];
+    _slider.tintColor = _appDelegate.defaultColor;
     
     [super viewDidLoad];
     
     _songs = [[SongManager sharedManager] searchSongArrayByAlbumName:_album.shortName];
-
-
     
     [self setupNotificationView];
     
@@ -43,8 +43,6 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    _appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
     self.automaticallyAdjustsScrollViewInsets = NO;
     scrollView.contentSize = CGSizeMake(640, 406);
     scrollView.delegate = self;
@@ -102,13 +100,18 @@
     
     [_notificationView.layer setMasksToBounds:YES];
     [_notificationView.layer setCornerRadius:10.0];
-    [_notificationView.layer setBorderWidth:5.0];
+    [_notificationView.layer setBorderWidth:2.0];
     
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 0, 0, 1, 0.2 });
-    [_notificationView.layer setBorderColor:colorref];//边框颜色
+    [_notificationView.layer setBorderColor:(_appDelegate.defaultColor.CGColor)];//边框颜色
     
     _notificationView.alpha = 0.0;
+}
+
+- (void)setupDescriptionView
+{
+    NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"DescriptionView_iphone" owner:self options:nil];
+    
+    
 }
 
 -(void)playSong:(Song*)song

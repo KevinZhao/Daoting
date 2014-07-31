@@ -31,7 +31,6 @@
 }
 
 @property (strong, nonatomic) UIWindow  *window;
-//@property (assign, nonatomic) long      *coins;
 @property (nonatomic, retain) NSArray   *products;
 @property (nonatomic, retain) NSString  *appUrlinAws;
 @property (strong, nonatomic) UIColor   *defaultColor;

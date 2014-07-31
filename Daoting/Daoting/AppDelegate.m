@@ -64,7 +64,7 @@
     [[UIApplication sharedApplication]registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge) | (UIRemoteNotificationTypeSound) | (UIRemoteNotificationTypeAlert)];
     
     //Customize system default color
-    self.defaultColor = [UIColor colorWithRed:0.2 green:.995 blue:0.3 alpha:1.0];
+    self.defaultColor = [UIColor colorWithRed:0.125 green:0.64 blue:0.34 alpha:1.0];
     
     [[UITabBar appearance] setSelectedImageTintColor:_defaultColor];
     [[UIBarButtonItem appearance]setTintColor:_defaultColor];
