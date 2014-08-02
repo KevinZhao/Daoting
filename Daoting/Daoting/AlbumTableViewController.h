@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "AppData.h"
 #import "AlbumManager.h"
+#import "AppDelegate.h"
 
 @interface AlbumTableViewController : UITableViewController
 {
     NSMutableArray      *_albums;
+    AppDelegate         *_appdelegate;
 }
 
 @property (nonatomic, retain) NSMutableArray *albums;

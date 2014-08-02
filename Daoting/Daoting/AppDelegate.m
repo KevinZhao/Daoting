@@ -65,6 +65,7 @@
     
     //Customize system default color
     self.defaultColor = [UIColor colorWithRed:0.125 green:0.64 blue:0.34 alpha:1.0];
+    self.defaultBackgroundColor = [UIColor colorWithRed:0.9378 green:0.9318 blue:0.9 alpha:0.95];
     
     [[UITabBar appearance] setSelectedImageTintColor:_defaultColor];
     [[UIBarButtonItem appearance]setTintColor:_defaultColor];

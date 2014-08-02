@@ -18,6 +18,9 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+ 
+    //Configure Local variable
     _playerHelper   = [STKAudioPlayerHelper sharedInstance];
     _audioPlayer    = _playerHelper.audioPlayer;
     _appData        = [AppData sharedAppData];
@@ -25,12 +28,9 @@
     _appDelegate    = [[UIApplication sharedApplication]delegate];
     _slider.tintColor = _appDelegate.defaultColor;
     
-    [super viewDidLoad];
-    
     _songs = [[SongManager sharedManager] searchSongArrayByAlbumName:_album.shortName];
     
-    [self setupNotificationView];
-    
+    //Todo: remove the actionsheet?
     _actionSheetStrings = [[NSMutableDictionary alloc] init];
     [_actionSheetStrings setObject:@"取消" forKey:@"cancel"];
     [_actionSheetStrings setObject:@"分享" forKey:@"share"];
@@ -38,6 +38,9 @@
     
     UIImage *progressBarImage = [UIImage imageNamed:@"progressBar.png"];
     [_slider setThumbImage:progressBarImage forState:UIControlStateNormal];
+    
+    self.view.backgroundColor = _appDelegate.defaultBackgroundColor;
+    _tableview.backgroundColor = _appDelegate.defaultBackgroundColor;
 }
 
 
@@ -56,25 +59,24 @@
     //Load from xib for prototype cell
     [_tableview registerNib:[UINib nibWithNibName:@"SongCell" bundle:nil]forCellReuseIdentifier:@"SongCell"];
 
+    //Configure Scroll View
     [scrollView addSubview:_tableview];
-    
-    //Todo: Change to another UIView to give description of album
-    UIImageView *test = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"wangyuebo.jpg"]];
-    test.frame = CGRectMake(320, 0, 320, 406);
-    [scrollView addSubview:test];
+    [self setupDescriptionView];
+    [scrollView addSubview:_descriptionView];
     
     //Configure pagecontrol
     pageControl.currentPage = 0;
     pageControl.numberOfPages = 2;
     
+    //Scroll to latest playing row
     NSString* songNumberstring = (NSString*)[_appData.playingPositionQueue objectForKey:_album.title];
     NSInteger songNumber = [songNumberstring integerValue];
-    
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(songNumber-1) inSection:0];
     
     [_tableview selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
     
     [self setupTimer];
+    [self setupNotificationView];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -111,7 +113,10 @@
 {
     NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"DescriptionView_iphone" owner:self options:nil];
     
+    _descriptionView = [nibViews objectAtIndex:0];
+    _descriptionView.frame = CGRectMake(320, 0, 320, 406);
     
+    _descriptionView.album = _album;
 }
 
 -(void)playSong:(Song*)song
@@ -639,6 +644,8 @@
 {
     Song *song = [_songs objectAtIndex:indexPath.row];
     SongCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SongCell" forIndexPath:indexPath];
+    
+    cell.backgroundColor = [UIColor clearColor];
     
     //Clear content
     cell.cirProgView_downloadProgress.hidden = YES;

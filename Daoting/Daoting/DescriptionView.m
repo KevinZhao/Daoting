@@ -10,14 +10,13 @@
 
 @implementation DescriptionView
 
-- (id)initWithFrame:(CGRect)frame
+
+- (void)didMoveToWindow
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+    [_img_artist setImageWithURL:_album.imageUrl];
+    _lbl_description.text = _album.description;
 }
+
 
 
 

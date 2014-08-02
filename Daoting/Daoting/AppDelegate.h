@@ -34,5 +34,6 @@
 @property (nonatomic, retain) NSArray   *products;
 @property (nonatomic, retain) NSString  *appUrlinAws;
 @property (strong, nonatomic) UIColor   *defaultColor;
+@property (strong, nonatomic) UIColor   *defaultBackgroundColor;
 
 @end

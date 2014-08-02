@@ -23,11 +23,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    _appdelegate = [[UIApplication sharedApplication]delegate];
+    
+    self.view.backgroundColor = _appdelegate.defaultBackgroundColor;
+    
     _albums = [AlbumManager sharedManager].albums;
     
     Album *album = [[AlbumManager sharedManager] searchAlbumByShortName:[AppData sharedAppData].currentAlbum.shortName];
@@ -49,12 +52,7 @@
     [super didReceiveMemoryWarning];
 }
 
-#pragma mark - Internal Business Logic
-
-
-
 #pragma mark - Table view data source
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return _albums.count;
@@ -68,15 +66,6 @@
     //Configure Cell
     cell.lbl_albumTitle.text = album.title;
     cell.lbl_albumDescription.text = album.description;
-    
-    if ([album.updatingStatus isEqual:@"Updating"]) {
-    
-        cell.lbl_Status.text = @"更新中";
-    }
-    
-    if ([album.updatingStatus isEqual:@"Completed"]) {
-        cell.lbl_Status.text = @"已完结";
-    }
     
     //Updating Cell Image
     NSURLRequest *request = [NSURLRequest requestWithURL:album.imageUrl];
@@ -92,6 +81,8 @@
         [weakCell setNeedsLayout];
                                        
     } failure:nil];
+    
+    cell.backgroundColor = [UIColor clearColor];
     
     //selection
     UIImageView *imageView_playing = [[UIImageView alloc] initWithFrame:CGRectMake(0, 16, 5, 48)];

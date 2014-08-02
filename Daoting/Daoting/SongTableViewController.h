@@ -23,6 +23,7 @@
 #import "StoreViewController.h"
 #import "NotificationView.h"
 #import "SongManager.h"
+#import "DescriptionView.h"
 
 
 @interface SongTableViewController : UIViewController<UIScrollViewDelegate, UITableViewDataSource,
@@ -48,6 +49,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *btn_next;
 @property (nonatomic, retain) IBOutlet UISlider *slider;
 @property (nonatomic, strong) IBOutlet NotificationView* notificationView;
+@property (nonatomic, strong) IBOutlet DescriptionView* descriptionView;
 @property (nonatomic, strong) IBOutlet UIActionSheet *actionSheet;
 
 - (IBAction)onbtn_playAndPausePressed:(id)sender;
