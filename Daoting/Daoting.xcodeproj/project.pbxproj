@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A1FA99819581321002F48EA /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA99719581321002F48EA /* test.png */; };
 		0A1FA99B1958556C002F48EA /* qr_toolbar_more_hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA9991958556C002F48EA /* qr_toolbar_more_hl@2x.png */; };
 		0A1FA99C1958556C002F48EA /* qr_toolbar_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA99A1958556C002F48EA /* qr_toolbar_more@2x.png */; };
 		0A1FA99F19585612002F48EA /* qr_toolbar_more_hl.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA99D19585612002F48EA /* qr_toolbar_more_hl.png */; };
@@ -127,7 +126,6 @@
 
 /* Begin PBXFileReference section */
 		0481672862474C608EB8AB38 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		0A1FA99719581321002F48EA /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		0A1FA9991958556C002F48EA /* qr_toolbar_more_hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr_toolbar_more_hl@2x.png"; sourceTree = "<group>"; };
 		0A1FA99A1958556C002F48EA /* qr_toolbar_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr_toolbar_more@2x.png"; sourceTree = "<group>"; };
 		0A1FA99D19585612002F48EA /* qr_toolbar_more_hl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qr_toolbar_more_hl.png; sourceTree = "<group>"; };
@@ -630,7 +628,6 @@
 				0A1FA99E19585612002F48EA /* qr_toolbar_more.png */,
 				0A1FA9991958556C002F48EA /* qr_toolbar_more_hl@2x.png */,
 				0A1FA99A1958556C002F48EA /* qr_toolbar_more@2x.png */,
-				0A1FA99719581321002F48EA /* test.png */,
 				0ABB4282192E321C007D8BAC /* Icon-72@2x.png */,
 				0A98D6681920F1F500E46EB9 /* arrowSelected.png */,
 				0A98D6691920F1F500E46EB9 /* arrowSelected@2x.png */,
@@ -872,7 +869,6 @@
 				0A1FA9A019585612002F48EA /* qr_toolbar_more.png in Resources */,
 				5933AD6F18D03EC1001D707B /* Main_iPad.storyboard in Resources */,
 				D8A6613519781B7B00E9E7D3 /* mark_lock@2x.png in Resources */,
-				0A1FA99819581321002F48EA /* test.png in Resources */,
 				D882AE8E198A25460012348A /* DescriptionView_iphone.xib in Resources */,
 				0AEFC37B1988DBD800CECC93 /* colorStyle_allMusic@2x.png in Resources */,
 				0AE8648D192EEC6E00EF5A96 /* Liaozhai_SongList.plist in Resources */,

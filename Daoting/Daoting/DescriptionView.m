@@ -14,7 +14,8 @@
 - (void)didMoveToWindow
 {
     [_img_artist setImageWithURL:_album.imageUrl];
-    _lbl_description.text = _album.description;
+    
+    _txt_description.text = _album.description;
 }
 
 

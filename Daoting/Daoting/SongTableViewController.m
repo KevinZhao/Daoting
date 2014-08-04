@@ -54,7 +54,8 @@
     _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 406) style:UITableViewStylePlain];
     _tableview.delegate = self;
     _tableview.dataSource = self;
-    _tableview.rowHeight = 48;
+    _tableview.rowHeight = 45;
+    _tableview.backgroundColor = _appDelegate.defaultBackgroundColor;
     
     //Load from xib for prototype cell
     [_tableview registerNib:[UINib nibWithNibName:@"SongCell" bundle:nil]forCellReuseIdentifier:@"SongCell"];
@@ -662,7 +663,7 @@
     cell.lbl_songNumber.text = song.songNumber;
     
     //customize the selected table view cell
-    UIImageView *imageView_playing = [[UIImageView alloc] initWithFrame:CGRectMake(0, 6, 5, 38)];
+    UIImageView *imageView_playing = [[UIImageView alloc] initWithFrame:CGRectMake(0, 4, 5, 36)];
     imageView_playing.image = [UIImage imageNamed:@"playingsong.png"];
     
     [cell.selectedBackgroundView addSubview:imageView_playing];
