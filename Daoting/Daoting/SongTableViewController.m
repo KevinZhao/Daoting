@@ -539,14 +539,25 @@
 
 - (IBAction)onbtn_playAndPausePressed:(id)sender
 {
+    //is playing
     if (_audioPlayer.state == STKAudioPlayerStatePlaying) {
         [_playerHelper pauseSong];
     }
+    //no song is playing
     else
     {
-        [self playSong:_appData.currentSong];
+        //not current song record
+        if (_appData.currentSong != nil) {
+            [self playSong:_appData.currentSong];
+        }
+        else
+        {
+            
+            [self playSong:_songs[0]];
+        }
     }
 }
+
 - (IBAction)onbtn_nextPressed:(id)sender
 {
     [_playerHelper playNextSong];

@@ -23,14 +23,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _appdelegate = [[UIApplication sharedApplication]delegate];
+    
+    self.view.backgroundColor = _appdelegate.defaultBackgroundColor;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    _appdelegate = [[UIApplication sharedApplication]delegate];
-    
-    self.view.backgroundColor = _appdelegate.defaultBackgroundColor;
-    
     _albums = [AlbumManager sharedManager].albums;
     
     Album *album = [[AlbumManager sharedManager] searchAlbumByShortName:[AppData sharedAppData].currentAlbum.shortName];
@@ -43,6 +43,8 @@
             
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
             [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+            
+            break;
         }
     }
 }

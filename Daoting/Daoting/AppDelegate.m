@@ -35,7 +35,7 @@
     {
         AppData *_appData = [AppData sharedAppData];
         
-        _appData.coins = 500;
+        _appData.coins = 300;
         [_appData save];
     }
     
@@ -70,6 +70,9 @@
     [[UITabBar appearance] setSelectedImageTintColor:_defaultColor];
     [[UIBarButtonItem appearance]setTintColor:_defaultColor];
     [[UINavigationBar appearance]setTintColor:_defaultColor];
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+      _defaultColor, UITextAttributeTextColor,
+      nil]];
     
      //add auto play logic to appdelegate
      if ([AppData sharedAppData].isAutoPlay)

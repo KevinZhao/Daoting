@@ -15,10 +15,7 @@
 {
     [_img_artist setImageWithURL:_album.imageUrl];
     
-    _txt_description.text = _album.description;
+    _txt_description.text = _album.longdescription;
 }
-
-
-
 
 @end
