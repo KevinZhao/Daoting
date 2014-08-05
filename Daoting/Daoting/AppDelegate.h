@@ -33,7 +33,8 @@
 @property (strong, nonatomic) UIWindow  *window;
 @property (nonatomic, retain) NSArray   *products;
 @property (nonatomic, retain) NSString  *appUrlinAws;
-@property (strong, nonatomic) UIColor   *defaultColor;
+@property (strong, nonatomic) UIColor   *defaultColor_dark;
+@property (strong, nonatomic) UIColor   *defaultColor_light;
 @property (strong, nonatomic) UIColor   *defaultBackgroundColor;
 
 @end

@@ -37,6 +37,7 @@
     [self setupNotificationView];
     
     _appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    self.view.backgroundColor = _appDelegate.defaultBackgroundColor;
 }
 
 #pragma mark
@@ -146,7 +147,7 @@
         _spinner = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(0, 0, 320, 460)];
         
         _spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
-        _spinner.color = [UIColor greenColor];
+        _spinner.color = _appDelegate.defaultColor_light;
         
         [_spinner startAnimating];
         [self.view addSubview:_spinner];

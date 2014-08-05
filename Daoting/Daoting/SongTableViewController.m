@@ -26,7 +26,7 @@
     _appData        = [AppData sharedAppData];
     _playerHelper.delegate = self;
     _appDelegate    = [[UIApplication sharedApplication]delegate];
-    _slider.tintColor = _appDelegate.defaultColor;
+    _slider.tintColor = _appDelegate.defaultColor_light;
     
     _songs = [[SongManager sharedManager] searchSongArrayByAlbumName:_album.shortName];
     
@@ -68,6 +68,8 @@
     //Configure pagecontrol
     pageControl.currentPage = 0;
     pageControl.numberOfPages = 2;
+    pageControl.currentPageIndicatorTintColor = _appDelegate.defaultColor_dark;
+    pageControl.pageIndicatorTintColor = _appDelegate.defaultColor_light;
     
     //Scroll to latest playing row
     NSString* songNumberstring = (NSString*)[_appData.playingPositionQueue objectForKey:_album.title];
@@ -75,6 +77,8 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(songNumber-1) inSection:0];
     
     [_tableview selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    
+    self.navigationItem.title = _album.title;
     
     [self setupTimer];
     [self setupNotificationView];
@@ -105,7 +109,7 @@
     [_notificationView.layer setCornerRadius:10.0];
     [_notificationView.layer setBorderWidth:2.0];
     
-    [_notificationView.layer setBorderColor:(_appDelegate.defaultColor.CGColor)];//边框颜色
+    [_notificationView.layer setBorderColor:(_appDelegate.defaultColor_dark.CGColor)];//边框颜色
     
     _notificationView.alpha = 0.0;
 }
@@ -560,12 +564,30 @@
 
 - (IBAction)onbtn_nextPressed:(id)sender
 {
-    [_playerHelper playNextSong];
+    //Todo, check currentSongNumber
+    NSInteger currentSongNumber = [_appData.currentSong.songNumber intValue];
+    
+    if (currentSongNumber < _songs.count) {
+        Song *song = [_songs objectAtIndex:currentSongNumber];
+        
+        [self playSong:song];
+    }
+    
+    [self onPlayerHelperSongChanged];
 }
 
 - (IBAction)onbtn_previousPressed:(id)sender
 {
-    [_playerHelper playPreviousSong];
+    NSInteger currentSongNumber = [_appData.currentSong.songNumber intValue];
+    
+    if ( currentSongNumber - 1 > 0) {
+        
+        Song *song = [_songs objectAtIndex:(currentSongNumber -2)];
+        
+        [self playSong:song];
+    }
+    
+    [self onPlayerHelperSongChanged];
 }
 
 -(void)showNotification:(NSString *)notification;
@@ -609,6 +631,17 @@
 
 }
 
+- (IBAction)onbtn_sharePressed:(id)sender
+{
+    [self shareAlbum];
+}
+
+- (IBAction)onbtn_downloadAllPressed:(id)sender
+{
+    [self downloadAll];
+}
+
+
 #pragma mark - UIActionSheet delegate methods
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -617,7 +650,7 @@
         //share
         case 0:
         {
-            [self shareAlbum];
+            
         }
             break;
         //download all
@@ -665,7 +698,7 @@
     
     cell.cirProgView_downloadProgress.thicknessRatio = 0.075;
     [cell.cirProgView_downloadProgress setTrackTintColor:[UIColor grayColor]];
-    [cell.cirProgView_downloadProgress setProgressTintColor:[UIColor greenColor]];
+    [cell.cirProgView_downloadProgress setProgressTintColor:_appDelegate.defaultColor_light];
     
     //Update UI according to song status
     cell.lbl_songTitle.text = song.title;

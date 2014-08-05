@@ -18,6 +18,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _appDelegate = [[UIApplication sharedApplication] delegate];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -38,6 +39,8 @@
         
         [self.view addSubview: lbl_noDownloadQueue];
     }
+    
+    self.view.backgroundColor = _appDelegate.defaultBackgroundColor;
 }
 
 - (void)viewWillDisappear:(BOOL)animated

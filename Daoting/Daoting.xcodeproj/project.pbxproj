@@ -115,13 +115,14 @@
 		5933AD6918D03EC1001D707B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5933AD6818D03EC1001D707B /* AppDelegate.m */; };
 		5933AD6F18D03EC1001D707B /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5933AD6D18D03EC1001D707B /* Main_iPad.storyboard */; };
 		5933AD7718D03EC1001D707B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5933AD7618D03EC1001D707B /* Images.xcassets */; };
+		D8113D8719911FDC0011B04A /* nowplaying_share_h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8113D8519911FDC0011B04A /* nowplaying_share_h@2x.png */; };
+		D8113D8819911FDC0011B04A /* nowplaying_share_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8113D8619911FDC0011B04A /* nowplaying_share_n@2x.png */; };
 		D82B8AC9197962EE00F107B5 /* download@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D82B8AC5197962EE00F107B5 /* download@2x.png */; };
 		D882AE8E198A25460012348A /* DescriptionView_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D882AE8D198A25460012348A /* DescriptionView_iphone.xib */; };
 		D882AE9A198A2D150012348A /* DescriptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D882AE99198A2D150012348A /* DescriptionView.m */; };
 		D89D5FA4197D43C600D6FEE0 /* songcell_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D89D5F9B197D43C600D6FEE0 /* songcell_bg@2x.png */; };
 		D8A6613519781B7B00E9E7D3 /* mark_lock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8A6613319781B7B00E9E7D3 /* mark_lock@2x.png */; };
 		D8C6FA4D198FDE4800AB9ACB /* AlbumList.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8C6FA4C198FDE4800AB9ACB /* AlbumList.plist */; };
-		D8C6FA4F198FE19300AB9ACB /* actionIconShare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8C6FA4E198FE19300AB9ACB /* actionIconShare@2x.png */; };
 		F34534A6889146C4A984DE98 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D92318D3DBB470EB30CF35F /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -324,6 +325,8 @@
 		5933AD6E18D03EC1001D707B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		5933AD7618D03EC1001D707B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9D92318D3DBB470EB30CF35F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8113D8519911FDC0011B04A /* nowplaying_share_h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nowplaying_share_h@2x.png"; sourceTree = "<group>"; };
+		D8113D8619911FDC0011B04A /* nowplaying_share_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nowplaying_share_n@2x.png"; sourceTree = "<group>"; };
 		D82B8AC5197962EE00F107B5 /* download@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "download@2x.png"; sourceTree = "<group>"; };
 		D882AE8D198A25460012348A /* DescriptionView_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DescriptionView_iphone.xib; sourceTree = "<group>"; };
 		D882AE98198A2D150012348A /* DescriptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionView.h; sourceTree = "<group>"; };
@@ -331,7 +334,6 @@
 		D89D5F9B197D43C600D6FEE0 /* songcell_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "songcell_bg@2x.png"; sourceTree = "<group>"; };
 		D8A6613319781B7B00E9E7D3 /* mark_lock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mark_lock@2x.png"; sourceTree = "<group>"; };
 		D8C6FA4C198FDE4800AB9ACB /* AlbumList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AlbumList.plist; path = SongPlists/AlbumList.plist; sourceTree = "<group>"; };
-		D8C6FA4E198FE19300AB9ACB /* actionIconShare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "actionIconShare@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -612,7 +614,8 @@
 		0A98D64B1920EAB700E46EB9 /* Artworks */ = {
 			isa = PBXGroup;
 			children = (
-				D8C6FA4E198FE19300AB9ACB /* actionIconShare@2x.png */,
+				D8113D8519911FDC0011B04A /* nowplaying_share_h@2x.png */,
+				D8113D8619911FDC0011B04A /* nowplaying_share_n@2x.png */,
 				0AEFC3811988E17E00CECC93 /* bag@2x.png */,
 				0AEFC37F1988DDC800CECC93 /* tabbar_setting@2x.png */,
 				0AEFC3791988DBD800CECC93 /* colorStyle_allMusic@2x.png */,
@@ -859,6 +862,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A708967195BF97100B91B16 /* NotificationView_iphone.xib in Resources */,
+				D8113D8819911FDC0011B04A /* nowplaying_share_n@2x.png in Resources */,
 				0A98D66C1920F1F500E46EB9 /* arrowSelected.png in Resources */,
 				D8C6FA4D198FDE4800AB9ACB /* AlbumList.plist in Resources */,
 				0AE8649A192EF48700EF5A96 /* Shuangbianji_SongList.plist in Resources */,
@@ -875,6 +879,7 @@
 				D882AE8E198A25460012348A /* DescriptionView_iphone.xib in Resources */,
 				0AEFC37B1988DBD800CECC93 /* colorStyle_allMusic@2x.png in Resources */,
 				0AE8648D192EEC6E00EF5A96 /* Liaozhai_SongList.plist in Resources */,
+				D8113D8719911FDC0011B04A /* nowplaying_share_h@2x.png in Resources */,
 				0A3CD3641920F8BE00247436 /* Main_iPhone.storyboard in Resources */,
 				0AE8649C192EF48700EF5A96 /* Yongzheng3_SongList.plist in Resources */,
 				0AE86498192EF48700EF5A96 /* Mingchao_SongList.plist in Resources */,
@@ -897,7 +902,6 @@
 				0AEFC3801988DDC800CECC93 /* tabbar_setting@2x.png in Resources */,
 				0AE8649B192EF48700EF5A96 /* Yongzheng1_SongList.plist in Resources */,
 				0A98D66D1920F1F500E46EB9 /* arrowSelected@2x.png in Resources */,
-				D8C6FA4F198FE19300AB9ACB /* actionIconShare@2x.png in Resources */,
 				0A6AA9DF192B88AB00462543 /* SongCell.xib in Resources */,
 				0ABB4283192E321C007D8BAC /* Icon-72@2x.png in Resources */,
 				0AEFC3711988C48000CECC93 /* btn_checkin@2x.png in Resources */,

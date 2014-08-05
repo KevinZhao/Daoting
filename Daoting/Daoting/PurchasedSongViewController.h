@@ -15,7 +15,6 @@
 @interface PurchasedSongViewController : UITableViewController
 
 @property (nonatomic, retain) NSMutableDictionary   *songsArray;
-//@property (nonatomic, retain) NSString              *albumShortname;
 @property (nonatomic, retain) NSMutableArray        *purchasedSongDic;
 @property (nonatomic, retain) Album                 *album;
 
