@@ -78,7 +78,7 @@
         [switchCell setSelectionStyle:UITableViewCellSelectionStyleNone];
         
         switchCell.sw_option.on = _appData.isAutoPurchase;
-        [switchCell.sw_option setTintColor:_appdelegate.defaultColor];
+        [switchCell.sw_option setTintColor:_appdelegate.defaultColor_dark];
         
         [switchCell.sw_option addTarget:self action:@selector(onSwitchValueChanged1:) forControlEvents:UIControlEventValueChanged];
     }
@@ -92,7 +92,7 @@
         [switchCell setSelectionStyle:UITableViewCellSelectionStyleNone];
         
         switchCell.sw_option.on = _appData.isAutoPlay;
-        [switchCell.sw_option setTintColor:_appdelegate.defaultColor];
+        [switchCell.sw_option setTintColor:_appdelegate.defaultColor_dark];
         [switchCell.sw_option addTarget:self action:@selector(onSwitchValueChanged2:) forControlEvents:UIControlEventValueChanged];
 
     }

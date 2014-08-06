@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="6bP-Wq-XVz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="6bP-Wq-XVz">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -153,7 +153,7 @@
             </objects>
             <point key="canvasLocation" x="1283" y="1780"/>
         </scene>
-        <!--Purchased Song View Controller - 已购买曲目-->
+        <!--Purchased Song View Controller-->
         <scene sceneID="k3q-0B-UU8">
             <objects>
                 <tableViewController id="sFO-aR-QGQ" customClass="PurchasedSongViewController" sceneMemberID="viewController">
@@ -188,7 +188,7 @@
                             <outlet property="delegate" destination="sFO-aR-QGQ" id="yeo-6u-eD8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="已购买曲目" id="K56-OV-vZA"/>
+                    <navigationItem key="navigationItem" id="K56-OV-vZA"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F2F-qE-eI0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -433,9 +433,9 @@
                                     <action selector="onpageChanged:" destination="FIa-3P-xRc" eventType="valueChanged" id="5lb-fy-km2"/>
                                 </connections>
                             </pageControl>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Ic-7o-4HF">
+                            <imageView userInteractionEnabled="NO" alpha="0.61799999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Ic-7o-4HF">
                                 <rect key="frame" x="0.0" y="468" width="320" height="100"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6MF-qb-FBg">
                                 <rect key="frame" x="128" y="489" width="64" height="64"/>
@@ -447,7 +447,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rCq-N8-6Vs">
-                                <rect key="frame" x="232" y="497" width="50" height="50"/>
+                                <rect key="frame" x="200" y="496" width="50" height="50"/>
                                 <state key="normal" backgroundImage="playing_btn_next_n">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -456,7 +456,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7L-3C-tSe">
-                                <rect key="frame" x="38" y="496" width="50" height="50"/>
+                                <rect key="frame" x="70" y="496" width="50" height="50"/>
                                 <state key="normal" backgroundImage="playing_btn_pre_n">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -482,20 +482,36 @@
                                     <action selector="onsliderValueChanged:" destination="FIa-3P-xRc" eventType="valueChanged" id="FGn-WE-LAV"/>
                                 </connections>
                             </slider>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBc-CA-JuU">
+                                <rect key="frame" x="258" y="501" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="nowplaying_share_h.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onbtn_sharePressed:" destination="FIa-3P-xRc" eventType="touchUpInside" id="ch3-zK-JSd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOk-z7-asg">
+                                <rect key="frame" x="22" y="506" width="40" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="d">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onbtn_downloadAllPressed:" destination="FIa-3P-xRc" eventType="touchUpInside" id="OMg-op-BYI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Rl1-Zv-Lki">
-                        <barButtonItem key="rightBarButtonItem" image="qr_toolbar_more.png" id="IL5-bh-io6">
-                            <connections>
-                                <action selector="onbarbtn_actionPressed:" destination="FIa-3P-xRc" id="cmD-9P-hee"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Rl1-Zv-Lki"/>
                     <connections>
+                        <outlet property="btn_downloadAll" destination="WOk-z7-asg" id="OrR-Xi-wds"/>
                         <outlet property="btn_next" destination="rCq-N8-6Vs" id="hhk-OC-wnX"/>
                         <outlet property="btn_playAndPause" destination="6MF-qb-FBg" id="gK9-Sm-rLi"/>
                         <outlet property="btn_previous" destination="M7L-3C-tSe" id="48D-uw-G2L"/>
+                        <outlet property="btn_share" destination="oBc-CA-JuU" id="l0h-H7-8Dr"/>
                         <outlet property="lbl_progressCurrentValue" destination="7wE-r9-kNW" id="Dd9-Ve-0pr"/>
                         <outlet property="lbl_progressMaxValue" destination="tBq-eh-AgW" id="qN8-sl-Nye"/>
                         <outlet property="pageControl" destination="vbG-ki-fIt" id="YHh-r0-al2"/>
@@ -729,10 +745,10 @@
         <image name="coins.png" width="256" height="256"/>
         <image name="colorStyle_allMusic.png" width="30" height="30"/>
         <image name="colorStyle_download.png" width="30" height="30"/>
+        <image name="nowplaying_share_h.png" width="40" height="40"/>
         <image name="playing_btn_next_n" width="50" height="50"/>
         <image name="playing_btn_play_n" width="64" height="64"/>
         <image name="playing_btn_pre_n" width="50" height="50"/>
-        <image name="qr_toolbar_more.png" width="39" height="39"/>
         <image name="tabbar_setting.png" width="27" height="27"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -73,6 +73,7 @@
         album.artistName = [AlbumDic objectForKey:@"Artist"];
         album.updatingStatus = [AlbumDic objectForKey:@"UpdatingStatus"];
         album.category = [AlbumDic objectForKey:@"Category"];
+        album.longdescription = [AlbumDic objectForKey:@"LongDescription"];
         
         [_albums addObject:album];
     }

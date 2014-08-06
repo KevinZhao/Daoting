@@ -8,10 +8,6 @@
 
 #import "PurchasedSongViewController.h"
 
-@interface PurchasedSongViewController ()
-
-@end
-
 @implementation PurchasedSongViewController
 
 - (id)initWithStyle:(UITableViewStyle)style

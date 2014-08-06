@@ -10,12 +10,14 @@
 #import "AFDownloadHelper.h"
 #import "DownloadCell.h"
 #import "AFNetworking.h"
+#import "AppDelegate.h"
 
 @interface DownloadViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
     UITableView                         *_tableview;
     NSTimer                             *_timer;
     NSOperationQueue                    *_downloadQueue;
+    AppDelegate                         *_appDelegate;
 }
 
 @property (nonatomic, strong) IBOutlet UITableView      *tableview;

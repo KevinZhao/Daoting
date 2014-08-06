@@ -18,5 +18,6 @@
 @property (nonatomic, strong) NSString  *artistName;
 @property (nonatomic, strong) NSString  *updatingStatus;
 @property (nonatomic, strong) NSString  *category;
+@property (nonatomic, strong) NSString  *longdescription;
 
 @end
