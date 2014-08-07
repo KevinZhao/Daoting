@@ -154,7 +154,29 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DownloadCell *cell = [_tableview dequeueReusableCellWithIdentifier:@"DownloadCell"];
-
+    
+    //1. Set album image
+    AFHTTPRequestOperation *operation = [AFDownloadHelper sharedOperationManager].operationQueue.operations[indexPath.row];
+    Album *album = [operation.userInfo objectForKey:@"album"];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:album.imageUrl];
+    UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
+    
+    __weak DownloadCell *weakCell = cell;
+    
+    [cell.img_album setImageWithURLRequest:request
+                               placeholderImage:placeholderImage
+                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image)
+     {
+         [weakCell.img_album setImage:image];
+         [weakCell setNeedsLayout];
+         
+     } failure:nil];
+    
+    //2. Configure Color
+    cell.btn_cancel.tintColor = _appDelegate.defaultColor_dark;
+    cell.pv_downloadProgress.tintColor = _appDelegate.defaultColor_light;
+    
     return cell;
 }
 

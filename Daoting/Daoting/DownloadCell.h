@@ -14,6 +14,7 @@
 @property (nonatomic, strong) IBOutlet UILabel          *lbl_downloadDescription;
 @property (nonatomic, strong) IBOutlet UIProgressView   *pv_downloadProgress;
 @property (nonatomic, strong) IBOutlet UIButton         *btn_cancel;
+@property (nonatomic, strong) IBOutlet UIImageView      *img_album;
 
 - (IBAction)onbtn_cancelPressed:(id)sender;
 

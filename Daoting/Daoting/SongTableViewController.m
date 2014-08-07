@@ -258,6 +258,8 @@
             case fileDownloadStatusWaiting:
             {
                 songCell.btn_downloadOrPause.hidden = NO;
+                songCell.cirProgView_downloadProgress.hidden = NO;
+                songCell.cirProgView_downloadProgress.progress = 0;
                 [songCell.btn_downloadOrPause removeTarget:songCell action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
                 [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
                 

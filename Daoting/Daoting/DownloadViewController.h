@@ -11,6 +11,7 @@
 #import "DownloadCell.h"
 #import "AFNetworking.h"
 #import "AppDelegate.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface DownloadViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
