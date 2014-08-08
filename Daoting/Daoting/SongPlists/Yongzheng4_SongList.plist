@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>1</key>
+	<dict>
+		<key>Duration</key>
+		<string>01:02:17</string>
+		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
+		<string>60</string>
+		<key>Progress</key>
+		<string>0</string>
+		<key>Title</key>
+		<string>雍正剑侠图</string>
+		<key>Url</key>
+		<string>http://yongzheng4.qiniudn.com/%E9%9B%8D%E6%AD%A3%E5%89%91%E4%BE%A0%E5%9B%BE001.mp3</string>
+	</dict>
+	<key>2</key>
+	<dict>
+		<key>Duration</key>
+		<string>01:02:17</string>
+		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
+		<string>60</string>
+		<key>Progress</key>
+		<string>0</string>
+		<key>Title</key>
+		<string>雍正剑侠图</string>
+		<key>Url</key>
+		<string>http://yongzheng4.qiniudn.com/%E9%9B%8D%E6%AD%A3%E5%89%91%E4%BE%A0%E5%9B%BE002.mp3</string>
+	</dict>
+	<key>3</key>
+	<dict>
+		<key>Duration</key>
+		<string>01:02:17</string>
+		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
+		<string>60</string>
+		<key>Progress</key>
+		<string>0</string>
+		<key>Title</key>
+		<string>雍正剑侠图</string>
+		<key>Url</key>
+		<string>http://yongzheng4.qiniudn.com/%E9%9B%8D%E6%AD%A3%E5%89%91%E4%BE%A0%E5%9B%BE003.mp3</string>
+	</dict>
+	<key>4</key>
+	<dict>
+		<key>Duration</key>
+		<string>01:02:17</string>
+		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
+		<string>60</string>
+		<key>Progress</key>
+		<string>0</string>
+		<key>Title</key>
+		<string>雍正剑侠图</string>
+		<key>Url</key>
+		<string>http://yongzheng4.qiniudn.com/%E9%9B%8D%E6%AD%A3%E5%89%91%E4%BE%A0%E5%9B%BE004.mp3</string>
+	</dict>
+	
+</dict>
+</plist>

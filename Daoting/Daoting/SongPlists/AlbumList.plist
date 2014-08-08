@@ -73,6 +73,27 @@
 	<key>4</key>
 	<dict>
 		<key>Title</key>
+		<string>雍正剑侠图 第四部</string>
+		<key>ImageURL</key>
+		<string>http://bcs.duapp.com/daoting/Yongzheng3.png</string>
+		<key>Description</key>
+		<string>播讲:王玥波 全本共152回 电台录音版</string>
+		<key>SongList</key>
+		<string>http://bcs.duapp.com/daoting/PlistFolder/Yongzheng4_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Zhengdong1</string>
+		<key>Artist</key>
+		<string>王玥波</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string></string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>5</key>
+	<dict>
+		<key>Title</key>
 		<string>薛礼征东 电台版</string>
 		<key>ImageURL</key>
 		<string>http://bcs.duapp.com/daoting/Zhengdong.png</string>
@@ -91,7 +112,7 @@
 		<key>LongDescription</key>
 		<string></string>
 	</dict>
-	<key>5</key>
+	<key>6</key>
 	<dict>
 		<key>Title</key>
 		<string>明朝那些事</string>
@@ -112,7 +133,7 @@
 		<key>LongDescription</key>
 		<string></string>
 	</dict>
-	<key>6</key>
+	<key>7</key>
 	<dict>
 		<key>Title</key>
 		<string>隋唐演义 之 双鞭记</string>
@@ -133,7 +154,7 @@
 		<key>LongDescription</key>
 		<string></string>
 	</dict>
-	<key>7</key>
+	<key>8</key>
 	<dict>
 		<key>Title</key>
 		<string>隋唐演义</string>
@@ -154,7 +175,7 @@
 		<key>LongDescription</key>
 		<string></string>
 	</dict>
-	<key>8</key>
+	<key>9</key>
 	<dict>
 		<key>Title</key>
 		<string>聊斋</string>
@@ -175,7 +196,7 @@
 		<key>LongDescription</key>
 		<string></string>
 	</dict>
-	<key>9</key>
+	<key>10</key>
 	<dict>
 		<key>Title</key>
 		<string>侠义英雄传</string>
@@ -196,7 +217,7 @@
 		<key>LongDescription</key>
 		<string></string>
 	</dict>
-	<key>10</key>
+	<key>11</key>
 	<dict>
 		<key>Title</key>
 		<string>新三盗九龙杯</string>
@@ -217,7 +238,7 @@
 		<key>LongDescription</key>
 		<string></string>
 	</dict>
-	<key>11</key>
+	<key>12</key>
 	<dict>
 		<key>Title</key>
 		<string>[新派评书]海贼王</string>
@@ -238,7 +259,7 @@
 		<key>LongDescription</key>
 		<string></string>
 	</dict>
-	<key>12</key>
+	<key>13</key>
 	<dict>
 		<key>Title</key>
 		<string>侠义金镖</string>
@@ -259,7 +280,7 @@
 		<key>LongDescription</key>
 		<string></string>
 	</dict>
-	<key>13</key>
+	<key>14</key>
 	<dict>
 		<key>Title</key>
 		<string>张广泰回家</string>
