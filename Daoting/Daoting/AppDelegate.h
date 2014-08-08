@@ -25,8 +25,10 @@
 #import "AFNetworkActivityIndicatorManager.h"
 
 
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {
+    AppData *_appData;
     
 }
 

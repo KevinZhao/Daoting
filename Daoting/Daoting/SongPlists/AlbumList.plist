@@ -11,7 +11,7 @@
 		<key>Description</key>
 		<string>播讲:王玥波 1至44回 电台整合版</string>
 		<key>SongList</key>
-		<string>http://bcs.duapp.com/daoting/PlistFolder/Yongzheng1_SongList.plist</string>
+		<string>http://daoting.qiniudn.com/Yongzheng1_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Yongzheng1</string>
 		<key>Artist</key>
@@ -37,7 +37,7 @@
 		<key>Description</key>
 		<string>播讲:王玥波 45至118回 电台整合版</string>
 		<key>SongList</key>
-		<string>http://bcs.duapp.com/daoting/PlistFolder/Yongzheng2_SongList.plist</string>
+		<string>http://daoting.qiniudn.com/Yongzheng2_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Yongzheng2</string>
 		<key>Artist</key>
@@ -58,7 +58,7 @@
 		<key>Description</key>
 		<string>播讲:王玥波 119至163回 电台整合版</string>
 		<key>SongList</key>
-		<string>http://bcs.duapp.com/daoting/PlistFolder/Yongzheng3_SongList.plist</string>
+		<string>http://daoting.qiniudn.com/Yongzheng3_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Yongzheng3</string>
 		<key>Artist</key>
@@ -73,15 +73,15 @@
 	<key>4</key>
 	<dict>
 		<key>Title</key>
-		<string>雍正剑侠图 第四部</string>
+		<string>[每天更新] 雍正剑侠图 第四部</string>
 		<key>ImageURL</key>
-		<string>http://bcs.duapp.com/daoting/Yongzheng3.png</string>
+		<string>http://daoting.qiniudn.com/Yongzheng4.png</string>
 		<key>Description</key>
-		<string>播讲:王玥波 全本共152回 电台录音版</string>
+		<string>播讲:王玥波 正在直播</string>
 		<key>SongList</key>
-		<string>http://bcs.duapp.com/daoting/PlistFolder/Yongzheng4_SongList.plist</string>
+		<string>http://daoting.qiniudn.com/Yongzheng4_SongList.plist</string>
 		<key>ShortName</key>
-		<string>Zhengdong1</string>
+		<string>Yongzheng4</string>
 		<key>Artist</key>
 		<string>王玥波</string>
 		<key>UpdatingStatus</key>
@@ -100,7 +100,7 @@
 		<key>Description</key>
 		<string>播讲:王玥波 全本共152回 电台录音版</string>
 		<key>SongList</key>
-		<string>http://bcs.duapp.com/daoting/PlistFolder/Zhengdong1_SongList.plist</string>
+		<string>http://daoting.qiniudn.com/Zhengdong1_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Zhengdong1</string>
 		<key>Artist</key>
@@ -121,7 +121,7 @@
 		<key>Description</key>
 		<string>播讲:王玥波 有声书 共56回</string>
 		<key>SongList</key>
-		<string>http://bcs.duapp.com/daoting/PlistFolder/Mingchao_SongList.plist</string>
+		<string>http://daoting.qiniudn.com/Mingchao_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Mingchao</string>
 		<key>Artist</key>
@@ -142,7 +142,7 @@
 		<key>Description</key>
 		<string>播讲:王玥波 共104回 现场清晰版</string>
 		<key>SongList</key>
-		<string>http://bcs.duapp.com/daoting/PlistFolder/Shuangbianji_SongList.plist</string>
+		<string>http://daoting.qiniudn.com/Shuangbianji_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Shuangbianji</string>
 		<key>Artist</key>
@@ -163,7 +163,7 @@
 		<key>Description</key>
 		<string>播讲:王玥波 全本共237回 目前最清晰全本</string>
 		<key>SongList</key>
-		<string>http://bcs.duapp.com/daoting/PlistFolder/Suitang_SongList.plist</string>
+		<string>http://daoting.qiniudn.com/Suitang_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Suitang</string>
 		<key>Artist</key>
@@ -184,7 +184,7 @@
 		<key>Description</key>
 		<string>播讲:王玥波 目前收录最全</string>
 		<key>SongList</key>
-		<string>http://bcs.duapp.com/daoting/PlistFolder/Liaozhai_SongList.plist</string>
+		<string>http://daoting.qiniudn.com/Liaozhai_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Liaozhai</string>
 		<key>Artist</key>
@@ -205,7 +205,7 @@
 		<key>Description</key>
 		<string>播讲:王玥波 全本共90回 早期评书</string>
 		<key>SongList</key>
-		<string>http://bcs.duapp.com/daoting/PlistFolder/Xiayi_SongList.plist</string>
+		<string>http://daoting.qiniudn.com/Xiayi_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Xiayi</string>
 		<key>Artist</key>
@@ -226,7 +226,7 @@
 		<key>Description</key>
 		<string>播讲:王玥波 全本共100回 重新录音版本</string>
 		<key>SongList</key>
-		<string>http://bcs.duapp.com/daoting/PlistFolder/Sandao_SongList.plist</string>
+		<string>http://daoting.qiniudn.com/Sandao_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Sandao</string>
 		<key>Artist</key>
@@ -247,7 +247,7 @@
 		<key>Description</key>
 		<string>播讲:张准 连载至87集 新书老说法</string>
 		<key>SongList</key>
-		<string>http://bcs.duapp.com/daoting/PlistFolder/Haizeiwang_SongList.plist</string>
+		<string>http://daoting.qiniudn.com/Haizeiwang_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Haizeiwang</string>
 		<key>Artist</key>
@@ -268,7 +268,7 @@
 		<key>Description</key>
 		<string>播讲:张庆升 全本共140回 名家名段</string>
 		<key>SongList</key>
-		<string>http://bcs.duapp.com/daoting/PlistFolder/Jinbiao_SongList.plist</string>
+		<string>http://daoting.qiniudn.com/Jinbiao_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Jinbiao</string>
 		<key>Artist</key>
@@ -289,7 +289,7 @@
 		<key>Description</key>
 		<string>播讲:王玥波 全本共70回 明清故事长篇单口</string>
 		<key>SongList</key>
-		<string>http://bcs.duapp.com/daoting/PlistFolder/Zhangguantai_SongList.plist</string>
+		<string>http://daoting.qiniudn.com/Zhangguantai_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Zhangguangtai</string>
 		<key>Artist</key>

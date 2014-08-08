@@ -33,7 +33,7 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if (![fileManager fileExistsAtPath:[AppData filePath]])
     {
-        AppData *_appData = [AppData sharedAppData];
+        _appData = [AppData sharedAppData];
         
         _appData.coins = 300;
         [_appData save];
@@ -84,7 +84,24 @@
          [self autoPlay];
      }
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioInterruptionNotification:) name:AVAudioSessionInterruptionNotification object:nil];
+    
     return YES;
+}
+
+-(void)audioInterruptionNotification:(NSNotification *) aNotification
+{
+    NSLog(@"Interrupt %@", aNotification);
+    NSDictionary *dict = [aNotification userInfo];
+    NSUInteger typeKey = [[dict objectForKey:@"AVAudioSessionInterruptionTypeKey"] unsignedIntegerValue];
+    NSLog(@"%d", typeKey == AVAudioSessionInterruptionTypeBegan);
+    if (typeKey == AVAudioSessionInterruptionTypeBegan)
+    {
+        [[STKAudioPlayerHelper sharedInstance] pauseSong];
+    }
+    else {
+        [[STKAudioPlayerHelper sharedInstance] playSong: _appData.currentSong InAlbum:_appData.currentAlbum];
+    }
 }
 
 - (void)autoPlay

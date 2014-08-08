@@ -88,7 +88,7 @@
     NSString *plistPath = [bundleDocumentDirectoryPath stringByAppendingString:@"/AlbumList.plist"];
     
     //2. Download plist from cloud storage
-    NSURL *albumListUrl = [[NSURL alloc]initWithString:@"http://bcs.duapp.com/daoting/PlistFolder/AlbumList.plist"];
+    NSURL *albumListUrl = [[NSURL alloc]initWithString:@"http://daoting.qiniudn.com/AlbumList.plist"];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:albumListUrl];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
