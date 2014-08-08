@@ -19,6 +19,7 @@
     NSTimer                             *_timer;
     NSOperationQueue                    *_downloadQueue;
     AppDelegate                         *_appDelegate;
+    UILabel                             *_lbl_noDownloadQueue;
 }
 
 @property (nonatomic, strong) IBOutlet UITableView      *tableview;

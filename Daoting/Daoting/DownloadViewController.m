@@ -19,6 +19,11 @@
 {
     [super viewDidLoad];
     _appDelegate = [[UIApplication sharedApplication] delegate];
+    
+    _lbl_noDownloadQueue = [[UILabel alloc]initWithFrame:CGRectMake(100, 200, 200, 40)];
+    _lbl_noDownloadQueue.text = @"当前没有下载任务";
+    
+        [self.view addSubview: _lbl_noDownloadQueue];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -30,14 +35,13 @@
         _tableview.hidden = NO;
         [_tableview reloadData];
         [self setupTimer];
+        
+        _lbl_noDownloadQueue.hidden = YES;
     }
     else
     {
         _tableview.hidden = YES;
-        UILabel *lbl_noDownloadQueue = [[UILabel alloc]initWithFrame:CGRectMake(100, 200, 200, 40)];
-        lbl_noDownloadQueue.text = @"当前没有下载任务";
-        
-        [self.view addSubview: lbl_noDownloadQueue];
+        _lbl_noDownloadQueue.hidden = NO;
     }
     
     self.view.backgroundColor = _appDelegate.defaultBackgroundColor;
@@ -128,20 +132,25 @@
 {
     NSLog(@"count = %d", [AFDownloadHelper sharedOperationManager].operationQueue.operations.count);
 
-        @try {
-            for (AFHTTPRequestOperation *operation in [AFDownloadHelper sharedOperationManager].operationQueue.operations) {
+    @try
+    {
+        for (AFHTTPRequestOperation *operation in [AFDownloadHelper sharedOperationManager].operationQueue.operations)
+        {
             [operation cancel];
-            }
         }
-        @catch (NSException *exception) {
-            if ([[exception name] isEqual:NSRangeException])
-            {
-                NSLog(@"NSRangeException");
-            }
+    }
+    @catch (NSException *exception) {
+        if ([[exception name] isEqual:NSRangeException])
+        {
+            NSLog(@"NSRangeException");
         }
-        @finally {
+    }
+    @finally {
             
-        }
+    }
+    
+    _tableview.hidden = YES;
+    _lbl_noDownloadQueue.hidden = NO;
 }
 
 #pragma mark UITableView Delegate
