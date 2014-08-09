@@ -39,6 +39,8 @@
         [_appData save];
     }
     
+    _appData = [AppData sharedAppData];
+    
     //enable IAP
     [[CoinIAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
         if (success) {
@@ -78,8 +80,11 @@
     [[UITableView appearance]setBackgroundColor:_defaultBackgroundColor];
     [[UITableViewCell appearance]setBackgroundColor:_defaultBackgroundColor];
     
+    [[UIButton appearance]setTitleColor:_defaultColor_dark forState:UIControlStateNormal];
+    [[UIButton appearance]setTitleColor:_defaultColor_light forState:UIControlStateSelected];
+    
      //add auto play logic to appdelegate
-     if ([AppData sharedAppData].isAutoPlay)
+     if (_appData.isAutoPlay)
      {
          [self autoPlay];
      }
@@ -91,6 +96,8 @@
 
 -(void)audioInterruptionNotification:(NSNotification *) aNotification
 {
+    _appData = [AppData sharedAppData];
+    
     NSLog(@"Interrupt %@", aNotification);
     NSDictionary *dict = [aNotification userInfo];
     NSUInteger typeKey = [[dict objectForKey:@"AVAudioSessionInterruptionTypeKey"] unsignedIntegerValue];
@@ -105,10 +112,10 @@
 }
 
 - (void)autoPlay
-{
-    if (([AppData sharedAppData].currentSong != nil) && ([AppData sharedAppData].currentAlbum != nil)) {
+{    
+    if ((_appData.currentSong != nil) && (_appData.currentAlbum != nil)) {
         
-        [[STKAudioPlayerHelper sharedInstance]playSong:[AppData sharedAppData].currentSong InAlbum:[AppData sharedAppData].currentAlbum];
+        [[STKAudioPlayerHelper sharedInstance]playSong:_appData.currentSong InAlbum:_appData.currentAlbum];
     }
 }
 							

@@ -77,8 +77,6 @@
 
 -(void)updateCellAt:(NSIndexPath*) indexPath
 {
-    NSLog(@"%d", indexPath.row);
-    
     DownloadCell *cell = (DownloadCell*)[_tableview cellForRowAtIndexPath:indexPath];
     
     if ((indexPath.row + 1) <= _downloadQueue.operations.count) {
@@ -130,8 +128,6 @@
 
 - (IBAction)cancelAll:(id)sender
 {
-    NSLog(@"count = %d", [AFDownloadHelper sharedOperationManager].operationQueue.operations.count);
-
     @try
     {
         for (AFHTTPRequestOperation *operation in [AFDownloadHelper sharedOperationManager].operationQueue.operations)
@@ -165,6 +161,8 @@
     DownloadCell *cell = [_tableview dequeueReusableCellWithIdentifier:@"DownloadCell"];
     
     //1. Set album image
+    if ((indexPath.row + 1) <= _downloadQueue.operations.count){
+        
     AFHTTPRequestOperation *operation = [AFDownloadHelper sharedOperationManager].operationQueue.operations[indexPath.row];
     Album *album = [operation.userInfo objectForKey:@"album"];
     
@@ -184,7 +182,12 @@
     
     //2. Configure Color
     cell.btn_cancel.tintColor = _appDelegate.defaultColor_dark;
-    cell.pv_downloadProgress.tintColor = _appDelegate.defaultColor_light;
+        cell.pv_downloadProgress.tintColor = _appDelegate.defaultColor_light;
+    }
+    else
+    {
+        [self.tableview reloadData];
+    }
     
     return cell;
 }

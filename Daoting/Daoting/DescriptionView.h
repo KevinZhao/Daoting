@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "Album.h"
 #import "UIImageView+AFNetworking.h"
+#import "AppDelegate.h"
 
 @interface DescriptionView : UIView
+{
+    AppDelegate *_appDelegate;
+}
 
 @property (nonatomic, strong) IBOutlet UITextView   *txt_description;
 @property (nonatomic, strong) IBOutlet UIButton     *btn_downloadAll;
