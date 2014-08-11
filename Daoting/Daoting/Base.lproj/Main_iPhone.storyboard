@@ -490,7 +490,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBc-CA-JuU">
                                 <rect key="frame" x="258" y="501" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="nowplaying_share_h.png">
+                                <state key="normal" image="nowplaying_share_n.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -750,7 +750,7 @@
         <image name="coins.png" width="256" height="256"/>
         <image name="colorStyle_allMusic.png" width="30" height="30"/>
         <image name="colorStyle_download.png" width="30" height="30"/>
-        <image name="nowplaying_share_h.png" width="40" height="40"/>
+        <image name="nowplaying_share_n.png" width="40" height="40"/>
         <image name="playing_btn_next_n" width="50" height="50"/>
         <image name="playing_btn_play_n" width="64" height="64"/>
         <image name="playing_btn_pre_n" width="50" height="50"/>

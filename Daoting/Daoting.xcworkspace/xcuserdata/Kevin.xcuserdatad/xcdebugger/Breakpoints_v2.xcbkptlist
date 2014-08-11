@@ -632,11 +632,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/StoreViewController.m"
-            timestampString = "428224512.640005"
+            timestampString = "429430796.656905"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "-setupNotificationView"
             landmarkType = "5">
          </BreakpointContent>
@@ -1190,13 +1190,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/StoreViewController.m"
-            timestampString = "428224512.640005"
+            timestampString = "429430796.656905"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "-buy:"
-            landmarkType = "5">
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "@implementation StoreViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1206,13 +1206,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/StoreViewController.m"
-            timestampString = "428288444.054048"
+            timestampString = "429430796.656905"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
-            landmarkName = "-dailyCheckin:"
-            landmarkType = "5">
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "@implementation StoreViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1222,11 +1222,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/StoreViewController.m"
-            timestampString = "428224512.640005"
+            timestampString = "429430796.656905"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "-showNotification:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1414,11 +1414,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/StoreViewController.m"
-            timestampString = "428288444.054048"
+            timestampString = "429430796.656905"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
             landmarkName = "-share:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1446,11 +1446,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/StoreViewController.m"
-            timestampString = "428254041.884913"
+            timestampString = "429430796.656905"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "-buy:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1462,11 +1462,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/StoreViewController.m"
-            timestampString = "428254265.693777"
+            timestampString = "429430796.656905"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "-buy:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1478,11 +1478,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/StoreViewController.m"
-            timestampString = "428288444.054048"
+            timestampString = "429430796.656905"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
             landmarkName = "-onLoadedProducts"
             landmarkType = "5">
          </BreakpointContent>

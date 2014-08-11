@@ -16,13 +16,11 @@
     [_img_artist setImageWithURL:_album.imageUrl];
     _txt_description.text = _album.longdescription;
     
-    //[_btn_downloadAll setTitleColor:_appDelegate.defaultColor_dark forState:UIControlStateNormal];
-    //[_btn_downloadAll setTitleColor:_appDelegate.defaultColor_light forState:UIControlStateSelected];
+    _appDelegate = [[UIApplication sharedApplication] delegate];
+    self.backgroundColor = _appDelegate.defaultBackgroundColor;
     
-    //[_btn_downloadAll.layer setMasksToBounds:YES];
-    //[_btn_downloadAll.layer setCornerRadius:8.0];
-    //[_btn_downloadAll.layer setBorderWidth:1.0];
-    //[_btn_downloadAll.layer setBorderColor:_appDelegate.defaultColor_dark.CGColor];
+    self.txt_description.backgroundColor = _appDelegate.defaultBackgroundColor;
 }
+
 
 @end

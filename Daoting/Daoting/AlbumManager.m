@@ -131,7 +131,6 @@
              //re-initialize songs and update table view
              [self initializeAlbums];
          }
-
      }
      //Download Failed
     failure:^(AFHTTPRequestOperation *operation, NSError *error)

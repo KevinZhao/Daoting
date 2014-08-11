@@ -116,7 +116,6 @@
 		5933AD6918D03EC1001D707B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5933AD6818D03EC1001D707B /* AppDelegate.m */; };
 		5933AD6F18D03EC1001D707B /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5933AD6D18D03EC1001D707B /* Main_iPad.storyboard */; };
 		5933AD7718D03EC1001D707B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5933AD7618D03EC1001D707B /* Images.xcassets */; };
-		D8113D8719911FDC0011B04A /* nowplaying_share_h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8113D8519911FDC0011B04A /* nowplaying_share_h@2x.png */; };
 		D8113D8819911FDC0011B04A /* nowplaying_share_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8113D8619911FDC0011B04A /* nowplaying_share_n@2x.png */; };
 		D82B8AC9197962EE00F107B5 /* download@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D82B8AC5197962EE00F107B5 /* download@2x.png */; };
 		D882AE8E198A25460012348A /* DescriptionView_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D882AE8D198A25460012348A /* DescriptionView_iphone.xib */; };
@@ -327,7 +326,6 @@
 		5933AD6E18D03EC1001D707B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		5933AD7618D03EC1001D707B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9D92318D3DBB470EB30CF35F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D8113D8519911FDC0011B04A /* nowplaying_share_h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nowplaying_share_h@2x.png"; sourceTree = "<group>"; };
 		D8113D8619911FDC0011B04A /* nowplaying_share_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nowplaying_share_n@2x.png"; sourceTree = "<group>"; };
 		D82B8AC5197962EE00F107B5 /* download@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "download@2x.png"; sourceTree = "<group>"; };
 		D882AE8D198A25460012348A /* DescriptionView_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DescriptionView_iphone.xib; sourceTree = "<group>"; };
@@ -616,7 +614,6 @@
 		0A98D64B1920EAB700E46EB9 /* Artworks */ = {
 			isa = PBXGroup;
 			children = (
-				D8113D8519911FDC0011B04A /* nowplaying_share_h@2x.png */,
 				D8113D8619911FDC0011B04A /* nowplaying_share_n@2x.png */,
 				0AEFC3811988E17E00CECC93 /* bag@2x.png */,
 				0AEFC37F1988DDC800CECC93 /* tabbar_setting@2x.png */,
@@ -882,7 +879,6 @@
 				D882AE8E198A25460012348A /* DescriptionView_iphone.xib in Resources */,
 				0AEFC37B1988DBD800CECC93 /* colorStyle_allMusic@2x.png in Resources */,
 				0AE8648D192EEC6E00EF5A96 /* Liaozhai_SongList.plist in Resources */,
-				D8113D8719911FDC0011B04A /* nowplaying_share_h@2x.png in Resources */,
 				0A3CD3641920F8BE00247436 /* Main_iPhone.storyboard in Resources */,
 				0AE8649C192EF48700EF5A96 /* Yongzheng3_SongList.plist in Resources */,
 				0AE86498192EF48700EF5A96 /* Mingchao_SongList.plist in Resources */,

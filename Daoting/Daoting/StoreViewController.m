@@ -52,11 +52,9 @@
     
     [_notificationView.layer setMasksToBounds:YES];
     [_notificationView.layer setCornerRadius:10.0];
-    [_notificationView.layer setBorderWidth:5.0];
+    [_notificationView.layer setBorderWidth:2.0];
     
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 0, 0, 1, 0.2 });
-    [_notificationView.layer setBorderColor:colorref];//边框颜色
+    [_notificationView.layer setBorderColor:(_appDelegate.defaultColor_dark.CGColor)];
     
     _notificationView.alpha = 0.0;
 }
