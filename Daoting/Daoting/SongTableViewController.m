@@ -31,10 +31,10 @@
     _songs = [[SongManager sharedManager] searchSongArrayByAlbumName:_album.shortName];
     
     //Todo: remove the actionsheet?
-    _actionSheetStrings = [[NSMutableDictionary alloc] init];
-    [_actionSheetStrings setObject:@"取消" forKey:@"cancel"];
-    [_actionSheetStrings setObject:@"分享" forKey:@"share"];
-    [_actionSheetStrings setObject:@"全部下载" forKey:@"downloadOrCancelAll"];
+    //_actionSheetStrings = [[NSMutableDictionary alloc] init];
+    //[_actionSheetStrings setObject:@"取消" forKey:@"cancel"];
+    //[_actionSheetStrings setObject:@"分享" forKey:@"share"];
+    //[_actionSheetStrings setObject:@"全部下载" forKey:@"downloadOrCancelAll"];
     
     UIImage *progressBarImage = [UIImage imageNamed:@"progressBar.png"];
     [_slider setThumbImage:progressBarImage forState:UIControlStateNormal];
@@ -219,12 +219,14 @@
     switch (_audioPlayer.state) {
         case STKAudioPlayerStatePlaying:
      [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_pause_n.png"] forState:UIControlStateNormal];
-     [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_pause_h.png"] forState:UIControlStateHighlighted];
+            
+    //todo: check if it is really necessary
+     //[_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_pause_h.png"] forState:UIControlStateHighlighted];
 
             break;
         case STKAudioPlayerStatePaused:
      [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_play_n.png"] forState:UIControlStateNormal];
-     [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_play_h.png"] forState:UIControlStateHighlighted];
+     //[_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_play_h.png"] forState:UIControlStateHighlighted];
 
             break;
         default:
@@ -622,7 +624,7 @@
     [scrollView setContentOffset:offset animated:YES];
 }
 
-- (IBAction)onbarbtn_actionPressed:(id)sender
+/*- (IBAction)onbarbtn_actionPressed:(id)sender
 {
     
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil                                                                                  delegate:self
@@ -631,7 +633,7 @@
                                                     otherButtonTitles:[_actionSheetStrings objectForKey:@"share"],[_actionSheetStrings objectForKey:@"downloadOrCancelAll"], nil];
     [actionSheet showInView:self.view];
 
-}
+}*/
 
 - (IBAction)onbtn_sharePressed:(id)sender
 {
@@ -646,7 +648,7 @@
 
 #pragma mark - UIActionSheet delegate methods
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+/*- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     switch (buttonIndex) {
         //share
@@ -677,7 +679,7 @@
         default:
             break;
     }
-}
+}*/
 
 
 #pragma mark - Table view data source

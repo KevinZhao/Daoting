@@ -104,6 +104,10 @@
         
         destinationViewController.hidesBottomBarWhenPushed = YES;
         [destinationViewController setDetailItem: [_albums objectAtIndex:indexpath.row]];
+        
+        UIBarButtonItem *temporaryBarButtonItem=[[UIBarButtonItem alloc] init];
+        temporaryBarButtonItem.title=@"";
+        self.navigationItem.backBarButtonItem = temporaryBarButtonItem;
     }
 }
 

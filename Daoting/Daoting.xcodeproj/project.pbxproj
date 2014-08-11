@@ -120,6 +120,11 @@
 		D88557551999031A00B0F891 /* DescriptionView_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D88557521999031A00B0F891 /* DescriptionView_iphone.xib */; };
 		D88557561999031A00B0F891 /* NotificationView_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D88557531999031A00B0F891 /* NotificationView_iphone.xib */; };
 		D88557571999031A00B0F891 /* SongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D88557541999031A00B0F891 /* SongCell.xib */; };
+		D885575C199906A200B0F891 /* playing_btn_next_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8855758199906A200B0F891 /* playing_btn_next_n@2x.png */; };
+		D885575D199906A200B0F891 /* playing_btn_pause_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8855759199906A200B0F891 /* playing_btn_pause_n@2x.png */; };
+		D885575E199906A200B0F891 /* playing_btn_play_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D885575A199906A200B0F891 /* playing_btn_play_n@2x.png */; };
+		D885575F199906A200B0F891 /* playing_btn_pre_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D885575B199906A200B0F891 /* playing_btn_pre_n@2x.png */; };
+		D88557611999082F00B0F891 /* actionIconDownloadSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88557601999082F00B0F891 /* actionIconDownloadSelected@2x.png */; };
 		D89D5FA4197D43C600D6FEE0 /* songcell_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D89D5F9B197D43C600D6FEE0 /* songcell_bg@2x.png */; };
 		D8A6613519781B7B00E9E7D3 /* mark_lock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8A6613319781B7B00E9E7D3 /* mark_lock@2x.png */; };
 		D8C6FA4D198FDE4800AB9ACB /* AlbumList.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8C6FA4C198FDE4800AB9ACB /* AlbumList.plist */; };
@@ -331,6 +336,11 @@
 		D88557521999031A00B0F891 /* DescriptionView_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DescriptionView_iphone.xib; path = xib/DescriptionView_iphone.xib; sourceTree = "<group>"; };
 		D88557531999031A00B0F891 /* NotificationView_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotificationView_iphone.xib; path = xib/NotificationView_iphone.xib; sourceTree = "<group>"; };
 		D88557541999031A00B0F891 /* SongCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongCell.xib; path = xib/SongCell.xib; sourceTree = "<group>"; };
+		D8855758199906A200B0F891 /* playing_btn_next_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playing_btn_next_n@2x.png"; sourceTree = "<group>"; };
+		D8855759199906A200B0F891 /* playing_btn_pause_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playing_btn_pause_n@2x.png"; sourceTree = "<group>"; };
+		D885575A199906A200B0F891 /* playing_btn_play_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playing_btn_play_n@2x.png"; sourceTree = "<group>"; };
+		D885575B199906A200B0F891 /* playing_btn_pre_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playing_btn_pre_n@2x.png"; sourceTree = "<group>"; };
+		D88557601999082F00B0F891 /* actionIconDownloadSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "actionIconDownloadSelected@2x.png"; sourceTree = "<group>"; };
 		D89D5F9B197D43C600D6FEE0 /* songcell_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "songcell_bg@2x.png"; sourceTree = "<group>"; };
 		D8A6613319781B7B00E9E7D3 /* mark_lock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mark_lock@2x.png"; sourceTree = "<group>"; };
 		D8C6FA4C198FDE4800AB9ACB /* AlbumList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AlbumList.plist; path = SongPlists/AlbumList.plist; sourceTree = "<group>"; };
@@ -614,6 +624,11 @@
 		0A98D64B1920EAB700E46EB9 /* Artworks */ = {
 			isa = PBXGroup;
 			children = (
+				D88557601999082F00B0F891 /* actionIconDownloadSelected@2x.png */,
+				D8855758199906A200B0F891 /* playing_btn_next_n@2x.png */,
+				D8855759199906A200B0F891 /* playing_btn_pause_n@2x.png */,
+				D885575A199906A200B0F891 /* playing_btn_play_n@2x.png */,
+				D885575B199906A200B0F891 /* playing_btn_pre_n@2x.png */,
 				D8113D8619911FDC0011B04A /* nowplaying_share_n@2x.png */,
 				0AEFC3811988E17E00CECC93 /* bag@2x.png */,
 				0AEFC37F1988DDC800CECC93 /* tabbar_setting@2x.png */,
@@ -867,9 +882,11 @@
 				D8C6FA4D198FDE4800AB9ACB /* AlbumList.plist in Resources */,
 				0AE8649A192EF48700EF5A96 /* Shuangbianji_SongList.plist in Resources */,
 				0A1FA99B1958556C002F48EA /* qr_toolbar_more_hl@2x.png in Resources */,
+				D885575D199906A200B0F891 /* playing_btn_pause_n@2x.png in Resources */,
 				0A1FA99C1958556C002F48EA /* qr_toolbar_more@2x.png in Resources */,
 				0AE86488192EDECA00EF5A96 /* Zhengdong1_SongList.plist in Resources */,
 				0AEFC37C1988DBD800CECC93 /* colorStyle_download@2x.png in Resources */,
+				D88557611999082F00B0F891 /* actionIconDownloadSelected@2x.png in Resources */,
 				D82B8AC9197962EE00F107B5 /* download@2x.png in Resources */,
 				0A5F4C9D195AB0D3003924C7 /* AppIcon76x76@2x.png in Resources */,
 				0AAF6194196AE4A600C33E52 /* playingsong@2x.png in Resources */,
@@ -880,6 +897,7 @@
 				0AE8648D192EEC6E00EF5A96 /* Liaozhai_SongList.plist in Resources */,
 				0A3CD3641920F8BE00247436 /* Main_iPhone.storyboard in Resources */,
 				0AE8649C192EF48700EF5A96 /* Yongzheng3_SongList.plist in Resources */,
+				D885575E199906A200B0F891 /* playing_btn_play_n@2x.png in Resources */,
 				0AE86498192EF48700EF5A96 /* Mingchao_SongList.plist in Resources */,
 				0AEFC3721988C48000CECC93 /* btn_share@2x.png in Resources */,
 				0A1FA99F19585612002F48EA /* qr_toolbar_more_hl.png in Resources */,
@@ -902,6 +920,7 @@
 				0AE8649B192EF48700EF5A96 /* Yongzheng1_SongList.plist in Resources */,
 				0A98D66D1920F1F500E46EB9 /* arrowSelected@2x.png in Resources */,
 				0ABB4283192E321C007D8BAC /* Icon-72@2x.png in Resources */,
+				D885575C199906A200B0F891 /* playing_btn_next_n@2x.png in Resources */,
 				0AEFC3711988C48000CECC93 /* btn_checkin@2x.png in Resources */,
 				0AEFC3751988D5D300CECC93 /* coin.png in Resources */,
 				0A98D60F1920ACBC00E46EB9 /* ShareSDKLocalizable.strings in Resources */,
@@ -913,6 +932,7 @@
 				0A98D6211920ACBC00E46EB9 /* ShareSDKFlatShareViewUI.bundle in Resources */,
 				0AE86499192EF48700EF5A96 /* Sandao_SongList.plist in Resources */,
 				0AE8649E192EF4DF00EF5A96 /* Yongzheng2_SongList.plist in Resources */,
+				D885575F199906A200B0F891 /* playing_btn_pre_n@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
