@@ -424,7 +424,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Izc-Iv-gMT">
-                                <rect key="frame" x="0.0" y="65" width="320" height="406"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="406"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="delegate" destination="PHH-HN-8Ln" id="DNI-22-7fi"/>
@@ -438,7 +438,7 @@
                                     <action selector="onpageChanged:" destination="FIa-3P-xRc" eventType="valueChanged" id="5lb-fy-km2"/>
                                 </connections>
                             </pageControl>
-                            <imageView userInteractionEnabled="NO" alpha="0.61799999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Ic-7o-4HF">
+                            <imageView userInteractionEnabled="NO" alpha="0.309" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Ic-7o-4HF">
                                 <rect key="frame" x="0.0" y="468" width="320" height="100"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </imageView>

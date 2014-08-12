@@ -30,16 +30,10 @@
     
     _songs = [[SongManager sharedManager] searchSongArrayByAlbumName:_album.shortName];
     
-    //Todo: remove the actionsheet?
-    //_actionSheetStrings = [[NSMutableDictionary alloc] init];
-    //[_actionSheetStrings setObject:@"取消" forKey:@"cancel"];
-    //[_actionSheetStrings setObject:@"分享" forKey:@"share"];
-    //[_actionSheetStrings setObject:@"全部下载" forKey:@"downloadOrCancelAll"];
-    
     UIImage *progressBarImage = [UIImage imageNamed:@"progressBar.png"];
     [_slider setThumbImage:progressBarImage forState:UIControlStateNormal];
     
-    self.view.backgroundColor = _appDelegate.defaultBackgroundColor;
+    //self.view.backgroundColor = _appDelegate.defaultBackgroundColor;
     _tableview.backgroundColor = _appDelegate.defaultBackgroundColor;
 }
 
@@ -82,6 +76,10 @@
     
     [self setupTimer];
     [self setupNotificationView];
+    
+    
+    //test
+    //_
 }
 
 - (void)viewDidDisappear:(BOOL)animated

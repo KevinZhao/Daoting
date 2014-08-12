@@ -16,7 +16,7 @@
     AppDelegate *_appDelegate;
 }
 
-//@property (nonatomic, strong) IBOutlet UITextView   *txt_description;
+@property (nonatomic, strong) IBOutlet UIScrollView   *scrollView_description;
 @property (nonatomic, strong) IBOutlet UILabel      *lbl_description;
 @property (nonatomic, strong) IBOutlet UIButton     *btn_downloadAll;
 @property (nonatomic, strong) IBOutlet UIImageView  *img_artist;
