@@ -38,7 +38,7 @@
 
     
     CGSize textSize = [lbl_description.text boundingRectWithSize:CGSizeMake(280, 2000) // 用于计算文本绘制时占据的矩形块
-                                                         options: NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading // 文本绘制时的附加选项
+                                                         options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading // 文本绘制时的附加选项
                                                       attributes:dic        // 文字的属性
                                                          context:nil].size; // context上下文。包括一些信息，例如如何调整字间距以及缩放。该对象包含的信息将用于文本绘制。该参数可为nil
     
@@ -47,8 +47,6 @@
     
     _scrollView_description.contentSize = CGSizeMake(self.frame.size.width, textSize.height + 90);
     [_scrollView_description addSubview:lbl_description];
-    
-    //self.txt_description.backgroundColor = _appDelegate.defaultBackgroundColor;
 }
 
 

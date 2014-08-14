@@ -17,10 +17,6 @@
 }
 
 @property (nonatomic, strong) IBOutlet UIScrollView   *scrollView_description;
-
-@property (nonatomic, strong) IBOutlet UIButton     *btn_downloadAll;
-
-
 @property (nonatomic, retain) IBOutlet Album        *album;
 
 @end
