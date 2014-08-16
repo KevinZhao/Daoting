@@ -71,9 +71,10 @@
     plistPath = [plistPath stringByAppendingString:@"_SongList.plist"];
     
     //2. Download plist from cloud storage
-    NSURLRequest *request = [NSURLRequest requestWithURL:album.plistUrl];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:album.plistUrl];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
-    
+    [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+     
     NSString *path = NSTemporaryDirectory();
     NSString *fileName = @"PlayList.plist";
     NSString *filePath = [path stringByAppendingString:fileName];
@@ -113,7 +114,11 @@
              //re-initialize songs and update table view
              [self initializeSongs:albumShortName];
              
-             //todo : call back
+             //call back, ask song table view to reload
+             //todo, mark something new had updated
+             if (self.delegate != nil) {
+                 [self.delegate onSongUpdated];
+             }
          }
      }
      //Download Failed
@@ -121,7 +126,6 @@
      {
          //try to download again
          NSLog(@"error%@", error.domain);
-         //[self updateSongs:albumShortName];
      }];
 }
 

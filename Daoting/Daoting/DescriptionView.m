@@ -10,23 +10,23 @@
 
 @implementation DescriptionView
 
-
 - (void)didMoveToWindow
 {
     _appDelegate = [[UIApplication sharedApplication] delegate];
     self.backgroundColor = _appDelegate.defaultBackgroundColor;
     
-    //1. Album Image
+    //1. Album image
     UIImageView *img_artist = [[UIImageView alloc]initWithFrame:CGRectMake(20, 20, 64, 64)];
     [img_artist setImageWithURL:_album.imageUrl];
     [_scrollView_description addSubview:img_artist];
     
-    //2. Download All Button
-    UIButton *btn_downloadAll = [[UIButton alloc]initWithFrame:CGRectMake(220, 54, 70, 30)];
-    btn_downloadAll.titleLabel.text = @"全部下载";
+    //2. Download all button
+    UIButton *btn_downloadAll = [UIButton buttonWithType:UIButtonTypeSystem];
+    [btn_downloadAll setFrame:CGRectMake(220, 54, 70, 30)];
+    [btn_downloadAll setTitle:@"全部下载" forState:UIControlStateNormal];
     [_scrollView_description addSubview:btn_downloadAll];
     
-    //3. Description Label
+    //3. description label
     UILabel* lbl_description = [[UILabel alloc]init];
     
     [lbl_description setNumberOfLines:0];
@@ -36,15 +36,14 @@
     UIFont *font =[UIFont fontWithName:lbl_description.font.familyName size:17];
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:font,NSFontAttributeName, nil];
 
-    
-    CGSize textSize = [lbl_description.text boundingRectWithSize:CGSizeMake(280, 2000) // 用于计算文本绘制时占据的矩形块
-                                                         options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading // 文本绘制时的附加选项
-                                                      attributes:dic        // 文字的属性
-                                                         context:nil].size; // context上下文。包括一些信息，例如如何调整字间距以及缩放。该对象包含的信息将用于文本绘制。该参数可为nil
-    
+    CGSize textSize = [lbl_description.text boundingRectWithSize:CGSizeMake(280, 2000)
+                                                         options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                                      attributes:dic
+                                                         context:nil].size;
     
     [lbl_description setFrame:CGRectMake(20, 90, textSize.width, textSize.height)];
     
+    // 4. Resize scroll view
     _scrollView_description.contentSize = CGSizeMake(self.frame.size.width, textSize.height + 90);
     [_scrollView_description addSubview:lbl_description];
 }

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1162FD35252A464A90444887"
-               BuildableName = "libPods-StreamingKit.a"
-               BlueprintName = "Pods-StreamingKit"
+               BlueprintIdentifier = "7574C9E4443F44B78C4017C2"
+               BuildableName = "libPods-LBBlurredImage.a"
+               BlueprintName = "Pods-LBBlurredImage"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

@@ -48,6 +48,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 3
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 1
 
+// LBBlurredImage
+#define COCOAPODS_POD_AVAILABLE_LBBlurredImage
+#define COCOAPODS_VERSION_MAJOR_LBBlurredImage 0
+#define COCOAPODS_VERSION_MINOR_LBBlurredImage 2
+#define COCOAPODS_VERSION_PATCH_LBBlurredImage 0
+
 // StreamingKit
 #define COCOAPODS_POD_AVAILABLE_StreamingKit
 #define COCOAPODS_VERSION_MAJOR_StreamingKit 0

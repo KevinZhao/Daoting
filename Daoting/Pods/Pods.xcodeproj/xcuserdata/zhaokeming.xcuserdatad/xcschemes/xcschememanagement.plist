@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-LBBlurredImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-StreamingKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,32 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0ADABA85F6204FD181088DCE</key>
+		<key>06DB7569D77F4050A0D27B28</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>17509EC224924A399C016F79</key>
+		<key>1162FD35252A464A90444887</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>38E847E92B4946EFA84FEE57</key>
+		<key>1E92673D7D844DD4B1BF3929</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8DE8D40893844452AFC0E76B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B354F2446E8D4265A9BC65DF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FB6B210698BE465DBF6E5F5D</key>
+		<key>7574C9E4443F44B78C4017C2</key>
 		<dict>
 			<key>primary</key>
 			<true/>

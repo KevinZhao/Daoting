@@ -27,7 +27,7 @@
 
 
 @interface SongTableViewController : UIViewController<UIScrollViewDelegate, UITableViewDataSource,
-    UITableViewDelegate, UIActionSheetDelegate, STKAudioPlayerHelperDelegate>
+    UITableViewDelegate, STKAudioPlayerHelperDelegate, SongManagerDelegate>
 {
     NSMutableArray                      *_songs;
     UITableView                         *_tableview;
@@ -36,7 +36,7 @@
     NSTimer                             *_timer;
     AppData                             *_appData;
     STKAudioPlayerHelper                *_playerHelper;
-    //NSMutableDictionary                 *_actionSheetStrings;
+    SongManager                         *_songManager;
     AppDelegate                         *_appDelegate;
 }
 
@@ -52,7 +52,6 @@
 @property (nonatomic, retain) IBOutlet UISlider *slider;
 @property (nonatomic, strong) IBOutlet NotificationView* notificationView;
 @property (nonatomic, strong) IBOutlet DescriptionView* descriptionView;
-//@property (nonatomic, strong) IBOutlet UIActionSheet *actionSheet;
 
 - (IBAction)onbtn_playAndPausePressed:(id)sender;
 - (IBAction)onbtn_nextPressed:(id)sender;

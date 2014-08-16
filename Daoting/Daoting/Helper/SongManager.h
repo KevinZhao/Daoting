@@ -13,10 +13,19 @@
 #import "Album.h"
 #import "AlbumManager.h"
 
+@protocol SongManagerDelegate <NSObject>
+
+- (void)onSongUpdated;
+
+@end
+
 @interface SongManager : NSObject
 {
     NSMutableDictionary *_songArrayDictionaryByAlbumName;
 }
+
+
+@property (readwrite, unsafe_unretained) id<SongManagerDelegate> delegate;
 
 + (SongManager *)sharedManager;
 

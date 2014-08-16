@@ -27,16 +27,19 @@
     _playerHelper.delegate = self;
     _appDelegate    = [[UIApplication sharedApplication]delegate];
     _slider.tintColor = _appDelegate.defaultColor_light;
+    _songManager    = [SongManager sharedManager];
+    _songManager.delegate = self;
     
-    _songs = [[SongManager sharedManager] searchSongArrayByAlbumName:_album.shortName];
+    _songs = [_songManager searchSongArrayByAlbumName:_album.shortName];
     
     UIImage *progressBarImage = [UIImage imageNamed:@"progressBar.png"];
     [_slider setThumbImage:progressBarImage forState:UIControlStateNormal];
     
     //self.view.backgroundColor = _appDelegate.defaultBackgroundColor;
     _tableview.backgroundColor = _appDelegate.defaultBackgroundColor;
+    
+    self.navigationController.navigationBar.alpha = 0.7;
 }
-
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -216,16 +219,11 @@
     
     switch (_audioPlayer.state) {
         case STKAudioPlayerStatePlaying:
-     [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_pause_n.png"] forState:UIControlStateNormal];
-            
-    //todo: check if it is really necessary
-     //[_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_pause_h.png"] forState:UIControlStateHighlighted];
-
+            [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_pause_n.png"] forState:UIControlStateNormal];
             break;
+        
         case STKAudioPlayerStatePaused:
-     [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_play_n.png"] forState:UIControlStateNormal];
-     //[_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_play_h.png"] forState:UIControlStateHighlighted];
-
+            [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_play_n.png"] forState:UIControlStateNormal];
             break;
         default:
             break;
@@ -622,17 +620,6 @@
     [scrollView setContentOffset:offset animated:YES];
 }
 
-/*- (IBAction)onbarbtn_actionPressed:(id)sender
-{
-    
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil                                                                                  delegate:self
-                                                    cancelButtonTitle:[_actionSheetStrings objectForKey:@"cancel"]
-                                               destructiveButtonTitle:nil
-                                                    otherButtonTitles:[_actionSheetStrings objectForKey:@"share"],[_actionSheetStrings objectForKey:@"downloadOrCancelAll"], nil];
-    [actionSheet showInView:self.view];
-
-}*/
-
 - (IBAction)onbtn_sharePressed:(id)sender
 {
     [self shareAlbum];
@@ -644,41 +631,12 @@
 }
 
 
-#pragma mark - UIActionSheet delegate methods
+#pragma mark - SongManagerDelegat
 
-/*- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+- (void)onSongUpdated
 {
-    switch (buttonIndex) {
-        //share
-        case 0:
-        {
-            
-        }
-            break;
-        //download all
-        case 1:
-        {
-            if ([[_actionSheetStrings objectForKey:@"downloadOrCancelAll"] isEqual: @"全部下载"]) {
-    
-                [self downloadAll];
-                [_actionSheetStrings setValue:@"停止下载" forKey:@"downloadOrCancelAll"];
-                
-                break;
-                 
-            }
-            if ([[_actionSheetStrings objectForKey:@"downloadOrCancelAll"] isEqual: @"停止下载"])
-                
-                [self cancelDownloadAll];
-                [_actionSheetStrings setValue:@"全部下载" forKey:@"downloadOrCancelAll"];
-            
-                break;
-            }
-            break;
-        default:
-            break;
-    }
-}*/
-
+    [_tableview reloadData];
+}
 
 #pragma mark - Table view data source
 
