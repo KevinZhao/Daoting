@@ -24,6 +24,7 @@
 #import "NotificationView.h"
 #import "SongManager.h"
 #import "DescriptionView.h"
+#import "TSMessageView.h"
 
 
 @interface SongTableViewController : UIViewController<UIScrollViewDelegate, UITableViewDataSource,

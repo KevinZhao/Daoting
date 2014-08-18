@@ -592,7 +592,7 @@
 
 -(void)showNotification:(NSString *)notification;
 {
-    _notificationView.alpha = 1.0;
+    /*_notificationView.alpha = 1.0;
     
     _notificationView.lbl_coins.text = [NSString stringWithFormat:@"%d", _appData.coins];
     _notificationView.lbl_notification.text = notification;
@@ -603,7 +603,11 @@
     [UIView setAnimationDelay:1.0];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
     _notificationView.alpha = 0.0;
-    [UIView commitAnimations];
+    [UIView commitAnimations];*/
+    
+    [TSMessage showNotificationWithTitle:nil
+                                subtitle:notification
+                                    type:TSMessageNotificationTypeMessage];
 }
 
 
