@@ -10,6 +10,7 @@
 #import "Album.h"
 #import "UIImageView+AFNetworking.h"
 #import "AppDelegate.h"
+#import "UIImageView+LBBlurredImage.h"
 
 @interface DescriptionView : UIView
 {

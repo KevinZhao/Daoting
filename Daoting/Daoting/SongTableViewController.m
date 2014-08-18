@@ -728,7 +728,7 @@
 
 -(void) onPlayerHelperSongChanged
 {
-    //3. update for selection change
+    //1. update for selection change
     if ([_album.shortName isEqualToString: _appData.currentAlbum.shortName]) {
         
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[_appData.currentSong.songNumber integerValue] -1 inSection:0];

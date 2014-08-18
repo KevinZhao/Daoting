@@ -150,7 +150,7 @@
 		<key>Title</key>
 		<string>雍正剑侠图</string>
 		<key>Url</key>
-		<string>http://yongzheng4.qiniudn.com/%E9%9B%8D%E6%AD%A3%E5%89%91%E4%BE%A0%E5%9B%BE0010.mp3</string>
+		<string>http://yongzheng4.qiniudn.com/%E9%9B%8D%E6%AD%A3%E5%89%91%E4%BE%A0%E5%9B%BE010.mp3</string>
 	</dict>
 	<key>11</key>
 	<dict>
@@ -165,7 +165,52 @@
 		<key>Title</key>
 		<string>雍正剑侠图</string>
 		<key>Url</key>
-		<string>http://yongzheng4.qiniudn.com/%E9%9B%8D%E6%AD%A3%E5%89%91%E4%BE%A0%E5%9B%BE0011.mp3</string>
+		<string>http://yongzheng4.qiniudn.com/%E9%9B%8D%E6%AD%A3%E5%89%91%E4%BE%A0%E5%9B%BE011.mp3</string>
+	</dict>
+	<key>12</key>
+	<dict>
+		<key>Duration</key>
+		<string>01:02:17</string>
+		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
+		<string>60</string>
+		<key>Progress</key>
+		<string>0</string>
+		<key>Title</key>
+		<string>雍正剑侠图</string>
+		<key>Url</key>
+		<string>http://yongzheng4.qiniudn.com/%E9%9B%8D%E6%AD%A3%E5%89%91%E4%BE%A0%E5%9B%BE012.mp3</string>
+	</dict>
+	<key>13</key>
+	<dict>
+		<key>Duration</key>
+		<string>01:02:17</string>
+		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
+		<string>60</string>
+		<key>Progress</key>
+		<string>0</string>
+		<key>Title</key>
+		<string>雍正剑侠图</string>
+		<key>Url</key>
+		<string>http://yongzheng4.qiniudn.com/%E9%9B%8D%E6%AD%A3%E5%89%91%E4%BE%A0%E5%9B%BE013.mp3</string>
+	</dict>
+	<key>14</key>
+	<dict>
+		<key>Duration</key>
+		<string>01:02:17</string>
+		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
+		<string>60</string>
+		<key>Progress</key>
+		<string>0</string>
+		<key>Title</key>
+		<string>雍正剑侠图</string>
+		<key>Url</key>
+		<string>http://yongzheng4.qiniudn.com/%E9%9B%8D%E6%AD%A3%E5%89%91%E4%BE%A0%E5%9B%BE014.mp3</string>
 	</dict>
 </dict>
 </plist>

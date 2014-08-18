@@ -9,12 +9,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-HexColors.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-LBBlurredImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-StreamingKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-TSMessages.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,22 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>06DB7569D77F4050A0D27B28</key>
+		<key>143A9EA32F8E4434BF5A3477</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1162FD35252A464A90444887</key>
+		<key>2CED0E634D9B4921969DA7B8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1E92673D7D844DD4B1BF3929</key>
+		<key>40BC079DEB124E92AA67EDD3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7574C9E4443F44B78C4017C2</key>
+		<key>A1253F9700664246BCC0349D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A55FEB5B29F44C8D8E0574A6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CE06D6BC716E4E8EB0800AB2</key>
 		<dict>
 			<key>primary</key>
 			<true/>

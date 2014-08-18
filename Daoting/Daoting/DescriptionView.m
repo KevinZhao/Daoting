@@ -16,11 +16,20 @@
     self.backgroundColor = _appDelegate.defaultBackgroundColor;
     
     //1. Album image
-    UIImageView *img_artist = [[UIImageView alloc]initWithFrame:CGRectMake(20, 20, 64, 64)];
+    //UIImageView *img_artist = [[UIImageView alloc]initWithFrame:CGRectMake(20, 20, 64, 64)];
+    
+    UIImageView *img_artist = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 406)];
     [img_artist setImageWithURL:_album.imageUrl];
+    
+    img_artist.alpha = 0.2;
+    [img_artist setImageToBlur:img_artist.image blurRadius:2 completionBlock:nil];
+    
+    
     [_scrollView_description addSubview:img_artist];
     
-    //2. Download all button
+    
+    
+    /*//2. Download all button
     UIButton *btn_downloadAll = [UIButton buttonWithType:UIButtonTypeSystem];
     [btn_downloadAll setFrame:CGRectMake(220, 54, 70, 30)];
     [btn_downloadAll setTitle:@"全部下载" forState:UIControlStateNormal];
@@ -45,7 +54,7 @@
     
     // 4. Resize scroll view
     _scrollView_description.contentSize = CGSizeMake(self.frame.size.width, textSize.height + 90);
-    [_scrollView_description addSubview:lbl_description];
+    [_scrollView_description addSubview:lbl_description];*/
 }
 
 
