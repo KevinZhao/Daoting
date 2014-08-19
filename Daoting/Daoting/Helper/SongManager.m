@@ -23,6 +23,8 @@
 
 - (SongManager *)init
 {
+    self = [super init];
+    
     _songArrayDictionaryByAlbumName = [[NSMutableDictionary alloc]init];
     
     return self;

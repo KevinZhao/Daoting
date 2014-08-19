@@ -25,6 +25,8 @@
 
 - (STKAudioPlayerHelper *)init
 {
+    self = [super init];
+    
     //configure STKAudioPlayer
     audioPlayer = [[STKAudioPlayer alloc] initWithOptions:(STKAudioPlayerOptions){ .flushQueueOnSeek = YES, .enableVolumeMixer = NO, .equalizerBandFrequencies = {50, 100, 200, 400, 800, 1600, 2600, 16000} }];
     
@@ -163,8 +165,8 @@
         [self playSong:song InAlbum:album];
     }
     
-    //problem
     if (self.delegate != nil) {
+        
         [self.delegate onPlayerHelperSongChanged];
     }
 }

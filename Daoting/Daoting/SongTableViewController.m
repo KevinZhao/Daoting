@@ -14,6 +14,9 @@
 @implementation SongTableViewController
 @synthesize pageControl, scrollView;
 
+
+
+
 #pragma mark - UIView delegate
 
 - (void)viewDidLoad
@@ -35,10 +38,7 @@
     UIImage *progressBarImage = [UIImage imageNamed:@"progressBar.png"];
     [_slider setThumbImage:progressBarImage forState:UIControlStateNormal];
     
-    //self.view.backgroundColor = _appDelegate.defaultBackgroundColor;
     _tableview.backgroundColor = _appDelegate.defaultBackgroundColor;
-    
-    self.navigationController.navigationBar.alpha = 0.7;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -82,7 +82,10 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [_timer invalidate];
+    _playerHelper.delegate = nil;
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -695,7 +698,7 @@
         
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[_appData.currentSong.songNumber integerValue] -1 inSection:0];
         
-        //[_tableview selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+        [_tableview selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
     }
 }
 

@@ -117,7 +117,6 @@
 		D8855750199902CF00B0F891 /* SettingCellSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = D8855746199902CF00B0F891 /* SettingCellSwitch.m */; };
 		D8855751199902CF00B0F891 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8855748199902CF00B0F891 /* SettingViewController.m */; };
 		D88557551999031A00B0F891 /* DescriptionView_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D88557521999031A00B0F891 /* DescriptionView_iphone.xib */; };
-		D88557561999031A00B0F891 /* NotificationView_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D88557531999031A00B0F891 /* NotificationView_iphone.xib */; };
 		D88557571999031A00B0F891 /* SongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D88557541999031A00B0F891 /* SongCell.xib */; };
 		D885575C199906A200B0F891 /* playing_btn_next_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8855758199906A200B0F891 /* playing_btn_next_n@2x.png */; };
 		D885575D199906A200B0F891 /* playing_btn_pause_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8855759199906A200B0F891 /* playing_btn_pause_n@2x.png */; };
@@ -331,7 +330,6 @@
 		D8855747199902CF00B0F891 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingViewController.h; path = Setting/SettingViewController.h; sourceTree = "<group>"; };
 		D8855748199902CF00B0F891 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = Setting/SettingViewController.m; sourceTree = "<group>"; };
 		D88557521999031A00B0F891 /* DescriptionView_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DescriptionView_iphone.xib; path = xib/DescriptionView_iphone.xib; sourceTree = "<group>"; };
-		D88557531999031A00B0F891 /* NotificationView_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotificationView_iphone.xib; path = xib/NotificationView_iphone.xib; sourceTree = "<group>"; };
 		D88557541999031A00B0F891 /* SongCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongCell.xib; path = xib/SongCell.xib; sourceTree = "<group>"; };
 		D8855758199906A200B0F891 /* playing_btn_next_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playing_btn_next_n@2x.png"; sourceTree = "<group>"; };
 		D8855759199906A200B0F891 /* playing_btn_pause_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playing_btn_pause_n@2x.png"; sourceTree = "<group>"; };
@@ -431,7 +429,6 @@
 			isa = PBXGroup;
 			children = (
 				D88557521999031A00B0F891 /* DescriptionView_iphone.xib */,
-				D88557531999031A00B0F891 /* NotificationView_iphone.xib */,
 				D88557541999031A00B0F891 /* SongCell.xib */,
 				0A3CD3621920F8BE00247436 /* Main_iPhone.storyboard */,
 				5933AD6D18D03EC1001D707B /* Main_iPad.storyboard */,
@@ -923,7 +920,6 @@
 				0A98D6101920ACBC00E46EB9 /* Resource.bundle in Resources */,
 				5933AD6318D03EC1001D707B /* InfoPlist.strings in Resources */,
 				0AE86490192EEC6E00EF5A96 /* Zhangguangtai_SongList.plist in Resources */,
-				D88557561999031A00B0F891 /* NotificationView_iphone.xib in Resources */,
 				0A98D6211920ACBC00E46EB9 /* ShareSDKFlatShareViewUI.bundle in Resources */,
 				0AE86499192EF48700EF5A96 /* Sandao_SongList.plist in Resources */,
 				0AE8649E192EF4DF00EF5A96 /* Yongzheng2_SongList.plist in Resources */,
