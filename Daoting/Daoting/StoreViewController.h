@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "AppDelegate.h"
+#import "TSMessage.h"
 
 @interface StoreViewController : UIViewController<IAPHelperDelegate>
 {
@@ -26,7 +27,6 @@
 @property (nonatomic, strong) IBOutlet UILabelStrikeThrough *lbl_60yuan;
 @property (nonatomic, strong) IBOutlet UILabelStrikeThrough *lbl_30yuan;
 
-@property (nonatomic, strong) IBOutlet NotificationView* notificationView;
 
 -(void)showNotification:(NSString *)notification;
 

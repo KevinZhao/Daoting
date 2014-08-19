@@ -163,7 +163,10 @@
         [self playSong:song InAlbum:album];
     }
     
-    [self.delegate onPlayerHelperSongChanged];
+    //problem
+    if (self.delegate != nil) {
+        [self.delegate onPlayerHelperSongChanged];
+    }
 }
 
 -(void)playPreviousSong

@@ -15,7 +15,6 @@
 		0A3CD3641920F8BE00247436 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A3CD3621920F8BE00247436 /* Main_iPhone.storyboard */; };
 		0A5F4C9D195AB0D3003924C7 /* AppIcon76x76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A5F4C9C195AB0D3003924C7 /* AppIcon76x76@2x.png */; };
 		0A659EF51977AFFD00FC893B /* download_pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A659EE81977AFFD00FC893B /* download_pause@2x.png */; };
-		0A70896A195C088600B91B16 /* NotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A708969195C088600B91B16 /* NotificationView.m */; };
 		0A7A8CD819590B4C003FAA92 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A7A8CD719590B4C003FAA92 /* CFNetwork.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		0A8BA0091940BFCB001307D6 /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8BA0081940BFCB001307D6 /* DownloadViewController.m */; };
 		0A8BA00F1940C15E001307D6 /* DownloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8BA00E1940C15E001307D6 /* DownloadCell.m */; };
@@ -142,8 +141,6 @@
 		0A5F4C9C195AB0D3003924C7 /* AppIcon76x76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon76x76@2x.png"; sourceTree = "<group>"; };
 		0A659EE81977AFFD00FC893B /* download_pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "download_pause@2x.png"; sourceTree = "<group>"; };
 		0A6D57351932FD070038D841 /* Daoting.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Daoting.entitlements; sourceTree = "<group>"; };
-		0A708968195C088600B91B16 /* NotificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationView.h; sourceTree = "<group>"; };
-		0A708969195C088600B91B16 /* NotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationView.m; sourceTree = "<group>"; };
 		0A7A8CD719590B4C003FAA92 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0A8BA0071940BFCB001307D6 /* DownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadViewController.h; sourceTree = "<group>"; };
 		0A8BA0081940BFCB001307D6 /* DownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadViewController.m; sourceTree = "<group>"; };
@@ -773,8 +770,6 @@
 				0A8BA00E1940C15E001307D6 /* DownloadCell.m */,
 				5933AD6718D03EC1001D707B /* AppDelegate.h */,
 				5933AD6818D03EC1001D707B /* AppDelegate.m */,
-				0A708968195C088600B91B16 /* NotificationView.h */,
-				0A708969195C088600B91B16 /* NotificationView.m */,
 				D882AE98198A2D150012348A /* DescriptionView.h */,
 				D882AE99198A2D150012348A /* DescriptionView.m */,
 				0A98D66E1920F25900E46EB9 /* AlbumTableViewController.h */,
@@ -992,7 +987,6 @@
 				D885574F199902CF00B0F891 /* SettingCellDisclosure.m in Sources */,
 				5933AD6518D03EC1001D707B /* main.m in Sources */,
 				D88557201999023B00B0F891 /* CoinIAPHelper.m in Sources */,
-				0A70896A195C088600B91B16 /* NotificationView.m in Sources */,
 				0A8BA0091940BFCB001307D6 /* DownloadViewController.m in Sources */,
 				D885574B199902CF00B0F891 /* PurchasedAlbumCell.m in Sources */,
 				D8855751199902CF00B0F891 /* SettingViewController.m in Sources */,

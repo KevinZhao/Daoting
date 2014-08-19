@@ -21,15 +21,11 @@
 #import "CoinIAPHelper.h"
 #import "AppDelegate.h"
 #import <ShareSDK/ShareSDK.h>
-#import "NotificationView.h"
 #import "AFNetworkActivityIndicatorManager.h"
-
-
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {
     AppData *_appData;
-    
 }
 
 @property (strong, nonatomic) UIWindow  *window;

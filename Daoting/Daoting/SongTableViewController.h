@@ -21,7 +21,6 @@
 #import "STKAudioPlayerHelper.h"
 #import <ShareSDK/ShareSDK.h>
 #import "StoreViewController.h"
-#import "NotificationView.h"
 #import "SongManager.h"
 #import "DescriptionView.h"
 #import "TSMessageView.h"
@@ -51,7 +50,6 @@
 @property (nonatomic, retain) IBOutlet UIButton *btn_share;
 @property (nonatomic, retain) IBOutlet UIButton *btn_downloadAll;
 @property (nonatomic, retain) IBOutlet UISlider *slider;
-@property (nonatomic, strong) IBOutlet NotificationView* notificationView;
 @property (nonatomic, strong) IBOutlet DescriptionView* descriptionView;
 
 - (IBAction)onbtn_playAndPausePressed:(id)sender;
@@ -59,8 +57,6 @@
 - (IBAction)onbtn_previousPressed:(id)sender;
 - (IBAction)onsliderValueChanged:(id)sender;
 - (IBAction)onpageChanged:(id)sender;
-
-
 - (void)setDetailItem:(Album *)album;
 - (void)showNotification:(NSString *)notification;
 

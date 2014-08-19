@@ -76,13 +76,7 @@
     [_tableview selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
     
     self.navigationItem.title = _album.title;
-    
     [self setupTimer];
-    [self setupNotificationView];
-    
-    
-    //test
-    //_
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -97,24 +91,6 @@
 }
 
 #pragma mark - Internal business logic
-
-- (void)setupNotificationView
-{
-    NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"NotificationView_iphone" owner:self options:nil];
-    
-    _notificationView = [nibViews objectAtIndex:0];
-    _notificationView.center = self.view.center;
-    [self.view addSubview:_notificationView];
-    
-    [_notificationView.layer setMasksToBounds:YES];
-    [_notificationView.layer setCornerRadius:10.0];
-    [_notificationView.layer setBorderWidth:2.0];
-    
-    [_notificationView.layer setBorderColor:(_appDelegate.defaultColor_dark.CGColor)];//边框颜色
-    
-    _notificationView.alpha = 0.0;
-}
-
 - (void)setupDescriptionView
 {
     NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"DescriptionView_iphone" owner:self options:nil];
@@ -556,7 +532,6 @@
         }
         else
         {
-            
             [self playSong:_songs[0]];
         }
     }
@@ -581,7 +556,6 @@
     NSInteger currentSongNumber = [_appData.currentSong.songNumber intValue];
     
     if ( currentSongNumber - 1 > 0) {
-        
         Song *song = [_songs objectAtIndex:(currentSongNumber -2)];
         
         [self playSong:song];
@@ -592,24 +566,8 @@
 
 -(void)showNotification:(NSString *)notification;
 {
-    /*_notificationView.alpha = 1.0;
-    
-    _notificationView.lbl_coins.text = [NSString stringWithFormat:@"%d", _appData.coins];
-    _notificationView.lbl_notification.text = notification;
-    
-    //show notification view
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:1.5];
-    [UIView setAnimationDelay:1.0];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-    _notificationView.alpha = 0.0;
-    [UIView commitAnimations];*/
-    
-    [TSMessage showNotificationWithTitle:nil
-                                subtitle:notification
-                                    type:TSMessageNotificationTypeMessage];
+    [TSMessage showNotificationInViewController:self title:nil subtitle:notification type:TSMessageNotificationTypeSuccess];
 }
-
 
 - (IBAction)onsliderValueChanged:(id)sender
 {
@@ -737,8 +695,7 @@
         
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[_appData.currentSong.songNumber integerValue] -1 inSection:0];
         
-        [_tableview selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
-    
+        //[_tableview selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
     }
 }
 

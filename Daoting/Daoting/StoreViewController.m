@@ -34,45 +34,15 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     self.lbl_coins.text = [NSString stringWithFormat:@"%d", _appData.coins];
-    [self setupNotificationView];
     
     _appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     self.view.backgroundColor = _appDelegate.defaultBackgroundColor;
 }
 
-#pragma mark
-
-- (void)setupNotificationView
-{
-    NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"NotificationView_iphone" owner:self options:nil];
-    
-    _notificationView = [nibViews objectAtIndex:0];
-    _notificationView.center = self.view.center;
-    [self.view addSubview:_notificationView];
-    
-    [_notificationView.layer setMasksToBounds:YES];
-    [_notificationView.layer setCornerRadius:10.0];
-    [_notificationView.layer setBorderWidth:2.0];
-    
-    [_notificationView.layer setBorderColor:(_appDelegate.defaultColor_dark.CGColor)];
-    
-    _notificationView.alpha = 0.0;
-}
-
+#pragma mark TSMessages
 -(void)showNotification:(NSString *)notification;
 {
-    _notificationView.alpha = 1.0;
-    
-    _notificationView.lbl_coins.text = [NSString stringWithFormat:@"%d", _appData.coins];
-    _notificationView.lbl_notification.text = notification;
-    
-    //show notification view
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:1.5];
-    [UIView setAnimationDelay:1.0];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-    _notificationView.alpha = 0.0;
-    [UIView commitAnimations];
+    [TSMessage showNotificationInViewController:self title:nil subtitle:notification type:TSMessageNotificationTypeSuccess];
 }
 
 #pragma mark IAP Notification Handler
