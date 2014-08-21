@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <AVFoundation/AVFoundation.h>
+#import "XGPush.h"
 
 @implementation AppDelegate
 
@@ -91,6 +92,18 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioInterruptionNotification:) name:AVAudioSessionInterruptionNotification object:nil];
     
+    //Notification with XG
+    //let device know we want to recive MSG-WL
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)
+     ];
+    //init push informatoin
+    [XGPush startApp:2200044229 appKey:@"IUZN34V429XQ"];
+    //Handle click notification.
+    [XGPush handleLaunching:launchOptions];
+    
+    //End
+    
     return YES;
 }
 
@@ -163,7 +176,12 @@
 
 - (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    NSLog(@"My token is: %@", deviceToken);
+    //Notification with XG
+    NSString *deviceTokenStr = [XGPush registerDevice: deviceToken];
+    [XGPush registerDevice:deviceTokenStr];
+    NSLog(@"My token is: %@", deviceTokenStr);
+    //End
+
     
 }
 
@@ -174,7 +192,9 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-    
+    //Notification with XG
+    [XGPush handleReceiveNotification:userInfo];
+    //End
 }
 
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
