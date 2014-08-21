@@ -82,6 +82,8 @@
 		0AEFC3821988E17E00CECC93 /* bag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFC3811988E17E00CECC93 /* bag@2x.png */; };
 		0AFB65A719245BD4000F2AE6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AFB65A619245BD4000F2AE6 /* StoreKit.framework */; };
 		0AFFF5831944A2EE008E9119 /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFFF5821944A2EE008E9119 /* StoreViewController.m */; };
+		236C526919A630B8009595D9 /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 236C526719A630B8009595D9 /* libXG-SDK.a */; };
+		236C526B19A63169009595D9 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 236C526A19A63169009595D9 /* libz.dylib */; };
 		5933AD5B18D03EC1001D707B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933AD5A18D03EC1001D707B /* CoreGraphics.framework */; };
 		5933AD5D18D03EC1001D707B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933AD5C18D03EC1001D707B /* UIKit.framework */; };
 		5933AD6318D03EC1001D707B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5933AD6118D03EC1001D707B /* InfoPlist.strings */; };
@@ -265,6 +267,9 @@
 		0AFB65A619245BD4000F2AE6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0AFFF5811944A2EE008E9119 /* StoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreViewController.h; sourceTree = "<group>"; };
 		0AFFF5821944A2EE008E9119 /* StoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreViewController.m; sourceTree = "<group>"; };
+		236C526719A630B8009595D9 /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
+		236C526819A630B8009595D9 /* XGPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGPush.h; sourceTree = "<group>"; };
+		236C526A19A63169009595D9 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		5933AD5518D03EC1001D707B /* Daoting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daoting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5933AD5818D03EC1001D707B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5933AD5A18D03EC1001D707B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -348,11 +353,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A9260A2196BD74B00361977 /* Foundation.framework in Frameworks */,
-				0A7A8CD819590B4C003FAA92 /* CFNetwork.framework in Frameworks */,
+				0A98D63C1920ADB400E46EB9 /* libsqlite3.dylib in Frameworks */,
 				0A98D6321920AD8200E46EB9 /* CoreTelephony.framework in Frameworks */,
-				0A98D6301920AD7A00E46EB9 /* QuartzCore.framework in Frameworks */,
 				0A98D62E1920AD7200E46EB9 /* SystemConfiguration.framework in Frameworks */,
+				236C526B19A63169009595D9 /* libz.dylib in Frameworks */,
+				0A7A8CD819590B4C003FAA92 /* CFNetwork.framework in Frameworks */,
+				0A9260A2196BD74B00361977 /* Foundation.framework in Frameworks */,
+				0A98D6301920AD7A00E46EB9 /* QuartzCore.framework in Frameworks */,
 				0AFB65A719245BD4000F2AE6 /* StoreKit.framework in Frameworks */,
 				0A98D6481920ADF600E46EB9 /* MediaPlayer.framework in Frameworks */,
 				0A98D6461920ADDD00E46EB9 /* MessageUI.framework in Frameworks */,
@@ -360,7 +367,6 @@
 				0A98D6421920ADCC00E46EB9 /* AssetsLibrary.framework in Frameworks */,
 				0A98D6401920ADC400E46EB9 /* CoreLocation.framework in Frameworks */,
 				0A98D63E1920ADBD00E46EB9 /* CoreMotion.framework in Frameworks */,
-				0A98D63C1920ADB400E46EB9 /* libsqlite3.dylib in Frameworks */,
 				0A98D63A1920ADAC00E46EB9 /* libstdc++.dylib in Frameworks */,
 				0A98D6381920ADA300E46EB9 /* Security.framework in Frameworks */,
 				0A98D6361920AD9B00E46EB9 /* libz.1.2.5.dylib in Frameworks */,
@@ -379,6 +385,7 @@
 				0A98D6021920ACBC00E46EB9 /* SinaWeiboConnection.framework in Frameworks */,
 				0A98D61E1920ACBC00E46EB9 /* libWeChatSDK.a in Frameworks */,
 				0A98D62C1920ACBC00E46EB9 /* ShareSDKShareActionSheet.framework in Frameworks */,
+				236C526919A630B8009595D9 /* libXG-SDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +449,7 @@
 		0A98D59B1920ACBC00E46EB9 /* ShareSDK */ = {
 			isa = PBXGroup;
 			children = (
+				236C526619A6307B009595D9 /* XGPush */,
 				0A98D59C1920ACBC00E46EB9 /* Connection */,
 				0A98D5BC1920ACBC00E46EB9 /* Core */,
 				0A98D5C31920ACBC00E46EB9 /* Extend */,
@@ -712,6 +720,15 @@
 			name = SongPlists;
 			sourceTree = "<group>";
 		};
+		236C526619A6307B009595D9 /* XGPush */ = {
+			isa = PBXGroup;
+			children = (
+				236C526719A630B8009595D9 /* libXG-SDK.a */,
+				236C526819A630B8009595D9 /* XGPush.h */,
+			);
+			name = XGPush;
+			sourceTree = "<group>";
+		};
 		5933AD4C18D03EC1001D707B = {
 			isa = PBXGroup;
 			children = (
@@ -733,6 +750,7 @@
 		5933AD5718D03EC1001D707B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				236C526A19A63169009595D9 /* libz.dylib */,
 				0A7A8CD719590B4C003FAA92 /* CFNetwork.framework */,
 				0AFB65A619245BD4000F2AE6 /* StoreKit.framework */,
 				0A98D6471920ADF600E46EB9 /* MediaPlayer.framework */,
@@ -760,8 +778,8 @@
 		5933AD5E18D03EC1001D707B /* Daoting */ = {
 			isa = PBXGroup;
 			children = (
-				0AC69C5B1946F452004C6A67 /* DACircularProgress */,
 				0A98D59B1920ACBC00E46EB9 /* ShareSDK */,
+				0AC69C5B1946F452004C6A67 /* DACircularProgress */,
 				0A8910BD195D14A6009521D7 /* xib */,
 				0ABB4281192DEA7F007D8BAC /* Helper */,
 				0A37F8CC19262FA000826C8C /* DataStructure */,
@@ -1062,6 +1080,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Keming Zhao (8P28493298)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1101,6 +1120,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Keming Zhao (8P28493298)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1125,7 +1145,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Daoting/Daoting.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Keming Zhao (8P28493298)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1142,9 +1162,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Daoting/ShareSDK/Extend/SinaWeiboSDK",
 					"$(PROJECT_DIR)/Daoting/ShareSDK/Extend/WeChatSDK",
+					"$(PROJECT_DIR)/Daoting/ShareSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1157,7 +1179,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Daoting/Daoting.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Keming Zhao (8P28493298)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1174,9 +1196,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Daoting/ShareSDK/Extend/SinaWeiboSDK",
 					"$(PROJECT_DIR)/Daoting/ShareSDK/Extend/WeChatSDK",
+					"$(PROJECT_DIR)/Daoting/ShareSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
