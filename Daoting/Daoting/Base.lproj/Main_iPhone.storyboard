@@ -565,7 +565,14 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="剩余金币" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PBf-Vt-bpO">
-                                            <rect key="frame" x="81" y="11" width="78" height="21"/>
+                                            <rect key="frame" x="80" y="10" width="78" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="500000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dge-Ev-dOv">
+                                            <rect key="frame" x="203" y="11" width="97" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -573,8 +580,11 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lbl_currentCoins" destination="Dge-Ev-dOv" id="4JG-ME-Yb6"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell appearanceType="aqua" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ShareCell" id="Our-0m-m4f">
+                            <tableViewCell appearanceType="aqua" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ShareCell" id="Our-0m-m4f" customClass="ShareCell">
                                 <rect key="frame" x="0.0" y="130" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Our-0m-m4f" id="STd-aT-mCu">
@@ -586,12 +596,16 @@
                                             <state key="normal" image="btn_share.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
-                                            <connections>
-                                                <action selector="share:" destination="Rsj-Xu-mWo" eventType="touchUpInside" id="EKf-So-8dv"/>
-                                            </connections>
                                         </button>
                                         <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="分享给朋友" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L2J-UC-kpB">
-                                            <rect key="frame" x="80" y="11" width="181" height="21"/>
+                                            <rect key="frame" x="80" y="10" width="120" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="+5 金币" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qso-ue-rSQ">
+                                            <rect key="frame" x="208" y="10" width="92" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -599,8 +613,12 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="btn_cellButton" destination="NER-q9-LYz" id="iAr-JN-xxc"/>
+                                    <outlet property="lbl_cellDescription" destination="L2J-UC-kpB" id="tfO-6W-i1g"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell appearanceType="aqua" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PurchaseCoinCell" id="any-io-IWH">
+                            <tableViewCell appearanceType="aqua" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PurchaseCoinCell" id="any-io-IWH" customClass="PurchaseCoinCell">
                                 <rect key="frame" x="0.0" y="174" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="any-io-IWH" id="yd9-lX-r6z">
@@ -608,7 +626,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FlC-Gw-opn">
-                                            <rect key="frame" x="20" y="2" width="40" height="40"/>
+                                            <rect key="frame" x="20" y="4" width="35" height="35"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <state key="normal" backgroundImage="coin.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -617,20 +635,33 @@
                                                 <action selector="buy:" destination="Rsj-Xu-mWo" eventType="touchUpInside" id="u3g-fa-fqx"/>
                                             </connections>
                                         </button>
-                                        <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="6.00 元" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0r-p5-vZ4">
-                                            <rect key="frame" x="74" y="11" width="60" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="500 金币" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0r-p5-vZ4">
+                                            <rect key="frame" x="80" y="10" width="100" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32J-Vf-rzt">
-                                            <rect key="frame" x="254" y="7" width="46" height="30"/>
+                                            <rect key="frame" x="246" y="7" width="61" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="购买">
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <state key="normal" title="￥128.00">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                         </button>
+                                        <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="￥6.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZuZ-fR-JdV">
+                                            <rect key="frame" x="166" y="11" width="79" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="btn_purchase" destination="32J-Vf-rzt" id="cGz-Qk-K4t"/>
+                                    <outlet property="lbl_coins" destination="J0r-p5-vZ4" id="BFi-OO-IBb"/>
+                                    <outlet property="lbl_originalPrice" destination="ZuZ-fR-JdV" id="O2K-ts-PFQ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

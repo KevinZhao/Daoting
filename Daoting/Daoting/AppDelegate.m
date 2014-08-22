@@ -178,7 +178,9 @@
 {
     //Notification with XG
     NSString *deviceTokenStr = [XGPush registerDevice: deviceToken];
-    [XGPush registerDevice:deviceTokenStr];
+    
+    //todo
+    //[XGPush registerDevice:deviceTokenStr];
     NSLog(@"My token is: %@", deviceTokenStr);
     //End
 

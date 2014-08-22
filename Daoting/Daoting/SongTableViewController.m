@@ -539,12 +539,11 @@
         [self showNotification:notification];
         
     }
-    //todo if cois is not enough, navigate to store view and give notification
+    //if cois is not enough, navigate to store view and give notification
     else{
+        
         UITabBarController *tabBarController = [self getTabbarViewController];
         tabBarController.selectedIndex = 2;
-        
-        //[TSMessage showNotificationWithTitle:nil title:nil subtitle:@"您的金币不足，请购买更多金币" type:TSMessageNotificationTypeWarning];
         
         [TSMessage showNotificationWithTitle:@"您的金币不足，请购买更多金币" subtitle:nil type:TSMessageNotificationTypeWarning];
     }

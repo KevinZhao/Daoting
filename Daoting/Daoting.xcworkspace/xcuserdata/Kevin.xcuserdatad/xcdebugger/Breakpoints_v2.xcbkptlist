@@ -221,8 +221,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "627"
             endingLineNumber = "627"
-            landmarkName = "-onsliderValueChanged:"
-            landmarkType = "5">
+            landmarkName = "@implementation SongTableViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -317,8 +317,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "589"
             endingLineNumber = "589"
-            landmarkName = "@implementation SongTableViewController"
-            landmarkType = "3">
+            landmarkName = "-onbtn_nextPressed:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -477,8 +477,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "659"
             endingLineNumber = "659"
-            landmarkName = "@implementation SongTableViewController"
-            landmarkType = "3">
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -589,8 +589,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "566"
             endingLineNumber = "566"
-            landmarkName = "-cancelDownloadAll"
-            landmarkType = "5">
+            landmarkName = "@implementation SongTableViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1142,11 +1142,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/StoreViewController.m"
-            timestampString = "430300357.996235"
+            timestampString = "430381717.355415"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "@implementation StoreViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -1158,29 +1158,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/StoreViewController.m"
-            timestampString = "430300357.996235"
+            timestampString = "430381717.355415"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
             landmarkName = "@implementation StoreViewController"
             landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Daoting/StoreViewController.m"
-            timestampString = "430129855.064381"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "-showNotification:"
-            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1365,22 +1349,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Daoting/StoreViewController.m"
-            timestampString = "430300357.996235"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
-            landmarkName = "-share:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Daoting/IAPHelper.m"
             timestampString = "428251831.867607"
             startingColumnNumber = "9223372036854775807"
@@ -1398,11 +1366,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/StoreViewController.m"
-            timestampString = "430300357.996235"
+            timestampString = "430381717.355415"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "-buy:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1414,11 +1382,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/StoreViewController.m"
-            timestampString = "430300357.996235"
+            timestampString = "430381717.355415"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "-buy:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1430,11 +1398,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/StoreViewController.m"
-            timestampString = "430300357.996235"
+            timestampString = "430381717.355415"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "241"
-            endingLineNumber = "241"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "-onLoadedProducts"
             landmarkType = "5">
          </BreakpointContent>
@@ -1750,11 +1718,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/StoreViewController.m"
-            timestampString = "430300382.364221"
+            timestampString = "430381717.355415"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "-tableView:numberOfRowsInSection:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1766,11 +1734,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/StoreViewController.m"
-            timestampString = "430300383.528857"
+            timestampString = "430381717.355415"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "-numberOfSections"
             landmarkType = "5">
          </BreakpointContent>
@@ -1782,27 +1750,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Daoting/StoreViewController.m"
-            timestampString = "430300385.094811"
+            timestampString = "430381717.355415"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Daoting/NewStoreViewController.m"
-            timestampString = "430301201.447076"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>

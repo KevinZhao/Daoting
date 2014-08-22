@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface CurrentCoinCell : UITableViewCell
+{}
+
+@property (retain, strong) IBOutlet UILabel *lbl_currentCoins;
 
 @end
