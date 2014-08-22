@@ -15,6 +15,9 @@
 		0A3CD3641920F8BE00247436 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A3CD3621920F8BE00247436 /* Main_iPhone.storyboard */; };
 		0A5F4C9D195AB0D3003924C7 /* AppIcon76x76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A5F4C9C195AB0D3003924C7 /* AppIcon76x76@2x.png */; };
 		0A659EF51977AFFD00FC893B /* download_pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A659EE81977AFFD00FC893B /* download_pause@2x.png */; };
+		0A65A8FE19A70D1000CAF5CA /* ShareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A65A8FD19A70D1000CAF5CA /* ShareCell.m */; };
+		0A6E296D19A5DD51002808F7 /* NewStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6E296C19A5DD51002808F7 /* NewStoreViewController.m */; };
+		0A6E297119A5E5FC002808F7 /* CurrentCoinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6E297019A5E5FC002808F7 /* CurrentCoinCell.m */; };
 		0A7A8CD819590B4C003FAA92 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A7A8CD719590B4C003FAA92 /* CFNetwork.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		0A8BA0091940BFCB001307D6 /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8BA0081940BFCB001307D6 /* DownloadViewController.m */; };
 		0A8BA00F1940C15E001307D6 /* DownloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8BA00E1940C15E001307D6 /* DownloadCell.m */; };
@@ -55,6 +58,7 @@
 		0A98D66C1920F1F500E46EB9 /* arrowSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A98D6681920F1F500E46EB9 /* arrowSelected.png */; };
 		0A98D66D1920F1F500E46EB9 /* arrowSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A98D6691920F1F500E46EB9 /* arrowSelected@2x.png */; };
 		0A98D6701920F25900E46EB9 /* AlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A98D66F1920F25900E46EB9 /* AlbumTableViewController.m */; };
+		0A9D238A19A713B0004F2B76 /* PurchaseCoinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D238919A713B0004F2B76 /* PurchaseCoinCell.m */; };
 		0AAF6194196AE4A600C33E52 /* playingsong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AAF6193196AE4A600C33E52 /* playingsong@2x.png */; };
 		0ABA959F193702D000172862 /* Jinbiao_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0ABA959E193702D000172862 /* Jinbiao_SongList.plist */; };
 		0ABB4283192E321C007D8BAC /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB4282192E321C007D8BAC /* Icon-72@2x.png */; };
@@ -82,6 +86,8 @@
 		0AEFC3821988E17E00CECC93 /* bag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFC3811988E17E00CECC93 /* bag@2x.png */; };
 		0AFB65A719245BD4000F2AE6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AFB65A619245BD4000F2AE6 /* StoreKit.framework */; };
 		0AFFF5831944A2EE008E9119 /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFFF5821944A2EE008E9119 /* StoreViewController.m */; };
+		236C526919A630B8009595D9 /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 236C526719A630B8009595D9 /* libXG-SDK.a */; };
+		236C526B19A63169009595D9 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 236C526A19A63169009595D9 /* libz.dylib */; };
 		5933AD5B18D03EC1001D707B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933AD5A18D03EC1001D707B /* CoreGraphics.framework */; };
 		5933AD5D18D03EC1001D707B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933AD5C18D03EC1001D707B /* UIKit.framework */; };
 		5933AD6318D03EC1001D707B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5933AD6118D03EC1001D707B /* InfoPlist.strings */; };
@@ -91,7 +97,6 @@
 		5933AD7718D03EC1001D707B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5933AD7618D03EC1001D707B /* Images.xcassets */; };
 		D8113D8819911FDC0011B04A /* nowplaying_share_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8113D8619911FDC0011B04A /* nowplaying_share_n@2x.png */; };
 		D82B8AC9197962EE00F107B5 /* download@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D82B8AC5197962EE00F107B5 /* download@2x.png */; };
-		D882AE9A198A2D150012348A /* DescriptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D882AE99198A2D150012348A /* DescriptionView.m */; };
 		D885571E1999023B00B0F891 /* AFDownloadHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D885570B1999023B00B0F891 /* AFDownloadHelper.m */; };
 		D885571F1999023B00B0F891 /* AlbumManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D885570D1999023B00B0F891 /* AlbumManager.m */; };
 		D88557201999023B00B0F891 /* CoinIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D885570F1999023B00B0F891 /* CoinIAPHelper.m */; };
@@ -139,7 +144,13 @@
 		0A3CD3631920F8BE00247436 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		0A5F4C9C195AB0D3003924C7 /* AppIcon76x76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon76x76@2x.png"; sourceTree = "<group>"; };
 		0A659EE81977AFFD00FC893B /* download_pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "download_pause@2x.png"; sourceTree = "<group>"; };
+		0A65A8FC19A70D1000CAF5CA /* ShareCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShareCell.h; path = Store/ShareCell.h; sourceTree = "<group>"; };
+		0A65A8FD19A70D1000CAF5CA /* ShareCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShareCell.m; path = Store/ShareCell.m; sourceTree = "<group>"; };
 		0A6D57351932FD070038D841 /* Daoting.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Daoting.entitlements; sourceTree = "<group>"; };
+		0A6E296B19A5DD51002808F7 /* NewStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewStoreViewController.h; sourceTree = "<group>"; };
+		0A6E296C19A5DD51002808F7 /* NewStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewStoreViewController.m; sourceTree = "<group>"; };
+		0A6E296F19A5E5FC002808F7 /* CurrentCoinCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentCoinCell.h; sourceTree = "<group>"; };
+		0A6E297019A5E5FC002808F7 /* CurrentCoinCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentCoinCell.m; sourceTree = "<group>"; };
 		0A7A8CD719590B4C003FAA92 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0A8BA0071940BFCB001307D6 /* DownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadViewController.h; sourceTree = "<group>"; };
 		0A8BA0081940BFCB001307D6 /* DownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadViewController.m; sourceTree = "<group>"; };
@@ -234,6 +245,8 @@
 		0A98D6691920F1F500E46EB9 /* arrowSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrowSelected@2x.png"; sourceTree = "<group>"; };
 		0A98D66E1920F25900E46EB9 /* AlbumTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumTableViewController.h; sourceTree = "<group>"; };
 		0A98D66F1920F25900E46EB9 /* AlbumTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumTableViewController.m; sourceTree = "<group>"; };
+		0A9D238819A713B0004F2B76 /* PurchaseCoinCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PurchaseCoinCell.h; path = Store/PurchaseCoinCell.h; sourceTree = "<group>"; };
+		0A9D238919A713B0004F2B76 /* PurchaseCoinCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PurchaseCoinCell.m; path = Store/PurchaseCoinCell.m; sourceTree = "<group>"; };
 		0AAF6193196AE4A600C33E52 /* playingsong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playingsong@2x.png"; sourceTree = "<group>"; };
 		0ABA959E193702D000172862 /* Jinbiao_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Jinbiao_SongList.plist; path = SongPlists/Jinbiao_SongList.plist; sourceTree = "<group>"; };
 		0ABB4282192E321C007D8BAC /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
@@ -264,6 +277,9 @@
 		0AFB65A619245BD4000F2AE6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0AFFF5811944A2EE008E9119 /* StoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreViewController.h; sourceTree = "<group>"; };
 		0AFFF5821944A2EE008E9119 /* StoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreViewController.m; sourceTree = "<group>"; };
+		236C526719A630B8009595D9 /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
+		236C526819A630B8009595D9 /* XGPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGPush.h; sourceTree = "<group>"; };
+		236C526A19A63169009595D9 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		5933AD5518D03EC1001D707B /* Daoting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daoting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5933AD5818D03EC1001D707B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5933AD5A18D03EC1001D707B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -279,8 +295,6 @@
 		9D92318D3DBB470EB30CF35F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8113D8619911FDC0011B04A /* nowplaying_share_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nowplaying_share_n@2x.png"; sourceTree = "<group>"; };
 		D82B8AC5197962EE00F107B5 /* download@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "download@2x.png"; sourceTree = "<group>"; };
-		D882AE98198A2D150012348A /* DescriptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionView.h; sourceTree = "<group>"; };
-		D882AE99198A2D150012348A /* DescriptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescriptionView.m; sourceTree = "<group>"; };
 		D885570A1999023B00B0F891 /* AFDownloadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFDownloadHelper.h; path = Helper/AFDownloadHelper.h; sourceTree = "<group>"; };
 		D885570B1999023B00B0F891 /* AFDownloadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFDownloadHelper.m; path = Helper/AFDownloadHelper.m; sourceTree = "<group>"; };
 		D885570C1999023B00B0F891 /* AlbumManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlbumManager.h; path = Helper/AlbumManager.h; sourceTree = "<group>"; };
@@ -346,11 +360,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A9260A2196BD74B00361977 /* Foundation.framework in Frameworks */,
-				0A7A8CD819590B4C003FAA92 /* CFNetwork.framework in Frameworks */,
+				0A98D63C1920ADB400E46EB9 /* libsqlite3.dylib in Frameworks */,
 				0A98D6321920AD8200E46EB9 /* CoreTelephony.framework in Frameworks */,
-				0A98D6301920AD7A00E46EB9 /* QuartzCore.framework in Frameworks */,
 				0A98D62E1920AD7200E46EB9 /* SystemConfiguration.framework in Frameworks */,
+				236C526B19A63169009595D9 /* libz.dylib in Frameworks */,
+				0A7A8CD819590B4C003FAA92 /* CFNetwork.framework in Frameworks */,
+				0A9260A2196BD74B00361977 /* Foundation.framework in Frameworks */,
+				0A98D6301920AD7A00E46EB9 /* QuartzCore.framework in Frameworks */,
 				0AFB65A719245BD4000F2AE6 /* StoreKit.framework in Frameworks */,
 				0A98D6481920ADF600E46EB9 /* MediaPlayer.framework in Frameworks */,
 				0A98D6461920ADDD00E46EB9 /* MessageUI.framework in Frameworks */,
@@ -358,7 +374,6 @@
 				0A98D6421920ADCC00E46EB9 /* AssetsLibrary.framework in Frameworks */,
 				0A98D6401920ADC400E46EB9 /* CoreLocation.framework in Frameworks */,
 				0A98D63E1920ADBD00E46EB9 /* CoreMotion.framework in Frameworks */,
-				0A98D63C1920ADB400E46EB9 /* libsqlite3.dylib in Frameworks */,
 				0A98D63A1920ADAC00E46EB9 /* libstdc++.dylib in Frameworks */,
 				0A98D6381920ADA300E46EB9 /* Security.framework in Frameworks */,
 				0A98D6361920AD9B00E46EB9 /* libz.1.2.5.dylib in Frameworks */,
@@ -377,6 +392,7 @@
 				0A98D6021920ACBC00E46EB9 /* SinaWeiboConnection.framework in Frameworks */,
 				0A98D61E1920ACBC00E46EB9 /* libWeChatSDK.a in Frameworks */,
 				0A98D62C1920ACBC00E46EB9 /* ShareSDKShareActionSheet.framework in Frameworks */,
+				236C526919A630B8009595D9 /* libXG-SDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +439,23 @@
 				D88557311999024B00B0F891 /* SongCell.m */,
 			);
 			name = DataStructure;
+			sourceTree = "<group>";
+		};
+		0A6E296E19A5E5D0002808F7 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				0A6E296F19A5E5FC002808F7 /* CurrentCoinCell.h */,
+				0A6E297019A5E5FC002808F7 /* CurrentCoinCell.m */,
+				0A65A8FC19A70D1000CAF5CA /* ShareCell.h */,
+				0A65A8FD19A70D1000CAF5CA /* ShareCell.m */,
+				0A9D238819A713B0004F2B76 /* PurchaseCoinCell.h */,
+				0A9D238919A713B0004F2B76 /* PurchaseCoinCell.m */,
+				0AFFF5811944A2EE008E9119 /* StoreViewController.h */,
+				0AFFF5821944A2EE008E9119 /* StoreViewController.m */,
+				0A6E296B19A5DD51002808F7 /* NewStoreViewController.h */,
+				0A6E296C19A5DD51002808F7 /* NewStoreViewController.m */,
+			);
+			name = Store;
 			sourceTree = "<group>";
 		};
 		0A8910BD195D14A6009521D7 /* xib */ = {
@@ -709,6 +742,16 @@
 			name = SongPlists;
 			sourceTree = "<group>";
 		};
+		236C526619A6307B009595D9 /* XGPush */ = {
+			isa = PBXGroup;
+			children = (
+				236C526719A630B8009595D9 /* libXG-SDK.a */,
+				236C526819A630B8009595D9 /* XGPush.h */,
+			);
+			name = XGPush;
+			path = ShareSDK;
+			sourceTree = "<group>";
+		};
 		5933AD4C18D03EC1001D707B = {
 			isa = PBXGroup;
 			children = (
@@ -730,6 +773,7 @@
 		5933AD5718D03EC1001D707B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				236C526A19A63169009595D9 /* libz.dylib */,
 				0A7A8CD719590B4C003FAA92 /* CFNetwork.framework */,
 				0AFB65A619245BD4000F2AE6 /* StoreKit.framework */,
 				0A98D6471920ADF600E46EB9 /* MediaPlayer.framework */,
@@ -757,8 +801,10 @@
 		5933AD5E18D03EC1001D707B /* Daoting */ = {
 			isa = PBXGroup;
 			children = (
-				0AC69C5B1946F452004C6A67 /* DACircularProgress */,
+				236C526619A6307B009595D9 /* XGPush */,
+				0A6E296E19A5E5D0002808F7 /* Store */,
 				0A98D59B1920ACBC00E46EB9 /* ShareSDK */,
+				0AC69C5B1946F452004C6A67 /* DACircularProgress */,
 				0A8910BD195D14A6009521D7 /* xib */,
 				0ABB4281192DEA7F007D8BAC /* Helper */,
 				0A37F8CC19262FA000826C8C /* DataStructure */,
@@ -767,16 +813,12 @@
 				0A8BA00E1940C15E001307D6 /* DownloadCell.m */,
 				5933AD6718D03EC1001D707B /* AppDelegate.h */,
 				5933AD6818D03EC1001D707B /* AppDelegate.m */,
-				D882AE98198A2D150012348A /* DescriptionView.h */,
-				D882AE99198A2D150012348A /* DescriptionView.m */,
 				0A98D66E1920F25900E46EB9 /* AlbumTableViewController.h */,
 				0A98D66F1920F25900E46EB9 /* AlbumTableViewController.m */,
 				0AE46B0C1921035E00FA30F3 /* SongTableViewController.h */,
 				0AE46B0D1921035E00FA30F3 /* SongTableViewController.m */,
 				0A8BA0071940BFCB001307D6 /* DownloadViewController.h */,
 				0A8BA0081940BFCB001307D6 /* DownloadViewController.m */,
-				0AFFF5811944A2EE008E9119 /* StoreViewController.h */,
-				0AFFF5821944A2EE008E9119 /* StoreViewController.m */,
 				5933AD5F18D03EC1001D707B /* Supporting Files */,
 			);
 			path = Daoting;
@@ -870,7 +912,6 @@
 			files = (
 				D8113D8819911FDC0011B04A /* nowplaying_share_n@2x.png in Resources */,
 				0A98D66C1920F1F500E46EB9 /* arrowSelected.png in Resources */,
-				D88557551999031A00B0F891 /* DescriptionView_iphone.xib in Resources */,
 				D8C6FA4D198FDE4800AB9ACB /* AlbumList.plist in Resources */,
 				0AE8649A192EF48700EF5A96 /* Shuangbianji_SongList.plist in Resources */,
 				0A1FA99B1958556C002F48EA /* qr_toolbar_more_hl@2x.png in Resources */,
@@ -971,12 +1012,15 @@
 				0A98D6701920F25900E46EB9 /* AlbumTableViewController.m in Sources */,
 				D885571E1999023B00B0F891 /* AFDownloadHelper.m in Sources */,
 				5933AD6918D03EC1001D707B /* AppDelegate.m in Sources */,
+				0A6E297119A5E5FC002808F7 /* CurrentCoinCell.m in Sources */,
 				D88557331999024B00B0F891 /* AlbumCell.m in Sources */,
 				D88557361999024B00B0F891 /* SongCell.m in Sources */,
 				D88557321999024B00B0F891 /* Album.m in Sources */,
 				0AE46B0E1921035E00FA30F3 /* SongTableViewController.m in Sources */,
 				D88557221999023B00B0F891 /* IAPHelper.m in Sources */,
+				0A6E296D19A5DD51002808F7 /* NewStoreViewController.m in Sources */,
 				D885574E199902CF00B0F891 /* PurchasedSongViewController.m in Sources */,
+				0A65A8FE19A70D1000CAF5CA /* ShareCell.m in Sources */,
 				D88557231999023B00B0F891 /* KeychainWrapper.m in Sources */,
 				0AFFF5831944A2EE008E9119 /* StoreViewController.m in Sources */,
 				D885571F1999023B00B0F891 /* AlbumManager.m in Sources */,
@@ -985,11 +1029,11 @@
 				D88557201999023B00B0F891 /* CoinIAPHelper.m in Sources */,
 				0A8BA0091940BFCB001307D6 /* DownloadViewController.m in Sources */,
 				D885574B199902CF00B0F891 /* PurchasedAlbumCell.m in Sources */,
+				0A9D238A19A713B0004F2B76 /* PurchaseCoinCell.m in Sources */,
 				D8855751199902CF00B0F891 /* SettingViewController.m in Sources */,
 				D88557271999023B00B0F891 /* UILabelStrikeThrough.m in Sources */,
 				D88557241999023B00B0F891 /* SampleQueueId.m in Sources */,
 				0AC69C5E1946F452004C6A67 /* DACircularProgressView.m in Sources */,
-				D882AE9A198A2D150012348A /* DescriptionView.m in Sources */,
 				D88557251999023B00B0F891 /* SongManager.m in Sources */,
 				D88557211999023B00B0F891 /* DownloadStatus.m in Sources */,
 				0A8BA00F1940C15E001307D6 /* DownloadCell.m in Sources */,
@@ -1058,6 +1102,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Keming Zhao (8P28493298)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1097,6 +1142,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Keming Zhao (8P28493298)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1121,7 +1167,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Daoting/Daoting.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Keming Zhao (8P28493298)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1138,9 +1184,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Daoting/ShareSDK/Extend/SinaWeiboSDK",
 					"$(PROJECT_DIR)/Daoting/ShareSDK/Extend/WeChatSDK",
+					"$(PROJECT_DIR)/Daoting/ShareSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1153,7 +1201,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Daoting/Daoting.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Keming Zhao (8P28493298)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1170,9 +1218,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Daoting/ShareSDK/Extend/SinaWeiboSDK",
 					"$(PROJECT_DIR)/Daoting/ShareSDK/Extend/WeChatSDK",
+					"$(PROJECT_DIR)/Daoting/ShareSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

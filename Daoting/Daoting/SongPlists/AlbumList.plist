@@ -7,7 +7,7 @@
 		<key>Title</key>
 		<string>雍正剑侠图 第一部</string>
 		<key>ImageURL</key>
-		<string>http://bcs.duapp.com/daoting/Yongzheng1.png</string>
+		<string>http://daoting.qiniudn.com/Yongzheng1.png</string>
 		<key>Description</key>
 		<string>播讲:王玥波 1至44回 电台整合版</string>
 		<key>SongList</key>
@@ -33,7 +33,7 @@
 		<key>Title</key>
 		<string>雍正剑侠图 第二部</string>
 		<key>ImageURL</key>
-		<string>http://bcs.duapp.com/daoting/Yongzheng2.png</string>
+		<string>http://daoting.qiniudn.com/Yongzheng2.png</string>
 		<key>Description</key>
 		<string>播讲:王玥波 45至118回 电台整合版</string>
 		<key>SongList</key>
@@ -59,7 +59,7 @@
 		<key>Title</key>
 		<string>雍正剑侠图 第三部</string>
 		<key>ImageURL</key>
-		<string>http://bcs.duapp.com/daoting/Yongzheng3.png</string>
+		<string>http://daoting.qiniudn.com/Yongzheng3.png</string>
 		<key>Description</key>
 		<string>播讲:王玥波 119至163回 电台整合版</string>
 		<key>SongList</key>
@@ -109,9 +109,46 @@
 	<key>5</key>
 	<dict>
 		<key>Title</key>
+		<string>西游记 吴荻</string>
+		<key>ImageURL</key>
+		<string>http://daoting.qiniudn.com/Xiyouji.png</string>
+		<key>Description</key>
+		<string>播讲:吴荻 共127回 电台录音版</string>
+		<key>SongList</key>
+		<string>http://daoting.qiniudn.com/Xiyouji_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Zhengdong1</string>
+		<key>Artist</key>
+		<string>吴荻</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string></string>
+		<key>LongDescription</key>
+		<string>吴荻 著名人物为评书表演艺术家。1974年1月8日生于北京，自幼习书画，酷爱中国传统文化，喜唱京剧及白派京韵。现就职于北京师范大学附属实验中学，任美术教师，多年来致力于传统文化的传播与发展，将传统文化艺术教育（如京剧、昆曲、曲艺等）寓于授课之中，广受学生好评。
+
+2007年6月2日，拜著名评书表演艺术家、连派评书传人、评书名家连丽如为师，学习继承北京评书艺术。师兄弟六人中排行老大。
+
+2008年春节期间正月初三首次登台演出，五官俊秀，台风儒雅。
+
+拜师不到一年，就在宣南书馆登台演出《借东风》、《衣带诏》、《张松献地图》、《曹操与杨修》等《三国》名篇片段，2008年底在宣南书馆开讲长篇评书《刘公案》，受到观众的好评和喜爱。
+
+2010年1月3日，北京评书东城书馆在东城区文化馆新张开业，登台接演《后部刘公案》。
+
+2010年4月，中央人民广播电台文艺之声播出短篇评书《佐连成告状》。
+
+2010年5月，于东城书馆开始演出长篇评书《三国演义》，为“连派三国”第三代传人。
+
+他首创“大美术课”理念，将戏曲、曲艺、美术、音乐、舞蹈融于日常美术教学之中，率先进行综合性艺术教育实践，成为美术教师讲京剧第一人。他创办了北师大附属实验中学艺术馆，成为第一家中学博物馆。他的美术教学连续多年广受好评，被学生评为“我心中最喜欢的老师”。美术教室“澄观堂”成为实验中学的文化符号。
+2013年起，于北师大附属实验中学演出长篇评书《西游记》。
+		</string>
+	</dict>
+	<key>6</key>
+	<dict>
+		<key>Title</key>
 		<string>薛礼征东 电台版</string>
 		<key>ImageURL</key>
-		<string>http://bcs.duapp.com/daoting/Zhengdong.png</string>
+		<string>http://daoting.qiniudn.com/Zhengdong.png</string>
 		<key>Description</key>
 		<string>播讲:王玥波 全本共152回 电台录音版</string>
 		<key>SongList</key>
@@ -133,12 +170,12 @@
 王玥波，爱称王三皮，1978年生于北京，自幼学习评书、相声等多门曲艺艺术，曾拜马增锟学习评书，拜赵小林学习相声，拜章学楷学习联珠快书。全总文工团（原在煤矿文工团）说唱演员，在宣南书馆、崇文书馆均为创业元老，女评书第一人连丽如夫妇之义子。播讲过《聊斋》、《隋唐》、《雍正剑侠图》、《侠义英雄传》等多部评书。2012年8月7日王玥波在京成立个人工作室。
 		</string>
 	</dict>
-	<key>6</key>
+	<key>7</key>
 	<dict>
 		<key>Title</key>
 		<string>明朝那些事</string>
 		<key>ImageURL</key>
-		<string>http://bcs.duapp.com/daoting/Mingchao.png</string>
+		<string>http://daoting.qiniudn.com/Mingchao.png</string>
 		<key>Description</key>
 		<string>播讲:王玥波 有声书 共56回</string>
 		<key>SongList</key>
@@ -158,12 +195,12 @@
 王玥波，爱称王三皮，1978年生于北京，自幼学习评书、相声等多门曲艺艺术，曾拜马增锟学习评书，拜赵小林学习相声，拜章学楷学习联珠快书。全总文工团（原在煤矿文工团）说唱演员，在宣南书馆、崇文书馆均为创业元老，女评书第一人连丽如夫妇之义子。播讲过《聊斋》、《隋唐》、《雍正剑侠图》、《侠义英雄传》等多部评书。2012年8月7日王玥波在京成立个人工作室。
 		</string>
 	</dict>
-	<key>7</key>
+	<key>8</key>
 	<dict>
 		<key>Title</key>
 		<string>隋唐演义 之 双鞭记</string>
 		<key>ImageURL</key>
-		<string>http://bcs.duapp.com/daoting/Shuangbianji.png</string>
+		<string>http://daoting.qiniudn.com/Shuangbianji.png</string>
 		<key>Description</key>
 		<string>播讲:王玥波 共104回 现场清晰版</string>
 		<key>SongList</key>
@@ -182,12 +219,12 @@
 《大隋唐》是王玥波的成名作，也是目前最长的一部书，其中《敬德出世》一段倒笔书颇为精彩，主要讲的是尉迟恭，即尉迟敬德从打铁出世，到日抢三关夜夺八寨，救驾李世民，恩收敬德，敬德装疯等多段精彩回目。 
 		</string>
 	</dict>
-	<key>8</key>
+	<key>9</key>
 	<dict>
 		<key>Title</key>
 		<string>隋唐演义</string>
 		<key>ImageURL</key>
-		<string>http://bcs.duapp.com/daoting/Suitang.png</string>
+		<string>http://daoting.qiniudn.com/Suitang.png</string>
 		<key>Description</key>
 		<string>播讲:王玥波 全本共237回 目前最清晰全本</string>
 		<key>SongList</key>
@@ -223,12 +260,12 @@
 * 秦琼一捋长髯，“唉，惭愧”，“噢，蚕退？药铺有卖的”。 
 		</string>
 	</dict>
-	<key>9</key>
+	<key>10</key>
 	<dict>
 		<key>Title</key>
 		<string>聊斋</string>
 		<key>ImageURL</key>
-		<string>http://bcs.duapp.com/daoting/Liaozhai.png</string>
+		<string>http://daoting.qiniudn.com/Liaozhai.png</string>
 		<key>Description</key>
 		<string>播讲:王玥波 目前收录最全</string>
 		<key>SongList</key>
@@ -263,12 +300,12 @@
 青蛙神，晚霞，梅女，郭秀才，还将继续更新  
 		</string>
 	</dict>
-	<key>10</key>
+	<key>11</key>
 	<dict>
 		<key>Title</key>
 		<string>侠义英雄传</string>
 		<key>ImageURL</key>
-		<string>http://bcs.duapp.com/daoting/Xiayi.png</string>
+		<string>http://daoting.qiniudn.com/Xiayi.png</string>
 		<key>Description</key>
 		<string>播讲:王玥波 全本共90回 早期评书</string>
 		<key>SongList</key>
@@ -289,12 +326,12 @@
 《侠义英雄传》和一切的旧小说一样，都存在一些明显的缺点。但就其主流来说，还是可取的。之所以这样讲，因为第一：作者是站在宣扬中国武术的立场上说话的。这是基于一种民族的、爱国的感情，而这种以武术救国的观点，正是作者世界观的一种反映。尽管“武术救国”一类的观点并不一定站得住脚。但作者通过作品表现出来的那种爱国感情，仍然应当予以肯定。第二，作者是以系统介绍中华武术流派、渊薮为宗旨的。向恺然本人毕生之力于无数之研究，又广泛接触武林人物，写起来虽不无渲染加工，但大都并非向壁虚构。相反，一部《侠义英雄传》所述种种人物，种种故事，往往实有其人，实有其事。读者不妨以涉猎中国武术史的态度，来读这部小说。第三，全书文笔通俗流畅，可读性强，格调不同于一般侠义小说，很少庸俗无聊之笔墨。这也是不容易的。
 		</string>
 	</dict>
-	<key>11</key>
+	<key>12</key>
 	<dict>
 		<key>Title</key>
 		<string>新三盗九龙杯</string>
 		<key>ImageURL</key>
-		<string>http://bcs.duapp.com/daoting/Sandao.png</string>
+		<string>http://daoting.qiniudn.com/Sandao.png</string>
 		<key>Description</key>
 		<string>播讲:王玥波 全本共100回 重新录音版本</string>
 		<key>SongList</key>
@@ -321,12 +358,12 @@
 王玥波，爱称王三皮，1978年生于北京，自幼学习评书、相声等多门曲艺艺术，曾拜马增锟学习评书，拜赵小林学习相声，拜章学楷学习联珠快书。全总文工团（原在煤矿文工团）说唱演员，在宣南书馆、崇文书馆均为创业元老，女评书第一人连丽如夫妇之义子。播讲过《聊斋》、《隋唐》、《雍正剑侠图》、《侠义英雄传》等多部评书。2012年8月7日王玥波在京成立个人工作室。 
 		</string>
 	</dict>
-	<key>12</key>
+	<key>13</key>
 	<dict>
 		<key>Title</key>
 		<string>[新派评书]海贼王</string>
 		<key>ImageURL</key>
-		<string>http://bcs.duapp.com/daoting/Haizeiwang.png</string>
+		<string>http://daoting.qiniudn.com/Haizeiwang.png</string>
 		<key>Description</key>
 		<string>播讲:张准 连载至87集 新书老说法</string>
 		<key>SongList</key>
@@ -345,12 +382,12 @@
 “路飞出生在一个小山村，这个小山村依山傍海，村子的名字叫风车村。”记者在线收听了首回的《海贼王》，一腔一调充满评书特有的“老味”，但说的内容还真是“新鲜”。张准说，这一回《海贼王》是他今年端午节在北京鼓楼一个业余书场上率先说的，当天他临时被朋友喊到书场救场，考虑到鼓楼一带年轻人较多，他索性试着讲了一段《海贼王》。“啪”的一声，醒木落下，故事刚开始，台下就是笑声一片……张准顿时有了底气，事实上这位既爱传统评书又爱《海贼王》的年轻人一直便有将动漫和评书结合的想法，甚至一度录好了音，只是没上传网络——“心里没底，怕挨骂，担心海贼王的粉丝接受不了。”第二天，张准就将表演录音传上了网，四个多月时间点击量超过54万，他的创意评书火了！ 
 		</string>
 	</dict>
-	<key>13</key>
+	<key>14</key>
 	<dict>
 		<key>Title</key>
 		<string>侠义金镖</string>
 		<key>ImageURL</key>
-		<string>http://bcs.duapp.com/daoting/Jinbiao.png</string>
+		<string>http://daoting.qiniudn.com/Jinbiao.png</string>
 		<key>Description</key>
 		<string>播讲:张庆升 全本共140回 名家名段</string>
 		<key>SongList</key>
@@ -367,12 +404,12 @@
 		<string>清朝康熙年间，武林中的威震南方南半天锦衣卫佗飞镖黄三太，给师傅生英上周年坟。在回家路上，遇见师伯镖局的镖银丢失，为要镖银，黄三太独闯冲天岛，与翻江海马肖荣结怨，肖荣为陷害黄三太，竟到南昌府持刀逼官夺印，冒充黄三太，幸亏有本地官为黄三太担保，命他限期破案，才引出七擒肖海马。
 		</string>
 	</dict>
-	<key>14</key>
+	<key>15</key>
 	<dict>
 		<key>Title</key>
 		<string>张广泰回家</string>
 		<key>ImageURL</key>
-		<string>http://bcs.duapp.com/daoting/Zhangguangtai.png</string>
+		<string>http://daoting.qiniudn.com/Zhangguangtai.png</string>
 		<key>Description</key>
 		<string>播讲:王玥波 全本共70回 明清故事长篇单口</string>
 		<key>SongList</key>

@@ -88,10 +88,11 @@
     NSString *plistPath = [bundleDocumentDirectoryPath stringByAppendingString:@"/AlbumList.plist"];
     
     //2. Download plist from cloud storage
-    NSURL *albumListUrl = [[NSURL alloc]initWithString:@"http://daoting.qiniudn.com/AlbumList.plist"];
+    NSURL *albumListUrl = [[NSURL alloc]initWithString:@"http://bcs.duapp.com/daoting/PlistFolder%2FAlbumList.plist"];
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:albumListUrl];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:albumListUrl];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
+    [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
     
     NSString *path = NSTemporaryDirectory();
     NSString *fileName = @"PlayList.plist";
@@ -114,7 +115,7 @@
          }
          
          //There is an update
-         if (newPlist_dictionary.count > oldPlist_dictionary.count)
+         if (newPlist_dictionary.count != oldPlist_dictionary.count)
          {
              int oldCount = (int)oldPlist_dictionary.count;
              int j = (int)(newPlist_dictionary.count - oldPlist_dictionary.count);
@@ -130,6 +131,11 @@
              
              //re-initialize songs and update table view
              [self initializeAlbums];
+             
+             //call back
+             if (self.delegate != nil) {
+                [self.delegate onAlbumUpdated];
+             }
          }
      }
      //Download Failed

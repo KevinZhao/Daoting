@@ -10,12 +10,20 @@
 #import "Album.h"
 #import "AFNetworking.h"
 
+@protocol AlbumManagerDelegate <NSObject>
+
+- (void)onAlbumUpdated;
+
+@end
+
 @interface AlbumManager : NSObject
 {
     NSMutableArray      *_albums;
+    
 }
 
 @property (nonatomic, retain)  NSMutableArray      *albums;
+@property (readwrite, unsafe_unretained) id<AlbumManagerDelegate> delegate;
 
 
 + (AlbumManager *)sharedManager;

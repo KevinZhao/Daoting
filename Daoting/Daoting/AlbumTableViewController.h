@@ -11,7 +11,7 @@
 #import "AlbumManager.h"
 #import "AppDelegate.h"
 
-@interface AlbumTableViewController : UITableViewController
+@interface AlbumTableViewController : UITableViewController<AlbumManagerDelegate>
 {
     NSMutableArray      *_albums;
     AppDelegate         *_appdelegate;

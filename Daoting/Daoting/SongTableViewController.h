@@ -22,9 +22,8 @@
 #import <ShareSDK/ShareSDK.h>
 #import "StoreViewController.h"
 #import "SongManager.h"
-#import "DescriptionView.h"
 #import "TSMessageView.h"
-
+#import "UIImageView+AFNetworking.h"
 
 @interface SongTableViewController : UIViewController<UIScrollViewDelegate, UITableViewDataSource,
     UITableViewDelegate, STKAudioPlayerHelperDelegate, SongManagerDelegate>
@@ -38,6 +37,7 @@
     STKAudioPlayerHelper                *_playerHelper;
     SongManager                         *_songManager;
     AppDelegate                         *_appDelegate;
+    UIView                              *_descriptionView;
 }
 
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
@@ -50,7 +50,6 @@
 @property (nonatomic, retain) IBOutlet UIButton *btn_share;
 @property (nonatomic, retain) IBOutlet UIButton *btn_downloadAll;
 @property (nonatomic, retain) IBOutlet UISlider *slider;
-@property (nonatomic, strong) IBOutlet DescriptionView* descriptionView;
 
 - (IBAction)onbtn_playAndPausePressed:(id)sender;
 - (IBAction)onbtn_nextPressed:(id)sender;

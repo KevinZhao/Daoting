@@ -14,35 +14,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    _appData = [AppData sharedAppData];
-    
-    _lbl_120yuan.isWithStrikeThrough = true;
-    _lbl_300yuan.isWithStrikeThrough = true;
-    _lbl_60yuan.isWithStrikeThrough = true;
-    _lbl_30yuan.isWithStrikeThrough = true;
-    
-    //Register observer for IAP helper notification
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePurchaseCompleted:) name:IAPHelperProductPurchasedNotification object:nil];
-}
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    self.lbl_coins.text = [NSString stringWithFormat:@"%d", _appData.coins];
+    //_lbl_120yuan.isWithStrikeThrough = true;
+    //_lbl_300yuan.isWithStrikeThrough = true;
+    //_lbl_60yuan.isWithStrikeThrough = true;
+    //_lbl_30yuan.isWithStrikeThrough = true;
     
-    _appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    self.view.backgroundColor = _appDelegate.defaultBackgroundColor;
-}
-
-#pragma mark TSMessages
--(void)showNotification:(NSString *)notification;
-{
-    [TSMessage showNotificationInViewController:self title:nil subtitle:notification type:TSMessageNotificationTypeSuccess];
 }
 
 #pragma mark IAP Notification Handler
@@ -80,12 +57,55 @@
     
     [_appData save];
     
-    _lbl_coins.text = [NSString stringWithFormat:@"%d", _appData.coins];
+    _lbl_currentCoins.text = [NSString stringWithFormat:@"%d", _appData.coins];
     
     NSString *reminder = [NSString stringWithFormat:@"成功购买金币 %d 枚", purchasedCoins];
     
     [self showNotification:reminder];
     
+}
+
+#pragma mark UITableviewDelegate
+
+- (int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    int rowNumber = 0;
+    
+    switch (section) {
+        case 0:
+            rowNumber = 1;
+            break;
+        case 1:
+            rowNumber = 2;
+            break;
+        case 2:
+            rowNumber = 6;
+            break;
+        default:
+            break;
+    }
+    
+    return rowNumber;
+}
+
+- (NSInteger)numberOfSections
+{
+    return 3;
+}
+
+- (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell;
+    
+    if (indexPath.section == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"CurrentCoinCell" forIndexPath:indexPath];
+        
+        [_lbl_currentCoins setFrame:CGRectMake(214, 11, 86, 21)];
+        
+        [cell addSubview:_lbl_currentCoins];
+    }
+    
+    return cell;
 }
 
 #pragma mark UI operation
@@ -128,71 +148,9 @@
     }
 }
 
-- (IBAction)dailyCheckin:(UIButton *)sender
-{
-    NSString* date;
-    NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
-    [formatter setDateFormat:@"YYYY-MM-dd"];
-    date = [formatter stringFromDate:[NSDate date]];
-    
-    if ([_appData.dailyCheckinQueue objectForKey:date] == nil)
-    {
-        //check in
-        NSString *yes = @"yes";
-        
-        [_appData.dailyCheckinQueue setObject:yes forKey:date];
-        
-        _appData.coins += 20;
-        
-        self.lbl_coins.text = [NSString stringWithFormat:@"%d", _appData.coins];
-        
-        [_appData save];
-        
-        NSString *notification = @"您获得了 20金币";
-        
-        [self showNotification:notification];
-    }
-    else
-    {
-        NSString *notification = @"您今日已经签到了，请明日再试";
-        [self showNotification:notification];
-    }
-}
 
-- (IBAction)share:(id)sender
-{
-    NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"AppIcon76x76@2x" ofType:@"png"];
-    
-    id<ISSContent> publishContent = [ShareSDK content:[NSString stringWithFormat:@"这个app不错，评书、有声书都有，严重推荐! %@", _appDelegate.appUrlinAws]
-                                       defaultContent:@""
-                                                image:[ShareSDK imageWithPath:imgPath]
-                                                title:[NSString stringWithFormat:@"这个app不错，评书、有声书都有，严重推荐! %@", _appDelegate.appUrlinAws]
-                                                  url:_appDelegate.appUrlinAws
-                                          description:@""
-                                            mediaType:SSPublishContentMediaTypeNews];
-    
-    
-    [ShareSDK showShareViewWithType:ShareTypeWeixiTimeline
-                          container:nil
-                            content:publishContent
-                      statusBarTips:NO authOptions:nil
-                       shareOptions:nil
-                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-        
-        if (state == SSResponseStateSuccess)
-        {
-            //share
-            _appData.coins = _appData.coins + 20;
-            NSString *notification = @"您获得了 20金币";
-            
-            [self showNotification:notification];
-        }
-        else if (state == SSResponseStateFail)
-        {
-            NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
-        }
-    }];
-}
+
+
 
 - (void)onLoadedProducts
 {

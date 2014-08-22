@@ -81,6 +81,8 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
+    _playerHelper.delegate = nil;
+    
     [_timer invalidate];
     _playerHelper.delegate = nil;
 }
@@ -96,12 +98,56 @@
 #pragma mark - Internal business logic
 - (void)setupDescriptionView
 {
-    NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"DescriptionView_iphone" owner:self options:nil];
+    //NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"DescriptionView_iphone" owner:self options:nil];
     
-    _descriptionView = [nibViews objectAtIndex:0];
-    _descriptionView.frame = CGRectMake(320, 0, 320, 406);
+    //_descriptionView = [nibViews objectAtIndex:0];
+    _descriptionView = [[UIView alloc]initWithFrame:CGRectMake(320, 0, 320, 406)];
+    _descriptionView.backgroundColor = _appDelegate.defaultBackgroundColor;
     
-    _descriptionView.album = _album;
+    UIScrollView *_scrollView_description = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, 320, 406)];
+    [_descriptionView addSubview:_scrollView_description];
+    
+    //1. Album image
+    UIImageView *img_artist = [[UIImageView alloc]initWithFrame:CGRectMake(20, 20, 64, 64)];
+    [img_artist setImageWithURL:_album.imageUrl];
+    [_scrollView_description addSubview:img_artist];
+    
+    //Next Version
+    /*UIImageView *img_artist = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 406)];
+     [img_artist setImageWithURL:_album.imageUrl];
+     
+     img_artist.alpha = 0.2;
+     [img_artist setImageToBlur:img_artist.image blurRadius:kLBBlurredImageDefaultBlurRadius completionBlock:nil];*/
+    
+    //2. Download all button
+    UIButton *btn_downloadAll = [UIButton buttonWithType:UIButtonTypeSystem];
+    [btn_downloadAll setFrame:CGRectMake(220, 54, 70, 30)];
+    [btn_downloadAll setTitle:@"全部下载" forState:UIControlStateNormal];
+    [_scrollView_description addSubview:btn_downloadAll];
+    
+    [btn_downloadAll addTarget:self action:@selector(downloadAll) forControlEvents:UIControlEventTouchUpInside];
+    
+    //3. description label
+    UILabel* lbl_description = [[UILabel alloc]init];
+    
+    [lbl_description setNumberOfLines:0];
+    lbl_description.lineBreakMode = NSLineBreakByWordWrapping;
+    lbl_description.text = _album.longdescription;
+    
+    UIFont *font =[UIFont fontWithName:lbl_description.font.familyName size:17];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:font,NSFontAttributeName, nil];
+    
+    CGSize textSize = [lbl_description.text boundingRectWithSize:CGSizeMake(280, 2000)
+                                                         options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                                      attributes:dic
+                                                         context:nil].size;
+    
+    [lbl_description setFrame:CGRectMake(20, 90, textSize.width, textSize.height)];
+    
+    // 4. Resize scroll view
+    _scrollView_description.contentSize = CGSizeMake(_descriptionView.frame.size.width, textSize.height + 90);
+    [_scrollView_description addSubview:lbl_description];
+
 }
 
 -(void)playSong:(Song*)song
@@ -485,9 +531,9 @@
             BOOL purchased = [_appData songNumber:song.songNumber ispurchasedwithAlbum:_album.shortName];
             
             if (!purchased) {
-                _appData.coins = _appData.coins - [song.price intValue];
+                [AppData sharedAppData].coins = [AppData sharedAppData].coins - [song.price intValue];
                 
-                [_appData addtoPurchasedQueue:song withAlbumShortname:_album.shortName];
+                [[AppData sharedAppData]  addtoPurchasedQueue:song withAlbumShortname:_album.shortName];
             }
         }
         [_appData save];
@@ -496,10 +542,13 @@
         [self showNotification:notification];
         
     }
-    //todo if cois is not enough, navigate to store view and give notification
+    //if cois is not enough, navigate to store view and give notification
     else{
+        
         UITabBarController *tabBarController = [self getTabbarViewController];
         tabBarController.selectedIndex = 2;
+        
+        [TSMessage showNotificationWithTitle:@"您的金币不足，请购买更多金币" subtitle:nil type:TSMessageNotificationTypeWarning];
     }
 }
 
