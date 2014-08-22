@@ -15,6 +15,8 @@
 		0A3CD3641920F8BE00247436 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A3CD3621920F8BE00247436 /* Main_iPhone.storyboard */; };
 		0A5F4C9D195AB0D3003924C7 /* AppIcon76x76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A5F4C9C195AB0D3003924C7 /* AppIcon76x76@2x.png */; };
 		0A659EF51977AFFD00FC893B /* download_pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A659EE81977AFFD00FC893B /* download_pause@2x.png */; };
+		0A6E296D19A5DD51002808F7 /* NewStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6E296C19A5DD51002808F7 /* NewStoreViewController.m */; };
+		0A6E297119A5E5FC002808F7 /* CurrentCoinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6E297019A5E5FC002808F7 /* CurrentCoinCell.m */; };
 		0A7A8CD819590B4C003FAA92 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A7A8CD719590B4C003FAA92 /* CFNetwork.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		0A8BA0091940BFCB001307D6 /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8BA0081940BFCB001307D6 /* DownloadViewController.m */; };
 		0A8BA00F1940C15E001307D6 /* DownloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8BA00E1940C15E001307D6 /* DownloadCell.m */; };
@@ -91,7 +93,6 @@
 		5933AD7718D03EC1001D707B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5933AD7618D03EC1001D707B /* Images.xcassets */; };
 		D8113D8819911FDC0011B04A /* nowplaying_share_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8113D8619911FDC0011B04A /* nowplaying_share_n@2x.png */; };
 		D82B8AC9197962EE00F107B5 /* download@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D82B8AC5197962EE00F107B5 /* download@2x.png */; };
-		D882AE9A198A2D150012348A /* DescriptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D882AE99198A2D150012348A /* DescriptionView.m */; };
 		D885571E1999023B00B0F891 /* AFDownloadHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D885570B1999023B00B0F891 /* AFDownloadHelper.m */; };
 		D885571F1999023B00B0F891 /* AlbumManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D885570D1999023B00B0F891 /* AlbumManager.m */; };
 		D88557201999023B00B0F891 /* CoinIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D885570F1999023B00B0F891 /* CoinIAPHelper.m */; };
@@ -116,8 +117,6 @@
 		D885574F199902CF00B0F891 /* SettingCellDisclosure.m in Sources */ = {isa = PBXBuildFile; fileRef = D8855744199902CF00B0F891 /* SettingCellDisclosure.m */; };
 		D8855750199902CF00B0F891 /* SettingCellSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = D8855746199902CF00B0F891 /* SettingCellSwitch.m */; };
 		D8855751199902CF00B0F891 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8855748199902CF00B0F891 /* SettingViewController.m */; };
-		D88557551999031A00B0F891 /* DescriptionView_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D88557521999031A00B0F891 /* DescriptionView_iphone.xib */; };
-		D88557561999031A00B0F891 /* NotificationView_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D88557531999031A00B0F891 /* NotificationView_iphone.xib */; };
 		D88557571999031A00B0F891 /* SongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D88557541999031A00B0F891 /* SongCell.xib */; };
 		D885575C199906A200B0F891 /* playing_btn_next_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8855758199906A200B0F891 /* playing_btn_next_n@2x.png */; };
 		D885575D199906A200B0F891 /* playing_btn_pause_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8855759199906A200B0F891 /* playing_btn_pause_n@2x.png */; };
@@ -141,6 +140,10 @@
 		0A5F4C9C195AB0D3003924C7 /* AppIcon76x76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon76x76@2x.png"; sourceTree = "<group>"; };
 		0A659EE81977AFFD00FC893B /* download_pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "download_pause@2x.png"; sourceTree = "<group>"; };
 		0A6D57351932FD070038D841 /* Daoting.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Daoting.entitlements; sourceTree = "<group>"; };
+		0A6E296B19A5DD51002808F7 /* NewStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewStoreViewController.h; sourceTree = "<group>"; };
+		0A6E296C19A5DD51002808F7 /* NewStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewStoreViewController.m; sourceTree = "<group>"; };
+		0A6E296F19A5E5FC002808F7 /* CurrentCoinCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentCoinCell.h; sourceTree = "<group>"; };
+		0A6E297019A5E5FC002808F7 /* CurrentCoinCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentCoinCell.m; sourceTree = "<group>"; };
 		0A7A8CD719590B4C003FAA92 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0A8BA0071940BFCB001307D6 /* DownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadViewController.h; sourceTree = "<group>"; };
 		0A8BA0081940BFCB001307D6 /* DownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadViewController.m; sourceTree = "<group>"; };
@@ -280,8 +283,6 @@
 		9D92318D3DBB470EB30CF35F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8113D8619911FDC0011B04A /* nowplaying_share_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nowplaying_share_n@2x.png"; sourceTree = "<group>"; };
 		D82B8AC5197962EE00F107B5 /* download@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "download@2x.png"; sourceTree = "<group>"; };
-		D882AE98198A2D150012348A /* DescriptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionView.h; sourceTree = "<group>"; };
-		D882AE99198A2D150012348A /* DescriptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescriptionView.m; sourceTree = "<group>"; };
 		D885570A1999023B00B0F891 /* AFDownloadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFDownloadHelper.h; path = Helper/AFDownloadHelper.h; sourceTree = "<group>"; };
 		D885570B1999023B00B0F891 /* AFDownloadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFDownloadHelper.m; path = Helper/AFDownloadHelper.m; sourceTree = "<group>"; };
 		D885570C1999023B00B0F891 /* AlbumManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlbumManager.h; path = Helper/AlbumManager.h; sourceTree = "<group>"; };
@@ -330,8 +331,6 @@
 		D8855746199902CF00B0F891 /* SettingCellSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingCellSwitch.m; path = Setting/SettingCellSwitch.m; sourceTree = "<group>"; };
 		D8855747199902CF00B0F891 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingViewController.h; path = Setting/SettingViewController.h; sourceTree = "<group>"; };
 		D8855748199902CF00B0F891 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = Setting/SettingViewController.m; sourceTree = "<group>"; };
-		D88557521999031A00B0F891 /* DescriptionView_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DescriptionView_iphone.xib; path = xib/DescriptionView_iphone.xib; sourceTree = "<group>"; };
-		D88557531999031A00B0F891 /* NotificationView_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotificationView_iphone.xib; path = xib/NotificationView_iphone.xib; sourceTree = "<group>"; };
 		D88557541999031A00B0F891 /* SongCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongCell.xib; path = xib/SongCell.xib; sourceTree = "<group>"; };
 		D8855758199906A200B0F891 /* playing_btn_next_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playing_btn_next_n@2x.png"; sourceTree = "<group>"; };
 		D8855759199906A200B0F891 /* playing_btn_pause_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playing_btn_pause_n@2x.png"; sourceTree = "<group>"; };
@@ -427,11 +426,18 @@
 			name = DataStructure;
 			sourceTree = "<group>";
 		};
+		0A6E296E19A5E5D0002808F7 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				0A6E296F19A5E5FC002808F7 /* CurrentCoinCell.h */,
+				0A6E297019A5E5FC002808F7 /* CurrentCoinCell.m */,
+			);
+			name = Store;
+			sourceTree = "<group>";
+		};
 		0A8910BD195D14A6009521D7 /* xib */ = {
 			isa = PBXGroup;
 			children = (
-				D88557521999031A00B0F891 /* DescriptionView_iphone.xib */,
-				D88557531999031A00B0F891 /* NotificationView_iphone.xib */,
 				D88557541999031A00B0F891 /* SongCell.xib */,
 				0A3CD3621920F8BE00247436 /* Main_iPhone.storyboard */,
 				5933AD6D18D03EC1001D707B /* Main_iPad.storyboard */,
@@ -760,6 +766,7 @@
 		5933AD5E18D03EC1001D707B /* Daoting */ = {
 			isa = PBXGroup;
 			children = (
+				0A6E296E19A5E5D0002808F7 /* Store */,
 				0AC69C5B1946F452004C6A67 /* DACircularProgress */,
 				0A98D59B1920ACBC00E46EB9 /* ShareSDK */,
 				0A8910BD195D14A6009521D7 /* xib */,
@@ -770,8 +777,6 @@
 				0A8BA00E1940C15E001307D6 /* DownloadCell.m */,
 				5933AD6718D03EC1001D707B /* AppDelegate.h */,
 				5933AD6818D03EC1001D707B /* AppDelegate.m */,
-				D882AE98198A2D150012348A /* DescriptionView.h */,
-				D882AE99198A2D150012348A /* DescriptionView.m */,
 				0A98D66E1920F25900E46EB9 /* AlbumTableViewController.h */,
 				0A98D66F1920F25900E46EB9 /* AlbumTableViewController.m */,
 				0AE46B0C1921035E00FA30F3 /* SongTableViewController.h */,
@@ -780,6 +785,8 @@
 				0A8BA0081940BFCB001307D6 /* DownloadViewController.m */,
 				0AFFF5811944A2EE008E9119 /* StoreViewController.h */,
 				0AFFF5821944A2EE008E9119 /* StoreViewController.m */,
+				0A6E296B19A5DD51002808F7 /* NewStoreViewController.h */,
+				0A6E296C19A5DD51002808F7 /* NewStoreViewController.m */,
 				5933AD5F18D03EC1001D707B /* Supporting Files */,
 			);
 			path = Daoting;
@@ -873,7 +880,6 @@
 			files = (
 				D8113D8819911FDC0011B04A /* nowplaying_share_n@2x.png in Resources */,
 				0A98D66C1920F1F500E46EB9 /* arrowSelected.png in Resources */,
-				D88557551999031A00B0F891 /* DescriptionView_iphone.xib in Resources */,
 				D8C6FA4D198FDE4800AB9ACB /* AlbumList.plist in Resources */,
 				0AE8649A192EF48700EF5A96 /* Shuangbianji_SongList.plist in Resources */,
 				0A1FA99B1958556C002F48EA /* qr_toolbar_more_hl@2x.png in Resources */,
@@ -923,7 +929,6 @@
 				0A98D6101920ACBC00E46EB9 /* Resource.bundle in Resources */,
 				5933AD6318D03EC1001D707B /* InfoPlist.strings in Resources */,
 				0AE86490192EEC6E00EF5A96 /* Zhangguangtai_SongList.plist in Resources */,
-				D88557561999031A00B0F891 /* NotificationView_iphone.xib in Resources */,
 				0A98D6211920ACBC00E46EB9 /* ShareSDKFlatShareViewUI.bundle in Resources */,
 				0AE86499192EF48700EF5A96 /* Sandao_SongList.plist in Resources */,
 				0AE8649E192EF4DF00EF5A96 /* Yongzheng2_SongList.plist in Resources */,
@@ -975,11 +980,13 @@
 				0A98D6701920F25900E46EB9 /* AlbumTableViewController.m in Sources */,
 				D885571E1999023B00B0F891 /* AFDownloadHelper.m in Sources */,
 				5933AD6918D03EC1001D707B /* AppDelegate.m in Sources */,
+				0A6E297119A5E5FC002808F7 /* CurrentCoinCell.m in Sources */,
 				D88557331999024B00B0F891 /* AlbumCell.m in Sources */,
 				D88557361999024B00B0F891 /* SongCell.m in Sources */,
 				D88557321999024B00B0F891 /* Album.m in Sources */,
 				0AE46B0E1921035E00FA30F3 /* SongTableViewController.m in Sources */,
 				D88557221999023B00B0F891 /* IAPHelper.m in Sources */,
+				0A6E296D19A5DD51002808F7 /* NewStoreViewController.m in Sources */,
 				D885574E199902CF00B0F891 /* PurchasedSongViewController.m in Sources */,
 				D88557231999023B00B0F891 /* KeychainWrapper.m in Sources */,
 				0AFFF5831944A2EE008E9119 /* StoreViewController.m in Sources */,
@@ -993,7 +1000,6 @@
 				D88557271999023B00B0F891 /* UILabelStrikeThrough.m in Sources */,
 				D88557241999023B00B0F891 /* SampleQueueId.m in Sources */,
 				0AC69C5E1946F452004C6A67 /* DACircularProgressView.m in Sources */,
-				D882AE9A198A2D150012348A /* DescriptionView.m in Sources */,
 				D88557251999023B00B0F891 /* SongManager.m in Sources */,
 				D88557211999023B00B0F891 /* DownloadStatus.m in Sources */,
 				0A8BA00F1940C15E001307D6 /* DownloadCell.m in Sources */,

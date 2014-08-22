@@ -7,6 +7,7 @@
 //
 
 #import "AFDownloadHelper.h"
+#import "AppData.h"
 
 @implementation AFDownloadHelper
 
@@ -33,9 +34,8 @@
     
 }
 
-
 - (void)downloadSong:(Song*) song inAlbum:(Album*) album
-{
+{    
     //0. check if the song is already in download queue
     NSString *key = [NSString stringWithFormat:@"%@_%@", album.shortName, song.songNumber];
     if ([self searchOperationbyKey:key] != nil) {

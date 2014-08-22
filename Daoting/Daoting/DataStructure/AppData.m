@@ -193,8 +193,6 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
 
 -(void)addtoPurchasedQueue:(Song*)song withAlbumShortname:(NSString *)albumShortname
 {
-    
-    
     NSMutableDictionary *purchasedArray = [_purchasedQueue objectForKey:albumShortname];
     
     if (purchasedArray == nil) {
@@ -204,8 +202,6 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
     [purchasedArray setValue:song forKey:song.songNumber];
     
     [_purchasedQueue setValue:purchasedArray forKey:albumShortname];
-    
-    [self save];
 }
 
 @end

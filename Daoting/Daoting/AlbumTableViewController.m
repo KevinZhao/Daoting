@@ -47,6 +47,13 @@
             break;
         }
     }
+    
+    [AlbumManager sharedManager].delegate = self;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [AlbumManager sharedManager].delegate = nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -111,4 +118,10 @@
     }
 }
 
+#pragma mark AlbumManagerDelegate
+
+-(void) onAlbumUpdated
+{
+    [self.tableView reloadData];
+}
 @end

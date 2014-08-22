@@ -163,7 +163,7 @@
         [self playSong:song InAlbum:album];
     }
     
-    //problem
+    //when view controller is not present //next version, change to observer?
     if (self.delegate != nil) {
         [self.delegate onPlayerHelperSongChanged];
     }
