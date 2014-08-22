@@ -19,5 +19,6 @@
 @property (nonatomic, strong) NSString  *updatingStatus;
 @property (nonatomic, strong) NSString  *category;
 @property (nonatomic, strong) NSString  *longdescription;
+@property (nonatomic, strong) NSString  *updatedAlbum;
 
 @end

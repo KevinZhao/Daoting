@@ -29,5 +29,6 @@
 + (AlbumManager *)sharedManager;
 
 - (Album *)searchAlbumByShortName:(NSString*) shortName;
+- (void)writeBacktoPlist;
 
 @end

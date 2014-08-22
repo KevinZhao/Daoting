@@ -97,6 +97,8 @@
 		5933AD7718D03EC1001D707B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5933AD7618D03EC1001D707B /* Images.xcassets */; };
 		D8113D8819911FDC0011B04A /* nowplaying_share_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8113D8619911FDC0011B04A /* nowplaying_share_n@2x.png */; };
 		D82B8AC9197962EE00F107B5 /* download@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D82B8AC5197962EE00F107B5 /* download@2x.png */; };
+		D8338D5319A781A900CBC97F /* AlbumNewNotify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8338D5119A781A900CBC97F /* AlbumNewNotify@2x.png */; };
+		D8338D5419A781A900CBC97F /* SongNewNotify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8338D5219A781A900CBC97F /* SongNewNotify@2x.png */; };
 		D885571E1999023B00B0F891 /* AFDownloadHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D885570B1999023B00B0F891 /* AFDownloadHelper.m */; };
 		D885571F1999023B00B0F891 /* AlbumManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D885570D1999023B00B0F891 /* AlbumManager.m */; };
 		D88557201999023B00B0F891 /* CoinIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D885570F1999023B00B0F891 /* CoinIAPHelper.m */; };
@@ -121,7 +123,6 @@
 		D885574F199902CF00B0F891 /* SettingCellDisclosure.m in Sources */ = {isa = PBXBuildFile; fileRef = D8855744199902CF00B0F891 /* SettingCellDisclosure.m */; };
 		D8855750199902CF00B0F891 /* SettingCellSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = D8855746199902CF00B0F891 /* SettingCellSwitch.m */; };
 		D8855751199902CF00B0F891 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8855748199902CF00B0F891 /* SettingViewController.m */; };
-		D88557551999031A00B0F891 /* DescriptionView_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D88557521999031A00B0F891 /* DescriptionView_iphone.xib */; };
 		D88557571999031A00B0F891 /* SongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D88557541999031A00B0F891 /* SongCell.xib */; };
 		D885575C199906A200B0F891 /* playing_btn_next_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8855758199906A200B0F891 /* playing_btn_next_n@2x.png */; };
 		D885575D199906A200B0F891 /* playing_btn_pause_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8855759199906A200B0F891 /* playing_btn_pause_n@2x.png */; };
@@ -295,6 +296,8 @@
 		9D92318D3DBB470EB30CF35F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8113D8619911FDC0011B04A /* nowplaying_share_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nowplaying_share_n@2x.png"; sourceTree = "<group>"; };
 		D82B8AC5197962EE00F107B5 /* download@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "download@2x.png"; sourceTree = "<group>"; };
+		D8338D5119A781A900CBC97F /* AlbumNewNotify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AlbumNewNotify@2x.png"; sourceTree = "<group>"; };
+		D8338D5219A781A900CBC97F /* SongNewNotify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SongNewNotify@2x.png"; sourceTree = "<group>"; };
 		D885570A1999023B00B0F891 /* AFDownloadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFDownloadHelper.h; path = Helper/AFDownloadHelper.h; sourceTree = "<group>"; };
 		D885570B1999023B00B0F891 /* AFDownloadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFDownloadHelper.m; path = Helper/AFDownloadHelper.m; sourceTree = "<group>"; };
 		D885570C1999023B00B0F891 /* AlbumManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlbumManager.h; path = Helper/AlbumManager.h; sourceTree = "<group>"; };
@@ -343,7 +346,6 @@
 		D8855746199902CF00B0F891 /* SettingCellSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingCellSwitch.m; path = Setting/SettingCellSwitch.m; sourceTree = "<group>"; };
 		D8855747199902CF00B0F891 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingViewController.h; path = Setting/SettingViewController.h; sourceTree = "<group>"; };
 		D8855748199902CF00B0F891 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = Setting/SettingViewController.m; sourceTree = "<group>"; };
-		D88557521999031A00B0F891 /* DescriptionView_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DescriptionView_iphone.xib; path = xib/DescriptionView_iphone.xib; sourceTree = "<group>"; };
 		D88557541999031A00B0F891 /* SongCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongCell.xib; path = xib/SongCell.xib; sourceTree = "<group>"; };
 		D8855758199906A200B0F891 /* playing_btn_next_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playing_btn_next_n@2x.png"; sourceTree = "<group>"; };
 		D8855759199906A200B0F891 /* playing_btn_pause_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playing_btn_pause_n@2x.png"; sourceTree = "<group>"; };
@@ -461,7 +463,6 @@
 		0A8910BD195D14A6009521D7 /* xib */ = {
 			isa = PBXGroup;
 			children = (
-				D88557521999031A00B0F891 /* DescriptionView_iphone.xib */,
 				D88557541999031A00B0F891 /* SongCell.xib */,
 				0A3CD3621920F8BE00247436 /* Main_iPhone.storyboard */,
 				5933AD6D18D03EC1001D707B /* Main_iPad.storyboard */,
@@ -651,6 +652,8 @@
 		0A98D64B1920EAB700E46EB9 /* Artworks */ = {
 			isa = PBXGroup;
 			children = (
+				D8338D5119A781A900CBC97F /* AlbumNewNotify@2x.png */,
+				D8338D5219A781A900CBC97F /* SongNewNotify@2x.png */,
 				D88557601999082F00B0F891 /* actionIconDownloadSelected@2x.png */,
 				D8855758199906A200B0F891 /* playing_btn_next_n@2x.png */,
 				D8855759199906A200B0F891 /* playing_btn_pause_n@2x.png */,
@@ -916,6 +919,8 @@
 				0AE8649A192EF48700EF5A96 /* Shuangbianji_SongList.plist in Resources */,
 				0A1FA99B1958556C002F48EA /* qr_toolbar_more_hl@2x.png in Resources */,
 				D885575D199906A200B0F891 /* playing_btn_pause_n@2x.png in Resources */,
+				D8338D5419A781A900CBC97F /* SongNewNotify@2x.png in Resources */,
+				D8338D5319A781A900CBC97F /* AlbumNewNotify@2x.png in Resources */,
 				0A1FA99C1958556C002F48EA /* qr_toolbar_more@2x.png in Resources */,
 				0AE86488192EDECA00EF5A96 /* Zhengdong1_SongList.plist in Resources */,
 				0AEFC37C1988DBD800CECC93 /* colorStyle_download@2x.png in Resources */,

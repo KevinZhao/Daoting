@@ -14,5 +14,6 @@
 @property (nonatomic, strong) IBOutlet UILabel      *lbl_Status;
 @property (nonatomic, strong) IBOutlet UILabel      *lbl_albumDescription;
 @property (nonatomic, strong) IBOutlet UIImageView  *img_albumImage;
+@property (nonatomic, strong) IBOutlet UIImageView  *img_albumNew;
 
 @end

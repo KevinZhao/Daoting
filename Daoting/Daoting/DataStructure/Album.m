@@ -19,6 +19,7 @@
     [aCoder encodeObject:self.artistName forKey:@"artistName"];
     [aCoder encodeObject:self.updatingStatus forKey:@"updatingStatus"];
     [aCoder encodeObject:self.category forKey:@"category"];
+    [aCoder encodeObject:self.updatedAlbum forKey:@"new"];
 }
 
 
@@ -31,6 +32,7 @@
     _artistName= [aDecoder decodeObjectForKey:@"artistName"];
     _updatingStatus = [aDecoder decodeObjectForKey:@"updatingStatus"];
     _category = [aDecoder decodeObjectForKey:@"category"];
+    _updatedAlbum = [aDecoder decodeObjectForKey:@"new"];
     
     return self;
 }

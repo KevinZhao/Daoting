@@ -31,6 +31,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [AlbumManager sharedManager].delegate = self;
+    
     _albums = [AlbumManager sharedManager].albums;
     
     Album *album = [[AlbumManager sharedManager] searchAlbumByShortName:[AppData sharedAppData].currentAlbum.shortName];
@@ -48,10 +50,10 @@
         }
     }
     
-    [AlbumManager sharedManager].delegate = self;
+    [self.tableView reloadData];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
     [AlbumManager sharedManager].delegate = nil;
 }
@@ -72,9 +74,15 @@
     Album *album = [_albums objectAtIndex:indexPath.row];
     AlbumCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AlbumCell" forIndexPath:indexPath];
     
+    cell.img_albumNew.hidden = YES;
+    
     //Configure Cell
     cell.lbl_albumTitle.text = album.title;
     cell.lbl_albumDescription.text = album.description;
+    if ([album.updatedAlbum isEqualToString:@"YES"]) {
+        
+        cell.img_albumNew.hidden = NO;
+    }
     
     //Updating Cell Image
     NSURLRequest *request = [NSURLRequest requestWithURL:album.imageUrl];
@@ -109,9 +117,18 @@
 
         SongTableViewController *destinationViewController = [segue destinationViewController];
         
-        destinationViewController.hidesBottomBarWhenPushed = YES;
-        [destinationViewController setDetailItem: [_albums objectAtIndex:indexpath.row]];
+        Album *album = [_albums objectAtIndex:indexpath.row];
         
+        if ([album.updatedAlbum isEqualToString:@"YES"]) {
+            
+            album.updatedAlbum = @"NO";
+            [[AlbumManager sharedManager] writeBacktoPlist];
+        }
+        
+        destinationViewController.hidesBottomBarWhenPushed = YES;
+        [destinationViewController setDetailItem:album];
+        
+        //remove title of back button
         UIBarButtonItem *temporaryBarButtonItem=[[UIBarButtonItem alloc] init];
         temporaryBarButtonItem.title=@"";
         self.navigationItem.backBarButtonItem = temporaryBarButtonItem;
@@ -122,6 +139,8 @@
 
 -(void) onAlbumUpdated
 {
+    _albums = [AlbumManager sharedManager].albums;
+    
     [self.tableView reloadData];
 }
 @end

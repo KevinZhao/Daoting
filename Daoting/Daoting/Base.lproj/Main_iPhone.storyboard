@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A329f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="6bP-Wq-XVz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="6bP-Wq-XVz">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -279,10 +279,15 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon-72.png" translatesAutoresizingMaskIntoConstraints="NO" id="HFM-Ul-jhK">
                                             <rect key="frame" x="7" y="8" width="60" height="60"/>
                                         </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AlbumNewNotify.png" translatesAutoresizingMaskIntoConstraints="NO" id="SUT-c4-Gci">
+                                            <rect key="frame" x="55" y="2" width="20" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="img_albumImage" destination="HFM-Ul-jhK" id="4tA-ne-094"/>
+                                    <outlet property="img_albumNew" destination="SUT-c4-Gci" id="5Rg-hS-DEb"/>
                                     <outlet property="lbl_albumDescription" destination="6Hw-dL-nZg" id="LoL-rO-fS0"/>
                                     <outlet property="lbl_albumTitle" destination="YcD-a3-Pgd" id="iIu-1O-OJe"/>
                                     <segue destination="FIa-3P-xRc" kind="push" identifier="showSongList" id="geF-Vq-fDf"/>
@@ -826,6 +831,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AlbumNewNotify.png" width="20" height="20"/>
         <image name="Icon-72.png" width="76" height="76"/>
         <image name="actionIconDownloadSelected.png" width="40" height="40"/>
         <image name="bag.png" width="27" height="27"/>
