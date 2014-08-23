@@ -10,11 +10,9 @@
 #import "IAPHelper.h"
 #import "AppData.h"
 #import "AppDelegate.h"
-
 #import "CurrentCoinCell.h"
 #import "ShareCell.h"
 #import "PurchaseCoinCell.h"
-
 #import "TSMessage.h"
 
 
@@ -23,8 +21,8 @@
     AppData                     *_appData;
     AppDelegate                 *_appDelegate;
     UIActivityIndicatorView     *_spinner;
+    NSArray                     *_products;
 }
 
-@property (nonatomic, strong) IBOutlet UILabel *lbl_currentCoins;
 
 @end

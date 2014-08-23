@@ -17,7 +17,6 @@
 #import "AlbumManager.h"
 #import "AppData.h"
 #import "StoreKit/StoreKit.h"
-#import "UILabelStrikeThrough.h"
 #import "CoinIAPHelper.h"
 #import "AppDelegate.h"
 #import <ShareSDK/ShareSDK.h>

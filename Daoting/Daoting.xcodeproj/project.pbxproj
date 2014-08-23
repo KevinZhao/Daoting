@@ -85,7 +85,6 @@
 		0AEFC3801988DDC800CECC93 /* tabbar_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFC37F1988DDC800CECC93 /* tabbar_setting@2x.png */; };
 		0AEFC3821988E17E00CECC93 /* bag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFC3811988E17E00CECC93 /* bag@2x.png */; };
 		0AFB65A719245BD4000F2AE6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AFB65A619245BD4000F2AE6 /* StoreKit.framework */; };
-		0AFFF5831944A2EE008E9119 /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFFF5821944A2EE008E9119 /* StoreViewController.m */; };
 		236C526919A630B8009595D9 /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 236C526719A630B8009595D9 /* libXG-SDK.a */; };
 		236C526B19A63169009595D9 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 236C526A19A63169009595D9 /* libz.dylib */; };
 		5933AD5B18D03EC1001D707B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933AD5A18D03EC1001D707B /* CoreGraphics.framework */; };
@@ -98,6 +97,7 @@
 		D8113D8819911FDC0011B04A /* nowplaying_share_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8113D8619911FDC0011B04A /* nowplaying_share_n@2x.png */; };
 		D82B8AC9197962EE00F107B5 /* download@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D82B8AC5197962EE00F107B5 /* download@2x.png */; };
 		D832678619A8CED700DCEBCA /* Xiyouji_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = D832678519A8CED700DCEBCA /* Xiyouji_SongList.plist */; };
+		D832678919A8DA6F00DCEBCA /* Cuxiao@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D832678719A8DA6F00DCEBCA /* Cuxiao@2x.png */; };
 		D8338D5319A781A900CBC97F /* AlbumNewNotify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8338D5119A781A900CBC97F /* AlbumNewNotify@2x.png */; };
 		D8338D5419A781A900CBC97F /* SongNewNotify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8338D5219A781A900CBC97F /* SongNewNotify@2x.png */; };
 		D885571E1999023B00B0F891 /* AFDownloadHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D885570B1999023B00B0F891 /* AFDownloadHelper.m */; };
@@ -109,7 +109,6 @@
 		D88557241999023B00B0F891 /* SampleQueueId.m in Sources */ = {isa = PBXBuildFile; fileRef = D88557171999023B00B0F891 /* SampleQueueId.m */; };
 		D88557251999023B00B0F891 /* SongManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D88557191999023B00B0F891 /* SongManager.m */; };
 		D88557261999023B00B0F891 /* STKAudioPlayerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D885571B1999023B00B0F891 /* STKAudioPlayerHelper.m */; };
-		D88557271999023B00B0F891 /* UILabelStrikeThrough.m in Sources */ = {isa = PBXBuildFile; fileRef = D885571D1999023B00B0F891 /* UILabelStrikeThrough.m */; };
 		D88557321999024B00B0F891 /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = D88557291999024B00B0F891 /* Album.m */; };
 		D88557331999024B00B0F891 /* AlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D885572B1999024B00B0F891 /* AlbumCell.m */; };
 		D88557341999024B00B0F891 /* AppData.m in Sources */ = {isa = PBXBuildFile; fileRef = D885572D1999024B00B0F891 /* AppData.m */; };
@@ -277,8 +276,6 @@
 		0AEFC37F1988DDC800CECC93 /* tabbar_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_setting@2x.png"; sourceTree = "<group>"; };
 		0AEFC3811988E17E00CECC93 /* bag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bag@2x.png"; sourceTree = "<group>"; };
 		0AFB65A619245BD4000F2AE6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		0AFFF5811944A2EE008E9119 /* StoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreViewController.h; sourceTree = "<group>"; };
-		0AFFF5821944A2EE008E9119 /* StoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreViewController.m; sourceTree = "<group>"; };
 		236C526719A630B8009595D9 /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
 		236C526819A630B8009595D9 /* XGPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGPush.h; sourceTree = "<group>"; };
 		236C526A19A63169009595D9 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -298,6 +295,7 @@
 		D8113D8619911FDC0011B04A /* nowplaying_share_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nowplaying_share_n@2x.png"; sourceTree = "<group>"; };
 		D82B8AC5197962EE00F107B5 /* download@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "download@2x.png"; sourceTree = "<group>"; };
 		D832678519A8CED700DCEBCA /* Xiyouji_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Xiyouji_SongList.plist; path = SongPlists/Xiyouji_SongList.plist; sourceTree = "<group>"; };
+		D832678719A8DA6F00DCEBCA /* Cuxiao@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cuxiao@2x.png"; sourceTree = "<group>"; };
 		D8338D5119A781A900CBC97F /* AlbumNewNotify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AlbumNewNotify@2x.png"; sourceTree = "<group>"; };
 		D8338D5219A781A900CBC97F /* SongNewNotify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SongNewNotify@2x.png"; sourceTree = "<group>"; };
 		D885570A1999023B00B0F891 /* AFDownloadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFDownloadHelper.h; path = Helper/AFDownloadHelper.h; sourceTree = "<group>"; };
@@ -318,8 +316,6 @@
 		D88557191999023B00B0F891 /* SongManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongManager.m; path = Helper/SongManager.m; sourceTree = "<group>"; };
 		D885571A1999023B00B0F891 /* STKAudioPlayerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STKAudioPlayerHelper.h; path = Helper/STKAudioPlayerHelper.h; sourceTree = "<group>"; };
 		D885571B1999023B00B0F891 /* STKAudioPlayerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STKAudioPlayerHelper.m; path = Helper/STKAudioPlayerHelper.m; sourceTree = "<group>"; };
-		D885571C1999023B00B0F891 /* UILabelStrikeThrough.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UILabelStrikeThrough.h; path = Helper/UILabelStrikeThrough.h; sourceTree = "<group>"; };
-		D885571D1999023B00B0F891 /* UILabelStrikeThrough.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UILabelStrikeThrough.m; path = Helper/UILabelStrikeThrough.m; sourceTree = "<group>"; };
 		D88557281999024B00B0F891 /* Album.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Album.h; path = DataStructure/Album.h; sourceTree = "<group>"; };
 		D88557291999024B00B0F891 /* Album.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Album.m; path = DataStructure/Album.m; sourceTree = "<group>"; };
 		D885572A1999024B00B0F891 /* AlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlbumCell.h; path = DataStructure/AlbumCell.h; sourceTree = "<group>"; };
@@ -454,8 +450,6 @@
 				0A65A8FD19A70D1000CAF5CA /* ShareCell.m */,
 				0A9D238819A713B0004F2B76 /* PurchaseCoinCell.h */,
 				0A9D238919A713B0004F2B76 /* PurchaseCoinCell.m */,
-				0AFFF5811944A2EE008E9119 /* StoreViewController.h */,
-				0AFFF5821944A2EE008E9119 /* StoreViewController.m */,
 				0A6E296B19A5DD51002808F7 /* NewStoreViewController.h */,
 				0A6E296C19A5DD51002808F7 /* NewStoreViewController.m */,
 			);
@@ -654,6 +648,7 @@
 		0A98D64B1920EAB700E46EB9 /* Artworks */ = {
 			isa = PBXGroup;
 			children = (
+				D832678719A8DA6F00DCEBCA /* Cuxiao@2x.png */,
 				D8338D5119A781A900CBC97F /* AlbumNewNotify@2x.png */,
 				D8338D5219A781A900CBC97F /* SongNewNotify@2x.png */,
 				D88557601999082F00B0F891 /* actionIconDownloadSelected@2x.png */,
@@ -710,8 +705,6 @@
 				D88557191999023B00B0F891 /* SongManager.m */,
 				D885571A1999023B00B0F891 /* STKAudioPlayerHelper.h */,
 				D885571B1999023B00B0F891 /* STKAudioPlayerHelper.m */,
-				D885571C1999023B00B0F891 /* UILabelStrikeThrough.h */,
-				D885571D1999023B00B0F891 /* UILabelStrikeThrough.m */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -966,6 +959,7 @@
 				0AEFC3711988C48000CECC93 /* btn_checkin@2x.png in Resources */,
 				0AEFC3751988D5D300CECC93 /* coin.png in Resources */,
 				0A98D60F1920ACBC00E46EB9 /* ShareSDKLocalizable.strings in Resources */,
+				D832678919A8DA6F00DCEBCA /* Cuxiao@2x.png in Resources */,
 				D88557571999031A00B0F891 /* SongCell.xib in Resources */,
 				0A98D6101920ACBC00E46EB9 /* Resource.bundle in Resources */,
 				5933AD6318D03EC1001D707B /* InfoPlist.strings in Resources */,
@@ -1031,7 +1025,6 @@
 				D885574E199902CF00B0F891 /* PurchasedSongViewController.m in Sources */,
 				0A65A8FE19A70D1000CAF5CA /* ShareCell.m in Sources */,
 				D88557231999023B00B0F891 /* KeychainWrapper.m in Sources */,
-				0AFFF5831944A2EE008E9119 /* StoreViewController.m in Sources */,
 				D885571F1999023B00B0F891 /* AlbumManager.m in Sources */,
 				D885574F199902CF00B0F891 /* SettingCellDisclosure.m in Sources */,
 				5933AD6518D03EC1001D707B /* main.m in Sources */,
@@ -1040,7 +1033,6 @@
 				D885574B199902CF00B0F891 /* PurchasedAlbumCell.m in Sources */,
 				0A9D238A19A713B0004F2B76 /* PurchaseCoinCell.m in Sources */,
 				D8855751199902CF00B0F891 /* SettingViewController.m in Sources */,
-				D88557271999023B00B0F891 /* UILabelStrikeThrough.m in Sources */,
 				D88557241999023B00B0F891 /* SampleQueueId.m in Sources */,
 				0AC69C5E1946F452004C6A67 /* DACircularProgressView.m in Sources */,
 				D88557251999023B00B0F891 /* SongManager.m in Sources */,

@@ -20,7 +20,6 @@
 #import "AppDelegate.h"
 #import "STKAudioPlayerHelper.h"
 #import <ShareSDK/ShareSDK.h>
-#import "StoreViewController.h"
 #import "SongManager.h"
 #import "TSMessageView.h"
 #import "UIImageView+AFNetworking.h"

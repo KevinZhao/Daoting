@@ -50,6 +50,44 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)buy:(NSInteger) tag
+{
+    AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    //Check if IAP items had been loaded
+    if (appDelegate.products != nil) {
+        
+        _products = appDelegate.products;
+        
+        //sort by price
+        NSSortDescriptor *sorter = [[NSSortDescriptor alloc] initWithKey:@"price" ascending:YES];
+        NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:&sorter count:1];
+        NSArray *sortedArray = [_products sortedArrayUsingDescriptors:sortDescriptors];
+        
+        _products = sortedArray;
+        
+        //purchase based on user selection
+        CoinIAPHelper *helper = [CoinIAPHelper sharedInstance];
+        helper.delegate = self;
+        [helper buyProduct:_products[tag]];
+        
+        _spinner = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(0, 0, 320, 460)];
+        
+        _spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+        _spinner.color = _appDelegate.defaultColor_light;
+        
+        [_spinner startAnimating];
+        [self.view addSubview:_spinner];
+        
+    }else{
+        //indicate the iTunes Store can not been connected
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"无法连接iTunes Store，请重试" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        
+        [alert show];
+    }
+}
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -126,7 +164,7 @@
         if (indexPath.row == 0) {
             
             shareCell.btn_cellButton.imageView.image = [UIImage imageNamed:@"btn_checkin@2x.png"];
-            [shareCell.btn_cellButton addTarget:self action:@selector(dailyCheckin:) forControlEvents:UIControlEventTouchUpInside];
+            [shareCell.btn_cellButton addTarget:self action:@selector(dailyCheckin) forControlEvents:UIControlEventTouchUpInside];
 
             shareCell.lbl_cellDescription.text = @"每日签到";
             
@@ -134,7 +172,7 @@
         //Share
         if (indexPath.row == 1) {
             shareCell.btn_cellButton.imageView.image = [UIImage imageNamed:@"btn_share@2x.png"];
-            [shareCell.btn_cellButton addTarget:self action:@selector(share:) forControlEvents:UIControlEventTouchUpInside];
+            [shareCell.btn_cellButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
             
             shareCell.lbl_cellDescription.text = @"分享给朋友";
         }
@@ -146,55 +184,38 @@
         
         PurchaseCoinCell *purchaseCoinCell = [tableView dequeueReusableCellWithIdentifier:@"PurchaseCoinCell" forIndexPath:indexPath];
         
+        
         switch (indexPath.row) {
             case 0:
                 purchaseCoinCell.lbl_coins.text = @"500 金币";
-                //purchaseCoinCell.lbl_originalPrice.text = @"￥6.00";
-
                 [purchaseCoinCell.btn_purchase setTitle:@"￥6.00" forState:UIControlStateNormal];
+                purchaseCoinCell.img_sale.hidden = YES;
                 break;
             case 1:
                 purchaseCoinCell.lbl_coins.text = @"1000 金币";
-                //purchaseCoinCell.lbl_originalPrice.text = @"￥12.00";
-                
                 [purchaseCoinCell.btn_purchase setTitle:@"￥12.00" forState:UIControlStateNormal];
+                purchaseCoinCell.img_sale.hidden = YES;
                 break;
             case 2:
                 purchaseCoinCell.lbl_coins.text = @"2500 金币";
-                //purchaseCoinCell.lbl_originalPrice.text = @"￥25.00";
                 [purchaseCoinCell.btn_purchase setTitle:@"￥25.00" forState:UIControlStateNormal];
                 break;
             case 3:
                 purchaseCoinCell.lbl_coins.text = @"5000 金币";
-                //purchaseCoinCell.lbl_originalPrice.text = @"￥60.00";
-                
-                [purchaseCoinCell.btn_purchase setTitle:@"￥60.00" forState:UIControlStateNormal];
+                [purchaseCoinCell.btn_purchase setTitle:@"￥50.00" forState:UIControlStateNormal];
                 break;
             case 4:
                 purchaseCoinCell.lbl_coins.text = @"10000 金币";
-                //purchaseCoinCell.lbl_originalPrice.text = @"￥120.00";
-                [purchaseCoinCell.btn_purchase setTitle:@"￥120.00" forState:UIControlStateNormal];
+                [purchaseCoinCell.btn_purchase setTitle:@"￥98.00" forState:UIControlStateNormal];
                 
                 break;
             case 5:
                 purchaseCoinCell.lbl_coins.text = @"25000 金币";
-                //purchaseCoinCell.lbl_originalPrice.text = @"￥300.00";
-                [purchaseCoinCell.btn_purchase setTitle:@"￥300.00" forState:UIControlStateNormal];                break;
+                [purchaseCoinCell.btn_purchase setTitle:@"￥238.00" forState:UIControlStateNormal];
+                break;
             default:
                 break;
         }
-        [purchaseCoinCell.btn_purchase.layer setMasksToBounds:YES];
-        [purchaseCoinCell.btn_purchase.layer setCornerRadius:1.0];
-        [purchaseCoinCell.btn_purchase.layer setBorderWidth:1.0];
-        
-        [purchaseCoinCell.btn_purchase.layer setBorderColor:(__bridge CGColorRef)(_appDelegate.defaultColor_dark)];
-        
-        /*[testBtn.layer setMasksToBounds:YES];
-        [testBtn.layer setCornerRadius:8.0]; //设置矩圆角半径
-        [testBtn.layer setBorderWidth:1.0];   //边框宽度
-        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-        CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 1, 0, 0, 1 });
-        [testBtn.layer setBorderColor:colorref];//边框颜色*/
         
         cell = purchaseCoinCell;
 
@@ -205,14 +226,30 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    //2. Share and Checkin
+    if (indexPath.section == 1) {
+        //Check in
+        if (indexPath.row == 0) {
+            [self dailyCheckin];
+        }
+        //Share
+        if (indexPath.row == 1) {
+            [self share];
+        }
+        
+    }
+    //3. Purchase
+    if (indexPath.section == 2) {
+        [self buy:indexPath.row];
+        }
 }
+
 
 #pragma mark IAP Notification Handler
 
 - (void) handlePurchaseCompleted: (NSNotification *)notification;
 {
-    /*NSString *productIdentifier = notification.object;
+    NSString *productIdentifier = notification.object;
     int purchasedCoins = 0;
     
     if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.10000coins_new"]) {
@@ -243,12 +280,10 @@
     
     [_appData save];
     
-    _lbl_currentCoins.text = [NSString stringWithFormat:@"%d", _appData.coins];
+    CurrentCoinCell* currentCoinCell = (CurrentCoinCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%d", _appData.coins];
     
-    NSString *reminder = [NSString stringWithFormat:@"成功购买金币 %d 枚", purchasedCoins];
-    
-    [self showNotification:reminder];*/
-    
+    [self showNotification:[NSString stringWithFormat:@"成功购买金币 %d 枚", purchasedCoins]];
 }
 
 - (void)onLoadedProducts
@@ -256,9 +291,7 @@
     [_spinner stopAnimating];
 }
 
-
-//
-- (IBAction)dailyCheckin:(UIButton *)sender
+- (void)dailyCheckin
 {
     NSString* date;
     NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
@@ -273,10 +306,10 @@
         [_appData.dailyCheckinQueue setObject:yes forKey:date];
         
         _appData.coins += 20;
-        
-        self.lbl_currentCoins.text = [NSString stringWithFormat:@"%d", _appData.coins];
-        
         [_appData save];
+        
+        CurrentCoinCell* currentCoinCell = (CurrentCoinCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+        currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%d", _appData.coins];
         
         NSString *notification = @"您获得了 20金币";
         
@@ -289,7 +322,7 @@
     }
 }
 
-- (IBAction)share:(id)sender
+- (void)share
 {
     NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"AppIcon76x76@2x" ofType:@"png"];
     
@@ -314,6 +347,10 @@
                                      //share
                                      _appData.coins = _appData.coins + 20;
                                      NSString *notification = @"您获得了 20金币";
+                                     [_appData save];
+                                     
+                                     CurrentCoinCell* currentCoinCell = (CurrentCoinCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+                                     currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%d", _appData.coins];
                                      
                                      [self showNotification:notification];
                                  }

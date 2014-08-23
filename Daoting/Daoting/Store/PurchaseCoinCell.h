@@ -11,9 +11,8 @@
 @interface PurchaseCoinCell : UITableViewCell
 {}
 
-//@property (nonatomic, retain) IBOutlet UIImageView img_Coin;
 @property (nonatomic, retain) IBOutlet UILabel *lbl_coins;
-@property (nonatomic, retain) IBOutlet UILabel *lbl_originalPrice;
 @property (nonatomic, retain) IBOutlet UIButton *btn_purchase;
+@property (nonatomic, retain) IBOutlet UIImageView *img_sale;
 
 @end
