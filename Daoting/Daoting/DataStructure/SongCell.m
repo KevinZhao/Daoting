@@ -55,6 +55,12 @@
             
             [_appData addtoPurchasedQueue:song withAlbumShortname:album.shortName];
             
+            if ([song.updatedSong isEqualToString:@"YES"]) {
+                song.updatedSong = @"NO";
+                [[SongManager sharedManager] writeBacktoPlist:album.shortName];
+                self.img_new.hidden = YES;
+            }
+            
             [_appData save];
             
             //show notification to user
@@ -68,7 +74,6 @@
             //todo notify user and show store view
             
             SongTableViewController *parentViewController = (SongTableViewController *)[self GetViewController];
-            
             [parentViewController getTabbarViewController].selectedIndex = 2;
         }
     

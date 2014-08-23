@@ -97,6 +97,7 @@
 		5933AD7718D03EC1001D707B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5933AD7618D03EC1001D707B /* Images.xcassets */; };
 		D8113D8819911FDC0011B04A /* nowplaying_share_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8113D8619911FDC0011B04A /* nowplaying_share_n@2x.png */; };
 		D82B8AC9197962EE00F107B5 /* download@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D82B8AC5197962EE00F107B5 /* download@2x.png */; };
+		D832678619A8CED700DCEBCA /* Xiyouji_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = D832678519A8CED700DCEBCA /* Xiyouji_SongList.plist */; };
 		D8338D5319A781A900CBC97F /* AlbumNewNotify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8338D5119A781A900CBC97F /* AlbumNewNotify@2x.png */; };
 		D8338D5419A781A900CBC97F /* SongNewNotify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8338D5219A781A900CBC97F /* SongNewNotify@2x.png */; };
 		D885571E1999023B00B0F891 /* AFDownloadHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D885570B1999023B00B0F891 /* AFDownloadHelper.m */; };
@@ -296,6 +297,7 @@
 		9D92318D3DBB470EB30CF35F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8113D8619911FDC0011B04A /* nowplaying_share_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nowplaying_share_n@2x.png"; sourceTree = "<group>"; };
 		D82B8AC5197962EE00F107B5 /* download@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "download@2x.png"; sourceTree = "<group>"; };
+		D832678519A8CED700DCEBCA /* Xiyouji_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Xiyouji_SongList.plist; path = SongPlists/Xiyouji_SongList.plist; sourceTree = "<group>"; };
 		D8338D5119A781A900CBC97F /* AlbumNewNotify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AlbumNewNotify@2x.png"; sourceTree = "<group>"; };
 		D8338D5219A781A900CBC97F /* SongNewNotify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SongNewNotify@2x.png"; sourceTree = "<group>"; };
 		D885570A1999023B00B0F891 /* AFDownloadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFDownloadHelper.h; path = Helper/AFDownloadHelper.h; sourceTree = "<group>"; };
@@ -736,6 +738,7 @@
 				0AE8649D192EF4DF00EF5A96 /* Yongzheng2_SongList.plist */,
 				0AE86496192EF48700EF5A96 /* Yongzheng3_SongList.plist */,
 				0A3377261994BF3E00C17AE0 /* Yongzheng4_SongList.plist */,
+				D832678519A8CED700DCEBCA /* Xiyouji_SongList.plist */,
 				0AE86489192EEC6E00EF5A96 /* Liaozhai_SongList.plist */,
 				0AE8648A192EEC6E00EF5A96 /* Suitang_SongList.plist */,
 				0AE8648B192EEC6E00EF5A96 /* Xiayi_SongList.plist */,
@@ -936,6 +939,7 @@
 				0A3CD3641920F8BE00247436 /* Main_iPhone.storyboard in Resources */,
 				0AE8649C192EF48700EF5A96 /* Yongzheng3_SongList.plist in Resources */,
 				D885575E199906A200B0F891 /* playing_btn_play_n@2x.png in Resources */,
+				D832678619A8CED700DCEBCA /* Xiyouji_SongList.plist in Resources */,
 				0AE86498192EF48700EF5A96 /* Mingchao_SongList.plist in Resources */,
 				0AEFC3721988C48000CECC93 /* btn_share@2x.png in Resources */,
 				0A1FA99F19585612002F48EA /* qr_toolbar_more_hl.png in Resources */,

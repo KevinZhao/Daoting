@@ -29,6 +29,7 @@
 @property (nonatomic, strong) IBOutlet UIImageView  *img_playingStatus;
 @property (nonatomic, strong) IBOutlet UIImageView  *img_locked;
 @property (nonatomic, strong) IBOutlet DACircularProgressView *cirProgView_downloadProgress;
+@property (nonatomic, strong) IBOutlet UIImageView  *img_new;
 
 
 @property (nonatomic, retain) Song                  *song;

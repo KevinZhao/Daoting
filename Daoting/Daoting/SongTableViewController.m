@@ -30,11 +30,7 @@
     _playerHelper.delegate = self;
     _appDelegate    = [[UIApplication sharedApplication]delegate];
     _slider.tintColor = _appDelegate.defaultColor_light;
-    _songManager    = [SongManager sharedManager];
-    _songManager.delegate = self;
-    
-    _songs = [_songManager searchSongArrayByAlbumName:_album.shortName];
-    
+
     UIImage *progressBarImage = [UIImage imageNamed:@"progressBar.png"];
     [_slider setThumbImage:progressBarImage forState:UIControlStateNormal];
     
@@ -43,6 +39,11 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    _songManager    = [SongManager sharedManager];
+    _songManager.delegate = self;
+    
+    _songs = [_songManager searchSongArrayByAlbumName:_album.shortName];
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     scrollView.contentSize = CGSizeMake(640, 406);
     scrollView.delegate = self;
@@ -69,11 +70,7 @@
     pageControl.pageIndicatorTintColor = _appDelegate.defaultColor_light;
     
     //Scroll to latest playing row
-    NSString* songNumberstring = (NSString*)[_appData.playingPositionQueue objectForKey:_album.title];
-    NSInteger songNumber = [songNumberstring integerValue];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(songNumber-1) inSection:0];
-    
-    [_tableview selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    [self navigateToLatestSong];
     
     self.navigationItem.title = _album.title;
     [self setupTimer];
@@ -81,10 +78,10 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-    _playerHelper.delegate = nil;
-    
     [_timer invalidate];
     _playerHelper.delegate = nil;
+    
+    _songManager.delegate = nil;
 }
 
 
@@ -174,6 +171,11 @@
             
             //Add to purchased queue
             [_appData addtoPurchasedQueue:song withAlbumShortname:_album.shortName];
+            
+            if ([song.updatedSong isEqualToString:@"YES"]) {
+                song.updatedSong = @"NO";
+                [[SongManager sharedManager] writeBacktoPlist:_album.shortName];
+            }
             
             [_appData save];
             
@@ -369,6 +371,14 @@
     {
         songCell.img_locked.hidden = NO;
     }
+    
+    if ([song.updatedSong isEqualToString:@"YES"]) {
+        songCell.img_new.hidden = NO;
+    }
+    else
+    {
+        songCell.img_new.hidden = YES;
+    }
 }
 
 -(NSString*)formatTimeFromSeconds:(int)totalSeconds
@@ -534,6 +544,10 @@
                 [AppData sharedAppData].coins = [AppData sharedAppData].coins - [song.price intValue];
                 
                 [[AppData sharedAppData]  addtoPurchasedQueue:song withAlbumShortname:_album.shortName];
+                if ([song.updatedSong isEqualToString:@"YES"]) {
+                    song.updatedSong = @"NO";
+                    [[SongManager sharedManager] writeBacktoPlist:_album.shortName];
+                }
             }
         }
         [_appData save];
@@ -566,6 +580,17 @@
         }
     }
 }
+
+- (void)navigateToLatestSong
+{
+    //Scroll to latest playing row
+    NSString* songNumberstring = (NSString*)[_appData.playingPositionQueue objectForKey:_album.title];
+    NSInteger songNumber = [songNumberstring integerValue];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(songNumber-1) inSection:0];
+    
+    [_tableview selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+}
+
 
 #pragma mark - UI operation event
 
@@ -649,7 +674,11 @@
 
 - (void)onSongUpdated
 {
+    _songs = [_songManager searchSongArrayByAlbumName:_album.shortName];
+    
     [_tableview reloadData];
+    
+    [self navigateToLatestSong];
 }
 
 #pragma mark - Table view data source
@@ -669,6 +698,7 @@
     //Clear content
     cell.cirProgView_downloadProgress.hidden = YES;
     cell.btn_downloadOrPause.hidden = YES;
+    cell.img_new.hidden = YES;
     
     cell.cirProgView_downloadProgress.thicknessRatio = 0.075;
     [cell.cirProgView_downloadProgress setTrackTintColor:[UIColor grayColor]];

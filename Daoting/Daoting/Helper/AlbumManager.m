@@ -222,4 +222,21 @@
     [newPlist_dictionary writeToFile:plistPath atomically:NO];
 }
 
+- (void)foundNewSonginAlbum:(Album*) newAlbum
+{
+    for (NSInteger i = 0; i < _albums.count; i++) {
+        
+        Album *oladAlbum = _albums[i];
+        
+        if ([newAlbum.shortName isEqualToString:oladAlbum.shortName]) {
+            oladAlbum.updatedAlbum = @"YES";
+        }
+    }
+    
+    [self writeBacktoPlist];
+    [self initializeAlbums];
+    [self.delegate onAlbumUpdated];
+    
+}
+
 @end

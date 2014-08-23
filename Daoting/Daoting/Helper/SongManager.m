@@ -53,6 +53,7 @@
         song.Url        = [[NSURL alloc] initWithString:[SongDic objectForKey:@"Url"]];
         song.filePath   = [[NSURL alloc] initWithString:[SongDic objectForKey:@"FilePath"]];
         song.price      = [SongDic objectForKey:@"Price"];
+        song.updatedSong = [SongDic objectForKey:@"UpdatedSong"];
         
         [_songs addObject:song];
     }
@@ -98,26 +99,37 @@
              oldPlist_dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
          }
          
+         NSInteger oldCount = oldPlist_dictionary.count;
+         NSInteger newCount = newPlist_dictionary.count;
+         
          //there is new song in the plist
-         if (newPlist_dictionary.count > oldPlist_dictionary.count)
+         if (newCount != oldCount)
          {
-             int oldCount = (int)oldPlist_dictionary.count;
-             int j = (int)(newPlist_dictionary.count - oldPlist_dictionary.count);
+             [[AlbumManager sharedManager] foundNewSonginAlbum:album];
              
              //Copy items in new Plist to old Plist
-             for (int i = 1; i<= j; i++)
-             {
-                 NSDictionary *newSong = [newPlist_dictionary objectForKey:[NSString stringWithFormat:@"%d",oldCount + i]];
+             for (NSInteger i = 1; i <= newCount; i++) {
+                 NSDictionary *newSong = [newPlist_dictionary objectForKey:[NSString stringWithFormat:@"%d", i]];
                  
-                 [oldPlist_dictionary setValue:newSong forKey:[NSString stringWithFormat:@"%d", (oldCount + i)]];
+                 //Check if the Song is a new Song
+                 if ([self searchSong:newSong InOldSongs:oldPlist_dictionary]) {
+                     [newSong setValue:@"NO" forKey:@"UpdatedSong"];
+                 }
+                 else
+                 {
+                     [newSong setValue:@"YES" forKey:@"UpdatedSong"];
+                 }
+                  
+                 //Copy newAlbum to oldPlist
+                 [newPlist_dictionary setValue:newSong forKey:[NSString stringWithFormat:@"%d", i]];
              }
-             [oldPlist_dictionary writeToFile:plistPath atomically:NO];
+             
+             [newPlist_dictionary writeToFile:plistPath atomically:NO];
              
              //re-initialize songs and update table view
              [self initializeSongs:albumShortName];
              
              //call back, ask song table view to reload
-             //todo, mark something new had updated
              if (self.delegate != nil) {
                  [self.delegate onSongUpdated];
              }
@@ -176,6 +188,52 @@
     }
     
     return songArray;
+}
+
+- (BOOL) searchSong:(NSDictionary *)newDirectory InOldSongs:(NSMutableDictionary *)oldPlist_directory
+{
+    BOOL result = FALSE;
+    
+    for (NSInteger i = 1; i <= oldPlist_directory.count; i++) {
+        
+        NSDictionary *oldDirectory = [oldPlist_directory objectForKey:[NSString stringWithFormat:@"%d", i]];
+        
+        NSString *songUrl_old = [oldDirectory objectForKey:@"Url"];
+        NSString *songUrl_new = [newDirectory objectForKey:@"Url"];
+        
+        if ([songUrl_new isEqualToString:songUrl_old]) {
+            return TRUE;
+        }
+    }
+    
+    return result;
+}
+
+- (void)writeBacktoPlist:(NSString*) albumName;
+{
+    NSMutableDictionary *newPlist_dictionary = [[NSMutableDictionary alloc]init];
+    
+    NSMutableArray *_songs = [_songArrayDictionaryByAlbumName objectForKey:albumName];
+    
+    for (NSInteger i = 1; i <= _songs.count; i++ ) {
+        NSMutableDictionary *songDirectory = [[NSMutableDictionary alloc]init];
+        
+        Song *song = _songs[i-1];
+        [songDirectory setObject:song.title forKey:@"Title"];
+        [songDirectory setObject:song.duration forKey:@"Duration"];
+        [songDirectory setObject:[song.Url absoluteString] forKey:@"Url"];
+        [songDirectory setObject:[song.filePath absoluteString] forKey:@"FilePath"];
+        [songDirectory setObject:song.price forKey:@"Price"];
+        [songDirectory setObject:song.updatedSong forKey:@"UpdatedSong"];
+        
+        [newPlist_dictionary setValue:songDirectory forKey:[NSString stringWithFormat:@"%@", song.songNumber]];
+    }
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
+    NSString *plistPath = [bundleDocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_SongList.plist", albumName]];
+    
+    bool result = [newPlist_dictionary writeToFile:plistPath atomically:NO];
 }
 
 @end

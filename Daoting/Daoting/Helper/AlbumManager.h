@@ -30,5 +30,6 @@
 
 - (Album *)searchAlbumByShortName:(NSString*) shortName;
 - (void)writeBacktoPlist;
+- (void)foundNewSonginAlbum:(Album*) newAlbum;
 
 @end

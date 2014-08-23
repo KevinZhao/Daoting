@@ -30,5 +30,6 @@
 + (SongManager *)sharedManager;
 
 - (NSMutableArray *)searchSongArrayByAlbumName:(NSString*) albumName;
+- (void)writeBacktoPlist:(NSString*) albumName;
 
 @end

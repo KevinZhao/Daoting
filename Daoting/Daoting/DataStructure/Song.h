@@ -17,5 +17,6 @@
 @property (nonatomic, strong) NSURL     *filePath;
 @property (nonatomic, strong) NSString  *price;
 @property (nonatomic, assign) double    progress;
+@property (nonatomic, strong) NSString  *updatedSong;
 
 @end

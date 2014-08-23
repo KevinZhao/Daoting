@@ -32,25 +32,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [AlbumManager sharedManager].delegate = self;
-    
     _albums = [AlbumManager sharedManager].albums;
     
-    Album *album = [[AlbumManager sharedManager] searchAlbumByShortName:[AppData sharedAppData].currentAlbum.shortName];
-    
-    for (int i = 0; i < _albums.count; i ++) {
-        
-        Album *subAlbum = _albums[i];
-        
-        if (album.shortName == subAlbum.shortName) {
-            
-            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
-            [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
-            
-            break;
-        }
-    }
-    
     [self.tableView reloadData];
+    
+    [self navigateToLatestAlbum];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -142,5 +129,29 @@
     _albums = [AlbumManager sharedManager].albums;
     
     [self.tableView reloadData];
+    
+    [self navigateToLatestAlbum];
 }
+
+#pragma mark Internal Business Logic
+
+-(void) navigateToLatestAlbum
+{
+    //navigate to current album
+    Album *album = [[AlbumManager sharedManager] searchAlbumByShortName:[AppData sharedAppData].currentAlbum.shortName];
+    
+    for (int i = 0; i < _albums.count; i ++) {
+        
+        Album *subAlbum = _albums[i];
+        
+        if (album.shortName == subAlbum.shortName) {
+            
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
+            [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+            
+            break;
+        }
+    }
+}
+
 @end

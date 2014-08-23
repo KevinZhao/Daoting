@@ -64,7 +64,7 @@
 #define COCOAPODS_POD_AVAILABLE_StreamingKit
 #define COCOAPODS_VERSION_MAJOR_StreamingKit 0
 #define COCOAPODS_VERSION_MINOR_StreamingKit 1
-#define COCOAPODS_VERSION_PATCH_StreamingKit 22
+#define COCOAPODS_VERSION_PATCH_StreamingKit 23
 
 // TSMessages
 #define COCOAPODS_POD_AVAILABLE_TSMessages

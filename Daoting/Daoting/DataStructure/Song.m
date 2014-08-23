@@ -19,6 +19,7 @@
     [aCoder encodeObject:self.filePath forKey:@"filePath"];
     [aCoder encodeObject:self.price forKey:@"key"];
     [aCoder encodeDouble:self.progress forKey:@"progress"];
+    [aCoder encodeObject:self.updatedSong forKey:@"new"];
 }
 - (id)initWithCoder:(NSCoder *)aDecoder{
     _songNumber = [aDecoder decodeObjectForKey:@"songNumber"];
@@ -28,6 +29,7 @@
     _filePath = [aDecoder decodeObjectForKey:@"filePath"];
     _price = [aDecoder decodeObjectForKey:@"key"];
     _progress = [aDecoder decodeDoubleForKey:@"progress"];
+    _updatedSong = [aDecoder decodeObjectForKey:@"new"];
     
     return self;
 }
