@@ -18,6 +18,7 @@ typedef void (^RequestProductsCompletionHandler)(BOOL success, NSArray * product
 
 /// Raised when an item has started playing
 -(void) onLoadedProducts;
+-(void) onTransactionFailed;
 
 @end
 

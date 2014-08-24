@@ -160,14 +160,67 @@
     NSInteger currentSongNumber = [_appData.currentSong.songNumber intValue];
     
     if (currentSongNumber < songArray.count) {
+        
         Song *song = [songArray objectAtIndex:currentSongNumber];
         
-        [self playSong:song InAlbum:album];
-    }
-    
-    if (self.delegate != nil) {
+        //2.1 check the song had been purchased or not
+        BOOL purchased = [_appData songNumber:song.songNumber ispurchasedwithAlbum:album.shortName];
         
-        [self.delegate onPlayerHelperSongChanged];
+        //if the song had been purchased
+        if (purchased) {
+            //play the song
+            [self playSong:song InAlbum:album];
+            
+            if (self.delegate != nil) {
+                [self.delegate onPlayerHelperSongChanged];
+            }
+            
+        }
+        //2.2 the song had not been purchased yet
+        else{
+            //AutoPurchase is on
+            if (_appData.isAutoPurchase) {
+                
+                //2.2.1 if coin is enough, buy it.
+                if (_appData.coins >= [song.price intValue]) {
+                    
+                    _appData.coins = _appData.coins - [song.price intValue];
+                    
+                    [self playSong:song InAlbum:album];
+                    
+                    if (self.delegate != nil) {
+                        [self.delegate onPlayerHelperSongChanged];
+                    }
+                    
+                    //Add to purchased queue
+                    [_appData addtoPurchasedQueue:song withAlbumShortname:album.shortName];
+                    
+                    if ([song.updatedSong isEqualToString:@"YES"]) {
+                        song.updatedSong = @"NO";
+                        [[SongManager sharedManager] writeBacktoPlist:album.shortName];
+                    }
+                    
+                    [_appData save];
+                    
+                    [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"金币  -%@", song.price] type:TSMessageNotificationTypeSuccess];
+                }
+                else
+                //2.2.2 cois is not enough
+                {
+                    [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"现有金币不足，请从商店购买"] type:TSMessageNotificationTypeWarning];
+                    
+                    //next version
+                    //notify user and show store view
+                    //UITabBarController *tabBarController = [self getTabbarViewController];
+                    //tabBarController.selectedIndex = 2;
+                }
+            }
+            //AutoPurchase is off
+            else
+            {
+                [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"如果希望连续播放，请在设置中开启自动购买选项"] type:TSMessageNotificationTypeWarning];
+            }
+        }
     }
 }
 
@@ -180,12 +233,67 @@
     
     if ( currentSongNumber - 1 > 0) {
         
-        Song *song = [songArray objectAtIndex:(currentSongNumber -2)];
+        Song *song = [songArray objectAtIndex:currentSongNumber];
         
-        [self playSong:song InAlbum:album];
+        //2.1 check the song had been purchased or not
+        BOOL purchased = [_appData songNumber:song.songNumber ispurchasedwithAlbum:album.shortName];
+        
+        //if the song had been purchased
+        if (purchased) {
+            //play the song
+            [self playSong:song InAlbum:album];
+            
+            if (self.delegate != nil) {
+                [self.delegate onPlayerHelperSongChanged];
+            }
+        }
+        //2.2 the song had not been purchased yet
+        else{
+            //AutoPurchase is on
+            if (_appData.isAutoPurchase) {
+                
+                //2.2.1 if coin is enough, buy it.
+                if (_appData.coins >= [song.price intValue]) {
+                    
+                    _appData.coins = _appData.coins - [song.price intValue];
+                    
+                    [self playSong:song InAlbum:album];
+                    
+                    if (self.delegate != nil) {
+                        [self.delegate onPlayerHelperSongChanged];
+                    }
+                    
+                    //Add to purchased queue
+                    [_appData addtoPurchasedQueue:song withAlbumShortname:album.shortName];
+                    
+                    if ([song.updatedSong isEqualToString:@"YES"]) {
+                        song.updatedSong = @"NO";
+                        [[SongManager sharedManager] writeBacktoPlist:album.shortName];
+                    }
+                    
+                    [_appData save];
+                    
+                    [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"金币  -%@", song.price] type:TSMessageNotificationTypeMessage];
+                }
+                else
+                //2.2.2 cois is not enough
+                {
+                    [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"现有金币不足，请从商店购买"] type:TSMessageNotificationTypeWarning];
+                    
+                    //next version
+                    //notify user and show store view
+                    //UITabBarController *tabBarController = [self getTabbarViewController];
+                    //tabBarController.selectedIndex = 2;
+                }
+            }
+            //AutoPurchase is off
+            else
+            {
+                [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"如果希望连续播放，请在设置中开启自动购买选项"] type:TSMessageNotificationTypeWarning];
+            }
+        }
+
     }
-    
-    [self.delegate onPlayerHelperSongChanged];
 }
 
 

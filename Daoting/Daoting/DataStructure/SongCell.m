@@ -71,12 +71,11 @@
         //2.2.2 cois is not enough
         else
         {
-            //todo notify user and show store view
+            [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"现有金币不足，请从商店购买"] type:TSMessageNotificationTypeWarning];
             
             SongTableViewController *parentViewController = (SongTableViewController *)[self GetViewController];
             [parentViewController getTabbarViewController].selectedIndex = 2;
         }
-    
     }
 }
 

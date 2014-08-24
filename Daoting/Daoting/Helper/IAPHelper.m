@@ -98,7 +98,6 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
                 break;
         }
         
-        
         [self.delegate onLoadedProducts];
     };
 }
@@ -125,6 +124,7 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
         NSLog(@"Transaction error: %@", transaction.error.localizedDescription);
     }
     
+    [self.delegate onTransactionFailed];
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
 }
 

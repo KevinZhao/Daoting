@@ -14,7 +14,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "AlbumManager.h"
 #import "SongManager.h"
-//#import "SongTableViewController.h"
+#import "TSMessage.h"
 
 @class STKAudioPlayerHelper;
 

@@ -282,12 +282,18 @@
     
     CurrentCoinCell* currentCoinCell = (CurrentCoinCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%d", _appData.coins];
-    
-    [self showNotification:[NSString stringWithFormat:@"成功购买金币 %d 枚", purchasedCoins]];
+
+    [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"成功购买金币 %d 枚", purchasedCoins] type:TSMessageNotificationTypeSuccess];
 }
 
 - (void)onLoadedProducts
 {
+    [_spinner stopAnimating];
+}
+
+- (void)onTransactionFailed
+{
+    [TSMessage showNotificationInViewController:self title:nil subtitle:@"无法连接App Store, 请检查网络" type:TSMessageNotificationTypeSuccess duration:2.0];
     [_spinner stopAnimating];
 }
 
@@ -314,6 +320,7 @@
         NSString *notification = @"您获得了 20金币";
         
         [self showNotification:notification];
+        
     }
     else
     {

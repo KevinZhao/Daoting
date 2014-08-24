@@ -179,13 +179,14 @@
             
             [_appData save];
             
-            NSString *notification = [NSString stringWithFormat:@"金币  -%@", song.price];
-            [self showNotification:notification];
+            [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"金币  -%@", song.price] type:TSMessageNotificationTypeWarning];
         }
         else
         //2.2.2 cois is not enough
         {
-            //todo notify user and show store view
+            //notify user and show store view
+            [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"现有金币不足，请从商店购买"] type:TSMessageNotificationTypeWarning];
+            
             UITabBarController *tabBarController = [self getTabbarViewController];
             tabBarController.selectedIndex = 2;
         }
@@ -522,9 +523,6 @@
             coinsNeeded = coinsNeeded + [song.price intValue];
         }
     }
-    
-    NSLog(@"coinsNeeded = %d", coinsNeeded);
-    
     //2.if coin is enough, add all download item into download queue
     if (_appData.coins >= coinsNeeded) {
         for (int i = 0; i < _songs.count; i++) {
@@ -552,17 +550,32 @@
         }
         [_appData save];
         
-        NSString *notification = [NSString stringWithFormat:@"金币  -%d", coinsNeeded];
-        [self showNotification:notification];
+        [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"金币  -%d", coinsNeeded] subtitle:nil type:TSMessageNotificationTypeWarning];
         
     }
     //if cois is not enough, navigate to store view and give notification
     else{
         
-        UITabBarController *tabBarController = [self getTabbarViewController];
-        tabBarController.selectedIndex = 2;
+        for (int i = 0; i < _songs.count; i++) {
+            
+            Song *song = _songs[i];
+            
+            //2.2 check the song had been purchased or not
+            BOOL purchased = [_appData songNumber:song.songNumber ispurchasedwithAlbum:_album.shortName];
+            if (purchased) {
+                
+                //2.1 check the song had been downloaded or not
+                BOOL downloaded = [[NSFileManager defaultManager] fileExistsAtPath:[song.filePath absoluteString]];
+                if (!downloaded) {
+                    [[AFDownloadHelper sharedAFDownloadHelper] downloadSong:song inAlbum:_album];
+                }
+            }
+        }
         
         [TSMessage showNotificationWithTitle:@"您的金币不足，请购买更多金币" subtitle:nil type:TSMessageNotificationTypeWarning];
+        
+        UITabBarController *tabBarController = [self getTabbarViewController];
+        tabBarController.selectedIndex = 2;
     }
 }
 

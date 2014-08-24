@@ -233,7 +233,7 @@
     NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
     NSString *plistPath = [bundleDocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_SongList.plist", albumName]];
     
-    bool result = [newPlist_dictionary writeToFile:plistPath atomically:NO];
+    [newPlist_dictionary writeToFile:plistPath atomically:NO];
 }
 
 @end
