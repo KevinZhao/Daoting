@@ -404,15 +404,19 @@
     //Set Information for Nowplaying Info Center
     if (NSClassFromString(@"MPNowPlayingInfoCenter")) {
         NSMutableDictionary * dict = [[NSMutableDictionary alloc] init];
-        [dict setObject:song.title forKey:MPMediaItemPropertyAlbumTitle];
+        [dict setObject:[NSString stringWithFormat:@"%@ %@", song.title, song.songNumber] forKey:MPMediaItemPropertyAlbumTitle];
         [dict setObject:album.artistName forKey:MPMediaItemPropertyArtist];
+        //Revisit next Version
         [dict setObject:[NSNumber numberWithInteger:_audioPlayer.duration] forKey:MPMediaItemPropertyPlaybackDuration];
         [dict setObject:[NSNumber numberWithInteger:_audioPlayer.progress] forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
+        
         [dict setObject:[NSNumber numberWithInteger:1.0] forKey:MPNowPlayingInfoPropertyPlaybackRate];
         [dict setObject:[NSNumber numberWithInteger:2] forKey:MPMediaItemPropertyAlbumTrackCount];
         
-        //todo need to remove hard code
-        UIImage *img = [UIImage imageNamed: @"wangyuebo.jpg"];
+        UIImageView *imgv = [[UIImageView alloc]init];
+        [imgv setImageWithURL:album.imageUrl];
+        UIImage *img = imgv.image;
+        
         MPMediaItemArtwork * mArt = [[MPMediaItemArtwork alloc] initWithImage:img];
         [dict setObject:mArt forKey:MPMediaItemPropertyArtwork];
         [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:dict];
@@ -629,7 +633,7 @@
 
 - (IBAction)onbtn_nextPressed:(id)sender
 {
-    //Todo, check currentSongNumber
+    //check currentSongNumber
     NSInteger currentSongNumber = [_appData.currentSong.songNumber intValue];
     
     if (currentSongNumber < _songs.count) {

@@ -95,10 +95,7 @@
             //no network
             case AFNetworkReachabilityStatusNotReachable:
             {
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"网络异常" message:@"当前网络无法连接" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-    
-                [alert show];
-                        
+                [TSMessage showNotificationWithTitle:@"网络异常" subtitle:@"当前网络无法连接" type:TSMessageNotificationTypeError];
                 return;
             }
             break;
@@ -106,7 +103,11 @@
             //3G
             case AFNetworkReachabilityStatusReachableViaWWAN:
             {
-                //todo
+                //Next Version
+                //Show Message to notify user, current networking status
+                [TSMessage showNotificationWithTitle:nil subtitle:@"当前正在使用3G/4G网络" type:TSMessageNotificationTypeWarning];
+                STKDataSource* URLDataSource = [STKAudioPlayer dataSourceFromURL:song.Url];
+                [audioPlayer setDataSource:URLDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:song.Url andCount:0]];
             }
             break;
 
@@ -118,17 +119,17 @@
                 [audioPlayer setDataSource:URLDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:song.Url andCount:0]];
             }
             break;
-                
-            //todo: should not do that, it is a tempory solution
+            
+            //Next Version
+            //should not do that, it is a tempory solution
             case AFNetworkReachabilityStatusUnknown:
             {
                 //play from URL in wifi mode
                 STKDataSource* URLDataSource = [STKAudioPlayer dataSourceFromURL:song.Url];
                 [audioPlayer setDataSource:URLDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:song.Url andCount:0]];
                     
-                NSLog(@"this is not normal, need to fix in next version");
+                NSLog(@"AFNetworkReachabilityStatusUnknown this is not normal, need to fix in next version");
             }
-            
             default:
                 break;
         }

@@ -62,7 +62,8 @@
     [operation.userInfo setValue:song forKeyPath:@"song"];
     [operation.userInfo setValue:status forKeyPath:@"status"];
     
-    //todo better not use this
+    //Revisit in Next Version
+    //better not use this
     AFHTTPRequestOperation __weak *operation_ = operation;
     
     [operation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {

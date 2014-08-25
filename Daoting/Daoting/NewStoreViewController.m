@@ -184,7 +184,6 @@
         
         PurchaseCoinCell *purchaseCoinCell = [tableView dequeueReusableCellWithIdentifier:@"PurchaseCoinCell" forIndexPath:indexPath];
         
-        
         switch (indexPath.row) {
             case 0:
                 purchaseCoinCell.lbl_coins.text = @"500 金币";

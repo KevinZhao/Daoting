@@ -171,7 +171,8 @@
 
 - (void) handleSystemTimeChanged:(NSNotification *) notification
 {
-    //todo, Cheating avoidance, will implement next version
+    //Revisit in next Version
+    //Cheating avoidance, will implement next version
 }
 
 - (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
@@ -179,12 +180,8 @@
     //Notification with XG
     NSString *deviceTokenStr = [XGPush registerDevice: deviceToken];
     
-    //todo
-    //[XGPush registerDevice:deviceTokenStr];
     NSLog(@"My token is: %@", deviceTokenStr);
     //End
-
-    
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
