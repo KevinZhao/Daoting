@@ -437,6 +437,8 @@
 				D885572F1999024B00B0F891 /* Song.m */,
 				D88557301999024B00B0F891 /* SongCell.h */,
 				D88557311999024B00B0F891 /* SongCell.m */,
+				0A8BA00D1940C15E001307D6 /* DownloadCell.h */,
+				0A8BA00E1940C15E001307D6 /* DownloadCell.m */,
 			);
 			name = DataStructure;
 			sourceTree = "<group>";
@@ -808,8 +810,6 @@
 				0ABB4281192DEA7F007D8BAC /* Helper */,
 				0A37F8CC19262FA000826C8C /* DataStructure */,
 				0A32AC99196E478700A78350 /* Setting */,
-				0A8BA00D1940C15E001307D6 /* DownloadCell.h */,
-				0A8BA00E1940C15E001307D6 /* DownloadCell.m */,
 				5933AD6718D03EC1001D707B /* AppDelegate.h */,
 				5933AD6818D03EC1001D707B /* AppDelegate.m */,
 				0A98D66E1920F25900E46EB9 /* AlbumTableViewController.h */,

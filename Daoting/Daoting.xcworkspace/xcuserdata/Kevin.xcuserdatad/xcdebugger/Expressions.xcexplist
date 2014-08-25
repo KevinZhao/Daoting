@@ -22,7 +22,7 @@
          contextName = "-[STKAudioPlayerHelper audioPlayer:didStartPlayingQueueItemId:]:STKAudioPlayerHelper.m">
       </ContextState>
       <ContextState
-         contextName = "-[PurchasedSongViewController tableView:numberOfRowsInSection:]:PurchasedSongViewController.m">
+         contextName = "-[StoreViewController buy:]:StoreViewController.m">
       </ContextState>
       <ContextState
          contextName = "-[STKAudioPlayerHelper tick]:STKAudioPlayerHelper.m">
@@ -36,7 +36,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[StoreViewController buy:]:StoreViewController.m">
+         contextName = "-[PurchasedSongViewController tableView:numberOfRowsInSection:]:PurchasedSongViewController.m">
       </ContextState>
       <ContextState
          contextName = "-[AppData addtoPurchasedQueue:withAlbumShortname:]:AppData.m">
@@ -78,15 +78,26 @@
          contextName = "-[SongCell onbtn_pausePressed:]:SongCell.m">
          <PersistentStrings>
             <PersistentString
-               value = "[AFDownloadHelper sharedAFDownloadHelper].downloadKeyQueue">
+               value = "[AFDownloadHelper sharedAFDownloadHelper].downloadQueue">
             </PersistentString>
             <PersistentString
-               value = "[AFDownloadHelper sharedAFDownloadHelper].downloadQueue">
+               value = "[AFDownloadHelper sharedAFDownloadHelper].downloadKeyQueue">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "-[STKAudioPlayerHelper playSong:InAlbum:]:STKAudioPlayerHelper.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[SongTableViewController viewWillAppear:]:SongTableViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.img_PlayBar.frame.size.height">
+            </PersistentString>
+            <PersistentString
+               value = "self.view.frame.size.height">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>

@@ -37,6 +37,9 @@
     SongManager                         *_songManager;
     AppDelegate                         *_appDelegate;
     UIView                              *_descriptionView;
+    
+    int scrollViewHeight;
+    int scrollViewWidth;
 }
 
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
@@ -49,6 +52,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *btn_share;
 @property (nonatomic, retain) IBOutlet UIButton *btn_downloadAll;
 @property (nonatomic, retain) IBOutlet UISlider *slider;
+@property (nonatomic, retain) IBOutlet UIImageView *img_PlayBar;
 
 - (IBAction)onbtn_playAndPausePressed:(id)sender;
 - (IBAction)onbtn_nextPressed:(id)sender;

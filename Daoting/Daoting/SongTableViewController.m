@@ -14,9 +14,6 @@
 @implementation SongTableViewController
 @synthesize pageControl, scrollView;
 
-
-
-
 #pragma mark - UIView delegate
 
 - (void)viewDidLoad
@@ -41,15 +38,20 @@
 {
     _songManager    = [SongManager sharedManager];
     _songManager.delegate = self;
-    
     _songs = [_songManager searchSongArrayByAlbumName:_album.shortName];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
-    scrollView.contentSize = CGSizeMake(640, 406);
+    
+    //Calculate size of scroll view
+    scrollViewHeight = self.view.frame.size.height - self.img_PlayBar.frame.size.height - self.navigationController.navigationBar.frame.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
+    scrollViewWidth = self.view.frame.size.width * 2;
+    
+    [scrollView setFrame:CGRectMake(0, ([UIApplication sharedApplication].statusBarFrame.size.height + self.navigationController.navigationBar.frame.size.height), self.view.frame.size.width, scrollViewHeight)];
+    scrollView.contentSize = CGSizeMake(scrollViewWidth, scrollViewHeight);
     scrollView.delegate = self;
     
     //Configure tableview
-    _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 406) style:UITableViewStylePlain];
+    _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, scrollViewHeight) style:UITableViewStylePlain];
     _tableview.delegate = self;
     _tableview.dataSource = self;
     _tableview.rowHeight = 45;
@@ -95,13 +97,11 @@
 #pragma mark - Internal business logic
 - (void)setupDescriptionView
 {
-    //NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"DescriptionView_iphone" owner:self options:nil];
-    
-    //_descriptionView = [nibViews objectAtIndex:0];
-    _descriptionView = [[UIView alloc]initWithFrame:CGRectMake(320, 0, 320, 406)];
+    //int scrollViewHeight = self.view.frame.size.height - self.img_PlayBar.frame.size.height;
+    _descriptionView = [[UIView alloc]initWithFrame:CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, scrollViewHeight)];
     _descriptionView.backgroundColor = _appDelegate.defaultBackgroundColor;
     
-    UIScrollView *_scrollView_description = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, 320, 406)];
+    UIScrollView *_scrollView_description = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, scrollViewHeight)];
     [_descriptionView addSubview:_scrollView_description];
     
     //1. Album image
@@ -134,7 +134,7 @@
     UIFont *font =[UIFont fontWithName:lbl_description.font.familyName size:17];
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:font,NSFontAttributeName, nil];
     
-    CGSize textSize = [lbl_description.text boundingRectWithSize:CGSizeMake(280, 2000)
+    CGSize textSize = [lbl_description.text boundingRectWithSize:CGSizeMake(self.view.frame.size.width - 20, 2000)
                                                          options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
                                                       attributes:dic
                                                          context:nil].size;

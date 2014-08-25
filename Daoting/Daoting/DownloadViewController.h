@@ -13,19 +13,17 @@
 #import "AppDelegate.h"
 #import "UIImageView+AFNetworking.h"
 
-@interface DownloadViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface DownloadViewController : UITableViewController
 {
-    UITableView                         *_tableview;
     NSTimer                             *_timer;
     NSOperationQueue                    *_downloadQueue;
     AppDelegate                         *_appDelegate;
     UILabel                             *_lbl_noDownloadQueue;
 }
 
-@property (nonatomic, strong) IBOutlet UITableView      *tableview;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem  *barbtn_cancelAll;
+@property (nonatomic, strong) IBOutlet UIImageView      *img_background;
 
 - (IBAction) cancelAll:(id)sender;
-
 
 @end
