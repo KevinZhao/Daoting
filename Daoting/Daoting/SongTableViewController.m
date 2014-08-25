@@ -80,6 +80,8 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
+    [_tableview reloadData];
+    
     [_timer invalidate];
     _playerHelper.delegate = nil;
     

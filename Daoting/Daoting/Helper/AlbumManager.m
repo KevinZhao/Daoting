@@ -52,6 +52,12 @@
 
 - (void)initializeAlbums
 {
+    if (isUpdating) {
+        return;
+    }
+    
+    isUpdating = true;
+    
     _albums = [[NSMutableArray alloc]init];
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -89,7 +95,7 @@
     NSString *plistPath = [bundleDocumentDirectoryPath stringByAppendingString:@"/AlbumList.plist"];
     
     //2. Download plist from cloud storage
-    NSURL *albumListUrl = [[NSURL alloc]initWithString:@"http://bcs.duapp.com/daoting/PlistFolder%2FAlbumList.plist"];
+    NSURL *albumListUrl = [[NSURL alloc]initWithString:@"http://bcs.pubbcsapp.com/daoting/AlbumList.plist"];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:albumListUrl];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
@@ -147,6 +153,26 @@
                 [self.delegate onAlbumUpdated];
              }
          }
+         else
+         {
+             //next version
+         }
+         //next version
+         /*for (int i = 1; i<= newCount; i++)
+         {
+             NSDictionary *AlbumDic = [newPlist_dictionary objectForKey:[NSString stringWithFormat:@"%d", i]];
+             
+             Album *album = [[Album alloc]init];
+             album.shortName = [AlbumDic objectForKey:@"ShortName"];
+             
+             album.updatingStatus = [AlbumDic objectForKey:@"UpdatingStatus"];
+             
+             if ([album.updatingStatus isEqualToString:@"Updating"]) {
+                 [[SongManager sharedManager] updateSongs:album.shortName];
+             }
+         }*/
+         
+         isUpdating = false;
      }
      //Download Failed
     failure:^(AFHTTPRequestOperation *operation, NSError *error)

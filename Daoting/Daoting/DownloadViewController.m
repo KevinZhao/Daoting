@@ -24,9 +24,10 @@
     _lbl_noDownloadQueue.text = @"当前没有下载任务";
     
     _img_background = [[ UIImageView alloc] init];
+    [_img_background setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     _img_background.backgroundColor = _appDelegate.defaultBackgroundColor;
     
-    self.view.backgroundColor = [UIColor clearColor];
+    self.view.backgroundColor = _appDelegate.defaultBackgroundColor;
     
     [self.view addSubview:_img_background];
     [self.view addSubview: _lbl_noDownloadQueue];
@@ -39,7 +40,7 @@
     
     if (_downloadQueue.operations.count > 0) {
         
-        self.tableView.hidden = NO;
+        self.tableView.separatorColor = [UIColor grayColor];
         _img_background.hidden = YES;
         [self.tableView reloadData];
         [self setupTimer];
@@ -49,7 +50,7 @@
     else
     {
         _img_background.hidden = NO;
-        self.tableView.hidden = YES;
+        self.tableView.separatorColor = [UIColor clearColor];
         _lbl_noDownloadQueue.hidden = NO;
     }
 }
@@ -152,7 +153,8 @@
             
     }
     
-    self.tableView.hidden = YES;
+    self.tableView.separatorColor = [UIColor clearColor];
+    
     _lbl_noDownloadQueue.hidden = NO;
 }
 

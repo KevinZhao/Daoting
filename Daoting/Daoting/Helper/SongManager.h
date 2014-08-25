@@ -32,4 +32,6 @@
 - (NSMutableArray *)searchSongArrayByAlbumName:(NSString*) albumName;
 - (void)writeBacktoPlist:(NSString*) albumName;
 
+- (void)updateSongs:(NSString *)albumShortName;
+
 @end

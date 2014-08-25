@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Album.h"
 #import "AFNetworking.h"
+#import "SongManager.h"
 
 @protocol AlbumManagerDelegate <NSObject>
 
@@ -19,7 +20,7 @@
 @interface AlbumManager : NSObject
 {
     NSMutableArray      *_albums;
-    
+    BOOL                isUpdating;
 }
 
 @property (nonatomic, retain)  NSMutableArray      *albums;
