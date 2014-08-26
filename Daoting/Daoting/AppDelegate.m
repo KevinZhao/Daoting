@@ -75,7 +75,7 @@
     [[UIBarButtonItem appearance]setTintColor:_defaultColor_dark];
     [[UINavigationBar appearance]setTintColor:_defaultColor_dark];
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-      _defaultColor_dark, UITextAttributeTextColor,
+      _defaultColor_dark, NSForegroundColorAttributeName, 
       nil]];
     
     [[UITableView appearance]setBackgroundColor:_defaultBackgroundColor];
