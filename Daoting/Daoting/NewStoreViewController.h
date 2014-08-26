@@ -22,6 +22,8 @@
     AppDelegate                 *_appDelegate;
     UIActivityIndicatorView     *_spinner;
     NSArray                     *_products;
+    
+    NSTimer                     *_timer;
 }
 
 
