@@ -26,7 +26,7 @@
 - (id)initWithCoder:(NSCoder *)aDecoder{
     _shortName = [aDecoder decodeObjectForKey:@"shortName"];
     _title =[aDecoder decodeObjectForKey:@"title"];
-    _description =[aDecoder decodeObjectForKey:@"description"];
+    _longdescription =[aDecoder decodeObjectForKey:@"description"];
     _imageUrl = [aDecoder decodeObjectForKey:@"imageUrl"];
     _plistUrl = [aDecoder decodeObjectForKey:@"plistUrl"];
     _artistName= [aDecoder decodeObjectForKey:@"artistName"];
