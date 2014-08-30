@@ -9,10 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @interface Album : NSObject<NSCoding>
+{
+    
+}
 
 @property (nonatomic, strong) NSString  *shortName;
 @property (nonatomic, strong) NSString  *title;
-@property (nonatomic, strong) NSString  *description;
+@property (nonatomic, retain) NSString  *description;
 @property (nonatomic, strong) NSURL     *imageUrl;
 @property (nonatomic, strong) NSURL     *plistUrl;
 @property (nonatomic, strong) NSString  *artistName;
