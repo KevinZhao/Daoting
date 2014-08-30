@@ -18,25 +18,30 @@
 {
     [super viewDidLoad];
     _appDelegate = [[UIApplication sharedApplication] delegate];
+    
+    //1. configure label for no download
+    CGSize lblSize = CGSizeMake(200, 40);
+    CGSize screenSize = [UIScreen mainScreen].applicationFrame.size;
+    
+    _lbl_noDownloadQueue = [[UILabel alloc]initWithFrame:
+                            CGRectMake((screenSize.width-lblSize.width)/2 , screenSize.height/3, lblSize.width, lblSize.height)];
+    
+    _lbl_noDownloadQueue.textAlignment = NSTextAlignmentCenter;
+    _lbl_noDownloadQueue.text = @"当前没有下载任务";
+    
+    [self.view addSubview: _lbl_noDownloadQueue];
+    [self.view insertSubview:_lbl_noDownloadQueue atIndex:1];
+    
+    //2. background view
+    _img_background = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, screenSize.width, screenSize.height)];
+    _img_background.backgroundColor = _appDelegate.defaultBackgroundColor;
+    
+    self.view.backgroundColor = _appDelegate.defaultBackgroundColor;
+    [self.view insertSubview:_img_background atIndex:0];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    _lbl_noDownloadQueue = [[UILabel alloc]initWithFrame:CGRectMake(([UIScreen mainScreen].applicationFrame.size.width-200)/2 ,  200, 200, 40)];
-    _lbl_noDownloadQueue.textAlignment = NSTextAlignmentCenter;
-    NSLog(@"%f", self.view.window.frame.size.width);
-    
-    _lbl_noDownloadQueue.text = @"当前没有下载任务";
-    
-    /*_img_background = [[ UIImageView alloc] init];
-    [_img_background setFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, [UIScreen mainScreen].applicationFrame.size.height)];
-    _img_background.backgroundColor = _appDelegate.defaultBackgroundColor;
-    
-    self.view.backgroundColor = _appDelegate.defaultBackgroundColor;
-    
-    [self.view addSubview:_img_background];*/
-    [self.view addSubview: _lbl_noDownloadQueue];
-    
     _downloadQueue = [AFDownloadHelper sharedOperationManager].operationQueue;
     
     if (_downloadQueue.operations.count > 0) {
@@ -71,7 +76,7 @@
 
 -(void)setupTimer
 {
-    _timer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(tick) userInfo:nil repeats:YES];
+    _timer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(tick) userInfo:nil repeats:YES];
     
     [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
 }
@@ -84,21 +89,23 @@
         [self updateCellAt:indexPath];
     }
     
+    //there is some download task
     if (_downloadQueue.operations.count > 0) {
         
         self.tableView.separatorColor = [UIColor grayColor];
-        //_img_background.hidden = YES;
+        _img_background.hidden = YES;
         //[self.tableView reloadData];
-        //[self setupTimer];
+        [self setupTimer];
         
         _lbl_noDownloadQueue.hidden = YES;
     }
+    //there is no download task
     else
     {
-        //_img_background.hidden = NO;
+        _img_background.hidden = NO;
         self.tableView.separatorColor = [UIColor clearColor];
         _lbl_noDownloadQueue.hidden = NO;
-        //[_timer invalidate];
+        [_timer invalidate];
     }
 }
 
@@ -113,7 +120,6 @@
         Album *album = [operation.userInfo objectForKey:@"album"];
         
         DownloadingStatus *status = (DownloadingStatus *)[operation.userInfo objectForKey:@"status"];
-        
         cell.lbl_downloadDescription.text = [NSString stringWithFormat:@"%@ %@", album.title, song.songNumber];
         
         switch (status.downloadingStatus) {
