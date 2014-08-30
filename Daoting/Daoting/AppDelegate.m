@@ -64,7 +64,6 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSystemTimeChanged:) name:UIApplicationSignificantTimeChangeNotification object:nil];
     
-    [[UIApplication sharedApplication]registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge) | (UIRemoteNotificationTypeSound) | (UIRemoteNotificationTypeAlert)];
     
     //Customize system default color
     self.defaultColor_dark = [UIColor colorWithRed:0.125 green:0.64 blue:0.34 alpha:1.0];
@@ -94,14 +93,24 @@
     
     //Notification with XG
     //let device know we want to recive MSG-WL
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)
-     ];
+    
+    float version = [[[UIDevice currentDevice] systemVersion] floatValue];
+    
+    if (version >= 8.0)
+    {
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    }else
+    {
+        //Deprecated in ios 8.0
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+         UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound];
+    }
+
+    
     //init push informatoin
     [XGPush startApp:2200044229 appKey:@"IUZN34V429XQ"];
     //Handle click notification.
     [XGPush handleLaunching:launchOptions];
-    
     //End
     
     return YES;

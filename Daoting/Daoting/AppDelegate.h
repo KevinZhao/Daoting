@@ -12,7 +12,6 @@
 #import "AppData.h"
 #import "AFDownloadHelper.h"
 #import "STKAudioPlayerHelper.h"
-#import <ShareSDK/ShareSDK.h>
 #import "WXApi.h"
 #import "AlbumManager.h"
 #import "AppData.h"
