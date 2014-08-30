@@ -14,28 +14,29 @@
 
 @implementation DownloadViewController
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     _appDelegate = [[UIApplication sharedApplication] delegate];
-    
-    _lbl_noDownloadQueue = [[UILabel alloc]initWithFrame:CGRectMake(100, 200, 200, 40)];
-    _lbl_noDownloadQueue.text = @"当前没有下载任务";
-    
-    _img_background = [[ UIImageView alloc] init];
-    [_img_background setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    _img_background.backgroundColor = _appDelegate.defaultBackgroundColor;
-    
-    self.view.backgroundColor = _appDelegate.defaultBackgroundColor;
-    
-    [self.view addSubview:_img_background];
-    [self.view addSubview: _lbl_noDownloadQueue];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    _lbl_noDownloadQueue = [[UILabel alloc]initWithFrame:CGRectMake(([UIScreen mainScreen].applicationFrame.size.width-200)/2 ,  200, 200, 40)];
+    _lbl_noDownloadQueue.textAlignment = NSTextAlignmentCenter;
+    NSLog(@"%f", self.view.window.frame.size.width);
+    
+    _lbl_noDownloadQueue.text = @"当前没有下载任务";
+    
+    /*_img_background = [[ UIImageView alloc] init];
+    [_img_background setFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, [UIScreen mainScreen].applicationFrame.size.height)];
+    _img_background.backgroundColor = _appDelegate.defaultBackgroundColor;
+    
+    self.view.backgroundColor = _appDelegate.defaultBackgroundColor;
+    
+    [self.view addSubview:_img_background];*/
+    [self.view addSubview: _lbl_noDownloadQueue];
+    
     _downloadQueue = [AFDownloadHelper sharedOperationManager].operationQueue;
     
     if (_downloadQueue.operations.count > 0) {
@@ -52,6 +53,7 @@
         _img_background.hidden = NO;
         self.tableView.separatorColor = [UIColor clearColor];
         _lbl_noDownloadQueue.hidden = NO;
+        [_timer invalidate];
     }
 }
 
@@ -80,6 +82,23 @@
     for (NSIndexPath *indexPath in cells) {
     
         [self updateCellAt:indexPath];
+    }
+    
+    if (_downloadQueue.operations.count > 0) {
+        
+        self.tableView.separatorColor = [UIColor grayColor];
+        //_img_background.hidden = YES;
+        //[self.tableView reloadData];
+        //[self setupTimer];
+        
+        _lbl_noDownloadQueue.hidden = YES;
+    }
+    else
+    {
+        //_img_background.hidden = NO;
+        self.tableView.separatorColor = [UIColor clearColor];
+        _lbl_noDownloadQueue.hidden = NO;
+        //[_timer invalidate];
     }
 }
 

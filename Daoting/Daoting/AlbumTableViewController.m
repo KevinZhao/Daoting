@@ -147,7 +147,7 @@
         if (album.shortName == subAlbum.shortName) {
             
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
-            [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+            [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
             
             break;
         }
