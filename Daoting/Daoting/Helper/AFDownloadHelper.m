@@ -31,7 +31,6 @@
         
     });
     return sharedAFDownloadHelper;
-    
 }
 
 - (void)downloadSong:(Song*) song inAlbum:(Album*) album

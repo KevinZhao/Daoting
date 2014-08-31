@@ -180,7 +180,6 @@
 
 - (void) handleSystemTimeChanged:(NSNotification *) notification
 {
-    //Revisit in next Version
     //Cheating avoidance, will implement next version
 }
 

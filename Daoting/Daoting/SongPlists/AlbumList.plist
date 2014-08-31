@@ -83,7 +83,7 @@
 	<key>4</key>
 	<dict>
 		<key>Title</key>
-		<string>[每天更新] 雍正剑侠图 第四部</string>
+		<string>[每天更新]雍正剑侠图 第四部</string>
 		<key>ImageURL</key>
 		<string>http://bcs.duapp.com/daoting/Yongzheng4.png</string>
 		<key>Description</key>
@@ -222,7 +222,7 @@
 	<key>9</key>
 	<dict>
 		<key>Title</key>
-		<string>隋唐演义</string>
+		<string>全本 隋唐演义</string>
 		<key>ImageURL</key>
 		<string>http://bcs.duapp.com/daoting/Suitang.png</string>
 		<key>Description</key>
@@ -380,6 +380,29 @@
 		<string>《海贼王》，近15年来在东亚最受欢迎的一部日本连载漫画；评书，宋代开始流行的一种中国传统表演形式。用中国评书讲日本漫画，如此混搭你听过吗？近日，29岁的北京评书爱好者张准说起了创意评书——《海贼王》，每次20分钟，在自家卧室录音，目前，他的动漫评书已讲到第87回，最高收听率曾有52万。 
 
 “路飞出生在一个小山村，这个小山村依山傍海，村子的名字叫风车村。”记者在线收听了首回的《海贼王》，一腔一调充满评书特有的“老味”，但说的内容还真是“新鲜”。张准说，这一回《海贼王》是他今年端午节在北京鼓楼一个业余书场上率先说的，当天他临时被朋友喊到书场救场，考虑到鼓楼一带年轻人较多，他索性试着讲了一段《海贼王》。“啪”的一声，醒木落下，故事刚开始，台下就是笑声一片……张准顿时有了底气，事实上这位既爱传统评书又爱《海贼王》的年轻人一直便有将动漫和评书结合的想法，甚至一度录好了音，只是没上传网络——“心里没底，怕挨骂，担心海贼王的粉丝接受不了。”第二天，张准就将表演录音传上了网，四个多月时间点击量超过54万，他的创意评书火了！ 
+		</string>
+	</dict>
+	<key>14</key>
+	<dict>
+		<key>Title</key>
+		<string>侠义金镖</string>
+		<key>ImageURL</key>
+		<string>http://bcs.duapp.com/daoting/Jinbiao.png</string>
+		<key>Description</key>
+		<string>播讲:张庆升</string>
+		<key>SongList</key>
+		<string>http://bcs.duapp.com/daoting/Jinbiao_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Jinbiao</string>
+		<key>Artist</key>
+		<string>张庆升</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string></string>
+		<key>LongDescription</key>
+		<string>这是一个关于侠义的故事，这也是一个围绕镖局的血泪历史。它可能不如玄幻或者穿越小说那般光怪陆离，也可能不像言情或者都市文章那般催泪唯美，但它却是一个传统的，一个传统到值得您读上一读，聊上一聊，品上一品，想上一想的故事。你可以在午后小憩前，翻看几张，然后带着一阵古香酣然入睡，我想那时您的梦将充满了回忆。是的，它展现的就是你童年崇拜的正义，它弘扬的就是你青年追逐的侠情，而它卷裹着的全部思绪，也尽是作者与您倾心的交流。不要错过《侠义金镖》，这是一部往日的歌。
+		张庆升，评书艺人。代表作品《侠义金镖》，《大清剑侠》等。张庆升声音嘶哑，说书风格别样。评书艺人张少佐的叔叔兼启蒙老师。
 		</string>
 	</dict>
 </dict>
