@@ -102,8 +102,8 @@
          NSInteger oldCount = oldPlist_dictionary.count;
          NSInteger newCount = newPlist_dictionary.count;
          
-         //there is new song in the plist
-         if (newCount != oldCount)
+         //1. there is new song in the plist
+         if (newCount > oldCount)
          {
              [[AlbumManager sharedManager] foundNewSonginAlbum:album];
              
@@ -134,6 +134,8 @@
                  [self.delegate onSongUpdated];
              }
          }
+         
+         //[self increamentalUpdate:albumShortName];
      }
      //Download Failed
         failure:^(AFHTTPRequestOperation *operation, NSError *error)
@@ -141,6 +143,82 @@
          //try to download again
          NSLog(@"error%@", error.domain);
      }];
+}
+
+- (void)increamentalUpdate:(NSString*)albumShortName
+{
+    //1. create new url
+    NSMutableArray *songArray = [self searchSongArrayByAlbumName:albumShortName];
+    
+    Song *lastSong = songArray[songArray.count - 1];
+    NSMutableString *lastSongUrl = [[NSMutableString alloc]initWithString:[lastSong.Url absoluteString]];
+    
+    int songNumber = [lastSong.songNumber intValue];
+    NSMutableString *oldSongNumber = [NSMutableString stringWithFormat:@"%d", songNumber];
+    
+    if (oldSongNumber.length == 2) {
+        [oldSongNumber insertString:@"0" atIndex:0];
+    }
+    if (oldSongNumber.length == 1) {
+        [oldSongNumber insertString:@"00" atIndex:0];
+    }
+    
+    songNumber += 1;
+    NSMutableString *newSongNumber = [NSMutableString stringWithFormat:@"%d",songNumber];
+    
+    if (newSongNumber.length == 2) {
+        [newSongNumber insertString:@"0" atIndex:0];
+    }
+    if (newSongNumber.length == 1) {
+        [newSongNumber insertString:@"00" atIndex:0];
+    }
+    
+    [lastSongUrl replaceOccurrencesOfString:oldSongNumber withString:newSongNumber options:NSLiteralSearch range:NSMakeRange(0, lastSongUrl.length)];
+    
+    NSURL *newSongURL = [[NSURL alloc]initWithString:lastSongUrl];
+    
+    //2. check if there is new download
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:newSongURL];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
+    [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    
+    [operation start];
+    
+    //Download complete block
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         //left blank
+         NSLog(@"this is not intended");
+     }
+     //Download Failed
+    failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         //there is no update
+         NSLog(@"error%@", error.domain);
+         
+         return;
+     }];
+    
+    AFHTTPRequestOperation __weak *operation_ = operation;
+    [operation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
+        // there is a update file
+        Song *newSong = [[Song alloc]init];
+        
+        newSong.songNumber = newSongNumber;
+        newSong.title = lastSong.title;
+        newSong.Url = newSongURL;
+        newSong.price = lastSong.price;
+        newSong.updatedSong = @"YES";
+        
+        NSMutableArray *songs = [self searchSongArrayByAlbumName:albumShortName];
+        
+        if (([songs valueForKey:newSongNumber] == nil)) {
+            //3. write back to plist
+            [songs insertObject:newSong atIndex:songs.count];
+            [self writeBacktoPlist:albumShortName];
+            [operation_ cancel];
+        };
+    }];
 }
 
 - (void)loadSongs:(NSString*)albumShortName
@@ -153,11 +231,12 @@
     plistPathinDocumentDirectory = [plistPathinDocumentDirectory stringByAppendingString:albumShortName];
     plistPathinDocumentDirectory = [plistPathinDocumentDirectory stringByAppendingString:@"_SongList.plist"];
     
-    //if yes, load from document directory, if no copy from resource directory to document directory
+    //if yes, load from document directory,
     if ([fileManager fileExistsAtPath:plistPathinDocumentDirectory])
     {
         [self initializeSongs:albumShortName];
     }
+    //if no copy from resource directory to document directory
     else
     {
         NSString *plistPathinResourceDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/"];
@@ -171,7 +250,6 @@
         }
     }
     
-    //Check if there is update on cloud storage
     [self updateSongs:albumShortName];
 }
 
@@ -184,6 +262,7 @@
     if (songArray == nil) {
         
         [self loadSongs:albumName];
+        
         songArray = [_songArrayDictionaryByAlbumName objectForKey:albumName];
     }
     
@@ -220,18 +299,41 @@
         
         Song *song = _songs[i-1];
         [songDirectory setObject:song.title forKey:@"Title"];
-        [songDirectory setObject:song.duration forKey:@"Duration"];
-        [songDirectory setObject:[song.Url absoluteString] forKey:@"Url"];
-        [songDirectory setObject:[song.filePath absoluteString] forKey:@"FilePath"];
-        [songDirectory setObject:song.price forKey:@"Price"];
-        [songDirectory setObject:song.updatedSong forKey:@"UpdatedSong"];
         
+        if (song.duration != nil) {
+            [songDirectory setObject:song.duration forKey:@"Duration"];
+        }
+        else
+        {
+            [songDirectory setObject:@"" forKey:@"Duration"];
+        }
+
+        [songDirectory setObject:[song.Url absoluteString] forKey:@"Url"];
+        
+        if (song.filePath != nil) {
+            [songDirectory setObject:[song.filePath absoluteString] forKey:@"FilePath"];
+        }
+        else
+        {
+            [songDirectory setObject:@"" forKey:@"FilePath"];
+        }
+        
+        [songDirectory setObject:song.price forKey:@"Price"];
+        
+        if (song.updatedSong != nil) {
+            [songDirectory setObject:song.updatedSong forKey:@"UpdatedSong"];
+        }
+        else
+        {
+            [songDirectory setObject:@"" forKey:@"UpdatedSong"];
+        }
+
         [newPlist_dictionary setValue:songDirectory forKey:[NSString stringWithFormat:@"%@", song.songNumber]];
     }
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
-    NSString *plistPath = [bundleDocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_SongList.plist", albumName]];
+    NSString *plistPath = [bundleDocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_SongList_new.plist", albumName]];
     
     [newPlist_dictionary writeToFile:plistPath atomically:NO];
 }

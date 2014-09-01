@@ -34,6 +34,8 @@
 		0A8BA0091940BFCB001307D6 /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8BA0081940BFCB001307D6 /* DownloadViewController.m */; };
 		0A8BA00F1940C15E001307D6 /* DownloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8BA00E1940C15E001307D6 /* DownloadCell.m */; };
 		0A9260A2196BD74B00361977 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933AD5818D03EC1001D707B /* Foundation.framework */; };
+		0A96D75519B420D0002059C7 /* CategoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A96D75419B420D0002059C7 /* CategoryManager.m */; };
+		0A96D75719B42218002059C7 /* CategoryList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A96D75619B42218002059C7 /* CategoryList.plist */; };
 		0A98D62E1920AD7200E46EB9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A98D62D1920AD7200E46EB9 /* SystemConfiguration.framework */; };
 		0A98D6301920AD7A00E46EB9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A98D62F1920AD7A00E46EB9 /* QuartzCore.framework */; };
 		0A98D6321920AD8200E46EB9 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A98D6311920AD8200E46EB9 /* CoreTelephony.framework */; };
@@ -58,7 +60,6 @@
 		0ABA959F193702D000172862 /* Jinbiao_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0ABA959E193702D000172862 /* Jinbiao_SongList.plist */; };
 		0ABB4283192E321C007D8BAC /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB4282192E321C007D8BAC /* Icon-72@2x.png */; };
 		0AC69C5E1946F452004C6A67 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC69C5D1946F452004C6A67 /* DACircularProgressView.m */; };
-		0AD9E66D19ACD446002AF514 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AD9E66C19ACD446002AF514 /* CloudKit.framework */; };
 		0AE46B0E1921035E00FA30F3 /* SongTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE46B0D1921035E00FA30F3 /* SongTableViewController.m */; };
 		0AE8648D192EEC6E00EF5A96 /* Liaozhai_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE86489192EEC6E00EF5A96 /* Liaozhai_SongList.plist */; };
 		0AE8648E192EEC6E00EF5A96 /* Suitang_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AE8648A192EEC6E00EF5A96 /* Suitang_SongList.plist */; };
@@ -159,7 +160,6 @@
 		0A659EE81977AFFD00FC893B /* download_pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "download_pause@2x.png"; sourceTree = "<group>"; };
 		0A65A8FC19A70D1000CAF5CA /* ShareCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShareCell.h; path = Store/ShareCell.h; sourceTree = "<group>"; };
 		0A65A8FD19A70D1000CAF5CA /* ShareCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShareCell.m; path = Store/ShareCell.m; sourceTree = "<group>"; };
-		0A6D57351932FD070038D841 /* Daoting.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Daoting.entitlements; sourceTree = "<group>"; };
 		0A6E296B19A5DD51002808F7 /* NewStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewStoreViewController.h; sourceTree = "<group>"; };
 		0A6E296C19A5DD51002808F7 /* NewStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewStoreViewController.m; sourceTree = "<group>"; };
 		0A6E296F19A5E5FC002808F7 /* CurrentCoinCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentCoinCell.h; sourceTree = "<group>"; };
@@ -169,6 +169,9 @@
 		0A8BA0081940BFCB001307D6 /* DownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadViewController.m; sourceTree = "<group>"; };
 		0A8BA00D1940C15E001307D6 /* DownloadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadCell.h; sourceTree = "<group>"; };
 		0A8BA00E1940C15E001307D6 /* DownloadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadCell.m; sourceTree = "<group>"; };
+		0A96D75319B420D0002059C7 /* CategoryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryManager.h; path = Helper/CategoryManager.h; sourceTree = "<group>"; };
+		0A96D75419B420D0002059C7 /* CategoryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryManager.m; path = Helper/CategoryManager.m; sourceTree = "<group>"; };
+		0A96D75619B42218002059C7 /* CategoryList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = CategoryList.plist; path = SongPlists/CategoryList.plist; sourceTree = "<group>"; };
 		0A98D62D1920AD7200E46EB9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0A98D62F1920AD7A00E46EB9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0A98D6311920AD8200E46EB9 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -196,7 +199,7 @@
 		0ABB4282192E321C007D8BAC /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		0AC69C5C1946F452004C6A67 /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
 		0AC69C5D1946F452004C6A67 /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
-		0AD9E66C19ACD446002AF514 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		0AE35F7619B44FA400649CB1 /* Daoting.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Daoting.entitlements; sourceTree = "<group>"; };
 		0AE46B0C1921035E00FA30F3 /* SongTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongTableViewController.h; sourceTree = "<group>"; };
 		0AE46B0D1921035E00FA30F3 /* SongTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongTableViewController.m; sourceTree = "<group>"; };
 		0AE86489192EEC6E00EF5A96 /* Liaozhai_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Liaozhai_SongList.plist; path = SongPlists/Liaozhai_SongList.plist; sourceTree = "<group>"; };
@@ -314,7 +317,6 @@
 				0A98D6301920AD7A00E46EB9 /* QuartzCore.framework in Frameworks */,
 				0AFB65A719245BD4000F2AE6 /* StoreKit.framework in Frameworks */,
 				0A98D6481920ADF600E46EB9 /* MediaPlayer.framework in Frameworks */,
-				0AD9E66D19ACD446002AF514 /* CloudKit.framework in Frameworks */,
 				0A98D6461920ADDD00E46EB9 /* MessageUI.framework in Frameworks */,
 				0A98D6441920ADD600E46EB9 /* AddressBook.framework in Frameworks */,
 				0A3C7FFA19B184FB00686C5C /* libWeChatSDK.a in Frameworks */,
@@ -530,8 +532,6 @@
 			children = (
 				D885570A1999023B00B0F891 /* AFDownloadHelper.h */,
 				D885570B1999023B00B0F891 /* AFDownloadHelper.m */,
-				D885570C1999023B00B0F891 /* AlbumManager.h */,
-				D885570D1999023B00B0F891 /* AlbumManager.m */,
 				D885570E1999023B00B0F891 /* CoinIAPHelper.h */,
 				D885570F1999023B00B0F891 /* CoinIAPHelper.m */,
 				D88557101999023B00B0F891 /* DownloadStatus.h */,
@@ -542,6 +542,10 @@
 				D88557151999023B00B0F891 /* KeychainWrapper.m */,
 				D88557161999023B00B0F891 /* SampleQueueId.h */,
 				D88557171999023B00B0F891 /* SampleQueueId.m */,
+				0A96D75319B420D0002059C7 /* CategoryManager.h */,
+				0A96D75419B420D0002059C7 /* CategoryManager.m */,
+				D885570C1999023B00B0F891 /* AlbumManager.h */,
+				D885570D1999023B00B0F891 /* AlbumManager.m */,
 				D88557181999023B00B0F891 /* SongManager.h */,
 				D88557191999023B00B0F891 /* SongManager.m */,
 				D885571A1999023B00B0F891 /* STKAudioPlayerHelper.h */,
@@ -562,6 +566,7 @@
 		0AE86482192ED8B100EF5A96 /* SongPlists */ = {
 			isa = PBXGroup;
 			children = (
+				0A96D75619B42218002059C7 /* CategoryList.plist */,
 				D8C6FA4C198FDE4800AB9ACB /* AlbumList.plist */,
 				0ABA959E193702D000172862 /* Jinbiao_SongList.plist */,
 				0AE86491192EF48700EF5A96 /* Haizeiwang_SongList.plist */,
@@ -603,7 +608,6 @@
 		5933AD5718D03EC1001D707B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0AD9E66C19ACD446002AF514 /* CloudKit.framework */,
 				236C526A19A63169009595D9 /* libz.dylib */,
 				0A7A8CD719590B4C003FAA92 /* CFNetwork.framework */,
 				0AFB65A619245BD4000F2AE6 /* StoreKit.framework */,
@@ -632,6 +636,7 @@
 		5933AD5E18D03EC1001D707B /* Daoting */ = {
 			isa = PBXGroup;
 			children = (
+				0AE35F7619B44FA400649CB1 /* Daoting.entitlements */,
 				0A3C7FD719B184FB00686C5C /* Library */,
 				0A6E296E19A5E5D0002808F7 /* Store */,
 				0AC69C5B1946F452004C6A67 /* DACircularProgress */,
@@ -659,7 +664,6 @@
 				5933AD7618D03EC1001D707B /* Images.xcassets */,
 				0A98D64B1920EAB700E46EB9 /* Artworks */,
 				5933AD6018D03EC1001D707B /* Daoting-Info.plist */,
-				0A6D57351932FD070038D841 /* Daoting.entitlements */,
 				5933AD6118D03EC1001D707B /* InfoPlist.strings */,
 				5933AD6418D03EC1001D707B /* main.m */,
 				5933AD6618D03EC1001D707B /* Daoting-Prefix.pch */,
@@ -764,6 +768,7 @@
 				D832678619A8CED700DCEBCA /* Xiyouji_SongList.plist in Resources */,
 				0A3C7FF719B184FB00686C5C /* ShareSDKCoreService.framework.zip in Resources */,
 				0AE86498192EF48700EF5A96 /* Mingchao_SongList.plist in Resources */,
+				0A96D75719B42218002059C7 /* CategoryList.plist in Resources */,
 				0AEFC3721988C48000CECC93 /* btn_share@2x.png in Resources */,
 				0A1FA99F19585612002F48EA /* qr_toolbar_more_hl.png in Resources */,
 				0A659EF51977AFFD00FC893B /* download_pause@2x.png in Resources */,
@@ -839,6 +844,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D885574D199902CF00B0F891 /* PurchasedSongCell.m in Sources */,
+				0A96D75519B420D0002059C7 /* CategoryManager.m in Sources */,
 				0A98D6701920F25900E46EB9 /* AlbumTableViewController.m in Sources */,
 				D885571E1999023B00B0F891 /* AFDownloadHelper.m in Sources */,
 				5933AD6918D03EC1001D707B /* AppDelegate.m in Sources */,

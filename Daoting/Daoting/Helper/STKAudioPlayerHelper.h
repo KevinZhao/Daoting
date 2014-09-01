@@ -23,6 +23,8 @@
 /// Raised when an item has started playing
 -(void) onPlayerHelperSongChanged;
 
+-(void) onTest;
+
 @end
 
 

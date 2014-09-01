@@ -150,7 +150,7 @@
 
 -(void)pauseSong
 {
-    [audioPlayer pause];
+    [audioPlayer stop];
 }
 
 -(void)playNextSong
@@ -334,6 +334,7 @@
     [audioPlayer seekToTime:_progress];
 }
 
+
 /// Raised when an item has finished buffering (may or may not be the currently playing item)
 /// This event may be raised multiple times for the same item if seek is invoked on the player
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer didFinishBufferingSourceWithQueueItemId:(NSObject*)queueItemId
@@ -344,7 +345,12 @@
 /// Raised when the state of the player has changed
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer stateChanged:(STKAudioPlayerState)state previousState:(STKAudioPlayerState)previousState
 {
+    /* test only
+    NSLog(@"STKAudioPlayerStateReady = %d", state);
     
+    if (state == 3) {
+        [self.delegate onTest];
+    }*/
 }
 
 /// Raised when an item has finished playing

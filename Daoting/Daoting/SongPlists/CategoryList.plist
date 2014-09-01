@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>1</key>
+	<dict>
+		<key>Title</key>
+		<string>小说</string>
+		<key>ImageURL</key>
+		<string>http://bcs.duapp.com/daoting/Yongzheng1.png</string>
+		<key>Description</key>
+		<string>网络 玄幻 悬疑 各种有声小说</string>
+		<key>AlbumListURL</key>
+		<string>http://bcs.duapp.com/daoting/Xiaoshuo_AlbumList.plist</string>
+		<key>ShortName</key>
+		<string>Xiaoshuo</string>
+	</dict>
+	<key>2</key>
+	<dict>
+		<key>Title</key>
+		<string>评书</string>
+		<key>ImageURL</key>
+		<string>http://bcs.duapp.com/daoting/Yongzheng1.png</string>
+		<key>Description</key>
+		<string>网络 玄幻 悬疑 各种有声小说</string>
+		<key>AlbumListURL</key>
+		<string>http://bcs.duapp.com/daoting/Pingshu_AlbumList.plist</string>
+		<key>ShortName</key>
+		<string>Xiaoshuo</string>
+	</dict>
+</dict>
+</plist>

@@ -79,6 +79,8 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
 
 + (instancetype)loadInstance
 {
+    AppData* appData;
+    
     NSData* decodedData = [NSData dataWithContentsOfFile: [AppData filePath]];
     if (decodedData) {
         //1
@@ -89,18 +91,26 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
 
         //3
         if ([checksumOfSavedFile isEqualToString: checksumInKeychain]) {
-            AppData* appData = [NSKeyedUnarchiver unarchiveObjectWithData:decodedData];
-            
-            return appData;
+            appData = [NSKeyedUnarchiver unarchiveObjectWithData:decodedData];
         }
+    }else
+    {
+        appData = [[AppData alloc] init];
+        
+        NSUbiquitousKeyValueStore *iCloudStore = [NSUbiquitousKeyValueStore defaultStore];
+        
+        appData.coins = [iCloudStore doubleForKey: SSDataforCoinsKey];
+        
+        NSLog(@"iCloud coin = %d", appData.coins);
+        
+        [appData save];
     }
     
-    return [[AppData alloc] init];
+    return appData;
 }
 
 -(void)save
 {
-    //iCloud related
     NSData* encodedData = [NSKeyedArchiver archivedDataWithRootObject: self];
     [encodedData writeToFile:[AppData filePath] atomically:YES];
     
@@ -110,13 +120,15 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
     } else {
         [KeychainWrapper createKeychainValue:checksum forIdentifier:SSDataChecksumKey];
     }
-    
+
+    //todo: remove icloud sync in save
+    //sync with iCloud
     if([NSUbiquitousKeyValueStore defaultStore]) {
         [self updateiCloud];
     }
 }
 
--(void)updateiCloud
+- (void)updateiCloud
 {
     NSUbiquitousKeyValueStore *iCloudStore = [NSUbiquitousKeyValueStore defaultStore];
     long cloudCoins= [iCloudStore doubleForKey: SSDataforCoinsKey];
@@ -128,7 +140,12 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
         if (success) {
             NSLog(@"update icloud succeed");
         }
+        
+        long new_cloudCoins= [iCloudStore doubleForKey: SSDataforCoinsKey];
+        
+        NSLog(@"new_cloudCoins = %ld", new_cloudCoins);
     }
+    
 }
 
 - (instancetype)init

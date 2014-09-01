@@ -76,6 +76,8 @@
     
     self.navigationItem.title = _album.title;
     [self setupTimer];
+    
+    //[self test];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -797,6 +799,34 @@
         
         [_tableview selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
     }
+}
+
+#pragma mark - Test
+
+- (void)test
+{
+    t_currentsong = 0;
+    
+    Song *song = _songs[t_currentsong];
+    
+    [self playSongbyHelper:song];
+}
+
+- (void)onTest
+{
+    if (t_currentsong == (_songs.count - 1)) {
+        [[SongManager sharedManager] writeBacktoPlist:_album.shortName];
+        NSLog(@"%d", t_currentsong);
+        
+        return;
+    }
+    
+    Song *song = _songs[t_currentsong];
+    
+    song.duration = [self formatTimeFromSeconds:_playerHelper.audioPlayer.duration];
+    
+    [self onbtn_nextPressed:nil];
+    t_currentsong++;
 }
 
 @end

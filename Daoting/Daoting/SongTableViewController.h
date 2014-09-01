@@ -40,6 +40,9 @@
     
     int scrollViewHeight;
     int scrollViewWidth;
+    
+    //test
+    int                                 t_currentsong;
 }
 
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
