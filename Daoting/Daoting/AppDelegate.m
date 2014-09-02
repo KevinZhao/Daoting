@@ -14,25 +14,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSError* error;
     
     //todo: should change to initialize category manager
     [AlbumManager sharedManager];
     
-    //Configure Audio Session
-    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
-    [audioSession setCategory:AVAudioSessionCategoryPlayback error:&error];
-	[audioSession setActive:YES error:&error];
-    [audioSession setPreferredIOBufferDuration:0.1 error:&error];
-    
-    //begin received remote events
-    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    [self configureAudioSession];
     
     //Configure AFNetworking
-    [[AFDownloadHelper sharedOperationManager].operationQueue setMaxConcurrentOperationCount:2];
-    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
-    
+    [self configureAFNetworking];
+
     //check iCloud for coins
     //Register observer for iCloud coins
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(storeDidChange) name: NSUbiquitousKeyValueStoreDidChangeExternallyNotification object: [NSUbiquitousKeyValueStore defaultStore]];
@@ -61,17 +51,62 @@
         _appData.coins = [[NSUbiquitousKeyValueStore defaultStore] doubleForKey:@"coins"];
     }
     
-    //enable IAP
-    [[CoinIAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
-        if (success) {
-            _products = products;
-        }
-    }];
-    
-    //Initialize STKAudioPlayer
-    [STKAudioPlayerHelper sharedInstance];
+    //ConfigureIAP
+    [self configureIAP];
     
     //configure shareSDK
+    [self configureShareSDK];
+    
+    //Add observer to receive system time change event
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSystemTimeChanged:) name:UIApplicationSignificantTimeChangeNotification object:nil];
+    
+    //Customize system default color
+    [self configureSystemColorTheme];
+    
+     //Check if system autoPlay is on
+     if (_appData.isAutoPlay)
+     {
+         [self autoPlay];
+     }
+    
+    //Notification with XG
+    [self configureXGPush:launchOptions];
+    
+    //begin received remote events
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    
+    return YES;
+}
+
+#pragma mark initial setup for didFinishLaunchingWithOptions
+
+-(void)configureAudioSession
+{
+    NSError* error;
+    
+    //Configure Audio Session
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    [audioSession setCategory:AVAudioSessionCategoryPlayback error:&error];
+    [audioSession setActive:YES error:&error];
+    [audioSession setPreferredIOBufferDuration:0.1 error:&error];
+    
+    //Add observer to receive audio interrupt notification
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioInterruptionNotification:) name:AVAudioSessionInterruptionNotification object:nil];
+    
+    if (error) {
+        NSLog(@"Configure Audio Session Error: %@", error);
+    }
+}
+
+-(void)configureAFNetworking
+{
+    [[AFDownloadHelper sharedOperationManager].operationQueue setMaxConcurrentOperationCount:2];
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+}
+
+-(void)configureShareSDK
+{
     _appUrlinAws = @"http://t.cn/RPtnXCE";
     [ShareSDK registerApp:@"16bbd8d2753a"];
     
@@ -81,11 +116,10 @@
     
     [ShareSDK connectWeChatTimelineWithAppId:@"wx134b0f70f3612fe8" wechatCls:[WXApi class]];
     
-    //Add observer to receive system time change event
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSystemTimeChanged:) name:UIApplicationSignificantTimeChangeNotification object:nil];
-    
-    
-    //Customize system default color
+}
+
+-(void)configureSystemColorTheme
+{
     self.defaultColor_dark = [UIColor colorWithRed:0.125 green:0.64 blue:0.34 alpha:1.0];
     self.defaultColor_light = [UIColor colorWithRed:0.39 green:0.785 blue:0.097 alpha:1.0];
     self.defaultBackgroundColor = [UIColor colorWithRed:0.9378 green:0.9141 blue:0.8554 alpha:0.95];
@@ -94,25 +128,18 @@
     [[UIBarButtonItem appearance]setTintColor:_defaultColor_dark];
     [[UINavigationBar appearance]setTintColor:_defaultColor_dark];
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-      _defaultColor_dark, NSForegroundColorAttributeName, 
-      nil]];
+                                                          _defaultColor_dark, NSForegroundColorAttributeName,
+                                                          nil]];
     
     [[UITableView appearance]setBackgroundColor:_defaultBackgroundColor];
     [[UITableViewCell appearance]setBackgroundColor:_defaultBackgroundColor];
     
     [[UIButton appearance]setTitleColor:_defaultColor_dark forState:UIControlStateNormal];
     [[UIButton appearance]setTitleColor:_defaultColor_light forState:UIControlStateSelected];
-    
-     //Check if system autoPlay is on
-     if (_appData.isAutoPlay)
-     {
-         [self autoPlay];
-     }
-    
-    //Add observer to receive audio interrupt notification
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioInterruptionNotification:) name:AVAudioSessionInterruptionNotification object:nil];
-    
-    //Notification with XG
+}
+
+-(void)configureXGPush:(NSDictionary *)launchOptions
+{
     //let device know we want to recive MSG-WL
     float version = [[[UIDevice currentDevice] systemVersion] floatValue];
     
@@ -130,9 +157,19 @@
     [XGPush startApp:2200044229 appKey:@"IUZN34V429XQ"];
     //Handle notification
     [XGPush handleLaunching:launchOptions];
-    
-    return YES;
 }
+
+-(void)configureIAP
+{
+    //enable IAP
+    [[CoinIAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+        if (success) {
+            _products = products;
+        }
+    }];
+}
+
+#pragma mark handle iCloud change
 
 -(void)storeDidChange
 {
@@ -146,6 +183,8 @@
     
     NSLog(@"new_cloudCoins = %ld", new_cloudCoins);
 }
+
+#pragma mark handle audio interrupt
 
 -(void)audioInterruptionNotification:(NSNotification *) aNotification
 {
@@ -164,6 +203,8 @@
     }
 }
 
+#pragma mark auto replay
+
 - (void)autoPlay
 {    
     if ((_appData.currentSong != nil) && (_appData.currentAlbum != nil)) {
@@ -171,6 +212,8 @@
         [[STKAudioPlayerHelper sharedInstance]playSong:_appData.currentSong InAlbum:_appData.currentAlbum];
     }
 }
+
+#pragma mark UIApplicationDelegate methods
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
@@ -206,11 +249,6 @@
     //Notification with XG
     [XGPush handleReceiveNotification:userInfo];
     //End
-}
-
--(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
-{
-    
 }
 
 @end
