@@ -20,6 +20,7 @@
 #import "AppDelegate.h"
 #import <ShareSDK/ShareSDK.h>
 #import "AFNetworkActivityIndicatorManager.h"
+#import "XGPush.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {

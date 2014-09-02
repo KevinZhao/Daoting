@@ -35,6 +35,8 @@
 +(NSString*)filePath;
 
 -(void)save;
+-(void)updateiCloud;
+
 -(BOOL)songNumber:(NSString *)songNumber ispurchasedwithAlbum:(NSString*)albumShortname;
 -(void)addtoPurchasedQueue:(Song *)songNumber withAlbumShortname:(NSString *)albumShortname;
 

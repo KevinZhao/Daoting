@@ -24,7 +24,7 @@
     _playerHelper   = [STKAudioPlayerHelper sharedInstance];
     _audioPlayer    = _playerHelper.audioPlayer;
     _appData        = [AppData sharedAppData];
-    _playerHelper.delegate = self;
+    
     _appDelegate    = [[UIApplication sharedApplication]delegate];
     _slider.tintColor = _appDelegate.defaultColor_light;
 
@@ -36,6 +36,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    _playerHelper.delegate = self;
+    
     _songManager    = [SongManager sharedManager];
     _songManager.delegate = self;
     _songs = [_songManager searchSongArrayByAlbumName:_album.shortName];
@@ -85,8 +87,8 @@
     [_tableview reloadData];
     
     [_timer invalidate];
-    _playerHelper.delegate = nil;
     
+    _playerHelper.delegate = nil;
     _songManager.delegate = nil;
 }
 
@@ -169,6 +171,8 @@
         if (_appData.coins >= [song.price intValue]) {
             
             _appData.coins = _appData.coins - [song.price intValue];
+            [_appData save];
+            [_appData updateiCloud];
             
             [self playSongbyHelper:song];
             
@@ -546,9 +550,9 @@
             BOOL purchased = [_appData songNumber:song.songNumber ispurchasedwithAlbum:_album.shortName];
             
             if (!purchased) {
-                [AppData sharedAppData].coins = [AppData sharedAppData].coins - [song.price intValue];
+                _appData.coins = _appData.coins - [song.price intValue];
                 
-                [[AppData sharedAppData]  addtoPurchasedQueue:song withAlbumShortname:_album.shortName];
+                [[AppData sharedAppData] addtoPurchasedQueue:song withAlbumShortname:_album.shortName];
                 if ([song.updatedSong isEqualToString:@"YES"]) {
                     song.updatedSong = @"NO";
                     [[SongManager sharedManager] writeBacktoPlist:_album.shortName];
@@ -556,6 +560,7 @@
             }
         }
         [_appData save];
+        [_appData updateiCloud];
         
         [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"金币  -%d", coinsNeeded] subtitle:nil type:TSMessageNotificationTypeWarning];
         

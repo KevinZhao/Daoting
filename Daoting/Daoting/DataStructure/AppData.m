@@ -120,32 +120,25 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
     } else {
         [KeychainWrapper createKeychainValue:checksum forIdentifier:SSDataChecksumKey];
     }
-
-    //todo: remove icloud sync in save
-    //sync with iCloud
-    if([NSUbiquitousKeyValueStore defaultStore]) {
-        [self updateiCloud];
-    }
 }
 
 - (void)updateiCloud
 {
     NSUbiquitousKeyValueStore *iCloudStore = [NSUbiquitousKeyValueStore defaultStore];
-    long cloudCoins= [iCloudStore doubleForKey: SSDataforCoinsKey];
     
-    if (self.coins > cloudCoins ) {
-        [iCloudStore setDouble:self.coins forKey:SSDataforCoinsKey];
-        BOOL success = [iCloudStore synchronize];
+    if (iCloudStore) {
+        long cloudCoins= [iCloudStore doubleForKey: SSDataforCoinsKey];
         
-        if (success) {
-            NSLog(@"update icloud succeed");
+        if (self.coins > cloudCoins ) {
+            
+            [iCloudStore setDouble:self.coins forKey:SSDataforCoinsKey];
+            BOOL success = [iCloudStore synchronize];
+            
+            if (success) {
+                NSLog(@"update icloud succeed");
+            }
         }
-        
-        long new_cloudCoins= [iCloudStore doubleForKey: SSDataforCoinsKey];
-        
-        NSLog(@"new_cloudCoins = %ld", new_cloudCoins);
     }
-    
 }
 
 - (instancetype)init

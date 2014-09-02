@@ -50,6 +50,8 @@
         if (_appData.coins >= [song.price intValue]) {
             
             _appData.coins = _appData.coins - [song.price intValue];
+            [_appData save];
+            [_appData updateiCloud];
             
             [self startDownload];
             
