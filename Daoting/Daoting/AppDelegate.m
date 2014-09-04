@@ -145,7 +145,7 @@
     
     if (version >= 8.0)
     {
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
+        //[[UIApplication sharedApplication] registerForRemoteNotifications];
     }else
     {
         //Deprecated in ios 8.0

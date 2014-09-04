@@ -186,13 +186,13 @@
             
             [_appData save];
             
-            [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"金币  -%@", song.price] type:TSMessageNotificationTypeWarning];
+            [TSMessage showNotificationInViewController:self title:[NSString stringWithFormat:@"金币  -%@", song.price] subtitle:nil type:TSMessageNotificationTypeSuccess];
         }
         else
         //2.2.2 cois is not enough
         {
             //notify user and show store view
-            [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"现有金币不足，请从商店购买"] type:TSMessageNotificationTypeWarning];
+            [TSMessage showNotificationInViewController:self title:[NSString stringWithFormat:@"现有金币不足，请从商店购买"]  subtitle:nil type:TSMessageNotificationTypeWarning];
             
             UITabBarController *tabBarController = [self getTabbarViewController];
             tabBarController.selectedIndex = 2;
@@ -498,10 +498,7 @@
                                  
                                  if (state == SSResponseStateSuccess)
                                  {
-                                     //share album will not give credit
-                                     NSString *notification = @"分享成功";
-                                     
-                                     [self showNotification:notification];
+                                     [TSMessage showNotificationInViewController:self title:@"分享成功" subtitle:nil type:TSMessageNotificationTypeSuccess];
                                  }
                                  else if (state == SSResponseStateFail)
                                  {
@@ -562,8 +559,7 @@
         [_appData save];
         [_appData updateiCloud];
         
-        [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"金币  -%d", coinsNeeded] subtitle:nil type:TSMessageNotificationTypeWarning];
-        
+        [TSMessage showNotificationInViewController:[self getTabbarViewController] title:[NSString stringWithFormat:@"金币  -%d", coinsNeeded]  subtitle:nil type:TSMessageNotificationTypeSuccess];
     }
     //if cois is not enough, navigate to store view and give notification
     else{
@@ -584,10 +580,12 @@
             }
         }
         
-        [TSMessage showNotificationWithTitle:@"您的金币不足，请购买更多金币" subtitle:nil type:TSMessageNotificationTypeWarning];
-        
         UITabBarController *tabBarController = [self getTabbarViewController];
         tabBarController.selectedIndex = 2;
+        
+        [TSMessage showNotificationInViewController:tabBarController title:@"您的金币不足，请购买更多金币" subtitle:nil type:TSMessageNotificationTypeWarning];
+        
+
     }
 }
 
@@ -664,11 +662,6 @@
     }
     
     [self onPlayerHelperSongChanged];
-}
-
--(void)showNotification:(NSString *)notification;
-{
-    [TSMessage showNotificationInViewController:self title:nil subtitle:notification type:TSMessageNotificationTypeSuccess];
 }
 
 - (IBAction)onsliderValueChanged:(id)sender

@@ -8,10 +8,6 @@
 
 #import "DownloadViewController.h"
 
-@interface DownloadViewController ()
-
-@end
-
 @implementation DownloadViewController
 
 - (void)viewDidLoad
@@ -94,22 +90,19 @@
         
         self.tableView.separatorColor = [UIColor grayColor];
         _img_background.hidden = YES;
-        //[self.tableView reloadData];
-        [self setupTimer];
-        
         _lbl_noDownloadQueue.hidden = YES;
     }
     //there is no download task
     else
     {
         _img_background.hidden = NO;
-        self.tableView.separatorColor = [UIColor clearColor];
         _lbl_noDownloadQueue.hidden = NO;
+        self.tableView.separatorColor = [UIColor clearColor];
         [_timer invalidate];
     }
 }
 
--(void)updateCellAt:(NSIndexPath*) indexPath
+-(void)updateCellAt:(NSIndexPath*)indexPath
 {
     DownloadCell *cell = (DownloadCell*)[self.tableView cellForRowAtIndexPath:indexPath];
     

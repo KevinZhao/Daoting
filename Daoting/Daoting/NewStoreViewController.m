@@ -326,13 +326,13 @@
         
         NSString *notification = @"您获得了 20金币";
         
-        [self showNotification:notification];
-        
+        //[self showNotification:notification];
+        [TSMessage showNotificationInViewController:self title:notification subtitle:nil type:TSMessageNotificationTypeSuccess];
     }
     else
     {
         NSString *notification = @"您今日已经签到了，请明日再试";
-        [self showNotification:notification];
+        [TSMessage showNotificationInViewController:self title:notification subtitle:nil type:TSMessageNotificationTypeWarning];
     }
 }
 
@@ -367,20 +367,13 @@
                                      CurrentCoinCell* currentCoinCell = (CurrentCoinCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
                                      currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%d", _appData.coins];
                                      
-                                     [self showNotification:notification];
+                                     [TSMessage showNotificationInViewController:self title:notification subtitle:nil type:TSMessageNotificationTypeSuccess];
                                  }
                                  else if (state == SSResponseStateFail)
                                  {
                                      NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
                                  }
                              }];
-}
-
-
-#pragma mark TSMessages
--(void)showNotification:(NSString *)notification;
-{
-    [TSMessage showNotificationInViewController:self title:nil subtitle:notification type:TSMessageNotificationTypeSuccess];
 }
 
 @end

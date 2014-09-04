@@ -63,7 +63,6 @@
 - (IBAction)onsliderValueChanged:(id)sender;
 - (IBAction)onpageChanged:(id)sender;
 - (void)setDetailItem:(Album *)album;
-- (void)showNotification:(NSString *)notification;
 
 //this is ugly, need to revisit next version
 - (UITabBarController *)getTabbarViewController;

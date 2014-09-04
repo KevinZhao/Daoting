@@ -37,7 +37,6 @@
     [self.tableView reloadData];
     
     [self navigateToLatestAlbum];
-
 }
 
 - (void)viewWillDisappear:(BOOL)animated

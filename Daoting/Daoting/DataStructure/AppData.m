@@ -93,6 +93,12 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
         if ([checksumOfSavedFile isEqualToString: checksumInKeychain]) {
             appData = [NSKeyedUnarchiver unarchiveObjectWithData:decodedData];
         }
+        else
+        {
+            NSLog(@"Critical Error, checksum is different");
+            NSLog(@"checksumofSavedFile= %@", checksumOfSavedFile);
+            NSLog(@"checksumInKeyChain = %@", checksumInKeychain);
+        }
     }else
     {
         appData = [[AppData alloc] init];
@@ -129,7 +135,7 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
     if (iCloudStore) {
         long cloudCoins= [iCloudStore doubleForKey: SSDataforCoinsKey];
         
-        if (self.coins > cloudCoins ) {
+        if (self.coins != cloudCoins ) {
             
             [iCloudStore setDouble:self.coins forKey:SSDataforCoinsKey];
             BOOL success = [iCloudStore synchronize];
