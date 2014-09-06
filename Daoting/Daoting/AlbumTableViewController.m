@@ -7,18 +7,13 @@
 //
 
 #import "AlbumTableViewController.h"
-#import "CoinIAPHelper.h"
 #import "Album.h"
 #import "AlbumCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "SongTableViewController.h"
 
-@interface AlbumTableViewController ()
-
-@end
 
 @implementation AlbumTableViewController
-
 
 - (void)viewDidLoad
 {
@@ -32,11 +27,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [AlbumManager sharedManager].delegate = self;
-    _albums = [AlbumManager sharedManager].albums;
+    _albums = [[AlbumManager sharedManager] searchAlbumArrayByAlbumName:_category.shortName];
     
     [self.tableView reloadData];
     
-    [self navigateToLatestAlbum];
+    //[self navigateToLatestAlbum];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -125,7 +120,7 @@
 
 -(void) onAlbumUpdated
 {
-    _albums = [AlbumManager sharedManager].albums;
+    //_albums = [AlbumManager sharedManager].albums;
     
     [self.tableView reloadData];
     
@@ -151,6 +146,11 @@
             break;
         }
     }
+}
+
+- (void)setDetailItem:(AudioCategory *)category
+{
+    _category = category;
 }
 
 @end

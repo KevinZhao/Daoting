@@ -14,9 +14,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
     //todo: should change to initialize category manager
-    [AlbumManager sharedManager];
+    //[AlbumManager sharedManager];
+    [CategoryManager sharedManager];
     
     [self configureAudioSession];
     
@@ -145,7 +145,7 @@
     
     if (version >= 8.0)
     {
-        //[[UIApplication sharedApplication] registerForRemoteNotifications];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
     }else
     {
         //Deprecated in ios 8.0

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A03A23819B9FFD700DD8D6B /* AudioCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A03A23719B9FFD700DD8D6B /* AudioCategory.m */; };
 		0A1FA99B1958556C002F48EA /* qr_toolbar_more_hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA9991958556C002F48EA /* qr_toolbar_more_hl@2x.png */; };
 		0A1FA99C1958556C002F48EA /* qr_toolbar_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA99A1958556C002F48EA /* qr_toolbar_more@2x.png */; };
 		0A1FA99F19585612002F48EA /* qr_toolbar_more_hl.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA99D19585612002F48EA /* qr_toolbar_more_hl.png */; };
@@ -31,6 +32,8 @@
 		0A6E296D19A5DD51002808F7 /* NewStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6E296C19A5DD51002808F7 /* NewStoreViewController.m */; };
 		0A6E297119A5E5FC002808F7 /* CurrentCoinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6E297019A5E5FC002808F7 /* CurrentCoinCell.m */; };
 		0A7A8CD819590B4C003FAA92 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A7A8CD719590B4C003FAA92 /* CFNetwork.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		0A82221219BA04CA004B556B /* CategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A82221119BA04CA004B556B /* CategoryTableViewController.m */; };
+		0A82221519BA0807004B556B /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A82221419BA0807004B556B /* CategoryCell.m */; };
 		0A8BA0091940BFCB001307D6 /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8BA0081940BFCB001307D6 /* DownloadViewController.m */; };
 		0A8BA00F1940C15E001307D6 /* DownloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8BA00E1940C15E001307D6 /* DownloadCell.m */; };
 		0A9260A2196BD74B00361977 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933AD5818D03EC1001D707B /* Foundation.framework */; };
@@ -80,6 +83,7 @@
 		0AEFC37C1988DBD800CECC93 /* colorStyle_download@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFC37A1988DBD800CECC93 /* colorStyle_download@2x.png */; };
 		0AEFC3801988DDC800CECC93 /* tabbar_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFC37F1988DDC800CECC93 /* tabbar_setting@2x.png */; };
 		0AEFC3821988E17E00CECC93 /* bag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFC3811988E17E00CECC93 /* bag@2x.png */; };
+		0AF65F0C19BB46B900362C6E /* Xiaoshuo_AlbumList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AF65F0B19BB46B900362C6E /* Xiaoshuo_AlbumList.plist */; };
 		0AFB65A719245BD4000F2AE6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AFB65A619245BD4000F2AE6 /* StoreKit.framework */; };
 		236C526B19A63169009595D9 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 236C526A19A63169009595D9 /* libz.dylib */; };
 		5933AD5B18D03EC1001D707B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933AD5A18D03EC1001D707B /* CoreGraphics.framework */; };
@@ -127,12 +131,14 @@
 		D88557611999082F00B0F891 /* actionIconDownloadSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88557601999082F00B0F891 /* actionIconDownloadSelected@2x.png */; };
 		D89D5FA4197D43C600D6FEE0 /* songcell_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D89D5F9B197D43C600D6FEE0 /* songcell_bg@2x.png */; };
 		D8A6613519781B7B00E9E7D3 /* mark_lock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8A6613319781B7B00E9E7D3 /* mark_lock@2x.png */; };
-		D8C6FA4D198FDE4800AB9ACB /* AlbumList.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8C6FA4C198FDE4800AB9ACB /* AlbumList.plist */; };
+		D8C6FA4D198FDE4800AB9ACB /* Pingshu_AlbumList.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8C6FA4C198FDE4800AB9ACB /* Pingshu_AlbumList.plist */; };
 		F34534A6889146C4A984DE98 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D92318D3DBB470EB30CF35F /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0481672862474C608EB8AB38 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		0A03A23619B9FFD700DD8D6B /* AudioCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioCategory.h; path = DataStructure/AudioCategory.h; sourceTree = "<group>"; };
+		0A03A23719B9FFD700DD8D6B /* AudioCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioCategory.m; path = DataStructure/AudioCategory.m; sourceTree = "<group>"; };
 		0A1FA9991958556C002F48EA /* qr_toolbar_more_hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr_toolbar_more_hl@2x.png"; sourceTree = "<group>"; };
 		0A1FA99A1958556C002F48EA /* qr_toolbar_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr_toolbar_more@2x.png"; sourceTree = "<group>"; };
 		0A1FA99D19585612002F48EA /* qr_toolbar_more_hl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qr_toolbar_more_hl.png; sourceTree = "<group>"; };
@@ -165,6 +171,10 @@
 		0A6E296F19A5E5FC002808F7 /* CurrentCoinCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentCoinCell.h; sourceTree = "<group>"; };
 		0A6E297019A5E5FC002808F7 /* CurrentCoinCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentCoinCell.m; sourceTree = "<group>"; };
 		0A7A8CD719590B4C003FAA92 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		0A82221019BA04CA004B556B /* CategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryTableViewController.h; sourceTree = "<group>"; };
+		0A82221119BA04CA004B556B /* CategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryTableViewController.m; sourceTree = "<group>"; };
+		0A82221319BA0807004B556B /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryCell.h; path = DataStructure/CategoryCell.h; sourceTree = "<group>"; };
+		0A82221419BA0807004B556B /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryCell.m; path = DataStructure/CategoryCell.m; sourceTree = "<group>"; };
 		0A8BA0071940BFCB001307D6 /* DownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadViewController.h; sourceTree = "<group>"; };
 		0A8BA0081940BFCB001307D6 /* DownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadViewController.m; sourceTree = "<group>"; };
 		0A8BA00D1940C15E001307D6 /* DownloadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadCell.h; sourceTree = "<group>"; };
@@ -221,6 +231,7 @@
 		0AEFC37A1988DBD800CECC93 /* colorStyle_download@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "colorStyle_download@2x.png"; sourceTree = "<group>"; };
 		0AEFC37F1988DDC800CECC93 /* tabbar_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_setting@2x.png"; sourceTree = "<group>"; };
 		0AEFC3811988E17E00CECC93 /* bag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bag@2x.png"; sourceTree = "<group>"; };
+		0AF65F0B19BB46B900362C6E /* Xiaoshuo_AlbumList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Xiaoshuo_AlbumList.plist; path = SongPlists/Xiaoshuo_AlbumList.plist; sourceTree = "<group>"; };
 		0AFB65A619245BD4000F2AE6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		236C526A19A63169009595D9 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		5933AD5518D03EC1001D707B /* Daoting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daoting.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -297,7 +308,7 @@
 		D88557601999082F00B0F891 /* actionIconDownloadSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "actionIconDownloadSelected@2x.png"; sourceTree = "<group>"; };
 		D89D5F9B197D43C600D6FEE0 /* songcell_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "songcell_bg@2x.png"; sourceTree = "<group>"; };
 		D8A6613319781B7B00E9E7D3 /* mark_lock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mark_lock@2x.png"; sourceTree = "<group>"; };
-		D8C6FA4C198FDE4800AB9ACB /* AlbumList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AlbumList.plist; path = SongPlists/AlbumList.plist; sourceTree = "<group>"; };
+		D8C6FA4C198FDE4800AB9ACB /* Pingshu_AlbumList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Pingshu_AlbumList.plist; path = SongPlists/Pingshu_AlbumList.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -380,6 +391,10 @@
 				D88557311999024B00B0F891 /* SongCell.m */,
 				0A8BA00D1940C15E001307D6 /* DownloadCell.h */,
 				0A8BA00E1940C15E001307D6 /* DownloadCell.m */,
+				0A03A23619B9FFD700DD8D6B /* AudioCategory.h */,
+				0A03A23719B9FFD700DD8D6B /* AudioCategory.m */,
+				0A82221319BA0807004B556B /* CategoryCell.h */,
+				0A82221419BA0807004B556B /* CategoryCell.m */,
 			);
 			name = DataStructure;
 			sourceTree = "<group>";
@@ -566,8 +581,18 @@
 		0AE86482192ED8B100EF5A96 /* SongPlists */ = {
 			isa = PBXGroup;
 			children = (
+				0AF65F0E19BB46D500362C6E /* Xiaoshuo */,
+				0AF65F0D19BB46CA00362C6E /* Pingshu */,
+				0AF65F0B19BB46B900362C6E /* Xiaoshuo_AlbumList.plist */,
 				0A96D75619B42218002059C7 /* CategoryList.plist */,
-				D8C6FA4C198FDE4800AB9ACB /* AlbumList.plist */,
+				D8C6FA4C198FDE4800AB9ACB /* Pingshu_AlbumList.plist */,
+			);
+			name = SongPlists;
+			sourceTree = "<group>";
+		};
+		0AF65F0D19BB46CA00362C6E /* Pingshu */ = {
+			isa = PBXGroup;
+			children = (
 				0ABA959E193702D000172862 /* Jinbiao_SongList.plist */,
 				0AE86491192EF48700EF5A96 /* Haizeiwang_SongList.plist */,
 				0AE86492192EF48700EF5A96 /* Mingchao_SongList.plist */,
@@ -584,7 +609,14 @@
 				0AE8648B192EEC6E00EF5A96 /* Xiayi_SongList.plist */,
 				0AE8648C192EEC6E00EF5A96 /* Zhangguangtai_SongList.plist */,
 			);
-			name = SongPlists;
+			name = Pingshu;
+			sourceTree = "<group>";
+		};
+		0AF65F0E19BB46D500362C6E /* Xiaoshuo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Xiaoshuo;
 			sourceTree = "<group>";
 		};
 		5933AD4C18D03EC1001D707B = {
@@ -652,6 +684,8 @@
 				0AE46B0D1921035E00FA30F3 /* SongTableViewController.m */,
 				0A8BA0071940BFCB001307D6 /* DownloadViewController.h */,
 				0A8BA0081940BFCB001307D6 /* DownloadViewController.m */,
+				0A82221019BA04CA004B556B /* CategoryTableViewController.h */,
+				0A82221119BA04CA004B556B /* CategoryTableViewController.m */,
 				5933AD5F18D03EC1001D707B /* Supporting Files */,
 			);
 			path = Daoting;
@@ -744,7 +778,7 @@
 			files = (
 				D8113D8819911FDC0011B04A /* nowplaying_share_n@2x.png in Resources */,
 				0A98D66C1920F1F500E46EB9 /* arrowSelected.png in Resources */,
-				D8C6FA4D198FDE4800AB9ACB /* AlbumList.plist in Resources */,
+				D8C6FA4D198FDE4800AB9ACB /* Pingshu_AlbumList.plist in Resources */,
 				0AE8649A192EF48700EF5A96 /* Shuangbianji_SongList.plist in Resources */,
 				0A1FA99B1958556C002F48EA /* qr_toolbar_more_hl@2x.png in Resources */,
 				D885575D199906A200B0F891 /* playing_btn_pause_n@2x.png in Resources */,
@@ -771,6 +805,7 @@
 				0A96D75719B42218002059C7 /* CategoryList.plist in Resources */,
 				0AEFC3721988C48000CECC93 /* btn_share@2x.png in Resources */,
 				0A1FA99F19585612002F48EA /* qr_toolbar_more_hl.png in Resources */,
+				0AF65F0C19BB46B900362C6E /* Xiaoshuo_AlbumList.plist in Resources */,
 				0A659EF51977AFFD00FC893B /* download_pause@2x.png in Resources */,
 				0AEFC3821988E17E00CECC93 /* bag@2x.png in Resources */,
 				5933AD7718D03EC1001D707B /* Images.xcassets in Resources */,
@@ -850,6 +885,7 @@
 				5933AD6918D03EC1001D707B /* AppDelegate.m in Sources */,
 				0A6E297119A5E5FC002808F7 /* CurrentCoinCell.m in Sources */,
 				D88557331999024B00B0F891 /* AlbumCell.m in Sources */,
+				0A82221519BA0807004B556B /* CategoryCell.m in Sources */,
 				D88557361999024B00B0F891 /* SongCell.m in Sources */,
 				D88557321999024B00B0F891 /* Album.m in Sources */,
 				0AE46B0E1921035E00FA30F3 /* SongTableViewController.m in Sources */,
@@ -861,6 +897,7 @@
 				D885571F1999023B00B0F891 /* AlbumManager.m in Sources */,
 				D885574F199902CF00B0F891 /* SettingCellDisclosure.m in Sources */,
 				5933AD6518D03EC1001D707B /* main.m in Sources */,
+				0A03A23819B9FFD700DD8D6B /* AudioCategory.m in Sources */,
 				D88557201999023B00B0F891 /* CoinIAPHelper.m in Sources */,
 				0A8BA0091940BFCB001307D6 /* DownloadViewController.m in Sources */,
 				D885574B199902CF00B0F891 /* PurchasedAlbumCell.m in Sources */,
@@ -872,6 +909,7 @@
 				D88557211999023B00B0F891 /* DownloadStatus.m in Sources */,
 				0A8BA00F1940C15E001307D6 /* DownloadCell.m in Sources */,
 				D885574C199902CF00B0F891 /* PurchasedAlbumViewController.m in Sources */,
+				0A82221219BA04CA004B556B /* CategoryTableViewController.m in Sources */,
 				D8855750199902CF00B0F891 /* SettingCellSwitch.m in Sources */,
 				D88557351999024B00B0F891 /* Song.m in Sources */,
 				D88557261999023B00B0F891 /* STKAudioPlayerHelper.m in Sources */,

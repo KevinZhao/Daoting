@@ -7,10 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AudioCategory.h"
 
 @interface CategoryManager : NSObject
+{
+    NSMutableArray      *_categoryArray;
+}
+
+@property (nonatomic, retain)  NSMutableArray      *categoryArray;
 
 
 + (CategoryManager *)sharedManager;
+
+- (AudioCategory *)searchAudioCategoryByShortName:(NSString*) shortName;
+
+
 
 @end

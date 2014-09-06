@@ -46,14 +46,49 @@
         }
     }
     
-    [self updateCategory];
+    //[self updateCategory];
     
     return self;
 }
 
 - (void)initializeCategory
 {
+    _categoryArray = [[NSMutableArray alloc]init];
     
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
+    
+    NSString *plistPath = [bundleDocumentDirectoryPath stringByAppendingString:@"/CategoryList.plist"];
+    NSDictionary *dictionary = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+    
+    for (int i = 1; i<= dictionary.count; i++)
+    {
+        NSDictionary *CategoryDic = [dictionary objectForKey:[NSString stringWithFormat:@"%d", i]];
+        
+        AudioCategory *category = [[AudioCategory alloc]init];
+        category.title = [CategoryDic objectForKey:@"Title"];
+        category.description = [CategoryDic objectForKey:@"Description"];
+        category.imageUrl = [[NSURL alloc]initWithString:[CategoryDic objectForKey:@"ImageURL"]];
+        category.albumListUrl = [[NSURL alloc]initWithString:[CategoryDic objectForKey:@"AlbumListURL"]];
+        category.shortName = [CategoryDic objectForKey:@"ShortName"];
+        
+        [_categoryArray addObject:category];
+    }
+}
+
+- (AudioCategory *)searchAlbumByShortName:(NSString*) shortName
+{
+    AudioCategory *category;
+    
+    for (AudioCategory *subCategory in _categoryArray) {
+        if ([subCategory.shortName isEqual:shortName]) {
+            
+            category = subCategory;
+            break;
+        }
+    }
+    
+    return category;
 }
 
 - (void)updateCategory

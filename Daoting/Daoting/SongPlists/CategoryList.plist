@@ -22,11 +22,11 @@
 		<key>ImageURL</key>
 		<string>http://bcs.duapp.com/daoting/Yongzheng1.png</string>
 		<key>Description</key>
-		<string>网络 玄幻 悬疑 各种有声小说</string>
+		<string>传统 经典 创新 幽默</string>
 		<key>AlbumListURL</key>
 		<string>http://bcs.duapp.com/daoting/Pingshu_AlbumList.plist</string>
 		<key>ShortName</key>
-		<string>Xiaoshuo</string>
+		<string>Pingshu</string>
 	</dict>
 </dict>
 </plist>

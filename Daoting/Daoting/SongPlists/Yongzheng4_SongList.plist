@@ -452,5 +452,50 @@
 		<key>Url</key>
 		<string>http://yongzheng4.qiniudn.com/%E9%9B%8D%E6%AD%A3%E5%89%91%E4%BE%A0%E5%9B%BE030.mp3</string>
 	</dict>
+	<key>31</key>
+	<dict>
+		<key>Duration</key>
+		<string>00:21:46</string>
+		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
+		<string>40</string>
+		<key>Title</key>
+		<string>雍正剑侠图</string>
+		<key>UpdatedSong</key>
+		<string></string>
+		<key>Url</key>
+		<string>http://yongzheng4.qiniudn.com/%E9%9B%8D%E6%AD%A3%E5%89%91%E4%BE%A0%E5%9B%BE031.mp3</string>
+	</dict>
+	<key>32</key>
+	<dict>
+		<key>Duration</key>
+		<string>00:22:15</string>
+		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
+		<string>40</string>
+		<key>Title</key>
+		<string>雍正剑侠图</string>
+		<key>UpdatedSong</key>
+		<string></string>
+		<key>Url</key>
+		<string>http://yongzheng4.qiniudn.com/%E9%9B%8D%E6%AD%A3%E5%89%91%E4%BE%A0%E5%9B%BE032.mp3</string>
+	</dict>
+	<key>33</key>
+	<dict>
+		<key>Duration</key>
+		<string>00:21:24</string>
+		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
+		<string>40</string>
+		<key>Title</key>
+		<string>雍正剑侠图</string>
+		<key>UpdatedSong</key>
+		<string></string>
+		<key>Url</key>
+		<string>http://yongzheng4.qiniudn.com/%E9%9B%8D%E6%AD%A3%E5%89%91%E4%BE%A0%E5%9B%BE033.mp3</string>
+	</dict>
 </dict>
 </plist>

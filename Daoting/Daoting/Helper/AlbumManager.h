@@ -19,16 +19,19 @@
 
 @interface AlbumManager : NSObject
 {
-    NSMutableArray      *_albums;
+    //NSMutableArray      *_albums;
+    NSMutableDictionary *_albumArrayDictionaryByAlbumName;
+    
     BOOL                isUpdating;
 }
 
-@property (nonatomic, retain)  NSMutableArray      *albums;
+//@property (nonatomic, retain)  NSMutableArray      *albums;
 @property (readwrite, unsafe_unretained) id<AlbumManagerDelegate> delegate;
 
 
 + (AlbumManager *)sharedManager;
 
+- (NSMutableArray *)searchAlbumArrayByAlbumName:(NSString*) categoryName;
 - (Album *)searchAlbumByShortName:(NSString*) shortName;
 - (void)writeBacktoPlist;
 - (void)foundNewSonginAlbum:(Album*) newAlbum;

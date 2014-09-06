@@ -37,8 +37,7 @@
     NSString *DocumentDirectoryPath =
     [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     
-    NSString *plistPath =
-    [DocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_SongList.plist", albumShortName]];
+    NSString *plistPath = [DocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_SongList.plist", albumShortName]];
     
     NSDictionary *dictionary = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
     for (int i = 1; i<= dictionary.count; i++)
@@ -250,7 +249,7 @@
         }
     }
     
-    [self updateSongs:albumShortName];
+    //[self updateSongs:albumShortName];
 }
 
 - (NSMutableArray *)searchSongArrayByAlbumName:(NSString*) albumName
