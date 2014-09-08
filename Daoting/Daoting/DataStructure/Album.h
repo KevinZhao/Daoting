@@ -24,4 +24,6 @@
 @property (nonatomic, strong) NSString  *longdescription;
 @property (nonatomic, strong) NSString  *updatedAlbum;
 
+@property (nonatomic, retain) NSMutableArray *songArray;
+
 @end

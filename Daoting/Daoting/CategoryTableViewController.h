@@ -15,7 +15,8 @@
 
 @interface CategoryTableViewController : UITableViewController
 {
-    NSMutableArray *_categoryArray;
+    NSMutableArray      *_categoryArray;
+    AppDelegate         *_appdelegate;
 }
 
 @end

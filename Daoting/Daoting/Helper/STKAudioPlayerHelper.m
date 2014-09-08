@@ -155,7 +155,8 @@
 
 -(void)playNextSong
 {
-    Album *album = [[AlbumManager sharedManager] searchAlbumByShortName:_appData.currentAlbum.shortName];
+    //todo
+    /*Album *album = [[AlbumManager sharedManager] searchAlbumByShortName:_appData.currentAlbum.shortName];
     NSMutableArray *songArray = [[SongManager sharedManager] searchSongArrayByAlbumName:album.shortName];
     
     NSInteger currentSongNumber = [_appData.currentSong.songNumber intValue];
@@ -224,12 +225,13 @@
                 [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"如果希望连续播放，请在设置中开启自动购买选项"] type:TSMessageNotificationTypeWarning];
             }
         }
-    }
+    }*/
 }
 
 -(void)playPreviousSong
 {
-    Album *album = [[AlbumManager sharedManager] searchAlbumByShortName:_appData.currentAlbum.shortName];
+    //todo
+    /*Album *album = [[AlbumManager sharedManager] searchAlbumByShortName:_appData.currentAlbum.shortName];
     NSMutableArray *songArray = [[SongManager sharedManager] searchSongArrayByAlbumName:album.shortName];
 
     NSInteger currentSongNumber = [_appData.currentSong.songNumber intValue];
@@ -297,8 +299,7 @@
                 [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"如果希望连续播放，请在设置中开启自动购买选项"] type:TSMessageNotificationTypeWarning];
             }
         }
-
-    }
+    }*/
 }
 
 

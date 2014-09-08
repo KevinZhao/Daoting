@@ -9,7 +9,7 @@
 #import "AlbumManager.h"
 
 @implementation AlbumManager
-
+/*
 + (AlbumManager *)sharedManager {
     static dispatch_once_t once;
     static AlbumManager * sharedInstance;
@@ -25,78 +25,20 @@
 {
     self = [super init];
     
-    _albumArrayDictionaryByAlbumName = [[NSMutableDictionary alloc]init];
+    _albumArrayDictionary = [[NSMutableDictionary alloc]init];
     
     return self;
     
     
-    /*NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
-    NSString *plistPathinDocumentDirectory = [bundleDocumentDirectoryPath stringByAppendingString:@"/AlbumList.plist"];
-    
-    //if yes, load from document directory,
-    if ([fileManager fileExistsAtPath:plistPathinDocumentDirectory])
-    {
-        [self initializeAlbums];
-    }
-    //if no, copy from resource directory to document directory
-    else
-    {
-        NSString *plistPathinResourceDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/AlbumList.plist"];
-        
-        if ([fileManager fileExistsAtPath:plistPathinResourceDirectory]) {
-            [fileManager copyItemAtPath:plistPathinResourceDirectory toPath:plistPathinDocumentDirectory error:nil];
-            
-            [self initializeAlbums];
-        }
-    }
-    
-    [self updateAlbums];
-    */
+ 
 }
 
 - (void)initializeAlbums:(NSString *)categoryName;
-{
-    if (isUpdating) {
-        return;
-    }
-    
-    isUpdating = true;
-    
-    NSMutableArray *_albums = [[NSMutableArray alloc]init];
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
-    
-    NSString *plistPath = [bundleDocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_AlbumList.plist",categoryName]];
-    NSDictionary *dictionary = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
-    
-    for (int i = 1; i<= dictionary.count; i++)
-    {
-        NSDictionary *AlbumDic = [dictionary objectForKey:[NSString stringWithFormat:@"%d", i]];
-        
-        Album *album = [[Album alloc]init];
-        album.title = [AlbumDic objectForKey:@"Title"];
-        album.description = [AlbumDic objectForKey:@"Description"];
-        album.imageUrl = [[NSURL alloc]initWithString:[AlbumDic objectForKey:@"ImageURL"]];
-        album.plistUrl = [[NSURL alloc]initWithString:[AlbumDic objectForKey:@"SongList"]];
-        album.shortName = [AlbumDic objectForKey:@"ShortName"];
-        album.artistName = [AlbumDic objectForKey:@"Artist"];
-        album.updatingStatus = [AlbumDic objectForKey:@"UpdatingStatus"];
-        album.category = [AlbumDic objectForKey:@"Category"];
-        album.longdescription = [AlbumDic objectForKey:@"LongDescription"];
-        album.updatedAlbum = [AlbumDic objectForKey:@"UpdatedAlbum"];
-        
-        [_albums addObject:album];
-    }
-    
-    [_albumArrayDictionaryByAlbumName setValue:_albums forKey:categoryName];
-}
+{}
 
 - (void)updateAlbums
 {
-    /*//1. Check if plist is in document directory
+    /*1. Check if plist is in document directory
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
@@ -186,7 +128,7 @@
      {
          //left blank
      }
-     ];*/
+     ];
 }
 
 - (BOOL) searchAlbum:(NSDictionary *)newDirectory InOldAlbum:(NSMutableDictionary *)oldPlist_directory
@@ -210,32 +152,24 @@
 }
 
 
-/*- (Album *)searchAlbumByShortName:(NSString*) shortName
+- (Album *)searchAlbumByCategory:(NSString*) categoryShortName ByAlbumShortName:(NSString*) albumShortName
 {
-    Album *album;
+    NSMutableArray *albumArray = [_albumArrayDictionary valueForKey:categoryShortName];
     
-    for (Album *subAlbum in _albums) {
-        if ([subAlbum.shortName isEqual:shortName]) {
-            
-            album = subAlbum;
-            break;
-        }
-    }
-    
-    return album;
-}*/
+    return [albumArray valueForKey:albumShortName];
+}
 
 - (NSMutableArray *)searchAlbumArrayByAlbumName:(NSString*) categoryName
 {
     NSMutableArray *albumArray;
     
-    albumArray = [_albumArrayDictionaryByAlbumName objectForKey:categoryName];
+    albumArray = [_albumArrayDictionary objectForKey:categoryName];
     
     if (albumArray == nil) {
         
         [self loadAlbums:categoryName];
         
-        albumArray = [_albumArrayDictionaryByAlbumName objectForKey:categoryName];
+        albumArray = [_albumArrayDictionary objectForKey:categoryName];
     }
     
     return albumArray;
@@ -302,7 +236,7 @@
     NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
     NSString *plistPath = [bundleDocumentDirectoryPath stringByAppendingString:@"/AlbumList.plist"];
     
-    [newPlist_dictionary writeToFile:plistPath atomically:NO];*/
+    [newPlist_dictionary writeToFile:plistPath atomically:NO];
 }
 
 - (void)foundNewSonginAlbum:(Album*) newAlbum
@@ -318,8 +252,8 @@
     
     [self writeBacktoPlist];
     [self initializeAlbums];
-    [self.delegate onAlbumUpdated];*/
+    [self.delegate onAlbumUpdated];
     
 }
-
+*/
 @end

@@ -10,6 +10,15 @@
 
 @implementation CategoryTableViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    _appdelegate = [[UIApplication sharedApplication]delegate];
+    
+    self.view.backgroundColor = _appdelegate.defaultBackgroundColor;
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     //[CategoryManager sharedManager].delegate = self;
@@ -85,7 +94,7 @@
         
         destinationViewController.hidesBottomBarWhenPushed = YES;
         [destinationViewController setDetailItem:category];
-        
+                
         //remove title of back button
         UIBarButtonItem *temporaryBarButtonItem=[[UIBarButtonItem alloc] init];
         temporaryBarButtonItem.title=@"";

@@ -59,7 +59,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g0j-bq-gQo">
-                                            <rect key="frame" x="20" y="11" width="200" height="21"/>
+                                            <rect key="frame" x="20" y="11.5" width="200" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -77,11 +77,11 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="HKG-IC-T0v">
-                                            <rect key="frame" x="251" y="6" width="51" height="31"/>
+                                            <rect key="frame" x="251" y="6.5" width="51" height="31"/>
                                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </switch>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wAV-Ih-01S">
-                                            <rect key="frame" x="20" y="11" width="200" height="21"/>
+                                            <rect key="frame" x="20" y="11.5" width="200" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -131,7 +131,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="BBj-pC-Sjg">
-                                            <rect key="frame" x="20" y="10" width="24" height="24"/>
+                                            <rect key="frame" x="20" y="10.5" width="24" height="24"/>
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -217,12 +217,12 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22.5M" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4Fv-jR-9Dm">
-                                            <rect key="frame" x="20" y="22" width="100" height="21"/>
+                                            <rect key="frame" x="20" y="22.5" width="100" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="y1T-Td-46k">
-                                            <rect key="frame" x="254" y="7" width="46" height="30"/>
+                                            <rect key="frame" x="254" y="7.5" width="46" height="30"/>
                                             <state key="normal" title="清除">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -249,7 +249,7 @@
             </objects>
             <point key="canvasLocation" x="1282" y="2507"/>
         </scene>
-        <!--Category Table View Controller-->
+        <!--道听途说-->
         <scene sceneID="JCc-5u-fXw">
             <objects>
                 <tableViewController id="es4-8C-pgY" customClass="CategoryTableViewController" sceneMemberID="viewController">
@@ -264,7 +264,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-72.png" id="ULe-d6-Nap">
-                                            <rect key="frame" x="7" y="0.0" width="60" height="60"/>
+                                            <rect key="frame" x="7" y="14.5" width="60" height="60"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分类名称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jmb-HM-FMv">
                                             <rect key="frame" x="75" y="27" width="232" height="21"/>
@@ -300,13 +300,13 @@
                             <outlet property="delegate" destination="es4-8C-pgY" id="xPZ-TF-9hQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="rB6-uE-4UH"/>
+                    <navigationItem key="navigationItem" title="道听途说" id="rB6-uE-4UH"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LnD-2n-iOg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="750" y="37"/>
         </scene>
-        <!--道听途说-->
+        <!--分类名-->
         <scene sceneID="VxA-VF-6x1">
             <objects>
                 <tableViewController id="2Jj-St-UpX" customClass="AlbumTableViewController" sceneMemberID="viewController">
@@ -356,7 +356,7 @@
                             <outlet property="delegate" destination="2Jj-St-UpX" id="9Wl-Zg-dx0"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="道听途说" id="RX5-1a-FHC"/>
+                    <navigationItem key="navigationItem" title="分类名" id="RX5-1a-FHC"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mAR-Ur-Wup" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -398,7 +398,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" id="vt3-LN-scR">
-                                            <rect key="frame" x="62" y="42" width="238" height="2"/>
+                                            <rect key="frame" x="62" y="42.5" width="238" height="2"/>
                                         </progressView>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -647,7 +647,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="NER-q9-LYz">
-                                            <rect key="frame" x="20" y="4.5" width="35" height="35"/>
+                                            <rect key="frame" x="20" y="5" width="35" height="35"/>
                                             <state key="normal" image="btn_share.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -674,7 +674,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FlC-Gw-opn">
-                                            <rect key="frame" x="20" y="4.5" width="35" height="35"/>
+                                            <rect key="frame" x="20" y="5" width="35" height="35"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <state key="normal" backgroundImage="coin.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>

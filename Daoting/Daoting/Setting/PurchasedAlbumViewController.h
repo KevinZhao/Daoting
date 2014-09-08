@@ -13,6 +13,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "PurchasedSongViewController.h"
 #import "AlbumManager.h"
+#import "CategoryManager.h"
 
 
 @interface PurchasedAlbumViewController : UITableViewController

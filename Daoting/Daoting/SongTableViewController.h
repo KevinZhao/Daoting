@@ -25,9 +25,9 @@
 #import "UIImageView+AFNetworking.h"
 
 @interface SongTableViewController : UIViewController<UIScrollViewDelegate, UITableViewDataSource,
-    UITableViewDelegate, STKAudioPlayerHelperDelegate, SongManagerDelegate>
+    UITableViewDelegate, STKAudioPlayerHelperDelegate>
 {
-    NSMutableArray                      *_songs;
+    NSMutableArray                      *_songArray;
     UITableView                         *_tableview;
     Album                               *_album;
     STKAudioPlayer                      *_audioPlayer;

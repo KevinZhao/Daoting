@@ -8,19 +8,21 @@
 
 #import <Foundation/Foundation.h>
 #import "AudioCategory.h"
+#import "Album.h"
+#import "Song.h"
 
 @interface CategoryManager : NSObject
 {
     NSMutableArray      *_categoryArray;
 }
 
-@property (nonatomic, retain)  NSMutableArray      *categoryArray;
+@property (nonatomic, retain) NSMutableArray        *categoryArray;
 
 
 + (CategoryManager *)sharedManager;
 
-- (AudioCategory *)searchAudioCategoryByShortName:(NSString*) shortName;
-
-
+- (Album*)searchAlbumByShortName:(NSString*) albumShortName;
+- (NSMutableArray*) searchAlbumByCategory:(AudioCategory *) category;
+- (NSMutableArray* ) searchSongByAlbum:(Album *) album;
 
 @end

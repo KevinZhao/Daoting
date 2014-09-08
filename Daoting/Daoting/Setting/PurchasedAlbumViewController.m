@@ -51,11 +51,13 @@
     
     NSString* albumShortName = _appData.purchasedQueue.allKeys[indexPath.row];
     
-    // 1. show album title
-    Album *album = [[AlbumManager sharedManager] searchAlbumByShortName:albumShortName];
+    //1. show album title
+    Album *album = [[CategoryManager sharedManager] searchAlbumByShortName: albumShortName];
+    
+    //Album *album = [[AlbumManager sharedManager] searchAlbumByShortName:albumShortName];
     cell.lbl_albumTitle.text = album.title;
     
-    // 2. icon
+    //2. icon
     NSURLRequest *request = [NSURLRequest requestWithURL:album.imageUrl];
     UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
     
@@ -85,7 +87,7 @@
     NSString *key = _appData.purchasedQueue.allKeys[indexPath.row];
     
     viewController.songsArray = [_appData.purchasedQueue objectForKey:key];
-    viewController.album = [[AlbumManager sharedManager] searchAlbumByShortName:key];
+    viewController.album = [[CategoryManager sharedManager] searchAlbumByShortName:key];
 }
 
 @end

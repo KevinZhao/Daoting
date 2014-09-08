@@ -21,32 +21,32 @@
     return sharedInstance;
 }
 
+
+#pragma mark Initialize Category
+
 - (CategoryManager *)init
 {
+    self = [super init];
+    
     //Load Category List
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
     NSString *plistPathinDocumentDirectory = [bundleDocumentDirectoryPath stringByAppendingString:@"/CategoryList.plist"];
     
-    //if yes, load from document directory,
-    if ([fileManager fileExistsAtPath:plistPathinDocumentDirectory])
-    {
-        [self initializeCategory];
-    }
-    //if no, copy from resource directory to document directory
-    else
+    //if yes, copy from resource directory to document directory
+    if (![fileManager fileExistsAtPath:plistPathinDocumentDirectory])
     {
         NSString *plistPathinResourceDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/CategoryList.plist"];
         
         if ([fileManager fileExistsAtPath:plistPathinResourceDirectory]) {
-            [fileManager copyItemAtPath:plistPathinResourceDirectory toPath:plistPathinDocumentDirectory error:nil];
             
-            [self initializeCategory];
+            [fileManager copyItemAtPath:plistPathinResourceDirectory toPath:plistPathinDocumentDirectory error:nil];
         }
+        
     }
     
-    //[self updateCategory];
+    [self initializeCategory];
     
     return self;
 }
@@ -76,7 +76,7 @@
     }
 }
 
-- (AudioCategory *)searchAlbumByShortName:(NSString*) shortName
+- (AudioCategory *)searchCategoryByShortName:(NSString*) shortName
 {
     AudioCategory *category;
     
@@ -96,5 +96,131 @@
     
 }
 
+#pragma mark Initialize Album
+
+- (void)initializeAlbumByCategory:(AudioCategory *)category
+{
+    //1. Check if plist file had already in document library
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *DocumentDirectoryPath = [paths objectAtIndex:0];
+    NSString *plistPathinDocumentDirectory = [DocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_AlbumList.plist",category.shortName]];
+     
+    //1.1 if no, copy from resource directory to document directory
+    if (![fileManager fileExistsAtPath:plistPathinDocumentDirectory]){
+    
+        NSString *plistPathinResourceDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/%@_AlbumList.plist"];
+        
+        if ([fileManager fileExistsAtPath:plistPathinResourceDirectory]) {
+            [fileManager copyItemAtPath:plistPathinResourceDirectory toPath:plistPathinDocumentDirectory error:nil];
+        }else
+        {
+            //Critical Error, the plist file not exist
+        }
+    }
+    
+    //2. initialize the albumArray
+    NSDictionary *dictionary = [[NSDictionary alloc] initWithContentsOfFile:plistPathinDocumentDirectory];
+    NSMutableArray *albumArray = [[NSMutableArray alloc]init];
+    
+    for (int i = 1; i<= dictionary.count; i++)
+    {
+        NSDictionary *AlbumDic = [dictionary objectForKey:[NSString stringWithFormat:@"%d", i]];
+        
+        Album *album = [[Album alloc]init];
+        album.title = [AlbumDic objectForKey:@"Title"];
+        album.description = [AlbumDic objectForKey:@"Description"];
+        album.imageUrl = [[NSURL alloc]initWithString:[AlbumDic objectForKey:@"ImageURL"]];
+        album.plistUrl = [[NSURL alloc]initWithString:[AlbumDic objectForKey:@"SongList"]];
+        album.shortName = [AlbumDic objectForKey:@"ShortName"];
+        album.artistName = [AlbumDic objectForKey:@"Artist"];
+        album.updatingStatus = [AlbumDic objectForKey:@"UpdatingStatus"];
+        album.category = [AlbumDic objectForKey:@"Category"];
+        album.longdescription = [AlbumDic objectForKey:@"LongDescription"];
+        album.updatedAlbum = [AlbumDic objectForKey:@"UpdatedAlbum"];
+        
+        [albumArray addObject:album];
+    }
+    
+    category.albumArray = albumArray;
+}
+
+#pragma mark Initialize Song
+
+- (void)initializeSongByAlbum:(Album *)album
+{
+    //1. Check if plist file had already in document library
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *DocumentDirectoryPath = [paths objectAtIndex:0];
+    NSString *plistPathinDocumentDirectory = [DocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_SongList.plist", album.shortName]];
+    
+    //1.1 if no, copy from resource directory to document directory
+    if (![fileManager fileExistsAtPath:plistPathinDocumentDirectory]){
+        
+        NSString *plistPathinResourceDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/%@_AlbumList.plist"];
+        
+        if ([fileManager fileExistsAtPath:plistPathinResourceDirectory]) {
+            [fileManager copyItemAtPath:plistPathinResourceDirectory toPath:plistPathinDocumentDirectory error:nil];
+        }else
+        {
+            //Critical Error, the plist file not exist
+        }
+    }
+    
+    //2. initialize the songArray
+    NSMutableArray *songArray = [[NSMutableArray alloc]init];
+    NSDictionary *dictionary = [[NSDictionary alloc] initWithContentsOfFile:plistPathinDocumentDirectory];
+    for (int i = 1; i<= dictionary.count; i++)
+    {
+        NSDictionary *SongDic = [dictionary objectForKey:[NSString stringWithFormat:@"%d", i]];
+        
+        Song *song = [[Song alloc]init];
+        
+        song.songNumber = [NSString stringWithFormat:@"%d", i];
+        song.title      = [SongDic objectForKey:@"Title"];
+        song.duration   = [SongDic objectForKey:@"Duration"];
+        song.Url        = [[NSURL alloc] initWithString:[SongDic objectForKey:@"Url"]];
+        song.filePath   = [[NSURL alloc] initWithString:[SongDic objectForKey:@"FilePath"]];
+        song.price      = [SongDic objectForKey:@"Price"];
+        song.updatedSong = [SongDic objectForKey:@"UpdatedSong"];
+        
+        [songArray addObject:song];
+    }
+    
+    album.songArray = songArray;
+}
+
+#pragma mark public methods
+
+- (Album*)searchAlbumByShortName:(NSString*) albumShortName
+{
+    Album* album = nil;
+    
+    //todo revisit
+    /*for (<#type *object#> in _categoryArray) {
+        <#statements#>
+    }*/
+    
+    return album;
+}
+
+- (NSMutableArray* ) searchAlbumByCategory:(AudioCategory *) category
+{
+    if (category.albumArray == nil) {
+        [self initializeAlbumByCategory:category];
+    }
+    
+    return category.albumArray;
+}
+
+- (NSMutableArray* ) searchSongByAlbum:(Album *) album
+{
+    if (album.songArray == nil) {
+        [self initializeSongByAlbum:album];
+    }
+    
+    return album.songArray;
+}
 
 @end

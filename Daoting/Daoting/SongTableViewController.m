@@ -37,10 +37,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     _playerHelper.delegate = self;
-    
-    _songManager    = [SongManager sharedManager];
-    _songManager.delegate = self;
-    _songs = [_songManager searchSongArrayByAlbumName:_album.shortName];
+    _songArray = [[CategoryManager sharedManager]searchSongByAlbum:_album];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -89,7 +86,6 @@
     [_timer invalidate];
     
     _playerHelper.delegate = nil;
-    _songManager.delegate = nil;
 }
 
 
@@ -181,7 +177,9 @@
             
             if ([song.updatedSong isEqualToString:@"YES"]) {
                 song.updatedSong = @"NO";
-                [[SongManager sharedManager] writeBacktoPlist:_album.shortName];
+                
+                //todo: revisit
+                //[[SongManager sharedManager] writeBacktoPlist:_album.shortName];
             }
             
             [_appData save];
@@ -276,7 +274,7 @@
 - (void)updateCellAt:(NSIndexPath *)indexPath
 {
     SongCell* songCell = (SongCell*)[_tableview cellForRowAtIndexPath:indexPath];
-    Song *song = [_songs objectAtIndex:indexPath.row];
+    Song *song = [_songArray objectAtIndex:indexPath.row];
     NSString *key = [NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber];
     AFHTTPRequestOperation *operation = [[AFDownloadHelper sharedAFDownloadHelper] searchOperationbyKey:key];
 
@@ -521,9 +519,9 @@
 {
     //1.calculate how many coins need for download all items
     int coinsNeeded = 0;
-    for (int i = 0; i < _songs.count; i++) {
+    for (int i = 0; i < _songArray.count; i++) {
         
-        Song *song = _songs[i];
+        Song *song = _songArray[i];
         
         //1.1 check the song had been purchased or not
         BOOL purchased = [_appData songNumber:song.songNumber ispurchasedwithAlbum:_album.shortName];
@@ -533,9 +531,9 @@
     }
     //2.if coin is enough, add all download item into download queue
     if (_appData.coins >= coinsNeeded) {
-        for (int i = 0; i < _songs.count; i++) {
+        for (int i = 0; i < _songArray.count; i++) {
             
-            Song *song = _songs[i];
+            Song *song = _songArray[i];
             
             //2.1 check the song had been downloaded or not
             BOOL downloaded = [[NSFileManager defaultManager] fileExistsAtPath:[song.filePath absoluteString]];
@@ -552,7 +550,8 @@
                 [[AppData sharedAppData] addtoPurchasedQueue:song withAlbumShortname:_album.shortName];
                 if ([song.updatedSong isEqualToString:@"YES"]) {
                     song.updatedSong = @"NO";
-                    [[SongManager sharedManager] writeBacktoPlist:_album.shortName];
+                    //todo revist
+                    //[[SongManager sharedManager] writeBacktoPlist:_album.shortName];
                 }
             }
         }
@@ -564,9 +563,9 @@
     //if cois is not enough, navigate to store view and give notification
     else{
         
-        for (int i = 0; i < _songs.count; i++) {
+        for (int i = 0; i < _songArray.count; i++) {
             
-            Song *song = _songs[i];
+            Song *song = _songArray[i];
             
             //2.2 check the song had been purchased or not
             BOOL purchased = [_appData songNumber:song.songNumber ispurchasedwithAlbum:_album.shortName];
@@ -591,8 +590,8 @@
 
 - (void)cancelDownloadAll
 {
-    for (int i = 0; i < _songs.count; i++) {
-        Song *song = _songs[i];
+    for (int i = 0; i < _songArray.count; i++) {
+        Song *song = _songArray[i];
         
         NSString *key = [NSString stringWithFormat:@"%@_%@", _album.shortName, song.songNumber];
         
@@ -632,7 +631,7 @@
         }
         else
         {
-            [self playSong:_songs[0]];
+            [self playSong:_songArray[0]];
         }
     }
 }
@@ -642,8 +641,8 @@
     //check currentSongNumber
     NSInteger currentSongNumber = [_appData.currentSong.songNumber intValue];
     
-    if (currentSongNumber < _songs.count) {
-        Song *song = [_songs objectAtIndex:currentSongNumber];
+    if (currentSongNumber < _songArray.count) {
+        Song *song = [_songArray objectAtIndex:currentSongNumber];
         
         [self playSong:song];
     }
@@ -656,7 +655,7 @@
     NSInteger currentSongNumber = [_appData.currentSong.songNumber intValue];
     
     if ( currentSongNumber - 1 > 0) {
-        Song *song = [_songs objectAtIndex:(currentSongNumber -2)];
+        Song *song = [_songArray objectAtIndex:(currentSongNumber -2)];
         
         [self playSong:song];
     }
@@ -692,23 +691,24 @@
 
 - (void)onSongUpdated
 {
-    _songs = [_songManager searchSongArrayByAlbumName:_album.shortName];
+    //todo revisit
+    /*_songArray = [_songManager searchSongArrayByAlbumName:_album.shortName];
     
     [_tableview reloadData];
     
-    [self navigateToLatestSong];
+    [self navigateToLatestSong];*/
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _songs.count;
+    return _songArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Song *song = [_songs objectAtIndex:indexPath.row];
+    Song *song = [_songArray objectAtIndex:indexPath.row];
     SongCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SongCell" forIndexPath:indexPath];
     
     cell.backgroundColor = [UIColor clearColor];
@@ -752,7 +752,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Song *selectedSong = [_songs objectAtIndex:indexPath.row];
+    Song *selectedSong = [_songArray objectAtIndex:indexPath.row];
     
     //1. check the selected song is current playing song
     if ([[selectedSong.Url absoluteString] isEqualToString:[_appData.currentSong.Url absoluteString]]) {
@@ -805,21 +805,22 @@
 {
     t_currentsong = 0;
     
-    Song *song = _songs[t_currentsong];
+    Song *song = _songArray[t_currentsong];
     
     [self playSongbyHelper:song];
 }
 
 - (void)onTest
 {
-    if (t_currentsong == (_songs.count - 1)) {
-        [[SongManager sharedManager] writeBacktoPlist:_album.shortName];
+    if (t_currentsong == (_songArray.count - 1)) {
+        //todo revisit
+        //[[SongManager sharedManager] writeBacktoPlist:_album.shortName];
         NSLog(@"%d", t_currentsong);
         
         return;
     }
     
-    Song *song = _songs[t_currentsong];
+    Song *song = _songArray[t_currentsong];
     
     song.duration = [self formatTimeFromSeconds:_playerHelper.audioPlayer.duration];
     

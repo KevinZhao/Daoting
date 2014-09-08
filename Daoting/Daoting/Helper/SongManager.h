@@ -14,15 +14,15 @@
 #import "AlbumManager.h"
 
 ///////////////////////////////////////////////////////////////////////////
-@protocol SongManagerDelegate <NSObject>
+//@protocol SongManagerDelegate <NSObject>
 
-- (void)onSongUpdated;
+//- (void)onSongUpdated;
 
-@end
+//@end
 ///////////////////////////////////////////////////////////////////////////
 
 @interface SongManager : NSObject
-{
+/*{
     NSMutableDictionary *_songArrayDictionaryByAlbumName;
 }
 
@@ -34,5 +34,5 @@
 - (void)writeBacktoPlist:(NSString*) albumName;
 
 - (void)updateSongs:(NSString *)albumShortName;
-
+*/
 @end

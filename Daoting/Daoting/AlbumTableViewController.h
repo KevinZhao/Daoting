@@ -12,14 +12,14 @@
 #import "AppDelegate.h"
 #import "AudioCategory.h"
 
-@interface AlbumTableViewController : UITableViewController<AlbumManagerDelegate>
+@interface AlbumTableViewController : UITableViewController
 {
-    NSMutableArray      *_albums;
+    NSMutableArray      *_albumArray;
     AppDelegate         *_appdelegate;
     AudioCategory       *_category;
 }
 
-@property (nonatomic, retain) NSMutableArray *albums;
+@property (nonatomic, retain) NSMutableArray *albumArray;
 
 - (void)setDetailItem:(AudioCategory *)category;
 

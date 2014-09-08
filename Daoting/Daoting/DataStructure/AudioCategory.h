@@ -17,4 +17,6 @@
 @property (nonatomic, retain) NSString  *description;
 @property (nonatomic, retain) NSString  *updatedCategory;
 
+@property (nonatomic, retain) NSMutableArray *albumArray;
+
 @end

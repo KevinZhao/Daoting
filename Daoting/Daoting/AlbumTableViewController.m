@@ -26,17 +26,18 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [AlbumManager sharedManager].delegate = self;
-    _albums = [[AlbumManager sharedManager] searchAlbumArrayByAlbumName:_category.shortName];
+    _albumArray = [[CategoryManager sharedManager] searchAlbumByCategory:_category];
     
     [self.tableView reloadData];
     
-    //[self navigateToLatestAlbum];
+    self.navigationItem.title = _category.title;
+    
+    [self navigateToLatestAlbum];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [AlbumManager sharedManager].delegate = nil;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,12 +48,12 @@
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _albums.count;
+    return _albumArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Album *album = [_albums objectAtIndex:indexPath.row];
+    Album *album = [_albumArray objectAtIndex:indexPath.row];
     AlbumCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AlbumCell" forIndexPath:indexPath];
     
     cell.img_albumNew.hidden = YES;
@@ -98,17 +99,19 @@
 
         SongTableViewController *destinationViewController = [segue destinationViewController];
         
-        Album *album = [_albums objectAtIndex:indexpath.row];
+        Album *album = [_albumArray objectAtIndex:indexpath.row];
         
         if ([album.updatedAlbum isEqualToString:@"YES"]) {
             
             album.updatedAlbum = @"NO";
-            [[AlbumManager sharedManager] writeBacktoPlist];
+            
+            //todo
+            //[[AlbumManager sharedManager] writeBacktoPlist];
         }
         
         destinationViewController.hidesBottomBarWhenPushed = YES;
         [destinationViewController setDetailItem:album];
-        
+                
         //remove title of back button
         UIBarButtonItem *temporaryBarButtonItem=[[UIBarButtonItem alloc] init];
         temporaryBarButtonItem.title=@"";
@@ -120,25 +123,22 @@
 
 -(void) onAlbumUpdated
 {
-    //_albums = [AlbumManager sharedManager].albums;
+    /*_albumArray = [[AlbumManager sharedManager] searchAlbumArrayByAlbumName:_category.shortName];
     
     [self.tableView reloadData];
     
-    [self navigateToLatestAlbum];
+    [self navigateToLatestAlbum];*/
 }
 
 #pragma mark Internal Business Logic
 
 -(void) navigateToLatestAlbum
-{
-    //navigate to current album
-    Album *album = [[AlbumManager sharedManager] searchAlbumByShortName:[AppData sharedAppData].currentAlbum.shortName];
-    
-    for (int i = 0; i < _albums.count; i ++) {
+{    
+    for (int i = 0; i < _albumArray.count; i ++) {
         
-        Album *subAlbum = _albums[i];
+        Album *subAlbum = _albumArray[i];
         
-        if (album.shortName == subAlbum.shortName) {
+        if ([AppData sharedAppData].currentAlbum.shortName == subAlbum.shortName) {
             
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
             [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];

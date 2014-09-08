@@ -10,6 +10,7 @@
 
 @implementation SongManager
 
+/*
 + (SongManager *)sharedManager {
     static dispatch_once_t once;
     static SongManager * sharedInstance;
@@ -62,7 +63,7 @@
 
 - (void)updateSongs:(NSString *)albumShortName
 {
-    Album *album = [[AlbumManager sharedManager] searchAlbumByShortName:albumShortName];
+    /*Album *album = [[AlbumManager sharedManager] searchAlbumByShortName:albumShortName];
     
     //1. Check if plist is in document directory
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -336,5 +337,6 @@
     
     [newPlist_dictionary writeToFile:plistPath atomically:NO];
 }
+ */
 
 @end

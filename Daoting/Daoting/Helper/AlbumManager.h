@@ -11,29 +11,27 @@
 #import "AFNetworking.h"
 #import "SongManager.h"
 
-@protocol AlbumManagerDelegate <NSObject>
+//@protocol AlbumManagerDelegate <NSObject>
 
-- (void)onAlbumUpdated;
+//- (void)onAlbumUpdated;
 
-@end
+//@end
 
 @interface AlbumManager : NSObject
-{
-    //NSMutableArray      *_albums;
-    NSMutableDictionary *_albumArrayDictionaryByAlbumName;
+//{
+//    NSMutableDictionary *_albumArrayDictionary;
     
-    BOOL                isUpdating;
-}
+//    BOOL                isUpdating;
+//}
 
-//@property (nonatomic, retain)  NSMutableArray      *albums;
-@property (readwrite, unsafe_unretained) id<AlbumManagerDelegate> delegate;
+//@property (readwrite, unsafe_unretained) id<AlbumManagerDelegate> delegate;
 
 
-+ (AlbumManager *)sharedManager;
+//+ (AlbumManager *)sharedManager;
 
-- (NSMutableArray *)searchAlbumArrayByAlbumName:(NSString*) categoryName;
-- (Album *)searchAlbumByShortName:(NSString*) shortName;
-- (void)writeBacktoPlist;
-- (void)foundNewSonginAlbum:(Album*) newAlbum;
+//- (NSMutableArray *)searchAlbumArrayByAlbumName:(NSString*) categoryName;
+//- (Album *)searchAlbumByCategory:(NSString*) categoryShortName ByAlbumShortName:(NSString*) albumShortName;
+//- (void)writeBacktoPlist;
+//- (void)foundNewSonginAlbum:(Album*) newAlbum;
 
 @end
