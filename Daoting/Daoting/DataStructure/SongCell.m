@@ -59,7 +59,7 @@
             
             if ([song.updatedSong isEqualToString:@"YES"]) {
                 song.updatedSong = @"NO";
-                [[SongManager sharedManager] writeBacktoPlist:album.shortName];
+                //[[SongManager sharedManager] writeBacktoPlist:album.shortName];
                 self.img_new.hidden = YES;
             }
             

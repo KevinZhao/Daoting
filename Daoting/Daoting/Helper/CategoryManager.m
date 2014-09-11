@@ -109,7 +109,7 @@
     //1.1 if no, copy from resource directory to document directory
     if (![fileManager fileExistsAtPath:plistPathinDocumentDirectory]){
     
-        NSString *plistPathinResourceDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/%@_AlbumList.plist"];
+        NSString *plistPathinResourceDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:[NSString stringWithFormat:@"/%@_AlbumList.plist",category.shortName]];
         
         if ([fileManager fileExistsAtPath:plistPathinResourceDirectory]) {
             [fileManager copyItemAtPath:plistPathinResourceDirectory toPath:plistPathinDocumentDirectory error:nil];
@@ -158,7 +158,7 @@
     //1.1 if no, copy from resource directory to document directory
     if (![fileManager fileExistsAtPath:plistPathinDocumentDirectory]){
         
-        NSString *plistPathinResourceDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/%@_AlbumList.plist"];
+        NSString *plistPathinResourceDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:[NSString stringWithFormat:@"/%@_SongList.plist", album.shortName]];
         
         if ([fileManager fileExistsAtPath:plistPathinResourceDirectory]) {
             [fileManager copyItemAtPath:plistPathinResourceDirectory toPath:plistPathinDocumentDirectory error:nil];
