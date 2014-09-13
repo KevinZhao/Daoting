@@ -557,5 +557,35 @@
 		<key>Url</key>
 		<string>http://yongzheng4.qiniudn.com/%E9%9B%8D%E6%AD%A3%E5%89%91%E4%BE%A0%E5%9B%BE037.mp3</string>
 	</dict>
+	<key>38</key>
+	<dict>
+		<key>Duration</key>
+		<string>00:21:36</string>
+		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
+		<string>20</string>
+		<key>Title</key>
+		<string>雍正剑侠图</string>
+		<key>UpdatedSong</key>
+		<string></string>
+		<key>Url</key>
+		<string>http://yongzheng4.qiniudn.com/%E9%9B%8D%E6%AD%A3%E5%89%91%E4%BE%A0%E5%9B%BE038.mp3</string>
+	</dict>
+	<key>39</key>
+	<dict>
+		<key>Duration</key>
+		<string>00:21:36</string>
+		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
+		<string>20</string>
+		<key>Title</key>
+		<string>雍正剑侠图</string>
+		<key>UpdatedSong</key>
+		<string></string>
+		<key>Url</key>
+		<string>http://yongzheng4.qiniudn.com/%E9%9B%8D%E6%AD%A3%E5%89%91%E4%BE%A0%E5%9B%BE039.mp3</string>
+	</dict>
 </dict>
 </plist>
