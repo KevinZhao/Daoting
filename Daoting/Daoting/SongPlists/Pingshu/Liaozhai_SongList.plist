@@ -2417,5 +2417,35 @@
 		<key>Url</key>
 		<string>http://liaozhai.qiniudn.com/%E7%8E%8B%E7%8E%A5%E6%B3%A2_%E8%81%8A%E6%96%8B%E4%B9%8B%E7%94%BB%E7%9A%AE02.mp3</string>
 	</dict>
+	<key>162</key>
+	<dict>
+		<key>Duration</key>
+		<string>00:13:40</string>
+		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
+		<string>20</string>
+		<key>Progress</key>
+		<string>0</string>
+		<key>Title</key>
+		<string>崂山道士</string>
+		<key>Url</key>
+		<string>http://bcs.duapp.com/liaozhai/王玥波_聊斋之崂山道士01.mp3</string>
+	</dict>
+	<key>163</key>
+	<dict>
+		<key>Duration</key>
+		<string>00:13:08</string>
+		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
+		<string>20</string>
+		<key>Progress</key>
+		<string>0</string>
+		<key>Title</key>
+		<string>崂山道士</string>
+		<key>Url</key>
+		<string>http://bcs.duapp.com/liaozhai/王玥波_聊斋之崂山道士02.mp3</string>
+	</dict>
 </dict>
 </plist>
