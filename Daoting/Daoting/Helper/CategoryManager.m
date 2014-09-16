@@ -40,10 +40,11 @@
         NSString *plistPathinResourceDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/CategoryList.plist"];
         
         if ([fileManager fileExistsAtPath:plistPathinResourceDirectory]) {
-            
             [fileManager copyItemAtPath:plistPathinResourceDirectory toPath:plistPathinDocumentDirectory error:nil];
         }
         
+    }else{
+        //Critical Error, should not happen
     }
     
     [self initializeCategory];
@@ -53,6 +54,8 @@
 
 - (void)initializeCategory
 {
+    self.categoryUpdatingStatus = Initializing;
+    
     _categoryArray = [[NSMutableArray alloc]init];
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -74,6 +77,8 @@
         
         [_categoryArray addObject:category];
     }
+    
+    self.categoryUpdatingStatus = InitializingCompleted;
 }
 
 - (AudioCategory *)searchCategoryByShortName:(NSString*) shortName
@@ -93,7 +98,10 @@
 
 - (void)updateCategory
 {
+    self.categoryUpdatingStatus = Upgrating;
     
+    
+    self.categoryUpdatingStatus = UpgratingCompleted;
 }
 
 #pragma mark Initialize Album

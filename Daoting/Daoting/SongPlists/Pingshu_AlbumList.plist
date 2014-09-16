@@ -405,5 +405,31 @@
 		张庆升，评书艺人。代表作品《侠义金镖》，《大清剑侠》等。张庆升声音嘶哑，说书风格别样。评书艺人张少佐的叔叔兼启蒙老师。
 		</string>
 	</dict>
+	<key>15</key>
+	<dict>
+		<key>Title</key>
+		<string>君臣斗</string>
+		<key>ImageURL</key>
+		<string>http://bcs.duapp.com/daoting/Junchendou.png</string>
+		<key>Description</key>
+		<string>播讲:王玥波 全本</string>
+		<key>SongList</key>
+		<string>http://bcs.duapp.com/daoting/Junchendou_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Junchendou</string>
+		<key>Artist</key>
+		<string>王玥波</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string></string>
+		<key>LongDescription</key>
+		<string>《官场斗》 又叫《满汉斗》、《金殿斗智》、《君臣斗智》，是“八大棍儿”之一。
+
+来源于长篇竹板书《刘公案》的片段，大约成书于道光年间。前辈相声艺人朱绍文（穷不怕）常说的《乾隆爷打江南围》，即是此段的前身。清末阎德山、李德钖（万人迷），对之又有较大发展，“可连说数日”。后经张寿臣及马桂元整理修改，开始定名为《满汉斗》。传至刘宝瑞、王长友、刘奎珍、冯立樟等人，对此段也作过不同程度的加工润色。 刘宝瑞的艺术特点是“评”、“叙”细密，幽默风趣，表情微妙，朴实无华，与同辈演员常宝堃、侯宝林名声并列，艺术上各有千秋。尤其在单口相声方面的成就和影响甚为突出。
+
+这个版本是王玥波的35回版本。
+		</string>
+	</dict>
 </dict>
 </plist>

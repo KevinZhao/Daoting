@@ -12,7 +12,6 @@
 #import "AppDelegate.h"
 #import "UIImageView+AFNetworking.h"
 #import "PurchasedSongViewController.h"
-#import "AlbumManager.h"
 #import "CategoryManager.h"
 
 

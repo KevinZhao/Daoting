@@ -21,12 +21,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    //[CategoryManager sharedManager].delegate = self;
     _categoryArray = [CategoryManager sharedManager].categoryArray;
-    
-    //[self.tableView reloadData];
-    
-    //[self navigateToLatestAlbum];
 }
 
 #pragma mark - Table view data source

@@ -43,6 +43,7 @@
 		0A5F4C9D195AB0D3003924C7 /* AppIcon76x76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A5F4C9C195AB0D3003924C7 /* AppIcon76x76@2x.png */; };
 		0A659EF51977AFFD00FC893B /* download_pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A659EE81977AFFD00FC893B /* download_pause@2x.png */; };
 		0A65A8FE19A70D1000CAF5CA /* ShareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A65A8FD19A70D1000CAF5CA /* ShareCell.m */; };
+		0A67A0C619C71A6C0079C1B8 /* Junchendou_SongList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A67A0C519C71A6C0079C1B8 /* Junchendou_SongList.plist */; };
 		0A6E296D19A5DD51002808F7 /* NewStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6E296C19A5DD51002808F7 /* NewStoreViewController.m */; };
 		0A6E297119A5E5FC002808F7 /* CurrentCoinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6E297019A5E5FC002808F7 /* CurrentCoinCell.m */; };
 		0A7A8CD819590B4C003FAA92 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A7A8CD719590B4C003FAA92 /* CFNetwork.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -101,13 +102,11 @@
 		D8338D5319A781A900CBC97F /* AlbumNewNotify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8338D5119A781A900CBC97F /* AlbumNewNotify@2x.png */; };
 		D8338D5419A781A900CBC97F /* SongNewNotify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8338D5219A781A900CBC97F /* SongNewNotify@2x.png */; };
 		D885571E1999023B00B0F891 /* AFDownloadHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D885570B1999023B00B0F891 /* AFDownloadHelper.m */; };
-		D885571F1999023B00B0F891 /* AlbumManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D885570D1999023B00B0F891 /* AlbumManager.m */; };
 		D88557201999023B00B0F891 /* CoinIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D885570F1999023B00B0F891 /* CoinIAPHelper.m */; };
 		D88557211999023B00B0F891 /* DownloadStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = D88557111999023B00B0F891 /* DownloadStatus.m */; };
 		D88557221999023B00B0F891 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D88557131999023B00B0F891 /* IAPHelper.m */; };
 		D88557231999023B00B0F891 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D88557151999023B00B0F891 /* KeychainWrapper.m */; };
 		D88557241999023B00B0F891 /* SampleQueueId.m in Sources */ = {isa = PBXBuildFile; fileRef = D88557171999023B00B0F891 /* SampleQueueId.m */; };
-		D88557251999023B00B0F891 /* SongManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D88557191999023B00B0F891 /* SongManager.m */; };
 		D88557261999023B00B0F891 /* STKAudioPlayerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D885571B1999023B00B0F891 /* STKAudioPlayerHelper.m */; };
 		D88557321999024B00B0F891 /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = D88557291999024B00B0F891 /* Album.m */; };
 		D88557331999024B00B0F891 /* AlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D885572B1999024B00B0F891 /* AlbumCell.m */; };
@@ -180,6 +179,7 @@
 		0A659EE81977AFFD00FC893B /* download_pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "download_pause@2x.png"; sourceTree = "<group>"; };
 		0A65A8FC19A70D1000CAF5CA /* ShareCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShareCell.h; path = Store/ShareCell.h; sourceTree = "<group>"; };
 		0A65A8FD19A70D1000CAF5CA /* ShareCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShareCell.m; path = Store/ShareCell.m; sourceTree = "<group>"; };
+		0A67A0C519C71A6C0079C1B8 /* Junchendou_SongList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Junchendou_SongList.plist; path = SongPlists/Pingshu/Junchendou_SongList.plist; sourceTree = "<group>"; };
 		0A6E296B19A5DD51002808F7 /* NewStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewStoreViewController.h; sourceTree = "<group>"; };
 		0A6E296C19A5DD51002808F7 /* NewStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewStoreViewController.m; sourceTree = "<group>"; };
 		0A6E296F19A5E5FC002808F7 /* CurrentCoinCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentCoinCell.h; sourceTree = "<group>"; };
@@ -256,8 +256,6 @@
 		D8338D5219A781A900CBC97F /* SongNewNotify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SongNewNotify@2x.png"; sourceTree = "<group>"; };
 		D885570A1999023B00B0F891 /* AFDownloadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFDownloadHelper.h; path = Helper/AFDownloadHelper.h; sourceTree = "<group>"; };
 		D885570B1999023B00B0F891 /* AFDownloadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFDownloadHelper.m; path = Helper/AFDownloadHelper.m; sourceTree = "<group>"; };
-		D885570C1999023B00B0F891 /* AlbumManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlbumManager.h; path = Helper/AlbumManager.h; sourceTree = "<group>"; };
-		D885570D1999023B00B0F891 /* AlbumManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlbumManager.m; path = Helper/AlbumManager.m; sourceTree = "<group>"; };
 		D885570E1999023B00B0F891 /* CoinIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoinIAPHelper.h; path = Helper/CoinIAPHelper.h; sourceTree = "<group>"; };
 		D885570F1999023B00B0F891 /* CoinIAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoinIAPHelper.m; path = Helper/CoinIAPHelper.m; sourceTree = "<group>"; };
 		D88557101999023B00B0F891 /* DownloadStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DownloadStatus.h; path = Helper/DownloadStatus.h; sourceTree = "<group>"; };
@@ -268,8 +266,6 @@
 		D88557151999023B00B0F891 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeychainWrapper.m; path = Helper/KeychainWrapper.m; sourceTree = "<group>"; };
 		D88557161999023B00B0F891 /* SampleQueueId.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SampleQueueId.h; path = Helper/SampleQueueId.h; sourceTree = "<group>"; };
 		D88557171999023B00B0F891 /* SampleQueueId.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SampleQueueId.m; path = Helper/SampleQueueId.m; sourceTree = "<group>"; };
-		D88557181999023B00B0F891 /* SongManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongManager.h; path = Helper/SongManager.h; sourceTree = "<group>"; };
-		D88557191999023B00B0F891 /* SongManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongManager.m; path = Helper/SongManager.m; sourceTree = "<group>"; };
 		D885571A1999023B00B0F891 /* STKAudioPlayerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STKAudioPlayerHelper.h; path = Helper/STKAudioPlayerHelper.h; sourceTree = "<group>"; };
 		D885571B1999023B00B0F891 /* STKAudioPlayerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STKAudioPlayerHelper.m; path = Helper/STKAudioPlayerHelper.m; sourceTree = "<group>"; };
 		D88557281999024B00B0F891 /* Album.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Album.h; path = DataStructure/Album.h; sourceTree = "<group>"; };
@@ -559,10 +555,6 @@
 				D88557171999023B00B0F891 /* SampleQueueId.m */,
 				0A96D75319B420D0002059C7 /* CategoryManager.h */,
 				0A96D75419B420D0002059C7 /* CategoryManager.m */,
-				D885570C1999023B00B0F891 /* AlbumManager.h */,
-				D885570D1999023B00B0F891 /* AlbumManager.m */,
-				D88557181999023B00B0F891 /* SongManager.h */,
-				D88557191999023B00B0F891 /* SongManager.m */,
 				D885571A1999023B00B0F891 /* STKAudioPlayerHelper.h */,
 				D885571B1999023B00B0F891 /* STKAudioPlayerHelper.m */,
 			);
@@ -593,6 +585,7 @@
 		0AF65F0D19BB46CA00362C6E /* Pingshu */ = {
 			isa = PBXGroup;
 			children = (
+				0A67A0C519C71A6C0079C1B8 /* Junchendou_SongList.plist */,
 				0A2F88AD19BC530200888830 /* Haizeiwang_SongList.plist */,
 				0A2F88AE19BC530200888830 /* Jinbiao_SongList.plist */,
 				0A2F88AF19BC530200888830 /* Liaozhai_SongList.plist */,
@@ -820,6 +813,7 @@
 				0A98D6641920EAB700E46EB9 /* progressBar@2x.png in Resources */,
 				0A3C7FF519B184FB00686C5C /* Resource.bundle in Resources */,
 				0A98D6651920EAB700E46EB9 /* wangyuebo.jpg in Resources */,
+				0A67A0C619C71A6C0079C1B8 /* Junchendou_SongList.plist in Resources */,
 				0AEFC3801988DDC800CECC93 /* tabbar_setting@2x.png in Resources */,
 				0A98D66D1920F1F500E46EB9 /* arrowSelected@2x.png in Resources */,
 				0A2F88C319BC530200888830 /* Xiayi_SongList.plist in Resources */,
@@ -894,7 +888,6 @@
 				D885574E199902CF00B0F891 /* PurchasedSongViewController.m in Sources */,
 				0A65A8FE19A70D1000CAF5CA /* ShareCell.m in Sources */,
 				D88557231999023B00B0F891 /* KeychainWrapper.m in Sources */,
-				D885571F1999023B00B0F891 /* AlbumManager.m in Sources */,
 				D885574F199902CF00B0F891 /* SettingCellDisclosure.m in Sources */,
 				5933AD6518D03EC1001D707B /* main.m in Sources */,
 				0A03A23819B9FFD700DD8D6B /* AudioCategory.m in Sources */,
@@ -905,7 +898,6 @@
 				D8855751199902CF00B0F891 /* SettingViewController.m in Sources */,
 				D88557241999023B00B0F891 /* SampleQueueId.m in Sources */,
 				0AC69C5E1946F452004C6A67 /* DACircularProgressView.m in Sources */,
-				D88557251999023B00B0F891 /* SongManager.m in Sources */,
 				D88557211999023B00B0F891 /* DownloadStatus.m in Sources */,
 				0A8BA00F1940C15E001307D6 /* DownloadCell.m in Sources */,
 				D885574C199902CF00B0F891 /* PurchasedAlbumViewController.m in Sources */,

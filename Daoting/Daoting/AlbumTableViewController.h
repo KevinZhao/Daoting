@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "AppData.h"
-#import "AlbumManager.h"
 #import "AppDelegate.h"
 #import "AudioCategory.h"
 

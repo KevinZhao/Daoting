@@ -11,10 +11,24 @@
 #import "Album.h"
 #import "Song.h"
 
+
+enum
+{
+    Initializing  = 0,
+    InitializingCompleted = 1,
+    Upgrating     = 2,
+    UpgratingCompleted = 3
+};
+typedef NSInteger UpdatingStatus;
+
 @interface CategoryManager : NSObject
 {
     NSMutableArray      *_categoryArray;
 }
+
+@property (nonatomic, assign) UpdatingStatus        categoryUpdatingStatus;
+@property (nonatomic, assign) UpdatingStatus        albumUpdatingStatus;
+@property (nonatomic, assign) UpdatingStatus        songUpdatingStatus;
 
 @property (nonatomic, retain) NSMutableArray        *categoryArray;
 
