@@ -121,6 +121,7 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
     [encodedData writeToFile:[AppData filePath] atomically:YES];
     
     NSString* checksum = [KeychainWrapper computeSHA256DigestForData: encodedData];
+    
     if ([KeychainWrapper keychainStringFromMatchingIdentifier: SSDataChecksumKey]) {
         [KeychainWrapper updateKeychainValue:checksum forIdentifier:SSDataChecksumKey];
     } else {

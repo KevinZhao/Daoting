@@ -13,7 +13,6 @@
 #import "AFDownloadHelper.h"
 #import "STKAudioPlayerHelper.h"
 #import "WXApi.h"
-//#import "AlbumManager.h"
 #import "CategoryManager.h"
 #import "AppData.h"
 #import "StoreKit/StoreKit.h"
