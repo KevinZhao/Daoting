@@ -53,6 +53,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[SongTableViewController configureNowPlayingInfo]:SongTableViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "_audioPlayer.duration">
+            </PersistentString>
+            <PersistentString
+               value = "_audioPlayer.progress">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[AFURLConnectionOperation cancel]:AFURLConnectionOperation.m">
          <PersistentStrings>
             <PersistentString
@@ -78,10 +89,10 @@
          contextName = "-[SongCell onbtn_pausePressed:]:SongCell.m">
          <PersistentStrings>
             <PersistentString
-               value = "[AFDownloadHelper sharedAFDownloadHelper].downloadQueue">
+               value = "[AFDownloadHelper sharedAFDownloadHelper].downloadKeyQueue">
             </PersistentString>
             <PersistentString
-               value = "[AFDownloadHelper sharedAFDownloadHelper].downloadKeyQueue">
+               value = "[AFDownloadHelper sharedAFDownloadHelper].downloadQueue">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

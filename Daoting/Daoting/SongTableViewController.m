@@ -412,14 +412,19 @@
         [dict setObject:[NSString stringWithFormat:@"%@ %@", song.title, song.songNumber] forKey:MPMediaItemPropertyAlbumTitle];
         [dict setObject:album.artistName forKey:MPMediaItemPropertyArtist];
         //Revisit next Version
-        [dict setObject:[NSNumber numberWithInteger:_audioPlayer.duration] forKey:MPMediaItemPropertyPlaybackDuration];
-        [dict setObject:[NSNumber numberWithInteger:_audioPlayer.progress] forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
+        //todo
+        //[dict setObject:[NSNumber numberWithInteger:_audioPlayer.duration] forKey:MPMediaItemPropertyPlaybackDuration];
+        //[dict setObject:[NSNumber numberWithInteger:_audioPlayer.progress] forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
+        [dict setObject:[NSNumber numberWithInteger:6000] forKey:MPMediaItemPropertyPlaybackDuration];
+        [dict setObject:[NSNumber numberWithInteger:1000] forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
         
         [dict setObject:[NSNumber numberWithInteger:1.0] forKey:MPNowPlayingInfoPropertyPlaybackRate];
         [dict setObject:[NSNumber numberWithInteger:2] forKey:MPMediaItemPropertyAlbumTrackCount];
         
+        UIImage *placeholderImage = [UIImage imageNamed:@"Icon-72.png"];
         UIImageView *imgv = [[UIImageView alloc]init];
-        [imgv setImageWithURL:album.imageUrl];
+        //todo: bug, when app move to background and back to foreground
+        [imgv setImageWithURL:album.imageUrl placeholderImage:placeholderImage];
         UIImage *img = imgv.image;
         
         MPMediaItemArtwork * mArt = [[MPMediaItemArtwork alloc] initWithImage:img];
@@ -500,7 +505,7 @@
                                  }
                                  else if (state == SSResponseStateFail)
                                  {
-                                     NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                     //NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
                                  }
                              }];
 }

@@ -138,6 +138,7 @@
 		0481672862474C608EB8AB38 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		0A03A23619B9FFD700DD8D6B /* AudioCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioCategory.h; path = DataStructure/AudioCategory.h; sourceTree = "<group>"; };
 		0A03A23719B9FFD700DD8D6B /* AudioCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioCategory.m; path = DataStructure/AudioCategory.m; sourceTree = "<group>"; };
+		0A088FC719CF24EA00047DE8 /* XGSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGSetting.h; sourceTree = "<group>"; };
 		0A1FA9991958556C002F48EA /* qr_toolbar_more_hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr_toolbar_more_hl@2x.png"; sourceTree = "<group>"; };
 		0A1FA99A1958556C002F48EA /* qr_toolbar_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr_toolbar_more@2x.png"; sourceTree = "<group>"; };
 		0A1FA99D19585612002F48EA /* qr_toolbar_more_hl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qr_toolbar_more_hl.png; sourceTree = "<group>"; };
@@ -468,6 +469,7 @@
 		0A3C7FEE19B184FB00686C5C /* XGPush */ = {
 			isa = PBXGroup;
 			children = (
+				0A088FC719CF24EA00047DE8 /* XGSetting.h */,
 				0A3C7FEF19B184FB00686C5C /* libXG-SDK.a */,
 				0A3C7FF019B184FB00686C5C /* XGPush.h */,
 			);
@@ -1054,7 +1056,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1089,7 +1091,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

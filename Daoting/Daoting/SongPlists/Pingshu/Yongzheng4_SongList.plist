@@ -692,5 +692,20 @@
 		<key>Url</key>
 		<string>http://182.254.148.156/yongzheng4/%E9%9B%8D%E6%AD%A3%E5%89%91%E4%BE%A0%E5%9B%BE046.mp3</string>
 	</dict>
+	<key>47</key>
+	<dict>
+		<key>Duration</key>
+		<string>00:21:20</string>
+		<key>FilePath</key>
+		<string></string>
+		<key>Price</key>
+		<string>20</string>
+		<key>Title</key>
+		<string>雍正剑侠图</string>
+		<key>UpdatedSong</key>
+		<string></string>
+		<key>Url</key>
+		<string>http://182.254.148.156/yongzheng4/%E9%9B%8D%E6%AD%A3%E5%89%91%E4%BE%A0%E5%9B%BE047.mp3</string>
+	</dict>
 </dict>
 </plist>
