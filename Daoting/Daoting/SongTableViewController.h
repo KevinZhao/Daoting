@@ -23,7 +23,7 @@
 #import "TSMessageView.h"
 #import "UIImageView+AFNetworking.h"
 
-@interface SongTableViewController : UIViewController<UIScrollViewDelegate, UITableViewDataSource,
+@interface SongTableViewController : UIViewController<UIScrollViewDelegate, UITableViewDataSource, ICategoryManagerDelegate,
     UITableViewDelegate, STKAudioPlayerHelperDelegate>
 {
     NSMutableArray                      *_songArray;

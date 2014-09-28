@@ -10,7 +10,7 @@
 #import "AudioCategory.h"
 #import "Album.h"
 #import "Song.h"
-
+#import "AFNetWorking.h"
 
 enum
 {
@@ -20,6 +20,16 @@ enum
     UpgratingCompleted = 3
 };
 typedef NSInteger UpdatingStatus;
+
+
+@protocol ICategoryManagerDelegate <NSObject>
+
+@optional
+-(void) onCategoryUpdated;
+-(void) onAlbumUpdated;
+-(void) onSongUpdated;
+
+@end
 
 @interface CategoryManager : NSObject
 {
@@ -32,11 +42,21 @@ typedef NSInteger UpdatingStatus;
 
 @property (nonatomic, retain) NSMutableArray        *categoryArray;
 
+@property (readwrite, unsafe_unretained) id<ICategoryManagerDelegate> delegate;
+
+- (void)update;
 
 + (CategoryManager *)sharedManager;
 
+- (AudioCategory*)searchCategoryByShortName:(NSString*) shortName;
+- (Album*)searchAlbumByShortName:(NSString*) albumShortName inCategory:(AudioCategory*) category;
+
 - (Album*)searchAlbumByShortName:(NSString*) albumShortName;
-- (NSMutableArray*) searchAlbumByCategory:(AudioCategory *) category;
-- (NSMutableArray* ) searchSongByAlbum:(Album *) album;
+
+- (NSMutableArray*) searchAlbumArrayByCategory:(AudioCategory *) category;
+- (NSMutableArray* ) searchSongArrayByAlbum:(Album *) album;
+
+- (void) writeBacktoAlbumListinCategory:(AudioCategory*) category;
+- (void) writeBacktoSongListinAlbum:(Album *)album;
 
 @end

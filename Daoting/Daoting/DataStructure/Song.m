@@ -11,6 +11,8 @@
 @implementation Song
 
 
+@synthesize description;
+
 - (void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeObject:self.songNumber forKey:@"songNumber"];
     [aCoder encodeObject:self.title forKey:@"title"];
@@ -20,6 +22,7 @@
     [aCoder encodeObject:self.price forKey:@"key"];
     [aCoder encodeDouble:self.progress forKey:@"progress"];
     [aCoder encodeObject:self.updatedSong forKey:@"new"];
+    [aCoder encodeObject:self.description forKey:@"description"];
 }
 - (id)initWithCoder:(NSCoder *)aDecoder{
     _songNumber = [aDecoder decodeObjectForKey:@"songNumber"];
@@ -30,6 +33,7 @@
     _price = [aDecoder decodeObjectForKey:@"key"];
     _progress = [aDecoder decodeDoubleForKey:@"progress"];
     _updatedSong = [aDecoder decodeObjectForKey:@"new"];
+    description = [aDecoder decodeObjectForKey:@"description"];
     
     return self;
 }

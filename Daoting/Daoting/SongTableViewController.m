@@ -37,7 +37,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     _playerHelper.delegate = self;
-    _songArray = [[CategoryManager sharedManager]searchSongByAlbum:_album];
+    _songArray = [[CategoryManager sharedManager]searchSongArrayByAlbum:_album];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -76,6 +76,8 @@
     self.navigationItem.title = _album.title;
     [self setupTimer];
     
+    [CategoryManager sharedManager].delegate = self;
+    
     //[self test];
 }
 
@@ -86,6 +88,8 @@
     [_timer invalidate];
     
     _playerHelper.delegate = nil;
+    
+    [CategoryManager sharedManager].delegate = nil;
 }
 
 
@@ -178,8 +182,7 @@
             if ([song.updatedSong isEqualToString:@"YES"]) {
                 song.updatedSong = @"NO";
                 
-                //todo: revisit
-                //[[SongManager sharedManager] writeBacktoPlist:_album.shortName];
+                [[CategoryManager sharedManager] writeBacktoSongListinAlbum:_album];
             }
             
             [_appData save];
@@ -536,6 +539,7 @@
     }
     //2.if coin is enough, add all download item into download queue
     if (_appData.coins >= coinsNeeded) {
+        
         for (int i = 0; i < _songArray.count; i++) {
             
             Song *song = _songArray[i];
@@ -555,11 +559,11 @@
                 [[AppData sharedAppData] addtoPurchasedQueue:song withAlbumShortname:_album.shortName];
                 if ([song.updatedSong isEqualToString:@"YES"]) {
                     song.updatedSong = @"NO";
-                    //todo revist
-                    //[[SongManager sharedManager] writeBacktoPlist:_album.shortName];
                 }
             }
         }
+        
+        [[CategoryManager sharedManager] writeBacktoSongListinAlbum:_album];
         [_appData save];
         [_appData updateiCloud];
         
@@ -692,16 +696,25 @@
 }
 
 
-#pragma mark - SongManagerDelegat
+#pragma mark - Category Manager Delegate
 
 - (void)onSongUpdated
 {
-    //todo revisit
-    /*_songArray = [_songManager searchSongArrayByAlbumName:_album.shortName];
+    _songArray = [[CategoryManager sharedManager] searchSongArrayByAlbum:_album];
     
     [_tableview reloadData];
     
-    [self navigateToLatestSong];*/
+    [self navigateToLatestSong];
+}
+
+- (void)onCategoryUpdated
+{
+
+}
+
+-(void)onAlbumUpdated
+{
+    
 }
 
 #pragma mark - Table view data source
@@ -818,8 +831,7 @@
 - (void)onTest
 {
     if (t_currentsong == (_songArray.count - 1)) {
-        //todo revisit
-        //[[SongManager sharedManager] writeBacktoPlist:_album.shortName];
+        [[CategoryManager sharedManager] writeBacktoSongListinAlbum:_album];
         NSLog(@"%d", t_currentsong);
         
         return;

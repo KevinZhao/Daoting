@@ -26,18 +26,20 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    _albumArray = [[CategoryManager sharedManager] searchAlbumByCategory:_category];
+    _albumArray = [[CategoryManager sharedManager] searchAlbumArrayByCategory:_category];
     
     [self.tableView reloadData];
     
     self.navigationItem.title = _category.title;
     
     [self navigateToLatestAlbum];
+    
+    [CategoryManager sharedManager].delegate = self;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    
+    [CategoryManager sharedManager].delegate = nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,7 +50,11 @@
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _albumArray.count;
+    if (_albumArray != nil) {
+        return _albumArray.count;
+    }
+    
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -106,7 +112,7 @@
             album.updatedAlbum = @"NO";
             
             //todo
-            //[[AlbumManager sharedManager] writeBacktoPlist];
+            [[CategoryManager sharedManager] writeBacktoAlbumListinCategory:_category];
         }
         
         destinationViewController.hidesBottomBarWhenPushed = YES;
@@ -119,15 +125,25 @@
     }
 }
 
-#pragma mark AlbumManagerDelegate
+#pragma mark Category Manager Delegate
 
 -(void) onAlbumUpdated
 {
-    /*_albumArray = [[AlbumManager sharedManager] searchAlbumArrayByAlbumName:_category.shortName];
+    _albumArray = [[CategoryManager sharedManager] searchAlbumArrayByCategory:_category];
     
     [self.tableView reloadData];
     
-    [self navigateToLatestAlbum];*/
+    [self navigateToLatestAlbum];
+}
+
+- (void)onCategoryUpdated
+{
+
+}
+
+-(void)onSongUpdated
+{
+    
 }
 
 #pragma mark Internal Business Logic

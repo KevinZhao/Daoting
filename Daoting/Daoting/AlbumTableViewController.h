@@ -11,7 +11,7 @@
 #import "AppDelegate.h"
 #import "AudioCategory.h"
 
-@interface AlbumTableViewController : UITableViewController
+@interface AlbumTableViewController : UITableViewController<ICategoryManagerDelegate>
 {
     NSMutableArray      *_albumArray;
     AppDelegate         *_appdelegate;

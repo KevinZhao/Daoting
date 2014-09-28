@@ -15,8 +15,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //todo: should change to initialize category manager
-    //[AlbumManager sharedManager];
     [CategoryManager sharedManager];
+    
+    [[CategoryManager sharedManager] update];
     
     [self configureAudioSession];
     

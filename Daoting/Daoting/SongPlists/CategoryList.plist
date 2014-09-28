@@ -11,7 +11,7 @@
 		<key>Description</key>
 		<string>网络 玄幻 悬疑 各种有声小说</string>
 		<key>AlbumListURL</key>
-		<string>http://bcs.duapp.com/daoting/Xiaoshuo_AlbumList.plist</string>
+		<string>http://182.254.148.156/Daoting/Xiaoshuo_AlbumList.plist</string>
 		<key>ShortName</key>
 		<string>Xiaoshuo</string>
 	</dict>
@@ -24,7 +24,7 @@
 		<key>Description</key>
 		<string>传统 经典 创新 幽默</string>
 		<key>AlbumListURL</key>
-		<string>http://bcs.duapp.com/daoting/Pingshu_AlbumList.plist</string>
+		<string>http://182.254.148.156/Daoting/Pingshu_AlbumList.plist</string>
 		<key>ShortName</key>
 		<string>Pingshu</string>
 	</dict>

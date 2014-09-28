@@ -263,9 +263,6 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dpc-4O-xr5" id="4zL-1D-aqH">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-72.png" id="ULe-d6-Nap">
-                                            <rect key="frame" x="7" y="8" width="60" height="60"/>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分类名称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jmb-HM-FMv">
                                             <rect key="frame" x="75" y="27" width="232" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -284,10 +281,14 @@
                                             <rect key="frame" x="55" y="2" width="20" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-72.png" id="2eq-G4-3IS">
+                                            <rect key="frame" x="7" y="9" width="60" height="60"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="img_categoryImage" destination="ULe-d6-Nap" id="gFm-lt-0ez"/>
+                                    <outlet property="img_categoryImage" destination="2eq-G4-3IS" id="fyc-LW-c4X"/>
                                     <outlet property="img_categoryNewIndicator" destination="owu-Cj-NWI" id="J8f-Rl-EO2"/>
                                     <outlet property="lbl_categoryDescription" destination="BUF-8e-YeL" id="oRI-Vg-Ico"/>
                                     <outlet property="lbl_categoryTitle" destination="jmb-HM-FMv" id="ykx-R2-OV4"/>
@@ -329,12 +330,12 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="简单介绍:比如聊斋、隋唐演义或" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6Hw-dL-nZg">
-                                            <rect key="frame" x="75" y="47.5" width="210" height="21"/>
+                                            <rect key="frame" x="75" y="47" width="210" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-72.png" id="HFM-Ul-jhK">
-                                            <rect key="frame" x="7" y="8.5" width="60" height="60"/>
+                                            <rect key="frame" x="7" y="9" width="60" height="60"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AlbumNewNotify.png" id="SUT-c4-Gci">
                                             <rect key="frame" x="55" y="2" width="20" height="20"/>

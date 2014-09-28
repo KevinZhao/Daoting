@@ -18,5 +18,6 @@
 @property (nonatomic, strong) NSString  *price;
 @property (nonatomic, assign) double    progress;
 @property (nonatomic, strong) NSString  *updatedSong;
+@property (nonatomic, strong) NSString  *description;
 
 @end

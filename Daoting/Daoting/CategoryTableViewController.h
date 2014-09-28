@@ -13,7 +13,7 @@
 #import "CategoryManager.h"
 #import "AlbumTableViewController.h"
 
-@interface CategoryTableViewController : UITableViewController
+@interface CategoryTableViewController : UITableViewController <ICategoryManagerDelegate>
 {
     NSMutableArray      *_categoryArray;
     AppDelegate         *_appdelegate;

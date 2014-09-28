@@ -50,33 +50,34 @@
     PurchasedAlbumCell *cell = (PurchasedAlbumCell*)[tableView dequeueReusableCellWithIdentifier:@"PurchasedAlbumCell" forIndexPath:indexPath];
     
     NSString* albumShortName = _appData.purchasedQueue.allKeys[indexPath.row];
-    
-    //1. show album title
+
     Album *album = [[CategoryManager sharedManager] searchAlbumByShortName: albumShortName];
     
-    //Album *album = [[AlbumManager sharedManager] searchAlbumByShortName:albumShortName];
-    cell.lbl_albumTitle.text = album.title;
-    
-    //2. icon
-    NSURLRequest *request = [NSURLRequest requestWithURL:album.imageUrl];
-    UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
-    
-    __weak PurchasedAlbumCell *weakCell = cell;
-    
-    // 3. cell.img_album setimage
-    [cell.img_album setImageWithURLRequest:request
-                        placeholderImage:placeholderImage
-                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image)
-     {
-         [weakCell.img_album setImage:image];
-         [weakCell setNeedsLayout];
-         
-     } failure:nil];
-    
+    if (album != nil) {
+        
+        //1. show album title
+        cell.lbl_albumTitle.text = album.title;
+        
+        //2. icon
+        NSURLRequest *request = [NSURLRequest requestWithURL:album.imageUrl];
+        UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
+        
+        __weak PurchasedAlbumCell *weakCell = cell;
+        
+        // 3. cell.img_album setimage
+        [cell.img_album setImageWithURLRequest:request
+                              placeholderImage:placeholderImage
+                                       success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image)
+         {
+             [weakCell.img_album setImage:image];
+             [weakCell setNeedsLayout];
+             
+         } failure:nil];
+    }
+
     return cell;
 }
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     PurchasedSongViewController *viewController = (PurchasedSongViewController *)[segue destinationViewController];

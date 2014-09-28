@@ -22,6 +22,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     _categoryArray = [CategoryManager sharedManager].categoryArray;
+    [CategoryManager sharedManager].delegate = self;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [CategoryManager sharedManager].delegate = nil;
 }
 
 #pragma mark - Table view data source
@@ -96,4 +102,21 @@
         self.navigationItem.backBarButtonItem = temporaryBarButtonItem;
     }
 }
+
+
+- (void)onCategoryUpdated
+{
+    [self.tableView reloadData];
+}
+
+-(void)onAlbumUpdated
+{
+    
+}
+
+-(void)onSongUpdated
+{
+    
+}
+
 @end
