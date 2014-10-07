@@ -14,6 +14,7 @@
 #import "AFDownloadHelper.h"
 #import "DACircularProgressView.h"
 #import "AppData.h"
+#import "MarqueeLabel.h"
 
 
 @interface SongCell : UITableViewCell
@@ -24,7 +25,7 @@
 @property (nonatomic, strong) IBOutlet UILabel      *lbl_songNumber;
 @property (nonatomic, strong) IBOutlet UILabel      *lbl_songTitle;
 @property (nonatomic, strong) IBOutlet UILabel      *lbl_songDuration;
-@property (nonatomic, strong) IBOutlet UILabel      *lbl_songDescription;
+@property (nonatomic, strong) IBOutlet MarqueeLabel *lbl_songDescription;
 @property (nonatomic, strong) IBOutlet UIButton     *btn_downloadOrPause;
 @property (nonatomic, strong) IBOutlet UIImageView  *img_playingStatus;
 @property (nonatomic, strong) IBOutlet UIImageView  *img_locked;

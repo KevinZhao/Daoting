@@ -21,15 +21,14 @@
     
     _appdelegate = [[UIApplication sharedApplication]delegate];
     
+    _albumArray = [[CategoryManager sharedManager] searchAlbumArrayByCategory:_category];
+    
+    [self.tableView reloadData];
     self.view.backgroundColor = _appdelegate.defaultBackgroundColor;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    _albumArray = [[CategoryManager sharedManager] searchAlbumArrayByCategory:_category];
-    
-    [self.tableView reloadData];
-    
     self.navigationItem.title = _category.title;
     
     [self navigateToLatestAlbum];
@@ -111,7 +110,6 @@
             
             album.updatedAlbum = @"NO";
             
-            //todo
             [[CategoryManager sharedManager] writeBacktoAlbumListinCategory:_category];
         }
         

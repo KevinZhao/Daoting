@@ -93,7 +93,6 @@
             //[[AlbumManager sharedManager] writeBacktoPlist];
         }
         
-        destinationViewController.hidesBottomBarWhenPushed = YES;
         [destinationViewController setDetailItem:category];
                 
         //remove title of back button

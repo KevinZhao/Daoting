@@ -223,7 +223,7 @@
 {
     [_timer invalidate];
     
-    _timer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(tick) userInfo:nil repeats:YES];
+    _timer = [NSTimer timerWithTimeInterval:0.5 target:self selector:@selector(tick) userInfo:nil repeats:YES];
         
     [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
 }
@@ -746,6 +746,17 @@
     cell.lbl_songDuration.text = song.duration;
     cell.lbl_songNumber.text = song.songNumber;
     
+    //revisit
+    cell.lbl_songDescription.text = song.description;
+    cell.lbl_songDescription.marqueeType = MLContinuous;
+    cell.lbl_songDescription.scrollDuration = 10.0f;
+    cell.lbl_songDescription.animationCurve = UIViewAnimationCurveEaseInOut;
+    cell.lbl_songDescription.fadeLength = 10.0f;
+    cell.lbl_songDescription.continuousMarqueeExtraBuffer = 10.0f;
+    cell.lbl_songDescription.text = song.description;
+    
+    [cell.lbl_songDescription pauseLabel];
+    
     //customize the selected table view cell
     UIImageView *imageView_playing = [[UIImageView alloc] initWithFrame:CGRectMake(0, 4, 5, 36)];
     imageView_playing.image = [UIImage imageNamed:@"playingsong.png"];
@@ -790,6 +801,11 @@
         
         [self playSong:selectedSong];
     }
+    
+    //revisit
+    //SongCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    //[cell.lbl_songDescription restartLabel];
+
 }
 
 #pragma mark - UIScrollViewDelegate
