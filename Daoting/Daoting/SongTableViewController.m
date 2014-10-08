@@ -71,7 +71,7 @@
     pageControl.pageIndicatorTintColor = _appDelegate.defaultColor_light;
     
     //Scroll to latest playing row
-    [self navigateToLatestSong];
+    //[self navigateToLatestSong];
     
     self.navigationItem.title = _album.title;
     [self setupTimer];
@@ -617,8 +617,15 @@
     //Scroll to latest playing row
     NSString* songNumberstring = (NSString*)[_appData.playingPositionQueue objectForKey:_album.title];
     NSInteger songNumber = [songNumberstring integerValue];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(songNumber-1) inSection:0];
     
+    NSIndexPath *indexPath;
+    if (songNumber != 0) {
+        indexPath = [NSIndexPath indexPathForRow:(songNumber-1) inSection:0];
+    }else
+    {
+        indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    }
+
     [_tableview selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
 }
 

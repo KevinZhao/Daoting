@@ -166,6 +166,8 @@
 
 - (void)initializeAlbumByCategory:(AudioCategory *)category
 {
+    NSLog(@"initializeAlbumByCategory, %@", category.title);
+    
     //1. Check if plist file had already in document library
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -213,6 +215,8 @@
 
 - (void)updateAlbumByCategory:(AudioCategory *)category
 {
+    NSLog(@"updateAlbumByCategory, %@", category.title);
+    
     self.albumUpdatingStatus = Upgrating;
     
     //1. Check if plist is in document directory
@@ -296,6 +300,8 @@
 
 - (void)initializeSongByAlbum:(Album *)album
 {
+    NSLog(@"initializeSongByAlbum, %@", album.title);
+
     //1. Check if plist file had already in document library
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -341,6 +347,9 @@
 
 - (void)updateSongByAlbum:(Album *)album
 {
+    NSLog(@"updateSongByAlbum, %@", album.title);
+
+    
     self.songUpdatingStatus = Upgrating;
     
     //1. Check if plist is in document directory
