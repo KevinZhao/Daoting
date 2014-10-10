@@ -36,6 +36,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     _playerHelper.delegate = self;
     _songArray = [[CategoryManager sharedManager]searchSongArrayByAlbum:_album];
     
@@ -83,6 +85,8 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
+
     [_tableview reloadData];
     
     [_timer invalidate];
@@ -91,7 +95,6 @@
     
     [CategoryManager sharedManager].delegate = nil;
 }
-
 
 - (void)didReceiveMemoryWarning
 {

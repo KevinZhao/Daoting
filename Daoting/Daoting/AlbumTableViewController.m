@@ -29,6 +29,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     self.navigationItem.title = _category.title;
     
     [self navigateToLatestAlbum];
@@ -38,6 +40,8 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
+    
     [CategoryManager sharedManager].delegate = nil;
 }
 

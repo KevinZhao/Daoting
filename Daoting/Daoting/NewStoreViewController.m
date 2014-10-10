@@ -39,7 +39,7 @@
     [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
 }
 
--(void) tick
+-(void)tick
 {
     CurrentCoinCell* currentCoinCell = (CurrentCoinCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%d", _appData.coins];
@@ -80,7 +80,7 @@
         helper.delegate = self;
         [helper buyProduct:_products[tag]];
         
-        _spinner = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(0, 0, 320, 460)];
+        _spinner = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
         
         _spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
         _spinner.color = _appDelegate.defaultColor_light;
@@ -195,7 +195,7 @@
         
         switch (indexPath.row) {
             case 0:
-                purchaseCoinCell.lbl_coins.text = @"500 金币";
+                purchaseCoinCell.lbl_coins.text = @"500 金币 首充翻倍";
                 [purchaseCoinCell.btn_purchase setTitle:@"￥6.00" forState:UIControlStateNormal];
                 purchaseCoinCell.img_sale.hidden = YES;
                 break;

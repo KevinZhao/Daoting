@@ -181,9 +181,11 @@
         
         if ([fileManager fileExistsAtPath:plistPathinResourceDirectory]) {
             [fileManager copyItemAtPath:plistPathinResourceDirectory toPath:plistPathinDocumentDirectory error:nil];
-        }else
+        }
+        else
         {
-            //Critical Error, the plist file not exist
+            [self updateAlbumByCategory:category];
+            return;
         }
     }
     
@@ -315,8 +317,12 @@
         
         if ([fileManager fileExistsAtPath:plistPathinResourceDirectory]) {
             [fileManager copyItemAtPath:plistPathinResourceDirectory toPath:plistPathinDocumentDirectory error:nil];
-        }else
+        }
+        //Songlist is not
+        else
         {
+            [self updateSongByAlbum:album];
+            return;
             //Critical Error, the plist file not exist
         }
     }
@@ -349,7 +355,6 @@
 {
     NSLog(@"updateSongByAlbum, %@", album.title);
 
-    
     self.songUpdatingStatus = Upgrating;
     
     //1. Check if plist is in document directory
@@ -416,7 +421,6 @@
              
              //call back
              [self.delegate onSongUpdated];
-             
          }
      }
      //Download Failed
@@ -486,7 +490,7 @@
     Song* resultSong;
     
     if (album.songArray == nil) {
-        [self initializeSongByAlbum:album];
+        resultSong = nil;
     }
     
     for (Song* song in album.songArray) {

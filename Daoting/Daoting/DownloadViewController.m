@@ -38,6 +38,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
+    
     _downloadQueue = [AFDownloadHelper sharedOperationManager].operationQueue;
     
     if (_downloadQueue.operations.count > 0) {
@@ -60,6 +62,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
     if (_timer) {
         [_timer invalidate];
     }

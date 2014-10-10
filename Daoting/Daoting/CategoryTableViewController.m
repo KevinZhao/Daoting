@@ -21,13 +21,22 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     _categoryArray = [CategoryManager sharedManager].categoryArray;
     [CategoryManager sharedManager].delegate = self;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
+    
     [CategoryManager sharedManager].delegate = nil;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
 }
 
 #pragma mark - Table view data source
