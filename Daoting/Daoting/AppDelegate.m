@@ -9,14 +9,10 @@
 #import "AppDelegate.h"
 #import <AVFoundation/AVFoundation.h>
 
-
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //todo: should change to initialize category manager
-    [CategoryManager sharedManager];
-    
     [[CategoryManager sharedManager] update];
     
     [self configureAudioSession];

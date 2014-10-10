@@ -15,6 +15,7 @@
 #import "AlbumManager.h"
 #import "SongManager.h"
 #import "TSMessage.h"
+#import "CategoryManager.h"
 
 @class STKAudioPlayerHelper;
 

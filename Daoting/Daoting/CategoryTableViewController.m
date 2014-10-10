@@ -98,8 +98,9 @@
         if ([category.updatedCategory isEqualToString:@"YES"]) {
             
             category.updatedCategory = @"NO";
+            
             //todo
-            //[[AlbumManager sharedManager] writeBacktoPlist];
+            //should write back to category list
         }
         
         [destinationViewController setDetailItem:category];

@@ -32,6 +32,8 @@
     [_slider setThumbImage:progressBarImage forState:UIControlStateNormal];
     
     _tableview.backgroundColor = _appDelegate.defaultBackgroundColor;
+    
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -80,7 +82,7 @@
     
     [CategoryManager sharedManager].delegate = self;
     
-    //[self test];
+    
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -671,6 +673,8 @@
 
 - (IBAction)onbtn_previousPressed:(id)sender
 {
+    //[self test];
+    
     NSInteger currentSongNumber = [_appData.currentSong.songNumber intValue];
     
     if ( currentSongNumber - 1 > 0) {
@@ -715,6 +719,8 @@
     [_tableview reloadData];
     
     [self navigateToLatestSong];
+    
+    [self test];
 }
 
 - (void)onCategoryUpdated
@@ -856,10 +862,10 @@
 
 - (void)onTest
 {
+    NSLog(@"onTest %d", t_currentsong);
+    
     if (t_currentsong == (_songArray.count - 1)) {
         [[CategoryManager sharedManager] writeBacktoSongListinAlbum:_album];
-        NSLog(@"%d", t_currentsong);
-        
         return;
     }
     
