@@ -13,10 +13,11 @@
 
 @interface AppData : NSObject <NSCoding>
 {
-    NSMutableDictionary  *_purchasedQueue;
+    NSUbiquitousKeyValueStore   *iCloudStore;
 }
 
 @property (assign, nonatomic) NSInteger             coins;
+
 @property (retain, nonatomic) Album                 *currentAlbum;
 @property (retain, nonatomic) Song                  *currentSong;
 
@@ -35,7 +36,8 @@
 +(NSString*)filePath;
 
 -(void)save;
--(void)updateiCloud;
+-(void)updateToiCloud;
+-(void)updateFromiCloud;
 
 -(BOOL)songNumber:(NSString *)songNumber ispurchasedwithAlbum:(NSString*)albumShortname;
 -(void)addtoPurchasedQueue:(Song *)songNumber withAlbumShortname:(NSString *)albumShortname;

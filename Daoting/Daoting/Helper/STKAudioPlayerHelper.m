@@ -49,7 +49,7 @@
 
 -(void)setupTimer
 {
-	_timer = [NSTimer timerWithTimeInterval:0.5 target:self selector:@selector(tick) userInfo:nil repeats:YES];
+	_timer = [NSTimer timerWithTimeInterval:2.0 target:self selector:@selector(tick) userInfo:nil repeats:YES];
 	
 	[[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
 }
@@ -193,7 +193,7 @@
                         
                         _appData.coins = _appData.coins - [song.price intValue];
                         [_appData save];
-                        [_appData updateiCloud];
+                        [_appData updateToiCloud];
                         
                         [self playSong:song InAlbum:album];
                         
@@ -268,7 +268,7 @@
                         
                         _appData.coins = _appData.coins - [song.price intValue];
                         [_appData save];
-                        [_appData updateiCloud];
+                        [_appData updateToiCloud];
                         
                         [self playSong:song InAlbum:album];
                         

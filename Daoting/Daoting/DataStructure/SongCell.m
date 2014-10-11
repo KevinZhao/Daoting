@@ -51,7 +51,7 @@
             
             _appData.coins = _appData.coins - [song.price intValue];
             [_appData save];
-            [_appData updateiCloud];
+            [_appData updateToiCloud];
             
             [self startDownload];
             

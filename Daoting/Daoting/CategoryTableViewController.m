@@ -14,7 +14,7 @@
 {
     [super viewDidLoad];
     
-    _appdelegate = [[UIApplication sharedApplication]delegate];
+    _appdelegate = [[UIApplication sharedApplication] delegate];
     
     self.view.backgroundColor = _appdelegate.defaultBackgroundColor;
 }

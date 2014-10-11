@@ -19,34 +19,8 @@
     
     //Configure AFNetworking
     [self configureAFNetworking];
-
-    //check iCloud for coins
-    //Register observer for iCloud coins
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(storeDidChange) name: NSUbiquitousKeyValueStoreDidChangeExternallyNotification object: [NSUbiquitousKeyValueStore defaultStore]];
-
-    if ([[NSUbiquitousKeyValueStore defaultStore] synchronize]) {
-        NSLog(@"iCloud Sync successful");
-
-    };
     
-    //Initialize appdata from userdefault
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    //local user default is not exist, this is a first time run of the app
-    if (![fileManager fileExistsAtPath:[AppData filePath]])
-    {
-        _appData = [AppData sharedAppData];
-        _appData.coins = 300;
-        
-        [_appData updateiCloud];
-    }
-    //local user default exist, initialize it
-    else
-    {
-        //register to observe notifications from the store
-        _appData = [AppData sharedAppData];
-        //todo: necessary?
-        _appData.coins = [[NSUbiquitousKeyValueStore defaultStore] doubleForKey:@"coins"];
-    }
+    _appData = [AppData sharedAppData];
     
     //ConfigureIAP
     [self configureIAP];
@@ -166,27 +140,10 @@
     }];
 }
 
-#pragma mark handle iCloud change
-
--(void)storeDidChange
-{
-    NSLog(@"Received NSUbiquitousKeyValueStoreDidChangeExternallyNotification" );
-    
-    NSUbiquitousKeyValueStore *iCloudStore = [NSUbiquitousKeyValueStore defaultStore];
-    
-    long new_cloudCoins= [iCloudStore doubleForKey:@"coins"];
-    
-    [AppData sharedAppData].coins = new_cloudCoins;
-    
-    NSLog(@"new_cloudCoins = %ld", new_cloudCoins);
-}
-
 #pragma mark handle audio interrupt
 
 -(void)audioInterruptionNotification:(NSNotification *) aNotification
 {
-    _appData = [AppData sharedAppData];
-    
     NSLog(@"Interrupt %@", aNotification);
     NSDictionary *dict = [aNotification userInfo];
     NSUInteger typeKey = [[dict objectForKey:@"AVAudioSessionInterruptionTypeKey"] unsignedIntegerValue];

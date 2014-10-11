@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E1F888778AAE61721DFEA2F4"
-               BuildableName = "libPods-TSMessages.a"
-               BlueprintName = "Pods-TSMessages"
+               BlueprintIdentifier = "D4900AB0E820C1FA70377D39"
+               BuildableName = "libPods-MarqueeLabel.a"
+               BlueprintName = "Pods-MarqueeLabel"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

@@ -9,6 +9,7 @@
 #import "AppData.h"
 
 static NSString* const SSDataforCoinsKey = @"coins";
+static NSString* const SSDataforAppExistKey = @"appExist";
 static NSString* const SSDataforPlayingBackProgressQueue = @"playingBackProgressQueue";
 static NSString* const SSDataforPurchasedQueue = @"purchasedQueue";
 static NSString* const SSDataforPlayingPositionQueue = @"playingPositionQueue";
@@ -21,40 +22,7 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
 
 @implementation AppData
 
-- (void)encodeWithCoder:(NSCoder *)encoder
-{
-    [encoder encodeDouble:self.coins forKey: SSDataforCoinsKey];
-    [encoder encodeObject:_playingBackProgressQueue forKey:SSDataforPlayingBackProgressQueue];
-    [encoder encodeObject:_purchasedQueue forKey:SSDataforPurchasedQueue];
-    [encoder encodeObject:_playingPositionQueue forKey:SSDataforPlayingPositionQueue];
-    [encoder encodeObject:_dailyCheckinQueue forKey:SSDataforDailyCheckinQueue];
-    [encoder encodeBool:_isAutoPurchase forKey:SSDataforIsAutoPurchase];
-    [encoder encodeBool:_isAutoPlay forKey:SSDataforIsAutoPlay];
-    [encoder encodeObject:_currentAlbum forKey:SSDataCurrentAlbum];
-    [encoder encodeObject:_currentSong forKey:SSDataCurrentSong];
-}
-
-- (instancetype)initWithCoder:(NSCoder *)decoder
-{
-    self = [self init];
-    if (self) {
-        _coins = [decoder decodeDoubleForKey:SSDataforCoinsKey];
-
-        _playingBackProgressQueue = [[decoder decodeObjectForKey:SSDataforPlayingBackProgressQueue] mutableCopy];
-        _purchasedQueue = [[decoder decodeObjectForKey:SSDataforPurchasedQueue] mutableCopy];
-        _playingPositionQueue = [[decoder decodeObjectForKey:SSDataforPlayingPositionQueue] mutableCopy];
-        _dailyCheckinQueue = [[decoder decodeObjectForKey:SSDataforDailyCheckinQueue] mutableCopy];
-        
-        _isAutoPurchase = [decoder decodeBoolForKey:SSDataforIsAutoPurchase];
-        _isAutoPlay = [decoder decodeBoolForKey:SSDataforIsAutoPlay];
-        
-        _currentSong = [decoder decodeObjectForKey:SSDataCurrentSong];
-        _currentAlbum = [decoder decodeObjectForKey:SSDataCurrentAlbum];
-
-    }
-    return self;
-}
-
+#pragma mark static methods
 
 + (instancetype)sharedAppData {
     static AppData *sharedInstance;
@@ -67,107 +35,58 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
     return sharedInstance;
 }
 
-
-+(NSString*)filePath
-{
-    static NSString* filePath = nil;
-    if (!filePath) {
-        filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"appData"];
-    }
-    return filePath;
-}
-
 + (instancetype)loadInstance
 {
-    AppData* appData;
+    AppData* appData = nil;
     
+    //check if there is decode data
     NSData* decodedData = [NSData dataWithContentsOfFile: [AppData filePath]];
     if (decodedData) {
         //1
-        NSString* checksumOfSavedFile = [KeychainWrapper computeSHA256DigestForData: decodedData];
+        //NSString* checksumOfSavedFile = [KeychainWrapper computeSHA256DigestForData: decodedData];
+        //NSString* checksumInKeychain = [KeychainWrapper keychainStringFromMatchingIdentifier: SSDataChecksumKey];
         
         //2
-        NSString* checksumInKeychain = [KeychainWrapper keychainStringFromMatchingIdentifier: SSDataChecksumKey];
-
-        //3
-        if ([checksumOfSavedFile isEqualToString: checksumInKeychain]) {
-            appData = [NSKeyedUnarchiver unarchiveObjectWithData:decodedData];
-        }
-        else
-        {
-            NSLog(@"Critical Error, checksum is different");
-            NSLog(@"checksumofSavedFile= %@", checksumOfSavedFile);
-            NSLog(@"checksumInKeyChain = %@", checksumInKeychain);
-        }
-    }else
+        //if ([checksumOfSavedFile isEqualToString: checksumInKeychain]) {
+        appData = [NSKeyedUnarchiver unarchiveObjectWithData:decodedData];
+        
+        //}
+        //else
+        //{
+        //    NSLog(@"Critical Error, checksum is different");
+        //    NSLog(@"checksumofSavedFile= %@", checksumOfSavedFile);
+        //    NSLog(@"checksumInKeyChain = %@", checksumInKeychain);
+        //}
+    }
+    //There is no decode Data
+    else
     {
         appData = [[AppData alloc] init];
-        
-        NSUbiquitousKeyValueStore *iCloudStore = [NSUbiquitousKeyValueStore defaultStore];
-        
-        appData.coins = [iCloudStore doubleForKey: SSDataforCoinsKey];
-        
-        NSLog(@"iCloud coin = %d", appData.coins);
-        
-        [appData save];
     }
     
     return appData;
 }
 
--(void)save
-{
-    NSData* encodedData = [NSKeyedArchiver archivedDataWithRootObject: self];
-    [encodedData writeToFile:[AppData filePath] atomically:YES];
-    
-    NSString* checksum = [KeychainWrapper computeSHA256DigestForData: encodedData];
-    
-    if ([KeychainWrapper keychainStringFromMatchingIdentifier: SSDataChecksumKey]) {
-        [KeychainWrapper updateKeychainValue:checksum forIdentifier:SSDataChecksumKey];
-    } else {
-        [KeychainWrapper createKeychainValue:checksum forIdentifier:SSDataChecksumKey];
-    }
-}
-
-- (void)updateiCloud
-{
-    NSUbiquitousKeyValueStore *iCloudStore = [NSUbiquitousKeyValueStore defaultStore];
-    
-    if (iCloudStore) {
-        long cloudCoins= [iCloudStore doubleForKey: SSDataforCoinsKey];
-        
-        if (self.coins != cloudCoins ) {
-            
-            [iCloudStore setDouble:self.coins forKey:SSDataforCoinsKey];
-            BOOL success = [iCloudStore synchronize];
-            
-            if (success) {
-                NSLog(@"update icloud succeed");
-            }
-        }
-    }
-}
-
 - (instancetype)init
 {
     self = [super init];
+    
     if (self) {
+        
+        iCloudStore = [NSUbiquitousKeyValueStore defaultStore];
+        
         //1
-        if([NSUbiquitousKeyValueStore defaultStore]) {
+        if(iCloudStore) {
             
             //2
             [[NSNotificationCenter defaultCenter] addObserver:self
-                                                     selector:@selector(updateFromiCloud:)
+                                                     selector:@selector(updateFromiCloud)
                                                          name:NSUbiquitousKeyValueStoreDidChangeExternallyNotification
                                                        object:nil];
         }
         
         if (_playingBackProgressQueue == nil) {
             _playingBackProgressQueue = [[NSMutableDictionary alloc]init];
-        }
-        
-        if (_purchasedQueue == nil) {
-            _purchasedQueue = [[NSMutableDictionary alloc]init];
         }
         
         if (_playingPositionQueue == nil) {
@@ -179,46 +98,172 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
         }
         
         _isAutoPurchase = true;
-        _isAutoPlay = true;
+        _isAutoPlay = false;
     }
     return self;
 }
 
--(void)updateFromiCloud:(NSNotification*) notificationObject
++(NSString*)filePath
 {
-    NSUbiquitousKeyValueStore *iCloudStore = [NSUbiquitousKeyValueStore defaultStore];
-    long cloudCoins = [iCloudStore doubleForKey:SSDataforCoinsKey];
-    self.coins = MAX(cloudCoins, self.coins);
+    static NSString* filePath = nil;
+    if (!filePath) {
+        filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"appData"];
+    }
+    return filePath;
+}
+
+-(void)save
+{
+    NSData* encodedData = [NSKeyedArchiver archivedDataWithRootObject: self];
+    [encodedData writeToFile:[AppData filePath] atomically:YES];
     
-    [self save];
+    NSString* checksum = [KeychainWrapper computeSHA256DigestForData: encodedData];
+    if ([KeychainWrapper keychainStringFromMatchingIdentifier: SSDataChecksumKey]) {
+        
+        [KeychainWrapper updateKeychainValue:checksum forIdentifier:SSDataChecksumKey];
+        NSLog(@"KeychainWrapper updateKeychainValue %@", checksum);
+    }
+    else
+    {
+        [KeychainWrapper createKeychainValue:checksum forIdentifier:SSDataChecksumKey];
+        NSLog(@"createKeychainValue %@", checksum);
+    }
+}
+
+#pragma mark iCloud Operation
+
+- (void)updateToiCloud
+{
+    if (iCloudStore) {
     
-    [[NSNotificationCenter defaultCenter] postNotificationName: SSDataforCoinsKey object:nil];
+        //update coins
+        long cloudCoins= [iCloudStore doubleForKey: SSDataforCoinsKey];
+
+        if (self.coins != cloudCoins ) {
+            [iCloudStore setDouble:self.coins forKey:SSDataforCoinsKey];
+        }
+        
+        //update purchased songs
+        NSDictionary *purchasedSongs = [iCloudStore dictionaryForKey:SSDataforPurchasedQueue];
+        
+        if (self.purchasedQueue.count != purchasedSongs.count) {
+            [iCloudStore setDictionary:self.purchasedQueue forKey:SSDataforPurchasedQueue];
+        }
+        
+        [iCloudStore setBool:YES forKey:SSDataforAppExistKey];
+        
+        //synchronize
+        BOOL success = [iCloudStore synchronize];
+        if (success) {
+            NSLog(@"update icloud succeed");
+        }
+    }
+    else
+    {
+        NSLog(@"updateiToCloud failed due to iCloud is not enabled");
+    }
+}
+
+-(void)updateFromiCloud
+{
+    if (iCloudStore) {
+        //load coin from iCloud
+        self.coins = [iCloudStore doubleForKey:SSDataforCoinsKey];
+        if (self.coins == 0) {
+            
+            //if App had not been used
+            if (![iCloudStore boolForKey:SSDataforAppExistKey]) {
+                self.coins = 300;
+            }
+        }
+        
+        //load purchase Queue from iCloud
+        self.purchasedQueue = [[NSMutableDictionary alloc]initWithDictionary:[iCloudStore dictionaryForKey:SSDataforPurchasedQueue]];
+        
+        [self save];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName: SSDataforCoinsKey object:nil];
+        
+        NSLog(@"update From iCloud succeed");
+    }
+    else
+    {
+        NSLog(@"updateFromiCloud failed due to iCloud is not enabled");
+    }
 }
 
 -(BOOL)songNumber:(NSString *)songNumber ispurchasedwithAlbum:(NSString*)albumShortname
 {
-    BOOL result = NO;
-    
+    //Processing for old type
     NSMutableDictionary *purchasedArray = [_purchasedQueue objectForKey:albumShortname];
-    
     if (!([purchasedArray objectForKey:songNumber] == nil)) {
-        result = YES;
+        
+        //Modify it to new type
+        [_purchasedQueue setValue:songNumber forKey:[NSString stringWithFormat:@"%@_%@", albumShortname, songNumber]];
+        
+        //Remove old type
+        [purchasedArray removeObjectForKey:songNumber];
+        
+        if (purchasedArray.count == 0) {
+            [_purchasedQueue removeObjectForKey:albumShortname];
+        }
+        
+        return YES;
     }
     
-    return result;
+    //Processing for new type
+    NSString* cloudSongNumber = [_purchasedQueue objectForKey:[NSString stringWithFormat:@"%@_%@", albumShortname, songNumber]];
+    if ([songNumber isEqualToString:cloudSongNumber]) {
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
 }
 
 -(void)addtoPurchasedQueue:(Song*)song withAlbumShortname:(NSString *)albumShortname
 {
-    NSMutableDictionary *purchasedArray = [_purchasedQueue objectForKey:albumShortname];
+    [_purchasedQueue setValue:song.songNumber forKey:[NSString stringWithFormat:@"%@_%@", albumShortname, song.songNumber]];
+}
+
+#pragma mark @protocol NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
+    [encoder encodeDouble:self.coins forKey: SSDataforCoinsKey];
     
-    if (purchasedArray == nil) {
-        purchasedArray = [[NSMutableDictionary alloc]init];
+    [encoder encodeObject:_playingBackProgressQueue forKey:SSDataforPlayingBackProgressQueue];
+    [encoder encodeObject:_purchasedQueue forKey:SSDataforPurchasedQueue];
+    [encoder encodeObject:_playingPositionQueue forKey:SSDataforPlayingPositionQueue];
+    [encoder encodeObject:_dailyCheckinQueue forKey:SSDataforDailyCheckinQueue];
+    
+    [encoder encodeBool:_isAutoPurchase forKey:SSDataforIsAutoPurchase];
+    [encoder encodeBool:_isAutoPlay forKey:SSDataforIsAutoPlay];
+    
+    [encoder encodeObject:_currentAlbum forKey:SSDataCurrentAlbum];
+    [encoder encodeObject:_currentSong forKey:SSDataCurrentSong];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)decoder
+{
+    self = [self init];
+    if (self) {
+        _coins = [decoder decodeDoubleForKey:SSDataforCoinsKey];
+        
+        _playingBackProgressQueue = [[decoder decodeObjectForKey:SSDataforPlayingBackProgressQueue] mutableCopy];
+        _purchasedQueue = [[decoder decodeObjectForKey:SSDataforPurchasedQueue] mutableCopy];
+        _playingPositionQueue = [[decoder decodeObjectForKey:SSDataforPlayingPositionQueue] mutableCopy];
+        _dailyCheckinQueue = [[decoder decodeObjectForKey:SSDataforDailyCheckinQueue] mutableCopy];
+        
+        _isAutoPurchase = [decoder decodeBoolForKey:SSDataforIsAutoPurchase];
+        _isAutoPlay = [decoder decodeBoolForKey:SSDataforIsAutoPlay];
+        
+        _currentSong = [decoder decodeObjectForKey:SSDataCurrentSong];
+        _currentAlbum = [decoder decodeObjectForKey:SSDataCurrentAlbum];
+        
     }
-    
-    [purchasedArray setValue:song forKey:song.songNumber];
-    
-    [_purchasedQueue setValue:purchasedArray forKey:albumShortname];
+    return self;
 }
 
 @end

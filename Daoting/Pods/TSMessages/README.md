@@ -2,10 +2,6 @@ TSMessages
 ==========
 
 This library provides an easy to use class to show little notification views on the top of the screen. (à la Tweetbot).
-[![CI Status](http://img.shields.io/travis/Felix Krause/TSMessages.svg?style=flat)](https://travis-ci.org/Felix Krause/TSMessages)
-[![Version](https://img.shields.io/cocoapods/v/TSMessages.svg?style=flat)](http://cocoadocs.org/docsets/TSMessages)
-[![License](https://img.shields.io/cocoapods/l/TSMessages.svg?style=flat)](http://cocoadocs.org/docsets/TSMessages)
-[![Platform](https://img.shields.io/cocoapods/p/TSMessages.svg?style=flat)](http://cocoadocs.org/docsets/TSMessages)
 
 The notification moves from the top of the screen underneath the navigation bar and stays there for a few seconds, depending on the length of the displayed text. To dismiss a notification before the time runs out, the user can swipe it to the top or just tap it.
 
@@ -15,24 +11,24 @@ It is very easy to add new notification types with a different design. Add the n
 
 **Take a look at the Example project to see how to use this library.** You have to open the workspace, not the project file, since the Example project uses cocoapods.
 
-## Author
 Follow the developer on Twitter: [KrauseFx](http://twitter.com/KrauseFx) (Felix Krause)
 
 ## Installation
 
 ### From CocoaPods
-TSMessages is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
 
-    pod "TSMessages"
+Add `pod 'TSMessages'` to your Podfile.
 
-## License
+### Manually
 
-TSMessages is available under the MIT license. See the LICENSE file for more info.
+Drag the whole folder into your project and remove the example project. This library requires ARC.
 
-```objective-c
+Drag HexColors{.h/.m} from Submodules/HexColors/Classes into your project.
+
 To show notifications use the following code:
 --------
+
+```objective-c
     [TSMessage showNotificationWithTitle:title
                                 subtitle:subtitle
                                     type:TSMessageNotificationTypeError];

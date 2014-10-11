@@ -32,8 +32,6 @@
     [_slider setThumbImage:progressBarImage forState:UIControlStateNormal];
     
     _tableview.backgroundColor = _appDelegate.defaultBackgroundColor;
-    
-
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -75,7 +73,7 @@
     pageControl.pageIndicatorTintColor = _appDelegate.defaultColor_light;
     
     //Scroll to latest playing row
-    //[self navigateToLatestSong];
+    [self navigateToLatestSong];
     
     self.navigationItem.title = _album.title;
     [self setupTimer];
@@ -177,7 +175,7 @@
             
             _appData.coins = _appData.coins - [song.price intValue];
             [_appData save];
-            [_appData updateiCloud];
+            [_appData updateToiCloud];
             
             [self playSongbyHelper:song];
             
@@ -376,22 +374,24 @@
         }
     }
     
-    //2. Check if the song had been purchased
-    if ([_appData songNumber:song.songNumber ispurchasedwithAlbum:_album.shortName]) {
-        
-        songCell.img_locked.hidden = YES;
-    }
-    else
-    {
-        songCell.img_locked.hidden = NO;
-    }
-    
     if ([song.updatedSong isEqualToString:@"YES"]) {
         songCell.img_new.hidden = NO;
     }
     else
     {
         songCell.img_new.hidden = YES;
+    }
+    
+    //2. Check if the song had been purchased
+    if ([_appData songNumber:song.songNumber ispurchasedwithAlbum:_album.shortName]) {
+        
+        songCell.img_locked.hidden = YES;
+        songCell.img_new.hidden = YES;
+    }
+    else
+    {
+        songCell.img_locked.hidden = NO;
+        songCell.img_new.hidden = NO;
     }
 }
 
@@ -570,7 +570,7 @@
         
         [[CategoryManager sharedManager] writeBacktoSongListinAlbum:_album];
         [_appData save];
-        [_appData updateiCloud];
+        [_appData updateToiCloud];
         
         [TSMessage showNotificationInViewController:[self getTabbarViewController] title:[NSString stringWithFormat:@"金币  -%d", coinsNeeded]  subtitle:nil type:TSMessageNotificationTypeSuccess];
     }
@@ -624,14 +624,17 @@
     NSInteger songNumber = [songNumberstring integerValue];
     
     NSIndexPath *indexPath;
-    if (songNumber != 0) {
+    if (songNumber > 0) {
         indexPath = [NSIndexPath indexPathForRow:(songNumber-1) inSection:0];
-    }else
+    }
+    else
     {
         indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     }
 
-    [_tableview selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    if (songNumber <= _songArray.count) {
+        [_tableview selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    }
 }
 
 
@@ -720,7 +723,7 @@
     
     [self navigateToLatestSong];
     
-    [self test];
+    //[self test];
 }
 
 - (void)onCategoryUpdated
@@ -764,13 +767,12 @@
     
     //revisit
     cell.lbl_songDescription.text = song.description;
+    cell.lbl_songDescription.font = [UIFont fontWithName:@"Arial" size:10.0f];
     cell.lbl_songDescription.marqueeType = MLContinuous;
     cell.lbl_songDescription.scrollDuration = 10.0f;
     cell.lbl_songDescription.animationCurve = UIViewAnimationCurveEaseInOut;
     cell.lbl_songDescription.fadeLength = 10.0f;
     cell.lbl_songDescription.continuousMarqueeExtraBuffer = 10.0f;
-    cell.lbl_songDescription.text = song.description;
-    
     [cell.lbl_songDescription pauseLabel];
     
     //customize the selected table view cell
@@ -817,11 +819,6 @@
         
         [self playSong:selectedSong];
     }
-    
-    //revisit
-    //SongCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    //[cell.lbl_songDescription restartLabel];
-
 }
 
 #pragma mark - UIScrollViewDelegate
