@@ -632,7 +632,7 @@
         indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     }
 
-    if (songNumber <= _songArray.count) {
+    if (_songArray != nil) {
         [_tableview selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
     }
 }

@@ -24,6 +24,7 @@
     [super viewWillAppear:animated];
     
     _categoryArray = [CategoryManager sharedManager].categoryArray;
+    [self.tableView reloadData];
     [CategoryManager sharedManager].delegate = self;
 }
 
@@ -98,9 +99,7 @@
         if ([category.updatedCategory isEqualToString:@"YES"]) {
             
             category.updatedCategory = @"NO";
-            
-            //todo
-            //should write back to category list
+            [[CategoryManager sharedManager] writeBacktoCategoryList];
         }
         
         [destinationViewController setDetailItem:category];
@@ -115,6 +114,7 @@
 
 - (void)onCategoryUpdated
 {
+    _categoryArray = [CategoryManager sharedManager].categoryArray;
     [self.tableView reloadData];
 }
 

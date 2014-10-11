@@ -8,9 +8,6 @@
 
 #import "ClearCacheViewController.h"
 
-@interface ClearCacheViewController ()
-
-@end
 
 @implementation ClearCacheViewController
 
@@ -23,7 +20,7 @@
 {
     _storagePath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingString:@"/Daoting/"];
     
-    _albumArray = [[NSMutableArray alloc]init];
+    _albumShortnameArray = [[NSMutableArray alloc]init];
     [self buildAlbumList];
 }
 
@@ -35,23 +32,25 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _albumArray.count;
+    return _albumShortnameArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ClearCacheCell *cell;
-    //Album *album;
+    
     
     cell = [tableView dequeueReusableCellWithIdentifier:@"ClearCacheCell" forIndexPath:indexPath];
     
     //todo
     //1. get album title
-    /*album = [[AlbumManager sharedManager] searchAlbumByShortName:_albumArray[indexPath.row]];
-    cell.lbl_albumName.text = album.title;*/
+    NSString *albumShortName = (NSString *)_albumShortnameArray[indexPath.row];
+    Album *album = [[CategoryManager sharedManager] searchAlbumByShortName:albumShortName];
+             
+    cell.lbl_albumName.text = album.title;
 
     //2. get album size
-    long size = [self calculateSize:[_storagePath stringByAppendingString:[NSString stringWithFormat:@"/%@", _albumArray[indexPath.row]]]];
+    long size = [self calculateSize:[_storagePath stringByAppendingString:[NSString stringWithFormat:@"/%@", _albumShortnameArray[indexPath.row]]]];
     cell.lbl_size.text = [self sizeToMb:size];
     
     return cell;
@@ -61,7 +60,7 @@
 {
     NSFileManager * fm = [NSFileManager defaultManager];
     
-    _albumArray = (NSMutableArray *)[fm contentsOfDirectoryAtPath:_storagePath error:nil];
+    _albumShortnameArray = (NSMutableArray *)[fm contentsOfDirectoryAtPath:_storagePath error:nil];
 }
 
 -(long)calculateSize:(NSString *)directory
@@ -129,7 +128,7 @@
 {
     if (buttonIndex == 1) {
         
-        NSString *directory = [_storagePath stringByAppendingString:[NSString stringWithFormat:@"/%@", _albumArray[_selectedIndexPath.row]]];
+        NSString *directory = [_storagePath stringByAppendingString:[NSString stringWithFormat:@"/%@", _albumShortnameArray[_selectedIndexPath.row]]];
         
         NSArray* array = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:directory error:nil];
         for(int i = 0; i<[array count]; i++)
@@ -150,7 +149,7 @@
         [[NSFileManager defaultManager] removeItemAtPath:directory error:nil];
 
         //update UI
-        [_albumArray removeObjectAtIndex:_selectedIndexPath.row];
+        [_albumShortnameArray removeObjectAtIndex:_selectedIndexPath.row];
         
         [self.tableView beginUpdates];
         

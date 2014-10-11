@@ -28,18 +28,5 @@
 		<key>ShortName</key>
 		<string>Pingshu</string>
 	</dict>
-	<key>3</key>
-	<dict>
-		<key>Title</key>
-		<string>综艺</string>
-		<key>ImageURL</key>
-		<string>http://bcs.duapp.com/daoting/Yongzheng3.png</string>
-		<key>Description</key>
-		<string>脱口秀 </string>
-		<key>AlbumListURL</key>
-		<string>http://182.254.148.156/Daoting/Zongyi_AlbumList.plist</string>
-		<key>ShortName</key>
-		<string>Zongyi</string>
-	</dict>
 </dict>
 </plist>

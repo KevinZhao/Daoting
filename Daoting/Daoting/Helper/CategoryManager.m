@@ -523,6 +523,38 @@
 }
 
 #pragma mark write back to list
+- (void) writeBacktoCategoryList
+{
+    NSMutableDictionary *newPlist_dictionary = [[NSMutableDictionary alloc]init];
+    
+    for (NSInteger i = 1; i <= _categoryArray.count; i++ ) {
+        
+        NSMutableDictionary *categoryDirectory = [[NSMutableDictionary alloc]init];
+      
+        AudioCategory *category = _categoryArray[i-1];
+        
+        [categoryDirectory setValue:category.title forKey:@"Title"];
+        [categoryDirectory setValue:category.description forKey:@"Description"];
+        [categoryDirectory setValue:[category.imageUrl absoluteString]  forKey:@"ImageURL"];
+        [categoryDirectory setValue:[category.albumListUrl absoluteString] forKey:@"AlbumListURL"];
+        [categoryDirectory setValue:category.shortName forKey:@"ShortName"];
+        [categoryDirectory setValue:category.updatedCategory forKey:@"UpdatedCategory"];
+        
+        [newPlist_dictionary setValue:categoryDirectory forKey:[NSString stringWithFormat:@"%d", i]];
+    }
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
+    NSString *plistPath = [bundleDocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/CategoryList.plist"]];
+    
+    if ([newPlist_dictionary writeToFile:plistPath atomically:NO]) {
+        NSLog(@"writeBacktoCategoryList succeed");
+    }
+    else{
+        NSLog(@"writeBacktoCategoryList failed");
+    }
+}
+
 
 - (void) writeBacktoAlbumListinCategory:(AudioCategory*) category
 {
@@ -549,10 +581,16 @@
     }
      
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
     NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
     NSString *plistPath = [bundleDocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_AlbumList.plist",category.shortName]];
-     
-    [newPlist_dictionary writeToFile:plistPath atomically:NO];
+    
+    if ([newPlist_dictionary writeToFile:plistPath atomically:NO]) {
+        NSLog(@"writeBacktoAlbumListinCategory succeed");
+    }
+    else{
+        NSLog(@"writeBacktoAlbumListinCategory failed");
+    }
 }
 
 - (void) writeBacktoSongListinAlbum:(Album *)album
@@ -610,7 +648,12 @@
     NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
     NSString *plistPath = [bundleDocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_SongList.plist", album.shortName]];
     
-    [newPlist_dictionary writeToFile:plistPath atomically:NO];
+    if ([newPlist_dictionary writeToFile:plistPath atomically:NO]) {
+        NSLog(@"writeBacktoSongListinAlbum succeed");
+    }
+    else{
+        NSLog(@"writeBacktoSongListinAlbum failed");
+    }
 }
 
 @end

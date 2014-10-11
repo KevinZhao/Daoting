@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "ClearCacheCell.h"
-//#import "AppDelegate.h"
+#import "CategoryManager.h"
 
 @interface ClearCacheViewController : UITableViewController <UIAlertViewDelegate>
 
 {
-    NSMutableArray  *_albumArray;
+    NSMutableArray  *_albumShortnameArray;
     NSString        *_storagePath;
     NSIndexPath     *_selectedIndexPath;
 }

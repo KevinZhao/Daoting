@@ -56,6 +56,7 @@ typedef NSInteger UpdatingStatus;
 - (NSMutableArray*) searchAlbumArrayByCategory:(AudioCategory *) category;
 - (NSMutableArray* ) searchSongArrayByAlbum:(Album *) album;
 
+- (void) writeBacktoCategoryList;
 - (void) writeBacktoAlbumListinCategory:(AudioCategory*) category;
 - (void) writeBacktoSongListinAlbum:(Album *)album;
 
