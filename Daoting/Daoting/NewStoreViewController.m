@@ -17,6 +17,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
+    
     self.view.backgroundColor = _appDelegate.defaultBackgroundColor;
     
     //Register observer for IAP helper notification
@@ -27,7 +29,17 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
+    
     [_timer invalidate];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    _appData = [AppData sharedAppData];
+    _appDelegate = [UIApplication sharedApplication].delegate;
 }
 
 -(void)setupTimer
@@ -42,15 +54,7 @@
 -(void)tick
 {
     CurrentCoinCell* currentCoinCell = (CurrentCoinCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%d", _appData.coins];
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    _appData = [AppData sharedAppData];
-    _appDelegate = [UIApplication sharedApplication].delegate;
+    currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%d 枚", _appData.coins];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,12 +65,10 @@
 
 - (void)buy:(NSInteger) tag
 {
-    AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    
     //Check if IAP items had been loaded
-    if (appDelegate.products != nil) {
+    if (_appDelegate.products != nil) {
         
-        _products = appDelegate.products;
+        _products = _appDelegate.products;
         
         //sort by price
         NSSortDescriptor *sorter = [[NSSortDescriptor alloc] initWithKey:@"price" ascending:YES];
@@ -89,6 +91,7 @@
         [self.view addSubview:_spinner];
         
     }else{
+        
         //indicate the iTunes Store can not been connected
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"无法连接iTunes Store，请重试" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         
@@ -159,7 +162,7 @@
         
         CurrentCoinCell *currentCoinCell = [tableView dequeueReusableCellWithIdentifier:@"CurrentCoinCell" forIndexPath:indexPath];
         
-        currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%d", _appData.coins];
+        currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%d 枚", _appData.coins];
         
         cell = currentCoinCell;
     }
@@ -175,7 +178,7 @@
             shareCell.btn_cellButton.imageView.image = [UIImage imageNamed:@"btn_checkin@2x.png"];
             [shareCell.btn_cellButton addTarget:self action:@selector(dailyCheckin) forControlEvents:UIControlEventTouchUpInside];
 
-            shareCell.lbl_cellDescription.text = @"每日签到";
+            shareCell.lbl_cellDescription.text = @"签到";
             
         }
         //Share
@@ -183,7 +186,7 @@
             shareCell.btn_cellButton.imageView.image = [UIImage imageNamed:@"btn_share@2x.png"];
             [shareCell.btn_cellButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
             
-            shareCell.lbl_cellDescription.text = @"分享给朋友";
+            shareCell.lbl_cellDescription.text = @"分享";
         }
         
         cell = shareCell;
@@ -195,11 +198,53 @@
         
         switch (indexPath.row) {
             case 0:
-                purchaseCoinCell.lbl_coins.text = @"500 金币 首充翻倍";
+                
+                if (_appData.purchaseTimes == 0) {
+                    FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:CGRectMake (purchaseCoinCell.bounds.origin.x + 180, purchaseCoinCell.bounds.origin.y, purchaseCoinCell.bounds.size.width, purchaseCoinCell.bounds.size.height)];
+                    
+                    [purchaseCoinCell addSubview:shimmeringView];
+                    
+                    UILabel *loadingLabel = [[UILabel alloc] initWithFrame:shimmeringView.bounds];
+                    loadingLabel.font = [UIFont fontWithName:@"Arial" size:14.0f];
+                    loadingLabel.textColor = [UIColor redColor];
+                    loadingLabel.text = NSLocalizedString(@"首充双倍", nil);
+                    shimmeringView.contentView = loadingLabel;
+                    
+                    // Start shimmering.
+                    shimmeringView.shimmering = YES;
+                    shimmeringView.shimmeringBeginFadeDuration = 0.0;
+                    shimmeringView.shimmeringOpacity = 0.5;
+                    shimmeringView.shimmeringSpeed = 100;
+                    shimmeringView.shimmeringPauseDuration = 0.0;
+                    shimmeringView.shimmeringEndFadeDuration = 0.0;
+                }
+                
+                purchaseCoinCell.lbl_coins.text = @"500 金币";
                 [purchaseCoinCell.btn_purchase setTitle:@"￥6.00" forState:UIControlStateNormal];
                 purchaseCoinCell.img_sale.hidden = YES;
+                
                 break;
             case 1:
+                if (_appData.purchaseTimes == 0) {
+                    FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:CGRectMake (purchaseCoinCell.bounds.origin.x + 180, purchaseCoinCell.bounds.origin.y, purchaseCoinCell.bounds.size.width, purchaseCoinCell.bounds.size.height)];
+                    
+                    [purchaseCoinCell addSubview:shimmeringView];
+                    
+                    UILabel *loadingLabel = [[UILabel alloc] initWithFrame:shimmeringView.bounds];
+                    loadingLabel.font = [UIFont fontWithName:@"Arial" size:14.0f];
+                    loadingLabel.textColor = [UIColor redColor];
+                    loadingLabel.text = NSLocalizedString(@"首充双倍", nil);
+                    shimmeringView.contentView = loadingLabel;
+                    
+                    // Start shimmering.
+                    shimmeringView.shimmering = YES;
+                    shimmeringView.shimmeringBeginFadeDuration = 0.0;
+                    shimmeringView.shimmeringOpacity = 0.5;
+                    shimmeringView.shimmeringSpeed = 100;
+                    shimmeringView.shimmeringPauseDuration = 0.0;
+                    shimmeringView.shimmeringEndFadeDuration = 0.0;
+                }
+                
                 purchaseCoinCell.lbl_coins.text = @"1000 金币";
                 [purchaseCoinCell.btn_purchase setTitle:@"￥12.00" forState:UIControlStateNormal];
                 purchaseCoinCell.img_sale.hidden = YES;
@@ -265,15 +310,27 @@
     }
     
     if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.500coins"]) {
-        purchasedCoins = 500;
+        if (_appData.purchaseTimes == 0) {
+            purchasedCoins = 1000;
+            _appData.purchaseTimes ++;
+            [self.tableView reloadData];
+        }else{
+            purchasedCoins = 500;
+        }
     }
     
     if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.25000coins_new"]) {
         purchasedCoins = 25000;
     }
     
-    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.1000coins"]) {
-        purchasedCoins = 1000;
+    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.1000coins"]) {        
+        if (_appData.purchaseTimes == 0) {
+            purchasedCoins = 2000;
+            _appData.purchaseTimes ++;
+            [self.tableView reloadData];
+        }else{
+            purchasedCoins = 1000;
+        }
     }
     
     if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.2500coins"]) {
@@ -317,14 +374,14 @@
         
         [_appData.dailyCheckinQueue setObject:yes forKey:date];
         
-        _appData.coins += 20;
+        _appData.coins += 10;
         [_appData save];
         [_appData updateToiCloud];
         
         CurrentCoinCell* currentCoinCell = (CurrentCoinCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-        currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%d", _appData.coins];
+        currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%d 枚", _appData.coins];
         
-        NSString *notification = @"您获得了 20金币";
+        NSString *notification = @"您获得了 10金币";
         
         //[self showNotification:notification];
         [TSMessage showNotificationInViewController:self title:notification subtitle:nil type:TSMessageNotificationTypeSuccess];
@@ -359,13 +416,13 @@
                                  if (state == SSResponseStateSuccess)
                                  {
                                      //share
-                                     _appData.coins = _appData.coins + 20;
-                                     NSString *notification = @"您获得了 20金币";
+                                     _appData.coins = _appData.coins + 10;
+                                     NSString *notification = @"您获得了 10金币";
                                      [_appData save];
                                      [_appData updateToiCloud];
                                      
                                      CurrentCoinCell* currentCoinCell = (CurrentCoinCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-                                     currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%d", _appData.coins];
+                                     currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%d 枚", _appData.coins];
                                      
                                      [TSMessage showNotificationInViewController:self title:notification subtitle:nil type:TSMessageNotificationTypeSuccess];
                                  }

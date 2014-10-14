@@ -10,6 +10,7 @@
 
 static NSString* const SSDataforCoinsKey = @"coins";
 static NSString* const SSDataforAppExistKey = @"appExist";
+static NSString* const SSDataforFirstPurchaseKey = @"purchaseTimes1";
 static NSString* const SSDataforPlayingBackProgressQueue = @"playingBackProgressQueue";
 static NSString* const SSDataforPurchasedQueue = @"purchasedQueue";
 static NSString* const SSDataforPlayingPositionQueue = @"playingPositionQueue";
@@ -49,7 +50,6 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
         //2
         //if ([checksumOfSavedFile isEqualToString: checksumInKeychain]) {
         appData = [NSKeyedUnarchiver unarchiveObjectWithData:decodedData];
-        
         //}
         //else
         //{
@@ -99,6 +99,7 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
         
         _isAutoPurchase = true;
         _isAutoPlay = false;
+        _purchaseTimes = 0;
     }
     return self;
 }
@@ -117,7 +118,7 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
     NSData* encodedData = [NSKeyedArchiver archivedDataWithRootObject: self];
     [encodedData writeToFile:[AppData filePath] atomically:YES];
     
-    NSString* checksum = [KeychainWrapper computeSHA256DigestForData: encodedData];
+    /*NSString* checksum = [KeychainWrapper computeSHA256DigestForData: encodedData];
     if ([KeychainWrapper keychainStringFromMatchingIdentifier: SSDataChecksumKey]) {
         
         [KeychainWrapper updateKeychainValue:checksum forIdentifier:SSDataChecksumKey];
@@ -127,7 +128,7 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
     {
         [KeychainWrapper createKeychainValue:checksum forIdentifier:SSDataChecksumKey];
         NSLog(@"createKeychainValue %@", checksum);
-    }
+    }*/
 }
 
 #pragma mark iCloud Operation
@@ -136,24 +137,33 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
 {
     if (iCloudStore) {
     
-        //update coins
+        //1. update coins
         long cloudCoins= [iCloudStore doubleForKey: SSDataforCoinsKey];
-
+        
         if (self.coins != cloudCoins ) {
             [iCloudStore setDouble:self.coins forKey:SSDataforCoinsKey];
         }
         
-        //update purchased songs
+        //2. update purchased songs
         NSDictionary *purchasedSongs = [iCloudStore dictionaryForKey:SSDataforPurchasedQueue];
         
-        if (self.purchasedQueue.count != purchasedSongs.count) {
+        if (self.purchasedQueue.count <= purchasedSongs.count) {
             [iCloudStore setDictionary:self.purchasedQueue forKey:SSDataforPurchasedQueue];
         }
+
+        BOOL success = [iCloudStore synchronize];
+        if (success) {
+            NSLog(@"update icloud succeed");
+        }
         
+        //3.
         [iCloudStore setBool:YES forKey:SSDataforAppExistKey];
         
+        //4. is first Purchase
+        [iCloudStore setLongLong: self.purchaseTimes forKey:SSDataforFirstPurchaseKey];
+        
         //synchronize
-        BOOL success = [iCloudStore synchronize];
+        success = [iCloudStore synchronize];
         if (success) {
             NSLog(@"update icloud succeed");
         }
@@ -179,6 +189,8 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
         
         //load purchase Queue from iCloud
         self.purchasedQueue = [[NSMutableDictionary alloc]initWithDictionary:[iCloudStore dictionaryForKey:SSDataforPurchasedQueue]];
+        
+        self.purchaseTimes = (NSInteger)[iCloudStore longLongForKey:SSDataforFirstPurchaseKey];
         
         [self save];
         
@@ -243,6 +255,8 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
     
     [encoder encodeObject:_currentAlbum forKey:SSDataCurrentAlbum];
     [encoder encodeObject:_currentSong forKey:SSDataCurrentSong];
+    
+    [encoder encodeInteger:_purchaseTimes forKey:SSDataforFirstPurchaseKey];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)decoder
@@ -258,6 +272,7 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
         
         _isAutoPurchase = [decoder decodeBoolForKey:SSDataforIsAutoPurchase];
         _isAutoPlay = [decoder decodeBoolForKey:SSDataforIsAutoPlay];
+        _purchaseTimes = [decoder decodeIntegerForKey:SSDataforFirstPurchaseKey];
         
         _currentSong = [decoder decodeObjectForKey:SSDataCurrentSong];
         _currentAlbum = [decoder decodeObjectForKey:SSDataCurrentAlbum];

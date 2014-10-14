@@ -28,7 +28,7 @@
 
 @property (strong, nonatomic) NSMutableDictionary   *dailyCheckinQueue;
 
-
+@property (nonatomic, assign) NSInteger purchaseTimes;
 @property (nonatomic, assign) BOOL isAutoPurchase;
 @property (nonatomic, assign) BOOL isAutoPlay;
 

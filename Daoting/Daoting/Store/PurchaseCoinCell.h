@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface PurchaseCoinCell : UITableViewCell
-{}
 
 @property (nonatomic, retain) IBOutlet UILabel *lbl_coins;
 @property (nonatomic, retain) IBOutlet UIButton *btn_purchase;

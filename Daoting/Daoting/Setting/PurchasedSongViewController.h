@@ -11,8 +11,13 @@
 #import "Song.h"
 #import "Album.h"
 #import "STKAudioPlayerHelper.h"
+#import "AppData.h"
+
 
 @interface PurchasedSongViewController : UITableViewController
+{
+    AppData *_appdata;
+}
 
 @property (nonatomic, retain) NSMutableDictionary   *songsArray;
 @property (nonatomic, retain) NSMutableArray        *purchasedSongDic;

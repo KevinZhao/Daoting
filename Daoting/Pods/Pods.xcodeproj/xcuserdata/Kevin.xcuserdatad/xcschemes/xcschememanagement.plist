@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Shimmer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-StreamingKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,37 +47,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>4403AEBF66C9A1AFDEC56823</key>
+		<key>1DFDAB365DD915DC0154EB6B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>46ABBBEC0E93F746C4691DB9</key>
+		<key>27C1F380CC4B623034A3BE38</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>48DEC160428B9FE9CEC4A728</key>
+		<key>58363CD07B9FA39339B4DD7E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6BAD8F445287ACF01988A982</key>
+		<key>8BA2CA76F7C1CA6EF781305F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7CC46569820699A13E3D7152</key>
+		<key>9822F8249C42F7C88E14B22F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A461F8DD86AF6858913EDD2F</key>
+		<key>ADFB4653B8553F2F42B14BDB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CD0233C7645420AAE5B374BE</key>
+		<key>E223C7C314096741FA3DD423</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EB62EF82D522CA54EFBDCAB6</key>
 		<dict>
 			<key>primary</key>
 			<true/>

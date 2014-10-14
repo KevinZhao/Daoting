@@ -10,15 +10,6 @@
 
 @implementation PurchasedSongViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -26,9 +17,14 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
+    _appdata = [AppData sharedAppData];
+    _songsArray = _appdata.purchasedQueue;
+    
     _purchasedSongDic = [[NSMutableArray alloc]init];
     
-    for (int i = 0; i < _songsArray.count; i++) {
+/*    for (int i = 0; i < _songsArray.count; i++) {
         Song *song = [_songsArray objectForKey:_songsArray.allKeys[i]];
         [_purchasedSongDic addObject:song];
     }
@@ -44,7 +40,7 @@
         return (NSComparisonResult)NSOrderedSame;
     };
     
-    _purchasedSongDic = (NSMutableArray *)[_purchasedSongDic sortedArrayUsingComparator:cmptr];
+    _purchasedSongDic = (NSMutableArray *)[_purchasedSongDic sortedArrayUsingComparator:cmptr];*/
 }
 
 - (void)didReceiveMemoryWarning

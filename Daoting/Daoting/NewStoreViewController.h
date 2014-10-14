@@ -14,6 +14,8 @@
 #import "ShareCell.h"
 #import "PurchaseCoinCell.h"
 #import "TSMessage.h"
+#import "FBShimmering.h"
+#import "FBshimmeringView.h"
 
 
 @interface NewStoreViewController : UITableViewController<IAPHelperDelegate>
@@ -25,6 +27,5 @@
     
     NSTimer                     *_timer;
 }
-
 
 @end

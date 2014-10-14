@@ -58,7 +58,7 @@
     }
     
     if (section == 1) {
-        return 2;
+        return 1;
     }
 
     return rowcount;
@@ -105,13 +105,13 @@
         disclosureCell.lbl_Title.text = @"清空缓存";
     }
     
-    if ((indexPath.section == 1) && (indexPath.row == 1))
+    /*if ((indexPath.section == 1) && (indexPath.row == 1))
     {
         cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCellDisclosure" forIndexPath:indexPath];
         
         SettingCellDisclosure *disclosureCell = (SettingCellDisclosure *)cell;
         disclosureCell.lbl_Title.text = @"已购买曲目";
-    }
+    }*/
     
     return cell;
 }
