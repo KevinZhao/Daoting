@@ -26,6 +26,11 @@
     _categoryArray = [CategoryManager sharedManager].categoryArray;
     [self.tableView reloadData];
     [CategoryManager sharedManager].delegate = self;
+    
+    //Disable interactivePopGestureRecognizer
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated

@@ -11,6 +11,7 @@
 #import "Album.h"
 #import "Song.h"
 #import "AFNetWorking.h"
+//#import "UIApplication.h"
 
 enum
 {
@@ -33,7 +34,10 @@ typedef NSInteger UpdatingStatus;
 
 @interface CategoryManager : NSObject
 {
-    NSMutableArray      *_categoryArray;
+    NSInteger updateTaskCount;
+    void (^updateCompletionHandler)(UIBackgroundFetchResult);
+    
+    //(void (^)(UIBackgroundFetchResult))completionHandler;
 }
 
 @property (nonatomic, assign) UpdatingStatus        categoryUpdatingStatus;
@@ -61,5 +65,8 @@ typedef NSInteger UpdatingStatus;
 - (void) writeBacktoCategoryList;
 - (void) writeBacktoAlbumListinCategory:(AudioCategory*) category;
 - (void) writeBacktoSongListinAlbum:(Album *)album;
+
+//background fetching
+- (void)insertNewObjectForFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler; 
 
 @end

@@ -46,6 +46,13 @@
     //begin received remote events
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     
+    //if ios version > 7.0
+    float version = [[[UIDevice currentDevice] systemVersion] floatValue];
+    
+    if (version >= 7.0){
+        [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:60 * 60 * 6];
+    }
+    
     return YES;
 }
 
@@ -203,6 +210,14 @@
     //Notification with XG
     [XGPush handleReceiveNotification:userInfo];
     //End
+}
+
+//background fetching
+- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    NSLog(@"Background Fetching");
+    
+    [[CategoryManager sharedManager] insertNewObjectForFetchWithCompletionHandler:completionHandler];
 }
 
 @end

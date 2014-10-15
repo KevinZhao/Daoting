@@ -150,6 +150,7 @@
         //update Album for each category
         for (AudioCategory* category in self.categoryArray) {
             [self updateAlbumByCategory:category];
+            updateTaskCount++;
         }
         
      }
@@ -282,17 +283,30 @@
              for (Album* album in category.albumArray) {
                  
                  if ([album.updatingStatus isEqualToString:@"Updating"]) {
-                    [self updateSongByAlbum:album];
+                     updateTaskCount++;
+                     [self updateSongByAlbum:album];
                  }
              }
-             
          }
-
+         updateTaskCount--;
+         if (updateTaskCount == 0) {
+             if (updateCompletionHandler) {
+                 updateCompletionHandler(UIBackgroundFetchResultNewData);
+                 NSLog(@"update complete");
+             }
+         }
      }
      //Download Failed
     failure:^(AFHTTPRequestOperation *operation, NSError *error)
      {
          //left blank
+         updateTaskCount--;
+         if (updateTaskCount == 0) {
+             if (updateCompletionHandler) {
+                 updateCompletionHandler(UIBackgroundFetchResultNewData);
+                 NSLog(@"update complete");
+             }
+         }
      }];
     
     self.albumUpdatingStatus = UpgratingCompleted;
@@ -422,11 +436,26 @@
              //call back
              [self.delegate onSongUpdated];
          }
+         
+         updateTaskCount--;
+         if (updateTaskCount == 0) {
+             if (updateCompletionHandler) {
+                 updateCompletionHandler(UIBackgroundFetchResultNewData);
+                 NSLog(@"update complete");
+             }
+         }
      }
      //Download Failed
     failure:^(AFHTTPRequestOperation *operation, NSError *error)
      {
          //left blank
+         updateTaskCount--;
+         if (updateTaskCount == 0) {
+             if (updateCompletionHandler) {
+                 updateCompletionHandler(UIBackgroundFetchResultNewData);
+                 NSLog(@"update complete");
+             }
+         }
      }];
     
     self.songUpdatingStatus = UpgratingCompleted;
@@ -654,6 +683,14 @@
     else{
         NSLog(@"writeBacktoSongListinAlbum failed");
     }
+}
+
+- (void)insertNewObjectForFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    updateCompletionHandler = completionHandler;
+    
+    [self update];
+    //completionHandler(UIBackgroundFetchResultNewData);
 }
 
 @end

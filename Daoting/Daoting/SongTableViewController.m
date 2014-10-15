@@ -79,8 +79,7 @@
     [self setupTimer];
     
     [CategoryManager sharedManager].delegate = self;
-    
-    
+
 }
 
 - (void)viewDidDisappear:(BOOL)animated
