@@ -16,6 +16,9 @@
 #import "SongManager.h"
 #import "TSMessage.h"
 #import "CategoryManager.h"
+#import <MediaPlayer/MediaPlayer.h>
+#import "UIImageView+AFNetworking.h"
+
 
 @class STKAudioPlayerHelper;
 

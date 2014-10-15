@@ -50,9 +50,6 @@
         if (_appData.coins >= [song.price intValue]) {
             
             _appData.coins = _appData.coins - [song.price intValue];
-            [_appData save];
-            [_appData updateToiCloud];
-            
             [self startDownload];
             
             [_appData addtoPurchasedQueue:song withAlbumShortname:album.shortName];
@@ -64,6 +61,7 @@
             }
             
             [_appData save];
+            [_appData updateToiCloud];
             
             //show notification to user
             NSString *notification = [NSString stringWithFormat:@"金币  -%@", song.price];

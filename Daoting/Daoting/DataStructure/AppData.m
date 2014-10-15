@@ -147,25 +147,20 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
         //2. update purchased songs
         NSDictionary *purchasedSongs = [iCloudStore dictionaryForKey:SSDataforPurchasedQueue];
         
-        if (self.purchasedQueue.count <= purchasedSongs.count) {
+        if (self.purchasedQueue.count >= purchasedSongs.count) {
             [iCloudStore setDictionary:self.purchasedQueue forKey:SSDataforPurchasedQueue];
         }
-
-        BOOL success = [iCloudStore synchronize];
-        if (success) {
-            NSLog(@"update icloud succeed");
-        }
         
-        //3.
+        //3. Mark this app had initiated
         [iCloudStore setBool:YES forKey:SSDataforAppExistKey];
         
-        //4. is first Purchase
+        //4. update Purchase times to iCloud
         [iCloudStore setLongLong: self.purchaseTimes forKey:SSDataforFirstPurchaseKey];
         
         //synchronize
-        success = [iCloudStore synchronize];
+        bool success = [iCloudStore synchronize];
         if (success) {
-            NSLog(@"update icloud succeed");
+            NSLog(@"update icloud succeed for other");
         }
     }
     else
@@ -177,7 +172,7 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
 -(void)updateFromiCloud
 {
     if (iCloudStore) {
-        //load coin from iCloud
+        //1. load coin from iCloud
         self.coins = [iCloudStore doubleForKey:SSDataforCoinsKey];
         if (self.coins == 0) {
             
@@ -187,9 +182,10 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
             }
         }
         
-        //load purchase Queue from iCloud
+        //2. load purchase Queue from iCloud
         self.purchasedQueue = [[NSMutableDictionary alloc]initWithDictionary:[iCloudStore dictionaryForKey:SSDataforPurchasedQueue]];
         
+        //4. load purchase time
         self.purchaseTimes = (NSInteger)[iCloudStore longLongForKey:SSDataforFirstPurchaseKey];
         
         [self save];

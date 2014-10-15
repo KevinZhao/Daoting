@@ -63,6 +63,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    
     if (_timer) {
         [_timer invalidate];
     }

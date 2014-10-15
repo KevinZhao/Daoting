@@ -25,7 +25,7 @@
 		0A3C7FFB19B184FB00686C5C /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3C7FED19B184FB00686C5C /* ShareSDK.framework */; };
 		0A3C7FFC19B184FB00686C5C /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3C7FEF19B184FB00686C5C /* libXG-SDK.a */; };
 		0A3CD3641920F8BE00247436 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A3CD3621920F8BE00247436 /* Main_iPhone.storyboard */; };
-		0A5F4C9D195AB0D3003924C7 /* AppIcon76x76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A5F4C9C195AB0D3003924C7 /* AppIcon76x76@2x.png */; };
+		0A5F4C9D195AB0D3003924C7 /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A5F4C9C195AB0D3003924C7 /* AppIcon@2x.png */; };
 		0A659EF51977AFFD00FC893B /* download_pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A659EE81977AFFD00FC893B /* download_pause@2x.png */; };
 		0A65A8FE19A70D1000CAF5CA /* ShareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A65A8FD19A70D1000CAF5CA /* ShareCell.m */; };
 		0A6E296D19A5DD51002808F7 /* NewStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6E296C19A5DD51002808F7 /* NewStoreViewController.m */; };
@@ -53,7 +53,6 @@
 		0A98D6461920ADDD00E46EB9 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A98D6451920ADDD00E46EB9 /* MessageUI.framework */; };
 		0A98D6481920ADF600E46EB9 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A98D6471920ADF600E46EB9 /* MediaPlayer.framework */; };
 		0A98D6641920EAB700E46EB9 /* progressBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A98D6571920EAB700E46EB9 /* progressBar@2x.png */; };
-		0A98D6651920EAB700E46EB9 /* wangyuebo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0A98D6581920EAB700E46EB9 /* wangyuebo.jpg */; };
 		0A98D66C1920F1F500E46EB9 /* arrowSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A98D6681920F1F500E46EB9 /* arrowSelected.png */; };
 		0A98D66D1920F1F500E46EB9 /* arrowSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A98D6691920F1F500E46EB9 /* arrowSelected@2x.png */; };
 		0A98D6701920F25900E46EB9 /* AlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A98D66F1920F25900E46EB9 /* AlbumTableViewController.m */; };
@@ -65,7 +64,6 @@
 		0AEFC3711988C48000CECC93 /* btn_checkin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFC36F1988C48000CECC93 /* btn_checkin@2x.png */; };
 		0AEFC3721988C48000CECC93 /* btn_share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFC3701988C48000CECC93 /* btn_share@2x.png */; };
 		0AEFC3751988D5D300CECC93 /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFC3731988D5D300CECC93 /* coin.png */; };
-		0AEFC3761988D5D300CECC93 /* coins.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFC3741988D5D300CECC93 /* coins.png */; };
 		0AEFC37B1988DBD800CECC93 /* colorStyle_allMusic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFC3791988DBD800CECC93 /* colorStyle_allMusic@2x.png */; };
 		0AEFC37C1988DBD800CECC93 /* colorStyle_download@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFC37A1988DBD800CECC93 /* colorStyle_download@2x.png */; };
 		0AEFC3801988DDC800CECC93 /* tabbar_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFC37F1988DDC800CECC93 /* tabbar_setting@2x.png */; };
@@ -145,7 +143,7 @@
 		0A3C7FEF19B184FB00686C5C /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
 		0A3C7FF019B184FB00686C5C /* XGPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGPush.h; sourceTree = "<group>"; };
 		0A3CD3631920F8BE00247436 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		0A5F4C9C195AB0D3003924C7 /* AppIcon76x76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon76x76@2x.png"; sourceTree = "<group>"; };
+		0A5F4C9C195AB0D3003924C7 /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@2x.png"; sourceTree = "<group>"; };
 		0A659EE81977AFFD00FC893B /* download_pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "download_pause@2x.png"; sourceTree = "<group>"; };
 		0A65A8FC19A70D1000CAF5CA /* ShareCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShareCell.h; path = Store/ShareCell.h; sourceTree = "<group>"; };
 		0A65A8FD19A70D1000CAF5CA /* ShareCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShareCell.m; path = Store/ShareCell.m; sourceTree = "<group>"; };
@@ -180,7 +178,6 @@
 		0A98D6451920ADDD00E46EB9 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		0A98D6471920ADF600E46EB9 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		0A98D6571920EAB700E46EB9 /* progressBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progressBar@2x.png"; sourceTree = "<group>"; };
-		0A98D6581920EAB700E46EB9 /* wangyuebo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wangyuebo.jpg; sourceTree = "<group>"; };
 		0A98D6681920F1F500E46EB9 /* arrowSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowSelected.png; sourceTree = "<group>"; };
 		0A98D6691920F1F500E46EB9 /* arrowSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrowSelected@2x.png"; sourceTree = "<group>"; };
 		0A98D66E1920F25900E46EB9 /* AlbumTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumTableViewController.h; sourceTree = "<group>"; };
@@ -197,7 +194,6 @@
 		0AEFC36F1988C48000CECC93 /* btn_checkin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_checkin@2x.png"; sourceTree = "<group>"; };
 		0AEFC3701988C48000CECC93 /* btn_share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_share@2x.png"; sourceTree = "<group>"; };
 		0AEFC3731988D5D300CECC93 /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin.png; sourceTree = "<group>"; };
-		0AEFC3741988D5D300CECC93 /* coins.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coins.png; sourceTree = "<group>"; };
 		0AEFC3791988DBD800CECC93 /* colorStyle_allMusic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "colorStyle_allMusic@2x.png"; sourceTree = "<group>"; };
 		0AEFC37A1988DBD800CECC93 /* colorStyle_download@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "colorStyle_download@2x.png"; sourceTree = "<group>"; };
 		0AEFC37F1988DDC800CECC93 /* tabbar_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_setting@2x.png"; sourceTree = "<group>"; };
@@ -488,7 +484,6 @@
 				0AEFC3791988DBD800CECC93 /* colorStyle_allMusic@2x.png */,
 				0AEFC37A1988DBD800CECC93 /* colorStyle_download@2x.png */,
 				0AEFC3731988D5D300CECC93 /* coin.png */,
-				0AEFC3741988D5D300CECC93 /* coins.png */,
 				0AEFC36F1988C48000CECC93 /* btn_checkin@2x.png */,
 				0AEFC3701988C48000CECC93 /* btn_share@2x.png */,
 				D89D5F9B197D43C600D6FEE0 /* songcell_bg@2x.png */,
@@ -496,7 +491,7 @@
 				D8A6613319781B7B00E9E7D3 /* mark_lock@2x.png */,
 				0A659EE81977AFFD00FC893B /* download_pause@2x.png */,
 				0AAF6193196AE4A600C33E52 /* playingsong@2x.png */,
-				0A5F4C9C195AB0D3003924C7 /* AppIcon76x76@2x.png */,
+				0A5F4C9C195AB0D3003924C7 /* AppIcon@2x.png */,
 				0A1FA99D19585612002F48EA /* qr_toolbar_more_hl.png */,
 				0A1FA99E19585612002F48EA /* qr_toolbar_more.png */,
 				0A1FA9991958556C002F48EA /* qr_toolbar_more_hl@2x.png */,
@@ -505,7 +500,6 @@
 				0A98D6681920F1F500E46EB9 /* arrowSelected.png */,
 				0A98D6691920F1F500E46EB9 /* arrowSelected@2x.png */,
 				0A98D6571920EAB700E46EB9 /* progressBar@2x.png */,
-				0A98D6581920EAB700E46EB9 /* wangyuebo.jpg */,
 			);
 			path = Artworks;
 			sourceTree = "<group>";
@@ -730,7 +724,7 @@
 				0AEFC37C1988DBD800CECC93 /* colorStyle_download@2x.png in Resources */,
 				D88557611999082F00B0F891 /* actionIconDownloadSelected@2x.png in Resources */,
 				D82B8AC9197962EE00F107B5 /* download@2x.png in Resources */,
-				0A5F4C9D195AB0D3003924C7 /* AppIcon76x76@2x.png in Resources */,
+				0A5F4C9D195AB0D3003924C7 /* AppIcon@2x.png in Resources */,
 				0AAF6194196AE4A600C33E52 /* playingsong@2x.png in Resources */,
 				0A1FA9A019585612002F48EA /* qr_toolbar_more.png in Resources */,
 				5933AD6F18D03EC1001D707B /* Main_iPad.storyboard in Resources */,
@@ -747,11 +741,9 @@
 				0A659EF51977AFFD00FC893B /* download_pause@2x.png in Resources */,
 				0AEFC3821988E17E00CECC93 /* bag@2x.png in Resources */,
 				5933AD7718D03EC1001D707B /* Images.xcassets in Resources */,
-				0AEFC3761988D5D300CECC93 /* coins.png in Resources */,
 				D89D5FA4197D43C600D6FEE0 /* songcell_bg@2x.png in Resources */,
 				0A98D6641920EAB700E46EB9 /* progressBar@2x.png in Resources */,
 				0A3C7FF519B184FB00686C5C /* Resource.bundle in Resources */,
-				0A98D6651920EAB700E46EB9 /* wangyuebo.jpg in Resources */,
 				0AEFC3801988DDC800CECC93 /* tabbar_setting@2x.png in Resources */,
 				0A98D66D1920F1F500E46EB9 /* arrowSelected@2x.png in Resources */,
 				0ABB4283192E321C007D8BAC /* Icon-72@2x.png in Resources */,

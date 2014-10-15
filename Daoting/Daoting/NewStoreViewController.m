@@ -395,7 +395,7 @@
 
 - (void)share
 {
-    NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"AppIcon76x76@2x" ofType:@"png"];
+    NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"AppIcon@2x" ofType:@"png"];
     
     id<ISSContent> publishContent = [ShareSDK content:[NSString stringWithFormat:@"这个app不错，评书、有声书都有，严重推荐! %@", _appDelegate.appUrlinAws]
                                        defaultContent:@""

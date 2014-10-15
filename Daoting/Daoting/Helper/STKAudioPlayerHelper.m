@@ -159,10 +159,9 @@
     
     if (album != nil) {
         
-        //todo
-        /*if (album.songArray == nil) {
-            [CategoryManager sharedManager] initializeSongByAlbum
-        }*/
+        if (album.songArray == nil) {
+            [[CategoryManager sharedManager] initializeSongByAlbum:album];
+        }
         
         NSInteger currentSongNumber = [_appData.currentSong.songNumber intValue];
         
@@ -192,8 +191,6 @@
                     if (_appData.coins >= [song.price intValue]) {
                         
                         _appData.coins = _appData.coins - [song.price intValue];
-                        [_appData save];
-                        [_appData updateToiCloud];
                         
                         [self playSong:song InAlbum:album];
                         
@@ -210,6 +207,7 @@
                         }
                         
                         [_appData save];
+                        [_appData updateToiCloud];
                         
                         [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"金币  -%@", song.price] type:TSMessageNotificationTypeSuccess];
                     }
@@ -240,6 +238,11 @@
     Album *album = [[CategoryManager sharedManager] searchAlbumByShortName:_appData.currentAlbum.shortName];
     
     if (album != nil) {
+        
+        if (album.songArray == nil) {
+            [[CategoryManager sharedManager] initializeSongByAlbum:album];
+        }
+        
         NSInteger currentSongNumber = [_appData.currentSong.songNumber intValue];
         
         if ( currentSongNumber - 1 > 0) {
@@ -267,8 +270,6 @@
                     if (_appData.coins >= [song.price intValue]) {
                         
                         _appData.coins = _appData.coins - [song.price intValue];
-                        [_appData save];
-                        [_appData updateToiCloud];
                         
                         [self playSong:song InAlbum:album];
                         
@@ -285,6 +286,7 @@
                         }
                         
                         [_appData save];
+                        [_appData updateToiCloud];
                         
                         [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"金币  -%@", song.price] type:TSMessageNotificationTypeMessage];
                     }
@@ -308,6 +310,34 @@
         }
     }
     
+}
+
+- (void) configureNowPlayingInfo
+{
+    Album *album = _appData.currentAlbum;
+    Song *song= _appData.currentSong;
+    
+    //Set Information for Nowplaying Info Center
+    if (NSClassFromString(@"MPNowPlayingInfoCenter")) {
+        NSMutableDictionary * dict = [[NSMutableDictionary alloc] init];
+        [dict setObject:[NSString stringWithFormat:@"%@ %@", song.title, song.songNumber] forKey:MPMediaItemPropertyAlbumTitle];
+        [dict setObject:album.artistName forKey:MPMediaItemPropertyArtist];
+        [dict setObject:[NSNumber numberWithInteger:audioPlayer.duration] forKey:MPMediaItemPropertyPlaybackDuration];
+        [dict setObject:[NSNumber numberWithInteger:audioPlayer.progress] forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
+        
+        [dict setObject:[NSNumber numberWithInteger:1.0] forKey:MPNowPlayingInfoPropertyPlaybackRate];
+        [dict setObject:[NSNumber numberWithInteger:2] forKey:MPMediaItemPropertyAlbumTrackCount];
+        
+        UIImage *placeholderImage = [UIImage imageNamed:@"AppIcon.png"];
+        UIImageView *imgv = [[UIImageView alloc]init];
+        //todo: bug, when app move to background and back to foreground
+        [imgv setImageWithURL:album.imageUrl placeholderImage:placeholderImage];
+        UIImage *img = imgv.image;
+        
+        MPMediaItemArtwork * mArt = [[MPMediaItemArtwork alloc] initWithImage:img];
+        [dict setObject:mArt forKey:MPMediaItemPropertyArtwork];
+        [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:dict];
+    }
 }
 
 
@@ -364,6 +394,10 @@
     if (state == 3) {
         [self.delegate onTest];
     }*/
+    
+    if ((state == STKAudioPlayerStatePlaying) && (previousState == STKAudioPlayerStateBuffering)) {
+        [self configureNowPlayingInfo];
+    }
 }
 
 /// Raised when an item has finished playing
