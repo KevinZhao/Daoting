@@ -11,7 +11,6 @@
 #import "Album.h"
 #import "Song.h"
 #import "AFNetWorking.h"
-//#import "UIApplication.h"
 
 enum
 {
@@ -36,8 +35,6 @@ typedef NSInteger UpdatingStatus;
 {
     NSInteger updateTaskCount;
     void (^updateCompletionHandler)(UIBackgroundFetchResult);
-    
-    //(void (^)(UIBackgroundFetchResult))completionHandler;
 }
 
 @property (nonatomic, assign) UpdatingStatus        categoryUpdatingStatus;
@@ -54,17 +51,18 @@ typedef NSInteger UpdatingStatus;
 
 - (AudioCategory*)searchCategoryByShortName:(NSString*) shortName;
 - (Album*)searchAlbumByShortName:(NSString*) albumShortName inCategory:(AudioCategory*) category;
-
 - (Album*)searchAlbumByShortName:(NSString*) albumShortName;
 
-- (NSMutableArray*) searchAlbumArrayByCategory:(AudioCategory *) category;
-- (NSMutableArray* ) searchSongArrayByAlbum:(Album *) album;
-
+- (NSMutableArray*) initializeAlbumArrayByCategory:(AudioCategory *) category;
+- (NSMutableArray* ) initializeSongArrayByAlbum:(Album *) album;
 - (void)initializeSongByAlbum:(Album *)album;
+- (void)initializeAlbumByCategory:(AudioCategory *)category;
 
 - (void) writeBacktoCategoryList;
 - (void) writeBacktoAlbumListinCategory:(AudioCategory*) category;
 - (void) writeBacktoSongListinAlbum:(Album *)album;
+
+- (void)updateSongByAlbum:(Album *)album;
 
 //background fetching
 - (void)insertNewObjectForFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler; 

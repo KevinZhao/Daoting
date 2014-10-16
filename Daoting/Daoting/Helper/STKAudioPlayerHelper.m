@@ -231,6 +231,9 @@
         }
         
     }
+    else{
+        NSLog(@"Error, album is nil");
+    }
 }
 
 -(void)playPreviousSong
@@ -247,7 +250,7 @@
         
         if ( currentSongNumber - 1 > 0) {
             
-            Song *song = [album.songArray objectAtIndex:currentSongNumber];
+            Song *song = [album.songArray objectAtIndex:(currentSongNumber -2)];
             
             //2.1 check the song had been purchased or not
             BOOL purchased = [_appData songNumber:song.songNumber ispurchasedwithAlbum:album.shortName];
@@ -308,6 +311,9 @@
                 }
             }
         }
+    }
+    else{
+        NSLog(@"Error, album is nil");
     }
     
 }

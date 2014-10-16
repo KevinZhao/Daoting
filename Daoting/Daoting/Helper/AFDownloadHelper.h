@@ -11,7 +11,7 @@
 #import "Song.h"
 #import "Album.h"
 #import "DownloadStatus.h"
-
+#import "CategoryManager.h"
 
 
 @interface AFDownloadHelper : NSObject

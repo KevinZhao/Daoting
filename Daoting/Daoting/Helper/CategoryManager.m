@@ -134,6 +134,12 @@
                 
                 [newCategory setValue:@"YES" forKey:@"UpdatedCategory"];
             }
+            else
+            {
+                NSDictionary* oldCatetory = [oldPlist_dictionary objectForKey:[NSString stringWithFormat:@"%d",i]];
+                NSString* oldUpdatedCategory = (NSString*)[oldCatetory valueForKey:@"UpdatedCategory"];
+                [newCategory setValue:oldUpdatedCategory forKey:@"UpdatedCategory"];
+            }
             
             [newPlist_dictionary setValue:newCategory forKey:[NSString stringWithFormat:@"%d", i]];
         }
@@ -246,48 +252,77 @@
     //Download Complete
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
      {
-         NSMutableDictionary *newPlist_dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:newfilePath];
-         
-         if (newPlist_dictionary != nil) {
+         if ([fileManager fileExistsAtPath:plistPath])
+         {
+             NSMutableDictionary *newPlist_dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:newfilePath];
              
-             NSMutableDictionary *oldPlist_dictionary = [[NSMutableDictionary alloc] init];
-             if ([fileManager fileExistsAtPath:plistPath])
-             {
-                 oldPlist_dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-             }
-             
-             //Copy new dictionary
-             for (NSInteger i = 1; i <= newPlist_dictionary.count; i++) {
+             if (newPlist_dictionary != nil) {
                  
-                 NSDictionary *newAlbum = [newPlist_dictionary objectForKey:[NSString stringWithFormat:@"%d", i]];
-                 
-                 NSString *albumShortName = (NSString*)[newAlbum valueForKey:@"ShortName"];
-                 if ([self searchAlbumByShortName:albumShortName inCategory:category] == nil){
-                     
-                     [newAlbum setValue:@"YES" forKey:@"UpdatedAlbum"];
+                 NSMutableDictionary *oldPlist_dictionary = [[NSMutableDictionary alloc] init];
+                 if ([fileManager fileExistsAtPath:plistPath])
+                 {
+                     oldPlist_dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
                  }
                  
-                 [newPlist_dictionary setValue:newAlbum forKey:[NSString stringWithFormat:@"%d", i]];
-             }
-             
-             //Copy to oldPlist
-             if ([newPlist_dictionary writeToFile:plistPath atomically:NO]) {
-                 //re-initialize albums and callback to update table view
-                 [self initializeAlbumByCategory:category];
-             };
-             
-             //call back
-             [self.delegate onAlbumUpdated];
-             
-             //update Songs for each Album
-             for (Album* album in category.albumArray) {
+                 //Copy new dictionary
+                 for (NSInteger i = 1; i <= newPlist_dictionary.count; i++) {
+                     
+                     NSDictionary *newAlbum = [newPlist_dictionary objectForKey:[NSString stringWithFormat:@"%d", i]];
+                     NSString *albumShortName = (NSString*)[newAlbum valueForKey:@"ShortName"];
+                     
+                     //find if the album is new in category
+                     //todo: there is a bug when albumarray is not initiated.
+                     if ([self searchAlbumByShortName:albumShortName inCategory:category] != nil){
+                         
+                         NSDictionary* oldAlbum = [oldPlist_dictionary objectForKey:[NSString stringWithFormat:@"%d",i]];
+                         NSString* oldUpdatedAlbum = (NSString*)[oldAlbum valueForKey:@"UpdatedSong"];
+                         [newAlbum setValue:oldUpdatedAlbum forKey:@"UpdatedSong"];
+                     }
+                     else
+                     {
+                         [newAlbum setValue:@"YES" forKey:@"UpdatedAlbum"];
+                         
+                         category.updatedCategory = @"YES";
+                         [self writeBacktoAlbumListinCategory:category];
+                     }
+                     
+                     [newPlist_dictionary setValue:newAlbum forKey:[NSString stringWithFormat:@"%d", i]];
+                     
+                 }
                  
-                 if ([album.updatingStatus isEqualToString:@"Updating"]) {
-                     updateTaskCount++;
-                     [self updateSongByAlbum:album];
+                 //Copy to oldPlist
+                 if ([newPlist_dictionary writeToFile:plistPath atomically:NO]) {
+                     //re-initialize albums and callback to update table view
+                     [self initializeAlbumByCategory:category];
+                 };
+                 
+                 //call back
+                 [self.delegate onAlbumUpdated];
+                 
+                 //update Songs for each Album
+                 for (Album* album in category.albumArray) {
+                     
+                     if ([album.updatingStatus isEqualToString:@"Updating"]) {
+                         updateTaskCount++;
+                         [self initializeSongByAlbum:album];
+                         [self updateSongByAlbum:album];
+                     }
                  }
              }
          }
+         else
+         {
+             NSError* err;
+             
+             //copy download plist to document directory and initialize it
+             [fileManager copyItemAtPath:newfilePath toPath:plistPath error:&err];
+             
+             
+             if (!err) {
+                 [self initializeAlbumByCategory:category];
+             }
+         }
+
          updateTaskCount--;
          if (updateTaskCount == 0) {
              if (updateCompletionHandler) {
@@ -395,48 +430,81 @@
     //Download Complete
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
      {
-         NSMutableDictionary *newPlist_dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:newfilePath];
-         
-         if (newPlist_dictionary != nil) {
+         //if this plist exist in document directory
+         if ([fileManager fileExistsAtPath:plistPath]) {
+             //Update Scenario
+             NSMutableDictionary *newPlist_dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:newfilePath];
              
-             NSMutableDictionary *oldPlist_dictionary = [[NSMutableDictionary alloc] init];
-             if ([fileManager fileExistsAtPath:plistPath])
-             {
-                 oldPlist_dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-             }
-             
-             //Copy new dictionary
-             for (NSInteger i = 1; i <= newPlist_dictionary.count; i++) {
+             if (newPlist_dictionary != nil) {
                  
-                 NSDictionary *newSong = [newPlist_dictionary objectForKey:[NSString stringWithFormat:@"%d", i]];
-                 
-                 NSString *songNumber = [NSString stringWithFormat:@"%d", i];
-                 if ([self searchSongBySongNumber:songNumber inAlbum:album] == nil){
-                     
-                     [newSong setValue:@"YES" forKey:@"UpdatedSong"];
-                 }
-                 else{
-                     
-                     NSDictionary* oldSong = [oldPlist_dictionary objectForKey:[NSString stringWithFormat:@"%d",i]];
-                     NSString* oldUpdatedSong = (NSString*)[oldSong valueForKey:@"UpdatedSong"];
-                     [newSong setValue:oldUpdatedSong forKey:@"UpdatedSong"];
+                 NSMutableDictionary *oldPlist_dictionary = [[NSMutableDictionary alloc] init];
+                 if ([fileManager fileExistsAtPath:plistPath])
+                 {
+                     oldPlist_dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
                  }
                  
-                 [newPlist_dictionary setValue:newSong forKey:[NSString stringWithFormat:@"%d", i]];
-             }
-             
-             //Copy to oldPlist
-             if ([newPlist_dictionary writeToFile:plistPath atomically:NO]) {
-                 //re-initialize albums and callback to update table view
-                 [self initializeSongByAlbum:album];
+                 //Copy new dictionary
+                 for (NSInteger i = 1; i <= newPlist_dictionary.count; i++) {
+                     
+                     NSDictionary *newSong = [newPlist_dictionary objectForKey:[NSString stringWithFormat:@"%d", i]];
+                     NSString *songNumber = [NSString stringWithFormat:@"%d", i];
+                     
+                     // find if the song number is in album
+                     if ([self searchSongBySongNumber:songNumber inAlbum:album] != nil){
+                         
+                         NSDictionary* oldSong = [oldPlist_dictionary objectForKey:[NSString stringWithFormat:@"%d",i]];
+                         
+                         NSString* oldUpdatedSong = (NSString*)[oldSong valueForKey:@"UpdatedSong"];
+                         [newSong setValue:oldUpdatedSong forKey:@"UpdatedSong"];
+
+                         NSString* oldFilePath = (NSString*)[oldSong valueForKey:@"FilePath"];
+                         [newSong setValue:oldFilePath forKey:@"FilePath"];
+                     }
+                     //This is a new song
+                     else{
+                         
+                         [newSong setValue:@"YES" forKey:@"UpdatedSong"];
+                         
+                         //write back to album list and notify there is a new update
+                         album.updatedAlbum = @"YES";
+                         AudioCategory *category = [self searchCategoryByShortName:album.category];
+                         
+                         if (category != nil) {
+                            [self writeBacktoAlbumListinCategory:category];
+                         }
+                         else
+                         {
+                             NSLog(@"updateSongByAlbum Error the category is not exist");
+                         }
+                     }
+                     
+                     [newPlist_dictionary setValue:newSong forKey:[NSString stringWithFormat:@"%d", i]];
+                     
+                     [self writeBacktoSongListinAlbum:album];
+                 }
                  
-                 NSLog(@"%@ Updated successfully", album.shortName);
-             };
-             
-             //call back
-             [self.delegate onSongUpdated];
+                 //Copy to oldPlist
+                 if ([newPlist_dictionary writeToFile:plistPath atomically:NO]) {
+                     //re-initialize albums and callback to update table view
+                     [self initializeSongByAlbum:album];
+                     
+                     NSLog(@"%@ Updated successfully", album.shortName);
+                 };
          }
-         
+         }
+         //if this plist did not exist in document directory
+         else
+         {
+             NSError* err;
+             
+             //copy download plist to document directory and initialize it
+             [fileManager copyItemAtPath:newfilePath toPath:plistPath error:&err];
+             
+             if (!err) {
+                 [self initializeSongByAlbum:album];
+             }
+         }
+
          updateTaskCount--;
          if (updateTaskCount == 0) {
              if (updateCompletionHandler) {
@@ -444,6 +512,9 @@
                  NSLog(@"update complete");
              }
          }
+         
+         //call back
+         [self.delegate onSongUpdated];
      }
      //Download Failed
     failure:^(AFHTTPRequestOperation *operation, NSError *error)
@@ -483,15 +554,13 @@
 {
     Album* resultAlbum = nil;
     
-    if (category.albumArray == nil) {
-        [self initializeAlbumByCategory:category];}
-    
-    
-    for (Album *album in category.albumArray) {
-        if ([album.shortName isEqualToString: albumShortName]) {
+    if (category.albumArray != nil) {
+        for (Album *album in category.albumArray) {
+            if ([album.shortName isEqualToString: albumShortName]) {
             
             resultAlbum = album;
             return resultAlbum;
+            }
         }
     }
     
@@ -533,7 +602,7 @@
     return resultSong;
 }
 
-- (NSMutableArray* ) searchAlbumArrayByCategory:(AudioCategory *) category
+- (NSMutableArray* ) initializeAlbumArrayByCategory:(AudioCategory *) category
 {
     if (category.albumArray == nil) {
         [self initializeAlbumByCategory:category];
@@ -542,7 +611,7 @@
     return category.albumArray;
 }
 
-- (NSMutableArray* ) searchSongArrayByAlbum:(Album *) album
+- (NSMutableArray* ) initializeSongArrayByAlbum:(Album *) album
 {
     if (album.songArray == nil) {
         [self initializeSongByAlbum:album];
@@ -626,7 +695,7 @@
 {
     NSMutableDictionary *newPlist_dictionary = [[NSMutableDictionary alloc]init];
     
-    NSMutableArray *_songs = [self searchSongArrayByAlbum:album];
+    NSMutableArray *_songs = [self initializeSongArrayByAlbum:album];
     
     for (NSInteger i = 1; i <= _songs.count; i++ ) {
         NSMutableDictionary *songDirectory = [[NSMutableDictionary alloc]init];

@@ -55,6 +55,7 @@
     DownloadingStatus *status = [[DownloadingStatus alloc]init];
     status.downloadingStatus = fileDownloadStatusWaiting;
     
+    //next version revisit, too much information here
     operation.userInfo = [[NSMutableDictionary alloc]init];
     [operation.userInfo setValue:[NSString stringWithFormat:@"%@_%@", album.shortName, song.songNumber] forKey:@"key"];
     [operation.userInfo setValue:album forKeyPath:@"album"];
@@ -89,6 +90,7 @@
          NSString *desfilePath = [[[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingString:albumFolder]stringByAppendingString:desfileName];
          
          NSFileManager *fileManager = [NSFileManager defaultManager];
+         
          success = [fileManager copyItemAtPath:filePath toPath:desfilePath error:&error];
          if (!success) {
              
@@ -97,25 +99,13 @@
          }
          
          success = [fileManager removeItemAtPath:filePath error:nil];
-         
          if (!success) {
              NSLog(@"failed to remove file at %@", filePath);
          }
          
          song.filePath = [[NSURL alloc]initWithString:desfilePath];
          
-         //Write back to PlayList.plist
-         NSString *bundleDocumentDirectoryPath =
-         [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-         
-         NSString *plistPath =
-         [bundleDocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_SongList.plist", album.shortName]];
-         NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-         NSMutableDictionary *songArray = [dictionary objectForKey:song.songNumber];
-         
-         [songArray setObject:[song.filePath absoluteString] forKey:@"FilePath"];
-         success = [dictionary writeToFile:plistPath atomically:NO];
-         
+         [[CategoryManager sharedManager] writeBacktoSongListinAlbum:album];
          if (success) {
              NSLog(@"download completed");
          }

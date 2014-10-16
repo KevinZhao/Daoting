@@ -28,7 +28,7 @@
     [super viewWillAppear:animated];
     [CategoryManager sharedManager].delegate = self;
     
-    _albumArray = [[CategoryManager sharedManager] searchAlbumArrayByCategory:_category];
+    _albumArray = [[CategoryManager sharedManager] initializeAlbumArrayByCategory:_category];
     [self.tableView reloadData];
     
     self.navigationItem.title = _category.title;
@@ -109,6 +109,10 @@
         
         Album *album = [_albumArray objectAtIndex:indexpath.row];
         
+        if ([album.updatingStatus isEqualToString:@"Updating"]) {
+            [[CategoryManager sharedManager] updateSongByAlbum:album];
+        }
+        
         if ([album.updatedAlbum isEqualToString:@"YES"]) {
             
             album.updatedAlbum = @"NO";
@@ -130,7 +134,7 @@
 
 -(void) onAlbumUpdated
 {
-    _albumArray = [[CategoryManager sharedManager] searchAlbumArrayByCategory:_category];
+    _albumArray = [[CategoryManager sharedManager] initializeAlbumArrayByCategory:_category];
     [self.tableView reloadData];
     
     [self navigateToLatestAlbum];

@@ -277,4 +277,18 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
     return self;
 }
 
+#pragma mark Test purpose only
+
+-(void) cleariCloudData
+{
+    NSDictionary *purchasedSongs = nil;
+    [iCloudStore setBool:NO forKey:SSDataforAppExistKey];
+    
+    [iCloudStore setDictionary: purchasedSongs forKey:SSDataforPurchasedQueue];
+    [iCloudStore setLongLong: 0 forKey:SSDataforFirstPurchaseKey];
+    
+    [iCloudStore synchronize];
+}
+
+
 @end

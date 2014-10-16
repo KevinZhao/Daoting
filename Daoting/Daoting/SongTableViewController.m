@@ -8,9 +8,6 @@
 
 #import "SongTableViewController.h"
 
-@interface SongTableViewController ()
-@end
-
 @implementation SongTableViewController
 @synthesize pageControl, scrollView;
 
@@ -39,7 +36,7 @@
     [super viewWillAppear:animated];
     
     _playerHelper.delegate = self;
-    _songArray = [[CategoryManager sharedManager]searchSongArrayByAlbum:_album];
+    _songArray = [[CategoryManager sharedManager]initializeSongArrayByAlbum:_album];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -348,7 +345,9 @@
     else{
         //2. Check if the file had been downloaded for the cell
         //Download completed
-        if ([[NSFileManager defaultManager] fileExistsAtPath:[song.filePath absoluteString]]){
+        //next version revisit it
+        
+        if (![[song.filePath absoluteString] isEqualToString:@""]){
 
             songCell.cirProgView_downloadProgress.hidden = YES;
 
@@ -407,14 +406,12 @@
 
 - (void)remoteControlReceivedWithEvent:(UIEvent *)event
 {
-    STKAudioPlayer *player = _playerHelper.audioPlayer;
-    
     if (event.type == UIEventTypeRemoteControl) {
         switch (event.subtype) {
             case UIEventSubtypeRemoteControlTogglePlayPause:
             {
-                if (player.state == STKAudioPlayerStatePlaying) {
-                    
+                if (_playerHelper.audioPlayer.state == STKAudioPlayerStatePlaying) {
+
                     //Pause
                     [_playerHelper pauseSong];
                     
@@ -627,7 +624,7 @@
 - (IBAction)onbtn_nextPressed:(id)sender
 {
     //check currentSongNumber
-    NSInteger currentSongNumber = [_appData.currentSong.songNumber intValue];
+    /*NSInteger currentSongNumber = [_appData.currentSong.songNumber intValue];
     
     if (currentSongNumber < _songArray.count) {
         Song *song = [_songArray objectAtIndex:currentSongNumber];
@@ -635,14 +632,16 @@
         [self playSong:song];
     }
     
-    [self onPlayerHelperSongChanged];
+    [self onPlayerHelperSongChanged];*/
+    
+    [_playerHelper playNextSong];
 }
 
 - (IBAction)onbtn_previousPressed:(id)sender
 {
     //[self test];
     
-    NSInteger currentSongNumber = [_appData.currentSong.songNumber intValue];
+    /*NSInteger currentSongNumber = [_appData.currentSong.songNumber intValue];
     
     if ( currentSongNumber - 1 > 0) {
         Song *song = [_songArray objectAtIndex:(currentSongNumber -2)];
@@ -650,7 +649,9 @@
         [self playSong:song];
     }
     
-    [self onPlayerHelperSongChanged];
+    [self onPlayerHelperSongChanged];*/
+    
+    [_playerHelper playPreviousSong];
 }
 
 - (IBAction)onsliderValueChanged:(id)sender
@@ -681,7 +682,7 @@
 
 - (void)onSongUpdated
 {
-    _songArray = [[CategoryManager sharedManager] searchSongArrayByAlbum:_album];
+    _songArray = [[CategoryManager sharedManager] initializeSongArrayByAlbum:_album];
     
     [_tableview reloadData];
     

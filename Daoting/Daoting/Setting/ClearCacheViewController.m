@@ -39,13 +39,12 @@
 {
     ClearCacheCell *cell;
     
-    
     cell = [tableView dequeueReusableCellWithIdentifier:@"ClearCacheCell" forIndexPath:indexPath];
     
-    //todo
     //1. get album title
     NSString *albumShortName = (NSString *)_albumShortnameArray[indexPath.row];
     Album *album = [[CategoryManager sharedManager] searchAlbumByShortName:albumShortName];
+    //Todo: if album == nil
              
     cell.lbl_albumName.text = album.title;
 
