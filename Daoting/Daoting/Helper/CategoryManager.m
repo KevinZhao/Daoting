@@ -254,6 +254,8 @@
      {
          if ([fileManager fileExistsAtPath:plistPath])
          {
+             [self initializeAlbumArrayByCategory:category];
+             
              NSMutableDictionary *newPlist_dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:newfilePath];
              
              if (newPlist_dictionary != nil) {
@@ -283,7 +285,7 @@
                          [newAlbum setValue:@"YES" forKey:@"UpdatedAlbum"];
                          
                          category.updatedCategory = @"YES";
-                         [self writeBacktoAlbumListinCategory:category];
+                         //[self writeBacktoAlbumListinCategory:category];
                      }
                      
                      [newPlist_dictionary setValue:newAlbum forKey:[NSString stringWithFormat:@"%d", i]];
@@ -316,7 +318,6 @@
              
              //copy download plist to document directory and initialize it
              [fileManager copyItemAtPath:newfilePath toPath:plistPath error:&err];
-             
              
              if (!err) {
                  [self initializeAlbumByCategory:category];
@@ -480,7 +481,7 @@
                      
                      [newPlist_dictionary setValue:newSong forKey:[NSString stringWithFormat:@"%d", i]];
                      
-                     [self writeBacktoSongListinAlbum:album];
+                     //[self writeBacktoSongListinAlbum:album];
                  }
                  
                  //Copy to oldPlist
