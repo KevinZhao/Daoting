@@ -360,21 +360,11 @@
     NSString *DocumentDirectoryPath = [paths objectAtIndex:0];
     NSString *plistPathinDocumentDirectory = [DocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_SongList.plist", album.shortName]];
     
-    //1.1 if no, copy from resource directory to document directory
+    //1.1 if no, update from cloud storage
     if (![fileManager fileExistsAtPath:plistPathinDocumentDirectory]){
         
-        NSString *plistPathinResourceDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:[NSString stringWithFormat:@"/%@_SongList.plist", album.shortName]];
-        
-        if ([fileManager fileExistsAtPath:plistPathinResourceDirectory]) {
-            [fileManager copyItemAtPath:plistPathinResourceDirectory toPath:plistPathinDocumentDirectory error:nil];
-        }
-        //Songlist is not
-        else
-        {
-            [self updateSongByAlbum:album];
-            return;
-            //Critical Error, the plist file not exist
-        }
+        [self updateSongByAlbum:album];
+        return;
     }
     
     //2. initialize the songArray
@@ -433,6 +423,9 @@
      {
          //if this plist exist in document directory
          if ([fileManager fileExistsAtPath:plistPath]) {
+             
+             [self initializeSongByAlbum:album];
+             
              //Update Scenario
              NSMutableDictionary *newPlist_dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:newfilePath];
              

@@ -623,16 +623,6 @@
 
 - (IBAction)onbtn_nextPressed:(id)sender
 {
-    //check currentSongNumber
-    /*NSInteger currentSongNumber = [_appData.currentSong.songNumber intValue];
-    
-    if (currentSongNumber < _songArray.count) {
-        Song *song = [_songArray objectAtIndex:currentSongNumber];
-        
-        [self playSong:song];
-    }
-    
-    [self onPlayerHelperSongChanged];*/
     
     [_playerHelper playNextSong];
 }
@@ -640,17 +630,7 @@
 - (IBAction)onbtn_previousPressed:(id)sender
 {
     //[self test];
-    
-    /*NSInteger currentSongNumber = [_appData.currentSong.songNumber intValue];
-    
-    if ( currentSongNumber - 1 > 0) {
-        Song *song = [_songArray objectAtIndex:(currentSongNumber -2)];
-        
-        [self playSong:song];
-    }
-    
-    [self onPlayerHelperSongChanged];*/
-    
+
     [_playerHelper playPreviousSong];
 }
 
