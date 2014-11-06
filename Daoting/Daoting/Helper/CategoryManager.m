@@ -99,7 +99,7 @@
     NSString *plistPath = [bundleDocumentDirectoryPath stringByAppendingString:@"/CategoryList.plist"];
     
     //2. Download plist from cloud storage
-    NSURL *categoryListUrl = [[NSURL alloc]initWithString:@"http://182.254.148.156/Daoting/CategoryList_test.plist"];
+    NSURL *categoryListUrl = [[NSURL alloc]initWithString:@"http://182.254.148.156/Daoting/CategoryList.plist"];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:categoryListUrl];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
