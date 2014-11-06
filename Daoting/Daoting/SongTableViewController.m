@@ -76,7 +76,6 @@
     [self setupTimer];
     
     [CategoryManager sharedManager].delegate = self;
-
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -251,13 +250,23 @@
     
     switch (_audioPlayer.state) {
         case STKAudioPlayerStatePlaying:
+        
             [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_pause_n.png"] forState:UIControlStateNormal];
             break;
         
-        case STKAudioPlayerStatePaused:
+        /*case STKAudioPlayerStatePaused:
+            
             [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_play_n.png"] forState:UIControlStateNormal];
             break;
+        
+        case STKAudioPlayerStateStopped:
+            
+            [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_play_n.png"] forState:UIControlStateNormal];
+            break;*/
+            
         default:
+            
+            [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_play_n.png"] forState:UIControlStateNormal];
             break;
     }
     
@@ -343,7 +352,7 @@
         }
     }
     else{
-        //2. Check if the file had been downloaded for the cell
+        //2. todo Check if the file had been downloaded for the cell
         //Download completed
         //next version revisit it
         
@@ -404,52 +413,6 @@
     [self tick];
 }
 
-- (void)remoteControlReceivedWithEvent:(UIEvent *)event
-{
-    if (event.type == UIEventTypeRemoteControl) {
-        switch (event.subtype) {
-            case UIEventSubtypeRemoteControlTogglePlayPause:
-            {
-                if (_playerHelper.audioPlayer.state == STKAudioPlayerStatePlaying) {
-
-                    //Pause
-                    [_playerHelper pauseSong];
-                    
-                }else{
-                    
-                    //Resume
-                    [self playSong:_appData.currentSong];
-                }
-                break;
-            }
-            case UIEventSubtypeRemoteControlPause:
-            {
-                [_playerHelper pauseSong];
-                
-                break;
-            }
-                
-            case UIEventSubtypeRemoteControlPlay:
-            {
-                [self playSong:_appData.currentSong];
-                break;
-            }
-            case UIEventSubtypeRemoteControlPreviousTrack:
-            {
-                [_playerHelper playPreviousSong];
-                break;
-            }
-            case UIEventSubtypeRemoteControlNextTrack:
-            {
-                [_playerHelper playNextSong];
-                break;
-            }
-            default:
-                break;
-        }
-    }
-}
-
 - (void)shareAlbum
 {    
     id<ISSContent> publishContent = [ShareSDK content:[NSString stringWithFormat:@"评书、有声书都有,我正在听 %@的《%@》%@", _album.artistName,_album.title, _appDelegate.appUrlinAws]
@@ -503,6 +466,7 @@
             coinsNeeded = coinsNeeded + [song.price intValue];
         }
     }
+    
     //2.if coin is enough, add all download item into download queue
     if (_appData.coins >= coinsNeeded) {
         
@@ -558,8 +522,6 @@
         tabBarController.selectedIndex = 2;
         
         [TSMessage showNotificationInViewController:tabBarController title:@"您的金币不足，请购买更多金币" subtitle:nil type:TSMessageNotificationTypeWarning];
-        
-
     }
 }
 
@@ -623,22 +585,19 @@
 
 - (IBAction)onbtn_nextPressed:(id)sender
 {
-    
     [_playerHelper playNextSong];
 }
 
 - (IBAction)onbtn_previousPressed:(id)sender
 {
     //[self test];
-
+    
     [_playerHelper playPreviousSong];
 }
 
 - (IBAction)onsliderValueChanged:(id)sender
 {
-    if (_audioPlayer) {
-        [_audioPlayer seekToTime:_slider.value];
-    }
+    [_playerHelper seekToProgress:_slider.value];
 }
 
 - (IBAction)onpageChanged:(id)sender
@@ -667,8 +626,6 @@
     [_tableview reloadData];
     
     [self navigateToLatestSong];
-    
-    //[self test];
 }
 
 - (void)onCategoryUpdated
@@ -806,16 +763,52 @@
 {
     NSLog(@"onTest %d", t_currentsong);
     
+    Song *song = _songArray[t_currentsong];
+
+    /*NSString *url = @"http://182.254.148.156/dongwu/%E5%86%AC%E5%90%B4%E7%9B%B8%E5%AF%B9%E8%AE%BA";
+    NSString *songNumber;
+        
+    if (t_currentsong < 10) {
+        songNumber = [NSString stringWithFormat:@"00%d", (t_currentsong + 1)];
+    }
+    else if (t_currentsong < 100) {
+        songNumber = [NSString stringWithFormat:@"0%d", (t_currentsong + 1)];
+    }
+    else
+    {
+        songNumber = [NSString stringWithFormat:@"%d", (t_currentsong + 1)];
+    }
+        
+    NSString *result = [url stringByAppendingFormat:@"%@.mp3", songNumber];
+        
+    song.url = [NSURL URLWithString:result];*/
+    
+    song.duration = [self formatTimeFromSeconds:_playerHelper.audioPlayer.duration];
+    song.description = @"";
+    
     if (t_currentsong == (_songArray.count - 1)) {
+        
+        /*for (int i = 474; i < 1221; i++) {
+            
+            Song *newSong = [[Song alloc]init];
+            
+            newSong.songNumber = [NSString stringWithFormat:@"%d", i];
+            newSong.title = @"凡人修仙传";
+            NSString *url = @"http://182.254.148.156/fanrenxiuxianzhuan/%E5%87%A1%E4%BA%BA%E4%BF%AE%E4%BB%99%E4%BC%A0";
+            
+            NSString *result = [url stringByAppendingFormat:@"%d.mp3", i];
+            newSong.url = [NSURL URLWithString:result];
+            newSong.price = [NSString stringWithFormat:@"25"];
+            [_songArray addObject:newSong];
+        }*/
+        
+        
         [[CategoryManager sharedManager] writeBacktoSongListinAlbum:_album];
         return;
     }
     
-    Song *song = _songArray[t_currentsong];
-    
-    song.duration = [self formatTimeFromSeconds:_playerHelper.audioPlayer.duration];
-    
     [self onbtn_nextPressed:nil];
+    
     t_currentsong++;
 }
 

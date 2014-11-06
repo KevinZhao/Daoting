@@ -8,12 +8,7 @@
 
 #import "NewStoreViewController.h"
 
-@interface NewStoreViewController ()
-
-@end
-
 @implementation NewStoreViewController
-
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -174,8 +169,7 @@
         
         //Check in
         if (indexPath.row == 0) {
-            
-            shareCell.btn_cellButton.imageView.image = [UIImage imageNamed:@"btn_checkin@2x.png"];
+            [shareCell.btn_cellButton setImage:[UIImage imageNamed:@"btn_checkin@2x.png"] forState:UIControlStateNormal];
             [shareCell.btn_cellButton addTarget:self action:@selector(dailyCheckin) forControlEvents:UIControlEventTouchUpInside];
 
             shareCell.lbl_cellDescription.text = @"签到";
@@ -183,7 +177,7 @@
         }
         //Share
         if (indexPath.row == 1) {
-            shareCell.btn_cellButton.imageView.image = [UIImage imageNamed:@"btn_share@2x.png"];
+            [shareCell.btn_cellButton setImage:[UIImage imageNamed:@"btn_share@2x.png"] forState:UIControlStateNormal];
             [shareCell.btn_cellButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
             
             shareCell.lbl_cellDescription.text = @"分享";
@@ -382,8 +376,6 @@
         currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%d 枚", _appData.coins];
         
         NSString *notification = @"您获得了 10金币";
-        
-        //[self showNotification:notification];
         [TSMessage showNotificationInViewController:self title:notification subtitle:nil type:TSMessageNotificationTypeSuccess];
     }
     else

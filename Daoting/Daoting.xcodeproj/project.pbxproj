@@ -61,6 +61,9 @@
 		0ABB4283192E321C007D8BAC /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB4282192E321C007D8BAC /* Icon-72@2x.png */; };
 		0AC69C5E1946F452004C6A67 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC69C5D1946F452004C6A67 /* DACircularProgressView.m */; };
 		0AE46B0E1921035E00FA30F3 /* SongTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE46B0D1921035E00FA30F3 /* SongTableViewController.m */; };
+		0AEDBF361A03D28900F6A6AA /* Pingshu_AlbumList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AEDBF331A03D28900F6A6AA /* Pingshu_AlbumList.plist */; };
+		0AEDBF371A03D28900F6A6AA /* Xiaoshuo_AlbumList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AEDBF341A03D28900F6A6AA /* Xiaoshuo_AlbumList.plist */; };
+		0AEDBF381A03D28900F6A6AA /* Zongyi_AlbumList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AEDBF351A03D28900F6A6AA /* Zongyi_AlbumList.plist */; };
 		0AEFC3711988C48000CECC93 /* btn_checkin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFC36F1988C48000CECC93 /* btn_checkin@2x.png */; };
 		0AEFC3721988C48000CECC93 /* btn_share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFC3701988C48000CECC93 /* btn_share@2x.png */; };
 		0AEFC3751988D5D300CECC93 /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFC3731988D5D300CECC93 /* coin.png */; };
@@ -112,7 +115,6 @@
 		D88557611999082F00B0F891 /* actionIconDownloadSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D88557601999082F00B0F891 /* actionIconDownloadSelected@2x.png */; };
 		D89D5FA4197D43C600D6FEE0 /* songcell_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D89D5F9B197D43C600D6FEE0 /* songcell_bg@2x.png */; };
 		D8A6613519781B7B00E9E7D3 /* mark_lock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8A6613319781B7B00E9E7D3 /* mark_lock@2x.png */; };
-		D8C6FA4D198FDE4800AB9ACB /* Pingshu_AlbumList.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8C6FA4C198FDE4800AB9ACB /* Pingshu_AlbumList.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,7 +125,6 @@
 		0A1FA99A1958556C002F48EA /* qr_toolbar_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr_toolbar_more@2x.png"; sourceTree = "<group>"; };
 		0A1FA99D19585612002F48EA /* qr_toolbar_more_hl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qr_toolbar_more_hl.png; sourceTree = "<group>"; };
 		0A1FA99E19585612002F48EA /* qr_toolbar_more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qr_toolbar_more.png; sourceTree = "<group>"; };
-		0A31DC7619E6236400DE8038 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		0A3C7FDA19B184FB00686C5C /* SinaWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SinaWeiboConnection.framework; sourceTree = "<group>"; };
 		0A3C7FDB19B184FB00686C5C /* WeChatConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WeChatConnection.framework; sourceTree = "<group>"; };
 		0A3C7FDD19B184FB00686C5C /* AGCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AGCommon.framework; sourceTree = "<group>"; };
@@ -190,6 +191,9 @@
 		0AE35F7619B44FA400649CB1 /* Daoting.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Daoting.entitlements; sourceTree = "<group>"; };
 		0AE46B0C1921035E00FA30F3 /* SongTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongTableViewController.h; sourceTree = "<group>"; };
 		0AE46B0D1921035E00FA30F3 /* SongTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongTableViewController.m; sourceTree = "<group>"; };
+		0AEDBF331A03D28900F6A6AA /* Pingshu_AlbumList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Pingshu_AlbumList.plist; sourceTree = "<group>"; };
+		0AEDBF341A03D28900F6A6AA /* Xiaoshuo_AlbumList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Xiaoshuo_AlbumList.plist; sourceTree = "<group>"; };
+		0AEDBF351A03D28900F6A6AA /* Zongyi_AlbumList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Zongyi_AlbumList.plist; sourceTree = "<group>"; };
 		0AEFC36F1988C48000CECC93 /* btn_checkin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_checkin@2x.png"; sourceTree = "<group>"; };
 		0AEFC3701988C48000CECC93 /* btn_share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_share@2x.png"; sourceTree = "<group>"; };
 		0AEFC3731988D5D300CECC93 /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin.png; sourceTree = "<group>"; };
@@ -269,7 +273,6 @@
 		D88557601999082F00B0F891 /* actionIconDownloadSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "actionIconDownloadSelected@2x.png"; sourceTree = "<group>"; };
 		D89D5F9B197D43C600D6FEE0 /* songcell_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "songcell_bg@2x.png"; sourceTree = "<group>"; };
 		D8A6613319781B7B00E9E7D3 /* mark_lock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mark_lock@2x.png"; sourceTree = "<group>"; };
-		D8C6FA4C198FDE4800AB9ACB /* Pingshu_AlbumList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Pingshu_AlbumList.plist; path = SongPlists/Pingshu_AlbumList.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -537,8 +540,10 @@
 		0AE86482192ED8B100EF5A96 /* SongPlists */ = {
 			isa = PBXGroup;
 			children = (
+				0AEDBF331A03D28900F6A6AA /* Pingshu_AlbumList.plist */,
+				0AEDBF341A03D28900F6A6AA /* Xiaoshuo_AlbumList.plist */,
+				0AEDBF351A03D28900F6A6AA /* Zongyi_AlbumList.plist */,
 				0A96D75619B42218002059C7 /* CategoryList.plist */,
-				D8C6FA4C198FDE4800AB9ACB /* Pingshu_AlbumList.plist */,
 			);
 			name = SongPlists;
 			sourceTree = "<group>";
@@ -564,7 +569,6 @@
 		5933AD5718D03EC1001D707B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0A31DC7619E6236400DE8038 /* libPods.a */,
 				236C526A19A63169009595D9 /* libz.dylib */,
 				0A7A8CD719590B4C003FAA92 /* CFNetwork.framework */,
 				0AFB65A619245BD4000F2AE6 /* StoreKit.framework */,
@@ -712,7 +716,6 @@
 			files = (
 				D8113D8819911FDC0011B04A /* nowplaying_share_n@2x.png in Resources */,
 				0A98D66C1920F1F500E46EB9 /* arrowSelected.png in Resources */,
-				D8C6FA4D198FDE4800AB9ACB /* Pingshu_AlbumList.plist in Resources */,
 				0A1FA99B1958556C002F48EA /* qr_toolbar_more_hl@2x.png in Resources */,
 				D885575D199906A200B0F891 /* playing_btn_pause_n@2x.png in Resources */,
 				D8338D5419A781A900CBC97F /* SongNewNotify@2x.png in Resources */,
@@ -724,6 +727,7 @@
 				0A5F4C9D195AB0D3003924C7 /* AppIcon@2x.png in Resources */,
 				0AAF6194196AE4A600C33E52 /* playingsong@2x.png in Resources */,
 				0A1FA9A019585612002F48EA /* qr_toolbar_more.png in Resources */,
+				0AEDBF361A03D28900F6A6AA /* Pingshu_AlbumList.plist in Resources */,
 				5933AD6F18D03EC1001D707B /* Main_iPad.storyboard in Resources */,
 				D8A6613519781B7B00E9E7D3 /* mark_lock@2x.png in Resources */,
 				0AEFC37B1988DBD800CECC93 /* colorStyle_allMusic@2x.png in Resources */,
@@ -736,6 +740,7 @@
 				0A1FA99F19585612002F48EA /* qr_toolbar_more_hl.png in Resources */,
 				0A659EF51977AFFD00FC893B /* download_pause@2x.png in Resources */,
 				0AEFC3821988E17E00CECC93 /* bag@2x.png in Resources */,
+				0AEDBF381A03D28900F6A6AA /* Zongyi_AlbumList.plist in Resources */,
 				5933AD7718D03EC1001D707B /* Images.xcassets in Resources */,
 				D89D5FA4197D43C600D6FEE0 /* songcell_bg@2x.png in Resources */,
 				0A98D6641920EAB700E46EB9 /* progressBar@2x.png in Resources */,
@@ -750,6 +755,7 @@
 				D832678919A8DA6F00DCEBCA /* Cuxiao@2x.png in Resources */,
 				D88557571999031A00B0F891 /* SongCell.xib in Resources */,
 				5933AD6318D03EC1001D707B /* InfoPlist.strings in Resources */,
+				0AEDBF371A03D28900F6A6AA /* Xiaoshuo_AlbumList.plist in Resources */,
 				D885575F199906A200B0F891 /* playing_btn_pre_n@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

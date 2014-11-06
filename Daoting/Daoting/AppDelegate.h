@@ -21,10 +21,12 @@
 #import <ShareSDK/ShareSDK.h>
 #import "AFNetworkActivityIndicatorManager.h"
 #import "XGPush.h"
+#import "STKAudioPlayerHelper.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {
     AppData *_appData;
+    STKAudioPlayerHelper *_sharePlayerHelper;
 }
 
 @property (strong, nonatomic) UIWindow  *window;
