@@ -214,39 +214,6 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
     // UIApplication state notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restartLabel) name:UIApplicationDidBecomeActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shutdownLabel) name:UIApplicationDidEnterBackgroundNotification object:nil];
-    
-    // Device Orientation change handling
-    /* Necessary to prevent a "super-speed" scroll bug. When the frame is changed due to a flexible width autoresizing mask,
-     * the setFrame call occurs during the in-flight orientation rotation animation, and the scroll to the away location
-     * occurs at super speed. To work around this, the orientationWilLChange property is set to YES when the notification
-     * UIApplicationWillChangeStatusBarOrientationNotification is posted, and a notification handler block listening for
-     * the UIViewAnimationDidStopNotification notification is added. The handler block checks the notification userInfo to
-     * see if the delegate of the ending animation is the UIWindow of the label. If so, the rotation animation has finished
-     * and the label can be restarted, and the notification observer removed.
-     */
-    
-    __weak __typeof(&*self)weakSelf = self;
-    
-    __block id animationObserver = nil;
-    self.orientationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationWillChangeStatusBarOrientationNotification
-                                                                                 object:nil
-                                                                                  queue:nil
-                                                                             usingBlock:^(NSNotification *notification){
-                                                                                 weakSelf.orientationWillChange = YES;
-                                                                                 [weakSelf returnLabelToOriginImmediately];
-                                                                                 animationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:@"UIViewAnimationDidStopNotification"
-                                                                                                                                                       object:nil
-                                                                                                                                                        queue:nil
-                                                                                                                                                   usingBlock:^(NSNotification *notification){
-                                                                                                                                                       if ([notification.userInfo objectForKey:@"delegate"] == weakSelf.window) {
-                                                                                                                                                           weakSelf.orientationWillChange = NO;
-                                                                                                                                                           [weakSelf restartLabel];
-                                                                                                                                                           
-                                                                                                                                                           // Remove notification observer
-                                                                                                                                                           [[NSNotificationCenter defaultCenter] removeObserver:animationObserver];
-                                                                                                                                                       }
-                                                                                                                                                   }];
-                                                                             }];
 }
 
 - (void)observedViewControllerChange:(NSNotification *)notification {
@@ -271,7 +238,6 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
         }
         CGSize minimumLabelSize = [self subLabelSize];
         
-        
         // Adjust for fade length
         CGSize minimumSize = CGSizeMake(minimumLabelSize.width + (self.fadeLength * 2), minimumLabelSize.height);
         
@@ -293,7 +259,7 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
 {
     [super layoutSubviews];
     
-    [self updateSublabelAndLocationsAndBeginScroll:!self.orientationWillChange];
+    [self updateSublabelAndLocationsAndBeginScroll:YES];
 }
 
 - (void)willMoveToWindow:(UIWindow *)newWindow {
@@ -472,12 +438,9 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
     CGSize expectedLabelSize = CGSizeZero;
     CGSize maximumLabelSize = CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX);
     
-    // Calculate based on attributed text
-    expectedLabelSize = [self.subLabel.attributedText boundingRectWithSize:maximumLabelSize
-                                                                   options:0
-                                                                   context:nil].size;
-    
-    expectedLabelSize.width = ceilf(expectedLabelSize.width);
+    // Get size of subLabel
+    expectedLabelSize = [self.subLabel sizeThatFits:maximumLabelSize];
+    // Adjust to own height (make text baseline match normal label)
     expectedLabelSize.height = self.bounds.size.height;
     
     return expectedLabelSize;

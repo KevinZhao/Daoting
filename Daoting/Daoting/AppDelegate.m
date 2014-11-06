@@ -74,6 +74,8 @@
     if (error) {
         NSLog(@"Configure Audio Session Error: %@", error);
     }
+    
+    _sharePlayerHelper = [STKAudioPlayerHelper sharedInstance];
 }
 
 -(void)configureAFNetworking
@@ -212,12 +214,64 @@
     //End
 }
 
-//background fetching
+//Background fetching
 - (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
     NSLog(@"Background Fetching");
     
     [[CategoryManager sharedManager] insertNewObjectForFetchWithCompletionHandler:completionHandler];
+}
+
+//Receive Remote Control Event
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event
+{
+    if (event.type == UIEventTypeRemoteControl) {
+        switch (event.subtype) {
+            case UIEventSubtypeRemoteControlTogglePlayPause:
+            {
+                if (_sharePlayerHelper.audioPlayer.state == STKAudioPlayerStatePlaying) {
+                    
+                    //Pause
+                    [_sharePlayerHelper pauseSong];
+                
+                }else{
+                    
+                    //Resume
+                    [_sharePlayerHelper playSong:_appData.currentSong InAlbum:_appData.currentAlbum];
+                }
+                break;
+            }
+                
+            case UIEventSubtypeRemoteControlPause:
+            {
+                [_sharePlayerHelper pauseSong];
+ 
+                break;
+            }
+ 
+            case UIEventSubtypeRemoteControlPlay:
+            {
+                
+                [_sharePlayerHelper playSong:_appData.currentSong InAlbum:_appData.currentAlbum];
+                break;
+            }
+                
+            case UIEventSubtypeRemoteControlPreviousTrack:
+            {
+                [_sharePlayerHelper playPreviousSong];
+                break;
+            }
+                
+            case UIEventSubtypeRemoteControlNextTrack:
+            {
+                [_sharePlayerHelper playNextSong];
+                break;
+            }
+                
+            default:
+                break;
+        }
+    }
 }
 
 @end

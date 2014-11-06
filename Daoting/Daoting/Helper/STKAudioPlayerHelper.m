@@ -315,7 +315,15 @@
     else{
         NSLog(@"Error, album is nil");
     }
+}
+
+-(void)seekToProgress:(float)progress
+{
+    if (audioPlayer) {
+        [audioPlayer seekToTime:progress];
+    }
     
+    [self configureNowPlayingInfo];
 }
 
 - (void) configureNowPlayingInfo
@@ -346,7 +354,6 @@
     }
 }
 
-
 -(NSString*)formatTimeFromSeconds:(int)totalSeconds
 {
     int seconds = totalSeconds % 60;
@@ -375,40 +382,49 @@
     return progress;
 }
 
-
-
 /// Raised when an item has started playing
 -(void) audioPlayer:(STKAudioPlayer*)aPlayer didStartPlayingQueueItemId:(NSObject*)queueItemId
 {
+    //NSLog(@"audioPlayer:didStartPlayingQueueItemId");
     [audioPlayer seekToTime:_progress];
 }
-
 
 /// Raised when an item has finished buffering (may or may not be the currently playing item)
 /// This event may be raised multiple times for the same item if seek is invoked on the player
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer didFinishBufferingSourceWithQueueItemId:(NSObject*)queueItemId
 {
-    
+    //NSLog(@"audioPlayer:didFinishBufferingSourceWithQueueItemId");
 }
 
 /// Raised when the state of the player has changed
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer stateChanged:(STKAudioPlayerState)state previousState:(STKAudioPlayerState)previousState
 {
-    // test only
-    /*NSLog(@"STKAudioPlayerStateReady = %d", state);
+    //NSLog(@"audioPlayer: stateChanged previousState =%d currentState = %d", previousState, state);
+    /*// test only
+    NSLog(@"STKAudioPlayerStateReady = %d", state);
     
     if (state == 3) {
         [self.delegate onTest];
-    }*/
+    }
+    // test only */
     
     if ((state == STKAudioPlayerStatePlaying) && (previousState == STKAudioPlayerStateBuffering)) {
+        NSLog(@" configureNowPlayingInfo get called");
         [self configureNowPlayingInfo];
+        
+        //todo write back to songlist for duration
+        
+        //_appData.currentSong.duration = [self formatTimeFromSeconds:audioPlayer.duration];
+        
+        //[[CategoryManager sharedManager] writeBacktoSongListinAlbum:_appData.currentAlbum];
     }
 }
 
 /// Raised when an item has finished playing
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer didFinishPlayingQueueItemId:(NSObject*)queueItemId withReason:(STKAudioPlayerStopReason)stopReason andProgress:(double)progress andDuration:(double)duration
 {
+    //NSLog(@"didFinishPlayingQueueItemId stopReason = %d", stopReason);
+    
     if (stopReason == STKAudioPlayerStopReasonEof) {
         [self playNextSong];
     }
@@ -417,7 +433,7 @@
 /// Raised when an unexpected and possibly unrecoverable error has occured (usually best to recreate the STKAudioPlauyer)
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer unexpectedError:(STKAudioPlayerErrorCode)errorCode
 {
-    
+    //NSLog(@"audioPlayer unexpectedError = %d", errorCode);
 }
 
 @end

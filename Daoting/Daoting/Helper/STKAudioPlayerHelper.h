@@ -52,6 +52,7 @@
 -(void)playNextSong;
 -(void)playPreviousSong;
 
+-(void)seekToProgress:(float)progress;
 
 @end
 
