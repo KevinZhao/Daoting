@@ -100,6 +100,11 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
         _isAutoPurchase = true;
         _isAutoPlay = false;
         _purchaseTimes = 0;
+        
+        //if App had not been used
+        if (![iCloudStore boolForKey:SSDataforAppExistKey]) {
+            self.coins = 300;
+        }
     }
     return self;
 }
