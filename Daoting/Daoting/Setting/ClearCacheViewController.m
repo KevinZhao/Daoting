@@ -95,7 +95,7 @@
     
     NSInteger hundredKbsize = fmod(size/1024, 1024)/100;
     
-    sizeString = [NSString stringWithFormat:@"%d.%d MB",Mbsize,hundredKbsize];
+    sizeString = [NSString stringWithFormat:@"%ld.%ld MB",(long)Mbsize,(long)hundredKbsize];
     
     return sizeString;
 }

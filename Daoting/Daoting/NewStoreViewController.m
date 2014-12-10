@@ -49,7 +49,7 @@
 -(void)tick
 {
     CurrentCoinCell* currentCoinCell = (CurrentCoinCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%d 枚", _appData.coins];
+    currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%ld 枚", (long)_appData.coins];
 }
 
 - (void)didReceiveMemoryWarning
@@ -157,7 +157,7 @@
         
         CurrentCoinCell *currentCoinCell = [tableView dequeueReusableCellWithIdentifier:@"CurrentCoinCell" forIndexPath:indexPath];
         
-        currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%d 枚", _appData.coins];
+        currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%ld 枚", (long)_appData.coins];
         
         cell = currentCoinCell;
     }
@@ -373,7 +373,7 @@
         [_appData updateToiCloud];
         
         CurrentCoinCell* currentCoinCell = (CurrentCoinCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-        currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%d 枚", _appData.coins];
+        currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%ld 枚", (long)_appData.coins];
         
         NSString *notification = @"您获得了 10金币";
         [TSMessage showNotificationInViewController:self title:notification subtitle:nil type:TSMessageNotificationTypeSuccess];
@@ -414,13 +414,13 @@
                                      [_appData updateToiCloud];
                                      
                                      CurrentCoinCell* currentCoinCell = (CurrentCoinCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-                                     currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%d 枚", _appData.coins];
+                                     currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%ld 枚", (long)_appData.coins];
                                      
                                      [TSMessage showNotificationInViewController:self title:notification subtitle:nil type:TSMessageNotificationTypeSuccess];
                                  }
                                  else if (state == SSResponseStateFail)
                                  {
-                                     NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                     NSLog(@"分享失败,错误码:%ld,错误描述:%@", (long)[error errorCode], [error errorDescription]);
                                  }
                              }];
 }

@@ -125,7 +125,7 @@
         }
         
         //Copy new dictionary
-        for (NSInteger i = 1; i <= newPlist_dictionary.count; i++) {
+        for (int i = 1; i <= newPlist_dictionary.count; i++) {
             
             NSDictionary *newCategory = [newPlist_dictionary objectForKey:[NSString stringWithFormat:@"%d", i]];
             
@@ -267,7 +267,7 @@
                  }
                  
                  //Copy new dictionary
-                 for (NSInteger i = 1; i <= newPlist_dictionary.count; i++) {
+                 for (int i = 1; i <= newPlist_dictionary.count; i++) {
                      
                      NSDictionary *newAlbum = [newPlist_dictionary objectForKey:[NSString stringWithFormat:@"%d", i]];
                      NSString *albumShortName = (NSString*)[newAlbum valueForKey:@"ShortName"];
