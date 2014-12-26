@@ -75,7 +75,7 @@
         NSLog(@"Configure Audio Session Error: %@", error);
     }
     
-    _sharePlayerHelper = [STKAudioPlayerHelper sharedInstance];
+    _sharedAudioPlayerHelper = [STKAudioPlayerHelper sharedInstance];
 }
 
 -(void)configureAFNetworking
@@ -162,12 +162,12 @@
     NSLog(@"%lu", (unsigned long)typeKey);
     if (typeKey == AVAudioSessionInterruptionTypeBegan)
     {
-        [[STKAudioPlayerHelper sharedInstance] pauseSong];
+        [_sharedAudioPlayerHelper interruptSong];
     }
     
-    if (typeKey == AVAudioSessionInterruptionTypeEnded)
+    if ((typeKey == AVAudioSessionInterruptionTypeEnded) && (!_sharedAudioPlayerHelper.isPausedByUserAction))
     {
-        [[STKAudioPlayerHelper sharedInstance] playSong: _appData.currentSong InAlbum:_appData.currentAlbum];
+        [_sharedAudioPlayerHelper playSong: _appData.currentSong InAlbum:_appData.currentAlbum];
     }
 }
 
@@ -234,22 +234,22 @@
         switch (event.subtype) {
             case UIEventSubtypeRemoteControlTogglePlayPause:
             {
-                if (_sharePlayerHelper.audioPlayer.state == STKAudioPlayerStatePlaying) {
+                if (_sharedAudioPlayerHelper.playerState == STKAudioPlayerStatePlaying) {
                     
                     //Pause
-                    [_sharePlayerHelper pauseSong];
+                    [_sharedAudioPlayerHelper pauseSong];
                 
                 }else{
                     
                     //Resume
-                    [_sharePlayerHelper playSong:_appData.currentSong InAlbum:_appData.currentAlbum];
+                    [_sharedAudioPlayerHelper playSong:_appData.currentSong InAlbum:_appData.currentAlbum];
                 }
                 break;
             }
                 
             case UIEventSubtypeRemoteControlPause:
             {
-                [_sharePlayerHelper pauseSong];
+                [_sharedAudioPlayerHelper pauseSong];
  
                 break;
             }
@@ -257,19 +257,19 @@
             case UIEventSubtypeRemoteControlPlay:
             {
                 
-                [_sharePlayerHelper playSong:_appData.currentSong InAlbum:_appData.currentAlbum];
+                [_sharedAudioPlayerHelper playSong:_appData.currentSong InAlbum:_appData.currentAlbum];
                 break;
             }
                 
             case UIEventSubtypeRemoteControlPreviousTrack:
             {
-                [_sharePlayerHelper playPreviousSong];
+                [_sharedAudioPlayerHelper playPreviousSong];
                 break;
             }
                 
             case UIEventSubtypeRemoteControlNextTrack:
             {
-                [_sharePlayerHelper playNextSong];
+                [_sharedAudioPlayerHelper playNextSong];
                 break;
             }
                 

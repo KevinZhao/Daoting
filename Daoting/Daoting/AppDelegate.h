@@ -26,7 +26,7 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {
     AppData *_appData;
-    STKAudioPlayerHelper *_sharePlayerHelper;
+    STKAudioPlayerHelper *_sharedAudioPlayerHelper;
 }
 
 @property (strong, nonatomic) UIWindow  *window;

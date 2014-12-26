@@ -23,7 +23,7 @@
 + (AFDownloadHelper *)sharedAFDownloadHelper;
 
 
-- (void)downloadSong:(Song*) song inAlbum:(Album*) album;
+- (void)downloadSong:(Song*)song inAlbum:(Album*)album;
 
 -(AFHTTPRequestOperation *)searchOperationbyKey:(NSString *)key;
 

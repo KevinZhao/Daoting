@@ -10,7 +10,7 @@
 
 @implementation STKAudioPlayerHelper
 
-@synthesize audioPlayer;
+//@synthesize audioPlayer;
 
 + (STKAudioPlayerHelper *)sharedInstance {
     static dispatch_once_t once;
@@ -28,12 +28,12 @@
     self = [super init];
     
     //configure STKAudioPlayer
-    audioPlayer = [[STKAudioPlayer alloc] initWithOptions:(STKAudioPlayerOptions){ .flushQueueOnSeek = YES, .enableVolumeMixer = NO, .equalizerBandFrequencies = {50, 100, 200, 400, 800, 1600, 2600, 16000} }];
+    _audioPlayer = [[STKAudioPlayer alloc] initWithOptions:(STKAudioPlayerOptions){ .flushQueueOnSeek = YES, .enableVolumeMixer = NO, .equalizerBandFrequencies = {50, 100, 200, 400, 800, 1600, 2600, 16000} }];
     
-    audioPlayer.meteringEnabled = YES;
-    audioPlayer.volume = 1;
+    _audioPlayer.meteringEnabled = YES;
+    _audioPlayer.volume = 1;
     
-    audioPlayer.delegate = self;
+    _audioPlayer.delegate = self;
     
     //Regist notification for audio route change
     [[NSNotificationCenter defaultCenter] addObserver: self
@@ -43,26 +43,31 @@
     
     [self setupTimer];
     _appData = [AppData sharedAppData];
+    _isPausedByUserAction = false;
     
     return self;
 }
 
 -(void)setupTimer
 {
-	_timer = [NSTimer timerWithTimeInterval:2.0 target:self selector:@selector(tick) userInfo:nil repeats:YES];
+	_timer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(tick) userInfo:nil repeats:YES];
 	
 	[[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
 }
 
 -(void)tick
 {
-    if (audioPlayer.progress) {
+    if (_audioPlayer.progress) {
         
         NSString *key = [NSString stringWithFormat:@"%@_%@", _appData.currentAlbum.shortName, _appData.currentSong.songNumber];
-        NSString *progressString = [self formatTimeFromSeconds:audioPlayer.progress];
+        NSString *progressString = [self formatTimeFromSeconds:_audioPlayer.progress];
         [_appData.playingBackProgressQueue setValue:progressString forKey:key];
         
         [_appData save];
+        
+        _progress = _audioPlayer.progress;
+        
+        [self.delegate onProgressUpdated];
     }
 }
 
@@ -84,7 +89,7 @@
         
         //play from local reposistory for the song
         STKDataSource* fileDataSource = [STKAudioPlayer dataSourceFromURL:songURL];
-        [audioPlayer setDataSource:fileDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:songURL andCount:0]];
+        [_audioPlayer setDataSource:fileDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:songURL andCount:0]];
     }
     else
     {
@@ -107,7 +112,8 @@
                 //Show Message to notify user, current networking status
                 [TSMessage showNotificationWithTitle:nil subtitle:@"当前正在使用3G/4G网络" type:TSMessageNotificationTypeWarning];
                 STKDataSource* URLDataSource = [STKAudioPlayer dataSourceFromURL:song.Url];
-                [audioPlayer setDataSource:URLDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:song.Url andCount:0]];
+                [_audioPlayer setDataSource:URLDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:song.Url andCount:0]];
+                _isPausedByUserAction = false;
             }
             break;
 
@@ -116,7 +122,8 @@
             {
                 //play from URL in wifi mode
                 STKDataSource* URLDataSource = [STKAudioPlayer dataSourceFromURL:song.Url];
-                [audioPlayer setDataSource:URLDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:song.Url andCount:0]];
+                [_audioPlayer setDataSource:URLDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:song.Url andCount:0]];
+                _isPausedByUserAction = false;
             }
             break;
             
@@ -126,7 +133,8 @@
             {
                 //play from URL in wifi mode
                 STKDataSource* URLDataSource = [STKAudioPlayer dataSourceFromURL:song.Url];
-                [audioPlayer setDataSource:URLDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:song.Url andCount:0]];
+                [_audioPlayer setDataSource:URLDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:song.Url andCount:0]];
+                _isPausedByUserAction = false;
                     
                 NSLog(@"AFNetworkReachabilityStatusUnknown this is not normal, need to fix in next version");
             }
@@ -150,7 +158,13 @@
 
 -(void)pauseSong
 {
-    [audioPlayer stop];
+    [_audioPlayer stop];
+    _isPausedByUserAction = true;
+}
+
+-(void)interruptSong
+{
+    [_audioPlayer stop];
 }
 
 -(void)playNextSong
@@ -319,8 +333,8 @@
 
 -(void)seekToProgress:(float)progress
 {
-    if (audioPlayer) {
-        [audioPlayer seekToTime:progress];
+    if (_audioPlayer) {
+        [_audioPlayer seekToTime:progress];
     }
     
     [self configureNowPlayingInfo];
@@ -336,8 +350,8 @@
         NSMutableDictionary * dict = [[NSMutableDictionary alloc] init];
         [dict setObject:[NSString stringWithFormat:@"%@ %@", song.title, song.songNumber] forKey:MPMediaItemPropertyAlbumTitle];
         [dict setObject:album.artistName forKey:MPMediaItemPropertyArtist];
-        [dict setObject:[NSNumber numberWithInteger:audioPlayer.duration] forKey:MPMediaItemPropertyPlaybackDuration];
-        [dict setObject:[NSNumber numberWithInteger:audioPlayer.progress] forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
+        [dict setObject:[NSNumber numberWithInteger:_audioPlayer.duration] forKey:MPMediaItemPropertyPlaybackDuration];
+        [dict setObject:[NSNumber numberWithInteger:_audioPlayer.progress] forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
         
         [dict setObject:[NSNumber numberWithInteger:1.0] forKey:MPNowPlayingInfoPropertyPlaybackRate];
         [dict setObject:[NSNumber numberWithInteger:2] forKey:MPMediaItemPropertyAlbumTrackCount];
@@ -382,11 +396,13 @@
     return progress;
 }
 
+#pragma mark - STKAudioPlayerDelegate Methods
+
 /// Raised when an item has started playing
 -(void) audioPlayer:(STKAudioPlayer*)aPlayer didStartPlayingQueueItemId:(NSObject*)queueItemId
 {
     //NSLog(@"audioPlayer:didStartPlayingQueueItemId");
-    [audioPlayer seekToTime:_progress];
+    [_audioPlayer seekToTime:_progress];
 }
 
 /// Raised when an item has finished buffering (may or may not be the currently playing item)
@@ -400,15 +416,13 @@
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer stateChanged:(STKAudioPlayerState)state previousState:(STKAudioPlayerState)previousState
 {
     NSLog(@"audioPlayer: stateChanged previousState =%d currentState = %d", previousState, state);
-    /*// test only
-    NSLog(@"STKAudioPlayerStateReady = %d", state);
     
-    if (state == 3) {
-        [self.delegate onTest];
-    }
-    // test only */
+    //save current state to local
+    _playerState = state;
     
     if ((state == STKAudioPlayerStatePlaying) && (previousState == STKAudioPlayerStateBuffering)) {
+        _duration = _audioPlayer.duration;
+        
         NSLog(@" configureNowPlayingInfo get called");
         [self configureNowPlayingInfo];
         
@@ -418,6 +432,18 @@
         
         //[[CategoryManager sharedManager] writeBacktoSongListinAlbum:_appData.currentAlbum];
     }
+    
+    if (state != STKAudioPlayerStatePlaying) {
+        [self.delegate onPlayerPaused];
+    }
+    
+    /*// test only
+     NSLog(@"STKAudioPlayerStateReady = %d", state);
+     
+     if (state == 3) {
+     [self.delegate onTest];
+     }
+     // test only */
 }
 
 /// Raised when an item has finished playing

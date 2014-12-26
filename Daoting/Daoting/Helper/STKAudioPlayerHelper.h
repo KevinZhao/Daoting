@@ -26,7 +26,8 @@
 
 /// Raised when an item has started playing
 -(void) onPlayerHelperSongChanged;
-
+-(void) onProgressUpdated;
+-(void) onPlayerPaused;
 -(void) onTest;
 
 @end
@@ -34,20 +35,24 @@
 
 @interface STKAudioPlayerHelper : NSObject <STKAudioPlayerDelegate>
 {
-    STKAudioPlayer                  *_audioPlayer;
-    NSTimer                         *_timer;
+    STKAudioPlayer*                 _audioPlayer;
+    NSTimer*                        _timer;
     double                          _progress;
-    AppData                         *_appData;
+    AppData*                        _appData;
+    double                          _duration;
 }
 
 + (STKAudioPlayerHelper *)sharedInstance;
 
-@property (nonatomic, retain) STKAudioPlayer *audioPlayer;
-
+@property (nonatomic, assign) STKAudioPlayerState playerState;
+@property (nonatomic, assign) BOOL isPausedByUserAction;
+@property (nonatomic, assign) double duration;
+@property (nonatomic, assign) double progress;
 @property (readwrite, unsafe_unretained) id<STKAudioPlayerHelperDelegate> delegate;
 
 -(void)playSong:(Song *)song InAlbum:(Album*)album; 
 -(void)pauseSong;
+-(void)interruptSong;
 
 -(void)playNextSong;
 -(void)playPreviousSong;

@@ -18,8 +18,7 @@
     [super viewDidLoad];
  
     //Configure Local variable
-    _playerHelper   = [STKAudioPlayerHelper sharedInstance];
-    _audioPlayer    = _playerHelper.audioPlayer;
+    _sharedAudioplayerHelper   = [STKAudioPlayerHelper sharedInstance];
     _appData        = [AppData sharedAppData];
     
     _appDelegate    = [[UIApplication sharedApplication]delegate];
@@ -35,7 +34,7 @@
 {
     [super viewWillAppear:animated];
     
-    _playerHelper.delegate = self;
+    _sharedAudioplayerHelper.delegate = self;
     _songArray = [[CategoryManager sharedManager]initializeSongArrayByAlbum:_album];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -86,7 +85,7 @@
     
     [_timer invalidate];
     
-    _playerHelper.delegate = nil;
+    _sharedAudioplayerHelper.delegate = nil;
     
     [CategoryManager sharedManager].delegate = nil;
 }
@@ -200,7 +199,7 @@
 
 - (void) playSongbyHelper:(Song*)song
 {
-    [_playerHelper playSong:song InAlbum:_album];
+    [_sharedAudioplayerHelper playSong:song InAlbum:_album];
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[song.songNumber intValue] - 1 inSection:0];
     [_tableview beginUpdates];
@@ -225,51 +224,6 @@
 
 -(void)tick
 {
-    //There is a song playing
-    if (_audioPlayer.duration != 0)
-    {
-        _lbl_progressCurrentValue.text = [NSString stringWithFormat:@"%@", [self formatTimeFromSeconds:_audioPlayer.progress]];
-        _lbl_progressMaxValue.text = [NSString stringWithFormat:@"%@", [self formatTimeFromSeconds:_audioPlayer.duration]];
-        
-        _slider.enabled = YES;
-        _slider.minimumValue = 0;
-        _slider.maximumValue = _audioPlayer.duration;
-        _slider.value = _audioPlayer.progress;
-    }
-    //There is no song playing
-    else
-    {
-        _lbl_progressMaxValue.text = @"";
-        _lbl_progressCurrentValue.text = @"";
-        
-        _slider.enabled = NO;
-        _slider.value = 0;
-        _slider.minimumValue = 0;
-        _slider.maximumValue = 0;
-    }
-    
-    switch (_audioPlayer.state) {
-        case STKAudioPlayerStatePlaying:
-        
-            [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_pause_n.png"] forState:UIControlStateNormal];
-            break;
-        
-        /*case STKAudioPlayerStatePaused:
-            
-            [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_play_n.png"] forState:UIControlStateNormal];
-            break;
-        
-        case STKAudioPlayerStateStopped:
-            
-            [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_play_n.png"] forState:UIControlStateNormal];
-            break;*/
-            
-        default:
-            
-            [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_play_n.png"] forState:UIControlStateNormal];
-            break;
-    }
-    
     //Update visible cell
     NSArray *visibleCell = [_tableview indexPathsForVisibleRows];
     for (int i = 0; i < visibleCell.count; i++) {
@@ -376,26 +330,6 @@
             [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download.png"] forState:UIControlStateNormal];
             [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download_pressed.png"] forState:UIControlStateSelected];
         }
-    }
-    
-    if ([song.updatedSong isEqualToString:@"YES"]) {
-        songCell.img_new.hidden = NO;
-    }
-    else
-    {
-        songCell.img_new.hidden = YES;
-    }
-    
-    //2. Check if the song had been purchased
-    if ([_appData songNumber:song.songNumber ispurchasedwithAlbum:_album.shortName]) {
-        
-        songCell.img_locked.hidden = YES;
-        songCell.img_new.hidden = YES;
-    }
-    else
-    {
-        songCell.img_locked.hidden = NO;
-        songCell.img_new.hidden = NO;
     }
 }
 
@@ -566,8 +500,8 @@
 - (IBAction)onbtn_playAndPausePressed:(id)sender
 {
     //is playing
-    if (_audioPlayer.state == STKAudioPlayerStatePlaying) {
-        [_playerHelper pauseSong];
+    if (_sharedAudioplayerHelper.playerState == STKAudioPlayerStatePlaying) {
+        [_sharedAudioplayerHelper pauseSong];
     }
     //no song is playing
     else
@@ -585,19 +519,19 @@
 
 - (IBAction)onbtn_nextPressed:(id)sender
 {
-    [_playerHelper playNextSong];
+    [_sharedAudioplayerHelper playNextSong];
 }
 
 - (IBAction)onbtn_previousPressed:(id)sender
 {
     //[self test];
     
-    [_playerHelper playPreviousSong];
+    [_sharedAudioplayerHelper playPreviousSong];
 }
 
 - (IBAction)onsliderValueChanged:(id)sender
 {
-    [_playerHelper seekToProgress:_slider.value];
+    [_sharedAudioplayerHelper seekToProgress:_slider.value];
 }
 
 - (IBAction)onpageChanged:(id)sender
@@ -667,6 +601,26 @@
     cell.lbl_songDuration.text = song.duration;
     cell.lbl_songNumber.text = song.songNumber;
     
+    if ([song.updatedSong isEqualToString:@"YES"]) {
+        cell.img_new.hidden = NO;
+    }
+    else
+    {
+        cell.img_new.hidden = YES;
+    }
+    
+    //2. Check if the song had been purchased
+    if ([_appData songNumber:song.songNumber ispurchasedwithAlbum:_album.shortName]) {
+        
+        cell.img_locked.hidden = YES;
+        cell.img_new.hidden = YES;
+    }
+    else
+    {
+        cell.img_locked.hidden = NO;
+        cell.img_new.hidden = NO;
+    }
+    
     //revisit
     cell.lbl_songDescription.text = song.description;
     cell.lbl_songDescription.font = [UIFont fontWithName:@"Arial" size:10.0f];
@@ -706,10 +660,10 @@
     //1. check the selected song is current playing song
     if ([[selectedSong.Url absoluteString] isEqualToString:[_appData.currentSong.Url absoluteString]]) {
         //1.1 check current song is playing or paused
-        if (_audioPlayer.state == STKAudioPlayerStatePlaying) {
+        if (_sharedAudioplayerHelper.playerState == STKAudioPlayerStatePlaying) {
             
             //pause the song
-            [_playerHelper pauseSong];
+            [_sharedAudioplayerHelper pauseSong];
         }
         else{
             //resume the song
@@ -748,6 +702,43 @@
     }
 }
 
+-(void) onProgressUpdated
+{
+    //There is a song playing
+    if (_sharedAudioplayerHelper.playerState ==  STKAudioPlayerStatePlaying)
+    {
+        //todo
+        _lbl_progressCurrentValue.text = [NSString stringWithFormat:@"%@", [self formatTimeFromSeconds:_sharedAudioplayerHelper.progress]];
+        _lbl_progressMaxValue.text = [NSString stringWithFormat:@"%@", [self formatTimeFromSeconds:_sharedAudioplayerHelper.duration]];
+        
+        _slider.enabled = YES;
+        _slider.minimumValue = 0;
+        _slider.maximumValue = _sharedAudioplayerHelper.duration;
+        _slider.value = _sharedAudioplayerHelper.progress;
+    }
+    //There is no song playing
+    /*else
+    {
+        _lbl_progressMaxValue.text = @"";
+        _lbl_progressCurrentValue.text = @"";
+        
+        _slider.enabled = NO;
+        _slider.value = 0;
+        _slider.minimumValue = 0;
+        _slider.maximumValue = 0;
+    }*/
+    
+
+            
+    [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_pause_n.png"] forState:UIControlStateNormal];
+}
+
+-(void) onPlayerPaused
+{
+    [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_play_n.png"] forState:UIControlStateNormal];
+}
+
+
 #pragma mark - Test
 
 - (void)test
@@ -783,7 +774,7 @@
         
     song.url = [NSURL URLWithString:result];*/
     
-    song.duration = [self formatTimeFromSeconds:_playerHelper.audioPlayer.duration];
+    //song.duration = [self formatTimeFromSeconds:_playerHelper.audioPlayer.duration];
     
     if (t_currentsong == (_songArray.count - 1)) {
         

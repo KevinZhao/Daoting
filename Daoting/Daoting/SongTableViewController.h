@@ -29,10 +29,9 @@
     NSMutableArray                      *_songArray;
     UITableView                         *_tableview;
     Album                               *_album;
-    STKAudioPlayer                      *_audioPlayer;
     NSTimer                             *_timer;
     AppData                             *_appData;
-    STKAudioPlayerHelper                *_playerHelper;
+    STKAudioPlayerHelper                *_sharedAudioplayerHelper;
     SongManager                         *_songManager;
     AppDelegate                         *_appDelegate;
     UIView                              *_descriptionView;
