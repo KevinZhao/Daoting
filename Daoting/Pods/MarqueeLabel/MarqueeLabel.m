@@ -6,12 +6,17 @@
 #import "MarqueeLabel.h"
 #import <QuartzCore/QuartzCore.h>
 
+// Notification strings
 NSString *const kMarqueeLabelControllerRestartNotification = @"MarqueeLabelViewControllerRestart";
 NSString *const kMarqueeLabelShouldLabelizeNotification = @"MarqueeLabelShouldLabelizeNotification";
 NSString *const kMarqueeLabelShouldAnimateNotification = @"MarqueeLabelShouldAnimateNotification";
 NSString *const kMarqueeLabelAnimationCompletionBlock = @"MarqueeLabelAnimationCompletionBlock";
 
+// Animation completion block
 typedef void(^MLAnimationCompletionBlock)(BOOL finished);
+
+// iOS Version check for iOS 8.0.0
+#define SYSTEM_VERSION_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
 
 // Helpers
 @interface UIView (MarqueeLabelHelpers)
@@ -200,7 +205,8 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
     _fadeLength = 0.0f;
     _animationDelay = 1.0;
     _animationDuration = 0.0f;
-    _continuousMarqueeExtraBuffer = 0.0f;
+    _leadingBuffer = 0.0f;
+    _trailingBuffer = 0.0f;
     
     // Add notification observers
     // Custom class notifications
@@ -303,7 +309,18 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
         [self.subLabel setTextAlignment:[super textAlignment]];
         [self.subLabel setLineBreakMode:[super lineBreakMode]];
         
-        CGRect labelFrame = CGRectIntegral(CGRectMake(0.0f, 0.0f, self.bounds.size.width , expectedLabelSize.height));
+        CGRect labelFrame, unusedFrame;
+        switch (self.marqueeType) {
+            case MLContinuousReverse:
+            case MLRightLeft:
+                CGRectDivide(self.bounds, &unusedFrame, &labelFrame, self.leadingBuffer, CGRectMaxXEdge);
+                labelFrame = CGRectIntegral(labelFrame);
+                break;
+                
+            default:
+                labelFrame = CGRectIntegral(CGRectMake(self.leadingBuffer, 0.0f, self.bounds.size.width - self.leadingBuffer, self.bounds.size.height));
+                break;
+        }
         
         self.homeLabelFrame = labelFrame;
         self.awayLabelFrame = labelFrame;
@@ -316,8 +333,8 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
             }
         }
         
-        // Set sublabel frame to own bounds
-        self.subLabel.frame = self.bounds;
+        // Set sublabel frame calculated labelFrame
+        self.subLabel.frame = labelFrame;
         
         return;
     }
@@ -326,39 +343,23 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
     
     [self.subLabel setLineBreakMode:NSLineBreakByClipping];
     
+    // Spacing between primary and second sublabel must be at least equal to leadingBuffer, and at least equal to the fadeLength
+    CGFloat minTrailing = MAX(MAX(self.leadingBuffer, self.trailingBuffer), self.fadeLength);
+    
     switch (self.marqueeType) {
         case MLContinuous:
-        {
-            self.homeLabelFrame = CGRectIntegral(CGRectMake(0.0f, 0.0f, expectedLabelSize.width, expectedLabelSize.height));
-            CGFloat awayLabelOffset = -(self.homeLabelFrame.size.width + self.fadeLength + self.continuousMarqueeExtraBuffer);
-            self.awayLabelFrame = CGRectIntegral(CGRectOffset(self.homeLabelFrame, awayLabelOffset, 0.0f));
-            
-            NSArray *labels = [self allSubLabels];
-            if (labels.count < 2) {
-                UILabel *secondSubLabel = [[UILabel alloc] initWithFrame:CGRectOffset(self.homeLabelFrame, -awayLabelOffset, 0.0f)];
-                secondSubLabel.tag = 701;
-                secondSubLabel.numberOfLines = 1;
-                secondSubLabel.layer.anchorPoint = CGPointMake(0.0f, 0.0f);
-                
-                [self addSubview:secondSubLabel];
-                labels = [labels arrayByAddingObject:secondSubLabel];
-            }
-            
-            [self refreshSubLabels:labels];
-            
-            // Recompute the animation duration
-            self.animationDuration = (self.rate != 0) ? ((NSTimeInterval) fabs(awayLabelOffset) / self.rate) : (self.scrollDuration);
-            
-            self.subLabel.frame = self.homeLabelFrame;
-            
-            break;
-        }
-            
         case MLContinuousReverse:
         {
-            self.homeLabelFrame = CGRectIntegral(CGRectMake(self.bounds.size.width - expectedLabelSize.width, 0.0f, expectedLabelSize.width, expectedLabelSize.height));
-            CGFloat awayLabelOffset = (self.homeLabelFrame.size.width + self.fadeLength + self.continuousMarqueeExtraBuffer);
-            self.awayLabelFrame = CGRectIntegral(CGRectOffset(self.homeLabelFrame, awayLabelOffset, 0.0f));
+            CGFloat awayLabelOffset;
+            if (self.marqueeType == MLContinuous) {
+                self.homeLabelFrame = CGRectIntegral(CGRectMake(self.leadingBuffer, 0.0f, expectedLabelSize.width, self.bounds.size.height));
+                awayLabelOffset = -(self.homeLabelFrame.size.width + minTrailing);
+                self.awayLabelFrame = CGRectIntegral(CGRectOffset(self.homeLabelFrame, awayLabelOffset, 0.0f));
+            } else {
+                self.homeLabelFrame = CGRectIntegral(CGRectMake(self.bounds.size.width - (expectedLabelSize.width + self.leadingBuffer), 0.0f, expectedLabelSize.width, self.bounds.size.height));
+                awayLabelOffset = (self.homeLabelFrame.size.width + minTrailing);
+                self.awayLabelFrame = CGRectIntegral(CGRectOffset(self.homeLabelFrame, awayLabelOffset, 0.0f));
+            }
             
             NSArray *labels = [self allSubLabels];
             if (labels.count < 2) {
@@ -376,15 +377,18 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
             // Recompute the animation duration
             self.animationDuration = (self.rate != 0) ? ((NSTimeInterval) fabs(awayLabelOffset) / self.rate) : (self.scrollDuration);
             
-            self.subLabel.frame = self.homeLabelFrame;
+            // Set sublabel frames
+            for (UILabel *sl in [self allSubLabels]) {
+                sl.frame = CGRectOffset(self.homeLabelFrame, -awayLabelOffset * (sl.tag - 700), 0.0f);
+            }
             
             break;
         }
             
         case MLRightLeft:
         {
-            self.homeLabelFrame = CGRectIntegral(CGRectMake(self.bounds.size.width - expectedLabelSize.width, 0.0f, expectedLabelSize.width, expectedLabelSize.height));
-            self.awayLabelFrame = CGRectIntegral(CGRectMake(self.fadeLength, 0.0f, expectedLabelSize.width, expectedLabelSize.height));
+            self.homeLabelFrame = CGRectIntegral(CGRectMake(self.bounds.size.width - (expectedLabelSize.width + self.leadingBuffer), 0.0f, expectedLabelSize.width, self.bounds.size.height));
+            self.awayLabelFrame = CGRectIntegral(CGRectMake(self.trailingBuffer, 0.0f, expectedLabelSize.width, self.bounds.size.height));
             
             // Calculate animation duration
             self.animationDuration = (self.rate != 0) ? ((NSTimeInterval)fabs(self.awayLabelFrame.origin.x - self.homeLabelFrame.origin.x) / self.rate) : (self.scrollDuration);
@@ -400,9 +404,9 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
         
         case MLLeftRight:
         {
-            self.homeLabelFrame = CGRectIntegral(CGRectMake(0.0f, 0.0f, expectedLabelSize.width, expectedLabelSize.height));
-            self.awayLabelFrame = CGRectIntegral(CGRectOffset(self.homeLabelFrame, -expectedLabelSize.width + (self.bounds.size.width - self.fadeLength), 0.0));
-            
+            self.homeLabelFrame = CGRectIntegral(CGRectMake(self.leadingBuffer, 0.0f, expectedLabelSize.width, expectedLabelSize.height));
+            // self.awayLabelFrame = CGRectIntegral(CGRectOffset(self.homeLabelFrame, -expectedLabelSize.width + (self.bounds.size.width - self.fadeLength), 0.0));
+            self.awayLabelFrame = CGRectIntegral(CGRectOffset(self.homeLabelFrame, self.bounds.size.width - (expectedLabelSize.width + self.leadingBuffer + self.trailingBuffer), 0.0));
             // Calculate animation duration
             self.animationDuration = (self.rate != 0) ? ((NSTimeInterval)fabs(self.awayLabelFrame.origin.x - self.homeLabelFrame.origin.x) / self.rate) : (self.scrollDuration);
             
@@ -460,7 +464,7 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
         return NO;
     }
     
-    BOOL labelTooLarge = ([self subLabelSize].width > self.bounds.size.width);
+    BOOL labelTooLarge = ([self subLabelSize].width + self.leadingBuffer > self.bounds.size.width);
     return (!self.labelize && labelTooLarge);
 }
 
@@ -654,7 +658,7 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
         [sl.layer addAnimation:awayAnim forKey:@"position"];
         
         // Increment offset
-        offset += (self.marqueeType == MLContinuousReverse ? -1.0f : 1.0f) * (self.homeLabelFrame.size.width + self.fadeLength + self.continuousMarqueeExtraBuffer);
+        offset += (self.homeLabelFrame.origin.x - self.awayLabelFrame.origin.x);
     }
     
     [CATransaction commit];
@@ -777,7 +781,7 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
             
             // Find when the lead label will be totally offscreen
             CGFloat offsetDistance = (self.awayLabelFrame.origin.x - self.homeLabelFrame.origin.x);
-            CGFloat startFadeFraction = fabs(self.subLabel.bounds.size.width / offsetDistance);
+            CGFloat startFadeFraction = fabs((self.subLabel.bounds.size.width + self.leadingBuffer)/ offsetDistance);
             // Find when the animation will hit that point
             CGFloat startFadeTimeFraction = [timingFunction durationPercentageForPositionPercentage:startFadeFraction withDuration:totalDuration];
             NSTimeInterval startFadeTime = delayAmount + startFadeTimeFraction * interval;
@@ -793,7 +797,7 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
             break;
     }
     
-    // Define values
+    // Define gradient values
     switch (self.marqueeType) {
         case MLContinuousReverse:
         case MLRightLeft:
@@ -991,6 +995,29 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
     return;
 }
 
+#pragma mark - Modified UIView Methods/Getters/Setters
+
+- (void)setFrame:(CGRect)frame {
+    [super setFrame:frame];
+    
+    // Check if device is running iOS 8.0.0
+    if(SYSTEM_VERSION_EQUAL_TO(@"8.0.0")) {
+        // If so, force update because layoutSubviews is not called
+        [self updateSublabelAndLocationsAndBeginScroll:!self.orientationWillChange];
+    }
+}
+
+- (void)setBounds:(CGRect)bounds {
+    [super setBounds:bounds];
+    
+    // Check if device is running iOS 8.0.0
+    if(SYSTEM_VERSION_EQUAL_TO(@"8.0.0")) {
+        // If so, force update because layoutSubviews is not called
+        [self updateSublabelAndLocationsAndBeginScroll:!self.orientationWillChange];
+    }
+    
+}
+
 #pragma mark - Modified UILabel Methods/Getters/Setters
 
 - (UIView *)viewForBaselineLayout {
@@ -1129,6 +1156,7 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
     for (UILabel *sl in subLabels) {
         sl.attributedText = self.attributedText;
         sl.backgroundColor = self.backgroundColor;
+        sl.textColor = self.textColor;
         sl.shadowColor = self.shadowColor;
         sl.shadowOffset = self.shadowOffset;
         sl.textAlignment = NSTextAlignmentLeft;
@@ -1184,14 +1212,32 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
     }
 }
 
-- (void)setContinuousMarqueeExtraBuffer:(CGFloat)continuousMarqueeExtraBuffer {
-    if (_continuousMarqueeExtraBuffer == continuousMarqueeExtraBuffer) {
+- (void)setLeadingBuffer:(CGFloat)leadingBuffer {
+    if (_leadingBuffer == leadingBuffer) {
         return;
     }
     
     // Do not allow negative values
-    _continuousMarqueeExtraBuffer = fabsf(continuousMarqueeExtraBuffer);
+    _leadingBuffer = fabsf(leadingBuffer);
     [self updateSublabelAndLocations];
+}
+
+- (void)setTrailingBuffer:(CGFloat)trailingBuffer {
+    if (_trailingBuffer == trailingBuffer) {
+        return;
+    }
+    
+    // Do not allow negative values
+    _trailingBuffer = fabsf(trailingBuffer);
+    [self updateSublabelAndLocations];
+}
+
+- (void)setContinuousMarqueeExtraBuffer:(CGFloat)continuousMarqueeExtraBuffer {
+    [self setTrailingBuffer:continuousMarqueeExtraBuffer];
+}
+
+- (CGFloat)continuousMarqueeExtraBuffer {
+    return self.trailingBuffer;
 }
 
 - (void)setFadeLength:(CGFloat)fadeLength {
@@ -1391,7 +1437,7 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset) {
     CGPoint P2 = [controlPoints[2] CGPointValue];
     CGPoint P3 = [controlPoints[3] CGPointValue];
     
-    // Per http://en.wikipedia.org/wiki/Bézier_curve#Cubic_B.C3.A9zier_curves
+    // Per http://en.wikipedia.org/wiki/Bezier_curve#Cubic_B.C3.A9zier_curves
     return  powf((1 - t),3) * P0.y +
             3.0f * powf(1 - t, 2) * t * P1.y +
             3.0f * (1 - t) * powf(t, 2) * P2.y +
@@ -1406,7 +1452,7 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset) {
     CGPoint P2 = [controlPoints[2] CGPointValue];
     CGPoint P3 = [controlPoints[3] CGPointValue];
     
-    // Per http://en.wikipedia.org/wiki/Bézier_curve#Cubic_B.C3.A9zier_curves
+    // Per http://en.wikipedia.org/wiki/Bezier_curve#Cubic_B.C3.A9zier_curves
     return  powf((1 - t),3) * P0.x +
             3.0f * powf(1 - t, 2) * t * P1.x +
             3.0f * (1 - t) * powf(t, 2) * P2.x +

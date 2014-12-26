@@ -153,15 +153,20 @@
 
 -(void)audioInterruptionNotification:(NSNotification *) aNotification
 {
+    //todo, bug
+    
     NSLog(@"Interrupt %@", aNotification);
     NSDictionary *dict = [aNotification userInfo];
     NSUInteger typeKey = [[dict objectForKey:@"AVAudioSessionInterruptionTypeKey"] unsignedIntegerValue];
-    NSLog(@"%d", typeKey == AVAudioSessionInterruptionTypeBegan);
+    
+    NSLog(@"%lu", (unsigned long)typeKey);
     if (typeKey == AVAudioSessionInterruptionTypeBegan)
     {
         [[STKAudioPlayerHelper sharedInstance] pauseSong];
     }
-    else {
+    
+    if (typeKey == AVAudioSessionInterruptionTypeEnded)
+    {
         [[STKAudioPlayerHelper sharedInstance] playSong: _appData.currentSong InAlbum:_appData.currentAlbum];
     }
 }

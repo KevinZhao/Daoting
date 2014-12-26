@@ -372,6 +372,8 @@
     NSDictionary *dictionary = [[NSDictionary alloc] initWithContentsOfFile:plistPathinDocumentDirectory];
     for (int i = 1; i<= dictionary.count; i++)
     {
+        NSLog(@"%d", i);
+        
         NSDictionary *SongDic = [dictionary objectForKey:[NSString stringWithFormat:@"%d", i]];
         
         Song *song = [[Song alloc]init];
@@ -438,7 +440,7 @@
                  }
                  
                  //Copy new dictionary
-                 for (NSInteger i = 1; i <= newPlist_dictionary.count; i++) {
+                 for (int i = 1; i <= newPlist_dictionary.count; i++) {
                      
                      NSDictionary *newSong = [newPlist_dictionary objectForKey:[NSString stringWithFormat:@"%d", i]];
                      NSString *songNumber = [NSString stringWithFormat:@"%d", i];
@@ -619,7 +621,7 @@
 {
     NSMutableDictionary *newPlist_dictionary = [[NSMutableDictionary alloc]init];
     
-    for (NSInteger i = 1; i <= _categoryArray.count; i++ ) {
+    for (int i = 1; i <= _categoryArray.count; i++ ) {
         
         NSMutableDictionary *categoryDirectory = [[NSMutableDictionary alloc]init];
       
@@ -652,7 +654,7 @@
 {
     NSMutableDictionary *newPlist_dictionary = [[NSMutableDictionary alloc]init];
     
-    for (NSInteger i = 1; i <= category.albumArray.count; i++ ) {
+    for (int i = 1; i <= category.albumArray.count; i++ ) {
     
         NSMutableDictionary *albumDirectory = [[NSMutableDictionary alloc]init];
      

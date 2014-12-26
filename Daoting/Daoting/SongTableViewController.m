@@ -555,7 +555,7 @@
         indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     }
 
-    if (_songArray != nil) {
+    if (_songArray.count > 0) {
         [_tableview selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
     }
 }
@@ -674,7 +674,7 @@
     cell.lbl_songDescription.scrollDuration = 10.0f;
     cell.lbl_songDescription.animationCurve = UIViewAnimationCurveEaseInOut;
     cell.lbl_songDescription.fadeLength = 10.0f;
-    cell.lbl_songDescription.continuousMarqueeExtraBuffer = 10.0f;
+    //cell.lbl_songDescription.continuousMarqueeExtraBuffer = 10.0f;
     [cell.lbl_songDescription pauseLabel];
     
     //customize the selected table view cell
@@ -784,7 +784,6 @@
     song.url = [NSURL URLWithString:result];*/
     
     song.duration = [self formatTimeFromSeconds:_playerHelper.audioPlayer.duration];
-    song.description = @"";
     
     if (t_currentsong == (_songArray.count - 1)) {
         

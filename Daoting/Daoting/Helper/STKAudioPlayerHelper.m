@@ -399,7 +399,7 @@
 /// Raised when the state of the player has changed
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer stateChanged:(STKAudioPlayerState)state previousState:(STKAudioPlayerState)previousState
 {
-    //NSLog(@"audioPlayer: stateChanged previousState =%d currentState = %d", previousState, state);
+    NSLog(@"audioPlayer: stateChanged previousState =%d currentState = %d", previousState, state);
     /*// test only
     NSLog(@"STKAudioPlayerStateReady = %d", state);
     
@@ -423,7 +423,7 @@
 /// Raised when an item has finished playing
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer didFinishPlayingQueueItemId:(NSObject*)queueItemId withReason:(STKAudioPlayerStopReason)stopReason andProgress:(double)progress andDuration:(double)duration
 {
-    //NSLog(@"didFinishPlayingQueueItemId stopReason = %d", stopReason);
+    NSLog(@"didFinishPlayingQueueItemId stopReason = %d", stopReason);
     
     if (stopReason == STKAudioPlayerStopReasonEof) {
         [self playNextSong];

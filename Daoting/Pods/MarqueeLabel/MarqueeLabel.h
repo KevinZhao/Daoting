@@ -11,9 +11,9 @@ typedef NS_ENUM(NSUInteger, MarqueeType) {
     MLLeftRight = 0,
     /** Scrolls right first, then back left to the original position. */
     MLRightLeft,
-    /** Continuously scrolls left (with a pause at the original position if animationDelay is set). */
+    /** Continuously scrolls left (with a pause at the original position if animationDelay is set). See the `trailingBuffer` property to define a spacing between the repeating strings.*/
     MLContinuous,
-    /** Continuously scrolls right (with a pause at the original position if animationDelay is set) */
+    /** Continuously scrolls right (with a pause at the original position if animationDelay is set). See the `trailingBuffer` property to define a spacing between the repeating strings.*/
     MLContinuousReverse
 };
 
@@ -111,7 +111,9 @@ typedef NS_ENUM(NSUInteger, MarqueeType) {
  @see holdScrolling
  @see lineBreakMode
  @warning The label will not automatically scroll when this property is set to `YES`.
- @warning The UILabel default setting for the `lineBreakMode` property is `NSLineBreakByTruncatingTail`, which truncates the text adds an ellipsis glyph (...). Set the `lineBreakMode` property to `NSLineBreakByClipping` in order to avoid the ellipsis, especially if using an edge transparency fade.
+ @warning The UILabel default setting for the `lineBreakMode` property is `NSLineBreakByTruncatingTail`, which truncates
+ the text adds an ellipsis glyph (...). Set the `lineBreakMode` property to `NSLineBreakByClipping` in order to avoid the
+ ellipsis, especially if using an edge transparency fade.
  */
 
 @property (nonatomic, assign) BOOL labelize;
@@ -196,16 +198,56 @@ typedef NS_ENUM(NSUInteger, MarqueeType) {
 @property (nonatomic, assign) CGFloat rate;
 
 
-/** The additional amount of space (in points) inbetween the strings of a continuous-type label.
+/** A buffer (offset) between the leading edge of the label text and the label frame.
  
- The minimum spacing is two times the specified fade length.
+ This property adds additional space between the leading edge of the label text and the label frame. The
+ leading edge is the edge of the label text facing the direction of scroll (i.e. the edge that animates
+ offscreen first during scrolling).
  
  Defaults to `0`.
  
- @see fadeLength
+ @note The value set to this property affects label positioning at all times (including when `labelize` is set to `YES`),
+ including when the text string length is short enough that the label does not need to scroll.
+ 
+ @note For `MLContinuous`-type labels, the smallest value of `leadingBuffer`, 'trailingBuffer`, and `fadeLength`
+ is used as spacing between the two label instances. Zero is an allowable value for all three properties.
+ 
+ @see trailingBuffer
+ @since Available in 2.1.0 and later.
  */
 
-@property (nonatomic, assign) CGFloat continuousMarqueeExtraBuffer;
+@property (nonatomic, assign) CGFloat leadingBuffer;
+
+
+/** A buffer (offset) between the trailing edge of the label text and the label frame.
+ 
+ This property adds additional space (buffer) between the trailing edge of the label text and the label frame. The
+ trailing edge is the edge of the label text facing away from the direction of scroll (i.e. the edge that animates
+ offscreen last during scrolling).
+ 
+ Defaults to `0`.
+ 
+ @note For `MLContinuous`-type labels, the smallest value of `leadingBuffer`, 'trailingBuffer`, and `fadeLength`
+ is used as spacing between the two label instances. Zero is an allowable value for all three properties.
+ 
+ @note The value set to this property has no effect when the `labelize` property is set to `YES`.
+ 
+ @see leadingBuffer
+ @since Available in 2.1.0 and later.
+ */
+
+@property (nonatomic, assign) CGFloat trailingBuffer;
+
+
+/** The additional amount of space (in points) inbetween the strings of a continuous-type label.
+ 
+ Defaults to `0`.
+ 
+ @see trailingBuffer
+ @deprecated Use `trailingBuffer` instead. Values set to this property are simply forwarded to `trailingBuffer`.
+ */
+ 
+@property (nonatomic, assign) CGFloat continuousMarqueeExtraBuffer DEPRECATED_MSG_ATTRIBUTE("Use trailingBuffer property instead.");
 
 
 /** The length of transparency fade at the left and right edges of the `MarqueeLabel` instance's frame.
@@ -383,7 +425,7 @@ typedef NS_ENUM(NSUInteger, MarqueeType) {
  @deprecated Use `controllerViewDidAppear:` instead.
  */
 
-+ (void)controllerViewAppearing:(UIViewController *)controller __attribute((deprecated("Use restartLabelsOfController: method")));
++ (void)controllerViewAppearing:(UIViewController *)controller DEPRECATED_MSG_ATTRIBUTE("Use restartLabelsOfController: method");
 
 
 /** Labelizes all `MarqueeLabel` instances that have the specified view controller in their next responder chain.
