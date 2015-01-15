@@ -85,7 +85,28 @@
     //Check the file is in local reposistory
     if (![[song.filePath absoluteString] isEqualToString:@""] ) {
         
-        NSURL *songURL = [NSURL fileURLWithPath:[song.filePath absoluteString]];
+        //todo: for old filepath
+        // if file path contains library
+        
+        NSString* filePath = [song.filePath absoluteString];
+        NSString* library = @"/Library/Caches/";
+        
+        
+        NSRange range = [filePath rangeOfString:library];
+        
+        if (range.length > 0) {
+         
+            // get url
+            filePath = [filePath substringFromIndex:(range.location + range.length)];
+            NSLog(filePath);
+            song.filePath = [NSURL URLWithString:filePath];
+            
+            //writeback to songlist
+            [[CategoryManager sharedManager] writeBacktoSongListinAlbum:album];
+        }
+        
+        NSURL *songURL = [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
+        songURL = [songURL URLByAppendingPathComponent:[song.filePath absoluteString]];
         
         //play from local reposistory for the song
         STKDataSource* fileDataSource = [STKAudioPlayer dataSourceFromURL:songURL];

@@ -579,17 +579,23 @@
     return _songArray.count;
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SongCell* songCell = (SongCell*) cell;
+    
+    //Clear content
+    songCell.cirProgView_downloadProgress.hidden = YES;
+    songCell.btn_downloadOrPause.hidden = YES;
+    songCell.img_new.hidden = YES;
+    
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Song *song = [_songArray objectAtIndex:indexPath.row];
     SongCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SongCell" forIndexPath:indexPath];
     
     cell.backgroundColor = [UIColor clearColor];
-    
-    //Clear content
-    cell.cirProgView_downloadProgress.hidden = YES;
-    cell.btn_downloadOrPause.hidden = YES;
-    cell.img_new.hidden = YES;
     
     cell.cirProgView_downloadProgress.thicknessRatio = 0.075;
     [cell.cirProgView_downloadProgress setTrackTintColor:[UIColor grayColor]];
@@ -716,90 +722,13 @@
         _slider.maximumValue = _sharedAudioplayerHelper.duration;
         _slider.value = _sharedAudioplayerHelper.progress;
     }
-    //There is no song playing
-    /*else
-    {
-        _lbl_progressMaxValue.text = @"";
-        _lbl_progressCurrentValue.text = @"";
-        
-        _slider.enabled = NO;
-        _slider.value = 0;
-        _slider.minimumValue = 0;
-        _slider.maximumValue = 0;
-    }*/
-    
 
-            
     [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_pause_n.png"] forState:UIControlStateNormal];
 }
 
 -(void) onPlayerPaused
 {
     [_btn_playAndPause setBackgroundImage:[UIImage imageNamed:@"playing_btn_play_n.png"] forState:UIControlStateNormal];
-}
-
-
-#pragma mark - Test
-
-- (void)test
-{
-    t_currentsong = 0;
-    
-    Song *song = _songArray[t_currentsong];
-    
-    [self playSongbyHelper:song];
-}
-
-- (void)onTest
-{
-    NSLog(@"onTest %d", t_currentsong);
-    
-    Song *song = _songArray[t_currentsong];
-
-    /*NSString *url = @"http://182.254.148.156/dongwu/%E5%86%AC%E5%90%B4%E7%9B%B8%E5%AF%B9%E8%AE%BA";
-    NSString *songNumber;
-        
-    if (t_currentsong < 10) {
-        songNumber = [NSString stringWithFormat:@"00%d", (t_currentsong + 1)];
-    }
-    else if (t_currentsong < 100) {
-        songNumber = [NSString stringWithFormat:@"0%d", (t_currentsong + 1)];
-    }
-    else
-    {
-        songNumber = [NSString stringWithFormat:@"%d", (t_currentsong + 1)];
-    }
-        
-    NSString *result = [url stringByAppendingFormat:@"%@.mp3", songNumber];
-        
-    song.url = [NSURL URLWithString:result];*/
-    
-    //song.duration = [self formatTimeFromSeconds:_playerHelper.audioPlayer.duration];
-    
-    if (t_currentsong == (_songArray.count - 1)) {
-        
-        /*for (int i = 474; i < 1221; i++) {
-            
-            Song *newSong = [[Song alloc]init];
-            
-            newSong.songNumber = [NSString stringWithFormat:@"%d", i];
-            newSong.title = @"凡人修仙传";
-            NSString *url = @"http://182.254.148.156/fanrenxiuxianzhuan/%E5%87%A1%E4%BA%BA%E4%BF%AE%E4%BB%99%E4%BC%A0";
-            
-            NSString *result = [url stringByAppendingFormat:@"%d.mp3", i];
-            newSong.url = [NSURL URLWithString:result];
-            newSong.price = [NSString stringWithFormat:@"25"];
-            [_songArray addObject:newSong];
-        }*/
-        
-        
-        [[CategoryManager sharedManager] writeBacktoSongListinAlbum:_album];
-        return;
-    }
-    
-    [self onbtn_nextPressed:nil];
-    
-    t_currentsong++;
 }
 
 @end

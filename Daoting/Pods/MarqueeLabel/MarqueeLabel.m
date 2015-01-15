@@ -169,7 +169,7 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
     self.subLabel.text = super.text;
     self.subLabel.font = super.font;
     self.subLabel.textColor = super.textColor;
-    self.subLabel.backgroundColor = super.backgroundColor;
+    self.subLabel.backgroundColor = (super.backgroundColor == nil ? [UIColor clearColor] : super.backgroundColor);
     self.subLabel.shadowColor = super.shadowColor;
     for (NSString *property in properties) {
         id val = [super valueForKey:property];
@@ -190,10 +190,8 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
     self.subLabel = [[UILabel alloc] initWithFrame:self.bounds];
     self.subLabel.tag = 700;
     self.subLabel.layer.anchorPoint = CGPointMake(0.0f, 0.0f);
-    [self addSubview:self.subLabel];
     
-    // Clear superclass UILabel background
-    [super setBackgroundColor:[UIColor clearColor]];
+    [self addSubview:self.subLabel];
     
     // Setup default values
     _animationCurve = UIViewAnimationOptionCurveLinear;
@@ -528,8 +526,8 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
         return;
     }
     
-    [self.subLabel.layer removeAllAnimations];
-    [self.layer.mask removeAllAnimations];
+    // Return labels to home (cancel any animations)
+    [self returnLabelToOriginImmediately];
     
     // Call pre-animation method
     [self labelWillBeginScroll];
@@ -595,9 +593,8 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
         return;
     }
     
-    // Return labels to home frame
-    [self.subLabel.layer removeAllAnimations];
-    [self.layer.mask removeAllAnimations];
+    // Return labels to home (cancel any animations)
+    [self returnLabelToOriginImmediately];
     
     // Call pre-animation method
     [self labelWillBeginScroll];
@@ -919,13 +916,10 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
 #pragma mark - Label Control
 
 - (void)restartLabel {
-    [self applyGradientMaskForFadeLength:self.fadeLength animated:NO];
-    
     if (self.labelShouldScroll && !self.tapToScroll) {
         [self beginScroll];
     }
 }
-
 
 - (void)resetLabel {
     [self returnLabelToOriginImmediately];
@@ -982,6 +976,12 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
 - (void)labelWasTapped:(UITapGestureRecognizer *)recognizer {
     if (self.labelShouldScroll) {
         [self beginScrollWithDelay:NO];
+    }
+}
+
+- (void)triggerScrollStart {
+    if (self.labelShouldScroll && !self.awayFromHome) {
+        [self beginScroll];
     }
 }
 
@@ -1075,6 +1075,7 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
 
 - (void)setBackgroundColor:(UIColor *)backgroundColor {
     [self updateSubLabelsForKey:@"backgroundColor" withValue:backgroundColor];
+    [super setBackgroundColor:backgroundColor];
 }
 
 - (UIColor *)shadowColor {
@@ -1191,7 +1192,7 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
     [self updateSublabelAndLocations];
 }
 
-- (void)setScrollDuration:(NSTimeInterval)lengthOfScroll {
+- (void)setScrollDuration:(CGFloat)lengthOfScroll {
     if (_scrollDuration == lengthOfScroll) {
         return;
     }

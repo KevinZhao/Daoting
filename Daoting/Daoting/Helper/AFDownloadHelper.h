@@ -13,18 +13,26 @@
 #import "DownloadStatus.h"
 #import "CategoryManager.h"
 
+@protocol AFDownloadHelperDelegate <NSObject>
+
+-(void) onFileDownloadProgressed;
+-(void) onFileDownloadCompleted;
+-(void) onFileDownloadFailed;
+
+@end
+
 
 @interface AFDownloadHelper : NSObject
 {
     
 }
 
+@property (readwrite, unsafe_unretained) id<AFDownloadHelperDelegate> delegate;
+
 + (AFHTTPRequestOperationManager *)sharedOperationManager;
 + (AFDownloadHelper *)sharedAFDownloadHelper;
 
-
 - (void)downloadSong:(Song*)song inAlbum:(Album*)album;
-
 -(AFHTTPRequestOperation *)searchOperationbyKey:(NSString *)key;
 
 @end
