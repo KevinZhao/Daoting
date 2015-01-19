@@ -10,6 +10,15 @@
 
 @interface Song : NSObject <NSCoding>
 
+enum
+{
+    DownloadStatusWaiting       = 0,
+    DownloadStatusDownloading   = 1,
+    DownloadStatusCompleted     = 2,
+    DownloadStatusError         = 3
+};
+typedef NSInteger DownloadStatus;
+
 @property (nonatomic, strong) NSString  *songNumber;
 @property (nonatomic, strong) NSString  *title;
 @property (nonatomic, strong) NSString  *duration;
@@ -19,5 +28,6 @@
 @property (nonatomic, assign) double    progress;
 @property (nonatomic, strong) NSString  *updatedSong;
 @property (nonatomic, strong) NSString  *description;
+@property (nonatomic, assign) DownloadStatus downloadingStatus;
 
 @end

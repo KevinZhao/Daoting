@@ -18,7 +18,10 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    _storagePath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingString:@"/Daoting/"];
+    
+    NSURL* CachesDirectoryURL = [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
+    
+    _storagePath = [[CachesDirectoryURL path] stringByAppendingString:@"/Daoting/"];
     
     _albumShortnameArray = [[NSMutableArray alloc]init];
     [self buildAlbumList];
@@ -127,7 +130,7 @@
 {
     if (buttonIndex == 1) {
         
-        NSString *directory = [_storagePath stringByAppendingString:[NSString stringWithFormat:@"/%@", _albumShortnameArray[_selectedIndexPath.row]]];
+        NSString *directory = [_storagePath stringByAppendingString:[NSString stringWithFormat:@"%@", _albumShortnameArray[_selectedIndexPath.row]]];
         
         NSArray* array = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:directory error:nil];
         for(int i = 0; i<[array count]; i++)

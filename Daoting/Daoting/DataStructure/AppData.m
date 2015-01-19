@@ -40,23 +40,21 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
 {
     AppData* appData = nil;
     
+    NSURL* url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    url = [url URLByAppendingPathComponent:@"appData"];
+    NSError *err;
+    
     //check if there is decode data
-    NSData* decodedData = [NSData dataWithContentsOfFile: [AppData filePath]];
+    NSData* decodedData = [NSData dataWithContentsOfURL:url options:NSDataReadingMapped error:&err];
+    
+    if (err) {
+        //NSLog(err);
+    }
+    
     if (decodedData) {
-        //1
-        //NSString* checksumOfSavedFile = [KeychainWrapper computeSHA256DigestForData: decodedData];
-        //NSString* checksumInKeychain = [KeychainWrapper keychainStringFromMatchingIdentifier: SSDataChecksumKey];
         
-        //2
-        //if ([checksumOfSavedFile isEqualToString: checksumInKeychain]) {
         appData = [NSKeyedUnarchiver unarchiveObjectWithData:decodedData];
-        //}
-        //else
-        //{
-        //    NSLog(@"Critical Error, checksum is different");
-        //    NSLog(@"checksumofSavedFile= %@", checksumOfSavedFile);
-        //    NSLog(@"checksumInKeyChain = %@", checksumInKeychain);
-        //}
+
     }
     //There is no decode Data
     else
@@ -109,31 +107,22 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
     return self;
 }
 
-+(NSString*)filePath
+//todo bug is here
+-(NSURL*)filePath
 {
-    static NSString* filePath = nil;
-    if (!filePath) {
-        filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"appData"];
-    }
+    NSURL* filePath = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    filePath = [filePath URLByAppendingPathComponent:@"appData"];
+        
     return filePath;
 }
 
 -(void)save
 {
-    NSData* encodedData = [NSKeyedArchiver archivedDataWithRootObject: self];
-    [encodedData writeToFile:[AppData filePath] atomically:YES];
-    
-    /*NSString* checksum = [KeychainWrapper computeSHA256DigestForData: encodedData];
-    if ([KeychainWrapper keychainStringFromMatchingIdentifier: SSDataChecksumKey]) {
+    NSData* encodedData = [NSKeyedArchiver archivedDataWithRootObject:self];
+    if ([encodedData writeToURL:[self filePath] atomically:YES]) {
         
-        [KeychainWrapper updateKeychainValue:checksum forIdentifier:SSDataChecksumKey];
-        NSLog(@"KeychainWrapper updateKeychainValue %@", checksum);
+        NSLog(@"appData Saved");
     }
-    else
-    {
-        [KeychainWrapper createKeychainValue:checksum forIdentifier:SSDataChecksumKey];
-        NSLog(@"createKeychainValue %@", checksum);
-    }*/
 }
 
 #pragma mark iCloud Operation
@@ -235,9 +224,18 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
     }
 }
 
--(void)addtoPurchasedQueue:(Song*)song withAlbumShortname:(NSString *)albumShortname
+-(BOOL)addtoPurchasedQueue:(Song*)song withAlbumShortname:(NSString *)albumShortname
 {
-    [_purchasedQueue setValue:song.songNumber forKey:[NSString stringWithFormat:@"%@_%@", albumShortname, song.songNumber]];
+    if (_purchasedQueue != nil) {
+        [_purchasedQueue setValue:song.songNumber forKey:[NSString stringWithFormat:@"%@_%@", albumShortname, song.songNumber]];
+        [self save];
+        
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
 }
 
 #pragma mark @protocol NSCoding
@@ -293,6 +291,9 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
     [iCloudStore setLongLong: 0 forKey:SSDataforFirstPurchaseKey];
     
     [iCloudStore synchronize];
+    
+    _purchasedQueue = nil;
+    [self save];
 }
 
 

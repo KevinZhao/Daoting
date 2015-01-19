@@ -23,6 +23,7 @@
     [aCoder encodeDouble:self.progress forKey:@"progress"];
     [aCoder encodeObject:self.updatedSong forKey:@"new"];
     [aCoder encodeObject:self.description forKey:@"description"];
+    [aCoder encodeInteger:self.downloadingStatus forKey:@"downloadStatus"];
 }
 - (id)initWithCoder:(NSCoder *)aDecoder{
     _songNumber = [aDecoder decodeObjectForKey:@"songNumber"];
@@ -34,6 +35,7 @@
     _progress = [aDecoder decodeDoubleForKey:@"progress"];
     _updatedSong = [aDecoder decodeObjectForKey:@"new"];
     description = [aDecoder decodeObjectForKey:@"description"];
+    _downloadingStatus = [aDecoder decodeIntegerForKey:@"downloadStatus"];
     
     return self;
 }

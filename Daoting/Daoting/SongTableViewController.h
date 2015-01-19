@@ -24,15 +24,18 @@
 #import "UIImageView+AFNetworking.h"
 
 @interface SongTableViewController : UIViewController<UIScrollViewDelegate, UITableViewDataSource, ICategoryManagerDelegate,
-    UITableViewDelegate, STKAudioPlayerHelperDelegate>
+    UITableViewDelegate, STKAudioPlayerHelperDelegate, AFDownloadHelperDelegate>
 {
     NSMutableArray                      *_songArray;
     UITableView                         *_tableview;
     Album                               *_album;
     NSTimer                             *_timer;
     AppData                             *_appData;
+    
+    
     STKAudioPlayerHelper                *_sharedAudioplayerHelper;
-    SongManager                         *_songManager;
+    AFDownloadHelper                    *_sharedAFDownloadHelper;
+    CategoryManager                     *_sharedCategoryManager;
     AppDelegate                         *_appDelegate;
     UIView                              *_descriptionView;
     
@@ -61,6 +64,7 @@
 - (IBAction)onsliderValueChanged:(id)sender;
 - (IBAction)onpageChanged:(id)sender;
 - (void)setDetailItem:(Album *)album;
+
 
 //this is ugly, need to revisit next version
 - (UITabBarController *)getTabbarViewController;

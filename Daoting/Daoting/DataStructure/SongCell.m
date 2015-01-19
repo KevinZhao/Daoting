@@ -49,25 +49,37 @@
         //2.2.1 if coin is enough, buy it.
         if (_appData.coins >= [song.price intValue]) {
             
-            _appData.coins = _appData.coins - [song.price intValue];
-            [self startDownload];
-            
-            [_appData addtoPurchasedQueue:song withAlbumShortname:album.shortName];
-            
-            if ([song.updatedSong isEqualToString:@"YES"]) {
-                song.updatedSong = @"NO";
-                [[CategoryManager sharedManager] writeBacktoSongListinAlbum:album];
+            //Purchase succeed
+            if ([_appData addtoPurchasedQueue:song withAlbumShortname:album.shortName]) {
+                _appData.coins = _appData.coins - [song.price intValue];
+                
+                [self startDownload];
+                
+                if ([song.updatedSong isEqualToString:@"YES"]) {
+                    song.updatedSong = @"NO";
+                    [[CategoryManager sharedManager] writeBacktoSongListinAlbum:album];
+                    self.img_new.hidden = YES;
+                }
+                
+                [_appData save];
+                [_appData updateToiCloud];
+                
+                self.img_locked.hidden = YES;
                 self.img_new.hidden = YES;
+                
+                //show notification to user
+                NSString *notification = [NSString stringWithFormat:@"金币  -%@", song.price];
+                SongTableViewController* parentViewController = (SongTableViewController *)[self GetViewController];
+                [TSMessage showNotificationInViewController:parentViewController title:notification subtitle:nil type:TSMessageNotificationTypeSuccess];
             }
-            
-            [_appData save];
-            [_appData updateToiCloud];
-            
-            //show notification to user
-            NSString *notification = [NSString stringWithFormat:@"金币  -%@", song.price];
-            SongTableViewController* parentViewController = (SongTableViewController *)[self GetViewController];
-            [TSMessage showNotificationInViewController:parentViewController title:notification subtitle:nil type:TSMessageNotificationTypeSuccess];
-            
+            //Purchase Failed
+            else
+            {
+                //show notification to user
+                NSString *notification = @"程序错误，请从商店重新下载或联系客服";
+                SongTableViewController* parentViewController = (SongTableViewController *)[self GetViewController];
+                [TSMessage showNotificationInViewController:parentViewController title:notification subtitle:nil type:TSMessageNotificationTypeSuccess];
+            }
         }
         //2.2.2 cois is not enough
         else

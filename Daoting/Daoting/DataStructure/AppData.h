@@ -33,14 +33,14 @@
 @property (nonatomic, assign) BOOL isAutoPlay;
 
 +(instancetype)sharedAppData;
-+(NSString*)filePath;
+//+(NSString*)filePath;
 
 -(void)save;
 -(void)updateToiCloud;
 -(void)updateFromiCloud;
 
 -(BOOL)songNumber:(NSString *)songNumber ispurchasedwithAlbum:(NSString*)albumShortname;
--(void)addtoPurchasedQueue:(Song *)songNumber withAlbumShortname:(NSString *)albumShortname;
+-(BOOL)addtoPurchasedQueue:(Song *)songNumber withAlbumShortname:(NSString *)albumShortname;
 
-
+-(void) cleariCloudData;
 @end

@@ -15,9 +15,10 @@
 
 @protocol AFDownloadHelperDelegate <NSObject>
 
--(void) onFileDownloadProgressed;
--(void) onFileDownloadCompleted;
--(void) onFileDownloadFailed;
+-(void) onDownloadStartedForOperation:(AFHTTPRequestOperation*) operation;
+-(void) onDownloadProgressedForOperation:(AFHTTPRequestOperation*) operation;
+-(void) onDownloadCompletedForOperation:(AFHTTPRequestOperation*) operation;
+-(void) onDownloadFailedForOperation:(AFHTTPRequestOperation*) operation;
 
 @end
 

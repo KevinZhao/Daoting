@@ -28,7 +28,6 @@
 -(void) onPlayerHelperSongChanged;
 -(void) onProgressUpdated;
 -(void) onPlayerPaused;
--(void) onTest;
 
 @end
 

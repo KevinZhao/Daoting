@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C78c" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="6bP-Wq-XVz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C94b" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="6bP-Wq-XVz">
     <dependencies>
         <deployment version="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -59,7 +59,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g0j-bq-gQo">
-                                            <rect key="frame" x="20" y="12" width="200" height="21"/>
+                                            <rect key="frame" x="20" y="12.5" width="200" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -77,12 +77,12 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wAV-Ih-01S">
-                                            <rect key="frame" x="20" y="12" width="200" height="21"/>
+                                            <rect key="frame" x="20" y="12.5" width="200" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="HKG-IC-T0v">
-                                            <rect key="frame" x="711" y="7" width="51" height="31"/>
+                                            <rect key="frame" x="711" y="7.5" width="51" height="31"/>
                                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </switch>
                                     </subviews>
@@ -130,12 +130,12 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22.5M" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4Fv-jR-9Dm">
-                                            <rect key="frame" x="20" y="23" width="100" height="21"/>
+                                            <rect key="frame" x="20" y="23" width="100" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="y1T-Td-46k">
-                                            <rect key="frame" x="714" y="8" width="46" height="30"/>
+                                            <rect key="frame" x="714" y="7" width="46" height="30"/>
                                             <state key="normal" title="清除">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -243,12 +243,12 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="简单介绍:比如聊斋、隋唐演义或" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6Hw-dL-nZg">
-                                            <rect key="frame" x="75" y="47" width="210" height="21"/>
+                                            <rect key="frame" x="75" y="47.5" width="210" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-72.png" id="HFM-Ul-jhK">
-                                            <rect key="frame" x="7" y="9" width="60" height="60"/>
+                                            <rect key="frame" x="7" y="9.5" width="60" height="60"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AlbumNewNotify.png" id="SUT-c4-Gci">
                                             <rect key="frame" x="55" y="2" width="20" height="20"/>
@@ -458,16 +458,6 @@
                                     <action selector="onbtn_sharePressed:" destination="FIa-3P-xRc" eventType="touchUpInside" id="ch3-zK-JSd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WOk-z7-asg">
-                                <rect key="frame" x="244" y="957" width="40" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                                <state key="normal" image="actionIconDownloadSelected.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onbtn_downloadAllPressed:" destination="FIa-3P-xRc" eventType="touchUpInside" id="OMg-op-BYI"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tBq-eh-AgW">
                                 <rect key="frame" x="720" y="922" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
@@ -480,7 +470,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="Rl1-Zv-Lki"/>
                     <connections>
-                        <outlet property="btn_downloadAll" destination="WOk-z7-asg" id="OrR-Xi-wds"/>
                         <outlet property="btn_next" destination="rCq-N8-6Vs" id="hhk-OC-wnX"/>
                         <outlet property="btn_playAndPause" destination="6MF-qb-FBg" id="gK9-Sm-rLi"/>
                         <outlet property="btn_previous" destination="M7L-3C-tSe" id="48D-uw-G2L"/>
@@ -595,7 +584,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FlC-Gw-opn">
-                                            <rect key="frame" x="20" y="6" width="35" height="31"/>
+                                            <rect key="frame" x="20" y="6.5" width="35" height="31"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <state key="normal" backgroundImage="coin.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -643,7 +632,6 @@
         <image name="AlbumNewNotify.png" width="20" height="20"/>
         <image name="Cuxiao.png" width="40" height="20"/>
         <image name="Icon-72.png" width="76" height="76"/>
-        <image name="actionIconDownloadSelected.png" width="40" height="40"/>
         <image name="bag.png" width="27" height="27"/>
         <image name="btn_share.png" width="35" height="35"/>
         <image name="coin.png" width="128" height="128"/>

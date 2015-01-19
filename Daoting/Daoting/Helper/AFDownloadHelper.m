@@ -71,6 +71,11 @@
     //5. Copy operation as reference
     AFHTTPRequestOperation __weak *operation_ = operation;
     
+    //6. Notify delegate if any
+    if (self.delegate) {
+        [self.delegate onDownloadStartedForOperation:operation_];
+    }
+    
     //Download Progress block
     [operation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
         
@@ -82,7 +87,7 @@
         
         //2. Notify delegate if any
         if (self.delegate) {
-            [self.delegate onFileDownloadProgressed];
+            [self.delegate onDownloadProgressedForOperation:operation_];
         }
     }];
     
@@ -99,7 +104,7 @@
          
          //3. Notify delegate if any
          if (self.delegate) {
-             [self.delegate onFileDownloadCompleted];
+             [self.delegate onDownloadProgressedForOperation:operation_];
          }
      }
      
@@ -113,7 +118,7 @@
          
          //2. Notify delegate if any
          if (self.delegate) {
-             [self.delegate onFileDownloadFailed];
+             [self.delegate onDownloadFailedForOperation:operation_];
          }
      }];
 }
@@ -126,11 +131,10 @@
 
 -(BOOL) checkDirectoryforOperation:(AFHTTPRequestOperation*) operation
 {
-
     BOOL isDir = NO;
     BOOL isExisted = NO;
     NSError *err;
-    BOOL sucess;
+    BOOL result = NO;
 
     //1. Get information from operation
     Album* album = [operation.userInfo valueForKey:@"album"];
@@ -142,16 +146,17 @@
     
     if (!isExisted) {
         if (!isDir) {
-            sucess = [[NSFileManager defaultManager] createDirectoryAtURL:albumDirectory withIntermediateDirectories:YES attributes:nil error:&err];
+            result = [[NSFileManager defaultManager] createDirectoryAtURL:albumDirectory withIntermediateDirectories:YES attributes:nil error:&err];
+            
+            return result;
         }
     }
     
-    return sucess;
+    return result;
 }
 
 -(NSURL*) createDestinationFileURL:(AFHTTPRequestOperation*) operation
 {
-    
     //1. Get information from operation
     Song* song = [operation.userInfo valueForKey:@"song"];
     Album* album = [operation.userInfo valueForKey:@"album"];

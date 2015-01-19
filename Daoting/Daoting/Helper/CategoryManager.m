@@ -29,13 +29,14 @@
     
     //Load Category List
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
+    
+    NSString *bundleDocumentDirectoryPath = [[self documentLibraryPath] path];
     NSString *plistPathinDocumentDirectory = [bundleDocumentDirectoryPath stringByAppendingString:@"/CategoryList.plist"];
     
     //if yes, copy from resource directory to document directory
     if (![fileManager fileExistsAtPath:plistPathinDocumentDirectory])
     {
+        //todo:
         NSString *plistPathinResourceDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/CategoryList.plist"];
         
         if ([fileManager fileExistsAtPath:plistPathinResourceDirectory]) {
@@ -64,8 +65,7 @@
     
     _categoryArray = [[NSMutableArray alloc]init];
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
+    NSString *bundleDocumentDirectoryPath = [[self documentLibraryPath] path];
     
     NSString *plistPath = [bundleDocumentDirectoryPath stringByAppendingString:@"/CategoryList.plist"];
     NSDictionary *dictionary = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
@@ -94,8 +94,7 @@
     
     //1. Check if plist is in document directory
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
+    NSString *bundleDocumentDirectoryPath = [[self documentLibraryPath] path];
     NSString *plistPath = [bundleDocumentDirectoryPath stringByAppendingString:@"/CategoryList.plist"];
     
     //2. Download plist from cloud storage
@@ -177,8 +176,8 @@
     
     //1. Check if plist file had already in document library
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *DocumentDirectoryPath = [paths objectAtIndex:0];
+    
+    NSString *DocumentDirectoryPath = [[self documentLibraryPath] path];
     NSString *plistPathinDocumentDirectory = [DocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_AlbumList.plist",category.shortName]];
      
     //1.1 if no, copy from resource directory to document directory
@@ -230,8 +229,7 @@
     
     //1. Check if plist is in document directory
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
+    NSString *bundleDocumentDirectoryPath = [[self documentLibraryPath] path];
     NSString *plistPath = [bundleDocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_AlbumList.plist", category.shortName]];
     
     //2. Download plist from cloud storage
@@ -356,8 +354,7 @@
 
     //1. Check if plist file had already in document library
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *DocumentDirectoryPath = [paths objectAtIndex:0];
+    NSString *DocumentDirectoryPath = [[self documentLibraryPath] path];
     NSString *plistPathinDocumentDirectory = [DocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_SongList.plist", album.shortName]];
     
     //1.1 if no, update from cloud storage
@@ -401,8 +398,7 @@
     
     //1. Check if plist is in document directory
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
+    NSString *bundleDocumentDirectoryPath = [[self documentLibraryPath] path];
     NSString *plistPath = [bundleDocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_SongList.plist", album.shortName]];
     
     //2. Download plist from cloud storage
@@ -637,8 +633,7 @@
         [newPlist_dictionary setValue:categoryDirectory forKey:[NSString stringWithFormat:@"%d", i]];
     }
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
+    NSString *bundleDocumentDirectoryPath = [[self documentLibraryPath] path];
     NSString *plistPath = [bundleDocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/CategoryList.plist"]];
     
     if ([newPlist_dictionary writeToFile:plistPath atomically:NO]) {
@@ -673,10 +668,8 @@
      
         [newPlist_dictionary setValue:albumDirectory forKey:[NSString stringWithFormat:@"%d", i]];
     }
-     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
-    NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
+    NSString *bundleDocumentDirectoryPath = [[self documentLibraryPath] path];
     NSString *plistPath = [bundleDocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_AlbumList.plist",category.shortName]];
     
     if ([newPlist_dictionary writeToFile:plistPath atomically:NO]) {
@@ -738,8 +731,7 @@
         [newPlist_dictionary setValue:songDirectory forKey:[NSString stringWithFormat:@"%@", song.songNumber]];
     }
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *bundleDocumentDirectoryPath = [paths objectAtIndex:0];
+    NSString *bundleDocumentDirectoryPath = [[self documentLibraryPath] path];
     NSString *plistPath = [bundleDocumentDirectoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@_SongList.plist", album.shortName]];
     
     if ([newPlist_dictionary writeToFile:plistPath atomically:NO]) {
@@ -756,6 +748,13 @@
     
     [self update];
     //completionHandler(UIBackgroundFetchResultNewData);
+}
+
+#pragma mark internal tools
+
+- (NSURL* )documentLibraryPath
+{
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
 @end

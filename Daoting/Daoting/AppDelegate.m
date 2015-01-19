@@ -80,7 +80,7 @@
 
 -(void)configureAFNetworking
 {
-    [[AFDownloadHelper sharedOperationManager].operationQueue setMaxConcurrentOperationCount:2];
+    [[AFDownloadHelper sharedOperationManager].operationQueue setMaxConcurrentOperationCount:1];
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
 }
