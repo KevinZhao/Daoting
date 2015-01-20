@@ -121,7 +121,7 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
     NSData* encodedData = [NSKeyedArchiver archivedDataWithRootObject:self];
     if ([encodedData writeToURL:[self filePath] atomically:YES]) {
         
-        NSLog(@"appData Saved");
+        //NSLog(@"appData Saved");
     }
 }
 
@@ -154,12 +154,12 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
         //synchronize
         bool success = [iCloudStore synchronize];
         if (success) {
-            NSLog(@"update icloud succeed for other");
+            //NSLog(@"update icloud succeed for other");
         }
     }
     else
     {
-        NSLog(@"updateiToCloud failed due to iCloud is not enabled");
+        //NSLog(@"updateiToCloud failed due to iCloud is not enabled");
     }
 }
 
@@ -186,11 +186,11 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
         
         [[NSNotificationCenter defaultCenter] postNotificationName: SSDataforCoinsKey object:nil];
         
-        NSLog(@"update From iCloud succeed");
+        //NSLog(@"update From iCloud succeed");
     }
     else
     {
-        NSLog(@"updateFromiCloud failed due to iCloud is not enabled");
+        //NSLog(@"updateFromiCloud failed due to iCloud is not enabled");
     }
 }
 

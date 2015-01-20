@@ -172,7 +172,7 @@
 
 - (void)initializeAlbumByCategory:(AudioCategory *)category
 {
-    NSLog(@"initializeAlbumByCategory, %@", category.title);
+    //NSLog(@"initializeAlbumByCategory, %@", category.title);
     
     //1. Check if plist file had already in document library
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -223,7 +223,7 @@
 
 - (void)updateAlbumByCategory:(AudioCategory *)category
 {
-    NSLog(@"updateAlbumByCategory, %@", category.title);
+    //NSLog(@"updateAlbumByCategory, %@", category.title);
     
     self.albumUpdatingStatus = Upgrating;
     
@@ -350,7 +350,7 @@
 
 - (void)initializeSongByAlbum:(Album *)album
 {
-    NSLog(@"initializeSongByAlbum, %@", album.title);
+    //NSLog(@"initializeSongByAlbum, %@", album.title);
 
     //1. Check if plist file had already in document library
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -369,7 +369,7 @@
     NSDictionary *dictionary = [[NSDictionary alloc] initWithContentsOfFile:plistPathinDocumentDirectory];
     for (int i = 1; i<= dictionary.count; i++)
     {
-        NSLog(@"%d", i);
+        //NSLog(@"%d", i);
         
         NSDictionary *SongDic = [dictionary objectForKey:[NSString stringWithFormat:@"%d", i]];
         
@@ -392,7 +392,7 @@
 
 - (void)updateSongByAlbum:(Album *)album
 {
-    NSLog(@"updateSongByAlbum, %@", album.title);
+    //NSLog(@"updateSongByAlbum, %@", album.title);
 
     self.songUpdatingStatus = Upgrating;
     

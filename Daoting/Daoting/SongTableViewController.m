@@ -480,8 +480,6 @@
 
 - (IBAction)onbtn_previousPressed:(id)sender
 {
-    [_appData cleariCloudData];
-    
     [_sharedAudioplayerHelper playPreviousSong];
 }
 
