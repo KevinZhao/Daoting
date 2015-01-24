@@ -338,7 +338,7 @@
     _appData.coins = _appData.coins + purchasedCoins;
     
     [_appData save];
-    [_appData updateToiCloud];
+    [_appData saveToiCloud];
 
     [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"成功购买金币 %d 枚", purchasedCoins] type:TSMessageNotificationTypeSuccess];
 }
@@ -370,7 +370,7 @@
         
         _appData.coins += 10;
         [_appData save];
-        [_appData updateToiCloud];
+        [_appData saveToiCloud];
         
         CurrentCoinCell* currentCoinCell = (CurrentCoinCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
         currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%ld 枚", (long)_appData.coins];
@@ -411,7 +411,7 @@
                                      _appData.coins = _appData.coins + 10;
                                      NSString *notification = @"您获得了 10金币";
                                      [_appData save];
-                                     [_appData updateToiCloud];
+                                     [_appData saveToiCloud];
                                      
                                      CurrentCoinCell* currentCoinCell = (CurrentCoinCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
                                      currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%ld 枚", (long)_appData.coins];

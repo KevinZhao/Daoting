@@ -238,7 +238,7 @@
                         }
                         
                         [_appData save];
-                        [_appData updateToiCloud];
+                        [_appData saveToiCloud];
                         
                         [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"金币  -%@", song.price] type:TSMessageNotificationTypeSuccess];
                     }
@@ -320,7 +320,7 @@
                         }
                         
                         [_appData save];
-                        [_appData updateToiCloud];
+                        [_appData saveToiCloud];
                         
                         [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"金币  -%@", song.price] type:TSMessageNotificationTypeMessage];
                     }

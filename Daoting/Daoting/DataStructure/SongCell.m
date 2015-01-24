@@ -8,7 +8,7 @@
 
 #import "SongCell.h"
 #import "SongTableViewController.h"
-
+#import "PurchaseRecordsHelper.h"
 
 @implementation SongCell
 
@@ -62,7 +62,7 @@
                 }
                 
                 [_appData save];
-                [_appData updateToiCloud];
+                [_appData saveToiCloud];
                 
                 self.img_locked.hidden = YES;
                 self.img_new.hidden = YES;
@@ -71,6 +71,8 @@
                 NSString *notification = [NSString stringWithFormat:@"金币  -%@", song.price];
                 SongTableViewController* parentViewController = (SongTableViewController *)[self GetViewController];
                 [TSMessage showNotificationInViewController:parentViewController title:notification subtitle:nil type:TSMessageNotificationTypeSuccess];
+                
+                [[PurchaseRecordsHelper sharedInstance] purchase:song.songNumber in:album.shortName from:@"test_ID2"];
             }
             //Purchase Failed
             else
