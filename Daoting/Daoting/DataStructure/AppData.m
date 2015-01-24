@@ -120,14 +120,12 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
 {
     NSData* encodedData = [NSKeyedArchiver archivedDataWithRootObject:self];
     if ([encodedData writeToURL:[self filePath] atomically:YES]) {
-        
-        //NSLog(@"appData Saved");
     }
 }
 
 #pragma mark iCloud Operation
 
-- (void)updateToiCloud
+- (void)saveToiCloud
 {
     if (iCloudStore) {
     

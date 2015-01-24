@@ -21,6 +21,7 @@
     _sharedAudioplayerHelper    = [STKAudioPlayerHelper sharedInstance];
     _sharedAFDownloadHelper     = [AFDownloadHelper sharedAFDownloadHelper];
     _sharedCategoryManager      = [CategoryManager sharedManager];
+    _sharedPurchaseRecordsHelper = [PurchaseRecordsHelper sharedInstance];
     
     _appData        = [AppData sharedAppData];
     
@@ -185,6 +186,9 @@
                 songcell.img_new.hidden = YES;
                 
                 [TSMessage showNotificationInViewController:self title:[NSString stringWithFormat:@"金币  -%@", song.price] subtitle:nil type:TSMessageNotificationTypeSuccess];
+                
+                //4. Record in remote database
+                [_sharedPurchaseRecordsHelper purchase:song.songNumber in:_album.shortName from:@"test_ID2"];
                 
             }
             //Purchase failed
@@ -419,7 +423,7 @@
         _appData.coins = _appData.coins - [song.price intValue];
             
         [_appData save];
-        [_appData updateToiCloud];
+        [_appData saveToiCloud];
         
     }
     else

@@ -22,6 +22,7 @@
 #import <ShareSDK/ShareSDK.h>
 #import "TSMessageView.h"
 #import "UIImageView+AFNetworking.h"
+#import "PurchaseRecordsHelper.h"
 
 @interface SongTableViewController : UIViewController<UIScrollViewDelegate, UITableViewDataSource, ICategoryManagerDelegate,
     UITableViewDelegate, STKAudioPlayerHelperDelegate, AFDownloadHelperDelegate>
@@ -36,6 +37,7 @@
     STKAudioPlayerHelper                *_sharedAudioplayerHelper;
     AFDownloadHelper                    *_sharedAFDownloadHelper;
     CategoryManager                     *_sharedCategoryManager;
+    PurchaseRecordsHelper               *_sharedPurchaseRecordsHelper;
     AppDelegate                         *_appDelegate;
     UIView                              *_descriptionView;
     
