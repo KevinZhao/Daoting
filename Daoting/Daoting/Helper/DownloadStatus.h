@@ -10,10 +10,10 @@
 
 enum
 {
-    fileDownloadStatusWaiting       = 0,
-	fileDownloadStatusDownloading   = 1,
-    fileDownloadStatusCompleted     = 2,
-    fileDownloadStatusError         = 3
+    fileDownloadStatusWaiting       = 1,
+	fileDownloadStatusDownloading   = 2,
+    fileDownloadStatusCompleted     = 3,
+    fileDownloadStatusError         = 4
 };
 typedef NSInteger FileDownloadStatus;
 

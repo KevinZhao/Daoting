@@ -1,28 +1,28 @@
 PODS:
-  - AFNetworking (2.5.0):
-    - AFNetworking/NSURLConnection (= 2.5.0)
-    - AFNetworking/NSURLSession (= 2.5.0)
-    - AFNetworking/Reachability (= 2.5.0)
-    - AFNetworking/Security (= 2.5.0)
-    - AFNetworking/Serialization (= 2.5.0)
-    - AFNetworking/UIKit (= 2.5.0)
-  - AFNetworking/NSURLConnection (2.5.0):
+  - AFNetworking (2.5.1):
+    - AFNetworking/NSURLConnection (= 2.5.1)
+    - AFNetworking/NSURLSession (= 2.5.1)
+    - AFNetworking/Reachability (= 2.5.1)
+    - AFNetworking/Security (= 2.5.1)
+    - AFNetworking/Serialization (= 2.5.1)
+    - AFNetworking/UIKit (= 2.5.1)
+  - AFNetworking/NSURLConnection (2.5.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.5.0):
+  - AFNetworking/NSURLSession (2.5.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.5.0)
-  - AFNetworking/Security (2.5.0)
-  - AFNetworking/Serialization (2.5.0)
-  - AFNetworking/UIKit (2.5.0):
+  - AFNetworking/Reachability (2.5.1)
+  - AFNetworking/Security (2.5.1)
+  - AFNetworking/Serialization (2.5.1)
+  - AFNetworking/UIKit (2.5.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - HexColors (2.2.1)
-  - LBBlurredImage (0.2.0)
-  - MarqueeLabel (2.2.0)
+  - LBBlurredImage (0.2.2)
+  - MarqueeLabel (2.2.1)
   - Shimmer (1.0.2)
   - StreamingKit (0.1.25)
   - TSMessages (0.9.12):
@@ -37,12 +37,12 @@ DEPENDENCIES:
   - TSMessages
 
 SPEC CHECKSUMS:
-  AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
+  AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
   HexColors: 01384d2bbe8dc4ffa43c3b4135db6e976952d153
-  LBBlurredImage: 30cc42be977bbcece286d26d2d9c08b8be7f05e8
-  MarqueeLabel: cd721cabcfce98591ef835e2c5bd29de92d9ebc9
+  LBBlurredImage: a25144dd2f8305a391b1a8cefceef189a2bb9ade
+  MarqueeLabel: bc105ed113f79e51fb68d1fa3983238c0dcda47f
   Shimmer: 057fcfe9c1c978d69d50b64fce93a61080cd08ec
   StreamingKit: 5b36623e7246cccddb8db3aee79c43bb180a51be
   TSMessages: b2b5dc71f65146387e51f2600bb0eb8f3a6c4ab8
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.0

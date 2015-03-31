@@ -230,54 +230,57 @@
     NSIndexPath *songIndexPath = [NSIndexPath indexPathForRow:([song.songNumber integerValue]-1) inSection:0];
     SongCell *songCell = (SongCell*)[_tableview cellForRowAtIndexPath:songIndexPath];
     
-    switch (song.downloadingStatus) {
+    if (songCell != nil) {
+        
+        switch (song.downloadingStatus) {
                 
-        //Waiting for download
-        case DownloadStatusWaiting:
-        {
-            songCell.btn_downloadOrPause.hidden = NO;
-            songCell.cirProgView_downloadProgress.hidden = NO;
-            songCell.cirProgView_downloadProgress.progress = 0;
-            [songCell.btn_downloadOrPause removeTarget:songCell action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
-            [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
-            
-            [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download_pause.png"] forState:UIControlStateNormal];
-            [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download_pause_pressed.png"] forState:UIControlStateSelected];
+                //Waiting for download
+            case DownloadStatusWaiting:
+            {
+                songCell.btn_downloadOrPause.hidden = NO;
+                songCell.cirProgView_downloadProgress.hidden = NO;
+                songCell.cirProgView_downloadProgress.progress = 0;
+                [songCell.btn_downloadOrPause removeTarget:songCell action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
+                [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
+                
+                [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download_pause.png"] forState:UIControlStateNormal];
+                [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download_pause_pressed.png"] forState:UIControlStateSelected];
+            }
+                break;
+                //Downloading
+            case DownloadStatusDownloading:
+            {
+                songCell.btn_downloadOrPause.hidden = NO;
+                [songCell.btn_downloadOrPause removeTarget:songCell action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
+                [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
+                
+                [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download_pause.png"] forState:UIControlStateNormal];
+                [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download_pause_pressed.png"] forState:UIControlStateSelected];
+                
+            }
+                break;
+                //Download Completed
+            case DownloadStatusCompleted:
+            {
+                songCell.cirProgView_downloadProgress.hidden = YES;
+                
+                songCell.btn_downloadOrPause.hidden = YES;
+                songCell.lbl_songDuration.hidden = NO;
+            }
+                break;
+                //Download Failed
+            case DownloadStatusError:
+            {
+                songCell.btn_downloadOrPause.hidden = NO;
+                [songCell.btn_downloadOrPause removeTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
+                [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
+                [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download.png"] forState:UIControlStateNormal];
+                
+                songCell.cirProgView_downloadProgress.hidden = YES;
+            }
+            default:
+                break;
         }
-            break;
-        //Downloading
-        case DownloadStatusDownloading:
-        {
-            songCell.btn_downloadOrPause.hidden = NO;
-            [songCell.btn_downloadOrPause removeTarget:songCell action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
-            [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
-            
-            [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download_pause.png"] forState:UIControlStateNormal];
-            [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download_pause_pressed.png"] forState:UIControlStateSelected];
-
-        }
-            break;
-        //Download Completed
-        case DownloadStatusCompleted:
-        {
-            songCell.cirProgView_downloadProgress.hidden = YES;
-            
-            songCell.btn_downloadOrPause.hidden = YES;
-            songCell.lbl_songDuration.hidden = NO;
-        }
-            break;
-        //Download Failed
-        case DownloadStatusError:
-        {
-            songCell.btn_downloadOrPause.hidden = NO;
-            [songCell.btn_downloadOrPause removeTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
-            [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
-            [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download.png"] forState:UIControlStateNormal];
-            
-            songCell.cirProgView_downloadProgress.hidden = YES;
-        }
-        default:
-            break;
     }
 }
 
@@ -484,7 +487,9 @@
 
 - (IBAction)onbtn_previousPressed:(id)sender
 {
-    [_sharedAudioplayerHelper playPreviousSong];
+    [_appData cleariCloudData];
+    
+    //[_sharedAudioplayerHelper playPreviousSong];
 }
 
 - (IBAction)onsliderValueChanged:(id)sender
@@ -542,8 +547,6 @@
     SongCell* songCell = (SongCell*) cell;
     Song *song = [_songArray objectAtIndex:indexPath.row];
     
-    [self updateCellUIFor:song];
-    
     //1. Clear content
     songCell.cirProgView_downloadProgress.hidden = YES;
     songCell.btn_downloadOrPause.hidden = YES;
@@ -581,14 +584,67 @@
     }
     //Song had not been downloaded
     else{
-        songCell.cirProgView_downloadProgress.hidden = YES;
-        
-        songCell.btn_downloadOrPause.hidden = NO;
-        [songCell.btn_downloadOrPause removeTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
-        [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
-        
-        [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download.png"] forState:UIControlStateNormal];
-        [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download_pressed.png"] forState:UIControlStateSelected];
+        switch (song.downloadingStatus) {
+            case DownloadStatusNotDownload:
+            {
+                songCell.cirProgView_downloadProgress.hidden = YES;
+                
+                songCell.btn_downloadOrPause.hidden = NO;
+                [songCell.btn_downloadOrPause removeTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
+                [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
+                
+                [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download.png"] forState:UIControlStateNormal];
+                [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download_pressed.png"] forState:UIControlStateSelected];
+            }
+                break;
+                
+                //Waiting for download
+            case DownloadStatusWaiting:
+            {
+                songCell.btn_downloadOrPause.hidden = NO;
+                songCell.cirProgView_downloadProgress.hidden = NO;
+                songCell.cirProgView_downloadProgress.progress = 0;
+                [songCell.btn_downloadOrPause removeTarget:songCell action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
+                [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
+                
+                [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download_pause.png"] forState:UIControlStateNormal];
+                [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download_pause_pressed.png"] forState:UIControlStateSelected];
+            }
+                break;
+                //Downloading
+            case DownloadStatusDownloading:
+            {
+                songCell.btn_downloadOrPause.hidden = NO;
+                [songCell.btn_downloadOrPause removeTarget:songCell action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
+                [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
+                
+                [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download_pause.png"] forState:UIControlStateNormal];
+                [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download_pause_pressed.png"] forState:UIControlStateSelected];
+                
+            }
+                break;
+                //Download Completed
+            case DownloadStatusCompleted:
+            {
+                songCell.cirProgView_downloadProgress.hidden = YES;
+                
+                songCell.btn_downloadOrPause.hidden = YES;
+                songCell.lbl_songDuration.hidden = NO;
+            }
+                break;
+                //Download Failed
+            case DownloadStatusError:
+            {
+                songCell.btn_downloadOrPause.hidden = NO;
+                [songCell.btn_downloadOrPause removeTarget:songCell action:@selector(onbtn_pausePressed:) forControlEvents:UIControlEventTouchUpInside];
+                [songCell.btn_downloadOrPause addTarget:songCell action:@selector(onbtn_downloadPressed:) forControlEvents:UIControlEventTouchUpInside];
+                [songCell.btn_downloadOrPause setImage:[UIImage imageNamed:@"download.png"] forState:UIControlStateNormal];
+                
+                songCell.cirProgView_downloadProgress.hidden = YES;
+            }
+            default:
+                break;
+        }
     }
     
     
@@ -603,6 +659,8 @@
         songCell.img_locked.hidden = NO;
         songCell.img_new.hidden = NO;
     }
+    
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -720,48 +778,55 @@
 -(void) onDownloadStartedForOperation:(AFHTTPRequestOperation*) operation
 {
     Song* song = [operation.userInfo objectForKey:@"song"];
+    Album* album = [operation.userInfo objectForKey:@"album"];
     DownloadingStatus* downloadStatus = [operation.userInfo objectForKey:@"status"];
     
-    song.downloadingStatus = downloadStatus.downloadingStatus;
-
-    [self updateCellUIFor:song];
-
+    if ([album.shortName isEqualToString:_album.shortName]) {
+        song.downloadingStatus = downloadStatus.downloadingStatus;
+        [self updateCellUIFor:song];
+    }
 }
 
 -(void) onDownloadProgressedForOperation:(AFHTTPRequestOperation*) operation
 {
     Song* song = [operation.userInfo objectForKey:@"song"];
+    Album* album = [operation.userInfo objectForKey:@"album"];
     DownloadingStatus* downloadStatus = [operation.userInfo objectForKey:@"status"];
     
-    song.downloadingStatus = downloadStatus.downloadingStatus;
-    NSIndexPath *songIndexPath = [NSIndexPath indexPathForRow:([song.songNumber integerValue]-1) inSection:0];
-    SongCell* songCell = (SongCell*)[_tableview cellForRowAtIndexPath:songIndexPath];
-
-    songCell.cirProgView_downloadProgress.hidden = NO;
-    songCell.cirProgView_downloadProgress.progress =(float) downloadStatus.totalBytesRead / (float)downloadStatus.totalBytesExpectedToRead;
-            
-    [self updateCellUIFor:song];
-
-
+    if ([album.shortName isEqualToString:_album.shortName]) {
+        song.downloadingStatus = downloadStatus.downloadingStatus;
+        NSIndexPath *songIndexPath = [NSIndexPath indexPathForRow:([song.songNumber integerValue]-1) inSection:0];
+        SongCell* songCell = (SongCell*)[_tableview cellForRowAtIndexPath:songIndexPath];
+        
+        songCell.cirProgView_downloadProgress.hidden = NO;
+        songCell.cirProgView_downloadProgress.progress =(float) downloadStatus.totalBytesRead / (float)downloadStatus.totalBytesExpectedToRead;
+        
+        [self updateCellUIFor:song];
+    }
 }
+
 -(void) onDownloadCompletedForOperation:(AFHTTPRequestOperation*) operation
 {
     Song* song = [operation.userInfo objectForKey:@"song"];
+    Album* album = [operation.userInfo objectForKey:@"album"];
     DownloadingStatus* downloadStatus = [operation.userInfo objectForKey:@"status"];
     
-    song.downloadingStatus = downloadStatus.downloadingStatus;
-
-    [self updateCellUIFor:song];
-
+    if ([album.shortName isEqualToString:_album.shortName]) {
+        song.downloadingStatus = downloadStatus.downloadingStatus;
+        [self updateCellUIFor:song];
+    }
 }
+
 -(void) onDownloadFailedForOperation:(AFHTTPRequestOperation*) operation
 {
     Song* song = [operation.userInfo objectForKey:@"song"];
+    Album* album = [operation.userInfo objectForKey:@"album"];
     DownloadingStatus* downloadStatus = [operation.userInfo objectForKey:@"status"];
     
-    song.downloadingStatus = downloadStatus.downloadingStatus;
-    
-    [self updateCellUIFor:song];
+    if ([album.shortName isEqualToString:_album.shortName]) {
+        song.downloadingStatus = downloadStatus.downloadingStatus;
+        [self updateCellUIFor:song];
+    }
 }
 
 

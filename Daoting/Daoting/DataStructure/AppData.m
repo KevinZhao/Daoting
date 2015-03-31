@@ -91,6 +91,10 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
             _playingPositionQueue = [[NSMutableDictionary alloc]init];
         }
         
+        if (_purchasedQueue == nil) {
+            _purchasedQueue = [[NSMutableDictionary alloc]init];
+        }
+        
         if (_dailyCheckinQueue == nil) {
             _dailyCheckinQueue = [[NSMutableDictionary alloc]init];
         }
@@ -119,8 +123,7 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
 -(void)save
 {
     NSData* encodedData = [NSKeyedArchiver archivedDataWithRootObject:self];
-    if ([encodedData writeToURL:[self filePath] atomically:YES]) {
-    }
+    [encodedData writeToURL:[self filePath] atomically:YES];
 }
 
 #pragma mark iCloud Operation
@@ -282,15 +285,25 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
 
 -(void) cleariCloudData
 {
-    NSDictionary *purchasedSongs = nil;
-    [iCloudStore setBool:NO forKey:SSDataforAppExistKey];
-    
-    [iCloudStore setDictionary: purchasedSongs forKey:SSDataforPurchasedQueue];
-    [iCloudStore setLongLong: 0 forKey:SSDataforFirstPurchaseKey];
+    [iCloudStore removeObjectForKey:SSDataforCoinsKey];
+    [iCloudStore removeObjectForKey:SSDataforPurchasedQueue];
+    [iCloudStore removeObjectForKey:SSDataforAppExistKey];
+    [iCloudStore removeObjectForKey:SSDataforFirstPurchaseKey];
     
     [iCloudStore synchronize];
+        
+    self.coins = 0;
+    self.currentAlbum = nil;
+    self.currentSong = nil;
+    self.playingBackProgressQueue = nil;
+    self.playingPositionQueue = nil;
+    self.purchasedQueue = nil;
+    self.dailyCheckinQueue = nil;
     
-    _purchasedQueue = nil;
+    self.purchaseTimes = 0;
+    self.isAutoPurchase = NO;
+    self.isAutoPlay = NO;
+    
     [self save];
 }
 

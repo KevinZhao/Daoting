@@ -12,10 +12,11 @@
 
 enum
 {
-    DownloadStatusWaiting       = 0,
-    DownloadStatusDownloading   = 1,
-    DownloadStatusCompleted     = 2,
-    DownloadStatusError         = 3
+    DownloadStatusNotDownload   = 0,
+    DownloadStatusWaiting       = 1,
+    DownloadStatusDownloading   = 2,
+    DownloadStatusCompleted     = 3,
+    DownloadStatusError         = 4
 };
 typedef NSInteger DownloadStatus;
 
