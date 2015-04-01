@@ -7,10 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AppData.h"
+
+@protocol PurchaseRecordsHelperDelegate <NSObject>
+
+-(void) onPurchaseSucceed:(Song*) song;
+
+@end
 
 @interface PurchaseRecordsHelper : NSObject
+{
+    AppData     *_appData;
+}
+
+@property (readwrite, unsafe_unretained) id<PurchaseRecordsHelperDelegate> delegate;
 
 + (PurchaseRecordsHelper *)sharedInstance;
 - (void)purchase:(NSString*)songNumber in:(NSString*)albumShortname from:(NSString*)deviceID;
+-(BOOL)addtoPurchasedQueue:(Song*)song withAlbumShortname:(NSString *)albumShortname;
 
 @end

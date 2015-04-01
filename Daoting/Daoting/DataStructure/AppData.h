@@ -11,6 +11,9 @@
 #import "Song.h"
 #import "Album.h"
 
+
+
+
 @interface AppData : NSObject <NSCoding>
 {
     NSUbiquitousKeyValueStore   *iCloudStore;
@@ -39,7 +42,6 @@
 -(void)updateFromiCloud;
 
 -(BOOL)songNumber:(NSString *)songNumber ispurchasedwithAlbum:(NSString*)albumShortname;
--(BOOL)addtoPurchasedQueue:(Song *)songNumber withAlbumShortname:(NSString *)albumShortname;
 
--(void) cleariCloudData;
+-(void)cleariCloudData;
 @end

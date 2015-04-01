@@ -24,6 +24,24 @@
     return sharedInstance;
 }
 
+-(BOOL)addtoPurchasedQueue:(Song*)song withAlbumShortname:(NSString *)albumShortname
+{
+    _appData        = [AppData sharedAppData];
+    
+    if (_appData.purchasedQueue != nil) {
+        [_appData.purchasedQueue setValue:song.songNumber forKey:[NSString stringWithFormat:@"%@_%@", albumShortname, song.songNumber]];
+        [_appData save];
+        
+        [self.delegate onPurchaseSucceed:song];
+        
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
+}
+
 - (void)purchase:(NSString*)songNumber in:(NSString*)albumShortname from:(NSString*)deviceID
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];

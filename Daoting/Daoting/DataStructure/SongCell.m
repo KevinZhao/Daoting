@@ -50,7 +50,9 @@
         if (_appData.coins >= [song.price intValue]) {
             
             //Purchase succeed
-            if ([_appData addtoPurchasedQueue:song withAlbumShortname:album.shortName]) {
+            
+            _sharedPurchaseRecordsHelper = [PurchaseRecordsHelper sharedInstance];
+            if ([_sharedPurchaseRecordsHelper addtoPurchasedQueue:song withAlbumShortname:album.shortName]) {
                 _appData.coins = _appData.coins - [song.price intValue];
                 
                 [self startDownload];
@@ -63,9 +65,6 @@
                 
                 [_appData save];
                 [_appData saveToiCloud];
-                
-                self.img_locked.hidden = YES;
-                self.img_new.hidden = YES;
                 
                 //show notification to user
                 NSString *notification = [NSString stringWithFormat:@"金币  -%@", song.price];

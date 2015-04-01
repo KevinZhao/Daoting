@@ -25,7 +25,7 @@
 #import "PurchaseRecordsHelper.h"
 
 @interface SongTableViewController : UIViewController<UIScrollViewDelegate, UITableViewDataSource, ICategoryManagerDelegate,
-    UITableViewDelegate, STKAudioPlayerHelperDelegate, AFDownloadHelperDelegate>
+    UITableViewDelegate, STKAudioPlayerHelperDelegate, AFDownloadHelperDelegate, PurchaseRecordsHelperDelegate>
 {
     NSMutableArray                      *_songArray;
     UITableView                         *_tableview;
@@ -67,6 +67,7 @@
 - (IBAction)onpageChanged:(id)sender;
 - (void)setDetailItem:(Album *)album;
 
+- (void)onPurchaseSucceed:(Song *)song;
 
 //this is ugly, need to revisit next version
 - (UITabBarController *)getTabbarViewController;

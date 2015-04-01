@@ -225,20 +225,6 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
     }
 }
 
--(BOOL)addtoPurchasedQueue:(Song*)song withAlbumShortname:(NSString *)albumShortname
-{
-    if (_purchasedQueue != nil) {
-        [_purchasedQueue setValue:song.songNumber forKey:[NSString stringWithFormat:@"%@_%@", albumShortname, song.songNumber]];
-        [self save];
-        
-        return YES;
-    }
-    else
-    {
-        return NO;
-    }
-}
-
 #pragma mark @protocol NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)encoder

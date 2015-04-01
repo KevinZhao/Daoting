@@ -18,6 +18,7 @@
 #import "CategoryManager.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "UIImageView+AFNetworking.h"
+#import "PurchaseRecordsHelper.h"
 
 
 @class STKAudioPlayerHelper;
@@ -39,6 +40,7 @@
     double                          _progress;
     AppData*                        _appData;
     double                          _duration;
+    PurchaseRecordsHelper*          _sharedPurchaseRecordsHelper;
 }
 
 + (STKAudioPlayerHelper *)sharedInstance;

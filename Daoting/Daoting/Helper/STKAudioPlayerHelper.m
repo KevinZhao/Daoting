@@ -230,7 +230,8 @@
                         }
                         
                         //Add to purchased queue
-                        [_appData addtoPurchasedQueue:song withAlbumShortname:album.shortName];
+                        _sharedPurchaseRecordsHelper = [PurchaseRecordsHelper sharedInstance];
+                        [_sharedPurchaseRecordsHelper addtoPurchasedQueue:song withAlbumShortname:album.shortName];
                         
                         if ([song.updatedSong isEqualToString:@"YES"]) {
                             song.updatedSong = @"NO";
@@ -312,7 +313,8 @@
                         }
                         
                         //Add to purchased queue
-                        [_appData addtoPurchasedQueue:song withAlbumShortname:album.shortName];
+                        _sharedPurchaseRecordsHelper = [PurchaseRecordsHelper sharedInstance];
+                        [_sharedPurchaseRecordsHelper addtoPurchasedQueue:song withAlbumShortname:album.shortName];
                         
                         if ([song.updatedSong isEqualToString:@"YES"]) {
                             song.updatedSong = @"NO";

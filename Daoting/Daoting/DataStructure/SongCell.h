@@ -15,11 +15,13 @@
 #import "DACircularProgressView.h"
 #import "AppData.h"
 #import "MarqueeLabel.h"
+#import "PurchaseRecordsHelper.h"
 
 
 @interface SongCell : UITableViewCell
 {
-    AppData *_appData;
+    AppData*                _appData;
+    PurchaseRecordsHelper*  _sharedPurchaseRecordsHelper;
 }
 
 @property (nonatomic, strong) IBOutlet UILabel      *lbl_songNumber;
@@ -31,7 +33,6 @@
 @property (nonatomic, strong) IBOutlet UIImageView  *img_locked;
 @property (nonatomic, strong) IBOutlet DACircularProgressView *cirProgView_downloadProgress;
 @property (nonatomic, strong) IBOutlet UIImageView  *img_new;
-
 
 @property (nonatomic, retain) Song                  *song;
 @property (nonatomic, retain) Album                 *album;

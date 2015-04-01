@@ -40,6 +40,7 @@
     
     _sharedAudioplayerHelper.delegate = self;
     _sharedAFDownloadHelper.delegate = self;
+    _sharedPurchaseRecordsHelper.delegate = self;
     
     _songArray = [[CategoryManager sharedManager]initializeSongArrayByAlbum:_album];
     
@@ -180,11 +181,6 @@
                 [self playSongbyHelper:song];
                 
                 //3. UI updating
-                NSIndexPath* indexPath = [NSIndexPath indexPathForRow:([song.songNumber integerValue] - 1) inSection:0];
-                SongCell *songcell = (SongCell*)[_tableview cellForRowAtIndexPath:indexPath];
-                songcell.img_locked.hidden = YES;
-                songcell.img_new.hidden = YES;
-                
                 [TSMessage showNotificationInViewController:self title:[NSString stringWithFormat:@"金币  -%@", song.price] subtitle:nil type:TSMessageNotificationTypeSuccess];
                 
                 //4. Record in remote database
@@ -422,7 +418,7 @@
 
 - (BOOL)purchaseSong:(Song*) song
 {
-    if ([_appData addtoPurchasedQueue:song withAlbumShortname:_album.shortName]) {
+    if ([_sharedPurchaseRecordsHelper addtoPurchasedQueue:song withAlbumShortname:_album.shortName]) {
         _appData.coins = _appData.coins - [song.price intValue];
             
         [_appData save];
@@ -487,9 +483,9 @@
 
 - (IBAction)onbtn_previousPressed:(id)sender
 {
-    [_appData cleariCloudData];
+    //[_appData cleariCloudData];
     
-    //[_sharedAudioplayerHelper playPreviousSong];
+    [_sharedAudioplayerHelper playPreviousSong];
 }
 
 - (IBAction)onsliderValueChanged:(id)sender
@@ -827,6 +823,14 @@
         song.downloadingStatus = downloadStatus.downloadingStatus;
         [self updateCellUIFor:song];
     }
+}
+
+- (void)onPurchaseSucceed:(Song *)song
+{
+    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:([song.songNumber integerValue] - 1) inSection:0];
+    SongCell *songcell = (SongCell*)[_tableview cellForRowAtIndexPath:indexPath];
+    songcell.img_locked.hidden = YES;
+    songcell.img_new.hidden = YES;
 }
 
 
