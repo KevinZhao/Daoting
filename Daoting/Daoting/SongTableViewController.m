@@ -467,7 +467,25 @@
     {
         //not current song record
         if (_appData.currentSong != nil) {
-            [self playSong:_appData.currentSong];
+            
+            if ([_appData.currentAlbum.shortName isEqualToString:_album.shortName]) {
+                [self playSong:_appData.currentSong];
+            }
+            
+            else
+            {
+                //Scroll to latest playing row
+                NSString* songNumberstring = (NSString*)[_appData.playingPositionQueue objectForKey:_album.title];
+                NSInteger songNumber = [songNumberstring integerValue];
+                
+                if (songNumber > 0) {
+                    [self playSong:_songArray[songNumber - 1]];
+                }
+                else
+                {
+                    [self playSong:_songArray[0]];
+                }
+            }
         }
         else
         {

@@ -86,7 +86,7 @@
     if (![[song.filePath absoluteString] isEqualToString:@""] ) {
         
         //for old filepath contains library
-        NSString* filePath = [song.filePath absoluteString];
+        /*NSString* filePath = [song.filePath absoluteString];
         NSString* libraryString = @"/Library/Caches/";
         
         NSRange range = [filePath rangeOfString:libraryString];
@@ -99,7 +99,7 @@
             
             //writeback to songlist
             [[CategoryManager sharedManager] writeBacktoSongListinAlbum:album];
-        }//for old filepath contains library
+        }//for old filepath contains library*/
         
         NSURL *songURL = [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
         songURL = [songURL URLByAppendingPathComponent:[song.filePath absoluteString]];
