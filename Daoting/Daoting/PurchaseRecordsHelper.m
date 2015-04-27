@@ -26,7 +26,7 @@
 
 -(BOOL)addtoPurchasedQueue:(Song*)song withAlbumShortname:(NSString *)albumShortname
 {
-    _appData        = [AppData sharedAppData];
+    _appData = [AppData sharedAppData];
     
     if (_appData.purchasedQueue != nil) {
         [_appData.purchasedQueue setValue:song.songNumber forKey:[NSString stringWithFormat:@"%@_%@", albumShortname, song.songNumber]];
@@ -42,17 +42,21 @@
     }
 }
 
-- (void)purchase:(NSString*)songNumber in:(NSString*)albumShortname from:(NSString*)deviceID
+- (void)purchase:(NSString*)songNumber in:(NSString*)albumShortname in:(NSDate *)date
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     
-    NSDictionary *parameters = @{@"device_id": deviceID, @"album_shortname": albumShortname, @"song_number":songNumber};
+    NSString* deviceID = [[UIDevice currentDevice] identifierForVendor].UUIDString ;
+    NSDictionary *parameters = @{@"device_id": deviceID, @"album_shortname": albumShortname, @"song_number":songNumber, @"purchase_date":date};
+    
     [manager POST:@"http://182.254.148.156:8080/addToPurchaseRecords.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
 }
+
+
 
 @end

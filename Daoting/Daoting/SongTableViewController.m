@@ -184,7 +184,7 @@
                 [TSMessage showNotificationInViewController:self title:[NSString stringWithFormat:@"金币  -%@", song.price] subtitle:nil type:TSMessageNotificationTypeSuccess];
                 
                 //4. Record in remote database
-                [_sharedPurchaseRecordsHelper purchase:song.songNumber in:_album.shortName from:@"test_ID2"];
+                [_sharedPurchaseRecordsHelper purchase:song.songNumber in:_album.shortName in:[[NSDate alloc]init]];
                 
             }
             //Purchase failed

@@ -23,7 +23,7 @@
 @property (readwrite, unsafe_unretained) id<PurchaseRecordsHelperDelegate> delegate;
 
 + (PurchaseRecordsHelper *)sharedInstance;
-- (void)purchase:(NSString*)songNumber in:(NSString*)albumShortname from:(NSString*)deviceID;
+- (void)purchase:(NSString*)songNumber in:(NSString*)albumShortname in:(NSDate *)date;
 -(BOOL)addtoPurchasedQueue:(Song*)song withAlbumShortname:(NSString *)albumShortname;
 
 @end
