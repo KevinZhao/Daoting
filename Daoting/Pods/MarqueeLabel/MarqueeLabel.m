@@ -442,6 +442,8 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
     
     // Get size of subLabel
     expectedLabelSize = [self.subLabel sizeThatFits:maximumLabelSize];
+    // Sanitize width to 8192 (largest width a UILabel will draw)
+    expectedLabelSize.width = MIN(expectedLabelSize.width, 8192.0f);
     // Adjust to own height (make text baseline match normal label)
     expectedLabelSize.height = self.bounds.size.height;
     
@@ -916,7 +918,7 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
 #pragma mark - Label Control
 
 - (void)restartLabel {
-    if (self.labelShouldScroll && !self.tapToScroll) {
+    if (self.labelShouldScroll && !self.tapToScroll && !self.holdScrolling) {
         [self beginScroll];
     }
 }
@@ -1155,12 +1157,16 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
 
 - (void)refreshSubLabels:(NSArray *)subLabels {
     for (UILabel *sl in subLabels) {
-        sl.attributedText = self.attributedText;
+        if (sl.tag == 700) {
+            // Do not overwrite base subLabel properties
+            continue;
+        }
         sl.backgroundColor = self.backgroundColor;
         sl.textColor = self.textColor;
         sl.shadowColor = self.shadowColor;
         sl.shadowOffset = self.shadowOffset;
         sl.textAlignment = NSTextAlignmentLeft;
+        sl.attributedText = self.attributedText;
     }
 }
 
@@ -1219,7 +1225,7 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
     }
     
     // Do not allow negative values
-    _leadingBuffer = fabsf(leadingBuffer);
+    _leadingBuffer = fabs(leadingBuffer);
     [self updateSublabelAndLocations];
 }
 
@@ -1229,7 +1235,7 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
     }
     
     // Do not allow negative values
-    _trailingBuffer = fabsf(trailingBuffer);
+    _trailingBuffer = fabs(trailingBuffer);
     [self updateSublabelAndLocations];
 }
 
@@ -1334,7 +1340,15 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
 }
 
 - (NSArray *)allSubLabels {
-    return [self.subviews filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"tag >= %i", 700]];
+    return [self allSubLabels:YES];
+}
+
+- (NSArray *)secondarySubLabels {
+    return [self allSubLabels:NO];
+}
+
+- (NSArray *)allSubLabels:(BOOL)includePrimary {
+    return [self.subviews filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"tag >= %i", (includePrimary ? 700 : 701)]];
 }
 
 #pragma mark -
