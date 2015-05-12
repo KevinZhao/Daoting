@@ -16,6 +16,7 @@
 #import "TSMessage.h"
 #import "FBShimmering.h"
 #import "FBshimmeringView.h"
+#import "PurchaseRecordsHelper.h"
 
 
 @interface NewStoreViewController : UITableViewController<IAPHelperDelegate>

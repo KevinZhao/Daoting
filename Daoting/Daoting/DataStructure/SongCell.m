@@ -71,7 +71,7 @@
                 SongTableViewController* parentViewController = (SongTableViewController *)[self GetViewController];
                 [TSMessage showNotificationInViewController:parentViewController title:notification subtitle:nil type:TSMessageNotificationTypeSuccess];
                 
-                [[PurchaseRecordsHelper sharedInstance] purchase:song.songNumber in:album.shortName in:[[NSDate alloc]init]];
+                [[PurchaseRecordsHelper sharedInstance] purchase:song.songNumber in:album.shortName];
             }
             //Purchase Failed
             else

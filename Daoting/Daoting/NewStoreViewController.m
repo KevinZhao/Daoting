@@ -337,6 +337,9 @@
     
     _appData.coins = _appData.coins + purchasedCoins;
     
+    //record purchase coins activity to database
+    [[PurchaseRecordsHelper sharedInstance] purchaseCoins:purchasedCoins];
+    
     [_appData save];
     [_appData saveToiCloud];
 
