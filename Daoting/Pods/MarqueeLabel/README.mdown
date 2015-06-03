@@ -5,11 +5,11 @@ MarqueeLabel is a UILabel subclass adds a scrolling marquee effect when the text
 
 ## MarqueeLabel in Swift!
 
-If you're implementing a project in Swift, be sure to check out the [Swift version of MarqueeLabel](https://github.com/cbpowell/MarqueeLabel-Swift)! As of this writing it's no longer on par with this Objective-C version (and the demo doesn't even build), but feel free to help out and get it back on track!
+If you're implementing a project in Swift, be sure to check out the [Swift version of MarqueeLabel](https://github.com/cbpowell/MarqueeLabel-Swift)!
 
 ## How To Get Started
 
-1. Clone MarqueeLabel from Github, and check out the demo project.
+1. Clone MarqueeLabel from GitHub, and check out the demo project.
 2. Read the [MarqueeLabel CocoaDocs documentation](http://cocoadocs.org/docsets/MarqueeLabel/).
 3. Take a look at the [special notes](https://github.com/cbpowell/MarqueeLabel/blob/master/README.mdown#special-notes) section to be aware of any gotchas.
 4. Drop in MarqueeLabel as a replacement to your lengthy UILabels!
