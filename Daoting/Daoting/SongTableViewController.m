@@ -501,9 +501,13 @@
 
 - (IBAction)onbtn_previousPressed:(id)sender
 {
-    //[_appData cleariCloudData];
-    
+
+//#ifdef DEBUG
+//    [_appData cleariCloudData];
+//#else
     [_sharedAudioplayerHelper playPreviousSong];
+//#endif
+
 }
 
 - (IBAction)onsliderValueChanged:(id)sender

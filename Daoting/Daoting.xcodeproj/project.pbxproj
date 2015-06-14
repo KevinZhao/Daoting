@@ -965,7 +965,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Daoting/Daoting.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Keming Zhao (8P28493298)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Keming Zhao (Q7DPRSQ22V)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Keming Zhao (Q7DPRSQ22V)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -986,7 +986,7 @@
 					"$(PROJECT_DIR)/Daoting/Library/ShareSDK/",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d84b5c30-861e-4669-84f7-7596966f0dd7";
+				PROVISIONING_PROFILE = "aae812c4-059e-40d6-b091-d59562142129";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -1000,7 +1000,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Daoting/Daoting.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Keming Zhao (8P28493298)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Keming Zhao (Q7DPRSQ22V)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Keming Zhao (Q7DPRSQ22V)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1021,7 +1021,7 @@
 					"$(PROJECT_DIR)/Daoting/Library/ShareSDK/",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d84b5c30-861e-4669-84f7-7596966f0dd7";
+				PROVISIONING_PROFILE = "aae812c4-059e-40d6-b091-d59562142129";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;

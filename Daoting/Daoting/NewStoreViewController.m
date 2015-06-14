@@ -25,6 +25,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     [_timer invalidate];
 }
@@ -60,6 +61,8 @@
 
 - (void)buy:(NSInteger) tag
 {
+    //self.tableView.allowsSelection = NO;
+    
     //Check if IAP items had been loaded
     if (_appDelegate.products != nil) {
         
@@ -86,6 +89,8 @@
         [self.view addSubview:_spinner];
         
     }else{
+        
+        //self.tableView.allowsSelection = YES;
         
         //indicate the iTunes Store can not been connected
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"无法连接iTunes Store，请重试" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
@@ -273,6 +278,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"enter select row at indexPath");
+    
     //2. Share and Checkin
     if (indexPath.section == 1) {
         //Check in
@@ -287,7 +294,9 @@
     }
     //3. Purchase
     if (indexPath.section == 2) {
-        [self buy:indexPath.row];
+        
+            [self buy:indexPath.row];
+        
         }
 }
 
@@ -344,6 +353,8 @@
     [_appData saveToiCloud];
 
     [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"成功购买金币 %d 枚", purchasedCoins] type:TSMessageNotificationTypeSuccess];
+    
+    //self.tableView.allowsSelection = YES;
 }
 
 - (void)onLoadedProducts
@@ -355,6 +366,8 @@
 {
     [TSMessage showNotificationInViewController:self title:nil subtitle:@"无法连接App Store, 请检查网络" type:TSMessageNotificationTypeSuccess duration:2.0];
     [_spinner stopAnimating];
+    
+    //self.tableView.allowsSelection = YES;
 }
 
 - (void)dailyCheckin

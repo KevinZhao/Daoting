@@ -11,6 +11,12 @@
 #import "Song.h"
 #import "Album.h"
 
+//#ifdef DEBUG
+//const NSString* hostName = @"http://localhost/";
+//#else
+const NSString* hostName = @"http://182.254.148.156:8080/";
+//#endif
+
 @implementation PurchaseRecordsHelper
 
 + (PurchaseRecordsHelper *)sharedInstance {
@@ -50,9 +56,14 @@
     NSTimeInterval secondsFor8Hour = 8 * 60 * 60;
     NSDate* date = [[NSDate alloc]initWithTimeIntervalSinceNow:secondsFor8Hour];
     NSString* deviceID = [[UIDevice currentDevice] identifierForVendor].UUIDString;
-    NSDictionary *parameters = @{@"device_id": deviceID, @"album_shortname": albumShortname, @"song_number":songNumber, @"purchase_date":date};
     
-    [manager POST:@"http://182.254.148.156:8080/addToPurchaseRecords.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    //parameters
+    NSDictionary *parameters = @{@"device_id": deviceID, @"album_shortname": albumShortname, @"song_number":songNumber, @"purchase_date":date};
+
+    //post Url
+    NSString* postUrl = [hostName stringByAppendingString:@"addToPurchaseRecords.php"];
+    
+    [manager POST:postUrl parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
@@ -69,9 +80,13 @@
     NSString* purchasedCoins = [NSString stringWithFormat:@"%d", coins];
     NSString* deviceID = [[UIDevice currentDevice] identifierForVendor].UUIDString;
     
+    //parameters
     NSDictionary *parameters = @{@"device_id": deviceID, @"coins": purchasedCoins, @"purchase_date":date};
     
-    [manager POST:@"http://182.254.148.156:8080/addToPurchaseRecords2.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    //post Url
+    NSString* postUrl = [hostName stringByAppendingString:@"addToPurchaseRecords2.php"];
+    
+    [manager POST:postUrl parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
