@@ -85,22 +85,6 @@
     //Check the file is in local reposistory
     if (![[song.filePath absoluteString] isEqualToString:@""] ) {
         
-        //for old filepath contains library
-        /*NSString* filePath = [song.filePath absoluteString];
-        NSString* libraryString = @"/Library/Caches/";
-        
-        NSRange range = [filePath rangeOfString:libraryString];
-        
-        if (range.length > 0) {
-         
-            //Get relative file path
-            filePath = [filePath substringFromIndex:(range.location + range.length)];
-            song.filePath = [NSURL URLWithString:filePath];
-            
-            //writeback to songlist
-            [[CategoryManager sharedManager] writeBacktoSongListinAlbum:album];
-        }//for old filepath contains library*/
-        
         NSURL *songURL = [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
         songURL = [songURL URLByAppendingPathComponent:[song.filePath absoluteString]];
         

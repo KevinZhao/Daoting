@@ -167,7 +167,7 @@
     
     if ((typeKey == AVAudioSessionInterruptionTypeEnded) && (!_sharedAudioPlayerHelper.isPausedByUserAction))
     {
-        [_sharedAudioPlayerHelper playSong: _appData.currentSong InAlbum:_appData.currentAlbum];
+        //[_sharedAudioPlayerHelper playSong: _appData.currentSong InAlbum:_appData.currentAlbum];
     }
 }
 

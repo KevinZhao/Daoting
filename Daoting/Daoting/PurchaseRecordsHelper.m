@@ -38,7 +38,9 @@ const NSString* hostName = @"http://182.254.148.156:8080/";
         [_appData.purchasedQueue setValue:song.songNumber forKey:[NSString stringWithFormat:@"%@_%@", albumShortname, song.songNumber]];
         [_appData save];
         
-        [self.delegate onPurchaseSucceed:song];
+        if (self.delegate != nil) {
+            [self.delegate onPurchaseSucceed:song];
+        }
         
         return YES;
     }

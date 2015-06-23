@@ -89,6 +89,7 @@
     _sharedAudioplayerHelper.delegate = nil;
     _sharedAFDownloadHelper.delegate = nil;
     _sharedCategoryManager.delegate = nil;
+    _sharedPurchaseRecordsHelper.delegate = nil;
 }
 
 - (void)didReceiveMemoryWarning
