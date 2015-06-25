@@ -986,7 +986,7 @@
 					"$(PROJECT_DIR)/Daoting/Library/ShareSDK/",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "aae812c4-059e-40d6-b091-d59562142129";
+				PROVISIONING_PROFILE = "5223eb5e-8407-48b7-9ef1-8eeaa277f3b9";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -1021,7 +1021,7 @@
 					"$(PROJECT_DIR)/Daoting/Library/ShareSDK/",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "aae812c4-059e-40d6-b091-d59562142129";
+				PROVISIONING_PROFILE = "5223eb5e-8407-48b7-9ef1-8eeaa277f3b9";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
