@@ -56,7 +56,6 @@
 @property (nonatomic, retain) IBOutlet UIButton *btn_previous;
 @property (nonatomic, retain) IBOutlet UIButton *btn_next;
 @property (nonatomic, retain) IBOutlet UIButton *btn_share;
-@property (nonatomic, retain) IBOutlet UIButton *btn_downloadAll;
 @property (nonatomic, retain) IBOutlet UISlider *slider;
 @property (nonatomic, retain) IBOutlet UIImageView *img_PlayBar;
 

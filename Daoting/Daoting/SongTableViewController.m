@@ -459,6 +459,12 @@
 
 - (IBAction)onbtn_playAndPausePressed:(id)sender
 {
+    if (_songArray.count == 0) {
+        
+        [TSMessage showNotificationWithTitle:@"不要着急哦，内容载入中" type:TSMessageNotificationTypeWarning];
+        return;
+    }
+    
     //is playing
     if (_sharedAudioplayerHelper.playerState == STKAudioPlayerStatePlaying) {
         [_sharedAudioplayerHelper pauseSong];
@@ -526,12 +532,6 @@
 {
     [self shareAlbum];
 }
-
-/*- (IBAction)onbtn_downloadAllPressed:(id)sender
-{
-    [self downloadAll];
-}*/
-
 
 #pragma mark - Category Manager Delegate
 
