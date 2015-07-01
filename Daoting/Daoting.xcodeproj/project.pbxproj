@@ -61,6 +61,9 @@
 		0AAF6194196AE4A600C33E52 /* playingsong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AAF6193196AE4A600C33E52 /* playingsong@2x.png */; };
 		0ABB4283192E321C007D8BAC /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB4282192E321C007D8BAC /* Icon-72@2x.png */; };
 		0AC69C5E1946F452004C6A67 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC69C5D1946F452004C6A67 /* DACircularProgressView.m */; };
+		0AE014281B417E4700473471 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AE014271B417E4700473471 /* TencentOpenAPI.framework */; };
+		0AE0142A1B417E9D00473471 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AE014291B417E9D00473471 /* libiconv.dylib */; };
+		0AE0142C1B417F4200473471 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0AE0142B1B417F4200473471 /* TencentOpenApi_IOS_Bundle.bundle */; };
 		0AE46B0E1921035E00FA30F3 /* SongTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE46B0D1921035E00FA30F3 /* SongTableViewController.m */; };
 		0AEDBF361A03D28900F6A6AA /* Pingshu_AlbumList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AEDBF331A03D28900F6A6AA /* Pingshu_AlbumList.plist */; };
 		0AEDBF371A03D28900F6A6AA /* Xiaoshuo_AlbumList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AEDBF341A03D28900F6A6AA /* Xiaoshuo_AlbumList.plist */; };
@@ -191,6 +194,9 @@
 		0ABB4282192E321C007D8BAC /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		0AC69C5C1946F452004C6A67 /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
 		0AC69C5D1946F452004C6A67 /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
+		0AE014271B417E4700473471 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TencentOpenAPI.framework; path = ../../../Downloads/TencentOpenAPI.framework; sourceTree = "<group>"; };
+		0AE014291B417E9D00473471 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		0AE0142B1B417F4200473471 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
 		0AE35F7619B44FA400649CB1 /* Daoting.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Daoting.entitlements; sourceTree = "<group>"; };
 		0AE46B0C1921035E00FA30F3 /* SongTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongTableViewController.h; sourceTree = "<group>"; };
 		0AE46B0D1921035E00FA30F3 /* SongTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongTableViewController.m; sourceTree = "<group>"; };
@@ -283,8 +289,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A98D63C1920ADB400E46EB9 /* libsqlite3.dylib in Frameworks */,
 				0A98D6321920AD8200E46EB9 /* CoreTelephony.framework in Frameworks */,
+				0AE0142A1B417E9D00473471 /* libiconv.dylib in Frameworks */,
+				0A98D63C1920ADB400E46EB9 /* libsqlite3.dylib in Frameworks */,
 				0A3C7FF219B184FB00686C5C /* WeChatConnection.framework in Frameworks */,
 				0A98D62E1920AD7200E46EB9 /* SystemConfiguration.framework in Frameworks */,
 				236C526B19A63169009595D9 /* libz.dylib in Frameworks */,
@@ -308,6 +315,7 @@
 				0A98D6361920AD9B00E46EB9 /* libz.1.2.5.dylib in Frameworks */,
 				0A98D6341920AD9000E46EB9 /* libicucore.dylib in Frameworks */,
 				0A3C7FF119B184FB00686C5C /* SinaWeiboConnection.framework in Frameworks */,
+				0AE014281B417E4700473471 /* TencentOpenAPI.framework in Frameworks */,
 				5933AD5B18D03EC1001D707B /* CoreGraphics.framework in Frameworks */,
 				5933AD5D18D03EC1001D707B /* UIKit.framework in Frameworks */,
 				0A3C7FFB19B184FB00686C5C /* ShareSDK.framework in Frameworks */,
@@ -369,6 +377,7 @@
 		0A3C7FD719B184FB00686C5C /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				0AE014261B417D4C00473471 /* QQ SDK */,
 				0A3C7FD819B184FB00686C5C /* ShareSDK */,
 				0A3C7FEE19B184FB00686C5C /* XGPush */,
 			);
@@ -542,6 +551,13 @@
 			path = DACircularProgress;
 			sourceTree = "<group>";
 		};
+		0AE014261B417D4C00473471 /* QQ SDK */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "QQ SDK";
+			sourceTree = "<group>";
+		};
 		0AE86482192ED8B100EF5A96 /* SongPlists */ = {
 			isa = PBXGroup;
 			children = (
@@ -574,6 +590,9 @@
 		5933AD5718D03EC1001D707B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0AE0142B1B417F4200473471 /* TencentOpenApi_IOS_Bundle.bundle */,
+				0AE014291B417E9D00473471 /* libiconv.dylib */,
+				0AE014271B417E4700473471 /* TencentOpenAPI.framework */,
 				236C526A19A63169009595D9 /* libz.dylib */,
 				0A7A8CD719590B4C003FAA92 /* CFNetwork.framework */,
 				0AFB65A619245BD4000F2AE6 /* StoreKit.framework */,
@@ -719,6 +738,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AE0142C1B417F4200473471 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				D8113D8819911FDC0011B04A /* nowplaying_share_n@2x.png in Resources */,
 				0A98D66C1920F1F500E46EB9 /* arrowSelected.png in Resources */,
 				0A1FA99B1958556C002F48EA /* qr_toolbar_more_hl@2x.png in Resources */,
@@ -965,14 +985,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Daoting/Daoting.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Keming Zhao (Q7DPRSQ22V)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Keming Zhao (Q7DPRSQ22V)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Keming Zhao (8P28493298)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Keming Zhao (8P28493298)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Daoting/Library/ShareSDK/Connection/**",
 					"$(PROJECT_DIR)/Daoting/Library/ShareSDK/Core/**",
 					"$(PROJECT_DIR)/Daoting/Library/XGPush",
 					"$(PROJECT_DIR)/Daoting/Library/ShareSDK/**",
+					/Users/Kevin/Downloads,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Daoting/Daoting-Prefix.pch";
@@ -985,8 +1006,39 @@
 					"$(PROJECT_DIR)/Daoting/Library/ShareSDK/Extend/WeChatSDK",
 					"$(PROJECT_DIR)/Daoting/Library/ShareSDK/",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"Pods-AFNetworking\"",
+					"-l\"Pods-HexColors\"",
+					"-l\"Pods-LBBlurredImage\"",
+					"-l\"Pods-MarqueeLabel\"",
+					"-l\"Pods-Shimmer\"",
+					"-l\"Pods-StreamingKit\"",
+					"-l\"Pods-TSMessages\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"AudioToolbox\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5223eb5e-8407-48b7-9ef1-8eeaa277f3b9";
+				PROVISIONING_PROFILE = "9954d69e-c00a-4340-87b3-a668d9b3ddb5";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -1000,14 +1052,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Daoting/Daoting.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Keming Zhao (Q7DPRSQ22V)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Keming Zhao (Q7DPRSQ22V)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Keming Zhao (8P28493298)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Keming Zhao (8P28493298)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Daoting/Library/ShareSDK/Connection/**",
 					"$(PROJECT_DIR)/Daoting/Library/ShareSDK/Core/**",
 					"$(PROJECT_DIR)/Daoting/Library/XGPush",
 					"$(PROJECT_DIR)/Daoting/Library/ShareSDK/**",
+					/Users/Kevin/Downloads,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Daoting/Daoting-Prefix.pch";
@@ -1020,8 +1073,39 @@
 					"$(PROJECT_DIR)/Daoting/Library/ShareSDK/Extend/WeChatSDK",
 					"$(PROJECT_DIR)/Daoting/Library/ShareSDK/",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"Pods-AFNetworking\"",
+					"-l\"Pods-HexColors\"",
+					"-l\"Pods-LBBlurredImage\"",
+					"-l\"Pods-MarqueeLabel\"",
+					"-l\"Pods-Shimmer\"",
+					"-l\"Pods-StreamingKit\"",
+					"-l\"Pods-TSMessages\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"AudioToolbox\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5223eb5e-8407-48b7-9ef1-8eeaa277f3b9";
+				PROVISIONING_PROFILE = "9954d69e-c00a-4340-87b3-a668d9b3ddb5";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;

@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <AVFoundation/AVFoundation.h>
 
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -185,12 +186,20 @@
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
-    return [ShareSDK handleOpenURL:url wxDelegate:self];
+    return [TencentOAuth HandleOpenURL:url];
+    
+    //return [ShareSDK handleOpenURL:url wxDelegate:self];
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    return [ShareSDK handleOpenURL:url sourceApplication:sourceApplication annotation:annotation wxDelegate:self];
+    
+    if ([sourceApplication isEqualToString:@"com.tencent.qq"]) {
+        return [TencentOAuth HandleOpenURL:url];
+    }
+    
+    return false;
+    //return [ShareSDK handleOpenURL:url sourceApplication:sourceApplication annotation:annotation wxDelegate:self];
 }
 
 - (void) handleSystemTimeChanged:(NSNotification *) notification

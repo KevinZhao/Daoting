@@ -49,7 +49,7 @@
 
 -(void)tick
 {
-    CurrentCoinCell* currentCoinCell = (CurrentCoinCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    CurrentCoinCell* currentCoinCell = (CurrentCoinCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
     currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%ld 枚", (long)_appData.coins];
 }
 
@@ -105,7 +105,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -114,15 +114,17 @@
     int rowNumber = 0;
     
     switch (section) {
-        case 0:
+        case 1:
             rowNumber = 1;
             break;
-        case 1:
+        case 2:
             rowNumber = 2;
             break;
-        case 2:
+        case 3:
             rowNumber = 6;
             break;
+        case 0:
+            rowNumber = 1;
         default:
             break;
     }
@@ -144,6 +146,8 @@
         case 2:
             sectionTitle = @"购买金币";
             break;
+        case 3:
+            sectionTitle = @"订阅";
         default:
             break;
     }
@@ -158,7 +162,7 @@
     UITableViewCell *cell;
     
     //1. Current Coin
-    if (indexPath.section == 0) {
+    if (indexPath.section == 1) {
         
         CurrentCoinCell *currentCoinCell = [tableView dequeueReusableCellWithIdentifier:@"CurrentCoinCell" forIndexPath:indexPath];
         
@@ -168,7 +172,7 @@
     }
     
     //2. Share and Checkin
-    if (indexPath.section == 1) {
+    if (indexPath.section == 2) {
         
         ShareCell *shareCell = [tableView dequeueReusableCellWithIdentifier:@"ShareCell" forIndexPath:indexPath];
         
@@ -191,7 +195,7 @@
         cell = shareCell;
     }
     
-    if (indexPath.section == 2) {
+    if (indexPath.section == 3) {
         
         PurchaseCoinCell *purchaseCoinCell = [tableView dequeueReusableCellWithIdentifier:@"PurchaseCoinCell" forIndexPath:indexPath];
         
@@ -273,6 +277,20 @@
 
     }
     
+    //4. sub
+    if (indexPath.section == 0) {
+        ShareCell *shareCell = [tableView dequeueReusableCellWithIdentifier:@"ShareCell" forIndexPath:indexPath];
+        
+        //Check in
+        if (indexPath.row == 0) {
+            [shareCell.btn_cellButton setImage:[UIImage imageNamed:@"btn_checkin@2x.png"] forState:UIControlStateNormal];
+            
+            shareCell.lbl_cellDescription.text = @"无限畅听";
+        }
+        
+        cell = shareCell;
+    }
+    
     return cell;
 }
 
@@ -280,8 +298,18 @@
 {
     NSLog(@"enter select row at indexPath");
     
+    if (indexPath.section == 0) {
+        
+        //QQ login
+        _tencentOAuth = [[TencentOAuth alloc]initWithAppId:@"1104667975" andDelegate:self];
+        
+        NSArray *_permissions = [NSArray arrayWithObjects:@"get_user_info", @"add_share", nil];
+        
+        [_tencentOAuth authorize:_permissions inSafari:NO];
+    }
+    
     //2. Share and Checkin
-    if (indexPath.section == 1) {
+    if (indexPath.section == 2) {
         //Check in
         if (indexPath.row == 0) {
             [self dailyCheckin];
@@ -293,7 +321,7 @@
         
     }
     //3. Purchase
-    if (indexPath.section == 2) {
+    if (indexPath.section == 3) {
         
             [self buy:indexPath.row];
         
@@ -388,7 +416,7 @@
         [_appData save];
         [_appData saveToiCloud];
         
-        CurrentCoinCell* currentCoinCell = (CurrentCoinCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+        CurrentCoinCell* currentCoinCell = (CurrentCoinCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
         currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%ld 枚", (long)_appData.coins];
         
         NSString *notification = @"您获得了 10金币";
@@ -429,7 +457,7 @@
                                      [_appData save];
                                      [_appData saveToiCloud];
                                      
-                                     CurrentCoinCell* currentCoinCell = (CurrentCoinCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+                                     CurrentCoinCell* currentCoinCell = (CurrentCoinCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
                                      currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%ld 枚", (long)_appData.coins];
                                      
                                      [TSMessage showNotificationInViewController:self title:notification subtitle:nil type:TSMessageNotificationTypeSuccess];
@@ -439,6 +467,42 @@
                                      NSLog(@"分享失败,错误码:%ld,错误描述:%@", (long)[error errorCode], [error errorDescription]);
                                  }
                              }];
+}
+
+
+#pragma mark @protocol TencentSessionDelegate <NSObject>
+- (void)tencentDidLogin
+{
+    //_labelTitle.text = @"登录完成";
+    if (_tencentOAuth.accessToken && 0 != [_tencentOAuth.accessToken length])
+    {
+        // 记录登录用户的OpenID、Token以及过期时间
+        NSString* _labelAccessToken = _tencentOAuth.accessToken;
+        NSLog(_labelAccessToken);
+    }
+    else
+    {
+        //_labelAccessToken.text = @"登录不成功 没有获取accesstoken";
+    }
+}
+
+-(void)tencentDidNotLogin:(BOOL)cancelled
+{
+    if (cancelled)
+    {
+        //_labelTitle.text = @"用户取消登录";
+        NSLog(@"用户取消登录");
+    }
+    else
+    {
+        NSLog(@"登录失败");
+        //_labelTitle.text = @"登录失败";
+    }
+}
+
+-(void)tencentDidNotNetWork
+{
+    NSLog(@"登录失败");
 }
 
 @end
