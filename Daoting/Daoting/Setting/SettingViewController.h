@@ -9,16 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "SettingCellDisclosure.h"
 #import "SettingCellSwitch.h"
+#import "UserCell.h"
 #import "ClearCacheViewController.h"
 #import "PurchasedAlbumViewController.h"
 #import "AppData.h"
 #import "AppDelegate.h"
+#import "UserManagement.h"
 
-
-@interface SettingViewController : UITableViewController
+@interface SettingViewController : UITableViewController<IUserManagementDelegate>
 {
     AppData         *_appData;
     AppDelegate     *_appdelegate;
+    
+    UserManagement    *_sharedUserManagement;
 }
 
 @end

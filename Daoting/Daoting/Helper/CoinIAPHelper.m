@@ -21,6 +21,7 @@
                                       @"DSoft.com.Daoting.25000coins_new",
                                       @"DSoft.com.Daoting.500coins",
                                       @"DSoft.com.Daoting.5000coins",
+                                      @"DSoft.com.Daoting.subscription.1month",
                                       nil];
         
         sharedInstance = [[self alloc] initWithProductIdentifiers:productIdentifiers];

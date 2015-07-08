@@ -8,9 +8,12 @@
 
 #import "SettingViewController.h"
 
-@interface SettingViewController ()
+#define Number_Of_Section 4
 
-@end
+#define Section_User    0
+#define Section_PlayHistory 1
+#define Section_Setting 2
+#define Section_Clear   3
 
 @implementation SettingViewController
 
@@ -32,6 +35,19 @@
 {
     _appData = [AppData sharedAppData];
     _appdelegate = [[UIApplication sharedApplication] delegate];
+    
+    //QQ login
+    _sharedUserManagement = [UserManagement sharedManager];
+    _sharedUserManagement.delegate = self;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    _appData = nil;
+    _appdelegate = nil;
+    
+    _sharedUserManagement.delegate = nil;
+    _sharedUserManagement = nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,23 +61,30 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 2;
+    return Number_Of_Section;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int rowcount = 0;
-    
     // Return the number of rows in the section.
-    if (section == 0) {
+    
+    if (section == Section_User) {
+        return 1;
+    }
+    
+    if (section == Section_PlayHistory) {
+        return 1;
+    }
+    
+    if (section == Section_Setting) {
         return 2;
     }
     
-    if (section == 1) {
+    if (section == Section_Clear) {
         return 1;
     }
 
-    return rowcount;
+    return 0;
 }
 
 
@@ -69,7 +92,7 @@
 {
     UITableViewCell *cell = nil;
     
-    if ((indexPath.section == 0) && (indexPath.row == 0)) {
+    if ((indexPath.section == Section_Setting) && (indexPath.row == 0)) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCellSwitch" forIndexPath:indexPath];
         
         SettingCellSwitch *switchCell = (SettingCellSwitch*)cell;
@@ -83,7 +106,7 @@
         [switchCell.sw_option addTarget:self action:@selector(onSwitchValueChanged1:) forControlEvents:UIControlEventValueChanged];
     }
     
-    if ((indexPath.section == 0) && (indexPath.row == 1)) {
+    if ((indexPath.section == Section_Setting) && (indexPath.row == 1)) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCellSwitch" forIndexPath:indexPath];
         
         SettingCellSwitch *switchCell = (SettingCellSwitch *)cell;
@@ -94,10 +117,16 @@
         switchCell.sw_option.on = _appData.isAutoPlay;
         [switchCell.sw_option setTintColor:_appdelegate.defaultColor_dark];
         [switchCell.sw_option addTarget:self action:@selector(onSwitchValueChanged2:) forControlEvents:UIControlEventValueChanged];
-
     }
     
-    if ((indexPath.section == 1) && (indexPath.row == 0))
+    if ((indexPath.section == Section_PlayHistory) && (indexPath.row == 0)) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCellDisclosure" forIndexPath:indexPath];
+        
+        SettingCellSwitch *switchCell = (SettingCellSwitch*)cell;
+        switchCell.lbl_Title.text = @"我正在听";
+    }
+    
+    if ((indexPath.section == Section_Clear) && (indexPath.row == 0))
     {
         cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCellDisclosure" forIndexPath:indexPath];
         
@@ -105,27 +134,64 @@
         disclosureCell.lbl_Title.text = @"清空缓存";
     }
     
-    /*if ((indexPath.section == 1) && (indexPath.row == 1))
+    if ((indexPath.section == Section_User) && (indexPath.row == 0))
     {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCellDisclosure" forIndexPath:indexPath];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"UserCell" forIndexPath:indexPath];
+        UserCell *userCell = (UserCell*)cell;
         
-        SettingCellDisclosure *disclosureCell = (SettingCellDisclosure *)cell;
-        disclosureCell.lbl_Title.text = @"已购买曲目";
-    }*/
+        if (_sharedUserManagement.isLogined) {
+            
+            //设置用户昵称
+            userCell.lbl_UserName.text = _sharedUserManagement.nickName;
+            
+            //设置用户头像图片
+            NSURLRequest *request = [NSURLRequest requestWithURL: _sharedUserManagement.headerIconUrl];
+            UIImage *placeholderImage = [UIImage imageNamed:@"Icon-72.png"];
+            
+            __weak UserCell *weakCell = userCell;
+            
+            [userCell.img_User setImageWithURLRequest:request
+                                     placeholderImage:placeholderImage
+                                              success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image)
+             {
+                 [weakCell.img_User setImage:image];
+                 [weakCell setNeedsLayout];
+             }failure:nil];
+            
+        }else{
+            
+            userCell.img_User.image = [UIImage imageNamed:@"Icon-72.png"];
+            userCell.lbl_UserName.text = @"未登录";
+        }
+
+    }
     
     return cell;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == Section_User) {
+        return 100;
+    }else{
+        return tableView.rowHeight;
+    }
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ((indexPath.section == 1) && (indexPath.row == 0))
+    if ((indexPath.section == Section_Clear) && (indexPath.row == 0))
     {
         [self performSegueWithIdentifier:@"showClearCache" sender:nil];
     }
     
-    if ((indexPath.section == 1) && (indexPath.row == 1))
+    /*if ((indexPath.section == 1) && (indexPath.row == 1))
     {
         [self performSegueWithIdentifier:@"showPurchasedSongs" sender:nil];
+    }*/
+    
+    if ((indexPath.section == Section_User) && (indexPath.row == 0)){
+
+        [_sharedUserManagement login:LoginTypeWeChat];
     }
 }
 
@@ -158,6 +224,29 @@
         //ClearCacheViewController *viewController = segue.destinationViewController;
     }
 }*/
+
+-(void) onUserDidLogin
+{
+     NSIndexPath* indexPath = [NSIndexPath indexPathForRow:0 inSection:Section_User];
+     
+     UserCell* userCell = (UserCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+     userCell.lbl_UserName.text = _sharedUserManagement.nickName;
+     
+     //Updating Cell Image
+     NSURLRequest *request = [NSURLRequest requestWithURL: _sharedUserManagement.headerIconUrl];
+     UIImage *placeholderImage = [UIImage imageNamed:@"Icon-72.png"];
+     
+     __weak UserCell *weakCell = userCell;
+     
+     [userCell.img_User setImageWithURLRequest:request
+     placeholderImage:placeholderImage
+     success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image)
+     {
+     [weakCell.img_User setImage:image];
+     [weakCell setNeedsLayout];
+     
+     } failure:nil];
+}
 
 
 @end
