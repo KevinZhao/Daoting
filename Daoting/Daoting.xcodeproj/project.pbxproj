@@ -12,6 +12,7 @@
 		0A1FA99C1958556C002F48EA /* qr_toolbar_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA99A1958556C002F48EA /* qr_toolbar_more@2x.png */; };
 		0A1FA99F19585612002F48EA /* qr_toolbar_more_hl.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA99D19585612002F48EA /* qr_toolbar_more_hl.png */; };
 		0A1FA9A019585612002F48EA /* qr_toolbar_more.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA99E19585612002F48EA /* qr_toolbar_more.png */; };
+		0A2639CB1B439D940079C3C5 /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2639CA1B439D940079C3C5 /* UserCell.m */; };
 		0A3C7FF119B184FB00686C5C /* SinaWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3C7FDA19B184FB00686C5C /* SinaWeiboConnection.framework */; };
 		0A3C7FF219B184FB00686C5C /* WeChatConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3C7FDB19B184FB00686C5C /* WeChatConnection.framework */; };
 		0A3C7FF319B184FB00686C5C /* AGCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3C7FDD19B184FB00686C5C /* AGCommon.framework */; };
@@ -25,6 +26,7 @@
 		0A3C7FFB19B184FB00686C5C /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3C7FED19B184FB00686C5C /* ShareSDK.framework */; };
 		0A3C7FFC19B184FB00686C5C /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3C7FEF19B184FB00686C5C /* libXG-SDK.a */; };
 		0A3CD3641920F8BE00247436 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A3CD3621920F8BE00247436 /* Main_iPhone.storyboard */; };
+		0A5D921B1B43D4940091338B /* UserManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D921A1B43D4940091338B /* UserManagement.m */; };
 		0A5F4C9D195AB0D3003924C7 /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A5F4C9C195AB0D3003924C7 /* AppIcon@2x.png */; };
 		0A659EF51977AFFD00FC893B /* download_pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A659EE81977AFFD00FC893B /* download_pause@2x.png */; };
 		0A65A8FE19A70D1000CAF5CA /* ShareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A65A8FD19A70D1000CAF5CA /* ShareCell.m */; };
@@ -61,7 +63,6 @@
 		0AAF6194196AE4A600C33E52 /* playingsong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AAF6193196AE4A600C33E52 /* playingsong@2x.png */; };
 		0ABB4283192E321C007D8BAC /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB4282192E321C007D8BAC /* Icon-72@2x.png */; };
 		0AC69C5E1946F452004C6A67 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC69C5D1946F452004C6A67 /* DACircularProgressView.m */; };
-		0AE014281B417E4700473471 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AE014271B417E4700473471 /* TencentOpenAPI.framework */; };
 		0AE0142A1B417E9D00473471 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AE014291B417E9D00473471 /* libiconv.dylib */; };
 		0AE0142C1B417F4200473471 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0AE0142B1B417F4200473471 /* TencentOpenApi_IOS_Bundle.bundle */; };
 		0AE46B0E1921035E00FA30F3 /* SongTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE46B0D1921035E00FA30F3 /* SongTableViewController.m */; };
@@ -129,6 +130,8 @@
 		0A1FA99A1958556C002F48EA /* qr_toolbar_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr_toolbar_more@2x.png"; sourceTree = "<group>"; };
 		0A1FA99D19585612002F48EA /* qr_toolbar_more_hl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qr_toolbar_more_hl.png; sourceTree = "<group>"; };
 		0A1FA99E19585612002F48EA /* qr_toolbar_more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qr_toolbar_more.png; sourceTree = "<group>"; };
+		0A2639C91B439D940079C3C5 /* UserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserCell.h; path = Setting/UserCell.h; sourceTree = "<group>"; };
+		0A2639CA1B439D940079C3C5 /* UserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserCell.m; path = Setting/UserCell.m; sourceTree = "<group>"; };
 		0A3C7FDA19B184FB00686C5C /* SinaWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SinaWeiboConnection.framework; sourceTree = "<group>"; };
 		0A3C7FDB19B184FB00686C5C /* WeChatConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WeChatConnection.framework; sourceTree = "<group>"; };
 		0A3C7FDD19B184FB00686C5C /* AGCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AGCommon.framework; sourceTree = "<group>"; };
@@ -147,6 +150,8 @@
 		0A3C7FEF19B184FB00686C5C /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
 		0A3C7FF019B184FB00686C5C /* XGPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGPush.h; sourceTree = "<group>"; };
 		0A3CD3631920F8BE00247436 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		0A5D92191B43D4940091338B /* UserManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserManagement.h; path = Helper/UserManagement.h; sourceTree = "<group>"; };
+		0A5D921A1B43D4940091338B /* UserManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserManagement.m; path = Helper/UserManagement.m; sourceTree = "<group>"; };
 		0A5F4C9C195AB0D3003924C7 /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@2x.png"; sourceTree = "<group>"; };
 		0A659EE81977AFFD00FC893B /* download_pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "download_pause@2x.png"; sourceTree = "<group>"; };
 		0A65A8FC19A70D1000CAF5CA /* ShareCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShareCell.h; path = Store/ShareCell.h; sourceTree = "<group>"; };
@@ -194,7 +199,6 @@
 		0ABB4282192E321C007D8BAC /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		0AC69C5C1946F452004C6A67 /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
 		0AC69C5D1946F452004C6A67 /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
-		0AE014271B417E4700473471 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TencentOpenAPI.framework; path = ../../../Downloads/TencentOpenAPI.framework; sourceTree = "<group>"; };
 		0AE014291B417E9D00473471 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		0AE0142B1B417F4200473471 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
 		0AE35F7619B44FA400649CB1 /* Daoting.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Daoting.entitlements; sourceTree = "<group>"; };
@@ -315,7 +319,6 @@
 				0A98D6361920AD9B00E46EB9 /* libz.1.2.5.dylib in Frameworks */,
 				0A98D6341920AD9000E46EB9 /* libicucore.dylib in Frameworks */,
 				0A3C7FF119B184FB00686C5C /* SinaWeiboConnection.framework in Frameworks */,
-				0AE014281B417E4700473471 /* TencentOpenAPI.framework in Frameworks */,
 				5933AD5B18D03EC1001D707B /* CoreGraphics.framework in Frameworks */,
 				5933AD5D18D03EC1001D707B /* UIKit.framework in Frameworks */,
 				0A3C7FFB19B184FB00686C5C /* ShareSDK.framework in Frameworks */,
@@ -347,6 +350,8 @@
 				D8855746199902CF00B0F891 /* SettingCellSwitch.m */,
 				D8855747199902CF00B0F891 /* SettingViewController.h */,
 				D8855748199902CF00B0F891 /* SettingViewController.m */,
+				0A2639C91B439D940079C3C5 /* UserCell.h */,
+				0A2639CA1B439D940079C3C5 /* UserCell.m */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -538,6 +543,8 @@
 				D885571B1999023B00B0F891 /* STKAudioPlayerHelper.m */,
 				0AA2863A1A729C73005C1587 /* PurchaseRecordsHelper.h */,
 				0AA2863B1A729C73005C1587 /* PurchaseRecordsHelper.m */,
+				0A5D92191B43D4940091338B /* UserManagement.h */,
+				0A5D921A1B43D4940091338B /* UserManagement.m */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -592,7 +599,6 @@
 			children = (
 				0AE0142B1B417F4200473471 /* TencentOpenApi_IOS_Bundle.bundle */,
 				0AE014291B417E9D00473471 /* libiconv.dylib */,
-				0AE014271B417E4700473471 /* TencentOpenAPI.framework */,
 				236C526A19A63169009595D9 /* libz.dylib */,
 				0A7A8CD719590B4C003FAA92 /* CFNetwork.framework */,
 				0AFB65A619245BD4000F2AE6 /* StoreKit.framework */,
@@ -831,6 +837,7 @@
 				D885571E1999023B00B0F891 /* AFDownloadHelper.m in Sources */,
 				5933AD6918D03EC1001D707B /* AppDelegate.m in Sources */,
 				0A6E297119A5E5FC002808F7 /* CurrentCoinCell.m in Sources */,
+				0A5D921B1B43D4940091338B /* UserManagement.m in Sources */,
 				D88557331999024B00B0F891 /* AlbumCell.m in Sources */,
 				0A82221519BA0807004B556B /* CategoryCell.m in Sources */,
 				D88557361999024B00B0F891 /* SongCell.m in Sources */,
@@ -845,6 +852,7 @@
 				D885574F199902CF00B0F891 /* SettingCellDisclosure.m in Sources */,
 				5933AD6518D03EC1001D707B /* main.m in Sources */,
 				0A03A23819B9FFD700DD8D6B /* AudioCategory.m in Sources */,
+				0A2639CB1B439D940079C3C5 /* UserCell.m in Sources */,
 				D88557201999023B00B0F891 /* CoinIAPHelper.m in Sources */,
 				0A8BA0091940BFCB001307D6 /* DownloadViewController.m in Sources */,
 				D885574B199902CF00B0F891 /* PurchasedAlbumCell.m in Sources */,

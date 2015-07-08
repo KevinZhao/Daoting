@@ -22,7 +22,8 @@
 #import "AFNetworkActivityIndicatorManager.h"
 #import "XGPush.h"
 #import "STKAudioPlayerHelper.h"
-#import <TencentOpenAPI/TencentOAuth.h>
+#import "UserManagement.h"
+//#import <TencentOpenAPI/TencentOAuth.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {

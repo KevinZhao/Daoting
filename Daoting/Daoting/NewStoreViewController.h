@@ -17,10 +17,9 @@
 #import "FBShimmering.h"
 #import "FBshimmeringView.h"
 #import "PurchaseRecordsHelper.h"
-#import <TencentOpenAPI/TencentOAuth.h>
 
 
-@interface NewStoreViewController : UITableViewController<IAPHelperDelegate, TencentSessionDelegate>
+@interface NewStoreViewController : UITableViewController<IAPHelperDelegate>
 {
     AppData                     *_appData;
     AppDelegate                 *_appDelegate;
@@ -28,8 +27,6 @@
     NSArray                     *_products;
     
     NSTimer                     *_timer;
-    
-    TencentOAuth                *_tencentOAuth;
 }
 
 @end

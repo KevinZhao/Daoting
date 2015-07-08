@@ -300,12 +300,6 @@
     
     if (indexPath.section == 0) {
         
-        //QQ login
-        _tencentOAuth = [[TencentOAuth alloc]initWithAppId:@"1104667975" andDelegate:self];
-        
-        NSArray *_permissions = [NSArray arrayWithObjects:@"get_user_info", @"add_share", nil];
-        
-        [_tencentOAuth authorize:_permissions inSafari:NO];
     }
     
     //2. Share and Checkin
@@ -381,8 +375,6 @@
     [_appData saveToiCloud];
 
     [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"成功购买金币 %d 枚", purchasedCoins] type:TSMessageNotificationTypeSuccess];
-    
-    //self.tableView.allowsSelection = YES;
 }
 
 - (void)onLoadedProducts
@@ -394,8 +386,6 @@
 {
     [TSMessage showNotificationInViewController:self title:nil subtitle:@"无法连接App Store, 请检查网络" type:TSMessageNotificationTypeSuccess duration:2.0];
     [_spinner stopAnimating];
-    
-    //self.tableView.allowsSelection = YES;
 }
 
 - (void)dailyCheckin
@@ -470,39 +460,7 @@
 }
 
 
-#pragma mark @protocol TencentSessionDelegate <NSObject>
-- (void)tencentDidLogin
-{
-    //_labelTitle.text = @"登录完成";
-    if (_tencentOAuth.accessToken && 0 != [_tencentOAuth.accessToken length])
-    {
-        // 记录登录用户的OpenID、Token以及过期时间
-        NSString* _labelAccessToken = _tencentOAuth.accessToken;
-        NSLog(_labelAccessToken);
-    }
-    else
-    {
-        //_labelAccessToken.text = @"登录不成功 没有获取accesstoken";
-    }
-}
 
--(void)tencentDidNotLogin:(BOOL)cancelled
-{
-    if (cancelled)
-    {
-        //_labelTitle.text = @"用户取消登录";
-        NSLog(@"用户取消登录");
-    }
-    else
-    {
-        NSLog(@"登录失败");
-        //_labelTitle.text = @"登录失败";
-    }
-}
 
--(void)tencentDidNotNetWork
-{
-    NSLog(@"登录失败");
-}
 
 @end
