@@ -28,12 +28,8 @@
 
 - (instancetype) init
 {
-    //QQ login
-    //_tencentOAuth = [[TencentOAuth alloc]initWithAppId:@"1104667975" andDelegate:self];
     
-    //[WXApi registerApp:@"wx134b0f70f3612fe8"];
-    
-    //WXApi
+    _sharedAppData = [AppData sharedAppData];
     
     return self;
 }
@@ -60,22 +56,13 @@
     }
 }
 
--(void) onResp:(BaseResp*)resp
+
+#pragma mark <WXApiDelegate>
+
+-(void)onResp:(BaseResp*)resp
 {
-    /*
-     ErrCode ERR_OK = 0(用户同意)
-     ERR_AUTH_DENIED = -4（用户拒绝授权）
-     ERR_USER_CANCEL = -2（用户取消）
-     code    用户换取access_token的code，仅在ErrCode为0时有效
-     state   第三方程序发送时用来标识其请求的唯一性的标志，由第三方程序调用sendReq时传入，由微信终端回传，state字符串长度不能超过1K
-     lang    微信客户端当前语言
-     country 微信用户当前国家信息
-     */
-    
     SendAuthResp *aresp = (SendAuthResp *)resp;
-    if (aresp.errCode== 0) {
-        //NSString *code = aresp.code;
-        //NSDictionary *dic = @{@"code":code};
+    if (aresp.errCode== WXSuccess) {
         
         _WXcode = aresp.code;
         
@@ -85,9 +72,9 @@
 
 -(void)getAccess_token
 {
-    //https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code
-    
-    NSString *url =[NSString stringWithFormat:@"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code",kWXAPP_ID,kWXAPP_SECRET,_WXcode];
+    NSString *url =[NSString stringWithFormat:
+                    @"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code",
+                    kWXAPP_ID, kWXAPP_SECRET, _WXcode];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSURL *zoneUrl = [NSURL URLWithString:url];
@@ -100,6 +87,9 @@
                 _accessToken = [dic objectForKey:@"access_token"];
                 _openId = [dic objectForKey:@"openid"];
                 
+                _sharedAppData.WX_OpenId = _openId;
+                [_sharedAppData save];
+                
                 [self getUserInfo];
             }
         });
@@ -108,9 +98,9 @@
 
 -(void)getUserInfo
 {
-    // https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID
-    
-    NSString *url =[NSString stringWithFormat:@"https://api.weixin.qq.com/sns/userinfo?access_token=%@&openid=%@",_accessToken, _openId];
+    NSString *url =[NSString stringWithFormat:
+                    @"https://api.weixin.qq.com/sns/userinfo?access_token=%@&openid=%@",
+                    _accessToken, _openId];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSURL *zoneUrl = [NSURL URLWithString:url];
@@ -119,24 +109,13 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             if (data) {
                 NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-                /*
-                 {
-                 city = Haidian;
-                 country = CN;
-                 headimgurl = "http://wx.qlogo.cn/mmopen/FrdAUicrPIibcpGzxuD0kjfnvc2klwzQ62a1brlWq1sjNfWREia6W8Cf8kNCbErowsSUcGSIltXTqrhQgPEibYakpl5EokGMibMPU/0";
-                 language = "zh_CN";
-                 nickname = "xxx";
-                 openid = oyAaTjsDx7pl4xxxxxxx;
-                 privilege =     (
-                 );
-                 province = Beijing;
-                 sex = 1;
-                 unionid = oyAaTjsxxxxxxQ42O3xxxxxxs;
-                 }
-                 */
                 
-                self.nickName = [dic objectForKey:@"nickname"];
-                self.headerIconUrl = [NSURL URLWithString:[dic objectForKey:@"headimgurl"]];
+                _nickName = [dic objectForKey:@"nickname"];
+                _headerIconUrl = [NSURL URLWithString:[dic objectForKey:@"headimgurl"]];
+                
+                _sharedAppData.WX_NickName =_nickName;
+                _sharedAppData.WX_HeadImgUrl = _headerIconUrl;
+                [_sharedAppData save];
                 
                 if (self.delegate) {
                     [self.delegate onUserDidLogin];

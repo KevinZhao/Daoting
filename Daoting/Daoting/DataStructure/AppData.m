@@ -21,6 +21,11 @@ static NSString* const SSDataChecksumKey = @"SSDataChecksumKey";
 static NSString* const SSDataCurrentSong = @"SSDataCurrentSong";
 static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
 
+
+static NSString* const SSData_WX_OpenId = @"WX_OpenId";
+static NSString* const SSData_WX_NickName = @"NickName";
+static NSString* const SSData_WX_HeadImgUrl = @"WX_HeadImgUrl";
+
 @implementation AppData
 
 #pragma mark static methods
@@ -243,6 +248,11 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
     [encoder encodeObject:_currentSong forKey:SSDataCurrentSong];
     
     [encoder encodeInteger:_purchaseTimes forKey:SSDataforFirstPurchaseKey];
+    
+    [encoder encodeObject:_WX_OpenId forKey:SSData_WX_OpenId];
+    [encoder encodeObject:_WX_NickName forKey:SSData_WX_NickName];
+    [encoder encodeObject:_WX_HeadImgUrl forKey:SSData_WX_HeadImgUrl];
+
 }
 
 - (instancetype)initWithCoder:(NSCoder *)decoder
@@ -262,6 +272,10 @@ static NSString* const SSDataCurrentAlbum = @"SSDataCurrentAlbum";
         
         _currentSong = [decoder decodeObjectForKey:SSDataCurrentSong];
         _currentAlbum = [decoder decodeObjectForKey:SSDataCurrentAlbum];
+        
+        _WX_OpenId = [decoder decodeObjectForKey:SSData_WX_OpenId];
+        _WX_NickName = [decoder decodeObjectForKey:SSData_WX_NickName];
+        _WX_HeadImgUrl = [decoder decodeObjectForKey:SSData_WX_HeadImgUrl];
         
     }
     return self;

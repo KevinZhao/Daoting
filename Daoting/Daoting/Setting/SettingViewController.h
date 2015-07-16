@@ -15,6 +15,8 @@
 #import "AppData.h"
 #import "AppDelegate.h"
 #import "UserManagement.h"
+#import "AppData.h"
+#import "UIImage+RoundRect.h"
 
 @interface SettingViewController : UITableViewController<IUserManagementDelegate>
 {

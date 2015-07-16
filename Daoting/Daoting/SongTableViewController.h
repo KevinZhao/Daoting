@@ -23,6 +23,7 @@
 #import "TSMessageView.h"
 #import "UIImageView+AFNetworking.h"
 #import "PurchaseRecordsHelper.h"
+#import "UIImage+RoundRect.h"
 
 @interface SongTableViewController : UIViewController<UIScrollViewDelegate, UITableViewDataSource, ICategoryManagerDelegate,
     UITableViewDelegate, STKAudioPlayerHelperDelegate, AFDownloadHelperDelegate, PurchaseRecordsHelperDelegate>

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0A03A23819B9FFD700DD8D6B /* AudioCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A03A23719B9FFD700DD8D6B /* AudioCategory.m */; };
+		0A0558301B4F7280008B8F87 /* AlbumManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A05582F1B4F7280008B8F87 /* AlbumManager.m */; };
+		0A0558331B4F72C7008B8F87 /* UIImage+RoundRect.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0558321B4F72C7008B8F87 /* UIImage+RoundRect.m */; };
 		0A1FA99B1958556C002F48EA /* qr_toolbar_more_hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA9991958556C002F48EA /* qr_toolbar_more_hl@2x.png */; };
 		0A1FA99C1958556C002F48EA /* qr_toolbar_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA99A1958556C002F48EA /* qr_toolbar_more@2x.png */; };
 		0A1FA99F19585612002F48EA /* qr_toolbar_more_hl.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA99D19585612002F48EA /* qr_toolbar_more_hl.png */; };
@@ -125,6 +127,10 @@
 /* Begin PBXFileReference section */
 		0A03A23619B9FFD700DD8D6B /* AudioCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioCategory.h; path = DataStructure/AudioCategory.h; sourceTree = "<group>"; };
 		0A03A23719B9FFD700DD8D6B /* AudioCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioCategory.m; path = DataStructure/AudioCategory.m; sourceTree = "<group>"; };
+		0A05582E1B4F7280008B8F87 /* AlbumManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlbumManager.h; path = Helper/AlbumManager.h; sourceTree = "<group>"; };
+		0A05582F1B4F7280008B8F87 /* AlbumManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlbumManager.m; path = Helper/AlbumManager.m; sourceTree = "<group>"; };
+		0A0558311B4F72C7008B8F87 /* UIImage+RoundRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+RoundRect.h"; path = "Helper/UIImage+RoundRect.h"; sourceTree = "<group>"; };
+		0A0558321B4F72C7008B8F87 /* UIImage+RoundRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+RoundRect.m"; path = "Helper/UIImage+RoundRect.m"; sourceTree = "<group>"; };
 		0A088FC719CF24EA00047DE8 /* XGSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGSetting.h; sourceTree = "<group>"; };
 		0A1FA9991958556C002F48EA /* qr_toolbar_more_hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr_toolbar_more_hl@2x.png"; sourceTree = "<group>"; };
 		0A1FA99A1958556C002F48EA /* qr_toolbar_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr_toolbar_more@2x.png"; sourceTree = "<group>"; };
@@ -525,6 +531,10 @@
 		0ABB4281192DEA7F007D8BAC /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				0A0558311B4F72C7008B8F87 /* UIImage+RoundRect.h */,
+				0A0558321B4F72C7008B8F87 /* UIImage+RoundRect.m */,
+				0A05582E1B4F7280008B8F87 /* AlbumManager.h */,
+				0A05582F1B4F7280008B8F87 /* AlbumManager.m */,
 				D885570A1999023B00B0F891 /* AFDownloadHelper.h */,
 				D885570B1999023B00B0F891 /* AFDownloadHelper.m */,
 				D885570E1999023B00B0F891 /* CoinIAPHelper.h */,
@@ -860,7 +870,9 @@
 				D8855751199902CF00B0F891 /* SettingViewController.m in Sources */,
 				D88557241999023B00B0F891 /* SampleQueueId.m in Sources */,
 				0AC69C5E1946F452004C6A67 /* DACircularProgressView.m in Sources */,
+				0A0558301B4F7280008B8F87 /* AlbumManager.m in Sources */,
 				D88557211999023B00B0F891 /* DownloadStatus.m in Sources */,
+				0A0558331B4F72C7008B8F87 /* UIImage+RoundRect.m in Sources */,
 				0A8BA00F1940C15E001307D6 /* DownloadCell.m in Sources */,
 				D885574C199902CF00B0F891 /* PurchasedAlbumViewController.m in Sources */,
 				0A82221219BA04CA004B556B /* CategoryTableViewController.m in Sources */,

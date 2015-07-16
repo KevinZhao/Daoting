@@ -24,7 +24,8 @@
     AppData                     *_appData;
     AppDelegate                 *_appDelegate;
     UIActivityIndicatorView     *_spinner;
-    NSArray                     *_products;
+    NSArray                     *_coinProducts;
+    NSArray                     *_subscriptionProducts;
     
     NSTimer                     *_timer;
 }

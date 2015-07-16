@@ -13,4 +13,6 @@
 @property (nonatomic, strong) IBOutlet UIImageView  *img_User;
 @property (nonatomic, strong) IBOutlet UILabel      *lbl_UserName;
 
+@property (nonatomic, retain) IBOutlet UILabel      *lbl_coins;
+
 @end

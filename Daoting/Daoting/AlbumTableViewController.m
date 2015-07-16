@@ -84,7 +84,7 @@
                                placeholderImage:placeholderImage
                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image)
     {
-        [weakCell.img_albumImage setImage:image];
+        [weakCell.img_albumImage setImage:[image roundedRectWith:12]];
         [weakCell setNeedsLayout];
                                        
     } failure:nil];

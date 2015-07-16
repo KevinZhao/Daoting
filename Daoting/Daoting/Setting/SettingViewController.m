@@ -136,34 +136,35 @@
     
     if ((indexPath.section == Section_User) && (indexPath.row == 0))
     {
+
         cell = [tableView dequeueReusableCellWithIdentifier:@"UserCell" forIndexPath:indexPath];
         UserCell *userCell = (UserCell*)cell;
         
-        if (_sharedUserManagement.isLogined) {
+        //用户曾经登陆过
+        if (_appData.WX_OpenId != nil) {
             
-            //设置用户昵称
-            userCell.lbl_UserName.text = _sharedUserManagement.nickName;
+            userCell.lbl_UserName.text = _appData.WX_NickName;
+            NSURLRequest *request = [NSURLRequest requestWithURL: _appData.WX_HeadImgUrl];
             
-            //设置用户头像图片
-            NSURLRequest *request = [NSURLRequest requestWithURL: _sharedUserManagement.headerIconUrl];
             UIImage *placeholderImage = [UIImage imageNamed:@"Icon-72.png"];
-            
             __weak UserCell *weakCell = userCell;
             
             [userCell.img_User setImageWithURLRequest:request
                                      placeholderImage:placeholderImage
                                               success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image)
              {
-                 [weakCell.img_User setImage:image];
+                 [weakCell.img_User setImage:[image roundedRectWith:32]];
                  [weakCell setNeedsLayout];
              }failure:nil];
-            
-        }else{
-            
-            userCell.img_User.image = [UIImage imageNamed:@"Icon-72.png"];
-            userCell.lbl_UserName.text = @"未登录";
         }
-
+        //用户未登陆过
+        else{
+            
+            userCell.img_User.image = [[UIImage imageNamed:@"Icon-72.png"] roundedRectWith:2];;
+            userCell.lbl_UserName.text = @"使用微信登陆";
+        }
+        
+        userCell.lbl_coins.text = [NSString stringWithFormat:@"%ld", (long)_appData.coins];
     }
     
     return cell;
