@@ -27,7 +27,7 @@
     NSArray                     *_coinProducts;
     NSArray                     *_subscriptionProducts;
     
-    NSTimer                     *_timer;
+    //NSTimer                     *_timer;
 }
 
 @end

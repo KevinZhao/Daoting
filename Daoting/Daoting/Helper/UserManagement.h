@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AFNetWorking.h"
 //#import <TencentOpenAPI/TencentOAuth.h>
 #import "WXApi.h"
 #import "AppData.h"

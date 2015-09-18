@@ -14,7 +14,7 @@
 //#ifdef DEBUG
 //const NSString* hostName = @"http://localhost/";
 //#else
-const NSString* hostName = @"http://www.zhaoxiangyu.com:8080/";
+static const NSString* hostName = @"http://www.zhaoxiangyu.com:8080/";
 //#endif
 
 @implementation PurchaseRecordsHelper

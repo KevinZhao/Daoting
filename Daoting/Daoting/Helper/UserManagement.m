@@ -10,6 +10,7 @@
 
 #define kWXAPP_ID       @"wx134b0f70f3612fe8"
 #define kWXAPP_SECRET   @"55435a9c06593675d9d35a6dccb6e9e4"
+#define hostName  @"http://www.zhaoxiangyu.com:8080/"
 
 @implementation UserManagement
 
@@ -54,6 +55,24 @@
         //第三方向微信终端发送一个SendAuthReq消息结构
         [WXApi sendReq:req];
     }
+}
+
+- (void)syncDatabase
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    
+    //parameters
+    NSDictionary *parameters = @{@"open_id": _sharedAppData.WX_OpenId};
+    
+    //post Url
+    NSString* postUrl = [hostName stringByAppendingString:@"registerDevice.php"];
+    
+    [manager POST:postUrl parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
 }
 
 
@@ -120,6 +139,8 @@
                 if (self.delegate) {
                     [self.delegate onUserDidLogin];
                 }
+                
+                [self syncDatabase];
             }
         });
         

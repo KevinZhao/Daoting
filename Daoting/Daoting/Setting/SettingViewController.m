@@ -180,19 +180,19 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ((indexPath.section == Section_User) && (indexPath.row == 0)){
+        
+        [_sharedUserManagement login:LoginTypeWeChat];
+    }
+    
     if ((indexPath.section == Section_Clear) && (indexPath.row == 0))
     {
         [self performSegueWithIdentifier:@"showClearCache" sender:nil];
     }
     
-    /*if ((indexPath.section == 1) && (indexPath.row == 1))
+    if ((indexPath.section == Section_PlayHistory) && (indexPath.row == 0))
     {
-        [self performSegueWithIdentifier:@"showPurchasedSongs" sender:nil];
-    }*/
-    
-    if ((indexPath.section == Section_User) && (indexPath.row == 0)){
-
-        [_sharedUserManagement login:LoginTypeWeChat];
+        //[self performSegueWithIdentifier:@"showPurchasedSongs" sender:nil];
     }
 }
 
@@ -228,25 +228,29 @@
 
 -(void) onUserDidLogin
 {
-     NSIndexPath* indexPath = [NSIndexPath indexPathForRow:0 inSection:Section_User];
+    //取得 UserCell
+    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:0 inSection:Section_User];
+    UserCell* userCell = (UserCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+    
+    //更新用户昵称
+    userCell.lbl_UserName.text = _sharedUserManagement.nickName;
      
-     UserCell* userCell = (UserCell*)[self.tableView cellForRowAtIndexPath:indexPath];
-     userCell.lbl_UserName.text = _sharedUserManagement.nickName;
-     
-     //Updating Cell Image
-     NSURLRequest *request = [NSURLRequest requestWithURL: _sharedUserManagement.headerIconUrl];
-     UIImage *placeholderImage = [UIImage imageNamed:@"Icon-72.png"];
-     
-     __weak UserCell *weakCell = userCell;
-     
-     [userCell.img_User setImageWithURLRequest:request
-     placeholderImage:placeholderImage
-     success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image)
-     {
-     [weakCell.img_User setImage:image];
-     [weakCell setNeedsLayout];
-     
-     } failure:nil];
+    //更新用户头像
+    NSURLRequest *request = [NSURLRequest requestWithURL: _sharedUserManagement.headerIconUrl];
+    UIImage *placeholderImage = [UIImage imageNamed:@"Icon-72.png"];
+    
+    __weak UserCell *weakCell = userCell;
+    
+    [userCell.img_User setImageWithURLRequest:request placeholderImage:placeholderImage success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image)
+    {
+        [weakCell.img_User setImage:image];
+        [weakCell setNeedsLayout];
+    
+    }
+                                      failure:nil];
+    
+    
+    
 }
 
 

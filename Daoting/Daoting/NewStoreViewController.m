@@ -24,16 +24,12 @@
     
     //Register observer for IAP helper notification
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePurchaseCompleted:) name:IAPHelperProductPurchasedNotification object:nil];
-    
-    [self setupTimer];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
-    [_timer invalidate];
 }
 
 - (void)viewDidLoad
@@ -42,21 +38,6 @@
     
     _appData = [AppData sharedAppData];
     _appDelegate = [UIApplication sharedApplication].delegate;
-}
-
--(void)setupTimer
-{
-    [_timer invalidate];
-    
-    _timer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(tick) userInfo:nil repeats:YES];
-    
-    [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
-}
-
--(void)tick
-{
-    //CurrentCoinCell* currentCoinCell = (CurrentCoinCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
-    //currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%ld 枚", (long)_appData.coins];
 }
 
 - (void)didReceiveMemoryWarning
@@ -199,17 +180,7 @@
 {
     UITableViewCell *cell;
     
-    //1. Current Coin
-    /*if (indexPath.section == 1) {
-        
-        CurrentCoinCell *currentCoinCell = [tableView dequeueReusableCellWithIdentifier:@"CurrentCoinCell" forIndexPath:indexPath];
-        
-        currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%ld 枚", (long)_appData.coins];
-        
-        cell = currentCoinCell;
-    }*/
-    
-    //2. Section_Get_Coin
+    // Section_Get_Coin
     if (indexPath.section == Section_Get_Coin) {
         
         ShareCell *shareCell = [tableView dequeueReusableCellWithIdentifier:@"ShareCell" forIndexPath:indexPath];
@@ -335,8 +306,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"enter select row at indexPath");
-    
     if (indexPath.section == Section_Subscription) {
         
     }
@@ -428,6 +397,8 @@
         if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.subscription.1month"]) {
             
         [TSMessage showNotificationWithTitle:@"已成功订阅1个月的无限畅听" type:TSMessageNotificationTypeSuccess];
+            
+        //todo: 记录订阅购买
             
         }
     
