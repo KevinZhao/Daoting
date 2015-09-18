@@ -12,6 +12,8 @@
 #import "AppData.h"
 
 UIKIT_EXTERN NSString *const IAPHelperProductPurchasedNotification;
+UIKIT_EXTERN NSString *const kSubscriptionExpirationDateKey;
+
 typedef void (^RequestProductsCompletionHandler)(BOOL success, NSArray * products);
 
 @protocol IAPHelperDelegate <NSObject>
@@ -37,5 +39,10 @@ typedef void (^RequestProductsCompletionHandler)(BOOL success, NSArray * product
 - (void)requestProductsWithCompletionHandler:(RequestProductsCompletionHandler)completionHandler;
 
 - (void)buyProduct:(SKProduct *)product;
+
+- (int)daysRemainingOnSubscription;
+- (NSString *)getExpirationDateString;
+- (NSDate *)getExpirationDateForMonths:(int)months;
+- (void)purchaseSubscriptionWithMonths:(int)months;
 
 @end

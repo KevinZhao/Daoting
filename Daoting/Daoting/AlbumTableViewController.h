@@ -10,6 +10,7 @@
 #import "AppData.h"
 #import "AppDelegate.h"
 #import "AudioCategory.h"
+#import "UIImage+RoundRect.h"
 
 @interface AlbumTableViewController : UITableViewController<ICategoryManagerDelegate>
 {

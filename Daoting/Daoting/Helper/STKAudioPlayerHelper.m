@@ -27,14 +27,6 @@
 {
     self = [super init];
     
-    //configure STKAudioPlayer
-    _audioPlayer = [[STKAudioPlayer alloc] initWithOptions:(STKAudioPlayerOptions){ .flushQueueOnSeek = YES, .enableVolumeMixer = NO, .equalizerBandFrequencies = {50, 100, 200, 400, 800, 1600, 2600, 16000} }];
-    
-    _audioPlayer.meteringEnabled = YES;
-    _audioPlayer.volume = 1;
-    
-    _audioPlayer.delegate = self;
-    
     //Regist notification for audio route change
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(audioRouteChangeHandler:)
@@ -47,6 +39,18 @@
     
     return self;
 }
+
+-(void) setupAudioPlayer
+{
+    //configure STKAudioPlayer
+    _audioPlayer = [[STKAudioPlayer alloc] initWithOptions:(STKAudioPlayerOptions){ .flushQueueOnSeek = YES, .enableVolumeMixer = NO, .equalizerBandFrequencies = {50, 100, 200, 400, 800, 1600, 2600, 16000} }];
+    
+    _audioPlayer.meteringEnabled = YES;
+    _audioPlayer.volume = 1;
+    
+    _audioPlayer.delegate = self;
+}
+
 
 -(void)setupTimer
 {
@@ -82,6 +86,11 @@
 
 -(void)playSong:(Song *)song InAlbum:(Album*)album
 {
+    if (_audioPlayer == nil) {
+        
+        [self setupAudioPlayer];
+    }
+    
     //Check the file is in local reposistory
     if (![[song.filePath absoluteString] isEqualToString:@""] ) {
         
@@ -90,6 +99,7 @@
         
         //play from local reposistory for the song
         STKDataSource* fileDataSource = [STKAudioPlayer dataSourceFromURL:songURL];
+        
         [_audioPlayer setDataSource:fileDataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:songURL andCount:0]];
     }
     else
@@ -160,12 +170,15 @@
 -(void)pauseSong
 {
     [_audioPlayer stop];
+    _audioPlayer = nil;
     _isPausedByUserAction = true;
 }
 
 -(void)interruptSong
 {
     [_audioPlayer stop];
+    _audioPlayer = nil;
+
 }
 
 -(void)playNextSong
@@ -400,7 +413,6 @@
 }
 
 #pragma mark - STKAudioPlayerDelegate Methods
-
 /// Raised when an item has started playing
 -(void) audioPlayer:(STKAudioPlayer*)aPlayer didStartPlayingQueueItemId:(NSObject*)queueItemId
 {

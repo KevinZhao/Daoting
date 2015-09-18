@@ -13,11 +13,19 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
+<<<<<<< HEAD:Daoting/Pods/Pods.xcodeproj/xcuserdata/Kevin.xcuserdatad/xcschemes/Pods-HexColors.xcscheme
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6C5714404294E954B1B9CAD9"
+               BuildableName = "libPods-HexColors.a"
+               BlueprintName = "Pods-HexColors"
+               ReferencedContainer = "container:Pods.xcodeproj">
+=======
                BuildableIdentifier = 'primary'
                BlueprintIdentifier = '3CAAD58665321BD2A4A18818'
                BlueprintName = 'HexColors'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libHexColors.a'>
+>>>>>>> origin/master:Daoting/Pods/Pods.xcodeproj/xcuserdata/Kevin.xcuserdatad/xcschemes/HexColors.xcscheme
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

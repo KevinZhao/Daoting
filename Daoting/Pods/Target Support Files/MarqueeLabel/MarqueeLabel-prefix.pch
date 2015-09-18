@@ -2,3 +2,14 @@
 #import <UIKit/UIKit.h>
 #endif
 
+<<<<<<< HEAD:Daoting/Pods/Target Support Files/Pods-AFNetworking/Pods-AFNetworking-prefix.pch
+#import "Pods-environment.h"
+#ifndef TARGET_OS_IOS
+  #define TARGET_OS_IOS TARGET_OS_IPHONE
+#endif
+
+#ifndef TARGET_OS_WATCH
+  #define TARGET_OS_WATCH 0
+#endif
+=======
+>>>>>>> origin/master:Daoting/Pods/Target Support Files/MarqueeLabel/MarqueeLabel-prefix.pch

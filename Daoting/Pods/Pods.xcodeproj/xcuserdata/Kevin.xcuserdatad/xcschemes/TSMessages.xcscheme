@@ -13,11 +13,19 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
+<<<<<<< HEAD:Daoting/Pods/Pods.xcodeproj/xcuserdata/Kevin.xcuserdatad/xcschemes/Pods-MarqueeLabel.xcscheme
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D7B1859200BBB98F4F74100C"
+               BuildableName = "libPods-MarqueeLabel.a"
+               BlueprintName = "Pods-MarqueeLabel"
+               ReferencedContainer = "container:Pods.xcodeproj">
+=======
                BuildableIdentifier = 'primary'
                BlueprintIdentifier = '9EC0D966570B723CDD4D707E'
                BlueprintName = 'TSMessages'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libTSMessages.a'>
+>>>>>>> origin/master:Daoting/Pods/Pods.xcodeproj/xcuserdata/Kevin.xcuserdatad/xcschemes/TSMessages.xcscheme
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

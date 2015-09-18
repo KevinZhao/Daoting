@@ -136,34 +136,35 @@
     
     if ((indexPath.section == Section_User) && (indexPath.row == 0))
     {
+
         cell = [tableView dequeueReusableCellWithIdentifier:@"UserCell" forIndexPath:indexPath];
         UserCell *userCell = (UserCell*)cell;
         
-        if (_sharedUserManagement.isLogined) {
+        //用户曾经登陆过
+        if (_appData.WX_OpenId != nil) {
             
-            //设置用户昵称
-            userCell.lbl_UserName.text = _sharedUserManagement.nickName;
+            userCell.lbl_UserName.text = _appData.WX_NickName;
+            NSURLRequest *request = [NSURLRequest requestWithURL: _appData.WX_HeadImgUrl];
             
-            //设置用户头像图片
-            NSURLRequest *request = [NSURLRequest requestWithURL: _sharedUserManagement.headerIconUrl];
             UIImage *placeholderImage = [UIImage imageNamed:@"Icon-72.png"];
-            
             __weak UserCell *weakCell = userCell;
             
             [userCell.img_User setImageWithURLRequest:request
                                      placeholderImage:placeholderImage
                                               success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image)
              {
-                 [weakCell.img_User setImage:image];
+                 [weakCell.img_User setImage:[image roundedRectWith:32]];
                  [weakCell setNeedsLayout];
              }failure:nil];
-            
-        }else{
-            
-            userCell.img_User.image = [UIImage imageNamed:@"Icon-72.png"];
-            userCell.lbl_UserName.text = @"未登录";
         }
-
+        //用户未登陆过
+        else{
+            
+            userCell.img_User.image = [[UIImage imageNamed:@"Icon-72.png"] roundedRectWith:2];;
+            userCell.lbl_UserName.text = @"使用微信登陆";
+        }
+        
+        userCell.lbl_coins.text = [NSString stringWithFormat:@"%ld", (long)_appData.coins];
     }
     
     return cell;
@@ -179,19 +180,19 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ((indexPath.section == Section_User) && (indexPath.row == 0)){
+        
+        [_sharedUserManagement login:LoginTypeWeChat];
+    }
+    
     if ((indexPath.section == Section_Clear) && (indexPath.row == 0))
     {
         [self performSegueWithIdentifier:@"showClearCache" sender:nil];
     }
     
-    /*if ((indexPath.section == 1) && (indexPath.row == 1))
+    if ((indexPath.section == Section_PlayHistory) && (indexPath.row == 0))
     {
-        [self performSegueWithIdentifier:@"showPurchasedSongs" sender:nil];
-    }*/
-    
-    if ((indexPath.section == Section_User) && (indexPath.row == 0)){
-
-        [_sharedUserManagement login:LoginTypeWeChat];
+        //[self performSegueWithIdentifier:@"showPurchasedSongs" sender:nil];
     }
 }
 
@@ -227,25 +228,29 @@
 
 -(void) onUserDidLogin
 {
-     NSIndexPath* indexPath = [NSIndexPath indexPathForRow:0 inSection:Section_User];
+    //取得 UserCell
+    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:0 inSection:Section_User];
+    UserCell* userCell = (UserCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+    
+    //更新用户昵称
+    userCell.lbl_UserName.text = _sharedUserManagement.nickName;
      
-     UserCell* userCell = (UserCell*)[self.tableView cellForRowAtIndexPath:indexPath];
-     userCell.lbl_UserName.text = _sharedUserManagement.nickName;
-     
-     //Updating Cell Image
-     NSURLRequest *request = [NSURLRequest requestWithURL: _sharedUserManagement.headerIconUrl];
-     UIImage *placeholderImage = [UIImage imageNamed:@"Icon-72.png"];
-     
-     __weak UserCell *weakCell = userCell;
-     
-     [userCell.img_User setImageWithURLRequest:request
-     placeholderImage:placeholderImage
-     success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image)
-     {
-     [weakCell.img_User setImage:image];
-     [weakCell setNeedsLayout];
-     
-     } failure:nil];
+    //更新用户头像
+    NSURLRequest *request = [NSURLRequest requestWithURL: _sharedUserManagement.headerIconUrl];
+    UIImage *placeholderImage = [UIImage imageNamed:@"Icon-72.png"];
+    
+    __weak UserCell *weakCell = userCell;
+    
+    [userCell.img_User setImageWithURLRequest:request placeholderImage:placeholderImage success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image)
+    {
+        [weakCell.img_User setImage:image];
+        [weakCell setNeedsLayout];
+    
+    }
+                                      failure:nil];
+    
+    
+    
 }
 
 

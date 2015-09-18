@@ -35,6 +35,12 @@
 @property (nonatomic, assign) BOOL isAutoPurchase;
 @property (nonatomic, assign) BOOL isAutoPlay;
 
+//@property (nonatomic, retain) NSString              *WX_AccessToken;
+@property (nonatomic, retain) NSString              *WX_OpenId;
+@property (nonatomic, retain) NSString              *WX_NickName;
+@property (nonatomic, retain) NSURL                 *WX_HeadImgUrl;
+
+
 +(instancetype)sharedAppData;
 
 -(void)save;

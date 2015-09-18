@@ -145,7 +145,23 @@
     //enable IAP
     [[CoinIAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
         if (success) {
-            _products = products;
+            
+            _coin_products = [[NSMutableArray alloc]init];
+            _subscription_products = [[NSMutableArray alloc]init];
+            
+            for (SKProduct *product in products) {
+                
+                //拆分金币和订阅类型IAP
+                if ([product.productIdentifier rangeOfString:@"coins"].length > 0) {
+                    
+                    [_coin_products addObject:product];
+                    
+                }else if ([product.productIdentifier rangeOfString:@"subscription"].length > 0){
+                    
+                    [_subscription_products addObject:product];
+                }
+            }
+            
         }
     }];
 }

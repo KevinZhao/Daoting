@@ -8,6 +8,12 @@
 
 #import "NewStoreViewController.h"
 
+#define Number_Of_Section 3
+
+#define Section_Get_Coin        0
+#define Section_Subscription    1
+#define Section_Purchase_Coin   2
+
 @implementation NewStoreViewController
 
 - (void)viewWillAppear:(BOOL)animated
@@ -18,16 +24,12 @@
     
     //Register observer for IAP helper notification
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePurchaseCompleted:) name:IAPHelperProductPurchasedNotification object:nil];
-    
-    [self setupTimer];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
-    [_timer invalidate];
 }
 
 - (void)viewDidLoad
@@ -38,47 +40,30 @@
     _appDelegate = [UIApplication sharedApplication].delegate;
 }
 
--(void)setupTimer
-{
-    [_timer invalidate];
-    
-    _timer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(tick) userInfo:nil repeats:YES];
-    
-    [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
-}
-
--(void)tick
-{
-    CurrentCoinCell* currentCoinCell = (CurrentCoinCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
-    currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%ld 枚", (long)_appData.coins];
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (void)buy:(NSInteger) tag
+- (void)buyCoins:(NSInteger) tag
 {
-    //self.tableView.allowsSelection = NO;
-    
     //Check if IAP items had been loaded
-    if (_appDelegate.products != nil) {
+    if (_appDelegate.coin_products != nil) {
         
-        _products = _appDelegate.products;
+        _coinProducts = _appDelegate.coin_products;
         
         //sort by price
         NSSortDescriptor *sorter = [[NSSortDescriptor alloc] initWithKey:@"price" ascending:YES];
         NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:&sorter count:1];
-        NSArray *sortedArray = [_products sortedArrayUsingDescriptors:sortDescriptors];
+        NSArray *sortedArray = [_coinProducts sortedArrayUsingDescriptors:sortDescriptors];
         
-        _products = sortedArray;
+        _coinProducts = sortedArray;
         
         //purchase based on user selection
         CoinIAPHelper *helper = [CoinIAPHelper sharedInstance];
         helper.delegate = self;
-        [helper buyProduct:_products[tag]];
+        [helper buyProduct:_coinProducts[tag]];
         
         _spinner = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
         
@@ -89,7 +74,43 @@
         [self.view addSubview:_spinner];
         
     }else{
-                
+        
+        //indicate the iTunes Store can not been connected
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"无法连接iTunes Store，请重试" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        
+        [alert show];
+    }
+}
+
+- (void)buySubscription:(NSInteger) tag
+{
+    //Check if IAP items had been loaded
+    if (_appDelegate.subscription_products != nil) {
+        
+        _subscriptionProducts = _appDelegate.subscription_products;
+        
+        //sort by price
+        NSSortDescriptor *sorter = [[NSSortDescriptor alloc] initWithKey:@"price" ascending:YES];
+        NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:&sorter count:1];
+        NSArray *sortedArray = [_subscriptionProducts sortedArrayUsingDescriptors:sortDescriptors];
+        
+        _subscriptionProducts = sortedArray;
+        
+        //purchase based on user selection
+        CoinIAPHelper *helper = [CoinIAPHelper sharedInstance];
+        helper.delegate = self;
+        [helper buyProduct:_subscriptionProducts[tag]];
+        
+        _spinner = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+        
+        _spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+        _spinner.color = _appDelegate.defaultColor_light;
+        
+        [_spinner startAnimating];
+        [self.view addSubview:_spinner];
+        
+    }else{
+        
         //indicate the iTunes Store can not been connected
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"无法连接iTunes Store，请重试" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         
@@ -103,7 +124,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 4;
+    return Number_Of_Section;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -112,17 +133,17 @@
     int rowNumber = 0;
     
     switch (section) {
-        case 1:
-            rowNumber = 1;
-            break;
-        case 2:
+        case Section_Get_Coin:
             rowNumber = 2;
             break;
-        case 3:
+        case Section_Subscription:
+            rowNumber = 1;
+            break;
+        case Section_Purchase_Coin:
             rowNumber = 6;
             break;
-        case 0:
-            rowNumber = 1;
+        //case 0:
+        //    rowNumber = 1;
         default:
             break;
     }
@@ -135,17 +156,17 @@
     NSString *sectionTitle = @"";
     
     switch (section) {
-        case 0:
-            sectionTitle = @"剩余金币";
-            break;
-        case 1:
+        case Section_Get_Coin:
             sectionTitle = @"获取金币";
             break;
-        case 2:
+        case Section_Subscription:
+            sectionTitle = @"订阅";
+            break;
+        case Section_Purchase_Coin:
             sectionTitle = @"购买金币";
             break;
-        case 3:
-            sectionTitle = @"订阅";
+        //case 3:
+            //sectionTitle = @"订阅";
         default:
             break;
     }
@@ -159,18 +180,8 @@
 {
     UITableViewCell *cell;
     
-    //1. Current Coin
-    if (indexPath.section == 1) {
-        
-        CurrentCoinCell *currentCoinCell = [tableView dequeueReusableCellWithIdentifier:@"CurrentCoinCell" forIndexPath:indexPath];
-        
-        currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%ld 枚", (long)_appData.coins];
-        
-        cell = currentCoinCell;
-    }
-    
-    //2. Share and Checkin
-    if (indexPath.section == 2) {
+    // Section_Get_Coin
+    if (indexPath.section == Section_Get_Coin) {
         
         ShareCell *shareCell = [tableView dequeueReusableCellWithIdentifier:@"ShareCell" forIndexPath:indexPath];
         
@@ -193,7 +204,8 @@
         cell = shareCell;
     }
     
-    if (indexPath.section == 3) {
+    // Section_Purchase_Coin
+    if (indexPath.section == Section_Purchase_Coin) {
         
         PurchaseCoinCell *purchaseCoinCell = [tableView dequeueReusableCellWithIdentifier:@"PurchaseCoinCell" forIndexPath:indexPath];
         
@@ -275,8 +287,8 @@
 
     }
     
-    //4. sub
-    if (indexPath.section == 0) {
+    // Section_Subscription
+    if (indexPath.section == Section_Subscription) {
         ShareCell *shareCell = [tableView dequeueReusableCellWithIdentifier:@"ShareCell" forIndexPath:indexPath];
         
         //Check in
@@ -294,14 +306,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"enter select row at indexPath");
-    
-    if (indexPath.section == 0) {
+    if (indexPath.section == Section_Subscription) {
         
     }
     
-    //2. Share and Checkin
-    if (indexPath.section == 2) {
+    //2. Section_Get_coin
+    if (indexPath.section == Section_Get_Coin) {
         //Check in
         if (indexPath.row == 0) {
             [self dailyCheckin];
@@ -312,12 +322,16 @@
         }
         
     }
-    //3. Purchase
-    if (indexPath.section == 3) {
+    //3. Section_Purchase_Coin
+    if (indexPath.section == Section_Purchase_Coin) {
         
-            [self buy:indexPath.row];
-        
-        }
+        [self buyCoins:indexPath.row];
+    }
+    
+    // Section_Subscription
+    if (indexPath.section == Section_Subscription) {
+        [self buySubscription:indexPath.row];
+    }
 }
 
 
@@ -326,53 +340,69 @@
 - (void) handlePurchaseCompleted: (NSNotification *)notification;
 {
     NSString *productIdentifier = notification.object;
-    int purchasedCoins = 0;
     
-    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.10000coins_new"]) {
-        purchasedCoins = 10000;
-    }
-    
-    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.500coins"]) {
-        if (_appData.purchaseTimes == 0) {
-            purchasedCoins = 1000;
-            _appData.purchaseTimes ++;
-            [self.tableView reloadData];
-        }else{
-            purchasedCoins = 500;
+    //购买金币
+    if ([productIdentifier rangeOfString:@"coins"].length > 0) {
+        int purchasedCoins = 0;
+        
+        if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.10000coins_new"]) {
+            purchasedCoins = 10000;
         }
-    }
-    
-    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.25000coins_new"]) {
-        purchasedCoins = 25000;
-    }
-    
-    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.1000coins"]) {        
-        if (_appData.purchaseTimes == 0) {
-            purchasedCoins = 2000;
-            _appData.purchaseTimes ++;
-            [self.tableView reloadData];
-        }else{
-            purchasedCoins = 1000;
+        
+        if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.500coins"]) {
+            if (_appData.purchaseTimes == 0) {
+                purchasedCoins = 1000;
+                _appData.purchaseTimes ++;
+                [self.tableView reloadData];
+            }else{
+                purchasedCoins = 500;
+            }
         }
+        
+        if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.25000coins_new"]) {
+            purchasedCoins = 25000;
+        }
+        
+        if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.1000coins"]) {
+            if (_appData.purchaseTimes == 0) {
+                purchasedCoins = 2000;
+                _appData.purchaseTimes ++;
+                [self.tableView reloadData];
+            }else{
+                purchasedCoins = 1000;
+            }
+        }
+        
+        if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.2500coins"]) {
+            purchasedCoins = 2500;
+        }
+        
+        if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.5000coins"]) {
+            purchasedCoins = 5000;
+        }
+        
+        _appData.coins = _appData.coins + purchasedCoins;
+        
+        //record purchase coins activity to database
+        [[PurchaseRecordsHelper sharedInstance] purchaseCoins:purchasedCoins];
+        
+        [_appData save];
+        [_appData saveToiCloud];
+        
+        [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"成功购买金币 %d 枚", purchasedCoins] type:TSMessageNotificationTypeSuccess];
     }
+    //购买订阅
+    else if ([productIdentifier rangeOfString:@"subscription"].length > 0){
+        
+        if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.subscription.1month"]) {
+            
+        [TSMessage showNotificationWithTitle:@"已成功订阅1个月的无限畅听" type:TSMessageNotificationTypeSuccess];
+            
+        //todo: 记录订阅购买
+            
+        }
     
-    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.2500coins"]) {
-        purchasedCoins = 2500;
     }
-    
-    if ([productIdentifier isEqualToString:@"DSoft.com.Daoting.5000coins"]) {
-        purchasedCoins = 5000;
-    }
-    
-    _appData.coins = _appData.coins + purchasedCoins;
-    
-    //record purchase coins activity to database
-    [[PurchaseRecordsHelper sharedInstance] purchaseCoins:purchasedCoins];
-    
-    [_appData save];
-    [_appData saveToiCloud];
-
-    [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"成功购买金币 %d 枚", purchasedCoins] type:TSMessageNotificationTypeSuccess];
 }
 
 - (void)onLoadedProducts
@@ -404,8 +434,8 @@
         [_appData save];
         [_appData saveToiCloud];
         
-        CurrentCoinCell* currentCoinCell = (CurrentCoinCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
-        currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%ld 枚", (long)_appData.coins];
+        //CurrentCoinCell* currentCoinCell = (CurrentCoinCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+        //currentCoinCell.lbl_currentCoins.text = [NSString stringWithFormat:@"%ld 枚", (long)_appData.coins];
         
         NSString *notification = @"您获得了 10金币";
         [TSMessage showNotificationInViewController:self title:notification subtitle:nil type:TSMessageNotificationTypeSuccess];

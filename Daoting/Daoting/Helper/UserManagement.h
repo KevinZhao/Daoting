@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AFNetWorking.h"
 //#import <TencentOpenAPI/TencentOAuth.h>
 #import "WXApi.h"
+#import "AppData.h"
 
 #define LoginTypeQQ         0
 #define LoginTypeWeChat     1
@@ -29,6 +31,8 @@
     NSString*   _WXcode;
     NSString*   _nickName;
     UIImage*    _wxHeadImg;
+    
+    AppData*    _sharedAppData;
 }
 
 @property (nonatomic, assign) BOOL       isLogined;

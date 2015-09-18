@@ -8,8 +8,7 @@
 
 #import "IAPHelper.h"
 
-@interface IAPHelper ()
-@end
+NSString *const kSubscriptionExpirationDateKey = @"ExpirationDate";
 
 @implementation IAPHelper
 
@@ -35,6 +34,73 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     _productsRequest.delegate = self;
     [_productsRequest start];
     
+}
+
+-(int)daysRemainingOnSubscription {
+    
+    NSDate * expiryDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExpirationDate"];
+    
+    NSDateFormatter *dateformatter = [NSDateFormatter new];
+    [dateformatter setDateFormat:@"dd MM yyyy"];
+    NSTimeInterval timeInt = [[dateformatter dateFromString:[dateformatter stringFromDate:expiryDate]] timeIntervalSinceDate: [dateformatter dateFromString:[dateformatter stringFromDate:[NSDate date]]]]; //Is this too complex and messy?
+    int days = timeInt / 60 / 60 / 24;
+    
+    if (days >= 0) {
+        return days;
+    } else {
+        return 0;
+    }
+}
+-(NSString *)getExpirationDateString {
+    if ([self daysRemainingOnSubscription] > 0) {
+        NSDate *today = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExpirationDate"];
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"dd/MM/yyyy"];
+        return [NSString stringWithFormat:@"Subscribed! \nExpires: %@ (%i Days)",[dateFormat stringFromDate:today],[self daysRemainingOnSubscription]];
+    } else {
+        return @"Not Subscribed";
+    }
+}
+
+-(NSDate *)getExpirationDateForMonths:(int)months {
+    
+    NSDate *originDate;
+    
+    if ([self daysRemainingOnSubscription] > 0) {
+        originDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExpirationDate"];
+    } else {
+        originDate = [NSDate date];
+    }
+	NSDateComponents *dateComp = [[NSDateComponents alloc] init];
+	[dateComp setMonth:months];
+	[dateComp setDay:1]; //an extra days grace because I am nice...
+	return [[NSCalendar currentCalendar] dateByAddingComponents:dateComp toDate:originDate options:0];
+}
+
+-(void)purchaseSubscriptionWithMonths:(int)months {
+    
+    /*PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+    
+    [query getObjectInBackgroundWithId:[PFUser currentUser].objectId block:^(PFObject *object, NSError *error) {
+        
+        NSDate * serverDate = [[object objectForKey:@"ExpirationDate"] lastObject];
+        NSDate * localDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExpirationDate"];
+        
+        if ([serverDate compare:localDate] == NSOrderedDescending) { //if server date is more recent, update local date
+            [[NSUserDefaults standardUserDefaults] setObject:serverDate forKey:@"ExpirationDate"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+        
+        NSDate * expiryDate = [self getExpiryDateForMonths:months];
+        
+        [object addObject:expiryDate forKey:@"ExpirationDate"];
+        [object saveInBackground];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:expiryDate forKey:@"ExpirationDate"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        NSLog(@"Subscription Complete!");
+    }];*/
 }
 
 #pragma mark - SKProductsRequestDelegate
@@ -137,5 +203,8 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     [[NSNotificationCenter defaultCenter] postNotificationName:IAPHelperProductPurchasedNotification object:productIdentifier userInfo:nil];
 }
 
+- (void)restoreCompletedTransactions {
+    [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
+}
 
 @end
