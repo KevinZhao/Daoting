@@ -13,19 +13,19 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-<<<<<<< HEAD
+<<<<<<< HEAD:Daoting/Pods/Pods.xcodeproj/xcuserdata/Kevin.xcuserdatad/xcschemes/Pods-AFNetworking.xcscheme
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8D87E641E20B432F00A585E7"
-               BuildableName = "libPods.a"
-               BlueprintName = "Pods"
+               BlueprintIdentifier = "FE8EEC3DBEBB509473597B9C"
+               BuildableName = "libPods-AFNetworking.a"
+               BlueprintName = "Pods-AFNetworking"
                ReferencedContainer = "container:Pods.xcodeproj">
 =======
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '322BBD59D10516D4085A6C48'
-               BlueprintName = 'Pods'
+               BlueprintIdentifier = '668716AD0095120E3183C9C4'
+               BlueprintName = 'AFNetworking'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libPods.a'>
->>>>>>> origin/master
+               BuildableName = 'libAFNetworking.a'>
+>>>>>>> origin/master:Daoting/Pods/Pods.xcodeproj/xcuserdata/Kevin.xcuserdatad/xcschemes/AFNetworking.xcscheme
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
