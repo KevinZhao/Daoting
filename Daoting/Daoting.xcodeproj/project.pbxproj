@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0A03A23819B9FFD700DD8D6B /* AudioCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A03A23719B9FFD700DD8D6B /* AudioCategory.m */; };
+		0A05B9F91BAC45FB0031870C /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A05B9F81BAC45FB0031870C /* libsqlite3.tbd */; };
+		0A05B9FB1BAC46180031870C /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A05B9FA1BAC46180031870C /* libz.1.2.5.tbd */; };
+		0A05B9FD1BAC4EAD0031870C /* libiconv.2.4.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A05B9FC1BAC4EAD0031870C /* libiconv.2.4.0.tbd */; };
+		0A05BA011BAC4F070031870C /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A05BA001BAC4F070031870C /* libstdc++.tbd */; };
+		0A05BA031BAC4F1C0031870C /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A05BA021BAC4F1C0031870C /* libicucore.tbd */; };
 		0A1FA99B1958556C002F48EA /* qr_toolbar_more_hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA9991958556C002F48EA /* qr_toolbar_more_hl@2x.png */; };
 		0A1FA99C1958556C002F48EA /* qr_toolbar_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA99A1958556C002F48EA /* qr_toolbar_more@2x.png */; };
 		0A1FA99F19585612002F48EA /* qr_toolbar_more_hl.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA99D19585612002F48EA /* qr_toolbar_more_hl.png */; };
@@ -43,11 +48,7 @@
 		0A98D62E1920AD7200E46EB9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A98D62D1920AD7200E46EB9 /* SystemConfiguration.framework */; };
 		0A98D6301920AD7A00E46EB9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A98D62F1920AD7A00E46EB9 /* QuartzCore.framework */; };
 		0A98D6321920AD8200E46EB9 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A98D6311920AD8200E46EB9 /* CoreTelephony.framework */; };
-		0A98D6341920AD9000E46EB9 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A98D6331920AD9000E46EB9 /* libicucore.dylib */; };
-		0A98D6361920AD9B00E46EB9 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A98D6351920AD9B00E46EB9 /* libz.1.2.5.dylib */; };
 		0A98D6381920ADA300E46EB9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A98D6371920ADA300E46EB9 /* Security.framework */; };
-		0A98D63A1920ADAC00E46EB9 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A98D6391920ADAC00E46EB9 /* libstdc++.dylib */; };
-		0A98D63C1920ADB400E46EB9 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A98D63B1920ADB400E46EB9 /* libsqlite3.dylib */; };
 		0A98D63E1920ADBD00E46EB9 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A98D63D1920ADBD00E46EB9 /* CoreMotion.framework */; };
 		0A98D6401920ADC400E46EB9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A98D63F1920ADC400E46EB9 /* CoreLocation.framework */; };
 		0A98D6421920ADCC00E46EB9 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A98D6411920ADCC00E46EB9 /* AssetsLibrary.framework */; };
@@ -63,7 +64,6 @@
 		0AAF6194196AE4A600C33E52 /* playingsong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AAF6193196AE4A600C33E52 /* playingsong@2x.png */; };
 		0ABB4283192E321C007D8BAC /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB4282192E321C007D8BAC /* Icon-72@2x.png */; };
 		0AC69C5E1946F452004C6A67 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC69C5D1946F452004C6A67 /* DACircularProgressView.m */; };
-		0AE0142A1B417E9D00473471 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AE014291B417E9D00473471 /* libiconv.dylib */; };
 		0AE0142C1B417F4200473471 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0AE0142B1B417F4200473471 /* TencentOpenApi_IOS_Bundle.bundle */; };
 		0AE46B0E1921035E00FA30F3 /* SongTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE46B0D1921035E00FA30F3 /* SongTableViewController.m */; };
 		0AEDBF361A03D28900F6A6AA /* Pingshu_AlbumList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AEDBF331A03D28900F6A6AA /* Pingshu_AlbumList.plist */; };
@@ -77,7 +77,6 @@
 		0AEFC3801988DDC800CECC93 /* tabbar_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFC37F1988DDC800CECC93 /* tabbar_setting@2x.png */; };
 		0AEFC3821988E17E00CECC93 /* bag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEFC3811988E17E00CECC93 /* bag@2x.png */; };
 		0AFB65A719245BD4000F2AE6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AFB65A619245BD4000F2AE6 /* StoreKit.framework */; };
-		236C526B19A63169009595D9 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 236C526A19A63169009595D9 /* libz.dylib */; };
 		5933AD5B18D03EC1001D707B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933AD5A18D03EC1001D707B /* CoreGraphics.framework */; };
 		5933AD5D18D03EC1001D707B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933AD5C18D03EC1001D707B /* UIKit.framework */; };
 		5933AD6318D03EC1001D707B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5933AD6118D03EC1001D707B /* InfoPlist.strings */; };
@@ -125,6 +124,12 @@
 /* Begin PBXFileReference section */
 		0A03A23619B9FFD700DD8D6B /* AudioCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioCategory.h; path = DataStructure/AudioCategory.h; sourceTree = "<group>"; };
 		0A03A23719B9FFD700DD8D6B /* AudioCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioCategory.m; path = DataStructure/AudioCategory.m; sourceTree = "<group>"; };
+		0A05B9F81BAC45FB0031870C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		0A05B9FA1BAC46180031870C /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
+		0A05B9FC1BAC4EAD0031870C /* libiconv.2.4.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.4.0.tbd; path = usr/lib/libiconv.2.4.0.tbd; sourceTree = SDKROOT; };
+		0A05B9FE1BAC4EF10031870C /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		0A05BA001BAC4F070031870C /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		0A05BA021BAC4F1C0031870C /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		0A088FC719CF24EA00047DE8 /* XGSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGSetting.h; sourceTree = "<group>"; };
 		0A1FA9991958556C002F48EA /* qr_toolbar_more_hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr_toolbar_more_hl@2x.png"; sourceTree = "<group>"; };
 		0A1FA99A1958556C002F48EA /* qr_toolbar_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr_toolbar_more@2x.png"; sourceTree = "<group>"; };
@@ -175,11 +180,7 @@
 		0A98D62D1920AD7200E46EB9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0A98D62F1920AD7A00E46EB9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0A98D6311920AD8200E46EB9 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
-		0A98D6331920AD9000E46EB9 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
-		0A98D6351920AD9B00E46EB9 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		0A98D6371920ADA300E46EB9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		0A98D6391920ADAC00E46EB9 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
-		0A98D63B1920ADB400E46EB9 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		0A98D63D1920ADBD00E46EB9 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		0A98D63F1920ADC400E46EB9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		0A98D6411920ADCC00E46EB9 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -199,7 +200,6 @@
 		0ABB4282192E321C007D8BAC /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		0AC69C5C1946F452004C6A67 /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
 		0AC69C5D1946F452004C6A67 /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
-		0AE014291B417E9D00473471 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		0AE0142B1B417F4200473471 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
 		0AE35F7619B44FA400649CB1 /* Daoting.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Daoting.entitlements; sourceTree = "<group>"; };
 		0AE46B0C1921035E00FA30F3 /* SongTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongTableViewController.h; sourceTree = "<group>"; };
@@ -215,7 +215,6 @@
 		0AEFC37F1988DDC800CECC93 /* tabbar_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_setting@2x.png"; sourceTree = "<group>"; };
 		0AEFC3811988E17E00CECC93 /* bag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bag@2x.png"; sourceTree = "<group>"; };
 		0AFB65A619245BD4000F2AE6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		236C526A19A63169009595D9 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		52869722CFE7303C977470E4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		5933AD5518D03EC1001D707B /* Daoting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daoting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5933AD5818D03EC1001D707B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -293,12 +292,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A05BA031BAC4F1C0031870C /* libicucore.tbd in Frameworks */,
+				0A05BA011BAC4F070031870C /* libstdc++.tbd in Frameworks */,
+				0A05B9FD1BAC4EAD0031870C /* libiconv.2.4.0.tbd in Frameworks */,
+				0A05B9FB1BAC46180031870C /* libz.1.2.5.tbd in Frameworks */,
+				0A05B9F91BAC45FB0031870C /* libsqlite3.tbd in Frameworks */,
 				0A98D6321920AD8200E46EB9 /* CoreTelephony.framework in Frameworks */,
-				0AE0142A1B417E9D00473471 /* libiconv.dylib in Frameworks */,
-				0A98D63C1920ADB400E46EB9 /* libsqlite3.dylib in Frameworks */,
 				0A3C7FF219B184FB00686C5C /* WeChatConnection.framework in Frameworks */,
 				0A98D62E1920AD7200E46EB9 /* SystemConfiguration.framework in Frameworks */,
-				236C526B19A63169009595D9 /* libz.dylib in Frameworks */,
 				0A3C7FFC19B184FB00686C5C /* libXG-SDK.a in Frameworks */,
 				0A7A8CD819590B4C003FAA92 /* CFNetwork.framework in Frameworks */,
 				0A3C7FF319B184FB00686C5C /* AGCommon.framework in Frameworks */,
@@ -314,10 +315,7 @@
 				0A3C7FF819B184FB00686C5C /* libSinaWeiboSDK.a in Frameworks */,
 				0A98D6401920ADC400E46EB9 /* CoreLocation.framework in Frameworks */,
 				0A98D63E1920ADBD00E46EB9 /* CoreMotion.framework in Frameworks */,
-				0A98D63A1920ADAC00E46EB9 /* libstdc++.dylib in Frameworks */,
 				0A98D6381920ADA300E46EB9 /* Security.framework in Frameworks */,
-				0A98D6361920AD9B00E46EB9 /* libz.1.2.5.dylib in Frameworks */,
-				0A98D6341920AD9000E46EB9 /* libicucore.dylib in Frameworks */,
 				0A3C7FF119B184FB00686C5C /* SinaWeiboConnection.framework in Frameworks */,
 				5933AD5B18D03EC1001D707B /* CoreGraphics.framework in Frameworks */,
 				5933AD5D18D03EC1001D707B /* UIKit.framework in Frameworks */,
@@ -597,9 +595,13 @@
 		5933AD5718D03EC1001D707B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A05BA021BAC4F1C0031870C /* libicucore.tbd */,
+				0A05BA001BAC4F070031870C /* libstdc++.tbd */,
+				0A05B9FE1BAC4EF10031870C /* libstdc++.6.0.9.tbd */,
+				0A05B9FC1BAC4EAD0031870C /* libiconv.2.4.0.tbd */,
+				0A05B9FA1BAC46180031870C /* libz.1.2.5.tbd */,
+				0A05B9F81BAC45FB0031870C /* libsqlite3.tbd */,
 				0AE0142B1B417F4200473471 /* TencentOpenApi_IOS_Bundle.bundle */,
-				0AE014291B417E9D00473471 /* libiconv.dylib */,
-				236C526A19A63169009595D9 /* libz.dylib */,
 				0A7A8CD719590B4C003FAA92 /* CFNetwork.framework */,
 				0AFB65A619245BD4000F2AE6 /* StoreKit.framework */,
 				0A98D6471920ADF600E46EB9 /* MediaPlayer.framework */,
@@ -608,11 +610,7 @@
 				0A98D6411920ADCC00E46EB9 /* AssetsLibrary.framework */,
 				0A98D63F1920ADC400E46EB9 /* CoreLocation.framework */,
 				0A98D63D1920ADBD00E46EB9 /* CoreMotion.framework */,
-				0A98D63B1920ADB400E46EB9 /* libsqlite3.dylib */,
-				0A98D6391920ADAC00E46EB9 /* libstdc++.dylib */,
 				0A98D6371920ADA300E46EB9 /* Security.framework */,
-				0A98D6351920AD9B00E46EB9 /* libz.1.2.5.dylib */,
-				0A98D6331920AD9000E46EB9 /* libicucore.dylib */,
 				0A98D6311920AD8200E46EB9 /* CoreTelephony.framework */,
 				0A98D62F1920AD7A00E46EB9 /* QuartzCore.framework */,
 				0A98D62D1920AD7200E46EB9 /* SystemConfiguration.framework */,
@@ -701,7 +699,7 @@
 		5933AD4D18D03EC1001D707B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "赵 克鸣";
 				TargetAttributes = {
 					5933AD5418D03EC1001D707B = {
@@ -931,6 +929,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Keming Zhao (8P28493298)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -971,6 +971,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Keming Zhao (8P28493298)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -995,6 +996,7 @@
 				CODE_SIGN_ENTITLEMENTS = Daoting/Daoting.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Keming Zhao (8P28493298)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Keming Zhao (8P28493298)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Daoting/Library/ShareSDK/Connection/**",
@@ -1006,7 +1008,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Daoting/Daoting-Prefix.pch";
 				INFOPLIST_FILE = "Daoting/Daoting-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Daoting/Library/XGPush",
@@ -1014,16 +1016,10 @@
 					"$(PROJECT_DIR)/Daoting/Library/ShareSDK/Extend/WeChatSDK",
 					"$(PROJECT_DIR)/Daoting/Library/ShareSDK/",
 				);
+				LINK_WITH_STANDARD_LIBRARIES = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
-					"-l\"Pods-AFNetworking\"",
-					"-l\"Pods-HexColors\"",
-					"-l\"Pods-LBBlurredImage\"",
-					"-l\"Pods-MarqueeLabel\"",
-					"-l\"Pods-Shimmer\"",
-					"-l\"Pods-StreamingKit\"",
-					"-l\"Pods-TSMessages\"",
 					"-framework",
 					"\"Accelerate\"",
 					"-framework",
@@ -1044,7 +1040,10 @@
 					"\"SystemConfiguration\"",
 					"-framework",
 					"\"UIKit\"",
+					"-v",
+					"-w",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "DSoft.com.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9954d69e-c00a-4340-87b3-a668d9b3ddb5";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1062,6 +1061,7 @@
 				CODE_SIGN_ENTITLEMENTS = Daoting/Daoting.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Keming Zhao (8P28493298)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Keming Zhao (8P28493298)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Daoting/Library/ShareSDK/Connection/**",
@@ -1073,7 +1073,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Daoting/Daoting-Prefix.pch";
 				INFOPLIST_FILE = "Daoting/Daoting-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Daoting/Library/XGPush",
@@ -1081,6 +1081,7 @@
 					"$(PROJECT_DIR)/Daoting/Library/ShareSDK/Extend/WeChatSDK",
 					"$(PROJECT_DIR)/Daoting/Library/ShareSDK/",
 				);
+				LINK_WITH_STANDARD_LIBRARIES = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1112,6 +1113,7 @@
 					"-framework",
 					"\"UIKit\"",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "DSoft.com.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9954d69e-c00a-4340-87b3-a668d9b3ddb5";
 				TARGETED_DEVICE_FAMILY = "1,2";

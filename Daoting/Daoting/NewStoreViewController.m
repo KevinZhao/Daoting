@@ -89,9 +89,7 @@
         [self.view addSubview:_spinner];
         
     }else{
-        
-        //self.tableView.allowsSelection = YES;
-        
+                
         //indicate the iTunes Store can not been connected
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"无法连接iTunes Store，请重试" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         
