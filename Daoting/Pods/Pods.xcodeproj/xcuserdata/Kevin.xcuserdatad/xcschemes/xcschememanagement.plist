@@ -2,44 +2,87 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>HexColors.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>LBBlurredImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MarqueeLabel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Shimmer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>StreamingKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>TSMessages.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2A554C0468824CF01C05F49B</key>
+		<key>0233E0CE5C6B878CBC83B3C3F62AECDD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6C5714404294E954B1B9CAD9</key>
+		<key>02BB332F3F29A3B604AB8BDA3DBE54F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8D87E641E20B432F00A585E7</key>
+		<key>1217D7BA3856D980021BFE368AFBF213</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B25FE07D8C4E8E2E7161783F</key>
+		<key>85498067559CE3D76F8EFE60E3C1831D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BDD770E9B97F4F0580EF0552</key>
+		<key>8BDF462390502D7365D589EE798E05EF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D7B1859200BBB98F4F74100C</key>
+		<key>9FBD4CB6E0FD19A0B981435EFE674BEF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FE2A77E183EB51C275E81344</key>
+		<key>C26472D700926604CFAC75216E10CF34</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FE8EEC3DBEBB509473597B9C</key>
+		<key>F01560F3AE608C05E80FA39F167137DD</key>
 		<dict>
 			<key>primary</key>
 			<true/>

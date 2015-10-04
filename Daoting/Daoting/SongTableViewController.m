@@ -292,7 +292,7 @@
 
 - (void)shareAlbum
 {    
-    id<ISSContent> publishContent = [ShareSDK content:[NSString stringWithFormat:@"评书、有声书都有,我正在听 %@的《%@》%@", _album.artistName,_album.title, _appDelegate.appUrlinAws]
+    /*id<ISSContent> publishContent = [ShareSDK content:[NSString stringWithFormat:@"评书、有声书都有,我正在听 %@的《%@》%@", _album.artistName,_album.title, _appDelegate.appUrlinAws]
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithUrl:[_album.imageUrl absoluteString]]
                                                 title:[NSString stringWithFormat:@"评书、有声书都有,我正在听 %@的《%@》%@", _album.artistName,_album.title, _appDelegate.appUrlinAws]
@@ -316,7 +316,7 @@
                                  {
                                      //NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
                                  }
-                             }];
+                             }];*/
 }
 
 - (UITabBarController *)getTabbarViewController

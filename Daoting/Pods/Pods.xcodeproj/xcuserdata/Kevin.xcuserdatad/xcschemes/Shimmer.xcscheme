@@ -13,19 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-<<<<<<< HEAD:Daoting/Pods/Pods.xcodeproj/xcuserdata/Kevin.xcuserdatad/xcschemes/Pods-LBBlurredImage.xcscheme
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BDD770E9B97F4F0580EF0552"
-               BuildableName = "libPods-LBBlurredImage.a"
-               BlueprintName = "Pods-LBBlurredImage"
-               ReferencedContainer = "container:Pods.xcodeproj">
-=======
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '9E2F4F0CF47ABE8C30CD4625'
+               BlueprintIdentifier = 'E15A756C173C2B575B540365'
                BlueprintName = 'Shimmer'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libShimmer.a'>
->>>>>>> origin/master:Daoting/Pods/Pods.xcodeproj/xcuserdata/Kevin.xcuserdatad/xcschemes/Shimmer.xcscheme
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

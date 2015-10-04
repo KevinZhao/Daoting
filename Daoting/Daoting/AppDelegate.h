@@ -18,12 +18,10 @@
 #import "StoreKit/StoreKit.h"
 #import "CoinIAPHelper.h"
 #import "AppDelegate.h"
-#import <ShareSDK/ShareSDK.h>
 #import "AFNetworkActivityIndicatorManager.h"
 #import "XGPush.h"
 #import "STKAudioPlayerHelper.h"
 #import "UserManagement.h"
-//#import <TencentOpenAPI/TencentOAuth.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {

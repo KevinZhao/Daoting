@@ -8,11 +8,11 @@
 
 #import "NewStoreViewController.h"
 
-#define Number_Of_Section 3
+#define Number_Of_Section 2
 
 #define Section_Get_Coin        0
-#define Section_Subscription    1
-#define Section_Purchase_Coin   2
+#define Section_Subscription    2
+#define Section_Purchase_Coin   1
 
 @implementation NewStoreViewController
 
@@ -449,7 +449,7 @@
 
 - (void)share
 {
-    NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"AppIcon@2x" ofType:@"png"];
+    /*NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"AppIcon@2x" ofType:@"png"];
     
     id<ISSContent> publishContent = [ShareSDK content:[NSString stringWithFormat:@"这个app不错，评书、有声书都有，严重推荐! %@", _appDelegate.appUrlinAws]
                                        defaultContent:@""
@@ -484,7 +484,7 @@
                                  {
                                      NSLog(@"分享失败,错误码:%ld,错误描述:%@", (long)[error errorCode], [error errorDescription]);
                                  }
-                             }];
+                             }];*/
 }
 
 

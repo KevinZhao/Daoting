@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <QuartzCore/QuartzCore.h>
-
 #import "Album.h"
 #import "Song.h"
 #import "SongCell.h"
@@ -19,7 +18,6 @@
 #import "AppData.h"
 #import "AppDelegate.h"
 #import "STKAudioPlayerHelper.h"
-#import <ShareSDK/ShareSDK.h>
 #import "TSMessageView.h"
 #import "UIImageView+AFNetworking.h"
 #import "PurchaseRecordsHelper.h"

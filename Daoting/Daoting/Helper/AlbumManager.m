@@ -121,7 +121,7 @@
 
 - (void)writeBacktoPlist
 {
-    /*NSMutableDictionary *newPlist_dictionary = [[NSMutableDictionary alloc]init];
+    NSMutableDictionary *newPlist_dictionary = [[NSMutableDictionary alloc]init];
     
     for (NSInteger i = 1; i <= _albums.count; i++ ) {
         NSMutableDictionary *albumDirectory = [[NSMutableDictionary alloc]init];
@@ -151,7 +151,7 @@
 
 - (void)foundNewSonginAlbum:(Album*) newAlbum
 {
-    /*for (NSInteger i = 0; i < _albums.count; i++) {
+    for (NSInteger i = 0; i < _albums.count; i++) {
         
         Album *oladAlbum = _albums[i];
         

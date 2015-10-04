@@ -27,7 +27,7 @@
     [self configureIAP];
     
     //configure shareSDK
-    [self configureShareSDK];
+    [self registerWeChat];
     
     //Add observer to receive system time change event
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSystemTimeChanged:) name:UIApplicationSignificantTimeChangeNotification object:nil];
@@ -86,17 +86,9 @@
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
 }
 
--(void)configureShareSDK
+-(void)registerWeChat
 {
-    _appUrlinAws = @"http://t.cn/RPtnXCE";
-    [ShareSDK registerApp:@"16bbd8d2753a"];
-    
-    //[ShareSDK connectSinaWeiboWithAppKey:@"3201194191"
-    //                           appSecret:@"0334252914651e8f76bad63337b3b78f"
-    //                         redirectUri:@"http://appgo.cn"];
-    
-    [ShareSDK connectWeChatTimelineWithAppId:@"wx134b0f70f3612fe8" wechatCls:[WXApi class]];
-    
+    [WXApi registerApp:@"wx134b0f70f3612fe8"];
 }
 
 -(void)configureSystemColorTheme
@@ -202,9 +194,9 @@
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
-    //return [TencentOAuth HandleOpenURL:url];
+    UserManagement* _sharedUserManagement = [UserManagement sharedManager];
     
-    return [ShareSDK handleOpenURL:url wxDelegate:self];
+    return [WXApi handleOpenURL:url delegate:_sharedUserManagement];
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
@@ -213,11 +205,10 @@
         UserManagement* _sharedUserManagement = [UserManagement sharedManager];
         
         return [WXApi handleOpenURL:url delegate:_sharedUserManagement];
-        //[ShareSDK handleOpenURL:url sourceApplication:sourceApplication annotation:annotation wxDelegate:self];
     }
     
     if ([sourceApplication isEqualToString:@"com.tencent.mqq"]) {
-        return false; //[TencentOAuth HandleOpenURL:url];
+        return false;
     }
     
     return false;

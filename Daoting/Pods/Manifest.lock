@@ -22,11 +22,7 @@ PODS:
     - AFNetworking/NSURLSession
   - HexColors (2.2.1)
   - LBBlurredImage (0.2.2)
-<<<<<<< HEAD
-  - MarqueeLabel (2.2.5)
-=======
-  - MarqueeLabel (2.3.1)
->>>>>>> origin/master
+  - MarqueeLabel (2.3.2)
   - Shimmer (1.0.2)
   - StreamingKit (0.1.25)
   - TSMessages (0.9.12):
@@ -44,11 +40,7 @@ SPEC CHECKSUMS:
   AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
   LBBlurredImage: 700634c17922bc2d22343118e7deb6a3ca12db43
-<<<<<<< HEAD
-  MarqueeLabel: 65ca60ee9ba554be34f35339004c6c9fe6366a31
-=======
-  MarqueeLabel: 1adecfbfad67143aeddb19b2f17ae34c1f60eff6
->>>>>>> origin/master
+  MarqueeLabel: e13b96655bebd3b6b09706c5ba82004a3d138314
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   StreamingKit: f00c054cfd0f59d88c8be7a2270e208302ce48c4
   TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc
