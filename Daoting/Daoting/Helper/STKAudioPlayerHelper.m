@@ -430,7 +430,7 @@
 /// Raised when the state of the player has changed
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer stateChanged:(STKAudioPlayerState)state previousState:(STKAudioPlayerState)previousState
 {
-    NSLog(@"audioPlayer: stateChanged previousState =%d currentState = %d", previousState, state);
+    //NSLog(@"audioPlayer: stateChanged previousState =%d currentState = %d", previousState, state);
     
     //save current state to local
     _playerState = state;

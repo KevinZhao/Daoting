@@ -10,6 +10,8 @@
 #import "libkern/OSAtomic.h"
 #import "AudioToolbox/AudioToolbox.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface STKQueueEntry : NSObject
 {
 @public
@@ -28,13 +30,14 @@
     volatile int processedPacketsCount;
 	volatile int processedPacketsSizeTotal;
     AudioStreamBasicDescription audioStreamBasicDescription;
+    double durationHint;
 }
 
 @property (readonly) UInt64 audioDataLengthInBytes;
 @property (readwrite, retain) NSObject* queueItemId;
 @property (readwrite, retain) STKDataSource* dataSource;
 
--(id) initWithDataSource:(STKDataSource*)dataSource andQueueItemId:(NSObject*)queueItemId;
+-(instancetype) initWithDataSource:(STKDataSource*)dataSource andQueueItemId:(NSObject*)queueItemId;
 
 -(void) reset;
 -(double) duration;
@@ -43,3 +46,5 @@
 -(BOOL) isDefinitelyCompatible:(AudioStreamBasicDescription*)basicDescription;
 
 @end
+
+NS_ASSUME_NONNULL_END

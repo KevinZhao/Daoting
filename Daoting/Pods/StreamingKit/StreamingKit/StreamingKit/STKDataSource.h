@@ -35,6 +35,8 @@
 #import <Foundation/Foundation.h>
 #include <AudioToolbox/AudioToolbox.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class STKDataSource;
 
 @protocol STKDataSourceDelegate<NSObject>
@@ -49,7 +51,9 @@
 @property (readonly) SInt64 position;
 @property (readonly) SInt64 length;
 @property (readonly) BOOL hasBytesAvailable;
-@property (readwrite, unsafe_unretained) id<STKDataSourceDelegate> delegate;
+@property (nonatomic, readwrite, assign) double durationHint;
+@property (readwrite, unsafe_unretained, nullable) id<STKDataSourceDelegate> delegate;
+@property (nonatomic, strong, nullable) NSURL *recordToFileUrl;
 
 -(BOOL) registerForEvents:(NSRunLoop*)runLoop;
 -(void) unregisterForEvents;
@@ -60,3 +64,5 @@
 -(AudioFileTypeID) audioFileTypeHint;
 
 @end
+
+NS_ASSUME_NONNULL_END

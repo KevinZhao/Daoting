@@ -15,12 +15,12 @@
 		0A1FA99F19585612002F48EA /* qr_toolbar_more_hl.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA99D19585612002F48EA /* qr_toolbar_more_hl.png */; };
 		0A1FA9A019585612002F48EA /* qr_toolbar_more.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1FA99E19585612002F48EA /* qr_toolbar_more.png */; };
 		0A2639CB1B439D940079C3C5 /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2639CA1B439D940079C3C5 /* UserCell.m */; };
-		0A3A71161BBAD50200A34780 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3A71121BBAD50200A34780 /* libWeChatSDK.a */; settings = {ASSET_TAGS = (); }; };
-		0A3A71171BBAD50200A34780 /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A71131BBAD50200A34780 /* read_me.txt */; settings = {ASSET_TAGS = (); }; };
+		0A3A71161BBAD50200A34780 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3A71121BBAD50200A34780 /* libWeChatSDK.a */; };
 		0A3C7FFC19B184FB00686C5C /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3C7FEF19B184FB00686C5C /* libXG-SDK.a */; };
 		0A3CD3641920F8BE00247436 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A3CD3621920F8BE00247436 /* Main_iPhone.storyboard */; };
 		0A5D921B1B43D4940091338B /* UserManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D921A1B43D4940091338B /* UserManagement.m */; };
 		0A5F4C9D195AB0D3003924C7 /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A5F4C9C195AB0D3003924C7 /* AppIcon@2x.png */; };
+		0A61BCC41C09E5510089F0BE /* VerificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A61BCC21C09E5510089F0BE /* VerificationController.m */; };
 		0A659EF51977AFFD00FC893B /* download_pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A659EE81977AFFD00FC893B /* download_pause@2x.png */; };
 		0A65A8FE19A70D1000CAF5CA /* ShareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A65A8FD19A70D1000CAF5CA /* ShareCell.m */; };
 		0A6E296D19A5DD51002808F7 /* NewStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6E296C19A5DD51002808F7 /* NewStoreViewController.m */; };
@@ -130,7 +130,6 @@
 		0A2639C91B439D940079C3C5 /* UserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserCell.h; path = Setting/UserCell.h; sourceTree = "<group>"; };
 		0A2639CA1B439D940079C3C5 /* UserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserCell.m; path = Setting/UserCell.m; sourceTree = "<group>"; };
 		0A3A71121BBAD50200A34780 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
-		0A3A71131BBAD50200A34780 /* read_me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = read_me.txt; sourceTree = "<group>"; };
 		0A3A71141BBAD50200A34780 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		0A3A71151BBAD50200A34780 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		0A3C7FEF19B184FB00686C5C /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
@@ -139,6 +138,8 @@
 		0A5D92191B43D4940091338B /* UserManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserManagement.h; path = Helper/UserManagement.h; sourceTree = "<group>"; };
 		0A5D921A1B43D4940091338B /* UserManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserManagement.m; path = Helper/UserManagement.m; sourceTree = "<group>"; };
 		0A5F4C9C195AB0D3003924C7 /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@2x.png"; sourceTree = "<group>"; };
+		0A61BCC21C09E5510089F0BE /* VerificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VerificationController.m; path = Helper/VerificationController.m; sourceTree = "<group>"; };
+		0A61BCC31C09E5510089F0BE /* VerificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VerificationController.h; path = Helper/VerificationController.h; sourceTree = "<group>"; };
 		0A659EE81977AFFD00FC893B /* download_pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "download_pause@2x.png"; sourceTree = "<group>"; };
 		0A65A8FC19A70D1000CAF5CA /* ShareCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShareCell.h; path = Store/ShareCell.h; sourceTree = "<group>"; };
 		0A65A8FD19A70D1000CAF5CA /* ShareCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShareCell.m; path = Store/ShareCell.m; sourceTree = "<group>"; };
@@ -182,6 +183,7 @@
 		0AA2863A1A729C73005C1587 /* PurchaseRecordsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseRecordsHelper.h; sourceTree = "<group>"; };
 		0AA2863B1A729C73005C1587 /* PurchaseRecordsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseRecordsHelper.m; sourceTree = "<group>"; };
 		0AAF6193196AE4A600C33E52 /* playingsong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playingsong@2x.png"; sourceTree = "<group>"; };
+		0ABB40351C6B8CB700FD526B /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
 		0ABB4282192E321C007D8BAC /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		0AC69C5C1946F452004C6A67 /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
 		0AC69C5D1946F452004C6A67 /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
@@ -362,8 +364,8 @@
 		0A3A71111BBAD50200A34780 /* WeChatSDK */ = {
 			isa = PBXGroup;
 			children = (
+				0ABB40351C6B8CB700FD526B /* WechatAuthSDK.h */,
 				0A3A71121BBAD50200A34780 /* libWeChatSDK.a */,
-				0A3A71131BBAD50200A34780 /* read_me.txt */,
 				0A3A71141BBAD50200A34780 /* WXApi.h */,
 				0A3A71151BBAD50200A34780 /* WXApiObject.h */,
 			);
@@ -454,6 +456,8 @@
 		0ABB4281192DEA7F007D8BAC /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				0A61BCC21C09E5510089F0BE /* VerificationController.m */,
+				0A61BCC31C09E5510089F0BE /* VerificationController.h */,
 				0A0558311B4F72C7008B8F87 /* UIImage+RoundRect.h */,
 				0A0558321B4F72C7008B8F87 /* UIImage+RoundRect.m */,
 				0A05582E1B4F7280008B8F87 /* AlbumManager.h */,
@@ -611,6 +615,7 @@
 				5933AD5218D03EC1001D707B /* Frameworks */,
 				5933AD5318D03EC1001D707B /* Resources */,
 				CE7CB29539FB4998A45E428F /* Copy Pods Resources */,
+				738A2B3090419ACA1DEA124C /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -627,7 +632,7 @@
 		5933AD4D18D03EC1001D707B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "赵 克鸣";
 				TargetAttributes = {
 					5933AD5418D03EC1001D707B = {
@@ -699,7 +704,6 @@
 				5933AD7718D03EC1001D707B /* Images.xcassets in Resources */,
 				D89D5FA4197D43C600D6FEE0 /* songcell_bg@2x.png in Resources */,
 				0A98D6641920EAB700E46EB9 /* progressBar@2x.png in Resources */,
-				0A3A71171BBAD50200A34780 /* read_me.txt in Resources */,
 				0AEFC3801988DDC800CECC93 /* tabbar_setting@2x.png in Resources */,
 				0A98D66D1920F1F500E46EB9 /* arrowSelected@2x.png in Resources */,
 				0ABB4283192E321C007D8BAC /* Icon-72@2x.png in Resources */,
@@ -732,6 +736,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		738A2B3090419ACA1DEA124C /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		CE7CB29539FB4998A45E428F /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -760,6 +779,7 @@
 				D885571E1999023B00B0F891 /* AFDownloadHelper.m in Sources */,
 				5933AD6918D03EC1001D707B /* AppDelegate.m in Sources */,
 				0A6E297119A5E5FC002808F7 /* CurrentCoinCell.m in Sources */,
+				0A61BCC41C09E5510089F0BE /* VerificationController.m in Sources */,
 				0A5D921B1B43D4940091338B /* UserManagement.m in Sources */,
 				D88557331999024B00B0F891 /* AlbumCell.m in Sources */,
 				0A82221519BA0807004B556B /* CategoryCell.m in Sources */,
@@ -911,8 +931,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Daoting/Daoting.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Keming Zhao (8P28493298)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Keming Zhao (8P28493298)";
-				ENABLE_BITCODE = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Daoting/Library/XGPush",
@@ -950,8 +970,9 @@
 					"-framework",
 					"\"UIKit\"",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "DSoft.com.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9954d69e-c00a-4340-87b3-a668d9b3ddb5";
+				PROVISIONING_PROFILE = "3faf0654-e04d-4c3e-93e8-997744e922f6";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -966,8 +987,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Daoting/Daoting.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Keming Zhao (8P28493298)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Keming Zhao (8P28493298)";
-				ENABLE_BITCODE = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Daoting/Library/XGPush",
@@ -1005,8 +1026,9 @@
 					"-framework",
 					"\"UIKit\"",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "DSoft.com.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9954d69e-c00a-4340-87b3-a668d9b3ddb5";
+				PROVISIONING_PROFILE = "3faf0654-e04d-4c3e-93e8-997744e922f6";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
