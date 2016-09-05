@@ -7,11 +7,11 @@
 		<key>Title</key>
 		<string>晓说 第一季</string>
 		<key>ImageURL</key>
-		<string>http://182.254.148.156/Daoting/Zongyi/Xiaoshuo.png</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Xiaoshuo.png</string>
 		<key>Description</key>
 		<string>高晓松</string>
 		<key>SongList</key>
-		<string>http://182.254.148.156/Daoting/Zongyi/Xiaoshuo1_SongList.plist</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Xiaoshuo1_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Xiaoshuo1</string>
 		<key>Artist</key>
@@ -28,11 +28,11 @@
 		<key>Title</key>
 		<string>晓说 第二季</string>
 		<key>ImageURL</key>
-		<string>http://182.254.148.156/Daoting/Zongyi/Xiaoshuo.png</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Xiaoshuo.png</string>
 		<key>Description</key>
 		<string>高晓松</string>
 		<key>SongList</key>
-		<string>http://182.254.148.156/Daoting/Zongyi/Xiaoshuo2_SongList.plist</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Xiaoshuo2_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Xiaoshuo2</string>
 		<key>Artist</key>
@@ -49,11 +49,11 @@
 		<key>Title</key>
 		<string>晓松奇谈 第一季</string>
 		<key>ImageURL</key>
-		<string>http://182.254.148.156/Daoting/Zongyi/Xiaoshuo.png</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Xiaoshuo.png</string>
 		<key>Description</key>
 		<string>高晓松</string>
 		<key>SongList</key>
-		<string>http://182.254.148.156/Daoting/Zongyi/Xiaoshuo3_SongList.plist</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Xiaoshuo3_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Xiaoshuo3</string>
 		<key>Artist</key>
@@ -70,11 +70,11 @@
 		<key>Title</key>
 		<string>东吴相对论</string>
 		<key>ImageURL</key>
-		<string>http://182.254.148.156/Daoting/Zongyi/Dongwu.png</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Dongwu.png</string>
 		<key>Description</key>
 		<string>东吴相对论</string>
 		<key>SongList</key>
-		<string>http://182.254.148.156/Daoting/Zongyi/Dongwu_SongList.plist</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Dongwu_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Dongwu</string>
 		<key>Artist</key>

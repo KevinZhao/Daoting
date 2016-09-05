@@ -12,9 +12,9 @@
 #import "Album.h"
 
 //#ifdef DEBUG
-//const NSString* hostName = @"http://localhost/";
+static const NSString* hostName = @"http://123.207.137.235:8080/";
 //#else
-static const NSString* hostName = @"http://www.zhaoxiangyu.com:8080/";
+//static const NSString* hostName = @"http://www.zhaoxiangyu.com:8080/";
 //#endif
 
 @implementation PurchaseRecordsHelper

@@ -7,11 +7,11 @@
 		<key>Title</key>
 		<string>围城</string>
 		<key>ImageURL</key>
-		<string>http://182.254.148.156/Daoting/Xiaoshuo/Weicheng.png</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Xiaoshuo/Weicheng.png</string>
 		<key>Description</key>
 		<string>播讲:未知 作者:钱钟书</string>
 		<key>SongList</key>
-		<string>http://182.254.148.156/Daoting/Xiaoshuo/Weicheng_SongList.plist</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Xiaoshuo/Weicheng_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Weicheng</string>
 		<key>Artist</key>

@@ -169,6 +169,7 @@
     
     return cell;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == Section_User) {
@@ -247,10 +248,7 @@
         [weakCell setNeedsLayout];
     
     }
-                                      failure:nil];
-    
-    
-    
+        failure:nil];
 }
 
 

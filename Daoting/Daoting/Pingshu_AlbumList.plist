@@ -7,11 +7,11 @@
 		<key>Title</key>
 		<string>雍正剑侠图 第一部</string>
 		<key>ImageURL</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Yongzheng1.png</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Yongzheng1.png</string>
 		<key>Description</key>
 		<string>播讲:王玥波 1至44回 电台整合版</string>
 		<key>SongList</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Yongzheng1_SongList.plist</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Yongzheng1_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Yongzheng1</string>
 		<key>Artist</key>
@@ -33,11 +33,11 @@
 		<key>Title</key>
 		<string>雍正剑侠图 第二部</string>
 		<key>ImageURL</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Yongzheng2.png</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Yongzheng2.png</string>
 		<key>Description</key>
 		<string>播讲:王玥波 45至118回 电台整合版</string>
 		<key>SongList</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Yongzheng2_SongList.plist</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Yongzheng2_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Yongzheng2</string>
 		<key>Artist</key>
@@ -59,11 +59,11 @@
 		<key>Title</key>
 		<string>雍正剑侠图 第三部</string>
 		<key>ImageURL</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Yongzheng3.png</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Yongzheng3.png</string>
 		<key>Description</key>
 		<string>播讲:王玥波 119至163回 电台整合版</string>
 		<key>SongList</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Yongzheng3_SongList.plist</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Yongzheng3_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Yongzheng3</string>
 		<key>Artist</key>
@@ -85,11 +85,11 @@
 		<key>Title</key>
 		<string>[每天更新]雍正剑侠图 第四部</string>
 		<key>ImageURL</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Yongzheng4.png</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Yongzheng4.png</string>
 		<key>Description</key>
 		<string>播讲:王玥波 正在直播</string>
 		<key>SongList</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Yongzheng4_SongList.plist</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Yongzheng4_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Yongzheng4</string>
 		<key>Artist</key>
@@ -111,11 +111,11 @@
 		<key>Title</key>
 		<string>西游记 吴荻</string>
 		<key>ImageURL</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Xiyouji.png</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Xiyouji.png</string>
 		<key>Description</key>
 		<string>播讲:吴荻 共127回 电台录音版</string>
 		<key>SongList</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Xiyouji_SongList.plist</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Xiyouji_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Xiyouji</string>
 		<key>Artist</key>
@@ -148,11 +148,11 @@
 		<key>Title</key>
 		<string>薛礼征东 电台版</string>
 		<key>ImageURL</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Zhengdong.png</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Zhengdong.png</string>
 		<key>Description</key>
 		<string>播讲:王玥波 全本共152回 电台录音版</string>
 		<key>SongList</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Zhengdong_SongList.plist</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Zhengdong_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Zhengdong</string>
 		<key>Artist</key>
@@ -175,11 +175,11 @@
 		<key>Title</key>
 		<string>明朝那些事</string>
 		<key>ImageURL</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Mingchao.png</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Mingchao.png</string>
 		<key>Description</key>
 		<string>播讲:王玥波 有声书 共56回</string>
 		<key>SongList</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Mingchao_SongList.plist</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Mingchao_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Mingchao</string>
 		<key>Artist</key>
@@ -200,11 +200,11 @@
 		<key>Title</key>
 		<string>隋唐演义 之 双鞭记</string>
 		<key>ImageURL</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Shuangbianji.png</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Shuangbianji.png</string>
 		<key>Description</key>
 		<string>播讲:王玥波 共104回 现场清晰版</string>
 		<key>SongList</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Shuangbianji_SongList.plist</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Shuangbianji_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Shuangbianji</string>
 		<key>Artist</key>
@@ -224,11 +224,11 @@
 		<key>Title</key>
 		<string>全本 隋唐演义</string>
 		<key>ImageURL</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Suitang.png</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Suitang.png</string>
 		<key>Description</key>
 		<string>播讲:王玥波 全本共237回 目前最清晰全本</string>
 		<key>SongList</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Suitang_SongList.plist</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Suitang_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Suitang</string>
 		<key>Artist</key>
@@ -265,11 +265,11 @@
 		<key>Title</key>
 		<string>聊斋</string>
 		<key>ImageURL</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Liaozhai.png</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Liaozhai.png</string>
 		<key>Description</key>
 		<string>播讲:王玥波 目前收录最全</string>
 		<key>SongList</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Liaozhai_SongList.plist</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Liaozhai_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Liaozhai</string>
 		<key>Artist</key>
@@ -305,11 +305,11 @@
 		<key>Title</key>
 		<string>侠义英雄传</string>
 		<key>ImageURL</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Xiayi.png</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Xiayi.png</string>
 		<key>Description</key>
 		<string>播讲:王玥波 全本共90回 早期评书</string>
 		<key>SongList</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Xiayi_SongList.plist</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Xiayi_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Xiayi</string>
 		<key>Artist</key>
@@ -331,11 +331,11 @@
 		<key>Title</key>
 		<string>新三盗九龙杯</string>
 		<key>ImageURL</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Sandao.png</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Sandao.png</string>
 		<key>Description</key>
 		<string>播讲:王玥波 全本共100回 重新录音版本</string>
 		<key>SongList</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Sandao_SongList.plist</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Sandao_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Sandao</string>
 		<key>Artist</key>
@@ -363,11 +363,11 @@
 		<key>Title</key>
 		<string>[新派评书]海贼王</string>
 		<key>ImageURL</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Haizeiwang.png</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Haizeiwang.png</string>
 		<key>Description</key>
 		<string>播讲:张准 连载至87集 新书老说法</string>
 		<key>SongList</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Haizeiwang_SongList.plist</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Haizeiwang_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Haizeiwang</string>
 		<key>Artist</key>
@@ -387,11 +387,11 @@
 		<key>Title</key>
 		<string>侠义金镖</string>
 		<key>ImageURL</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Jinbiao.png</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Jinbiao.png</string>
 		<key>Description</key>
 		<string>播讲:张庆升</string>
 		<key>SongList</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Jinbiao_SongList.plist</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Jinbiao_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Jinbiao</string>
 		<key>Artist</key>
@@ -410,11 +410,11 @@
 		<key>Title</key>
 		<string>君臣斗</string>
 		<key>ImageURL</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Junchendou.png</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Junchendou.png</string>
 		<key>Description</key>
 		<string>播讲:王玥波 全本</string>
 		<key>SongList</key>
-		<string>http://182.254.148.156/Daoting/Pingshu/Junchendou_SongList.plist</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Junchendou_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Junchendou</string>
 		<key>Artist</key>
