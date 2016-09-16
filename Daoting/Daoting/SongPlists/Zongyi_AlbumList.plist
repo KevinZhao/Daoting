@@ -5,13 +5,244 @@
 	<key>1</key>
 	<dict>
 		<key>Title</key>
-		<string>晓说 第一季</string>
+		<string>蒋勋细说红楼梦</string>
 		<key>ImageURL</key>
-		<string>http://182.254.148.156/Daoting/Zongyi/Xiaoshuo1.png</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Xishuohongloumeng.png</string>
+		<key>Description</key>
+		<string>蒋勋品评红楼</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Xishuohongloumeng_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Xishuohongloumeng</string>
+		<key>Artist</key>
+		<string>蒋勋</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string>Zongyi</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>2</key>
+	<dict>
+		<key>Title</key>
+		<string>晓松奇谈 第二季 继续免费</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Xiaoshuo.png</string>
 		<key>Description</key>
 		<string>高晓松</string>
 		<key>SongList</key>
-		<string>http://182.254.148.156/Daoting/Zongyi/Xiaoshuo1_SongList.plist</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Xiaoshuo4_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Xiaoshuo4</string>
+		<key>Artist</key>
+		<string>高晓松</string>
+		<key>UpdatingStatus</key>
+		<string>Updating</string>
+		<key>Category</key>
+		<string>Zongyi</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>3</key>
+	<dict>
+		<key>Title</key>
+		<string>罗辑思维 2015</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Luojisiwei.png</string>
+		<key>Description</key>
+		<string>更新中 逻辑思维 老罗全力打造 </string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Luojisiwei3_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Luojisiwei3</string>
+		<key>Artist</key>
+		<string>罗振宇</string>
+		<key>UpdatingStatus</key>
+		<string>Updating</string>
+		<key>Category</key>
+		<string>Zongyi</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>4</key>
+	<dict>
+		<key>Title</key>
+		<string>今晚80后脱口秀 2015</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/jinwan80hou2014.png</string>
+		<key>Description</key>
+		<string>听王自健白话吧</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/jinwan80hou2015_SongList.plist</string>
+		<key>ShortName</key>
+		<string>jinwan80hou2015</string>
+		<key>Artist</key>
+		<string>王自健</string>
+		<key>UpdatingStatus</key>
+		<string>Updating</string>
+		<key>Category</key>
+		<string>Zongyi</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>5</key>
+	<dict>
+		<key>Title</key>
+		<string>奇葩说 第二季</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Qipashuo2.png</string>
+		<key>Description</key>
+		<string>奇葩辩论赛</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Qipashuo2_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Qipashuo2</string>
+		<key>Artist</key>
+		<string></string>
+		<key>UpdatingStatus</key>
+		<string>Updating</string>
+		<key>Category</key>
+		<string>Zongyi</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>6</key>
+	<dict>
+		<key>Title</key>
+		<string>财经郎眼 2015</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Caijinglangyan.png</string>
+		<key>Description</key>
+		<string>听郎咸平讲经济</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Caijinglangyan15_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Caijinglangyan15</string>
+		<key>Artist</key>
+		<string>郎咸平</string>
+		<key>UpdatingStatus</key>
+		<string>Updating</string>
+		<key>Category</key>
+		<string>Zongyi</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>7</key>
+	<dict>
+		<key>Title</key>
+		<string>白话三国</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Baihuasanguo.png</string>
+		<key>Description</key>
+		<string>白话说三国</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Baihuasanguo_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Baihuasanguo</string>
+		<key>Artist</key>
+		<string></string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string>Zongyi</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>8</key>
+	<dict>
+		<key>Title</key>
+		<string>老梁故事汇 2015</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Laoliang.png</string>
+		<key>Description</key>
+		<string>梁宏达 又一个胖子</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Laolianggushihui2015_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Laolianggushihui2015</string>
+		<key>Artist</key>
+		<string>梁宏达</string>
+		<key>UpdatingStatus</key>
+		<string>Updating</string>
+		<key>Category</key>
+		<string>Zongyi</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>9</key>
+	<dict>
+		<key>Title</key>
+		<string>锵锵三人行 2015</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/qiangqiang2014.png</string>
+		<key>Description</key>
+		<string>凤凰台 脱口秀</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/qiangqiang2015_SongList.plist</string>
+		<key>ShortName</key>
+		<string>qiangqiang2015</string>
+		<key>Artist</key>
+		<string>窦文涛</string>
+		<key>UpdatingStatus</key>
+		<string>Updating</string>
+		<key>Category</key>
+		<string>Zongyi</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>10</key>
+	<dict>
+		<key>Title</key>
+		<string>财经郎眼 2013 全集</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Caijinglangyan.png</string>
+		<key>Description</key>
+		<string>听郎咸平讲经济</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Caijinglangyan13_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Caijinglangyan13</string>
+		<key>Artist</key>
+		<string>郎咸平</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string>Zongyi</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>11</key>
+	<dict>
+		<key>Title</key>
+		<string>腾飞五千年</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Tengfeiwuqiannian.png</string>
+		<key>Description</key>
+		<string>听袁腾飞讲历史</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Tengfeiwuqiannian_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Tengfeiwuqiannian</string>
+		<key>Artist</key>
+		<string>袁腾飞</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string>Zongyi</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>12</key>
+	<dict>
+		<key>Title</key>
+		<string>晓说 第一季</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Xiaoshuo.png</string>
+		<key>Description</key>
+		<string>高晓松</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Xiaoshuo1_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Xiaoshuo1</string>
 		<key>Artist</key>
@@ -23,22 +254,211 @@
 		<key>LongDescription</key>
 		<string></string>
 	</dict>
-	<key>2</key>
+	<key>13</key>
 	<dict>
 		<key>Title</key>
 		<string>晓说 第二季</string>
 		<key>ImageURL</key>
-		<string>http://182.254.148.156/Daoting/Zongyi/Xiaoshuo2.png</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Xiaoshuo.png</string>
 		<key>Description</key>
 		<string>高晓松</string>
 		<key>SongList</key>
-		<string>http://182.254.148.156/Daoting/Zongyi/Xiaoshuo2_SongList.plist</string>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Xiaoshuo2_SongList.plist</string>
 		<key>ShortName</key>
 		<string>Xiaoshuo2</string>
 		<key>Artist</key>
 		<string>高晓松</string>
 		<key>UpdatingStatus</key>
 		<string>Completed</string>
+		<key>Category</key>
+		<string>Zongyi</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>14</key>
+	<dict>
+		<key>Title</key>
+		<string>晓松奇谈 第一季</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Xiaoshuo.png</string>
+		<key>Description</key>
+		<string>高晓松</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Xiaoshuo3_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Xiaoshuo3</string>
+		<key>Artist</key>
+		<string>高晓松</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string>Zongyi</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>15</key>
+	<dict>
+		<key>Title</key>
+		<string>罗辑思维 2013</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Luojisiwei.png</string>
+		<key>Description</key>
+		<string>逻辑思维 老罗全力打造</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Luojisiwei1_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Luojisiwei1</string>
+		<key>Artist</key>
+		<string>罗振宇</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string>Zongyi</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>16</key>
+	<dict>
+		<key>Title</key>
+		<string>罗辑思维 2014</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Luojisiwei.png</string>
+		<key>Description</key>
+		<string>更新中 逻辑思维 老罗全力打造 </string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Luojisiwei2_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Luojisiwei2</string>
+		<key>Artist</key>
+		<string>罗振宇</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string>Zongyi</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>17</key>
+	<dict>
+		<key>Title</key>
+		<string>锵锵三人行 2014</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/qiangqiang2014.png</string>
+		<key>Description</key>
+		<string>凤凰台 脱口秀</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/qiangqiang2014_SongList.plist</string>
+		<key>ShortName</key>
+		<string>qiangqiang2014</string>
+		<key>Artist</key>
+		<string>窦文涛</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string>Zongyi</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>18</key>
+	<dict>
+		<key>Title</key>
+		<string>今晚80后脱口秀 2014</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/jinwan80hou2014.png</string>
+		<key>Description</key>
+		<string>听王自健白话吧</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/jinwan80hou2014_SongList.plist</string>
+		<key>ShortName</key>
+		<string>jinwan80hou2014</string>
+		<key>Artist</key>
+		<string>王自健</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string>Zongyi</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>19</key>
+	<dict>
+		<key>Title</key>
+		<string>财经郎眼 2014 已完结</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Caijinglangyan.png</string>
+		<key>Description</key>
+		<string>听郎咸平讲经济</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Caijinglangyan14_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Caijinglangyan14</string>
+		<key>Artist</key>
+		<string>郎咸平</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string>Zongyi</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>20</key>
+	<dict>
+		<key>Title</key>
+		<string>东吴相对论</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Dongwu.png</string>
+		<key>Description</key>
+		<string>听梁东和吴伯凡聊经济生活</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Dongwu_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Dongwu</string>
+		<key>Artist</key>
+		<string>梁东 吴伯凡</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string>Zongyi</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>21</key>
+	<dict>
+		<key>Title</key>
+		<string>都嘟 2015</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Dudu.png</string>
+		<key>Description</key>
+		<string>大家 马未都 脱口秀 免费</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Dudu2014_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Dudu2014</string>
+		<key>Artist</key>
+		<string>马未都</string>
+		<key>UpdatingStatus</key>
+		<string>Updating</string>
+		<key>Category</key>
+		<string>Zongyi</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>22</key>
+	<dict>
+		<key>Title</key>
+		<string>奇葩说 2015</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Qipashuo.png</string>
+		<key>Description</key>
+		<string>奇葩辩论赛</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Qipashuo2015_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Qipashuo2015</string>
+		<key>Artist</key>
+		<string></string>
+		<key>UpdatingStatus</key>
+		<string>Updating</string>
 		<key>Category</key>
 		<string>Zongyi</string>
 		<key>LongDescription</key>

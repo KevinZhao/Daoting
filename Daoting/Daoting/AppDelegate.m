@@ -119,11 +119,6 @@
     if (version >= 8.0)
     {
         [[UIApplication sharedApplication] registerForRemoteNotifications];
-    }else
-    {
-        //Deprecated in ios 8.0
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-         UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound];
     }
     
     //Configure XGPush

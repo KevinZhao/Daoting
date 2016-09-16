@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>1</key>
+	<dict>
+		<key>Title</key>
+		<string>蒋勋细说红楼梦</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Xishuohongloumeng.png</string>
+		<key>Description</key>
+		<string>蒋勋品评红楼</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Xishuohongloumeng_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Xishuohongloumeng</string>
+		<key>Artist</key>
+		<string>蒋勋</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string>Zongyi</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>2</key>
+	<dict>
+		<key>Title</key>
+		<string>郭德纲 2015最新相声 </string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Xiangsheng/Guodegang2015.png</string>
+		<key>Description</key>
+		<string>2015 新段子 持续更新中</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Xiangsheng/Guodegang2015_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Guodegang2015</string>
+		<key>Artist</key>
+		<string>郭德纲</string>
+		<key>UpdatingStatus</key>
+		<string>Updating</string>
+		<key>Category</key>
+		<string>xiangsheng</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>3</key>
+	<dict>
+		<key>Title</key>
+		<string>聊斋</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Liaozhai.png</string>
+		<key>Description</key>
+		<string>播讲:王玥波 目前收录最全</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Liaozhai_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Liaozhai</string>
+		<key>Artist</key>
+		<string>王玥波</string>
+		<key>UpdatingStatus</key>
+		<string>Updating</string>
+		<key>Category</key>
+		<string>Pingshu</string>
+		<key>LongDescription</key>
+		<string>素秋时黄英舞动，瑞云上鸮鸟翱翔 
+有邵女辛十四娘，夜叉国镜听阎王 
+庚娘忙阿绣湘裙，鸦头上红玉放光 
+来至在罗刹海市，寻佟客去治牛癀 
+又谁知蛇人不悦，访出来赵城虎狼 
+武孝廉前来驱怪，真生得毛大福长 
+谁成想开张鸿渐，马介甫吹牛成章 
+聂小倩是妾击贼，王成就宫梦弼香 
+封三娘云萝公主，许配那玉田七郎 
+聊斋内三十三段，众明公且慢端详 
+
+这是王老板的一首定场诗，其中包括聊斋回目33回，分别是： 
+素秋，黄英，瑞云，鸮鸟，邵女，辛十四娘，夜叉国，镜听，阎王，庚娘，阿绣，湘裙，鸦头，红玉，罗刹海市，佟客，治牛癀，蛇人，赵城虎，武孝廉，驱怪，真生，毛大福，张鸿渐，马介甫，牛成章，聂小倩，王成，宫梦弼，封三娘，云萝公主，田七郎 
+
+本app经过多次收集整理，收集整理了目前最全的聊斋回目30部，共2G得音频，且全部为最佳音频源，目前只差二个小段： 
+封三娘，镜听，欢迎有相关资源的朋友提供，联系本人 daydream8093@gmail.com 
+
+这之后，王老板也在不同场合说过其他聊斋回目，目前已经收录的包括： 
+青蛙神，晚霞，梅女，郭秀才，还将继续更新  
+		</string>
+	</dict>
+	<key>4</key>
+	<dict>
+		<key>Title</key>
+		<string>济公传</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Xiangsheng/Jigongzhuan.png</string>
+		<key>Description</key>
+		<string>郭德纲版本 目前整理最全</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Xiangsheng/JigongzhuanG_SongList.plist</string>
+		<key>ShortName</key>
+		<string>JigongzhuanG</string>
+		<key>Artist</key>
+		<string>未知</string>
+		<key>UpdatingStatus</key>
+		<string>Updating</string>
+		<key>Category</key>
+		<string>xiangsheng</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>5</key>
+	<dict>
+		<key>Title</key>
+		<string>三国演义</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/SanguoY.png</string>
+		<key>Description</key>
+		<string>袁阔成经典</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/SanguoY_SongList.plist</string>
+		<key>ShortName</key>
+		<string>SanguoY</string>
+		<key>Artist</key>
+		<string>袁阔成</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string></string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>6</key>
+	<dict>
+		<key>Title</key>
+		<string>奇葩说 第二季</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Qipashuo2.png</string>
+		<key>Description</key>
+		<string>奇葩辩论赛</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Qipashuo2_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Qipashuo2</string>
+		<key>Artist</key>
+		<string></string>
+		<key>UpdatingStatus</key>
+		<string>Updating</string>
+		<key>Category</key>
+		<string>Zongyi</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>7</key>
+	<dict>
+		<key>Title</key>
+		<string>盗墓笔记 青雪版</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Xiaoshuo/Daomubiji.png</string>
+		<key>Description</key>
+		<string>青雪版 全本 包括大结局</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Xiaoshuo/DaomubijiQ_SongList.plist</string>
+		<key>ShortName</key>
+		<string>DaomubijiQ</string>
+		<key>Artist</key>
+		<string>未知</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string>Xiaoshuo</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>8</key>
+	<dict>
+		<key>Title</key>
+		<string>何以笙箫默</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Xiaoshuo/Heyishengxiaomo.png</string>
+		<key>Description</key>
+		<string>既然琴瑟起 何以笙箫默</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Xiaoshuo/Heyishengxiaomo_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Heyishengxiaomo</string>
+		<key>Artist</key>
+		<string></string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string>Xiaoshuo</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>9</key>
+	<dict>
+		<key>Title</key>
+		<string>黄金瞳</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Xiaoshuo/Huangjintong.png</string>
+		<key>Description</key>
+		<string>作者：打眼 起点网经典名著 </string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Xiaoshuo/Huangjintong_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Huangjintong</string>
+		<key>Artist</key>
+		<string></string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string>Xiaoshuo</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>10</key>
+	<dict>
+		<key>Title</key>
+		<string>奇葩说 2015</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Qipashuo.png</string>
+		<key>Description</key>
+		<string>奇葩辩论赛</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Zongyi/Qipashuo2015_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Qipashuo2015</string>
+		<key>Artist</key>
+		<string></string>
+		<key>UpdatingStatus</key>
+		<string>Updating</string>
+		<key>Category</key>
+		<string>Zongyi</string>
+		<key>LongDescription</key>
+		<string></string>
+	</dict>
+	<key>11</key>
+	<dict>
+		<key>Title</key>
+		<string>明朝那些事</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Mingchao.png</string>
+		<key>Description</key>
+		<string>播讲:王玥波 张杰 赵岭 王明军 共256回</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Mingchao_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Mingchao</string>
+		<key>Artist</key>
+		<string>王玥波</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string></string>
+		<key>LongDescription</key>
+		<string>本应用是由北京相声评书演员王玥波播讲的《明朝那些事儿》，全部为电台版录音，看过原书的同学，听听大波怎么说的。
+《明朝那些事儿》主要讲述的是从1344年到1644年这三百年间关于明朝的一些故事[3]。以史料为基础，以年代和具体人物为主线，并加入了小说的笔法，语言幽默风趣。对明朝十七帝和其他王公权贵和小人物的命运进行全景展示，尤其对官场政治、战争、帝王心术着墨最多，并加入对当时政治经济制度、人伦道德的演义。
+
+王玥波，爱称王三皮，1978年生于北京，自幼学习评书、相声等多门曲艺艺术，曾拜马增锟学习评书，拜赵小林学习相声，拜章学楷学习联珠快书。全总文工团（原在煤矿文工团）说唱演员，在宣南书馆、崇文书馆均为创业元老，女评书第一人连丽如夫妇之义子。播讲过《聊斋》、《隋唐》、《雍正剑侠图》、《侠义英雄传》等多部评书。2012年8月7日王玥波在京成立个人工作室。
+		</string>
+	</dict>
+	<key>12</key>
+	<dict>
+		<key>Title</key>
+		<string>雍正剑侠图 第四部</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Yongzheng4.png</string>
+		<key>Description</key>
+		<string>播讲:王玥波 已完结</string>
+		<key>SongList</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu/Yongzheng4_SongList.plist</string>
+		<key>ShortName</key>
+		<string>Yongzheng4</string>
+		<key>Artist</key>
+		<string>王玥波</string>
+		<key>UpdatingStatus</key>
+		<string>Completed</string>
+		<key>Category</key>
+		<string></string>
+		<key>LongDescription</key>
+		<string>《雍正剑侠图》又名《童林传》，由清末民初评书艺人常杰淼于20世纪20年代在天津创作的评书作品。
+常杰淼习武嗜酒，性格豪爽，结交绿林豪杰。书中有大量比较真实的武术、江湖绿林道描写；常还惯于引经据典，夹叙夹评，又熟悉老北京民俗与风土人情，能够“武书文说”，把剑侠图说成学问书。“剑侠图”是因为常曾在书中提到“康熙六十一年武英殿御览群侠图”而得名。
+该书大概以八卦掌祖师董海川为原型，同时受到清中叶以来流传于民间的雍正改昭篡位、结交绿林、被刺等故事启发，塑造出童林这一书胆人物。讲述康熙末年，京南霸北童家庄童林童海川误伤老父，出走江西，受高人传授，十五年昼夜苦功、习得“柳叶绵丝磨身掌”绝艺，奉师命下山“另兴一家武术”。京城偶遇雍亲王胤禛（后来的雍正皇帝），做了武术教师，却因初涉江湖得罪绿林。
+
+王玥波，爱称王三皮，1978年生于北京，自幼学习评书、相声等多门曲艺艺术，曾拜马增锟学习评书，拜赵小林学习相声，拜章学楷学习联珠快书。全总文工团（原在煤矿文工团）说唱演员，在宣南书馆、崇文书馆均为创业元老，女评书第一人连丽如夫妇之义子。播讲过《聊斋》、《隋唐》、《雍正剑侠图》、《侠义英雄传》等多部评书。2012年8月7日王玥波在京成立个人工作室。
+		</string>
+	</dict>
+</dict>
+</plist>

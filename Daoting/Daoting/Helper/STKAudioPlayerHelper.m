@@ -464,7 +464,7 @@
 /// Raised when an item has finished playing
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer didFinishPlayingQueueItemId:(NSObject*)queueItemId withReason:(STKAudioPlayerStopReason)stopReason andProgress:(double)progress andDuration:(double)duration
 {
-    NSLog(@"didFinishPlayingQueueItemId stopReason = %d", stopReason);
+    NSLog(@"didFinishPlayingQueueItemId stopReason = %ld", (long)stopReason);
     
     if (stopReason == STKAudioPlayerStopReasonEof) {
         [self playNextSong];

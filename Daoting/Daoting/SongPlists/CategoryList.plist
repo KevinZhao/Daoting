@@ -5,6 +5,32 @@
 	<key>1</key>
 	<dict>
 		<key>Title</key>
+		<string>最近更新</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Update.png</string>
+		<key>Description</key>
+		<string>最近更新 一览无余</string>
+		<key>AlbumListURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Update_AlbumList.plist</string>
+		<key>ShortName</key>
+		<string>Update</string>
+	</dict>
+	<key>2</key>
+	<dict>
+		<key>Title</key>
+		<string>编辑推荐</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Best.png</string>
+		<key>Description</key>
+		<string>编辑推荐 不容错过</string>
+		<key>AlbumListURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Best_AlbumList.plist</string>
+		<key>ShortName</key>
+		<string>Best</string>
+	</dict>
+	<key>3</key>
+	<dict>
+		<key>Title</key>
 		<string>评书</string>
 		<key>ImageURL</key>
 		<string>http://www.zhaoxiangyu.com/Daoting/Pingshu.png</string>
@@ -15,7 +41,20 @@
 		<key>ShortName</key>
 		<string>Pingshu</string>
 	</dict>
-	<key>2</key>
+	<key>4</key>
+	<dict>
+		<key>Title</key>
+		<string>相声</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Xiangsheng.png</string>
+		<key>Description</key>
+		<string>单口为主 只放精品</string>
+		<key>AlbumListURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Xiangsheng_AlbumList.plist</string>
+		<key>ShortName</key>
+		<string>Xiangsheng</string>
+	</dict>
+	<key>5</key>
 	<dict>
 		<key>Title</key>
 		<string>综艺</string>
@@ -28,7 +67,7 @@
 		<key>ShortName</key>
 		<string>Zongyi</string>
 	</dict>
-	<key>3</key>
+	<key>6</key>
 	<dict>
 		<key>Title</key>
 		<string>小说</string>
@@ -40,6 +79,19 @@
 		<string>http://www.zhaoxiangyu.com/Daoting/Xiaoshuo_AlbumList.plist</string>
 		<key>ShortName</key>
 		<string>Xiaoshuo</string>
+	</dict>
+	<key>7</key>
+	<dict>
+		<key>Title</key>
+		<string>百家讲坛</string>
+		<key>ImageURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Baijia.png</string>
+		<key>Description</key>
+		<string>百家讲坛 谈古论金</string>
+		<key>AlbumListURL</key>
+		<string>http://www.zhaoxiangyu.com/Daoting/Baijia_AlbumList.plist</string>
+		<key>ShortName</key>
+		<string>Baijia</string>
 	</dict>
 </dict>
 </plist>

@@ -11,11 +11,8 @@
 #import "Song.h"
 #import "Album.h"
 
-//#ifdef DEBUG
-static const NSString* hostName = @"http://123.207.137.235:8080/";
-//#else
-//static const NSString* hostName = @"http://www.zhaoxiangyu.com:8080/";
-//#endif
+
+static const NSString* hostName = @"http://www.zhaoxiangyu.com:8080/";
 
 @implementation PurchaseRecordsHelper
 
