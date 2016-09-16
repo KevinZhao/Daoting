@@ -21,7 +21,8 @@
 @interface SettingViewController : UITableViewController<IUserManagementDelegate>
 {
     AppData         *_appData;
-    AppDelegate     *_appdelegate;
+    AppDelegate *_appdelegate;
+    //id<UIApplicationDelegate>
     
     UserManagement    *_sharedUserManagement;
 }

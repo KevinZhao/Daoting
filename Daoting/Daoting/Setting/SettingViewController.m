@@ -8,12 +8,12 @@
 
 #import "SettingViewController.h"
 
-#define Number_Of_Section 4
+#define Number_Of_Section 3
 
 #define Section_User    0
-#define Section_PlayHistory 1
-#define Section_Setting 2
-#define Section_Clear   3
+//#define Section_PlayHistory 1
+#define Section_Setting 1
+#define Section_Clear   2
 
 @implementation SettingViewController
 
@@ -72,10 +72,6 @@
         return 1;
     }
     
-    if (section == Section_PlayHistory) {
-        return 1;
-    }
-    
     if (section == Section_Setting) {
         return 2;
     }
@@ -119,12 +115,12 @@
         [switchCell.sw_option addTarget:self action:@selector(onSwitchValueChanged2:) forControlEvents:UIControlEventValueChanged];
     }
     
-    if ((indexPath.section == Section_PlayHistory) && (indexPath.row == 0)) {
+    /*if ((indexPath.section == Section_PlayHistory) && (indexPath.row == 0)) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCellDisclosure" forIndexPath:indexPath];
         
         SettingCellSwitch *switchCell = (SettingCellSwitch*)cell;
         switchCell.lbl_Title.text = @"我正在听";
-    }
+    }*/
     
     if ((indexPath.section == Section_Clear) && (indexPath.row == 0))
     {
@@ -181,20 +177,20 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ((indexPath.section == Section_User) && (indexPath.row == 0)){
+    /*if ((indexPath.section == Section_User) && (indexPath.row == 0)){
         
         [_sharedUserManagement login:LoginTypeWeChat];
-    }
+    }*/
     
     if ((indexPath.section == Section_Clear) && (indexPath.row == 0))
     {
         [self performSegueWithIdentifier:@"showClearCache" sender:nil];
     }
     
-    if ((indexPath.section == Section_PlayHistory) && (indexPath.row == 0))
+    /*if ((indexPath.section == Section_PlayHistory) && (indexPath.row == 0))
     {
         //[self performSegueWithIdentifier:@"showPurchasedSongs" sender:nil];
-    }
+    }*/
 }
 
 #pragma mark UI Operation
